@@ -71,109 +71,91 @@ Raises
 ``NotImplementedError``
     If the logic for the specified `model_type` is not implemented.
 
-Examples
-^^^^^^^^^^
+Examples::
 
-        >>> model = CoreModel(model='Maize')
+        from apsimNGpy.core.apsim import ApsimModel
+        model = ApsimModel(model='Maize')
 
-        # Edit a cultivar model
+Edit a cultivar model::
 
-        >>> model.edit_model(
-        ...     model_type='Cultivar',
-        ...     simulations='Simulation',
-        ...     commands='[Phenology].Juvenile.Target.FixedValue',
-        ...     values=256,
-        ...     model_name='B_110',
-        ...     cultivar_manager='Sow using a variable rule'
-        ... )
+    model.edit_model(
+        model_type='Cultivar',
+        simulations='Simulation',
+        commands='[Phenology].Juvenile.Target.FixedValue',
+        values=256,
+        model_name='B_110',
+        cultivar_manager='Sow using a variable rule')
 
-        # Edit a soil organic matter module
+    # Edit a soil organic matter module
+    model.edit_model(
+        model_type='Organic',
+        simulations='Simulation',
+        model_name='Organic',
+        Carbon=1.23)
 
-        >>> model.edit_model(
-        ...     model_type='Organic',
-        ...     simulations='Simulation',
-        ...     model_name='Organic',
-        ...     Carbon=1.23
-        ... )
+    # Edit multiple soil layers
+    model.edit_model(
+        model_type='Organic',
+        simulations='Simulation',
+        model_name='Organic',
+        Carbon=[1.23, 1.0])
 
-        # Edit multiple soil layers
+    # Edit solute models
+    model.edit_model(
+        model_type='Solute',
+        simulations='Simulation',
+        model_name='NH4',
+        InitialValues=0.2)
 
-        >>> model.edit_model(
-        ...     model_type='Organic',
-        ...     simulations='Simulation',
-        ...     model_name='Organic',
-        ...     Carbon=[1.23, 1.0]
-        ... )
+    model.edit_model(
+        model_type='Solute',
+        simulations='Simulation',
+        model_name='Urea',
+        InitialValues=0.002)
 
-        # Edit solute models
+    # Edit a manager script
+    model.edit_model(
+        model_type='Manager',
+        simulations='Simulation',
+        model_name='Sow using a variable rule',
+        population=8.4)
 
-        >>> model.edit_model(
-        ...     model_type='Solute',
-        ...     simulations='Simulation',
-        ...     model_name='NH4',
-        ...     InitialValues=0.2
-        ... )
+    # Edit surface organic matter parameters
+    model.edit_model(
+        model_type='SurfaceOrganicMatter',
+        simulations='Simulation',
+        model_name='SurfaceOrganicMatter',
+        InitialResidueMass=2500)
 
-        >>> model.edit_model(
-        ...     model_type='Solute',
-        ...     simulations='Simulation',
-        ...     model_name='Urea',
-        ...     InitialValues=0.002
-        ... )
+    model.edit_model(
+        model_type='SurfaceOrganicMatter',
+        simulations='Simulation',
+        model_name='SurfaceOrganicMatter',
+        InitialCNR=85)
 
-        # Edit a manager script
+    # Edit Clock start and end dates
+    model.edit_model(
+        model_type='Clock',
+        simulations='Simulation',
+        model_name='Clock',
+        Start='2021-01-01',
+        End='2021-01-12')
 
-        >>> model.edit_model(
-        ...     model_type='Manager',
-        ...     simulations='Simulation',
-        ...     model_name='Sow using a variable rule',
-        ...     population=8.4
-        ... )
+    # Edit report variables
+    model.edit_model(
+        model_type='Report',
+        simulations='Simulation',
+        model_name='Report',
+        variable_spec='[Maize].AboveGround.Wt as abw')
 
-        # Edit surface organic matter parameters
+    # Multiple report variables
+    model.edit_model(
+        model_type='Report',
+        simulations='Simulation',
+        model_name='Report',
+        variable_spec=[
+            '[Maize].AboveGround.Wt as abw',
+            '[Maize].Grain.Total.Wt as grain_weight'
+        ])
 
-        >>> model.edit_model(
-        ...     model_type='SurfaceOrganicMatter',
-        ...     simulations='Simulation',
-        ...     model_name='SurfaceOrganicMatter',
-        ...     InitialResidueMass=2500
-        ... )
 
-        >>> model.edit_model(
-        ...     model_type='SurfaceOrganicMatter',
-        ...     simulations='Simulation',
-        ...     model_name='SurfaceOrganicMatter',
-        ...     InitialCNR=85
-        ... )
-
-        # Edit Clock start and end dates
-
-        >>> model.edit_model(
-        ...     model_type='Clock',
-        ...     simulations='Simulation',
-        ...     model_name='Clock',
-        ...     Start='2021-01-01',
-        ...     End='2021-01-12'
-        ... )
-
-        # Edit report variables
-
-        >>> model.edit_model(
-        ...     model_type='Report',
-        ...     simulations='Simulation',
-        ...     model_name='Report',
-        ...     variable_spec='[Maize].AboveGround.Wt as abw'
-        ... )
-
-        # Multiple report variables
-
-        >>> model.edit_model(
-        ...     model_type='Report',
-        ...     simulations='Simulation',
-        ...     model_name='Report',
-        ...     variable_spec=[
-        ...         '[Maize].AboveGround.Wt as abw',
-        ...         '[Maize].Grain.Total.Wt as grain_weight'
-        ...     ]
-        ... )
-        """
