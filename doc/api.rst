@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000252892F7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000212382E7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -248,14 +248,14 @@ ContinuousVariableProblem
                 def evaluate(self, x, **kwargs):
                    return -self.run(verbose=False).results.Yield.mean()
 
-            >>> problem = Problem(model="Maize", simulation="Sim")
-            >>> problem.add_control("Manager", "Sow using a rule", "Population", vtype="grid",
-            ...                     start_value=5, values=[5, 9, 11])
-            >>> problem.add_control("Manager", "Sow using a rule", "RowSpacing", vtype="grid",
-            ...                     start_value=400, values=[400, 800, 1200])
-            >>> result = problem.minimize_with_local_solver(method='Powell', options={"maxiter": 300})
-            >>> print(result.x_vars)
-            {'Population': 9, 'RowSpacing': 800}
+          problem = Problem(model="Maize", simulation="Sim")
+          problem.add_control("Manager", "Sow using a rule", "Population", vtype="grid",
+                                start_value=5, values=[5, 9, 11])
+          problem.add_control("Manager", "Sow using a rule", "RowSpacing", vtype="grid",
+                                start_value=400, values=[400, 800, 1200])
+          result = problem.minimize_with_local_solver(method='Powell', options={"maxiter": 300})
+          print(result.x_vars)
+          {'Population': 9, 'RowSpacing': 800}
 
 .. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.optimize_with_differential_evolution(self, args=(), strategy='best1bin', maxiter=1000, popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.7, rng=None, callback=None, disp=True, polish=True, init='latinhypercube', atol=0, updating='immediate', workers=1, constraints=(), x0=None, *, integrality=None, vectorized=False)
 
