@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001FFBCCFF250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001BDCA4F3250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -186,7 +186,7 @@ ContinuousVariableProblem
         https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize
 
         +------------------+-----------------------+-------------------+----------------+---------------------+-----------------------------------------------+
-        | Method           | Type                   | Gradient Required | Handles Bounds | Handles Constraints | Notes                                         |
+        | Method           | Type                   | Gradient Required | Handles Bounds | Handles Constraints | Notes                                        |
         +==================+=======================+===================+================+=====================+===============================================+
         | Nelder-Mead      | Local (Derivative-free)| No                | No             | No                  | Simplex algorithm                            |
         +------------------+-----------------------+-------------------+----------------+---------------------+-----------------------------------------------+
@@ -237,7 +237,7 @@ ContinuousVariableProblem
                 - result.x_vars (dict): A dictionary of variable labels and optimized values.
 
         Example::
-          >>> from apsimNGpy.optimizer.one_objective import ContinuousVariableProblem
+          from apsimNGpy.optimizer.one_objective import ContinuousVariableProblem
           class Problem(ContinuousVariableProblem):
                 def __init__(self, model=None, simulation='Simulation'):
                     super().__init__(model, simulation)
