@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000264CCD03250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x0000026B06B4F250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -185,8 +185,8 @@ ContinuousVariableProblem
 
         https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize
 
-        +------------------+-----------------------+-------------------+----------------+---------------------+----------------------------------------------+
-        | Method           | Type                  | Gradient Required | Handles Bounds | Handles Constraints | Notes                                        |
+        +------------------+-----------------------+-------------------+----------------+---------------------+-----------------------------------------------+
+        | Method           | Type                  | Gradient Required | Handles Bounds | Handles Constraints | Notes                                         |
         +==================+=======================+===================+================+=====================+===============================================+
         | Nelder-Mead      | Local (Derivative-free)| No                | No             | No                  | Simplex algorithm                            |
         +------------------+-----------------------+-------------------+----------------+---------------------+-----------------------------------------------+
@@ -222,6 +222,7 @@ ContinuousVariableProblem
         **kwargs:
 
             Arbitrary keyword arguments passed to `scipy.optimize.minimize`, such as:
+
             - ``method (str)``: The optimization method to use.
 
             - ``options (dict)``: Solver-specific options like `disp`, `maxiter`, `gtol`, etc.
