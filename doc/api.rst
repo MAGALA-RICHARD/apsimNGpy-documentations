@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x0000016CC02E3250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001FFBCCFF250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -186,7 +186,7 @@ ContinuousVariableProblem
         https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize
 
         +------------------+-----------------------+-------------------+----------------+---------------------+-----------------------------------------------+
-        | Method           | Type                  | Gradient Required | Handles Bounds | Handles Constraints | Notes                                         |
+        | Method           | Type                   | Gradient Required | Handles Bounds | Handles Constraints | Notes                                         |
         +==================+=======================+===================+================+=====================+===============================================+
         | Nelder-Mead      | Local (Derivative-free)| No                | No             | No                  | Simplex algorithm                            |
         +------------------+-----------------------+-------------------+----------------+---------------------+-----------------------------------------------+
