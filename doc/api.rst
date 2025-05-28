@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000225277B3250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001E32328F250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -183,8 +183,6 @@ ContinuousVariableProblem
 
         Optimization methods available in `scipy.optimize.minimize` include:
 
-        https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize.
-
         +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
         | Method           | Type                   | Gradient Required | Handles Bounds | Handles Constraints | Notes                                        |
         +==================+========================+===================+================+=====================+==============================================+
@@ -197,7 +195,7 @@ ContinuousVariableProblem
         | BFGS             | Local (Gradient-based) | Yes               | No             | No                  | Quasi-Newton                                 |
         +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
         | Newton-CG        | Local (Gradient-based) | Yes               | No             | No                  | Newton's method                              |
-        +------------------+------------------------+-------------------+-----------------+--------------------+----------------------------------------------+
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
         | L-BFGS-B         | Local (Gradient-based) | Yes               | Yes            | No                  | Limited memory BFGS                          |
         +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
         | TNC              | Local (Gradient-based) | Yes               | Yes            | No                  | Truncated Newton                             |
@@ -216,6 +214,10 @@ ContinuousVariableProblem
         +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
         | trust-krylov     | Local (Gradient-based) | Yes               | No             | No                  | Trust-region, Hessian-free                   |
         +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+
+        Reference:
+
+        https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize.
 
         Parameters::
 
