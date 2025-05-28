@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001962ABB7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001DCA3AC3250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -136,22 +136,32 @@ ContinuousVariableProblem
 
         Attributes:
             ``model (str):`` The APSIM model template file name.
+
             ``simulation (str):`` Target simulation(s).
+
             ``controls (list):`` Defined control variables.
+
             ``control_vars (list):`` List of VarDesc instances for optimization.
+
             ``labels (list): Labels`` for variables.
+
             ``pbar (tqdm):`` Progress bar instance.
+
             ```cache (bool):`` Whether to cache evaluation results.
+
             ```cache_size (int):`` Size of the local cache.
 
         Methods:
             ``add_control(...):`` Add a new control variable to the optimization problem.
+
             ``bounds:`` Return the bounds for all control variables as a tuple.
+
             ``starting_values():`` Return the initial values for all control variables.
+
             ``minimize_with_local_solver(...):`` Optimize using `scipy.optimize.minimize`.
+
             ``optimize_with_differential_evolution(...):`` Optimize using `scipy.optimize.differential_evolution`.
-            ``_open_pbar(labels, maxiter):`` Open a progress bar.
-            ``_close_pbar():`` Close the progress bar.
+
 
         Example:
             >>> class Problem(ContinuousVariableProblem):
