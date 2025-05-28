@@ -85,7 +85,7 @@ ApsimModel
    Perform a spin-up operation on the aPSim model.
 
         This method is used to simulate a spin-up operation in an aPSim model. During a spin-up, various soil properties or
-        variables may be adjusted based on the simulation results.
+        _variables may be adjusted based on the simulation results.
 
         Parameters:
         ----------
@@ -156,12 +156,12 @@ CoreModel
    Adds a new data base table, which ``APSIM`` calls ``Report`` (Models.Report) to the ``Simulation`` under a Simulation Zone.
 
         This is different from ``add_report_variable`` in that it creates a new, named report
-        table that collects data based on a given list of variables and events.
+        table that collects data based on a given list of _variables and events.
 
         :Args:
             ``variable_spec`` (list or str): A list of APSIM variable paths to include in the report table.
                                          If a string is passed, it will be converted to a list.
-            ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of variables.
+            ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of _variables.
                                                      Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
                                                      '[crop_name].Harvesting' etc.,,
             ``rename`` (str): The name of the report table to be added. Defaults to 'my_table'.
@@ -248,16 +248,16 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.add_report_variable(self, variable_spec: Union[list, str, tuple], report_name: str = None, set_event_names: Union[str, list] = None)
 
-   This adds a report variable to the end of other variables, if you want to change the whole report use change_report
+   This adds a report variable to the end of other _variables, if you want to change the whole report use change_report
 
         Parameters
         -------------------
 
-        ``variable_spec``: (str, required): list of text commands for the report variables e.g., '[Clock].Today as Date'
+        ``variable_spec``: (str, required): list of text commands for the report _variables e.g., '[Clock].Today as Date'
 
         ``param report_name``: (str, optional): name of the report variable if not specified the first accessed report object will be altered
 
-        ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of variables.
+        ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of _variables.
                                                      Defaults to ['[Clock].EndOfYear'] if not provided.
         :Returns:
             returns instance of apsimNGpy.core.core.apsim.ApsimModel or apsimNGpy.core.core.apsim.CoreModel
@@ -272,7 +272,7 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.change_report(self, *, command: str, report_name='Report', simulations=None, set_DayAfterLastOutput=None, **kwargs)
 
-   Set APSIM report variables for specified simulations.
+   Set APSIM report _variables for specified simulations.
 
         This function allows you to set the variable names for an APSIM report
         in one or more simulations.
@@ -424,7 +424,7 @@ CoreModel
 
         Returns: instance of the class CoreModel or ApsimModel
 
-.. function:: apsimNGpy.core.core.CoreModel.edit_model(self, model_type: str, model_name: str, simulations: Union[str, list] = 'all', cacheit=False, cache_size=300, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.edit_model(self, model_type: str, model_name: str, simulations: Union[str, list] = 'all', cacheit=False, cache_size=300, verbose=False, **kwargs)
 
    Modify various APSIM model components by specifying the model type and name across given simulations.
 
@@ -502,6 +502,7 @@ CoreModel
         ...     commands='[Phenology].Juvenile.Target.FixedValue',
         ...     values=256,
         ...     model_name='B_110',
+        ...     new_cultivar_name='B_110_edited',
         ...     cultivar_manager='Sow using a variable rule'
         ... )
 
@@ -574,7 +575,7 @@ CoreModel
         ...     End='2021-01-12'
         ... )
 
-        # Edit report variables
+        # Edit report _variables
 
         >>> model.edit_model(
         ...     model_type='Report',
@@ -583,7 +584,7 @@ CoreModel
         ...     variable_spec='[Maize].AboveGround.Wt as abw'
         ... )
 
-        # Multiple report variables
+        # Multiple report _variables
 
         >>> model.edit_model(
         ...     model_type='Report',
@@ -637,24 +638,6 @@ CoreModel
 
         ``Returns``
             Dictionary of simulation names with dates.
-
-.. function:: apsimNGpy.core.core.CoreModel.extract_user_input(self, manager_name: str)
-
-   Get user_input of a given model manager script.
-
-        Args:
-            ``manager_name`` (str): name of the Models.Manager script.
-
-            ``returns:`  a dictionary of user input with the key as the script parameters and values as the inputs
-
-        Example:
-        ____________________
-
-        >>> from apsimNGpy.core.base_data import load_default_simulations
-        >>> model = load_default_simulations(crop = 'maize')
-        >>> ui = model.extract_user_input(manager_name='Fertilise at sowing')
-        >>> print(ui)
-        {'Crop': 'Maize', 'FertiliserType': 'NO3N', 'Amount': '160.0'}
 
 .. function:: apsimNGpy.core.core.CoreModel.find_model(model_name: str, model_namespace=None)
 
@@ -1431,46 +1414,6 @@ apsimNGpy.core.base_data
 
     >>> morris_model.run()
 
-.. function:: apsimNGpy.core.base_data.load_default_simulations(crop: str = 'Maize', set_wd: [<class 'str'>, <class 'pathlib.Path'>] = None, simulations_object: bool = True, **kwargs)
-
-   Load specific crop default simulation model from the ``APSIM`` Example Folder.
-
-    ``crop``: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to ``Maize``
-
-    ``set_wd``: Working directory to which the model should be copied.
-
-    ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
-
-    ``Returns``:
-     An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
-
-     Examples:
-        >>> # Load the ``CoreModel`` object directly
-        >>> model = load_default_simulations('Maize', simulations_object=True)
-        >>> # Run the ``model``
-        >>> model.run()
-        >>> # Collect and print the results
-        >>> df = model.results
-        >>> print(df)
-             SimulationName  SimulationID  CheckpointID  ... Maize.Total.Wt     Yield   Zone
-        0     Simulation             1             1  ...       1728.427  8469.616  Field
-        1     Simulation             1             1  ...        920.854  4668.505  Field
-        2     Simulation             1             1  ...        204.118   555.047  Field
-        3     Simulation             1             1  ...        869.180  3504.000  Field
-        4     Simulation             1             1  ...       1665.475  7820.075  Field
-        5     Simulation             1             1  ...       2124.740  8823.517  Field
-        6     Simulation             1             1  ...       1235.469  3587.101  Field
-        7     Simulation             1             1  ...        951.808  2939.152  Field
-        8     Simulation             1             1  ...       1986.968  8379.435  Field
-        9     Simulation             1             1  ...       1689.966  7370.301  Field
-        [10 rows x 16 columns]
-
-        # Return only the set_wd
-        >>> model = load_default_simulations(crop='Maize', simulations_object=False)
-        >>> print(isinstance(model, (str, Path)))
-        True
-        @param experiment:
-
 .. class:: apsimNGpy.core.apsimSoilModel
 
    Main class for apsimNGpy modules.
@@ -1552,7 +1495,7 @@ apsimNGpy.core.base_data
       Perform a spin-up operation on the aPSim model.
 
         This method is used to simulate a spin-up operation in an aPSim model. During a spin-up, various soil properties or
-        variables may be adjusted based on the simulation results.
+        _variables may be adjusted based on the simulation results.
 
         Parameters:
         ----------
@@ -1599,6 +1542,10 @@ apsimNGpy.core.runner
      >>> df1= list(collect_csv_from_dir(mock_data, '*.apsimx', recursive=True)) # collects all csf file produced by apsimx recursively
      >>> df2= list(collect_csv_from_dir(mock_data, '*.apsimx',  recursive=False)) # collects all csf file produced by apsimx only in the specified directory directory
 
+.. function:: apsimNGpy.settings.config_internal(key: str, value: str) -> None
+
+   Stores the apsim version and many others to be used by the app
+
 .. function:: apsimNGpy.core.config.get_apsim_bin_path()
 
    Returns the path to the apsim bin folder from either auto-detection or from the path already supplied by the user
@@ -1614,21 +1561,6 @@ apsimNGpy.core.runner
 
     Example:
             >>> apsim_version = get_apsim_version()
-
-.. function:: apsimNGpy.core.runner.get_matching_files(dir_path: Union[str, pathlib.Path], pattern: str, recursive: bool = False) -> List[pathlib.Path]
-
-   Search for files matching a given pattern in the specified directory.
-
-    Args:
-        ``dir_path`` (Union[str, Path]): The directory path to search in.
-        ``pattern`` (str): The filename pattern to match (e.g., "*.apsimx").
-        ``recursive`` (bool): If True, search recursively; otherwise, search only in the top-level directory.
-
-    Returns:
-        List[Path]: A ``list`` of matching Path objects.
-
-    Raises:
-        ``ValueError:`` If no matching files are found.
 
 .. function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=True) -> [<class 'pandas.core.frame.DataFrame'>]
 
@@ -1821,67 +1753,6 @@ apsimNGpy.manager.weathermanager
       -If ``station`` is given data will be downloaded directly from the station the default is false.
       
       :param met_tag: your preferred suffix to save on file
-
-.. function:: apsimNGpy.manager.weathermanager.get_met_from_day_met(lonlat: Union[tuple, list, numpy.ndarray], start: int, end: int, filename: str, fill_method: str = 'ffill', retry_number: Optional[int] = 1, **kwa: None) -> str
-
-   Collect weather from daymet solar radiation is replaced with that of nasapower API
-
-    Parameters
-    ---------------
-
-    ``lonlat``:
-         tuple, list, np.ndarray.
-
-    ``retry_number``:
-        (int): retry number of times in case of network errors.
-
-    ``filename``.
-         met file name to save on disk.
-
-    ``start``.
-         Starting year of the met data.
-
-    ``end``.
-         Ending year of the met data.
-
-    ``lonlat``.
-         (tuple, list, array): A tuple of XY cordnates, longitude first, then latitude second.
-
-    ``fill_method``.
-         (str, optional): fills the missing data based pandas fillna method arguments may be bfill, ffill defaults to ffill.
-
-    ``keyword``.
-         ``timeout`` specifies the waiting time.
-
-        ``wait``: the time in secods to try for every retry in case of network errors.
-
-    ``returns``
-       A complete path to the new met file but also write the met file to the disk in the working dir_path.
-
-    Example:
-    --------------
-
-          >>> from apsimNGpy.manager.weathermanager import get_met_from_day_met
-          >>> wf = get_met_from_day_met(lonlat=(-93.04, 42.01247),
-          >>> start=2000, end=2020,timeout = 30, wait =2, retry_number=3, filename='daymet.met')
-
-.. function:: apsimNGpy.manager.weathermanager.impute_data(met, method='mean', verbose=False, **kwargs)
-
-   Imputes missing data in a pandas DataFrame using specified interpolation or mean value.
-
-    Parameters:
-    _______________________
-
-    ``met``: (pd.DataFrame): DataFrame with missing values.
-
-    ``method``: (str, optional): Method for imputing missing values ("approx", "spline", "mean"). Default is "mean".
-
-    ``verbose``: (bool, optional): If True, prints detailed information about the imputation. Default is False.
-
-    - **kwargs (dict, optional): Additional keyword arguments including 'copy' (bool) to deep copy the DataFrame.
-
-    ``Returns:``
-       - ``pd.DataFrame``: DataFrame with imputed missing values.
 
 .. function:: apsimNGpy.manager.weathermanager.merge_columns(df1_main, common_column, df2, fill_column, df2_colummn)
 
