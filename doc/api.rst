@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x0000024F404A7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000299070A7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -658,32 +658,29 @@ CoreModel
                  new_cultivar_name='B_110_edited',
                  cultivar_manager='Sow using a variable rule')
 
-        # Edit a soil organic matter module
+        Edit a soil organic matter module::
 
-        >>> model.edit_model(
-        ...     model_type='Organic',
-        ...     simulations='Simulation',
-        ...     model_name='Organic',
-        ...     Carbon=1.23
-        ... )
+            model.edit_model(
+                 model_type='Organic',
+                 simulations='Simulation',
+                 model_name='Organic',
+                 Carbon=1.23)
 
-        # Edit multiple soil layers
+        Edit multiple soil layers::
 
-        >>> model.edit_model(
-        ...     model_type='Organic',
-        ...     simulations='Simulation',
-        ...     model_name='Organic',
-        ...     Carbon=[1.23, 1.0]
-        ... )
+            model.edit_model(
+                 model_type='Organic',
+                 simulations='Simulation',
+                 model_name='Organic',
+                 Carbon=[1.23, 1.0])
 
-        # Edit solute models
+        Example of how to edit solute models::
 
-        >>> model.edit_model(
-        ...     model_type='Solute',
-        ...     simulations='Simulation',
-        ...     model_name='NH4',
-        ...     InitialValues=0.2
-        ... )
+           model.edit_model(
+                 model_type='Solute',
+                 simulations='Simulation',
+                 model_name='NH4',
+                 InitialValues=0.2 )
 
         >>> model.edit_model(
         ...     model_type='Solute',
