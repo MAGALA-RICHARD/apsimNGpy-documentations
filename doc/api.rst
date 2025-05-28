@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001E32328F250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000252892F7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -239,6 +239,7 @@ ContinuousVariableProblem
                 - result.x_vars (dict): A dictionary of variable labels and optimized values.
 
         Example::
+
           from apsimNGpy.optimizer.one_objective import ContinuousVariableProblem
           class Problem(ContinuousVariableProblem):
                 def __init__(self, model=None, simulation='Simulation'):
