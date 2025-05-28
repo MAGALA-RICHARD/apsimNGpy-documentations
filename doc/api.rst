@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001F153A17250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x0000024F404A7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -645,18 +645,18 @@ CoreModel
 
         Examples::
 
-        from apsimNGpy.core.apsim import ApsimModel
-        model = ApsimModel(model='Maize')
+            from apsimNGpy.core.apsim import ApsimModel
+            model = ApsimModel(model='Maize')
 
         Example of how to edit a cultivar model::
 
-        model.edit_model(model_type='Cultivar',
-             simulations='Simulation',
-             commands='[Phenology].Juvenile.Target.FixedValue',
-             values=256,
-             model_name='B_110',
-             new_cultivar_name='B_110_edited',
-             cultivar_manager='Sow using a variable rule')
+            model.edit_model(model_type='Cultivar',
+                 simulations='Simulation',
+                 commands='[Phenology].Juvenile.Target.FixedValue',
+                 values=256,
+                 model_name='B_110',
+                 new_cultivar_name='B_110_edited',
+                 cultivar_manager='Sow using a variable rule')
 
         # Edit a soil organic matter module
 
