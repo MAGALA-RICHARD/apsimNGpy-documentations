@@ -86,21 +86,24 @@ Edit a cultivar model::
         model_name='B_110',
         cultivar_manager='Sow using a variable rule')
 
-    # Edit a soil organic matter module
+Edit a soil organic matter module::
+
     model.edit_model(
         model_type='Organic',
         simulations='Simulation',
         model_name='Organic',
         Carbon=1.23)
 
-    # Edit multiple soil layers
+Edit multiple soil layers::
+
     model.edit_model(
         model_type='Organic',
         simulations='Simulation',
         model_name='Organic',
         Carbon=[1.23, 1.0])
 
-    # Edit solute models
+Edit solute models::
+
     model.edit_model(
         model_type='Solute',
         simulations='Simulation',
@@ -113,14 +116,16 @@ Edit a cultivar model::
         model_name='Urea',
         InitialValues=0.002)
 
-    # Edit a manager script
+Edit a manager script::
+
     model.edit_model(
         model_type='Manager',
         simulations='Simulation',
         model_name='Sow using a variable rule',
         population=8.4)
 
-    # Edit surface organic matter parameters
+Edit surface organic matter parameters::
+
     model.edit_model(
         model_type='SurfaceOrganicMatter',
         simulations='Simulation',
@@ -133,7 +138,8 @@ Edit a cultivar model::
         model_name='SurfaceOrganicMatter',
         InitialCNR=85)
 
-    # Edit Clock start and end dates
+Edit Clock start and end dates::
+
     model.edit_model(
         model_type='Clock',
         simulations='Simulation',
@@ -141,14 +147,16 @@ Edit a cultivar model::
         Start='2021-01-01',
         End='2021-01-12')
 
-    # Edit report variables
+Edit report variables::
+
     model.edit_model(
         model_type='Report',
         simulations='Simulation',
         model_name='Report',
         variable_spec='[Maize].AboveGround.Wt as abw')
 
-    # Multiple report variables
+Multiple report variables::
+
     model.edit_model(
         model_type='Report',
         simulations='Simulation',
