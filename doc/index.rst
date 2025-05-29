@@ -46,6 +46,9 @@ Built on object-oriented principles, it provides:
 - Seamless APSIMX file editing
 - Weather data retrieval
 - Efficient soil profile development
+- Parameter optimization
+- global and local sensitivity analysis
+- Distributed computing framework
 
 .. automodule:: apsimNGpy
     :members:
