@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001F6D27EF250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x0000018C29CD7250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -1062,11 +1062,7 @@ CoreModel
             5  1200-1500  8.0      300.0
             6  1500-1800  8.0      300.0
 
-        Inspect chemical soil properties
-
-           model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
-
-        Inspect one or more specific parameters
+        Inspect one or more specific parameters::
 
             model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
               Carbon
@@ -1077,6 +1073,7 @@ CoreModel
             4    0.18
             5    0.12
             6    0.12
+
         Inspect more than one specific properties::
 
             model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters=['Carbon', 'CNR'])
@@ -1276,11 +1273,12 @@ CoreModel
 
         ``returns``: None
 
-        Example;
-               >>> from apsimNGpy import core
-               >>> from apsimNGpy.core.core import Models
-               >>> apsim = core.base_data.load_default_simulations(crop = 'Maize')
-               >>> apsim = apsim.rename_model(Models.Clock, 'Clock', 'clock')
+        Example::
+
+               from apsimNGpy import core
+               from apsimNGpy.core.core import Models
+               apsim = core.base_data.load_default_simulations(crop = 'Maize')
+               apsim = apsim.rename_model(Models.Clock, 'Clock', 'clock')
 
 .. function:: apsimNGpy.core.core.CoreModel.replace_model_from(self, model, model_type: str, model_name: str = None, target_model_name: str = None, simulations: str = None)
 
