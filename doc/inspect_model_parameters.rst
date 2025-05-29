@@ -174,7 +174,7 @@ Inspect ``Manager`` script parameters. These scripts are from the Manager Module
 Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection::
 
         model_instance.inspect_model_parameters('Manager',
-        ... simulations='Simulation', model_name='Sow using a variable rule')
+        simulations='Simulation', model_name='Sow using a variable rule')
         {'Crop': 'Maize',
         'StartDate': '1-nov',
         'EndDate': '10-jan',
@@ -198,7 +198,7 @@ Inspect ``Cultivar`` parameters. Please note that cultivar parameters are repres
 here they are returned as key value pairs with parameters as the keys::
 
         model_instance.inspect_model_parameters('Cultivar',
-        ... simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
+        simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
         {'[Phenology].Juvenile.Target.FixedValue': '210',
         '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
         '[Phenology].Photosensitive.Target.XYPairs.Y': '0, 0, 0',
