@@ -44,6 +44,7 @@ Built on object-oriented principles, it provides:
 - Fast batch file simulation
 - Model prediction and evaluation
 - Seamless APSIMX file editing
+- APSIM template model inspection
 - Weather data retrieval
 - Efficient soil profile development
 - Parameter optimization
