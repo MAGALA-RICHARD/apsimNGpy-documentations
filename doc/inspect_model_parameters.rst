@@ -148,7 +148,7 @@ Inspect ``Report`` model attributes. Report attributes are returned in two categ
  1. 'EventNames': used for triggering recording or reporting events
  2. 'VariableNames': actual variable  paths::
 
-        >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
+        model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         {'EventNames': ['[Maize].Harvesting'],
         'VariableNames': ['[Clock].Today',
         '[Maize].Phenology.CurrentStageName',
@@ -167,13 +167,13 @@ Inspect ``Report`` model attributes. Report attributes are returned in two categ
 
 Inspect  ``Weather`` file path. The returned weather file is a ``path`` for weather data::
 
-        >>> model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
+        model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
 Inspect ``Manager`` script parameters. These scripts are from the Manager Module. You need to know the exact name of the script hence you may want to inspect the whole Manager Models in the simulations file.
 Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection::
 
-        >>> model_instance.inspect_model_parameters('Manager',
+        model_instance.inspect_model_parameters('Manager',
         ... simulations='Simulation', model_name='Sow using a variable rule')
         {'Crop': 'Maize',
         'StartDate': '1-nov',
@@ -189,7 +189,7 @@ Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a sel
 Script Manager parameters can vary significantly between different scripts. To understand what parameters are available in a given context, it’s best to inspect them using the method above.
 In the following example, we demonstrate how to inspect the value of a specific parameter—Population::
 
-        >>> model_instance.inspect_model_parameters('Manager',
+        model_instance.inspect_model_parameters('Manager',
         ... simulations='Simulation', model_name='Sow using a variable rule',
         ... parameters='Population')
         {'Population': '10'}
@@ -197,7 +197,7 @@ In the following example, we demonstrate how to inspect the value of a specific 
 Inspect ``Cultivar`` parameters. Please note that cultivar parameters are represented with an equal operator before the values,
 here they are returned as key value pairs with parameters as the keys::
 
-        >>> model_instance.inspect_model_parameters('Cultivar',
+        model_instance.inspect_model_parameters('Cultivar',
         ... simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
         {'[Phenology].Juvenile.Target.FixedValue': '210',
         '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
@@ -215,8 +215,8 @@ here they are returned as key value pairs with parameters as the keys::
 
 Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters are not layered as ``Organic, Physical and Water or Chemical``::
 
-        >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
-        ... simulations='Simulation', model_name='SurfaceOrganicMatter')
+        model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
+        simulations='Simulation', model_name='SurfaceOrganicMatter')
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
          'StandingWt': 0.0,
@@ -231,45 +231,45 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
          'N': 0.0,
          'NO3': 0.0}
 
-        >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation',
-        ... model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
+        model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation',
+        model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
 Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
 
 Example::
 
-        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
+        model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
         'Start': datetime.datetime(1990, 1, 1, 0, 0)}
 
-        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
-        ... model_name='Clock', parameters='End')
+        model_instance.inspect_model_parameters('Clock', simulations='Simulation',
+        model_name='Clock', parameters='End')
         datetime.datetime(2000, 12, 31, 0, 0)
 
 Extract ``Start`` year only. let's see with ``start`` year as an example::
 
-        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
-        ... model_name='Clock', parameters='Start').year
+        model_instance.inspect_model_parameters('Clock', simulations='Simulation',
+        model_name='Clock', parameters='Start').year
         1990
 
 Extract  ``End`` year only::
 
-        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
-        ... model_name='Clock', parameters='End').year
+        model_instance.inspect_model_parameters('Clock', simulations='Simulation',
+        model_name='Clock', parameters='End').year
         2000
 
 For this model_type, argument values to parameters can be ``start_date, end, End, Start, end_date, start``. All will return the same thing, respectively.
 Example::
 
-        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
-        ... model_name='Clock', parameters='end_date')
+        model_instance.inspect_model_parameters('Clock', simulations='Simulation',
+        model_name='Clock', parameters='end_date')
         datetime.datetime(2000, 12, 31, 0, 0)
 
 
 # Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``::
 
-        >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
+        model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
                Depth  InitialValues  SoluteBD  Thickness
         0      0-150            0.0  1.010565      150.0
         1    150-300            0.0  1.071456      150.0
@@ -281,8 +281,8 @@ Example::
 
 # Inspect NH4 ``InitialValues``For layered properties, all are returned as pandas even if one parameter is specified::
 
-        >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
-        ... parameters='InitialValues')
+        model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
+        parameters='InitialValues')
             InitialValues
         0            0.1
         1            0.1
