@@ -3,6 +3,38 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+=========
+apsimNGpy
+=========
+
+.. image:: https://img.shields.io/badge/License-Apache_2.0-blue.svg
+   :target: https://opensource.org/licenses/Apache-2.0
+   :alt: License: Apache-2.0
+
+.. image:: https://img.shields.io/badge/docs-online-blue.svg
+   :target: https://magala-richard.github.io/apsimNGpy-documentations/index.html
+   :alt: Documentation
+
+.. image:: https://img.shields.io/pypi/v/apsimNGpy?logo=pypi
+   :target: https://pypi.org/project/apsimNGpy/
+   :alt: PyPI version
+
+.. image:: https://static.pepy.tech/badge/apsimNGpy
+   :target: https://pepy.tech/project/apsimNGpy
+   :alt: Total PyPI downloads
+
+.. image:: https://img.shields.io/pypi/dm/apsimNGpy?logo=pypi
+   :target: https://pypi.org/project/apsimNGpy/
+   :alt: PyPI downloads
+
+.. image:: https://img.shields.io/github/stars/MAGALA-RICHARD/apsimNGpy?style=social
+   :target: https://github.com/MAGALA-RICHARD/apsimNGpy/stargazers
+   :alt: GitHub Stars
+
+.. image:: https://img.shields.io/github/forks/MAGALA-RICHARD/apsimNGpy?style=social
+   :target: https://github.com/MAGALA-RICHARD/apsimNGpy/network/members
+   :alt: GitHub Forks
+
 apsimNGpy Documentation
 =======================
 
