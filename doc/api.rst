@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000002B24F08B250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000204070AF250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -879,6 +879,7 @@ CoreModel
              self. replace the weather data with the fetched data.
 
             Example::
+
               from apsimNgpy.core.apsim import ApsimModel
               model = ApsimModel(model= "Maize")
               model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
