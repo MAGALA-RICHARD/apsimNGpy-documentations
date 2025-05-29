@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000205067BB250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000002780C597250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -952,7 +952,7 @@ CoreModel
 
              model.inspect_model(Models.Core.IPlant, fullpath=False) # gets you the name of the crop Models
              ['Maize']
-        Get full path to the fertilisr model::
+        Get full path to the fertiliser model::
 
              model.inspect_model(Models.Fertiliser, fullpath=True)
              ['.Simulations.Simulation.Field.Fertiliser']
@@ -987,7 +987,7 @@ CoreModel
              model.inspect_model('Models.Climate.Weather')
              ['.Simulations.Simulation.Weather']
 
-        Let's try out finding path to the cultivar model::
+        Try finding path to the cultivar model::
 
              model.inspect_model('Cultivar', fullpath=False) # list all available cultivar names
              ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',  'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
