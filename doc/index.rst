@@ -47,9 +47,9 @@ Built on object-oriented principles, it provides:
 - APSIM template model inspection
 - Weather data retrieval
 - Efficient soil profile development
-- Parameter optimization
+- Parameter optimization (not yet on pipy). We expose a large bunch of local and global optimization algorithms, including genetic optimizations
 - global and local sensitivity analysis
-- Distributed computing framework
+- Distributed computing framework.
 
 .. automodule:: apsimNGpy
     :members:
