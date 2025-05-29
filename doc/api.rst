@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001534DA6F250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000155F4283250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -836,8 +836,28 @@ CoreModel
         -------
         ``ValueError``
             If any of the requested report names are not found in the available tables.
+
         ``RuntimeError``
             If the simulation has not been ``run`` successfully before attempting to read data.
+        Example::
+
+          from apsimNGpy.core.apsim import ApsimModel
+          model = ApsimModel(model= 'Maize') # replace with your path to the apsim template model
+          model.run() # if we are going to use get_simulated_output, no to need to provide the report name in ``run()`` method
+          df = model.get_simulated_output(report_names = ["Report"])
+          print(df)
+            SimulationName  SimulationID  CheckpointID  ... Maize.Total.Wt     Yield   Zone
+         0     Simulation             1             1  ...       1728.427  8469.616  Field
+         1     Simulation             1             1  ...        920.854  4668.505  Field
+         2     Simulation             1             1  ...        204.118   555.047  Field
+         3     Simulation             1             1  ...        869.180  3504.000  Field
+         4     Simulation             1             1  ...       1665.475  7820.075  Field
+         5     Simulation             1             1  ...       2124.740  8823.517  Field
+         6     Simulation             1             1  ...       1235.469  3587.101  Field
+         7     Simulation             1             1  ...        951.808  2939.152  Field
+         8     Simulation             1             1  ...       1986.968  8379.435  Field
+         9     Simulation             1             1  ...       1689.966  7370.301  Field
+         [10 rows x 16 columns]
 
 .. function:: apsimNGpy.core.core.CoreModel.get_weather_from_web(self, lonlat: tuple, start: int, end: int, simulations='all', source='nasa', filename=None)
 
