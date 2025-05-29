@@ -3,9 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-=========
-apsimNGpy
-=========
+=======================
+apsimNGpy Documentation
+=======================
+
+apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
+================================================================
 
 .. image:: https://img.shields.io/badge/License-Apache_2.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
@@ -34,12 +37,6 @@ apsimNGpy
 .. image:: https://img.shields.io/github/forks/MAGALA-RICHARD/apsimNGpy?style=social
    :target: https://github.com/MAGALA-RICHARD/apsimNGpy/network/members
    :alt: GitHub Forks
-
-apsimNGpy Documentation
-=======================
-
-apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
-================================================================
 
 apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
 Built on object-oriented principles, it provides:
