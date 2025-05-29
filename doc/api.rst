@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x00000155F4283250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001CA8C167250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -876,7 +876,17 @@ CoreModel
             ``filename``: Name of the file to save the retrieved data. If None, a default name is generated.
 
             ``Returns:``
-             str Path to the saved met file.
+             self. replace the weather data with the fetched data.
+
+            Example::
+
+              model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
+
+            Changing weather data with unmatching start and end dates in the simulation will lead to ``RuntimeErrors``. To avoid this first check the start and end date before proceedign as follows::
+
+              dt = model.inspect_model_parameters(model_type='Clock', model_name='Clock', simulations='Simulation')
+              start, end = dt['Start'].year, dt['End'].year
+              # output: 1990, 2000
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_file(self, cultivar=False, **kwargs)
 
