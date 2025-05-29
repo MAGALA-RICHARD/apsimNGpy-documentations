@@ -78,7 +78,7 @@ Let's take a look at how it works.
 
 Inspect full soil ``Organic`` profile::
 
-        >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
+        model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
         0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
         1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
@@ -93,7 +93,7 @@ Inspect full soil ``Organic`` profile::
 
 Inspect soil ``Physical`` profile::
 
-        >>> model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
+        model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
         0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
         1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
@@ -106,7 +106,7 @@ Inspect soil ``Physical`` profile::
 
 Inspect soil ``Chemical`` profile::
 
-        >>> model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
+        model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
                Depth   PH  Thickness
         0      0-150  8.0      150.0
         1    150-300  8.0      150.0
@@ -120,7 +120,7 @@ Inspect soil ``Chemical`` profile::
 # Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``.
 This argument accepts both strings and ``lists`` or ``tuple``. Please see the preceding examples::
 
-        >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
+        model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
           Carbon
         0    1.20
         1    0.96
@@ -133,7 +133,7 @@ This argument accepts both strings and ``lists`` or ``tuple``. Please see the pr
 
 Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
 
-        >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters=['Carbon', 'CNR'])
+        model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters=['Carbon', 'CNR'])
            Carbon   CNR
         0    1.20  12.0
         1    0.96  12.0
@@ -190,8 +190,8 @@ Script Manager parameters can vary significantly between different scripts. To u
 In the following example, we demonstrate how to inspect the value of a specific parameter—Population::
 
         model_instance.inspect_model_parameters('Manager',
-        ... simulations='Simulation', model_name='Sow using a variable rule',
-        ... parameters='Population')
+        simulations='Simulation', model_name='Sow using a variable rule',
+        parameters='Population')
         {'Population': '10'}
 
 Inspect ``Cultivar`` parameters. Please note that cultivar parameters are represented with an equal operator before the values,
