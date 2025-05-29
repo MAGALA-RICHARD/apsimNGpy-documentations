@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ----------------------------------------
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001072723B250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001534DA6F250>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -388,17 +388,25 @@ CoreModel
             Added models from ``Models namespace`` are initially empty. Additional configuration is required to set parameters.
             For example, after adding a Clock module, you must set the start and end dates.
 
-        Example:
+        Example::
 
-         >>> from apsimNGpy import core
-         >>> from apsimNGpy.core.core import Models
-         >>> model =core.base_data.load_default_simulations(crop = "Maize")
-         >>> model.remove_model(Models.Clock) # first delete model
-         >>> model.add_model(Models.Clock, adoptive_parent = Models.Core.Simulation, rename = 'Clock_replaced', verbose=False)
+            from apsimNGpy import core
+            from apsimNGpy.core.core import Models
 
-         >>> model.add_model(model_type=Models.Core.Simulation, adoptive_parent=Models.Core.Simulations, rename='Iowa')
-         >>> model.preview_simulation() # doctest: +SKIP
-         >>> model.add_model(Models.Core.Simulation, adoptive_parent='Simulations', rename='soybean_replaced', source='Soybean') # basically adding another simulation from soybean to the maize simulation
+            model = core.base_data.load_default_simulations(crop="Maize")
+
+            model.remove_model(Models.Clock)  # first delete the model
+            model.add_model(Models.Clock, adoptive_parent=Models.Core.Simulation, rename='Clock_replaced', verbose=False)
+
+            model.add_model(model_type=Models.Core.Simulation, adoptive_parent=Models.Core.Simulations, rename='Iowa')
+
+            model.preview_simulation()  # doctest: +SKIP
+
+            model.add_model(
+                Models.Core.Simulation,
+                adoptive_parent='Simulations',
+                rename='soybean_replaced',
+                source='Soybean')  # basically adding another simulation from soybean to the maize simulation
 
 .. function:: apsimNGpy.core.core.CoreModel.add_report_variable(self, variable_spec: Union[list, str, tuple], report_name: str = None, set_event_names: Union[str, list] = None)
 
@@ -537,11 +545,11 @@ CoreModel
 
         Example:
         -------
-        >>> from apsimNGpy.core.base_data import load_default_simulations
-        >>> model  = load_default_simulations('Maize')
-        >>> model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
-        ```
-        This will create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name `"new_clock"`.
+         Create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name ``"new_clock`"`::
+
+            from apsimNGpy.core.base_data import load_default_simulations
+            model  = load_default_simulations('Maize')
+            model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
 
 .. function:: apsimNGpy.core.core.CoreModel.create_experiment(self, permutation: bool = True, base_name: str = None, **kwargs)
 
@@ -791,13 +799,14 @@ CoreModel
         Returns:
             str: The full path to the model if found, otherwise None.
 
-        Example:
-            >>> from apsimNGpy import core  # doctest: +SKIP
-             >>> model =core.base_data.load_default_simulations(crop = "Maize")  # doctest: +SKIP
-             >>> model.find_model("Weather")  # doctest: +SKIP
+        Example::
+
+             from apsimNGpy import core  # doctest: +SKIP
+             model =core.base_data.load_default_simulations(crop = "Maize")  # doctest: +SKIP
+             model.find_model("Weather")  # doctest: +SKIP
              'Models.Climate.Weather'
-             >>> model.find_model("Clock")  # doctest: +SKIP
-              'Models.Clock'
+             model.find_model("Clock")  # doctest: +SKIP
+             'Models.Clock'
 
 .. function:: apsimNGpy.core.core.CoreModel.get_crop_replacement(self, Crop)
 
@@ -1364,6 +1373,14 @@ CoreModel
        ``RuntimeError``
             Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
             mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
+
+       Example:
+
+       Instatiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run ::
+
+              from apsimNGpy.core.apsim import ApsimModel
+              model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
+              model.run(report_name = "Report")
 
 .. function:: apsimNGpy.core.core.CoreModel.save(self, file_name=None)
 
