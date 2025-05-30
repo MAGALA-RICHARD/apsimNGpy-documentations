@@ -14,11 +14,14 @@ Let's take a look at how it works.
          from apsimNGpy.core import base_data
          from apsimNGpy.core.core import Models
          from apsimNGpy.core.apsim import ApsimModel
-         #load default ``maize`` module::
 
-         model = base_data.load_default_simulations(crop ='maize')
-         # same as
-         model = ApsimModel(model= 'Maize')
+load default ``maize`` module::
+
+    model = base_data.load_default_simulations(crop ='maize')
+
+Same as::
+
+    model = ApsimModel(model= 'Maize')
 
 
 Find the path to all the manager script in the simulation::
