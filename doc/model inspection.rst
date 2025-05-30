@@ -2,38 +2,87 @@ Inspect Model
 =============================
 
 Most of the time, when modifying model parameters and values, you need the full path to the specified APSIM model.  
-This is where the `inspect_model` method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI.
+This is where the ``inspect_model`` method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI. Models can be inspected either
+by importing the ``Models`` namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a ``Models`` attribute path.
+However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.
 
 Let's take a look at how it works.
 
 .. code-block:: python
 
-    from apsimNGpy.core import base_data
-    from apsimNGpy.core.core import Models
 
-    model = base_data.load_default_simulations(crop='maize')
+             from apsimNGpy.core import base_data
+             from apsimNGpy.core.core import Models
+        load default ``maize`` module::
 
-    # Retrieve paths to Manager models
-    model.inspect_model(model_type=Models.Manager, fullpath=True)
-    ['.Simulations.Simulation.Field.Sow using a variable rule',
-     '.Simulations.Simulation.Field.Fertilise at sowing',
-     '.Simulations.Simulation.Field.Harvest']
+             model = base_data.load_default_simulations(crop ='maize')
 
-    # Retrieve paths to Clock models
-    model.inspect_model(model_type=Models.Clock)
-    ['.Simulations.Simulation.Clock']
+        Find the path to all the manager script in the simulation::
 
-    # Retrieve paths to Crop models
-    model.inspect_model(model_type=Models.Core.IPlant)
-    ['.Simulations.Simulation.Field.Maize']
+             model.inspect_model(Models.Manager, fullpath=True)
+             [.Simulations.Simulation.Field.Sow using a variable rule', '.Simulations.Simulation.Field.Fertilise at
+             sowing', '.Simulations.Simulation.Field.Harvest']
 
-    # Retrieve crop model names instead of full paths
-    model.inspect_model(model_type=Models.Core.IPlant, fullpath=False)
-    ['Maize']
+        Inspect the full path of the Clock Model::
 
-    # Retrieve paths to Fertiliser models
-    model.inspect_model(Models.Fertiliser, fullpath=True)
-    ['.Simulations.Simulation.Field.Fertiliser']
+             model.inspect_model(Models.Clock) # gets the path to the Clock models
+             ['.Simulations.Simulation.Clock']
+
+        Inspect the full path to the crop plants in the simulation::
+
+             model.inspect_model(Models.Core.IPlant) # gets the path to the crop model
+             ['.Simulations.Simulation.Field.Maize']
+
+        Or use full string path as follows::
+
+             model.inspect_model(Models.Core.IPlant, fullpath=False) # gets you the name of the crop Models
+             ['Maize']
+        Get full path to the fertiliser model::
+
+             model.inspect_model(Models.Fertiliser, fullpath=True)
+             ['.Simulations.Simulation.Field.Fertiliser']
+
+        The models from APSIM Models namespace are abstracted to use strings. All you need is to specify the name or the full path to the model enclosed in a stirng as follows::
+
+             model.inspect_model('Clock') # get the path to the clock model
+             ['.Simulations.Simulation.Clock']
+
+        Alternatively, you can do the following::
+
+             model.inspect_model('Models.Clock')
+             ['.Simulations.Simulation.Clock']
+
+        Repeat inspection of the plant model while using a ``string``::
+
+             model.inspect_model('IPlant')
+             ['.Simulations.Simulation.Field.Maize']
+
+        Inspect using full model namespace path::
+
+             model.inspect_model('Models.Core.IPlant')
+
+        What about weather model?::
+
+             model.inspect_model('Weather') # inspects the weather module
+             ['.Simulations.Simulation.Weather']
+
+        Alternative::
+
+             # or inspect using full model namespace path
+             model.inspect_model('Models.Climate.Weather')
+             ['.Simulations.Simulation.Weather']
+
+        Try finding path to the cultivar model::
+
+             model.inspect_model('Cultivar', fullpath=False) # list all available cultivar names
+             ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',  'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
+
+        # we can get only the names of the cultivar models using the full string path::
+
+             model.inspect_model('Models.PMF.Cultivar', fullpath = False)
+             ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',  'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
+
+
 
 Model Types
 """"""""""""""""""""""""""
