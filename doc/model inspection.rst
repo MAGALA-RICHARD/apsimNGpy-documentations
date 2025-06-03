@@ -10,7 +10,6 @@ Let's take a look at how it works.
 
 .. code-block:: python
 
-
          from apsimNGpy.core import base_data
          from apsimNGpy.core.core import Models
          from apsimNGpy.core.apsim import ApsimModel
