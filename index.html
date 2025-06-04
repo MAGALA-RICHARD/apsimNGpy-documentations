@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>apsimNGpy Documentation &mdash; apsimNGpy 0.32 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f60b3db5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="getting%20started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#quick-guides">Quick guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#locating-the-apsim-binaries">Locating the APSIM Binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#changing-setting-the-apsim-installation-binaries-path">Changing/setting the APSIM installation binaries path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-Line Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimmodel">ApsimModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#continuousvariableproblem">ContinuousVariableProblem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#coremodel">CoreModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#modeltools">ModelTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-base-data">apsimNGpy.core.base_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-load-model">apsimNGpy.core.load_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-runner">apsimNGpy.core.runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-utils-database-utils">apsimNGpy.core_utils.database_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-soilmanager">apsimNGpy.manager.soilmanager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-weathermanager">apsimNGpy.manager.weathermanager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-parallel-process">apsimNGpy.parallel.process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-validation-evaluator">apsimNGpy.validation.evaluator</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">apsimNGpy Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apsimngpy-documentation">
+<h1>apsimNGpy Documentation<a class="headerlink" href="#apsimngpy-documentation" title="Link to this heading"></a></h1>
+<section id="apsimngpy-the-next-generation-agro-ecosystem-simulation-library">
+<h2>apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library<a class="headerlink" href="#apsimngpy-the-next-generation-agro-ecosystem-simulation-library" title="Link to this heading"></a></h2>
+<a class="reference external image-reference" href="https://opensource.org/licenses/Apache-2.0"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://magala-richard.github.io/apsimNGpy-documentations/index.html"><img alt="Documentation" src="https://img.shields.io/badge/docs-online-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://pypi.org/project/apsimNGpy/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/apsimNGpy?logo=pypi" />
+</a>
+<a class="reference external image-reference" href="https://pepy.tech/project/apsimNGpy"><img alt="Total PyPI downloads" src="https://static.pepy.tech/badge/apsimNGpy" />
+</a>
+<a class="reference external image-reference" href="https://pepy.tech/project/apsimNGpy"><img alt="Weekly PyPI downloads" src="https://static.pepy.tech/badge/apsimNGpy/month" />
+</a>
+<a class="reference external image-reference" href="https://pepy.tech/project/apsimNGpy"><img alt="Weekly PyPI downloads" src="https://static.pepy.tech/badge/apsimNGpy/week" />
+</a>
+<a class="reference external image-reference" href="https://discord.gg/SU9A6nNv"><img alt="Join Discussions" src="https://img.shields.io/badge/Join%20Discussions-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://teams.live.com/l/community/FBAbNOQj7y9dPcoaAI"><img alt="Ask Teams" src="https://img.shields.io/badge/Ask%20Through%20Teams-purple.svg" />
+</a>
+<p>apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
+Built on object-oriented principles, it provides:</p>
+<ul class="simple">
+<li><p>Fast batch file simulation</p></li>
+<li><p>Model prediction and evaluation</p></li>
+<li><p>Seamless APSIMX file editing</p></li>
+<li><p>APSIM template model inspection</p></li>
+<li><p>Weather data retrieval</p></li>
+<li><p>Efficient soil profile development</p></li>
+<li><p>Parameter optimization (not yet on pipy). We expose a large bunch of local and global optimization algorithms, including genetic multi-objective optimizations ones</p></li>
+<li><p>Global and local sensitivity analysis</p></li>
+<li><p>Distributed computing framework.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#quick-guides">Quick guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#locating-the-apsim-binaries">Locating the APSIM Binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#changing-setting-the-apsim-installation-binaries-path">Changing/setting the APSIM installation binaries path</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#manually-configure-the-apsim-binary-path-to-do-this">1. Manually configure the APSIM binary path. To do this:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#change-based-os-environ-module">2. Change based os.environ module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#use-the-apsimngpy-config-module">3. Use the apsimNGpy config module:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#use-command-line-interface">4. Use command line interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting%20started.html#now-that-the-path-is-set-you-can-import-any-module-attached-to-pythonnet">Now that the path is set, you can import any module attached to pythonnet.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model%20inspection.html#model-types">Model Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model%20inspection.html#finding-the-model-type">Finding the Model Type</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model%20inspection.html#note-on-model-inspection">Note on Model Inspection:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inspect_model_parameters.html#what-is-inspect-model-parameters">What is inspect_model_parameters?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspect_model_parameters.html#inspect-model-parameters-function-signature">inspect_model_parameters function <code class="docutils literal notranslate"><span class="pre">signature</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing Model Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edit.html#parameters">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edit.html#raises">Raises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-Line Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#creating-an-experiment">Creating an Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#adding-factors">Adding Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#running-the-experiment">Running the Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#factorial-experiment-with-cultivar-replacements">Factorial Experiment with Cultivar Replacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimmodel">ApsimModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.apsim.ApsimModel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.adjust_dul"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.apsim.ApsimModel.adjust_dul()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.auto_gen_thickness_layers"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.apsim.ApsimModel.auto_gen_thickness_layers()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.replace_downloaded_soils"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.apsim.ApsimModel.replace_downloaded_soils()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.run_edited_file"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.apsim.ApsimModel.run_edited_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.spin_up"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.apsim.ApsimModel.spin_up()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#continuousvariableproblem">ContinuousVariableProblem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.optimizer.one_obj.ContinuousVariableProblem"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.optimizer.one_obj.ContinuousVariableProblem()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.minimize_with_local_solver"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.minimize_with_local_solver()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.optimize_with_differential_evolution"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.optimize_with_differential_evolution()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#coremodel">CoreModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.add_crop_replacements"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.add_crop_replacements()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.add_db_table"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.add_db_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.add_factor"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.add_factor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.add_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.add_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.add_report_variable"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.add_report_variable()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.change_report"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.change_report()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.change_simulation_dates"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.change_simulation_dates()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.change_som"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.change_som()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.check_som"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.check_som()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.clean_up"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.clean_up()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.clone_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.clone_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.create_experiment"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.create_experiment()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.edit_cultivar"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.edit_cultivar()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.edit_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.edit_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.examine_management_info"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.examine_management_info()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.extract_any_soil_physical"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.extract_any_soil_physical()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.extract_soil_physical"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.extract_soil_physical()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.extract_start_end_years"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.extract_start_end_years()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.find_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.find_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.get_crop_replacement"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.get_crop_replacement()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.get_model_paths"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.get_model_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.get_simulated_output"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.get_simulated_output()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.get_weather_from_web"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.get_weather_from_web()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.inspect_file"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.inspect_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.inspect_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.inspect_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.inspect_model_parameters"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.inspect_model_parameters()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.move_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.move_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.preview_simulation"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.preview_simulation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.recompile_edited_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.recompile_edited_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.remove_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.remove_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.rename_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.rename_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.replace_model_from"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.replace_model_from()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.replace_soil_property_values"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.replace_soil_property_values()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.replace_soils_values_by_path"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.replace_soils_values_by_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.replicate_file"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.replicate_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.restart_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.restart_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.run"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.run()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.save"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.save()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.save_edited_file"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.save_edited_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.set_categorical_factor"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.set_categorical_factor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.set_continuous_factor"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.set_continuous_factor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.show_met_file_in_simulation"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.show_met_file_in_simulation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.update_cultivar"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.update_cultivar()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.update_mgt"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.update_mgt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.core.CoreModel.update_mgt_by_path"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.core.CoreModel.update_mgt_by_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#modeltools">ModelTools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core._modelhelpers.ModelTools"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core._modelhelpers.ModelTools()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-base-data">apsimNGpy.core.base_data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.base_data.load_default_sensitivity_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.base_data.load_default_sensitivity_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.apsimSoilModel"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.apsimSoilModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-load-model">apsimNGpy.core.load_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-runner">apsimNGpy.core.runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.runner.collect_csv_by_model_path"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.runner.collect_csv_by_model_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.runner.collect_csv_from_dir"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.runner.collect_csv_from_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.settings.config_internal"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.settings.config_internal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.runner.get_apsim_version"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.runner.get_apsim_version()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.runner.run_from_dir"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.runner.run_from_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.runner.run_model_externally"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.runner.run_model_externally()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core.runner.upgrade_apsim_file"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core.runner.upgrade_apsim_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-utils-database-utils">apsimNGpy.core_utils.database_utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core_utils.database_utils.clear_table"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core_utils.database_utils.clear_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core_utils.database_utils.dataview_to_dataframe"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core_utils.database_utils.dataview_to_dataframe()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core_utils.database_utils.get_db_table_names"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core_utils.database_utils.get_db_table_names()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core_utils.database_utils.read_with_query"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core_utils.database_utils.read_with_query()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core_utils.exceptionsTableNotFoundError"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core_utils.exceptionsTableNotFoundError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-soilmanager">apsimNGpy.manager.soilmanager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.manager.soilmanager.DownloadsurgoSoiltables"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.manager.soilmanager.DownloadsurgoSoiltables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.manager.soilmanager.set_depth"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.manager.soilmanager.set_depth()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-weathermanager">apsimNGpy.manager.weathermanager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.manager.weathermanager.daterange"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.manager.weathermanager.daterange()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.manager.weathermanager.day_of_year_to_date"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.manager.weathermanager.day_of_year_to_date()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.manager.weathermanager.get_iem_by_station"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.manager.weathermanager.get_iem_by_station()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.manager.weathermanager.merge_columns"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.manager.weathermanager.merge_columns()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-parallel-process">apsimNGpy.parallel.process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.parallel.process.custom_parallel"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.parallel.process.custom_parallel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.parallel.process.download_soil_tables"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.parallel.process.download_soil_tables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.parallel.process.run_apsimx_files_in_parallel"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.parallel.process.run_apsimx_files_in_parallel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.core_utils.run_utils.run_model"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.core_utils.run_utils.run_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-validation-evaluator">apsimNGpy.validation.evaluator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.validation.evaluatorMetrics"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.validation.evaluatorMetrics</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimNGpy.validation.evaluatorvalidate"><code class="docutils literal notranslate"><span class="pre">apsimNGpy.validation.evaluatorvalidate</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting%20started.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, richard magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
