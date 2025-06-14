@@ -73,7 +73,7 @@ Built on object-oriented principles, it provides:
    cli
    factorial_experiments
    weather
-   FAQ.md
+   FAQ
    api
 
 
