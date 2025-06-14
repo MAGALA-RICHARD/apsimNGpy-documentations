@@ -2,7 +2,9 @@ Weather Data Replacement.
 ============================
 apsimNGpy provides both an object oriented structure and procedural structure to replace the weather data. Here, I only demonstrate the object oriented one.
 
-Replace instantly from the instantiated apsimNGpy model object. This is achieved with ``get_weather_from_web`` the with the following signature
+Get Weather Data from the Web
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Replace instantly from the instantiated apsimNGpy model object. This is achieved with ``get_weather_from_web()`` with the following signature;
 
 .. code-block:: python
 
@@ -21,8 +23,6 @@ Replace instantly from the instantiated apsimNGpy model object. This is achieved
 
 ``filename``: Name of the file to save the retrieved data. If None, a default name is generated.
 
-Example.
-^^^^^^^^
 
 To use get_weather_from_web(), it requires instantiation of the model as follows;
 
