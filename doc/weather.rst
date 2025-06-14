@@ -12,7 +12,8 @@ this is achieved with ``get_weather_from_web`` the with the following signature
 
 Example.
 ========
-To use get_weather_from_web(), it needs to instantiate the model as follows;
+
+To use get_weather_from_web(), it requires instantiation of the model as follows;
 
 .. code-block:: python
 
