@@ -1,6 +1,6 @@
 Weather Data Replacement.
 ============================
-apsimNGpy provides both an object oriented structure and procedural structure to access the weather data.
+apsimNGpy provides both an object oriented structure and procedural structure to replace the weather data. Here, I only demonstrate the object oriented one.
 
 Replace instantly from the instantiated apsimNGpy model object. This is achieved with ``get_weather_from_web`` the with the following signature
 
