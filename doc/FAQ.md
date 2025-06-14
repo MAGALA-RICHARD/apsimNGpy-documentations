@@ -35,14 +35,13 @@ To use `apsimNGpy`, you'll need:
 * **Python 3.10+**
 * **.NET Core/Framework** compatible with your APSIM-X installation
 * **APSIM Next Generation** installed
-* `pythonnet` package installed (`pip install pythonnet`)
-* Other dependencies like `pandas`, `numpy`, etc.
+* `pythonnet` package installed  automatically
+* Other dependencies include `pandas`, `numpy`, `tenacity`, ``scipy`` etc.
 
 ---
 
 ### **5. How do I install `apsimNGpy`?**
-
-If hosted on PyPI:
+Directly from PyPI:
 
 ```bash
 pip install apsimNGpy
