@@ -13,7 +13,7 @@ You can quickly get started by loading a default simulation model (e.g., maize) 
     # Option 1: Load default maize simulation
     model = base_data.load_default_simulations(crop='maize')
 
-    # Option 2: Equivalent direct instantiation
+    # Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
     from apsimNGpy.core.apsim import ApsimModel
     model = ApsimModel(model='Maize')
 
