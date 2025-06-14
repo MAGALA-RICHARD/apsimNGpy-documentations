@@ -47,7 +47,7 @@ Using Local Weather Data
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Got weather data stored on your computer? No problem! With `apsimNGpy`, you can easily swap in your own weather file
-using the ``replace_met_file`` method. Here's how you can do it. in the same way as get_weather_from-web, if no simulation specified, available simulation will get the suggested weather file
+using the ``replace_met_file`` method. Here's how you can do it. In the same way as ``get_weather_from_web``, if no simulation  is specified, all available simulations will get the suggested weather file
 
 .. code-block:: python
 
