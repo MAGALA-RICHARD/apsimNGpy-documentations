@@ -22,7 +22,7 @@ Replace instantly from the instantiated apsimNGpy model object. This is achieved
 ``filename``: Name of the file to save the retrieved data. If None, a default name is generated.
 
 Example.
-========
+^^^^^^^^
 
 To use get_weather_from_web(), it requires instantiation of the model as follows;
 
