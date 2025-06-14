@@ -110,9 +110,11 @@ Yes! We welcome contributions. You can fork the repository, submit issues or fea
 
 ### **12. Where can I get help?**
 
-* Official documentation (link)
-* GitHub issues page for bug reports and questions
+* Official documentation https://magala-richard.github.io/apsimNGpy-documentations/index.html
+* GitHub issues page for bug reports and questions https://github.com/MAGALA-RICHARD/apsimNGpy/issues
 * Community forums and APSIM support groups
-* Email the maintainers (if provided)
+* https://teams.live.com/l/community/FAAbNOQj7y9dPcoaAM
+* 
+* Email the maintainers rmagala640@gmail.com 
 
 ---
