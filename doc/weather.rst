@@ -8,7 +8,7 @@ Replace instantly from the instantiated apsimNGpy model object. This is achieved
 
 .. code-block:: python
 
-     def get_weather_from_web(self, lonlat: tuple, start: int, end: int, simulations=MissingOption, source='nasa',
+     get_weather_from_web(self, lonlat: tuple, start: int, end: int, simulations=MissingOption, source='nasa',
                                  filename=None)
 
 ``lonlat``: ``tuple`` containing the longitude and latitude coordinates.
