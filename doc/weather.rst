@@ -30,7 +30,8 @@ To use get_weather_from_web(), it requires instantiation of the model as follows
 
          from apsimNGpy.core.apsim import ApsimModel
          maize_model = ApsimModel(model='Maize') # replace maize with your apsim template file
-         # replace the
+
+         # replace the weather with lonlat specification as follows;
          maize_model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
 
 Changing weather data with non matching start and end dates in the simulation will lead to ``RuntimeErrors``.
