@@ -22,7 +22,7 @@ By default, ``apsimNGpy`` looks for these report database tables automatically, 
 
 Accessing simulated results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-After the simulation runs, results can be via ``apsim.results`` property attribute as pandas DataFrames. Please see note above. These results can be saved to a CSV file or printed to the console.
+After the simulation runs, results can be accessed  via ``apsim.results`` property attribute as pandas DataFrames. Please see note above. These results can be saved to a CSV file or printed to the console.
 
 Another way to access the results is to use ``get_simulated_output`` on the instantiated class object. This method accepts only one argument ``report_names`` and under the same principle explained above.
 
