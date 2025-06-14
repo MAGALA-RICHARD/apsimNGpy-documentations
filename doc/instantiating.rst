@@ -1,34 +1,32 @@
-Instantiating apsimNGpy model objects.
-======================================
+
+Instantiating `apsimNGpy` Model Objects
+=========================================
+You can either load a built-in template or use your own APSIM file.
+
+Loading Default APSIM Templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can quickly get started by loading a default simulation model (e.g., maize) in one of two ways:
 
 .. code-block:: python
 
-         from apsimNGpy.core import base_data
+    from apsimNGpy.core import base_data
+    # Option 1: Load default maize simulation
+    model = base_data.load_default_simulations(crop='maize')
+
+    # Option 2: Equivalent direct instantiation
+    from apsimNGpy.core.apsim import ApsimModel
+    model = ApsimModel(model='Maize')
 
 
-Instantiating with default template apsim Models.
--------------------------------------------------
-this can be achieved in two ways as follows
+Using a Local APSIM File
+^^^^^^^^^^^^^^^^^^^^^^^^
+If you have an `.apsimx` file saved on your machine—either from a previous session or custom template—you can easily load it like so:
 
-
-load default ``maize`` module::
-
-    model = base_data.load_default_simulations(crop ='maize')
-
-Same as::
+.. code-block:: python
 
     from apsimNGpy.core.apsim import ApsimModel
-    model = ApsimModel(model= 'Maize')
 
+    # Load a local APSIM file
+    model = ApsimModel(model='path/to/your/apsim/file.apsimx')
 
-Use you local apsim file template
------------------------------------
-Many times if the file is on your pc or you saved it from the previous session, you can still use ``ApsimModel`` to load the dataset
-
-
-.. code-block:: python
-
-     from apsimNGpy.core.apsim import ApsimModel
-     model = ApsimModel(model= 'filepathtoyourapsimtemplates')
-
-We are now set and ready to conduct simulation edit the file or inspect the file see preceeding sections
+Once your model is instantiated, you're ready to run simulations, edit model components, or inspect simulation settings. See the following sections for editing examples and diagnostics tools.
