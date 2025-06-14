@@ -1,7 +1,3 @@
-Certainly! Here's a sample **Frequently Asked Questions (FAQ)** section for `apsimNGpy`, a Python interface for APSIM Next Generation. You can adapt or expand this based on your documentation or user feedback:
-
----
-
 # **Frequently Asked Questions (FAQ) – apsimNGpy**
 
 ### **1. What is `apsimNGpy`?**
