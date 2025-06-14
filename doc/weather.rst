@@ -39,6 +39,6 @@ To avoid this first check the start and end date before proceeding as follows.
 .. code-block:: python
               dt = model.inspect_model_parameters(model_type='Clock', model_name='Clock', simulations='Simulation')
               start, end = dt['Start'].year, dt['End'].year
-              # out put
+              # out put:  1990, 2000
 
 
