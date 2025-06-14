@@ -17,7 +17,7 @@ Replace instantly from the instantiated apsimNGpy model object. This is achieved
 
 ``simulations``: str, list of simulations to place the weather data, defaults to all simulation if user specification is missing.
 
-``source``: Source of the weather data. Defaults to 'nasa' because its world wide coverage, but other sources includes the dayment
+``source``: Source of the weather data. Defaults to 'nasa' because its world wide coverage, but other sources includes the ``daymet`` (Contiguous U.S. Only)
 
 ``filename``: Name of the file to save the retrieved data. If None, a default name is generated.
 
