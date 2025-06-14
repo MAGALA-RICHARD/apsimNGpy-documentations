@@ -1,4 +1,4 @@
-Running and Retrieving results
+Running and Retrieving Results
 ==============================
 
 Running loaded models
@@ -20,7 +20,7 @@ or a ``list``, implying that one or more than one database tables. If the later 
 By default, ``apsimNGpy`` looks for these report database tables automatically, and returns a concatenated pandas data frame. This may not be ideal if they are many report tables, hence the need to clearly specify the preferred report table names
 
 
-Accessing simulated results
+Accessing Simulated Results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 After the simulation runs, results can be accessed  via ``apsim.results`` property attribute as pandas DataFrames. Please see note above. These results can be saved to a CSV file or printed to the console.
 
