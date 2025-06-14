@@ -43,4 +43,11 @@ To avoid this first check the start and end date before proceeding as follows.
           start, end = dt['Start'].year, dt['End'].year
           # out put:  1990, 2000
 
+Using Local Weather Data
+^^^^^^^^^^^^^^^^^^^^^^^^
 
+Got weather data stored on your computer? No problem! With `apsimNGpy`, you can easily swap in your own weather file using the `replace_met_file` method. Here's how you can do it:
+
+.. code-block:: python
+
+     maize_model.replace_met_file(weather_file = './pathtotheeatherfile')
