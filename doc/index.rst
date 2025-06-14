@@ -55,7 +55,6 @@ Built on object-oriented principles, it provides:
 - Parameter optimization (not yet on pipy). We expose a large bunch of local and global optimization algorithms, including genetic multi-objective optimizations ones
 - Global and local sensitivity analysis
 - Distributed computing framework.
-
 .. automodule:: apsimNGpy
     :members:
 
@@ -71,6 +70,7 @@ Built on object-oriented principles, it provides:
    edit
    cli
    factorial_experiments
+   weather
    api
 
 
