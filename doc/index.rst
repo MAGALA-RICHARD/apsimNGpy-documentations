@@ -71,8 +71,9 @@ Built on object-oriented principles, it provides:
    cli
    factorial_experiments
    weather
-   api
    FAQ
+   api
+
 
 
 
