@@ -65,8 +65,8 @@ Built on object-oriented principles, it provides:
 
    Home <self>
    getting started
-   Usage
    instantiating
+   Usage
    model inspection
    inspect_model_parameters
    edit

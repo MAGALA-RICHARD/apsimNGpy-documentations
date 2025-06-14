@@ -1,57 +1,52 @@
-Random Examples
-----------------
+Running and Retrieving results
+==============================
 
-This example demonstrates how to use `apsimNGpy` to load a default simulation, run it, retrieve results, and visualize the output.
-
-.. code-block:: python
-
-    # Import necessary modules
-    import apsimNGpy
-    from apsimNGpy.core.base_data import load_default_simulations
-    from apsimNGpy.core.apsim import ApsimModel as SoilModel
-
-
-
-The above code imports the necessary modules for running APSIM simulations. This includes `apsimNGpy` modules for loading default simulations and managing results, as well as standard Python libraries for file handling and visualization.
-
+Running loaded models
+^^^^^^^^^^^^^^^^^^^^^^^
+Running loaded models implies executing the model to generate simulated outputs. This is implemented via ``ApsimModel.run()`` method as shown below.
+Users can provide the ``report_name``, which specifies data table name from the simulation for retrieving the results.
 
 .. code-block:: python
 
-    # Load the default simulation
-    soybean_model = load_default_simulations(crop='soybean')  # Case-insensitive crop specification
-
-The `load_default_simulations` function loads a default APSIM simulation for the specified crop. In this example, the crop is set to soybean, but you can specify other crops as needed.
-
-.. code:: python
-
-    # Load the simulation path without initializing the object
-    soybean_path_model = load_default_simulations(crop='soybean', simulation_object=False)
-
-If you prefer not to initialize the simulation object immediately, you can load only the simulation path by setting `simulation_object=False`.
-
-.. code-block:: python
-
-    # Initialize the APSIM model with the simulation file path
-    apsim = SoilModel(soybean_path_model)
-
-This code initializes the APSIM model using the previously loaded simulation file path.
-
-.. code-block:: python
-
+    from apsimNGpy.core import base_data
+    # Option 1: Load default maize simulation
+    model = base_data.load_default_simulations(crop='maize')
     # Run the simulation
-    apsim.run(report_name='Report')
+    model.run(report_name='Report')
 
-The `run` method executes the simulation. The `report_name` parameter specifies which data table from the simulation will be used for results.
+Please note that report_name can be a string (``str``), implying a single database table
+or a ``list``, implying that one or more than one database tables. If the later is true, then the results will be concatenated along the rows using ``pandas.concat`` method.
 
-.. note:
-   report_name accepts a list of simulation data tables and hence can return a concatenated pandas data frame for all the data tables
+By default, ``apsimNGpy`` looks for these report database tables automatically, and returns a concatenated pandas data frame. This may not be ideal if they are many report tables, hence the need to clearly specify the preferred report table names
+
+
+Accessing simulated results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+After the simulation runs, results can be via ``apsim.results`` property attribute as pandas DataFrames. Please see note above. These results can be saved to a CSV file or printed to the console.
+
+Another way to access the results is to use ``get_simulated_output`` on the instantiated class object. This method accepts only one argument ``report_names`` and under the same principle explained above.
+
+Please note that accessing results through any of the above method before calling ``run()`` may not be allowed, and will raise an ``error``.
+
 .. code-block:: python
 
     # Retrieve and save the results
-    df = apsim.results
+    df = model.results
     df.to_csv('apsim_df_res.csv')  # Save the results to a CSV file
-    print(apsim.results)  # Print all DataFrames in the storage domain
+    print(model.results)  # Print all DataFrames in the storage domain
 
-After the simulation runs, results are stored in the `apsim.results` attribute as pandas DataFrames. Please see note above. These results can be saved to a CSV file or printed to the console.
+      SimulationName  SimulationID  CheckpointID  ... Maize.Total.Wt      Yield   Zone
+    0     Simulation             1             1  ...       1964.016   9367.414  Field
+    1     Simulation             1             1  ...       1171.894   5645.455  Field
+    2     Simulation             1             1  ...        265.911    303.013  Field
+    3     Simulation             1             1  ...        944.673   3528.287  Field
+    4     Simulation             1             1  ...       1996.779   9204.485  Field
+    5     Simulation             1             1  ...       2447.581  10848.238  Field
+    6     Simulation             1             1  ...       1325.265   2352.152  Field
+    7     Simulation             1             1  ...       1097.480   2239.558  Field
+    8     Simulation             1             1  ...       2264.083  10378.414  Field
+    9     Simulation             1             1  ...       2006.421   8577.954  Field
+    [10 rows x 16 columns]
+
 
 You can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method.
