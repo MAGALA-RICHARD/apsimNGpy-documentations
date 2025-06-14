@@ -46,7 +46,7 @@ To avoid this first check the start and end date before proceeding as follows.
 Using Local Weather Data
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Got weather data stored on your computer? No problem! With `apsimNGpy`, you can easily swap in your own weather file using the `replace_met_file` method. Here's how you can do it:
+Got weather data stored on your computer? No problem! With `apsimNGpy`, you can easily swap in your own weather file using the ``replace_met_file`` method. Here's how you can do it:
 
 .. code-block:: python
 
