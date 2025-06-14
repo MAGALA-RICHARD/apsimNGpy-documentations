@@ -5,10 +5,10 @@ apsimNGpy provides both an object oriented structure and procedural structure to
 replace instantly from the instantiated apsimNGpy model object.
 this is achieved with ``get_weather_from_web`` the with the following signature
 
-.. code-block::python
+.. code-block:: python
 
-    def get_weather_from_web(self, lonlat: tuple, start: int, end: int, simulations=MissingOption, source='nasa',
-                                 filename=None):
+     def get_weather_from_web(self, lonlat: tuple, start: int, end: int, simulations=MissingOption, source='nasa',
+                                 filename=None)
 
 Example.
 ========
