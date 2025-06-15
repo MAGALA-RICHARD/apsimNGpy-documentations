@@ -8,7 +8,7 @@ If you use this software, please cite it as below:
 Magala, R. (2025). *apsimNGpy: A Python package for running APSIM Next Generation in Python environment*. Version 0.39.3, Released on 2025-06-13.
 URL: https://github.com/MAGALA-RICHARD/apsimNGpy.git
 
-**BibTeX format (optional):**
+**BibTeX format:**
 
 .. code-block:: bibtex
 
