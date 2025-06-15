@@ -52,7 +52,7 @@ Built on object-oriented principles, it provides:
 - APSIM template model inspection
 - Weather data retrieval
 - Efficient soil profile development
-- Parameter optimization (not yet on pipy). We expose a large bunch of local and global optimization algorithms, including genetic multi-objective optimizations ones
+- Parameter optimization (not yet on pipy). We expose a large number of local and global optimization algorithms, including genetic multi-objective optimizations ones
 - Global and local sensitivity analysis
 - Distributed computing framework.
 
