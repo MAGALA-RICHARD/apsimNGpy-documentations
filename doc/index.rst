@@ -75,6 +75,7 @@ Built on object-oriented principles, it provides:
    weather
    FAQ
    api
+   how_to_cite
 
 
 
