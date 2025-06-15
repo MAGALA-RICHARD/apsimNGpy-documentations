@@ -74,8 +74,9 @@ Built on object-oriented principles, it provides:
    factorial_experiments
    weather
    FAQ
-   api
    how_to_cite
+   api
+
 
 
 
