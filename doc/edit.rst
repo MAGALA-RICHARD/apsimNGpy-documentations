@@ -169,7 +169,7 @@ Multiple report variables::
 
 
 
-Saving the edited Simulation or Model
+Saving the Edited Simulation or Model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 After editing the file or model, you can save the file using the save() method. This method takes a single argument: the desired file path or name. Without specifying the full path to the desired storage location, the file will be saved in the current working directory.
 
