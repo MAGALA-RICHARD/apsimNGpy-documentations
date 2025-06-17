@@ -51,8 +51,9 @@ Please note that accessing results through any of the above method before callin
 
 Saving the Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When we load the model, in most cases a random name is given to the file, but you can save this file using the ``save()`` method.
-This method takes in only one argument the desired path or name to save the file
+When we load the model, it is usually assigned a random name. However, you can save the file using the save() method.
+This method takes a single argument: the desired file path or name.
+
 GUI Simulation Preview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method.
