@@ -15,8 +15,10 @@ You can quickly get started by loading a default simulation model (e.g., maize) 
 
     # Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
     from apsimNGpy.core.apsim import ApsimModel
-    model = ApsimModel(model='Maize')
+    model = ApsimModel(model='Maize', out_path = './maize.apsimx')
 
+If out_path is not specified, the model will be saved to a randomly generated file path on your computer.
+The out_path parameter accepts both absolute and relative paths. If a relative path is provided, the file will be saved in the current working directory.
 
 Using a Local APSIM File
 ^^^^^^^^^^^^^^^^^^^^^^^^
