@@ -22,13 +22,14 @@ The ``out_path`` parameter accepts both absolute and relative paths. If a relati
 
 Using a Local APSIM File
 ^^^^^^^^^^^^^^^^^^^^^^^^
-If you have an ``.apsimx`` file saved on your machine—either from a previous session or custom template—you can easily load it like so:
+If you have an ``.apsimx`` file saved on your machine—either from a previous session or custom template—you can easily load it like below:
+Like in the above case, a random file path is generated as an out path, but you can still provide a desired file path as shown below.
 
 .. code-block:: python
 
     from apsimNGpy.core.apsim import ApsimModel
 
     # Load a local APSIM file
-    model = ApsimModel(model='path/to/your/apsim/file.apsimx')
+    model = ApsimModel(model='path/to/your/apsim/file.apsimx', out_path = './maize.apsimx')
 
 Once your model is instantiated, you're ready to run simulations, edit model components, or inspect simulation settings. See the following sections for editing examples and diagnostics tools.
