@@ -12,16 +12,16 @@ edit_method function signature
 
 Parameters
 ----------
-``model_type`` : str
+``model_type`` : str, required
     Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
 
 ``simulations`` : Union[str, list], optional
     A simulation name or list of simulation names in which to search. Defaults to all simulations in the model.
 
-``model_name`` : str
+``model_name`` : str, required
     Name of the model instance to modify.
 
-``**kwargs`` : dict
+``**kwargs`` : dict, required
     Additional keyword arguments specific to the model type. These vary by component:
 
     - ``Weather``:
