@@ -71,7 +71,7 @@ Raises
 ``NotImplementedError``
     If the logic for the specified `model_type` is not implemented.
 
-Examples::
+Quick Examples::
 
         from apsimNGpy.core.apsim import ApsimModel
         model = ApsimModel(model='Maize')
