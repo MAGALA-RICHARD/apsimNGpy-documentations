@@ -49,6 +49,9 @@ Please note that accessing results through any of the above method before callin
     [10 rows x 16 columns]
 
 
+Saving the Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When we load the model, in most cases a random name is given to the file, but you can save this file using the ``save()`` method
 GUI Simulation Preview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method.
