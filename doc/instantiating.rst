@@ -1,6 +1,6 @@
 
 Instantiating `apsimNGpy` Model Objects
-=========================================
+========================================
 You can either load a built-in template or use your own APSIM file.
 
 Loading Default APSIM Templates
@@ -22,7 +22,7 @@ The ``out_path`` parameter accepts both absolute and relative paths. If a relati
 
 Using a Local APSIM File
 ^^^^^^^^^^^^^^^^^^^^^^^^
-If you have an `.apsimx` file saved on your machine—either from a previous session or custom template—you can easily load it like so:
+If you have an ``.apsimx`` file saved on your machine—either from a previous session or custom template—you can easily load it like so:
 
 .. code-block:: python
 
