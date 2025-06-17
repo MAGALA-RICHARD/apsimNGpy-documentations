@@ -22,7 +22,7 @@ The ``out_path`` parameter accepts both absolute and relative paths. If a relati
 
 Using a Local APSIM File
 ^^^^^^^^^^^^^^^^^^^^^^^^
-If you have an .apsimx file saved on your machine—whether from a previous session or as a custom template—you can easily load it as shown below.
+If you have an ``.apsimx`` file saved on your machine — whether from a previous session or as a custom template—you can easily load it as shown below.
 By default, a random file path is generated as the output path. However, you can specify a custom path to control where the edited file is saved.
 This approach helps preserve the original file in case something goes wrong during the loading or editing process.
 
