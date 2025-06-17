@@ -83,8 +83,10 @@ Edit a cultivar model::
         simulations='Simulation',
         commands='[Phenology].Juvenile.Target.FixedValue',
         values=256,
+        new_cultivar_name = 'B_110-e',
         model_name='B_110',
         cultivar_manager='Sow using a variable rule')
+Please note that editing a cultivar without specifying the  ``new_cultivar_name`` will throw a ``ValueError``. The name should be different to the the one being edited
 
 Edit a soil organic matter module::
 
