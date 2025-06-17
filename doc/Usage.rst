@@ -52,7 +52,11 @@ Please note that accessing results through any of the above method before callin
 Saving the Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When we load the model, it is usually assigned a random name. However, you can save the file using the save() method.
-This method takes a single argument: the desired file path or name.
+This method takes a single argument: the desired file path or name. Without specifying the full path to the desired storage location, the file will be saved in the current working directory
+
+.. code-block:: python
+
+    model.save('./edited_maize_model.apsimx')
 
 GUI Simulation Preview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
