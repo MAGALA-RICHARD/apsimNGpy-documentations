@@ -49,4 +49,10 @@ Please note that accessing results through any of the above method before callin
     [10 rows x 16 columns]
 
 
+GUI Simulation Preview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method.
+
+.. code-block:: python
+
+     model.preview_simulation()
