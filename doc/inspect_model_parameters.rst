@@ -292,3 +292,13 @@ Example::
         5            0.1
         6            0.1
         """
+
+
+GUI Simulation Preview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
+
+.. code-block:: python
+
+     model.preview_simulation()
+

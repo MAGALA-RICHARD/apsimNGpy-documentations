@@ -58,10 +58,3 @@ This method takes a single argument: the desired file path or name. Without spec
 
     model.save('./edited_maize_model.apsimx')
 
-GUI Simulation Preview
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method.
-
-.. code-block:: python
-
-     model.preview_simulation()
