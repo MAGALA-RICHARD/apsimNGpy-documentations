@@ -59,9 +59,10 @@ Parameters
         - ``set_event_names`` (list[str], optional): Events that trigger the report.
 
     - ``Cultivar``:
-        - ``commands`` (str): APSIM path to the cultivar model to update.
-        - ``values`` (Any): Value to assign.
-        - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
+        - ``commands`` (str, required): APSIM path to the cultivar model to update.
+        - ``values`` (Any. required): Value to assign.
+        - ``new_cultivar_name`` (str, required): the new name for the edited cultivar.
+        - ``cultivar_manager`` (str, required): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
 Raises
 ^^^^^^^^
@@ -86,7 +87,8 @@ Edit a cultivar model::
         new_cultivar_name = 'B_110-e',
         model_name='B_110',
         cultivar_manager='Sow using a variable rule')
-Please note that editing a cultivar without specifying the  ``new_cultivar_name`` will throw a ``ValueError``. The name should be different to the the one being edited
+``model_name: 'B_110'`` is an existing cultivar in the Maize Model, which we want to edit. Please note that editing a cultivar without specifying the  ``new_cultivar_name`` will throw a ``ValueError``.
+The name should be different to the the one being edited.
 
 Edit a soil organic matter module::
 
