@@ -34,7 +34,7 @@ To use ``get_weather_from_web()``, it requires instantiation of the model as fol
          # replace the weather with lonlat specification as follows;
          maize_model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
 
-.. important::
+.. warning::
 
     Changing weather data with non matching start and end dates in the simulation will lead to ``RuntimeErrors``.
     To avoid this first check the start and end date before proceeding as follows.
