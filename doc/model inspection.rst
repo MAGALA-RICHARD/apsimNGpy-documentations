@@ -145,7 +145,7 @@ Use `inspect_file`` method to inspects all simulations in the file. This method 
     :align: center
     :width: 100%
 
-.. Note::
+.. Warning::
 
     Only a few key model types are inspected using model.inspect_model under the hood. Inspecting the entire simulation file can produce a large volume of data, much of which may not be relevant or necessary in most use cases.
 
