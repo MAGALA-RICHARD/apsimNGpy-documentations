@@ -7,7 +7,7 @@ This approach enables you to explore trade-offs between objectives like crop yie
 .. admonition:: Prerequisites
 
     Make sure you have the following installed and configured:
-    * **APSIM Next Generation**
+    * **APSIM Next Generation installed**
     * **Python 3.10+**
     * **apsimNGpy** package (latest version)
     * Python packages: ``pymoo``, ``matplotlib``, ``numpy``, and ``pandas``
