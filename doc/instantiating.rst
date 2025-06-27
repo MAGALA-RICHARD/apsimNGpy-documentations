@@ -36,4 +36,5 @@ You can either load a built-in template or use your own APSIM file.
     model = ApsimModel(model='path/to/your/apsim/file.apsimx', out_path = './maize.apsimx')
 
 .. admonition:: Next Actions
+
     Once your model is instantiated, you're ready to run simulations, edit model components, or inspect simulation settings. See the following sections for editing examples and diagnostics tools.
