@@ -84,7 +84,6 @@ If the automatic search fails, please follow one of the steps below to resolve t
 1. Manually configure the APSIM binary path. To do this:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In your home folder you could look for folder named apsimNGpy_meta_info './APSIMNGpy_meta_data'
      1. Locate the folder named `APSIMNGpy_meta_info` in your home directory (e.g., `./APSIMNGpy_meta_data`).
      2. Open the file `apsimNGpy_config.ini` within this folder.
      3. Modify the `apsim_location` entry to reflect your desired APSIM binary path.
