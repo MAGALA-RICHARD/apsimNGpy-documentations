@@ -14,7 +14,7 @@ Users can provide the ``report_name``, which specifies data table name from the 
     # Run the simulation
     model.run(report_name='Report')
 
-.. note::
+.. tip::
 
     Please note that ``report_name`` can be a string (``str``), implying a single database table
     or a ``list``, implying that one or more than one database tables. If the later is true, then the results will be concatenated along the rows using ``pandas.concat`` method.
