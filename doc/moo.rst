@@ -86,13 +86,13 @@ Objective functions take APSIM output (as a DataFrame) and return scalar values.
 
 .. code-block:: python
 
-    def negative_yield(df):
+    def maximize_yield(df):
         return -df['Yield'].mean()
 
-    def nitrate_leaching(df):
+    def minimize_nitrate_leaching(df):
         return df['nitrate'].sum()
 
-    problem.objectives = [negative_yield, nitrate_leaching]
+    problem.objectives = [maximize_yield, minimize_nitrate_leaching]
 
 
 You can define any number of such functions depending on the goals.
@@ -124,7 +124,7 @@ The results show trade-offs between competing objectives. You can visualize them
 .. code-block:: python
 
     F = result.F
-    plt.scatter(F[:, 0], F[:, 1])
+    plt.scatter(F[:, 0]* -1, F[:, 1])
     plt.xlabel("Yield")
     plt.ylabel("N Leaching")
     plt.title("Pareto Front")
