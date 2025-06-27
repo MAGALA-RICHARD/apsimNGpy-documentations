@@ -44,7 +44,7 @@ Step 3: Define Objective Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Objective functions take APSIM output (as a DataFrame) and return scalar values. You can define any number of such functions depending on the goals.
-If you have 3 objectives, then we expect 3 functions. Since apsimNGpy runner returns pandas data frame then we expect all objective computations to take a data frame.
+If you have 3 objectives, then we expect 3 functions. Since apsimNGpy runner returns pandas data frame then we expect all objectives computations functions to be tied to a data frame structure.
 
 .. code-block:: python
 
@@ -141,7 +141,7 @@ The results show trade-offs between competing objectives. You can visualize them
 .. image:: .../images/yield_nleach.png
 ## Step 7: Compute Hyper volume (Optional)
 
-The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as population size, maxx_generation
+The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as population size, max_gen
 
 .. code-block:: python
 
