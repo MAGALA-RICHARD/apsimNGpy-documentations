@@ -114,7 +114,9 @@ There is a need to initiate our problem with objectives only, then add control v
         path='.Simulations.Simulation.Field.Sow using a variable rule',
         Population='?', bounds=[4, 14], v_type='float')
 
-The best approach depends on the user's preference, but the last approach helps the user to focus on one control variables required details at a time
+.. Note::
+
+    The best approach depends on the user's preference, but the last approach helps the user to focus on one control variables required details at a time
 
 Step 5: Run the NSGA-II Optimizer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
