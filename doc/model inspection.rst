@@ -2,9 +2,11 @@ Inspect Model
 =============================
 
 Most of the time, when modifying model parameters and values, you need the full path to the specified APSIM model.  
-This is where the ``inspect_model`` method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI. Models can be inspected either
-by importing the ``Models`` namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a ``Models`` attribute path.
-However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.
+This is where the ``inspect_model`` method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI.
+
+.. hint::
+    Models can be inspected either by importing the ``Models`` namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a ``Models`` attribute path.
+    However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.
 
 Let's take a look at how it works.
 
