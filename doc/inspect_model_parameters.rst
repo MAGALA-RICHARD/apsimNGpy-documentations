@@ -174,7 +174,12 @@ Inspect ``Report`` model attributes.
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
         {'EventNames': ['[Maize].Harvesting']}
 
-Inspect  ``Weather`` file path. The returned weather file is a ``path`` for weather data::
+Inspect  ``Weather`` path
+
+.. hint::
+   The returned weather file is a ``path`` for weather data
+
+.. code-block:: python
 
         model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
