@@ -116,7 +116,7 @@ Inspect soil ``Chemical`` profile::
         6  1500-1800  8.0      300.0
 
 
-.. admonition:: one or more.
+.. tip::
 
     Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``.
     This argument accepts both strings and ``lists`` or ``tuple``. Please see the preceding examples::
@@ -292,7 +292,7 @@ Example::
 
 # Inspect NH4 ``InitialValues``For layered properties,
 
-.. Note::
+.. Hint::
 
   All are returned as pandas even if one parameter is specified::
 
