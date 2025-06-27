@@ -191,6 +191,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 .. code-block:: python
 
     model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
+
 .. warning::
 
     When using the full path, keep in mind that it inherently references a specific model type. The edit_model_by_path method internally detects this type and applies the appropriate logic.
