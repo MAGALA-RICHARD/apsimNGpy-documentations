@@ -17,11 +17,10 @@ You need to import necessary components from `apsimNGpy.optimizer.moo` and suppo
 
 .. code-block:: python
 
-```
-from apsimNGpy.optimizer.moo import ApsimOptimizationProblem, Runner, compute_hyper_volume, NSGA2
-from pymoo.optimize import minimize
-import matplotlib.pyplot as plt
-```
+    from apsimNGpy.optimizer.moo import ApsimOptimizationProblem, Runner, compute_hyper_volume, NSGA2
+    from pymoo.optimize import minimize
+    import matplotlib.pyplot as plt
+
 
 * `Runner`: handles model simulation and editing
 * `ApsimOptimizationProblem`: wraps your problem setup for `pymoo`
@@ -71,17 +70,16 @@ Instead of a list, you can add each parameter one at a time.
 
 .. code-block:: python
 
-```
-problem = ApsimOptimizationProblem(runner, objectives=[])
+    problem = ApsimOptimizationProblem(runner, objectives=[])
 
-problem.add_parameters(
-    path='.Simulations.Simulation.Field.Fertilise at sowing',
-    Amount='?', bounds=[50, 300], v_type='float')
+    problem.add_parameters(
+        path='.Simulations.Simulation.Field.Fertilise at sowing',
+        Amount='?', bounds=[50, 300], v_type='float')
 
-problem.add_parameters(
-    path='.Simulations.Simulation.Field.Sow using a variable rule',
-    Population='?', bounds=[4, 14], v_type='float')
-```
+    problem.add_parameters(
+        path='.Simulations.Simulation.Field.Sow using a variable rule',
+        Population='?', bounds=[4, 14], v_type='float')
+
 
 This method is more flexible for programmatically building problems.
 
@@ -91,15 +89,14 @@ Objective functions take APSIM output (as a DataFrame) and return scalar values.
 
 .. code-block:: python
 
-```
-def negative_yield(df):
-    return -df['Yield'].mean()
+    def negative_yield(df):
+        return -df['Yield'].mean()
 
-def nitrate_leaching(df):
-    return df['nitrate'].sum()
+    def nitrate_leaching(df):
+        return df['nitrate'].sum()
 
-problem.objectives = [negative_yield, nitrate_leaching]
-```
+    problem.objectives = [negative_yield, nitrate_leaching]
+
 
 You can define any number of such functions depending on the goals.
 
@@ -109,17 +106,16 @@ NSGA-II is a commonly used algorithm for multi-objective problems. You can now r
 
 .. code-block:: python
 
-```
-algorithm = NSGA2(pop_size=20)
+    algorithm = NSGA2(pop_size=20)
 
-result = minimize(
-    problem.get_problem(),
-    algorithm,
-    ('n_gen', 10),
-    seed=1,
-    verbose=True
-)
-```
+    result = minimize(
+        problem.get_problem(),
+        algorithm,
+        ('n_gen', 10),
+        seed=1,
+        verbose=True
+    )
+
 
 * `pop_size`: number of candidate solutions per generation
 * `n_gen`: number of generations to run
@@ -130,14 +126,13 @@ The results show trade-offs between competing objectives. You can visualize them
 
 .. code-block:: python
 
-```
-F = result.F
-plt.scatter(F[:, 0], F[:, 1])
-plt.xlabel("Negative Yield")
-plt.ylabel("N Leaching")
-plt.title("Pareto Front")
-plt.show()
-```
+    F = result.F
+    plt.scatter(F[:, 0], F[:, 1])
+    plt.xlabel("Yield")
+    plt.ylabel("N Leaching")
+    plt.title("Pareto Front")
+    plt.show()
+
 
 ## Step 7: Compute Hypervolume (Optional)
 
@@ -145,17 +140,11 @@ The hypervolume gives a scalar metric of solution quality.
 
 .. code-block:: python
 
-```
-hv = compute_hyper_volume(F, normalize=True)
-print("Hypervolume:", hv)
-```
+    hv = compute_hyper_volume(F, normalize=True)
+    print("Hypervolume:", hv)
 
-```
 
 Summary
 -------
 This tutorial introduced you to setting up and running a multi-objective optimization on APSIM models using `apsimNGpy`. Both list-based and incremental parameter addition were demonstrated. You can now adapt this workflow for more complex calibration or decision-support tasks.
 
-Save this `.rst` file and add it to your Sphinx `docs/` directory to publish the tutorial on ReadTheDocs or a static site.
-
-```
