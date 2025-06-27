@@ -77,9 +77,14 @@ You can directly supply a list of variables to optimize as follows:.
 Each dictionary defines:
 
 * ``path``: the APSIM model path to the component
-* ``Amount`` / `Population`: the parameter to be optimized (denoted by '?')
+* ``Amount`` / `Population`: the parameter to be optimized (denoted by '?').
 * ``bounds``: lower and upper bounds for the optimizer
 * ``v_type``: variable type
+
+.. note::
+
+   Each decision variable specification must contain exactly one parameter marked with ``'?'``. This signifies the target parameter to be optimized during the calibration or search process.
+
 
 Step 3b: Define Decision Variables (Approach 2 - Using ``.add_parameters()``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
