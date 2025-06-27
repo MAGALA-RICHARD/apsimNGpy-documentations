@@ -169,4 +169,7 @@ The results show trade-offs between competing objectives. You can visualize them
     print("Hyper volume:", hv)
 
 .. hint::
-   objectives are typically in different units, with some of objective such as yield, bearing a larger applitude, which makes deterining the reference point challenging, here normalising can help us detect automatically that reference point by ysing certain thresholds
+
+   Objectives are typically expressed in different units, and some—such as yield—may have much larger amplitudes. This makes determining a suitable reference point challenging. In such cases, normalization can help automatically detect the reference point by applying specific thresholds.
+
+
