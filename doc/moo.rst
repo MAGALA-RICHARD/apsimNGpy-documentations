@@ -82,6 +82,7 @@ Each dictionary defines:
 * ``v_type``: variable type
 
 Step 3b: Define Decision Variables (Approach 2 - Using ``.add_parameters()``)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of a list, you can add each parameter one at a time.
 There is a need to initiate our problem with objectives only, then add control variables on the fly
@@ -100,7 +101,8 @@ There is a need to initiate our problem with objectives only, then add control v
 
 The best approach depends on the user's preference, but the last approach helps the user to focus on one control variables required details at a time
 
-## Step 5: Run the NSGA-II Optimizer
+Step 5: Run the NSGA-II Optimizer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``NSGA-II`` is a commonly used algorithm for multi-objective problems. There are other genetic multi-objective algorithms, but for trade-off analysis with APSIM,
 ``NSGA-II`` is more than adequate. You can now run  is as follows:
@@ -121,7 +123,8 @@ The best approach depends on the user's preference, but the last approach helps 
 * ``pop_size``: number of candidate solutions per generation
 * ``n_gen``: number of generations to run
 
-## Step 6: Plot the Pareto Front
+Step 6: Plot the Pareto Front
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The results show trade-offs between competing objectives. You can visualize them:
 
