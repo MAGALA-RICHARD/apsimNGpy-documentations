@@ -8,11 +8,11 @@ This tutorial introduces the ``inspect_model_parameters`` method, which provides
 
     The inspect_model_parameters method simplifies parameter inspection by consolidating functionality that was previously spread across multiple methods such as:
 
-- examine_management_info
+    - examine_management_info
 
-- read_cultivar_params
+    - read_cultivar_params
 
-- Various model-specific inspectors
+    - Various model-specific inspectors
 
 .. admonition:: inspect_model_parameters function ``signature``
 
