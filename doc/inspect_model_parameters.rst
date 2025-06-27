@@ -150,9 +150,10 @@ Inspect ``Report`` model attributes.
 .. tip::
 
     Report attributes are returned in two categories;
-     1. 'EventNames': used for triggering recording or reporting events
-     2. 'VariableNames': actual variable  paths::
+     1. 'EventNames': used for triggering recording or reporting events.
+     2. 'VariableNames': actual variable  paths.
 
+.. code-block:: python
         model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         {'EventNames': ['[Maize].Harvesting'],
         'VariableNames': ['[Clock].Today',
