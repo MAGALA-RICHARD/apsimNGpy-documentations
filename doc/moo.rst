@@ -1,9 +1,11 @@
-# How to Run Multi-Objective Optimization with apsimNGpy
+Multi-Objective Optimization with apsimNGpy
+============================================
 
 This tutorial demonstrates how to perform multi-objective optimization on an APSIM Next Generation model using the `apsimNGpy.optimizer.moo` module. You will learn two ways to specify decision variables and how to run an evolutionary optimization algorithm using `pymoo`.
 This approach enables you to explore trade-offs between objectives like crop yield and environmental outcomes.
 
-## Prerequisites
+Prerequisites
+-------------
 
 Make sure you have the following installed and configured:
 
@@ -12,7 +14,8 @@ Make sure you have the following installed and configured:
 * **apsimNGpy** package (latest version)
 * Python packages: `pymoo`, `matplotlib`, `numpy`, and `pandas`
 
-## Step 1: Import Required Modules
+Step 1: Import Required Modules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -37,7 +40,7 @@ Here, I a using the default maize template. Because it does not have nitrate lea
     runner.add_report_variable('[Soil].Nutrient.NO3.kgha[1] as nitrate', report_name='Report')
 
 
-## Step 3: Define Objective Functions
+Step 3: Define Objective Functions
 
 Objective functions take APSIM output (as a DataFrame) and return scalar values. You can define any number of such functions depending on the goals.
 If you have 3 objectives, then we expect 3 functions. Since apsimNGpy runner returns pandas data frame then we expect all objective computations to take a data frame.
