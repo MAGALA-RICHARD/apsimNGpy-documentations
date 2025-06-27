@@ -41,6 +41,7 @@ Here, I a using the default maize template. Because it does not have nitrate lea
 
 
 Step 3: Define Objective Functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Objective functions take APSIM output (as a DataFrame) and return scalar values. You can define any number of such functions depending on the goals.
 If you have 3 objectives, then we expect 3 functions. Since apsimNGpy runner returns pandas data frame then we expect all objective computations to take a data frame.
@@ -55,7 +56,8 @@ If you have 3 objectives, then we expect 3 functions. Since apsimNGpy runner ret
 
 
 
-## Step 4a: Define Decision Variables (Approach 1 - Direct List)
+Step 4a: Define Decision Variables (Approach 1 - Direct List)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can directly supply a list of variables to optimize as follows:.
 
@@ -79,7 +81,7 @@ Each dictionary defines:
 * ``bounds``: lower and upper bounds for the optimizer
 * ``v_type``: variable type
 
-## Step 3b: Define Decision Variables (Approach 2 - Using ``.add_parameters()``)
+Step 3b: Define Decision Variables (Approach 2 - Using ``.add_parameters()``)
 
 Instead of a list, you can add each parameter one at a time.
 There is a need to initiate our problem with objectives only, then add control variables on the fly
