@@ -28,7 +28,7 @@ inspect_model_parameters function ``signature``
         ) -> Union[dict, list, pd.DataFrame, Any]
 
 Parameters
- ----------------------------
+----------------------------
 model_type (``str``):
 The type or class of the model to inspect.
 Examples:
@@ -117,8 +117,10 @@ Inspect soil ``Chemical`` profile::
         6  1500-1800  8.0      300.0
 
 
-# Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``.
-This argument accepts both strings and ``lists`` or ``tuple``. Please see the preceding examples::
+.. admonition:: one or more.
+
+    Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``.
+    This argument accepts both strings and ``lists`` or ``tuple``. Please see the preceding examples::
 
         model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
           Carbon
@@ -170,8 +172,12 @@ Inspect  ``Weather`` file path. The returned weather file is a ``path`` for weat
         model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
-Inspect ``Manager`` script parameters. These scripts are from the Manager Module. You need to know the exact name of the script hence you may want to inspect the whole Manager Models in the simulations file.
-Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection::
+Inspect ``Manager`` script parameters.
+
+.. admonition:: Note on inspecting manager scripts.
+
+    These scripts are from the Manager Module. You need to know the exact name of the script hence you may want to inspect the whole Manager Models in the simulations file.
+    Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection::
 
         model_instance.inspect_model_parameters('Manager',
         simulations='Simulation', model_name='Sow using a variable rule')
@@ -294,9 +300,9 @@ Example::
         """
 
 
-GUI Simulation Preview
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
+
+.. admonition:: GUI Simulation Preview.
+     If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
 
 .. code-block:: python
 
