@@ -185,8 +185,8 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. hint::
 
-   ``edit_model_by_path`` works using the same principle as ``edit_model``, where each model has specific key word arguments. Let's see an example of editing a manager script
-   ``Sow using a variable rule``
+   The method ``edit_model_by_path`` from ``ApsimModel`` class operates on the same principle as ``edit_model``, where each model type requires specific keyword arguments.
+   For example, let’s edit a manager script: ``"Sow using a variable rule"`` that performs sowing operations such as plant population, sowing date etc.
 
 .. code-block:: python
 
