@@ -156,13 +156,17 @@ The results show trade-offs between competing objectives. You can visualize them
 
 
 .. image:: ../images/yield_nleach.png
-## Step 7: Compute Hyper volume (Optional)
 
-The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as population size, max_gen.
+.. tip::
+
+   Compute Hyper volume (Optional)
+
+   The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as pop_size, max_gen.
 
 .. code-block:: python
 
     hv = compute_hyper_volume(F, normalize=True)
     print("Hyper volume:", hv)
 
-
+.. hint::
+   objectives are typically in different units, with some of objective such as yield, bearing a larger applitude, which makes deterining the reference point challenging, here normalising can help us detect automatically that reference point by ysing certain thresholds

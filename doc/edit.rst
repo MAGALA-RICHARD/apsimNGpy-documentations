@@ -2,7 +2,7 @@ Editing Model Parameters
 ===========================================
 
 Editing a model involves changing model parameter values. This task can be accomplished via a unified method called ``edit_model`` or ``edit_model_by_path`` from ``CoreModel`` or ``ApsimModel`` Class
-by specifying the model type, name and simulation name, or path, respectively
+by specifying the model type, name and simulation name, or path, respectively.
 
 edit_method function signature
 
