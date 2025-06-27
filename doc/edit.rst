@@ -66,13 +66,14 @@ Parameters
         - ``new_cultivar_name`` (str, required): the new name for the edited cultivar.
         - ``cultivar_manager`` (str, required): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
-Raises
-^^^^^^^^
-``ValueError``
-    If the model instance is not found, required kwargs are missing, or `kwargs` is empty.
+.. warning::
+    Raises the following errors:
 
-``NotImplementedError``
-    If the logic for the specified `model_type` is not implemented.
+    ``ValueError``
+        If the model instance is not found, required kwargs are missing, or `kwargs` is empty.
+
+    ``NotImplementedError``
+        If the logic for the specified `model_type` is not implemented.
 
 Quick Examples::
 
