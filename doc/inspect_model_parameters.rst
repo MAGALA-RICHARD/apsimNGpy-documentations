@@ -219,6 +219,7 @@ Inspect ``Cultivar`` parameters::
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
 .. Note::
+
   Please note that cultivar parameters are represented with an equal operator before the values,
   here they are returned as key value pairs with parameters as the keys
 
@@ -288,7 +289,11 @@ Example::
         5  1200-1500            0.0  1.162873      300.0
         6  1500-1800            0.0  1.187495      300.0
 
-# Inspect NH4 ``InitialValues``For layered properties, all are returned as pandas even if one parameter is specified::
+# Inspect NH4 ``InitialValues``For layered properties,
+
+.. Note::
+
+  All are returned as pandas even if one parameter is specified::
 
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
         parameters='InitialValues')
