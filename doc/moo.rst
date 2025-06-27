@@ -23,11 +23,12 @@ Step 1: Import Required Modules
     from pymoo.optimize import minimize
     import matplotlib.pyplot as plt
 
-.. important::
-    * `Runner`: handles model simulation and editing
-    * `ApsimOptimizationProblem`: wraps your problem setup for `pymoo`
-    * `NSGA2`: a multi-objective genetic algorithm
-    * `minimize`: pymoo's driver for optimization
+.. admonition:: Interpretation
+
+    * ``Runner```: handles model simulation and editing
+    * ``ApsimOptimizationProblem``: wraps your problem setup for `pymoo`
+    * ``NSGA2``: a multi-objective genetic algorithm
+    * ``minimize``: pymoo's driver for optimization
 
 Step 2: Initialize the APSIM Model Runner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
