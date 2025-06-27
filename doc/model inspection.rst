@@ -150,11 +150,11 @@ Use `inspect_file`` method to inspects all simulations in the file. This method 
 
 .. tip::
 
-  To include cultivar paths to the above simulation tree, use ``cultivar == True`` as shown below.
+  To include cultivar paths to the above simulation tree, use ``cultivar =True`` as shown below.
 
 .. code-block:: python
 
-    model.inspect_file(cultivar == True)
+    model.inspect_file(cultivar = True)
 
 
 .. Warning::
