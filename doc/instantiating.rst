@@ -20,11 +20,11 @@ You can quickly get started by loading a default simulation model (e.g., maize) 
 If ``out_path`` is not specified, the model will be saved to a randomly generated file path on your computer.
 The ``out_path`` parameter accepts both absolute and relative paths. If a relative path is provided, the file will be saved in the current working directory.
 
-Using a Local APSIM File
-^^^^^^^^^^^^^^^^^^^^^^^^
-If you have an ``.apsimx`` file saved on your machine — whether from a previous session or as a custom template—you can easily load it as shown below.
-By default, a random file path is generated as the output path. However, you can specify a custom path to control where the edited file is saved.
-This approach helps preserve the original file in case something goes wrong during the loading or editing process.
+.. admonition:: Using a Local APSIM File
+
+    If you have an ``.apsimx`` file saved on your machine — whether from a previous session or as a custom template—you can easily load it as shown below.
+    By default, a random file path is generated as the output path. However, you can specify a custom path to control where the edited file is saved.
+    This approach helps preserve the original file in case something goes wrong during the loading or editing process.
 
 .. code-block:: python
 
