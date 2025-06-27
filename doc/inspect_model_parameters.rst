@@ -154,6 +154,7 @@ Inspect ``Report`` model attributes.
      2. 'VariableNames': actual variable  paths.
 
 .. code-block:: python
+
         model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         {'EventNames': ['[Maize].Harvesting'],
         'VariableNames': ['[Clock].Today',
