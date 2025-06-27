@@ -73,6 +73,7 @@ Built on object-oriented principles, it provides:
    cli
    factorial_experiments
    weather
+   moo.rst
    FAQ
    how_to_cite
    api

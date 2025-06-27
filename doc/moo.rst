@@ -29,6 +29,7 @@ Make sure you have the following installed and configured:
 ## Step 2: Initialize the APSIM Model Runner
 
 You create a runner tied to a specific `.apsimx` model file. This runner manages simulation and parameter editing.
+Here, I a using the default maize template. Because it does not have nitrate leaching in its Report table, I have also added it.
 
 .. code-block:: python
 
@@ -36,11 +37,24 @@ You create a runner tied to a specific `.apsimx` model file. This runner manages
     runner.add_report_variable('[Soil].Nutrient.NO3.kgha[1] as nitrate', report_name='Report')
 
 
-This ensures APSIM includes nitrate outputs in the report.
+## Step 3: Define Objective Functions
 
-## Step 3a: Define Decision Variables (Approach 1 - Direct List)
+Objective functions take APSIM output (as a DataFrame) and return scalar values. You can define any number of such functions depending on the goals.
+If you have 3 objectives, then we expect 3 functions. Since apsimNGpy runner returns pandas data frame then we expect all objective computations to take a data frame.
 
-You can directly supply a list of variables to optimize.
+.. code-block:: python
+
+    def maximize_yield(df):
+        return -df['Yield'].mean()
+
+    def minimize_nitrate_leaching(df):
+        return df['nitrate'].sum()
+
+
+
+## Step 4a: Define Decision Variables (Approach 1 - Direct List)
+
+You can directly supply a list of variables to optimize as follows:.
 
 .. code-block:: python
 
@@ -52,23 +66,24 @@ You can directly supply a list of variables to optimize.
          'Population': "?", 'bounds': [4, 14], 'v_type': 'float'}
     ]
 
-    problem = ApsimOptimizationProblem(runner, objectives=[], decision_vars=decision_vars)
+    problem = ApsimOptimizationProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching], decision_vars=decision_vars)
 
 
 Each dictionary defines:
 
-* `path`: the APSIM model path to the component
-* `Amount` / `Population`: the parameter to be optimized (denoted by '?')
-* `bounds`: lower and upper bounds for the optimizer
-* `v_type`: variable type
+* ``path``: the APSIM model path to the component
+* ``Amount`` / `Population`: the parameter to be optimized (denoted by '?')
+* ``bounds``: lower and upper bounds for the optimizer
+* ``v_type``: variable type
 
-## Step 3b: Define Decision Variables (Approach 2 - Using `.add_parameters()`)
+## Step 3b: Define Decision Variables (Approach 2 - Using ``.add_parameters()``)
 
 Instead of a list, you can add each parameter one at a time.
+There is a need to initiate our problem with objectives only, then add control variables on the fly
 
 .. code-block:: python
 
-    problem = ApsimOptimizationProblem(runner, objectives=[])
+    problem = ApsimOptimizationProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching])
 
     problem.add_parameters(
         path='.Simulations.Simulation.Field.Fertilise at sowing',
@@ -81,22 +96,6 @@ Instead of a list, you can add each parameter one at a time.
 
 This method is more flexible for programmatically building problems.
 
-## Step 4: Define Objective Functions
-
-Objective functions take APSIM output (as a DataFrame) and return scalar values.
-
-.. code-block:: python
-
-    def maximize_yield(df):
-        return -df['Yield'].mean()
-
-    def minimize_nitrate_leaching(df):
-        return df['nitrate'].sum()
-
-    problem.objectives = [maximize_yield, minimize_nitrate_leaching]
-
-
-You can define any number of such functions depending on the goals.
 
 ## Step 5: Run the NSGA-II Optimizer
 
