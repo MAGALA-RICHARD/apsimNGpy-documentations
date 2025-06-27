@@ -105,7 +105,7 @@ Step 5: Run the NSGA-II Optimizer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``NSGA-II`` is a commonly used algorithm for multi-objective problems. There are other genetic multi-objective algorithms, but for trade-off analysis with APSIM,
-``NSGA-II`` is more than adequate. You can now run  is as follows:
+``NSGA-II`` is more than adequate. You can now run  it as follows:
 
 .. code-block:: python
 
@@ -138,6 +138,7 @@ The results show trade-offs between competing objectives. You can visualize them
     plt.show()
 
 
+.. image:: .../images/yield_nleach.png
 ## Step 7: Compute Hyper volume (Optional)
 
 The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as population size, maxx_generation
