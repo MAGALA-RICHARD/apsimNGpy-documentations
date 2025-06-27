@@ -181,7 +181,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
-   edit_model_by_path(path, **kwargs)
+   model.edit_model_by_path(path, **kwargs)
 
 .. hint::
 
