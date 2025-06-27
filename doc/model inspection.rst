@@ -130,7 +130,6 @@ This method helps identify the model type efficiently. However, you need to know
 Whole Model inspection
 =====================================
 
-
 Use `inspect_file`` method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other
 
 
