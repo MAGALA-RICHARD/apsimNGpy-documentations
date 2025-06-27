@@ -192,6 +192,7 @@ Inspect ``Manager`` script parameters.
         'Population': '10'}
 
 .. Note::
+
     Script Manager parameters can vary significantly between different scripts. To understand what parameters are available in a given context, it’s best to inspect them using the method above.
     In the following example, we demonstrate how to inspect the value of a specific parameter—Population::
 
@@ -218,7 +219,7 @@ Inspect ``Cultivar`` parameters::
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
-.. Note::
+.. caution::
 
   Please note that cultivar parameters are represented with an equal operator before the values,
   here they are returned as key value pairs with parameters as the keys
