@@ -16,7 +16,7 @@ This approach enables you to explore trade-offs between objectives like crop yie
 
     * Python packages: ``pymoo``, ``matplotlib``, ``numpy``, and ``pandas``
 
-Step 1: Import Required Modules
+Step 1: Import required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
@@ -32,7 +32,7 @@ Step 1: Import Required Modules
     * ``NSGA2``: a multi-objective genetic algorithm
     * ``minimize``: pymoo's driver for optimization
 
-Step 2: Initialize the APSIM Model Runner
+Step 2: Initialize the APSIM model runner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You create a runner tied to a specific `.apsimx` model file. This runner manages simulation and parameter editing.
@@ -65,7 +65,7 @@ If you have 3 objectives, then we expect 3 functions.
 
 
 
-Step 4a: Define Decision Variables (Approach 1 - Direct List)
+Step 4a: Define decision variables (Approach 1 - direct List)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can directly supply a list of variables to optimize as follows:.
@@ -95,7 +95,7 @@ Each dictionary defines:
    Each decision variable specification must contain exactly one parameter marked with ``'?'``. This signifies the target parameter to be optimized during the calibration or search process.
 
 
-Step 3b: Define Decision Variables (Approach 2 - Using ``.add_parameters()``)
+Step 3b: Define decision variables (Approach 2 - using ``.add_parameters()``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of a list, you can add each parameter one at a time.
@@ -118,7 +118,7 @@ There is a need to initiate our problem with objectives only, then add control v
 
     The best approach depends on the user's preference, but the last approach helps the user to focus on one control variables required details at a time.
 
-Step 5: Run the NSGA-II Optimizer
+Step 5: Run the NSGA-II optimizer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``NSGA-II`` is a commonly used algorithm for multi-objective problems. There are other genetic multi-objective algorithms, but for trade-off analysis with APSIM,
