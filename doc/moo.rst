@@ -47,6 +47,15 @@ Step 3: Define Objective Functions
 Objective functions take APSIM output (as a DataFrame) and return scalar values. You can define any number of such functions depending on the goals.
 If you have 3 objectives, then we expect 3 functions.
 
+.. important::
+
+   Maximization objectives must be converted into minimization form by negating them (e.g., ``-f(x)``), since the underlying optimization algorithms are designed to minimize objective functions.
+
+
+.. note::
+
+      maximization objectives must be negated. since the algorithms are designed to minimize functions
+
 .. code-block:: python
 
     def maximize_yield(df):
