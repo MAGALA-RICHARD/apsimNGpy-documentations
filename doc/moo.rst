@@ -1,6 +1,7 @@
 # How to Run Multi-Objective Optimization with apsimNGpy
 
-This tutorial demonstrates how to perform multi-objective optimization on an APSIM Next Generation model using the `apsimNGpy.optimizer.moo` module. You will learn two ways to specify decision variables and how to run an evolutionary optimization algorithm using `pymoo`. This approach enables you to explore trade-offs between objectives like crop yield and environmental outcomes.
+This tutorial demonstrates how to perform multi-objective optimization on an APSIM Next Generation model using the `apsimNGpy.optimizer.moo` module. You will learn two ways to specify decision variables and how to run an evolutionary optimization algorithm using `pymoo`.
+This approach enables you to explore trade-offs between objectives like crop yield and environmental outcomes.
 
 ## Prerequisites
 
