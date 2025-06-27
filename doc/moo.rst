@@ -95,6 +95,7 @@ There is a need to initiate our problem with objectives only, then add control v
 
 .. code-block:: python
 
+    # initialise the problem
     problem = ApsimOptimizationProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching])
 
     problem.add_parameters(
