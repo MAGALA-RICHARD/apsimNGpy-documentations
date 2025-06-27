@@ -29,7 +29,8 @@ Step 1: Import Required Modules
 * `NSGA2`: a multi-objective genetic algorithm
 * `minimize`: pymoo's driver for optimization
 
-## Step 2: Initialize the APSIM Model Runner
+Step 2: Initialize the APSIM Model Runner
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You create a runner tied to a specific `.apsimx` model file. This runner manages simulation and parameter editing.
 Here, I a using the default maize template. Because it does not have nitrate leaching in its Report table, I have also added it.
