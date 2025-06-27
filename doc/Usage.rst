@@ -16,7 +16,7 @@ Users can provide the ``report_name``, which specifies data table name from the 
 
 .. note::
 
-    Please note that report_name can be a string (``str``), implying a single database table
+    Please note that ``report``_name can be a string (``str``), implying a single database table
     or a ``list``, implying that one or more than one database tables. If the later is true, then the results will be concatenated along the rows using ``pandas.concat`` method.
     By default, ``apsimNGpy`` looks for these report database tables automatically, and returns a concatenated pandas data frame. This may not be ideal if they are many report tables, hence the need to clearly specify the preferred report table names
 
