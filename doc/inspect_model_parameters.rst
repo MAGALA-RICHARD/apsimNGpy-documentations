@@ -26,8 +26,7 @@ This tutorial introduces the ``inspect_model_parameters`` method, which provides
             **kwargs
             ) -> Union[dict, list, pd.DataFrame, Any]
 
-Parameters
-----------------------------
+
 model_type (``str``):
 The type or class of the model to inspect.
 Examples:
