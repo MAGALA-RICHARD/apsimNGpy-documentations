@@ -145,7 +145,7 @@ The results show trade-offs between competing objectives. You can visualize them
     plt.show()
 
 
-.. image:: .../images/yield_nleach.png
+.. image:: ../images/yield_nleach.png
 ## Step 7: Compute Hyper volume (Optional)
 
 The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as population size, max_gen.
