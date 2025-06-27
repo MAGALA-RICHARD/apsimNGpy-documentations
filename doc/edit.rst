@@ -198,9 +198,10 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
     Therefore, if you supply an argument that is not valid for that model type, a ValueError will be raised.
 
 .. tip::
-   if in doubt, use ``detect_model_type`` followed b the path, but at this point.
+   if in doubt, use ``detect_model_type`` followed by the corresponding full model path.
 
 .. code-block:: python
+
    model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
 
 .. tip::
