@@ -48,7 +48,9 @@ Get full path to the fertiliser model::
      model.inspect_model(Models.Fertiliser, fullpath=True)
      ['.Simulations.Simulation.Field.Fertiliser']
 
-The models from APSIM Models namespace are abstracted to use strings. All you need is to specify the name or the full path to the model enclosed in a stirng as follows::
+.. Note::
+
+    The models from APSIM Models namespace are abstracted to use strings. All you need is to specify the name or the full path to the model enclosed in a stirng as follows::
 
      model.inspect_model('Clock') # get the path to the clock model
      ['.Simulations.Simulation.Clock']
