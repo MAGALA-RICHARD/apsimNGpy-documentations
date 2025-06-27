@@ -71,16 +71,16 @@ You can directly supply a list of variables to optimize as follows:.
         {'path': '.Simulations.Simulation.Field.Sow using a variable rule',
          'Population': "?", 'bounds': [4, 14], 'v_type': 'float'}
     ]
-
+    # initialise the problem
     problem = ApsimOptimizationProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching], decision_vars=decision_vars)
 
 
 Each dictionary defines:
 
-* ``path``: the APSIM model path to the component
+* ``path``: the APSIM model path to the component.
 * ``Amount`` / `Population`: the parameter to be optimized (denoted by '?').
-* ``bounds``: lower and upper bounds for the optimizer
-* ``v_type``: variable type
+* ``bounds``: lower and upper bounds for the optimizer.
+* ``v_type``: variable type.
 
 .. note::
 
@@ -91,7 +91,7 @@ Step 3b: Define Decision Variables (Approach 2 - Using ``.add_parameters()``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of a list, you can add each parameter one at a time.
-There is a need to initiate our problem with objectives only, then add control variables on the fly
+There is a need to initiate our problem with objectives only, then add control variables on the fly.
 
 .. code-block:: python
 
@@ -126,8 +126,8 @@ Step 5: Run the NSGA-II Optimizer
     )
 
 
-* ``pop_size``: number of candidate solutions per generation
-* ``n_gen``: number of generations to run
+* ``pop_size``: number of candidate solutions per generation.
+* ``n_gen``: number of generations to run.
 
 Step 6: Plot the Pareto Front
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -147,7 +147,7 @@ The results show trade-offs between competing objectives. You can visualize them
 .. image:: .../images/yield_nleach.png
 ## Step 7: Compute Hyper volume (Optional)
 
-The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as population size, max_gen
+The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as population size, max_gen.
 
 .. code-block:: python
 
