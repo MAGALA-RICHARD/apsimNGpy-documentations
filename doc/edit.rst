@@ -190,7 +190,17 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
-    model.edit_model_by_path(path = ')
+    model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
+.. warning::
+
+    When using the full path, keep in mind that it inherently references a specific model type. The edit_model_by_path method internally detects this type and applies the appropriate logic.
+    Therefore, if you supply an argument that is not valid for that model type, a ValueError will be raised.
+
+.. tip::
+   if in doubt, use ``detect_model_type`` followed b the path, but at this point.
+
+.. code-block:: python
+   model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
 
 .. tip::
 
