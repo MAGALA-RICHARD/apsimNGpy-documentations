@@ -22,9 +22,8 @@ Parameters
     Name of the model instance to modify.
 .. important::
 
-    The following kwargs are specific to each each model type
+    The following additional kwargs are specific to each each model type.
     ``**kwargs`` : dict, required
-        Additional keyword arguments specific to the model type. These vary by component:
 
         - ``Weather``:
             - ``weather_file`` (str): Path to the weather ``.met`` file.
