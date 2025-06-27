@@ -7,13 +7,11 @@ This tutorial demonstrates how to perform multi-objective optimization on an APS
 Make sure you have the following installed and configured:
 
 * **APSIM Next Generation**
-* **Python 3.8+**
+* **Python 3.10+**
 * **apsimNGpy** package (latest version)
 * Python packages: `pymoo`, `matplotlib`, `numpy`, and `pandas`
 
 ## Step 1: Import Required Modules
-
-You need to import necessary components from `apsimNGpy.optimizer.moo` and supporting packages.
 
 .. code-block:: python
 
@@ -45,17 +43,16 @@ You can directly supply a list of variables to optimize.
 
 .. code-block:: python
 
-```
-decision_vars = [
-    {'path': '.Simulations.Simulation.Field.Fertilise at sowing',
-     'Amount': "?", 'bounds': [50, 300], 'v_type': 'float'},
+    decision_vars = [
+        {'path': '.Simulations.Simulation.Field.Fertilise at sowing',
+         'Amount': "?", 'bounds': [50, 300], 'v_type': 'float'},
 
-    {'path': '.Simulations.Simulation.Field.Sow using a variable rule',
-     'Population': "?", 'bounds': [4, 14], 'v_type': 'float'}
-]
+        {'path': '.Simulations.Simulation.Field.Sow using a variable rule',
+         'Population': "?", 'bounds': [4, 14], 'v_type': 'float'}
+    ]
 
-problem = ApsimOptimizationProblem(runner, objectives=[], decision_vars=decision_vars)
-```
+    problem = ApsimOptimizationProblem(runner, objectives=[], decision_vars=decision_vars)
+
 
 Each dictionary defines:
 
@@ -134,9 +131,9 @@ The results show trade-offs between competing objectives. You can visualize them
     plt.show()
 
 
-## Step 7: Compute Hypervolume (Optional)
+## Step 7: Compute Hyper volume (Optional)
 
-The hypervolume gives a scalar metric of solution quality.
+The hyper volume gives a scalar metric of solution quality.
 
 .. code-block:: python
 
