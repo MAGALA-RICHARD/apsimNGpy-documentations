@@ -87,8 +87,10 @@ Edit a cultivar model::
         new_cultivar_name = 'B_110-e',
         model_name='B_110',
         cultivar_manager='Sow using a variable rule')
-``model_name: 'B_110'`` is an existing cultivar in the Maize Model, which we want to edit. Please note that editing a cultivar without specifying the  ``new_cultivar_name`` will throw a ``ValueError``.
-The name should be different to the the one being edited.
+
+.. important::
+    ``model_name: 'B_110'`` is an existing cultivar in the Maize Model, which we want to edit. Please note that editing a cultivar without specifying the  ``new_cultivar_name`` will throw a ``ValueError``.
+    The name should be different to the the one being edited.
 
 Edit a soil organic matter module::
 
