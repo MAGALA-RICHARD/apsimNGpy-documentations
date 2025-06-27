@@ -145,11 +145,10 @@ Use `inspect_file`` method to inspects all simulations in the file. This method 
     :align: center
     :width: 100%
 
-Note on Model Inspection:
-"""""""""""""""""""""""""""""""""""""""""""""""
+.. Note::
 
-Only a few key model types are inspected using model.inspect_model under the hood. Inspecting the entire simulation file can produce a large volume of data, much of which may not be relevant or necessary in most use cases.
+    Only a few key model types are inspected using model.inspect_model under the hood. Inspecting the entire simulation file can produce a large volume of data, much of which may not be relevant or necessary in most use cases.
 
-If certain models do not appear in the inspection output, this is intentional — the tool selectively inspects components to keep results concise and focused.
+    If certain models do not appear in the inspection output, this is intentional — the tool selectively inspects components to keep results concise and focused.
 
-For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI.
+    For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI.
