@@ -35,8 +35,8 @@ Quick guides
         model documentation and tutorial are also available via; https://docs.apsim.info/
         we expect that by accepting to use apsimNGpy, you have a basic understanding of APSIM process-based model, therefore, our focus is to make sure you are able to use apsimNGpy
 
-In addition, make sure that the APSIM installation binaries folder is added to the system path.
-if you run the following code and returns None you need to do something as explained below.
+        In addition, make sure that the APSIM installation binaries folder is added to the system path.
+        if you run the following code and returns None you need to do something as explained below.
 
 - 1. Use command line interface
 
@@ -68,7 +68,7 @@ Locating the APSIM Binaries
 -------------------------------------
 By default the APSIM binaries are located automatically. The process for determining the APSIM binary path is as follows:
 
-.. note::
+.. hint::
 
     In apsimNGpy, priority is first given to the user-supplied binary path.
     If no path is supplied, the module searches through the Python global environment
@@ -99,7 +99,7 @@ Alternatively, you can use the code at the top of your script as follows
     import os
     os.environ['APSIM'] = r'path/to/your/apsim/binary/folder/bin'
 
-.. note::
+.. caution::
 
     This approach may not work consistently in all scenarios, but you can try it.
     The above script line should always be placed at the beginning of your simulation script.

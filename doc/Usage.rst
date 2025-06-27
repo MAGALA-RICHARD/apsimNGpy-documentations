@@ -57,7 +57,7 @@ Saving the Simulation
 When we load the model, it is usually assigned a random name. However, you can save the file using the save() method.
 This method takes a single argument: the desired file path or name.
 
-.. Note::
+.. Hint::
 
     Without specifying the full path to the desired storage location, the file will be saved in the current working directory
 
