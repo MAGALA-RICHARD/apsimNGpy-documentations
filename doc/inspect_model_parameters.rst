@@ -201,8 +201,7 @@ Inspect ``Manager`` script parameters.
         parameters='Population')
         {'Population': '10'}
 
-Inspect ``Cultivar`` parameters. Please note that cultivar parameters are represented with an equal operator before the values,
-here they are returned as key value pairs with parameters as the keys::
+Inspect ``Cultivar`` parameters::
 
         model_instance.inspect_model_parameters('Cultivar',
         simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
@@ -219,6 +218,10 @@ here they are returned as key value pairs with parameters as the keys::
         >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
+
+.. Note::
+  Please note that cultivar parameters are represented with an equal operator before the values,
+  here they are returned as key value pairs with parameters as the keys
 
 Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters are not layered as ``Organic, Physical and Water or Chemical``::
 
