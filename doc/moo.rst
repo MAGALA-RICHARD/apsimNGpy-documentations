@@ -163,7 +163,7 @@ The results show trade-offs between competing objectives. You can visualize them
 
    The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as pop_size, max_gen.
 
-    A high value indicates great solution quality than a lower value.
+    A high value indicates better solution quality than a lower one. Therefore, it can also be used to compare the performance of multiple minimization algorithms.
 
 .. code-block:: python
 
