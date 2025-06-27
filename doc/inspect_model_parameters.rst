@@ -146,7 +146,7 @@ Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
 
 Inspect ``Report`` model attributes.
 
-.. tip::
+.. Hint::
 
     Report attributes are returned in two categories;
      1. 'EventNames': used for triggering recording or reporting events.
