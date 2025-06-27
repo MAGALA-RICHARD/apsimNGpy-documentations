@@ -23,6 +23,7 @@ Parameters
 .. important::
 
     The following additional kwargs are specific to each each model type.
+
     ``**kwargs`` : dict, required
 
         - ``Weather``:
