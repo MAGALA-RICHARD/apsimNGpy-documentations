@@ -78,6 +78,7 @@ By default the APSIM binaries are located automatically. The process for determi
 
 Changing/setting the APSIM installation binaries path
 ---------------------------------------------------
+
 If the automatic search fails, please follow one of the steps below to resolve the issue:
 
 1. Manually configure the APSIM binary path. To do this:
