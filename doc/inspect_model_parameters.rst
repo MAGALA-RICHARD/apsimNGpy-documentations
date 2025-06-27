@@ -173,7 +173,7 @@ Inspect  ``Weather`` file path. The returned weather file is a ``path`` for weat
 
 Inspect ``Manager`` script parameters.
 
-.. admonition:: Note on inspecting manager scripts.
+.. tip::
 
     These scripts are from the Manager Module. You need to know the exact name of the script hence you may want to inspect the whole Manager Models in the simulations file.
     Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection::
