@@ -203,6 +203,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 .. code-block:: python
 
    model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
+   # output: Models.Manager
 
 .. tip::
 
