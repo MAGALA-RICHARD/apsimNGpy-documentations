@@ -145,9 +145,13 @@ Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
         6    0.12  12.0
 
 
-Inspect ``Report`` model attributes. Report attributes are returned in two categories;
- 1. 'EventNames': used for triggering recording or reporting events
- 2. 'VariableNames': actual variable  paths::
+Inspect ``Report`` model attributes.
+
+.. tip::
+
+    Report attributes are returned in two categories;
+     1. 'EventNames': used for triggering recording or reporting events
+     2. 'VariableNames': actual variable  paths::
 
         model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         {'EventNames': ['[Maize].Harvesting'],
