@@ -99,7 +99,8 @@ This method is more flexible for programmatically building problems.
 
 ## Step 5: Run the NSGA-II Optimizer
 
-NSGA-II is a commonly used algorithm for multi-objective problems. You can now run the optimization:
+``NSGA-II`` is a commonly used algorithm for multi-objective problems. There are other genetic multi-objective algorithms, but for trade-off analysis with APSIM,
+``NSGA-II`` is more than adequate. You can now run  is as follows:
 
 .. code-block:: python
 
@@ -114,8 +115,8 @@ NSGA-II is a commonly used algorithm for multi-objective problems. You can now r
     )
 
 
-* `pop_size`: number of candidate solutions per generation
-* `n_gen`: number of generations to run
+* ``pop_size``: number of candidate solutions per generation
+* ``n_gen``: number of generations to run
 
 ## Step 6: Plot the Pareto Front
 
