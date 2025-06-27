@@ -170,6 +170,7 @@ The results show trade-offs between competing objectives. You can visualize them
 
 .. hint::
 
-   Objectives are typically expressed in different units, and some—such as yield—may have much larger amplitudes. This makes determining a suitable reference point challenging. In such cases, normalization can help automatically detect the reference point by applying specific thresholds.
+   Objectives are typically expressed in different units, and some—such as yield—may have much larger amplitudes.
+   This makes determining a suitable reference point challenging. In such cases, normalization can help automatically detect the reference point by applying specific thresholds.
 
 
