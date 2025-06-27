@@ -16,15 +16,15 @@ This tutorial introduces the ``inspect_model_parameters`` method, which provides
 
 .. admonition:: inspect_model_parameters function ``signature``
 
-.. code-block:: python
+    .. code-block:: python
 
-    inspect_model_parameters(
-        model_type: str,
-        simulations: Union[str, list],
-        model_name: str,
-        parameters: Union[str, set, list, tuple] = 'all',
-        **kwargs
-        ) -> Union[dict, list, pd.DataFrame, Any]
+        inspect_model_parameters(
+            model_type: str,
+            simulations: Union[str, list],
+            model_name: str,
+            parameters: Union[str, set, list, tuple] = 'all',
+            **kwargs
+            ) -> Union[dict, list, pd.DataFrame, Any]
 
 Parameters
 ----------------------------
