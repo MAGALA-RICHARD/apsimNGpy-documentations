@@ -177,7 +177,20 @@ Multiple report variables::
         ])
 
 
+If you prefer little boiler plate code, we got you covered with ``edit_model_by_path`` the function signature of this method is shown below.
 
+.. code-block:: python
+
+   edit_model_by_path(path, **kwargs)
+
+.. hint::
+
+   ``edit_model_by_path`` works using the same principle as ``edit_model``, where each model has specific key word arguments. Let's see an example of editing a manager script
+   ``Sow using a variable rule``
+
+.. code-block:: python
+
+    model.edit_model_by_path(path = ')
 
 .. tip::
 

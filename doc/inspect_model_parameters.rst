@@ -326,7 +326,6 @@ Example::
         """
 
 
-
 .. admonition:: GUI Simulation Preview.
 
      If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
