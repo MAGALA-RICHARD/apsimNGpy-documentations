@@ -204,7 +204,7 @@ Inspect ``Manager`` script parameters.
         'RowSpacing': '750.0',
         'Population': '10'}
 
-.. Note::
+.. tip::
 
     Script Manager parameters can vary significantly between different scripts. To understand what parameters are available in a given context, it’s best to inspect them using the method above.
     In the following example, we demonstrate how to inspect the value of a specific parameter—Population::
