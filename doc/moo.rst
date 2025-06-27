@@ -138,10 +138,6 @@ The hyper volume gives a scalar metric of solution quality.
 .. code-block:: python
 
     hv = compute_hyper_volume(F, normalize=True)
-    print("Hypervolume:", hv)
+    print("Hyper volume:", hv)
 
-
-Summary
--------
-This tutorial introduced you to setting up and running a multi-objective optimization on APSIM models using `apsimNGpy`. Both list-based and incremental parameter addition were demonstrated. You can now adapt this workflow for more complex calibration or decision-support tasks.
 
