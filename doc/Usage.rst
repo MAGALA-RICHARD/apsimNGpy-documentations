@@ -27,7 +27,8 @@ After the simulation runs, results can be accessed  via ``apsim.results`` proper
 
 Another way to access the results is to use ``get_simulated_output`` on the instantiated class object. This method accepts only one argument ``report_names`` and under the same principle explained above.
 
-.. note::
+.. caution::
+
      Please note that accessing results through any of the above method before calling ``run()`` may not be allowed, and will raise an ``error``.
 
 .. code-block:: python
