@@ -97,11 +97,11 @@ Alternatively, you can use the code at the top of your script as follows
     import os
     os.environ['APSIM'] = r'path/to/your/apsim/binary/folder/bin'
 
-- Note:
+.. note::
 
-This approach may not work consistently in all scenarios, but you can try it.
-The above script line should always be placed at the beginning of your simulation script.
-However, why follow this approach when you can achieve the same result more efficiently? See the approach below:
+    This approach may not work consistently in all scenarios, but you can try it.
+    The above script line should always be placed at the beginning of your simulation script.
+    However, why follow this approach when you can achieve the same result more efficiently? See the approach below:
 
 3. Use the apsimNGpy config module:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
