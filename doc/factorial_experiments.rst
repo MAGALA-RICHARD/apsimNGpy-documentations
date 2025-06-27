@@ -69,7 +69,9 @@ Execute the simulation and visualize results:
 Factorial Experiment with Cultivar Replacements
 -----------------------------------------------
 
-To conduct a factorial experiment involving ``cultivar`` modifications, a crop replacement must be added.
+.. Hint::
+
+   To conduct a factorial experiment involving ``cultivar`` modifications, a crop replacement must be added.
 
 Load the maize simulations again and initialize APSIM:
 
