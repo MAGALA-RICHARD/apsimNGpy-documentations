@@ -252,6 +252,10 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
         model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
+.. danger::
+
+    If there are more than one simulation, using ``inspect_model_parameters`` without specifying the simulation name will return a nested dictionary.
+
 Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
 
 Example::
