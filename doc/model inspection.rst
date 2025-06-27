@@ -94,8 +94,7 @@ Try finding path to the cultivar model::
 
 
 
-Model Types
-""""""""""""""""""""""""""
+
 .. hint::
 
     ``model_type`` can be any of the following classes from the `Models` namespace, and can be passed as strings or as full path to Models namespace if Models is imported
