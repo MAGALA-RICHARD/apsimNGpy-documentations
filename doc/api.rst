@@ -110,7 +110,7 @@ ApsimModel
 ContinuousVariableProblem 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x000001E8C84D4190>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x0000014A85528190>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -638,7 +638,11 @@ CoreModel
             each combination of planting population level and fertilizer amount is run as an individual treatment.
 
            ``base_name`` (str, optional): The name of the base simulation to be moved into the experiment setup. if not
-            provided, it is expected to be Simulation as the default
+            provided, it is expected to be Simulation as the default.
+
+        .. warning::
+
+            ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, An error is likely.
 
 .. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, <module 'Models'>])
 
