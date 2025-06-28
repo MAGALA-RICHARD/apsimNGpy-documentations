@@ -51,7 +51,9 @@ Quick guides
    from apsimNGpy.core import config
       print(config.get_apsim_bin_path())
 
-You can also try to check if automatic search will be successful as follows
+.. tip::
+
+    You can also try to check if automatic search will be successful as follows
 
 .. code-block:: bash
 
