@@ -27,7 +27,7 @@ All versions are currently in development, phase and they can be installed as fo
 
 .. tip::
 
-  If you are a developer, you can install apsimNGpy in editable mode using the -e flag. This is especially useful for prototyping,
+  If you are a developer, you can install apsimNGpy in editable mode using the -e . flag. This is especially useful for prototyping,
   as it allows you to make changes to the codebase without having to reinstall the package each time.
 
 .. code:: python
