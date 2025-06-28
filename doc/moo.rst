@@ -159,7 +159,8 @@ The results show trade-offs between competing objectives. You can visualize them
 
 .. admonition:: comment
 
-   From the above graph, we can see that it is really difficult to produce high corn yield at the same time reduce nitrate  leaching. Because high high Yield requires applying high nitrogen fertilizers
+  From the graph above, it is clear that achieving high corn yield while simultaneously reducing nitrate leaching is quite challenging.
+  This is because high yields typically require the application of large amounts of nitrogen fertilizer, which is often associated with increased nitrate leaching.
 
 
 .. tip::
