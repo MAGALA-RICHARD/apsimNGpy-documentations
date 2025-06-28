@@ -71,7 +71,7 @@ Locating the APSIM Binaries
 -------------------------------------
 By default the APSIM binaries are located automatically. The process for determining the APSIM binary path is as follows:
 
-.. hint::
+.. tip::
 
     In apsimNGpy, priority is first given to the user-supplied binary path.
     If no path is supplied, the module searches through the Python global environment
