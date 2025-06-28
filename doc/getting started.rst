@@ -59,7 +59,8 @@ Quick guides
 
     apsim_bin_path --auto_search
 
-The short cut
+.. hint::
+   There is always a short cut
 
 .. code-block:: bash
 
