@@ -210,3 +210,8 @@ we ge the same pareto front and trade-offs we have seen in that graph? To answer
     plt.show()
 
 .. important:: ../images/no_nsg2.png
+
+.. admonition:: comment
+
+  From the graph above, it is clear that the pattern is no where close to what we could call a clear pareto front that can demonstrate the trade-offs between different objectives.
+
