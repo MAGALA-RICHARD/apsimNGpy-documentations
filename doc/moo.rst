@@ -175,4 +175,32 @@ The results show trade-offs between competing objectives. You can visualize them
    Objectives are typically expressed in different units, and some—such as yield—may have much larger amplitudes.
    This makes determining a suitable reference point challenging. In such cases, normalization can help automatically detect the reference point by applying specific thresholds.
 
+Comparing without mult-objective optimization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+What if we just run out the different combinations of the decision variables: population density and the nitrogen application rate can
+we ge the same pareto front and trade-offs we have seen in that graph? To answer this question we are going to run a factorial experiment.
+
+
+.. code-block:: python
+
+    import numpy as np
+    population  = [str(i) for i in np.random.randint(low=1, high=12, size=20)]
+    nitrogen  = [str(i) for i in np.random.randint(low=50, high=300, size=20)]
+    runner.create_experiment(permutation=False, base_name='Simulation')
+    runner.add_factor(specification=f"[Fertilise at sowing].Script.Amount = {','.join(nitrogen)}", factor_name='Nitrogen')
+    runner.add_factor(specification=f"[Sow using a variable rule].Script.Population ={','.join(population)}",
+                     factor_name='Population')
+    runner.run(verbose=True)
+
+    df = runner.results.drop_duplicates()
+    df  = df.groupby('SimulationID')[['Yield', 'nitrate']].mean()
+    yi = df.Yield
+    nitrate  =df.nitrate
+    plt.scatter(yi , nitrate)
+    plt.xlabel("Yield")
+    plt.ylabel("N Leaching")
+    plt.title("Trade-offs between yield and nitrate leaching")
+    plt.show()
+
+.. important:: ../images/no_nsg2.png
