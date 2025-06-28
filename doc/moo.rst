@@ -157,6 +157,11 @@ The results show trade-offs between competing objectives. You can visualize them
 
 .. image:: ../images/yield_nleach.png
 
+.. admonition:: comment
+
+   From the above graph, we can see that it is really difficult to produce high corn yield at the same time reduce nitrate  leaching. Because high high Yield requires applying high nitrogen fertilizers
+
+
 .. tip::
 
    Compute Hyper volume (Optional)
