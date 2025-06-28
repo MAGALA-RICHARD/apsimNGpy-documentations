@@ -209,7 +209,7 @@ we ge the same pareto front and trade-offs we have seen in that graph? To answer
     plt.title("Trade-offs between yield and nitrate leaching")
     plt.show()
 
-.. important:: ../images/no_nsg2.png
+.. image:: ../images/no_nsg2.png
 
 .. admonition:: comment
 
