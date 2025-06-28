@@ -181,7 +181,7 @@ The results show trade-offs between competing objectives. You can visualize them
    Objectives are typically expressed in different units, and some—such as yield—may have much larger amplitudes.
    This makes determining a suitable reference point challenging. In such cases, normalization can help automatically detect the reference point by applying specific thresholds.
 
-Comparing without mult-objective optimization
+Comparing objectives without mult-objective optimization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 What if we just run out the different combinations of the decision variables: population density and the nitrogen application rate can
