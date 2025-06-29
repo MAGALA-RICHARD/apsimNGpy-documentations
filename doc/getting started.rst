@@ -145,7 +145,7 @@ Or
 
     apsim_bin_path --update 'path/to/your/apsim/binary/folder/bin'
 
-.. note::
+.. attention::
 
     Now that the path is set, you can import any module attached to pythonnet.
 
