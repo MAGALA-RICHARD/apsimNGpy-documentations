@@ -107,10 +107,10 @@ ApsimModel
             The modified ``ApsimModel`` object after the spin-up operation.
             you could call ``save_edited`` file and save it to your specified location, but you can also proceed with the simulation
 
-ContinuousVariableProblem 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ContVarProblem 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem(model: str, simulation=<object object at 0x0000014A85528190>, controls=None, control_vars=None, labels=None, func=None, cache_size=400)
+.. function:: apsimNGpy.optimizer.one_obj.ContVarProblem(apsim_model: 'ApsimNGpy.Core.Model', max_cache_size=400, objectives=None, decision_vars=None)
 
    Defines an optimization problem for continuous variables in APSIM simulations.
 
@@ -128,7 +128,7 @@ ContinuousVariableProblem
             ``simulation (str or list, optional)``: The name(s) of the APSIM simulation(s) to target.
                                                 Defaults to all simulations.
 
-            ``control_vars`` (list, optional): A list of VarDesc instances defining variable metadata.
+            ``decision_vars`` (list, optional): A list of VarDesc instances defining variable metadata.
 
             ``labels (list, optional)``: Variable labels for display and results tracking.
 
@@ -139,9 +139,9 @@ ContinuousVariableProblem
 
             ``simulation (str):`` Target simulation(s).
 
-            ``controls (list):`` Defined control variables.
+            ``decision_vars (list):`` Defined control variables.
 
-            ``control_vars (list):`` List of VarDesc instances for optimization.
+            ``decission_vars (list):`` List of VarDesc instances for optimization.
 
             ``labels (list): Labels`` for variables.
 
@@ -164,7 +164,7 @@ ContinuousVariableProblem
 
 
         Example:
-            >>> class Problem(ContinuousVariableProblem):
+            >>> class Problem(ContVarProblem):
             ...     def evaluate(self, x):
             ...         return -self.run(verbose=False).results.Yield.mean()
 
@@ -173,56 +173,11 @@ ContinuousVariableProblem
             >>> result = problem.minimize_with_local_solver(method='Powell')
             >>> print(result.x_vars)
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.add_control(self, model_type, model_name, parameter_name, vtype, start_value, bounds=None)
+.. function:: apsimNGpy.optimizer.one_obj.ContVarProblem.minimize_with_differential_evolution(self, args=(), strategy='best1bin', maxiter=1000, popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.7, rng=None, callback=None, disp=True, polish=True, init='latinhypercube', atol=0, updating='immediate', workers=1, constraints=(), x0=None, *, integrality=None, vectorized=False)
 
-   Adds a continuous control variable to the optimization problem.
+   reference; https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html
 
-        This method allows the user to specify a parameter in the APSIM model
-        that will be treated as a variable during optimization. It helps ensure
-        that parameters are consistently defined and validated.
-
-        Parameters
-        ----------
-        model_type : str
-            The section of the APSIM model where the parameter resides
-            (e.g., 'Manager', 'Organic', 'IPlant').
-
-        model_name : str
-            The name of the specific model or module within APSIM where the parameter
-            is defined (e.g., "Sow on fixed date", "Fertiliser").
-
-        parameter_name : str
-            The name of the parameter to control (e.g., 'Population', 'Amount').
-
-        vtype : type
-            The Python type of the variable. Should be either `int` or `float` to indicate
-            whether the parameter is discrete or continuous.
-
-        start_value : int or float
-            The initial value to use for the parameter in optimization routines.
-
-        bounds : tuple of (float, float), optional
-            Lower and upper bounds for the parameter (used in bounded optimization).
-            Must be a tuple like (min, max). If None, the variable is considered unbounded.
-
-        Returns
-        -------
-        self : object
-            Returns self to support method chaining.
-
-        Raises
-        ------
-        ValueError
-            If the provided arguments do not pass validation via `_evaluate_args`.
-
-        Notes
-        -----
-        - This method is typically used before running optimization to define which
-          parameters should be tuned.
-        - Only continuous variables (`int` or `float`) are supported by this method.
-          Use other methods for categorical or grid variables.
-
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.minimize_with_local_solver(self, **kwargs)
+.. function:: apsimNGpy.optimizer.one_obj.ContVarProblem.minimize_with_local_solver(self, **kwargs)
 
    Run a local optimization solver using `scipy.optimize.minimize`.
 
@@ -289,8 +244,8 @@ ContinuousVariableProblem
 
         Example::
 
-          from apsimNGpy.optimizer.one_objective import ContinuousVariableProblem
-          class Problem(ContinuousVariableProblem):
+          from apsimNGpy.optimizer.one_objective import ContVarProblem
+          class Problem(ContVarProblem):
                 def __init__(self, model=None, simulation='Simulation'):
                     super().__init__(model, simulation)
                     self.simulation = simulation
@@ -306,11 +261,7 @@ ContinuousVariableProblem
           print(result.x_vars)
           {'Population': 9, 'RowSpacing': 800}
 
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.optimize_with_differential_evolution(self, args=(), strategy='best1bin', maxiter=1000, popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.7, rng=None, callback=None, disp=True, polish=True, init='latinhypercube', atol=0, updating='immediate', workers=1, constraints=(), x0=None, *, integrality=None, vectorized=False)
-
-   reference; https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html
-
-.. function:: apsimNGpy.optimizer.one_obj.ContinuousVariableProblem.update_pbar(self, labels, extend_by=None)
+.. function:: apsimNGpy.optimizer.one_obj.ContVarProblem.update_pbar(self, labels, extend_by=None)
 
    Extends the tqdm progress bar by `extend_by` steps if current progress exceeds the known max.
 
@@ -341,7 +292,9 @@ CoreModel
     Keyword parameters:
       **``copy`` (bool, deprecated)**: Specifies whether to clone the simulation file. This parameter is deprecated because the simulation file is now automatically cloned by default.
 
-    When an ``APSIM`` file is loaded, it is automatically copied to ensure a fallback to the original file in case of any issues during operations.
+    .. tip::
+
+          When an ``APSIM`` file is loaded, it is automatically copied to ensure a fallback to the original file in case of any issues during operations.
 
    .. Note::
 
@@ -642,9 +595,9 @@ CoreModel
 
         .. warning::
 
-            ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, An error is likely.
+            ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, an error is likely.
 
-.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, <module 'Models'>])
+.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001187E186E10>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
 
    Detects the model type from a given APSIM model instance or path string.
 
@@ -978,7 +931,7 @@ CoreModel
    Inspect the file by calling ``inspect_model()`` through ``get_model_paths.``
         This method is important in inspecting the ``whole file`` and also getting the ``scripts paths``
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, <module 'Models'>], fullpath=True, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001187E186E10>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
 
    Inspect the model types and returns the model paths or names. usefull if you want to identify the path to the
         model for editing the model.
@@ -1074,7 +1027,7 @@ CoreModel
             Models can be inspected either by importing the Models namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a Models object.
             However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[<module 'Models'>, str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001187E186E10>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
    Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
@@ -1317,7 +1270,7 @@ CoreModel
             5 0.1
             6 0.1
 
-.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: <module 'Models'>, new_parent_type: <module 'Models'>, model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
+.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001187E186E10>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001187E186E10>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
    Args:
 
@@ -1347,7 +1300,7 @@ CoreModel
 
         ``return:`` self
 
-.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_type: <module 'Models'>, model_name: str = None)
+.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001187E186E10>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
 
    Removes a model from the APSIM Models.Simulations namespace.
 
