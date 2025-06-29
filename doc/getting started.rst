@@ -148,7 +148,7 @@ Or
 .. note::
 
     Now that the path is set, you can import any module attached to pythonnet.
-    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 .. code-block:: python
 
