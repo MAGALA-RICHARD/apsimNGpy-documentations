@@ -155,7 +155,6 @@ Or
     # For example, try importing the ApsimModel class:
     from apsimNGpy.core.apsim import ApsimModel
 
-
 .. admonition:: Final Note
 
     The above code is also applicable for running different versions of APSIM models.
