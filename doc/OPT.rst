@@ -67,7 +67,7 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
 
 .. hint::
 
-     When we define custom optimization problem class as follows, ideally it override the evaluate_objectives() method with your own objective function.
+     A common and effective approach is to define a custom optimization problem class and override the evaluate_objectives() method to implement your specific objective function.
 
 .. code-block:: python
 
