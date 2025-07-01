@@ -28,7 +28,7 @@ Demonstration
 
     * ``ApsimModel```: used to initialise apsim model and handles model simulation and editing
     * ``ContinuousVariable``: wraps your problem setup for continuous variables
-    * ``MixedVariable``: wraps your problem setup for continuous variables
+    * ``MixedVariable``: wraps your problem setup for mixed variables
 
 
 Load the APSIM model. # This is typically a single simulation file you want to calibrate or optimize. deep in your mind you have an idea of what you want to optimize from this file.
