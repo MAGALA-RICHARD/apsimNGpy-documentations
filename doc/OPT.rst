@@ -265,6 +265,7 @@ Review optimization results
     print(problem)
 
 **Summary**
+^^^^^^^^^^^
 
 +-----------------------+---------------------------+-------------------------------+
 | Feature               | Local Solver (e.g, Powell)     | Global Solver (DE)            |
