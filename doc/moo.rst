@@ -28,10 +28,10 @@ Step 1: Import required modules
 
 .. admonition:: Interpretation
 
-    * ``Runner```: handles model simulation and editing
+    * ``Runner```: handles model simulation and editing. It is an apsimNGpy class
     * ``MultiObjectiveProblem``: wraps your problem into a multi-objective one
     * ``NSGA2``: a multi-objective genetic algorithm
-    * ``minimize``: pymoo's driver for optimization
+    * ``minimize``: will be used to minimize the objectives in the finals steps
 
 Step 2: Initialize the APSIM model runner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
