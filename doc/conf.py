@@ -15,8 +15,9 @@ release = '0.32'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+        'sphinx.ext.mathjax',
 
-]
+        ]
 
 templates_path = ['_templates']
 exclude_patterns = ['sphinx.ext.duration',
