@@ -21,14 +21,15 @@ Step 1: Import required modules
 
 .. code-block:: python
 
-    from apsimNGpy.optimizer.moo import ApsimOptimizationProblem, Runner, compute_hyper_volume, NSGA2
+    from apsimNGpy.optimizer.moo import MultiObjectiveProblem, compute_hyper_volume, NSGA2
     from pymoo.optimize import minimize
     import matplotlib.pyplot as plt
+    from apsimNGpy.core.apsim import ApsimModel as Runner
 
 .. admonition:: Interpretation
 
     * ``Runner```: handles model simulation and editing
-    * ``ApsimOptimizationProblem``: wraps your problem setup for `pymoo`
+    * ``MultiObjectiveProblem``: wraps your problem into a multi-objective one
     * ``NSGA2``: a multi-objective genetic algorithm
     * ``minimize``: pymoo's driver for optimization
 
@@ -80,7 +81,7 @@ You can directly supply a list of variables to optimize as follows:.
          'Population': "?", 'bounds': [4, 14], 'v_type': 'float'}
     ]
     # initialise the problem
-    problem = ApsimOptimizationProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching], decision_vars=decision_vars)
+    problem = MultiObjectiveProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching], decision_vars=decision_vars)
 
 
 Each dictionary defines:
@@ -104,7 +105,7 @@ There is a need to initiate our problem with objectives only, then add control v
 .. code-block:: python
 
     # initialise the problem
-    problem = ApsimOptimizationProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching])
+    problem = MultiObjectiveProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching])
 
     problem.add_parameters(
         path='.Simulations.Simulation.Field.Fertilise at sowing',
