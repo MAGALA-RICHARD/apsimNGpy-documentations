@@ -37,7 +37,7 @@ Load the APSIM model. This is typically a single simulation file you want to cal
 
    maize_model = ApsimModel("Maize") # replace with the template path
 
-.. caution::
+.. note::
 
   You should be familiar with the structure of the model, including available report tables, as we will be calling the results method on this model object. It is assumed that the model is correctly configured and ready for use.
 
