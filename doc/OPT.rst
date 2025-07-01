@@ -124,7 +124,8 @@ Control variables are variables that will control the outcomes of our objective 
         Population="?", v_type='int', bounds=[4, 14], start_value=8
     )
 
- .. hint::
+
+.. hint::
 
     ``Amount`` will be filled in by the optimizer because it is marked with '?'. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don't want to optimize them. An example is shown below.
 
