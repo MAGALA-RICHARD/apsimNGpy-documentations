@@ -2,10 +2,6 @@
 Single-Objective Optimization with apsimNGpy
 ============================================
 
-
-Overview of Optimization in Agricultural Systems
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Optimization is the science of selecting the best input values (decision variables) to achieve a desired output (objective). In the context of crop modeling, this might mean finding the optimal fertilizer rate or planting density to maximize yield or minimize nutrient leaching. Optimization problems can be:
 
 - Single-objective (e.g., maximize yield)
