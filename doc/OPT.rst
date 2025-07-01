@@ -107,9 +107,11 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
 
     problem = ContinuousVariable(maize_model, objectives = maximize_yield)
 
-No, time to add  the control variables (i.e., what you want the optimizer to change) or variables that will control the outcomes of our objective values
- - You can use 'add_control' to specify the path, type, and bounds.
 
+Adding control variables
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Control variables are variables that will control the outcomes of our objective values. You can use ``add_control`` to specify the path, type, and bounds as shown below.
 
 .. code-block:: python
 
@@ -124,7 +126,7 @@ No, time to add  the control variables (i.e., what you want the optimizer to cha
 
  .. hint::
 
-   - 'Amount' will be filled in by the optimizer. '?' marks the variable to optimize. it is possible to supply extra parameters associated with any of the model path, this is important if you want to change them on the fly, but you dont want to optimize them. let's see an example
+    ``Amount`` will be filled in by the optimizer because it is marked with '?'. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don't want to optimize them. An example is shown below.
 
 The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` includes another parameter called ``CultivarName``. Let's change its value to 'B_110'
 
