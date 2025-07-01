@@ -183,7 +183,7 @@ In contrast, global optimizers like differential evolution (DE) are designed to 
 
 .. code-block:: python
 
-    # STEP 4B: Run a global optimizer using differential evolution
+    # Run a global optimizer using differential evolution
     # This is useful when the surface is noisy or has many local minima.
     res_de = problem.minimize_with_de(
         popsize=10,
