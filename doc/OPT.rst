@@ -190,7 +190,7 @@ In contrast, global optimizers like differential evolution (DE) are designed to 
 Mixed-Variable Optimization in apsimNGpy
 ============================================
 
-.. attention::
+.. important::
 
     While continuous-variable optimization is often considered straightforward—where parameters can smoothly vary within defined bounds—real-world agroecosystem modeling problems are rarely that simple. Many decision variables are not continuous but instead:
 
