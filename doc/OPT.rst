@@ -10,11 +10,11 @@ Optimization is the science of selecting the best input values (decision variabl
 - Discrete or categorical (variables take on fixed options)
 - Mixed (a combination of variable types)
 
-The apsimNGpy package provides a comprehensive framework for optimizing both single- and multi-objective problems through the apsimNGpy.optimizer module. Users can define decision variables (also known as control variables) associated with various APSIM components such as cultivars, manager scripts, and soil properties—for example, fertilization rate or sowing density.
+The apsimNGpy package provides a comprehensive framework for optimizing both single- and multi-objective problems through the ``apsimNGpy.optimizer`` module. Users can define decision variables (also known as control variables) associated with various APSIM components such as cultivars, manager scripts, and soil properties—for example, fertilization rate or sowing density.
 
-The module supports a wide range of built-in performance metrics including mse, rmse, rrmse, ccc, and wia, which are available as attributes of the optimization classes. These metrics allow users to define appropriate loss functions that compare predicted values against observations.
+The module supports a wide range of built-in performance metrics including ``mse, rmse, rrmse, ccc, and wia`` etc, which are available as attributes of the optimization classes. These metrics allow users to define appropriate loss functions that compare predicted values against observations.
 
-Once the objective function (e.g., minimizing RMSE or maximizing mean yield) is specified, users can run supported solvers to find optimal configurations of the decision variables.
+Once the objective function (e.g., minimizing ``RMSE`` or maximizing mean yield) is specified, users can run supported solvers to find optimal configurations of the decision variables.
 
 Demonstration
 ^^^^^^^^^^^^^
@@ -31,13 +31,13 @@ Demonstration
     * ``MixedVariable``: wraps your problem setup for mixed variables
 
 
-Load the APSIM model. This is typically a single simulation file you want to calibrate or optimize. deep in your mind you have an idea of what you want to optimize from this file.
+Load the APSIM model. This is typically a single simulation file you want to calibrate or optimize.
 
 .. code-block:: python
 
    maize_model = ApsimModel("Maize") # replace with the template path
 
-.. caution::
+.. note::
 
   You should be familiar with the structure of the model, including available report tables, as we will be calling the results method on this model object. It is assumed that the model is correctly configured and ready for use.
 
@@ -63,11 +63,11 @@ Minimizing continuous variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 These parameters—such as sowing density, nitrogen application rate, irrigation thresholds, or cultivar-specific coefficients—are often continuous in nature. here, I describe two ways of how to deal with them in apsimNGpy
 
-- 1. Inheriting from ``ContinuousVariable`` class.
+- 1.  A common and effective approach is to define a custom optimization problem class inheriting from ``ContinuousVariable`` class.
 
-.. hint::
+.. tip::
 
-     When we define custom optimization problem class as follows, ideally it override the evaluate_objectives() method with your own objective function.
+     defining a custom class requires defining the ``evaluate_objectives()`` to implement your specific objective function, which override the  internal ``evaluate_objectives()`` method.
 
 .. code-block:: python
 
@@ -90,7 +90,8 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
     In this example, a custom optimization problem is defined by subclassing ``ContinuousVariable``.
     The class is tailored to work with a specific APSIM model and a corresponding set of observed data.
 
-    The observed values (e.g., actual maize yield from experiments or field trials) are passed to the constructor and stored as an attribute ``self.obs``. This enables the model’s predicted values to be evaluated directly against real-world data.
+    The observed values are passed to the constructor and stored as an attribute ``self.obs``. This enables the model’s predicted values
+    to be evaluated directly against real-world data.
 
     The core logic resides in the ``evaluate_objectives()`` method, which runs the APSIM simulation and retrieves the predicted yield. It then computes the **Root Mean Square Error (RMSE)** between the predicted and observed values.
 
@@ -106,9 +107,11 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
 
     problem = ContinuousVariable(maize_model, objectives = maximize_yield)
 
-No, time to add  the control variables (i.e., what you want the optimizer to change) or variables that will control the outcomes of our objective values
- - You can use 'add_control' to specify the path, type, and bounds.
 
+Adding control variables
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Control variables are variables that will control the outcomes of our objective values. You can use ``add_control`` to specify the path, type, and bounds as shown below.
 
 .. code-block:: python
 
@@ -121,9 +124,10 @@ No, time to add  the control variables (i.e., what you want the optimizer to cha
         Population="?", v_type='int', bounds=[4, 14], start_value=8
     )
 
- .. hint::
 
-   - 'Amount' will be filled in by the optimizer. '?' marks the variable to optimize. it is possible to supply extra parameters associated with any of the model path, this is important if you want to change them on the fly, but you dont want to optimize them. let's see an example
+.. hint::
+
+    ``Amount`` will be filled in by the optimizer because it is marked with '?'. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don't want to optimize them. An example is shown below.
 
 The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` includes another parameter called ``CultivarName``. Let's change its value to 'B_110'
 
@@ -131,10 +135,10 @@ The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` in
 
      problem.add_control(
         path='.Simulations.Simulation.Field.Fertilise at sowing', CultivarName= 'B_110',
-        Amount="?", bounds=[50, 300], v_type='int', start_value=150
-    )
+        Amount="?", bounds=[50, 300], v_type='int', start_value=150 )
 
- Run a local optimization solver. This is suitable for smooth problems and quick feedback.
+
+Run a local optimization solver. This is suitable for smooth problems and quick feedback.
 
 .. code-block:: python
 
@@ -148,9 +152,9 @@ The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` in
 
 .. admonition:: Explanation
 
-    In this example, we use a **local optimization algorithm** to minimize the objective function defined in our custom `Problem` class. Local optimizers are generally efficient and fast, making them suitable for problems where:
+    In this example, we use a **local optimization algorithm** to minimize the objective function defined in our custom `Problem` class. most local optimizers are generally efficient and fast, making them suitable for problems where:
 
-    - The objective function is **smooth** (i.e., differentiable or continuous).
+    - The objective function do not have underlying mathematical definition.
     - The problem is likely **unimodal**, meaning it has a single global minimum.
     - You need **quick feedback** for parameter tuning or iterative experimentation.
 
@@ -179,7 +183,7 @@ In contrast, global optimizers like differential evolution (DE) are designed to 
 
 .. code-block:: python
 
-    # STEP 4B: Run a global optimizer using differential evolution
+    # Run a global optimizer using differential evolution
     # This is useful when the surface is noisy or has many local minima.
     res_de = problem.minimize_with_de(
         popsize=10,
