@@ -16,7 +16,6 @@ release = '0.32'
 
 extensions = [
         'sphinx.ext.mathjax',
-
         ]
 
 templates_path = ['_templates']
