@@ -38,6 +38,7 @@ Demonstration
 Load the APSIM model. # This is typically a single simulation file you want to calibrate or optimize. deep in your mind you have an idea of what you want to optimize from this file.
 
 .. code-block:: python
+
    maize_model = ApsimModel("Maize") # replace with the template path
 
 .. caution::
@@ -264,7 +265,7 @@ Review optimization results
 
     print(problem)
 
-**Summary**
+Summary
 ^^^^^^^^^^^
 
 +-----------------------+---------------------------+-------------------------------+
