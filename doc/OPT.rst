@@ -63,11 +63,11 @@ Minimizing continuous variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 These parameters—such as sowing density, nitrogen application rate, irrigation thresholds, or cultivar-specific coefficients—are often continuous in nature. here, I describe two ways of how to deal with them in apsimNGpy
 
-- 1. Inheriting from ``ContinuousVariable`` class.
+- 1.  A common and effective approach is to define a custom optimization problem class inheriting from ``ContinuousVariable`` class.
 
-.. hint::
+.. tip::
 
-     A common and effective approach is to define a custom optimization problem class and override the ``evaluate_objectives()`` method to implement your specific objective function.
+     defining a custom class requires defining the ``evaluate_objectives()`` to implement your specific objective function, which override the  internal ``evaluate_objectives()`` method.
 
 .. code-block:: python
 
