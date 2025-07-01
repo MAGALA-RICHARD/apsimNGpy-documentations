@@ -21,7 +21,7 @@ The module supports a wide range of built-in performance metrics including mse, 
 Once the objective function (e.g., minimizing RMSE or maximizing mean yield) is specified, users can run supported solvers to find optimal configurations of the decision variables.
 
 Demonstration
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -94,39 +94,81 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
 
     The core logic resides in the ``evaluate_objectives()`` method, which runs the APSIM simulation and retrieves the predicted yield. It then computes the **Root Mean Square Error (RMSE)** between the predicted and observed values.
 
-    Since RMSE quantifies prediction error, and **lower values indicate better model performance**, this setup implicitly tells the optimizer to search for parameter values that minimize RMSE. In effect, this drives the optimization process toward solutions that better match the observed system behavior.
+    Since ``RMSE`` quantifies prediction error, and **lower values indicate better model performance**, this setup implicitly tells the optimizer to search for parameter values that minimize RMSE. In effect, this drives the optimization process toward solutions that better match the observed system behavior.
 
-# STEP 2B: Alternatively, you can define the objective directly
-# This is useful for simpler problems where you only need to extract something from the APSIM report table.
-def maximize_yield(df):
-    # Negate yield to convert to a minimization problem
-    return -df.Yield.mean()
+-2.  Alternatively, you can define the objective directly. This is useful for simpler problems where you only need to extract something from the APSIM report table.
 
-# STEP 3: Add control variables (i.e., what you want the optimizer to change).
-# You can use 'add_control' to specify the path, type, and bounds.
-# 'Amount' will be filled in by the optimizer. '?' marks the variable to optimize.
-problem.add_control(
-    path='.Simulations.Simulation.Field.Fertilise at sowing',
-    Amount="?", bounds=[50, 300], v_type='qrandint', start_value=150
-)
-problem.add_control(
-    path='.Simulations.Simulation.Field.Sow using a variable rule',
-    Population="?", v_type='int', bounds=[4, 14], start_value=8
-)
+.. code-block:: python
 
-# STEP 4A: Run a local optimization solver
-# This is suitable for smooth problems and quick feedback.
-res_local = problem.minimize_with_alocal_solver(
-    method='Powell',
-    options={
-        'maxiter': 100,
-        'disp': True
-    }
-)
+    def maximize_yield(df):
+        # Negate yield to convert to a minimization problem
+        return -df.Yield.mean()
 
-# STEP 4B: Run a global optimizer using differential evolution
-# This is useful when the surface is noisy or has many local minima.
-res_de = problem.minimize_with_de(popsize=10, maxiter=100, polish=False)
+    problem = ContinuousVariable(maize_model, objectives = maximize_yield)
+
+No, time to add  the control variables (i.e., what you want the optimizer to change) or variables that will control the outcomes of our objective values
+ - You can use 'add_control' to specify the path, type, and bounds.
+
+
+.. code-block:: python
+
+    problem.add_control(
+        path='.Simulations.Simulation.Field.Fertilise at sowing',
+        Amount="?", bounds=[50, 300], v_type='int', start_value=150
+    )
+    problem.add_control(
+        path='.Simulations.Simulation.Field.Sow using a variable rule',
+        Population="?", v_type='int', bounds=[4, 14], start_value=8
+    )
+
+ .. hint::
+
+   - 'Amount' will be filled in by the optimizer. '?' marks the variable to optimize. it is possible to supply extra parameters associated with any of the model path, this is important if you want to change them on the fly, but you dont want to optimize them. let's see an example
+
+The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` includes another parameter called ``CultivarName``. Let's change its value to 'B_110'
+
+.. code-block:: python
+
+     problem.add_control(
+        path='.Simulations.Simulation.Field.Fertilise at sowing', CultivarName= 'B_110',
+        Amount="?", bounds=[50, 300], v_type='int', start_value=150
+    )
+
+ Run a local optimization solver. This is suitable for smooth problems and quick feedback.
+
+.. code-block:: python
+
+    res_local = problem.minimize_with_alocal_solver(
+        method='Powell',
+        options={
+            'maxiter': 100,
+            'disp': True
+        }
+    )
+
+.. admonition:: Explanation
+
+    In this example, we use a **local optimization algorithm** to minimize the objective function defined in our custom `Problem` class. Local optimizers are generally efficient and fast, making them suitable for problems where:
+
+    - The objective function is **smooth** (i.e., differentiable or continuous).
+    - The problem is likely **unimodal**, meaning it has a single global minimum.
+    - You need **quick feedback** for parameter tuning or iterative experimentation.
+
+    Here, the method used is ``'Powell'``, a **derivative-free** optimization algorithm that performs a directional search in successive, conjugate directions. It is robust for many types of problems, especially when gradient information is unavailable.
+
+The `minimize_with_alocal_solver()` method is a wrapper around `scipy.optimize.minimize`, making it easy to plug in a solver of your choice while passing solver-specific options.
+
+
+.. code-block:: python
+
+    # STEP 4B: Run a global optimizer using differential evolution
+    # This is useful when the surface is noisy or has many local minima.
+    res_de = problem.minimize_with_de(
+        popsize=10,
+        maxiter=100,
+        polish=False  # Set to True if you want to refine with a local solver at the end
+    )
+
 
 print('Testing mixed variable optimization...')
 
