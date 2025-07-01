@@ -7,13 +7,13 @@ All versions are currently in development, phase and they can be installed as fo
 
 - Method 1. install from PyPI
 
-.. code:: bash
+.. code:: console
 
     pip install apsimNGpy
 
 - Method 1. clone the current development repository
 
-.. code:: bash
+.. code:: console
 
     git clone https://github.com/MAGALA-RICHARD/apsimNGpy.git
     cd apsimNGpy
@@ -21,7 +21,7 @@ All versions are currently in development, phase and they can be installed as fo
 
 - Method 2. Use pip straight away and install from github
 
-.. code:: bash
+.. code:: console
 
      pip install git+https://github.com/MAGALA-RICHARD/apsimNGpy.git
 
@@ -51,7 +51,7 @@ Quick guides
 
 - 1. Use command line interface
 
-.. code-block:: bash
+.. code-block:: console
 
      apsim_bin_path -s
 
@@ -66,14 +66,14 @@ Quick guides
 
     You can also try to check if automatic search will be successful as follows
 
-.. code-block:: bash
+.. code-block:: console
 
     apsim_bin_path --auto_search
 
 .. hint::
    There is always a short cut
 
-.. code-block:: bash
+.. code-block:: console
 
     apsim_bin_path -a
 
@@ -135,13 +135,13 @@ Alternatively, you can use the code at the top of your script as follows
 
 After installing apsimNGpy, navigate to your terminal and run the following
 
-.. code-block:: bash
+.. code-block:: console
 
     apsim_bin_path -u 'path/to/your/apsim/binary/folder/bin'
 
 Or
 
-.. code-block:: bash
+.. code-block:: console
 
     apsim_bin_path --update 'path/to/your/apsim/binary/folder/bin'
 
