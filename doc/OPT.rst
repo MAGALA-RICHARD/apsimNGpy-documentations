@@ -159,6 +159,24 @@ The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` in
 The `minimize_with_alocal_solver()` method is a wrapper around `scipy.optimize.minimize`, making it easy to plug in a solver of your choice while passing solver-specific options.
 
 
+When optimizing complex models such as APSIM simulations, the shape of the objective function surface can significantly impact the choice of optimization strategy.
+
+Local optimizers (e.g., 'Powell', 'Nelder-Mead', 'L-BFGS-B') are designed to find a minimum near the starting point. They work well when the objective function is smooth, differentiable, and unimodal (i.e., has a single minimum). However, in problems where the surface is noisy, non-convex, or contains multiple local minima, these methods often get "trapped" in suboptimal solutions.
+
+In contrast, global optimizers like differential evolution (DE) are designed to explore the entire search space. DE is a stochastic population-based algorithm that samples multiple candidate solutions and evolves them over generations. This makes it well-suited for:
+
+    - Noisy objective functions
+
+    - Highly non-linear problems
+
+    - Multi-modal landscapes (i.e., many local minima)
+
+    - Black-box functions where gradients are unavailable or unreliable
+
+.. note::
+
+    Although global optimizers may require more function evaluations and run time, they provide a more robust search and are less likely to miss the global minimum—especially in complex systems like agroecosystem models.
+
 .. code-block:: python
 
     # STEP 4B: Run a global optimizer using differential evolution
@@ -169,28 +187,80 @@ The `minimize_with_alocal_solver()` method is a wrapper around `scipy.optimize.m
         polish=False  # Set to True if you want to refine with a local solver at the end
     )
 
+Mixed-Variable Optimization in apsimNGpy
+============================================
+
+.. attention::
+
+    While continuous-variable optimization is often considered straightforward—where parameters can smoothly vary within defined bounds—real-world agroecosystem modeling problems are rarely that simple. Many decision variables are not continuous but instead:
+
+    - Take on categorical values (e.g., cultivar type or fertilizer formulation),
+
+    - Follow discrete steps (e.g., plant density in fixed intervals),
+
+    - Or must be selected from a fixed grid of management practices (e.g., irrigation schedules, sowing dates).
+
+    These challenges make optimization more complex, as standard solvers typically assume a continuous search space.
+
+
+To tackle this, APSIMNGpy provides the ``MixedVariable`` class, which allows users to define optimization problems involving a mixture of variable types:
+
+    - Continuous (float-valued)
+
+    - Quantized integers (step-wise discrete values)
+
+    - Categorical (unordered choices)
+
+This abstraction allows you to work seamlessly with APSIM models by recasting all variables internally into a continuous representation, while still respecting their original type during evaluation.
+
+Using MixedVariable in Practice
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The example below demonstrates how to define and solve a mixed-variable optimization problem using APSIMNGpy. We'll configure a maize model to maximize yield by tuning both:
+
+    - A categorical fertilizer rate, and
+
+    - A quantized sowing density.
 
 print('Testing mixed variable optimization...')
 
-# STEP 5: Define a mixed-variable problem
-# MixedVariable allows combining categorical, integer, and continuous decision variables.
-problem = MixedVariable(maize_model, objectives=maximize_yield)
+You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial.
 
-# For a categorical variable, use 'choice' and provide a list of categories
-problem.add_control(
-    path='.Simulations.Simulation.Field.Fertilise at sowing',
-    Amount="?", v_type='choice', categories=[100, 150, 200, 250, 300], start_value=150
-)
+.. code-block:: python
 
-# For quantized integers, you can define a step size 'q' with 'qrandint'
-problem.add_control(
-    path='.Simulations.Simulation.Field.Sow using a variable rule',
-    Population="?", v_type='qrandint', bounds=[4, 14], start_value=8, q=2
-)
+    from apsimNGpy.optimize import MixedVariable
 
-# STEP 6: Run optimizers on the mixed-variable problem
-res_mixed_local = problem.minimize_with_alocal_solver(method='Powell')
-res_mixed_de = problem.minimize_with_de(popsize=20, polish=True)
+    # Define the optimization problem
+    problem = MixedVariable(maize_model, objectives=maximize_yield)
 
-# STEP 7: Review results
-# Use .x, .fun, or convert to DataFrame to review the best configurations and scores.
+    # Add a categorical (choice-based) variable
+    problem.add_control(
+        path='.Simulations.Simulation.Field.Fertilise at sowing',
+        Amount="?",
+        v_type='choice',
+        categories=[100, 150, 200, 250, 300],
+        start_value=150
+    )
+
+    # Add a quantized integer variable with fixed step size
+    problem.add_control(
+        path='.Simulations.Simulation.Field.Sow using a variable rule',
+        Population="?",
+        v_type='qrandint',
+        bounds=[4, 14],
+        start_value=8,
+        q=2
+    )
+
+.. hint::
+
+    You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial.
+
+
+Review optimization results
+^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    print(problem)
+
