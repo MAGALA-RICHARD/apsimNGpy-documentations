@@ -127,7 +127,7 @@ Control variables are variables that will control the outcomes of our objective 
 
 .. hint::
 
-    ``Amount`` will be filled in by the optimizer because it is marked with '?'. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don't want to optimize them. An example is shown below.
+    ``Amount`` will be filled in by the :blue: optimizer because it is marked with '?'. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don't want to optimize them. An example is shown below.
 
 The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` includes another parameter called ``CultivarName``. Let's change its value to 'B_110'
 
