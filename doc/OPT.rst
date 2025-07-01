@@ -127,7 +127,7 @@ Control variables are variables that will control the outcomes of our objective 
 
 .. hint::
 
-    ``Amount`` will be filled in by the :blue: optimizer because it is marked with '?'. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don't want to optimize them. An example is shown below.
+    ``Amount`` will be filled in by the optimizer because it is marked with '?'. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don't want to optimize them. An example is shown below.
 
 The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` includes another parameter called ``CultivarName``. Let's change its value to 'B_110'
 
@@ -152,9 +152,9 @@ Run a local optimization solver. This is suitable for smooth problems and quick 
 
 .. admonition:: Explanation
 
-    In this example, we use a **local optimization algorithm** to minimize the objective function defined in our custom `Problem` class. Local optimizers are generally efficient and fast, making them suitable for problems where:
+    In this example, we use a **local optimization algorithm** to minimize the objective function defined in our custom `Problem` class. most local optimizers are generally efficient and fast, making them suitable for problems where:
 
-    - The objective function is **smooth** (i.e., differentiable or continuous).
+    - The objective function do not have underlying mathematical definition.
     - The problem is likely **unimodal**, meaning it has a single global minimum.
     - You need **quick feedback** for parameter tuning or iterative experimentation.
 
