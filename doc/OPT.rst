@@ -10,11 +10,11 @@ Optimization is the science of selecting the best input values (decision variabl
 - Discrete or categorical (variables take on fixed options)
 - Mixed (a combination of variable types)
 
-The apsimNGpy package provides a comprehensive framework for optimizing both single- and multi-objective problems through the apsimNGpy.optimizer module. Users can define decision variables (also known as control variables) associated with various APSIM components such as cultivars, manager scripts, and soil properties—for example, fertilization rate or sowing density.
+The apsimNGpy package provides a comprehensive framework for optimizing both single- and multi-objective problems through the ``apsimNGpy.optimizer`` module. Users can define decision variables (also known as control variables) associated with various APSIM components such as cultivars, manager scripts, and soil properties—for example, fertilization rate or sowing density.
 
-The module supports a wide range of built-in performance metrics including mse, rmse, rrmse, ccc, and wia, which are available as attributes of the optimization classes. These metrics allow users to define appropriate loss functions that compare predicted values against observations.
+The module supports a wide range of built-in performance metrics including ``mse, rmse, rrmse, ccc, and wia`` etc, which are available as attributes of the optimization classes. These metrics allow users to define appropriate loss functions that compare predicted values against observations.
 
-Once the objective function (e.g., minimizing RMSE or maximizing mean yield) is specified, users can run supported solvers to find optimal configurations of the decision variables.
+Once the objective function (e.g., minimizing ``RMSE`` or maximizing mean yield) is specified, users can run supported solvers to find optimal configurations of the decision variables.
 
 Demonstration
 ^^^^^^^^^^^^^
