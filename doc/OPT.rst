@@ -84,9 +84,17 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
 
     problem = Problem(maize_model, obs)
 
- .. admonition:: Explanation
 
-    a problem has been customized, we also added an extra variable observed, and made it an attribute of ``Problem :class:
+.. admonition:: Explanation
+
+    In this example, a custom optimization problem is defined by subclassing ``ContinuousVariable``.
+    The class is tailored to work with a specific APSIM model and a corresponding set of observed data.
+
+    The observed values (e.g., actual maize yield from experiments or field trials) are passed to the constructor and stored as an attribute ``self.obs``. This enables the model’s predicted values to be evaluated directly against real-world data.
+
+    The core logic resides in the ``evaluate_objectives()`` method, which runs the APSIM simulation and retrieves the predicted yield. It then computes the **Root Mean Square Error (RMSE)** between the predicted and observed values.
+
+    Since RMSE quantifies prediction error, and **lower values indicate better model performance**, this setup implicitly tells the optimizer to search for parameter values that minimize RMSE. In effect, this drives the optimization process toward solutions that better match the observed system behavior.
 
 # STEP 2B: Alternatively, you can define the objective directly
 # This is useful for simpler problems where you only need to extract something from the APSIM report table.
