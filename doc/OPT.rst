@@ -28,7 +28,7 @@ Demonstration
     from apsimNGpy.optimizer.single import ContinuousVariable, MixedVariable
     from apsimNGpy.core.apsim import ApsimModel
 
- .. admonition:: Explanation
+.. admonition:: Explanation
 
     * ``ApsimModel```: used to initialise apsim model and handles model simulation and editing
     * ``ContinuousVariable``: wraps your problem setup for continuous variables
