@@ -135,10 +135,10 @@ The manager script ``Simulations.Simulation.Field.Sow using a variable rule`` in
 
      problem.add_control(
         path='.Simulations.Simulation.Field.Fertilise at sowing', CultivarName= 'B_110',
-        Amount="?", bounds=[50, 300], v_type='int', start_value=150
-    )
+        Amount="?", bounds=[50, 300], v_type='int', start_value=150 )
 
- Run a local optimization solver. This is suitable for smooth problems and quick feedback.
+
+Run a local optimization solver. This is suitable for smooth problems and quick feedback.
 
 .. code-block:: python
 
