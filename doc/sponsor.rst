@@ -46,9 +46,6 @@ Lead Developer, apsimNGpy
 Thank you for using and supporting **apsimNGpy**!
 
 
-Support Me
-==========
-
 If you find apsimNGpy useful, consider buying me a coffee!
 
 .. image:: https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png
