@@ -30,7 +30,7 @@ How You Can Support
 
 💰 **Fund Development**
    - If you or your organization use apsimNGpy extensively, consider sponsoring development.
-   - For sponsorships or collaborative development opportunities, contact the maintainer directly.
+   - For sponsorships or collaborative development opportunities, contact me directly.
 
 Contact
 -------
