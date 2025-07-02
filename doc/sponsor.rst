@@ -43,10 +43,8 @@ Lead Developer, apsimNGpy
 
 ----
 
-Thank you for using and supporting **apsimNGpy**!
-
-
-If you find apsimNGpy useful, consider buying me a coffee!
+Thank you for using and supporting **apsimNGpy**! This software is completely free to use but it is powered by coffee.
+Therefore, if you find apsimNGpy useful, consider buying me a coffee!
 
 .. image:: https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png
    :target: https://buymeacoffee.com/magalarichn
