@@ -30,13 +30,13 @@ edit_method function signature
     ``**kwargs`` : dict, required
 
         - ``Weather``:
-            - ``weather_file`` (str): Path to the weather ``.met`` file.
+            ``weather_file`` (str): Path to the weather ``.met`` file.
 
         - ``Clock``:
-            - Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
+            Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
 
         - ``Manager``:
-            - Variables to update in the Manager script using `update_mgt_by_path`.
+            Variables to update in the Manager script using `update_mgt_by_path`.
             The parameters in a manager script are specific to each script. See :ref:`inspect_model_parameters:Inspect Model Parameters` for more details. for more details. for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
         - ``Physical | Chemical | Organic | Water:``
