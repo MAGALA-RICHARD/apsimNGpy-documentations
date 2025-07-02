@@ -1,3 +1,5 @@
+.. include:: sponsor.rst
+
 How to Cite apsimNGpy
 =====================
 
