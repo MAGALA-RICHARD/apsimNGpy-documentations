@@ -54,3 +54,4 @@ If you find apsimNGpy useful, consider buying me a coffee!
    :height: 40px
    :width: 170px
 
+.. include:: contribute.rst
