@@ -1,4 +1,4 @@
-Support Me
+Support apsimNGpy development
 ==========
 
 Your support helps make continued development of **apsimNGpy** possible.
