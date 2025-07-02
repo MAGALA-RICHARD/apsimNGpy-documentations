@@ -75,7 +75,6 @@ Built on object-oriented principles, it provides:
    weather
    OPT
    moo
-   decision_making
    how_to_cite
    api
 

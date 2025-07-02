@@ -1,3 +1,5 @@
+:caption: Model editing
+
 Editing Model Parameters
 ===========================================
 
