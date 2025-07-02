@@ -39,16 +39,16 @@ The following additional kwargs are specific to each each model type.
       As a caution if the length of the list supplied exceeds the available number of layers in the profile, a ``RuntimeError`` during model ``runs`` will be raised.
       It is possible to target a specific layer(s) by supplying the location of that layer(s) using ``indices`` key word argument, if there is a need to target the bottom layer, use ``indices  = [-1]``
 
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Soil Model Type  | **Supported key word arguments**                                                                                                     |
-+==================+======================================================================================================================================+
-| Physical         | AirDry, BD, DUL, DULmm, Depth, DepthMidPoints, KS, LL15, LL15mm, PAWC, PAWCmm, SAT, SATmm, SW, SWmm, Thickness, ThicknessCumulative  |
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Organic          | CNR, Carbon, Depth, FBiom, FInert, FOM, Nitrogen, SoilCNRatio, Thickness                                                             |
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Chemical         | Depth, PH, Thickness                                                                                                                 |
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-    - ``SurfaceOrganicMatter``
+    +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+    | Soil Model Type  | **Supported key word arguments**                                                                                                     |
+    +==================+======================================================================================================================================+
+    | Physical         | AirDry, BD, DUL, DULmm, Depth, DepthMidPoints, KS, LL15, LL15mm, PAWC, PAWCmm, SAT, SATmm, SW, SWmm, Thickness, ThicknessCumulative  |
+    +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+    | Organic          | CNR, Carbon, Depth, FBiom, FInert, FOM, Nitrogen, SoilCNRatio, Thickness                                                             |
+    +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+    | Chemical         | Depth, PH, Thickness                                                                                                                 |
+    +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+        - ``SurfaceOrganicMatter``
        - InitialCNR: (int)
        - InitialResidueMass (int)
 
