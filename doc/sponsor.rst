@@ -35,7 +35,7 @@ How You Can Support
 Contact
 -------
 
-For questions, funding opportunities, or collaborations, please contact:
+For questions or collaborations, please contact:
 
 **Dr. Richard Magala**
 Lead Developer, apsimNGpy
