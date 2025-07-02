@@ -1,6 +1,5 @@
-.. toctree::
-   :maxdepth: 4
-   :caption: Model Parameter Editing
+
+.. caption:: Model Parameter Editing
 
 Editing Model Parameters
 ===========================================
