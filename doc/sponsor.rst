@@ -18,7 +18,7 @@ How You Can Support
 
 🔧 **Contribute Code or Documentation**
    - We welcome pull requests that add features, fix bugs, or improve docs.
-   - See the `CONTRIBUTING.rst` file for guidelines.
+   - See the contributions guidelines below.
 
 📣 **Spread the Word**
    - Share apsimNGpy with colleagues and collaborators.
