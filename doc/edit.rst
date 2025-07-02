@@ -28,7 +28,7 @@ edit_method function signature
 
     ``**kwargs`` : dict, required
 
-        - ``Weather``: requires a ``weather_file`` (str) argument: Path to the weather ``.met`` file.
+        - ``Weather``: requires a ``weather_file`` (str) argument, describing path to the ``.met`` weather file.
 
         - ``Clock``: Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
 
