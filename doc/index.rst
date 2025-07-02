@@ -1,9 +1,5 @@
 .. apsimNGpy documentation master file.
 
-=======================
-apsimNGpy Documentation
-=======================
-
 apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 ================================================================
 
