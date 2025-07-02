@@ -42,19 +42,20 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :target: https://teams.live.com/l/community/FBAbNOQj7y9dPcoaAI
    :alt: Ask Teams
 
+.. admonition:: Introduction
 
-apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
-Built on object-oriented principles, it provides:
+   apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
+   Built on object-oriented principles, it provides:
 
-- Fast batch file simulation
-- Model prediction and evaluation
-- Seamless APSIMX file editing
-- APSIM template model inspection
-- Weather data retrieval
-- Efficient soil profile development
-- Parameter optimization (not yet on pipy). We expose a large number of local and global optimization algorithms, including genetic multi-objective optimizations ones
-- Global and local sensitivity analysis
-- Distributed computing framework.
+   - Fast batch file simulation
+   - Model prediction and evaluation
+   - Seamless APSIMX file editing
+   - APSIM template model inspection
+   - Weather data retrieval
+   - Efficient soil profile development
+   - Parameter optimization (not yet published on PyPI). apsimNNpy support a broad selection of local and global optimization methods., including genetic multi-objective optimizations.
+   - Global and local sensitivity analysis
+   - Distributed computing framework.
 
 .. automodule:: apsimNGpy
     :members:
