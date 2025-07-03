@@ -46,7 +46,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    - APSIM template model inspection
    - Weather data retrieval
    - Efficient soil profile development
-   - Parameter optimization (not yet published on PyPI). apsimNNpy support a broad selection of local and global optimization methods., including genetic multi-objective optimizations.
+   - Parameter optimization (not yet published on PyPI). apsimNGpy support a broad selection of local and global optimization methods., including genetic multi-objective optimizations.
    - Global and local sensitivity analysis
    - Distributed computing framework.
 
