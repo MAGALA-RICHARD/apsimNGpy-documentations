@@ -174,6 +174,7 @@ You can also change to another method;
     'SLSQP' – Sequential Least Squares Programming
 
     'trust-constr' – Trust-region constrained method
+
 .. admonition:: Explanation
 
     In this example, we use a **local optimization algorithm** to minimize the objective function defined in our custom `Problem` class. most local optimizers are generally efficient and fast, making them suitable for problems where:
@@ -214,6 +215,21 @@ In contrast, global optimizers like differential evolution (DE) are designed to 
         maxiter=100,
         polish=False  # Set to True if you want to refine with a local solver at the end
     )
+
+.. warning::
+
+   Optimization performance heavily depends on how well the objective function is designed. A poorly constructed objective function may lead to misleading results or failed convergence, regardless of the optimization algorithm used.
+
+   Be especially cautious when using gradient-based methods (e.g., ``BFGS``, ``L-BFGS-B``, ``SLSQP``), as they typically assume a smooth and differentiable objective surface. If your objective function is noisy, discontinuous, or based on simulations (such as APSIM), derivative-free methods like ``Powell``, ``Nelder-Mead``, or evolutionary algorithms (e.g., ``NSGA-II``) are often more appropriate.
+
+   Additionally, ensure that:
+
+   - The objective function returns **consistent numeric values** (e.g., `float`) without side effects.
+   - Constraints (if any) are correctly defined and numerically stable.
+   - Bounds on variables are appropriate and not overly restrictive.
+
+   Choosing the right algorithm is **not a guarantee** of good results—objective formulation, variable scaling, and domain understanding are equally critical to successful optimization.
+
 
 Mixed-Variable Optimization in apsimNGpy
 ============================================
