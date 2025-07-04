@@ -195,6 +195,8 @@ You can also change to another method;
         | trust-krylov     | Local (Gradient-based) | Yes               | No             | No                  | Trust-region, Hessian-free                   |
         +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
 
+For details about these algorithms, see the `minimize documentation <https://scipy.org/minimize>`_ for details.
+
 
 .. admonition:: Explanation
 
