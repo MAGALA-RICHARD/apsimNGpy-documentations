@@ -142,7 +142,7 @@ Run a local optimization solver. This is suitable for smooth problems and quick 
 
 .. code-block:: python
 
-    res_local = problem.minimize_with_alocal_solver(
+    res_local = problem.minimize_with_a_local_solver(
         method='Powell',
         options={
             'maxiter': 100,
@@ -160,7 +160,7 @@ Run a local optimization solver. This is suitable for smooth problems and quick 
 
     Here, the method used is ``'Powell'``, a **derivative-free** optimization algorithm that performs a directional search in successive, conjugate directions. It is robust for many types of problems, especially when gradient information is unavailable.
 
-The `minimize_with_alocal_solver()` method is a wrapper around `scipy.optimize.minimize`, making it easy to plug in a solver of your choice while passing solver-specific options.
+The `minimize_with_a_local_solver()` method is a wrapper around `scipy.optimize.minimize`, making it easy to plug in a solver of your choice while passing solver-specific options.
 
 
 When optimizing complex models such as APSIM simulations, the shape of the objective function surface can significantly impact the choice of optimization strategy.
@@ -262,7 +262,7 @@ You can then optimize this setup using either local or global solvers, as shown 
 
 
 Review optimization results
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
