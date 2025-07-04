@@ -161,7 +161,7 @@ You can also change to another method;
         }
     )
 
-✅ A wide range of optimization algorithms are shown in the table below;
+✅ A wide range of supported optimization algorithms are shown in the table below;
 
         +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
         | Method           | Type                   | Gradient Required | Handles Bounds | Handles Constraints | Notes                                        |
