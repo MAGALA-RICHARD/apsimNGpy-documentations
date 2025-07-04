@@ -161,19 +161,40 @@ You can also change to another method;
         }
     )
 
-✅ Other supported method options include but not limited to the following:
+✅ A wide range of optimization algorithms are shown in the table below;
 
-    'BFGS' – Gradient-based
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | Method           | Type                   | Gradient Required | Handles Bounds | Handles Constraints | Notes                                        |
+        +==================+========================+===================+================+=====================+==============================================+
+        | Nelder-Mead      | Local (Derivative-free)| No                | No             | No                  | Simplex algorithm                            |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | Powell           | Local (Derivative-free)| No                | Yes            | No                  | Direction set method                         |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | CG               | Local (Gradient-based) | Yes               | No             | No                  | Conjugate Gradient                           |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | BFGS             | Local (Gradient-based) | Yes               | No             | No                  | Quasi-Newton                                 |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | Newton-CG        | Local (Gradient-based) | Yes               | No             | No                  | Newton's method                              |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | L-BFGS-B         | Local (Gradient-based) | Yes               | Yes            | No                  | Limited memory BFGS                          |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | TNC              | Local (Gradient-based) | Yes               | Yes            | No                  | Truncated Newton                             |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | COBYLA           | Local (Derivative-free)| No                | No             | Yes                 | Constrained optimization by linear approx.   |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | SLSQP            | Local (Gradient-based) | Yes               | Yes            | Yes                 | Sequential Least Squares Programming         |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-constr     | Local (Gradient-based) | Yes               | Yes            | Yes                 | Trust-region constrained                     |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | dogleg           | Local (Gradient-based) | Yes               | No             | No                  | Requires Hessian                             |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-ncg        | Local (Gradient-based) | Yes               | No             | No                  | Newton-CG trust region                       |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-exact      | Local (Gradient-based) | Yes               | No             | No                  | Trust-region, exact Hessian                  |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-krylov     | Local (Gradient-based) | Yes               | No             | No                  | Trust-region, Hessian-free                   |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
 
-    'L-BFGS-B' – Handles bounds (useful for box-constrained problems)
-
-    'TNC' – Truncated Newton Conjugate-Gradient
-
-    'COBYLA' – Constraint optimization by linear approximation (good for nonlinear constraints)
-
-    'SLSQP' – Sequential Least Squares Programming
-
-    'trust-constr' – Trust-region constrained method
 
 .. admonition:: Explanation
 
