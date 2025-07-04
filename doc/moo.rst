@@ -6,7 +6,6 @@ In real-world agricultural systems, most objectives—such as maximizing crop yi
 This tutorial demonstrates how to perform multi-objective optimization on an APSIM Next Generation model using the apsimNGpy.optimizer.moo module. You will learn two ways to define decision variables and how to apply evolutionary algorithms via the pymoo library. This approach allows you to explore and analyze trade-offs among competing objectives, such as productivity and sustainability, in a robust and flexible way.
 
 
-
 .. admonition:: Prerequisites
 
     Make sure you have the following installed and configured:

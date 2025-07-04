@@ -149,6 +149,18 @@ Run a local optimization solver. This is suitable for smooth problems and quick 
             'disp': True
         }
     )
+You can also change to another method;
+
+.. code-block:: python
+
+    res_local = problem.minimize_with_a_local_solver(
+        method='Nelder-Mead',
+        options={
+            'maxiter': 100,
+            'disp': True
+        }
+    )
+
 
 .. admonition:: Explanation
 
