@@ -161,7 +161,19 @@ You can also change to another method;
         }
     )
 
+✅ Other supported method options include but not limited to the following:
 
+    'BFGS' – Gradient-based
+
+    'L-BFGS-B' – Handles bounds (useful for box-constrained problems)
+
+    'TNC' – Truncated Newton Conjugate-Gradient
+
+    'COBYLA' – Constraint optimization by linear approximation (good for nonlinear constraints)
+
+    'SLSQP' – Sequential Least Squares Programming
+
+    'trust-constr' – Trust-region constrained method
 .. admonition:: Explanation
 
     In this example, we use a **local optimization algorithm** to minimize the objective function defined in our custom `Problem` class. most local optimizers are generally efficient and fast, making them suitable for problems where:
