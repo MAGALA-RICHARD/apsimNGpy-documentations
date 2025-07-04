@@ -72,12 +72,17 @@ The following additional kwargs are specific to each each model type.
     ``NotImplementedError``
         If the logic for the specified `model_type` is not implemented.
 
-Quick Examples::
+Quick Examples:
 
+.. code-block:: python
+        print('start')
         from apsimNGpy.core.apsim import ApsimModel
         model = ApsimModel(model='Maize')
+        print(model)
 
-Edit a cultivar model::
+Edit a cultivar model:
+
+.. code-block:: python
 
     model.edit_model(
         model_type='Cultivar',
@@ -93,24 +98,33 @@ Edit a cultivar model::
     ``model_name: 'B_110'`` is an existing cultivar in the Maize Model, which we want to edit. Please note that editing a cultivar without specifying the  ``new_cultivar_name`` will throw a ``ValueError``.
     The name should be different to the the one being edited.
 
-Edit a soil organic matter module::
+Edit a soil organic matter module:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Organic',
         simulations='Simulation',
         model_name='Organic',
         Carbon=1.23)
 
-Edit multiple soil layers::
+Edit multiple soil layers:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Organic',
         simulations='Simulation',
         model_name='Organic',
         Carbon=[1.23, 1.0])
 
-Edit solute models::
+Edit solute models:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Solute',
         simulations='Simulation',
@@ -123,16 +137,22 @@ Edit solute models::
         model_name='Urea',
         InitialValues=0.002)
 
-Edit a manager script::
+Edit a manager script:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Manager',
         simulations='Simulation',
         model_name='Sow using a variable rule',
         population=8.4)
 
-Edit surface organic matter parameters::
+Edit surface organic matter parameters:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='SurfaceOrganicMatter',
         simulations='Simulation',
@@ -145,8 +165,11 @@ Edit surface organic matter parameters::
         model_name='SurfaceOrganicMatter',
         InitialCNR=85)
 
-Edit Clock start and end dates::
+Edit Clock start and end dates:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Clock',
         simulations='Simulation',
@@ -154,16 +177,22 @@ Edit Clock start and end dates::
         Start='2021-01-01',
         End='2021-01-12')
 
-Edit report variables::
+Edit report variables:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Report',
         simulations='Simulation',
         model_name='Report',
         variable_spec='[Maize].AboveGround.Wt as abw')
 
-Multiple report variables::
+Multiple report variables:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Report',
         simulations='Simulation',
@@ -178,6 +207,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
+   model = ApsimModel(model='Maize')
    model.edit_model_by_path(path, **kwargs)
 
 .. hint::
@@ -187,6 +217,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
+    model = ApsimModel(model='Maize')
     model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
 
 .. warning::
@@ -199,6 +230,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
+   model = ApsimModel(model='Maize')
    model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
    # outputs: Models.Manager
 
