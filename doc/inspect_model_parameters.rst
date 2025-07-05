@@ -71,8 +71,8 @@ Let's take a look at how it works.
 
 .. code-block:: python
 
-    from apsimNGpy.core import CoreModel
-    model_instance = CoreModel('Maize')
+    from apsimNGpy.core import ApsimModel
+    model_instance = ApsimModel('Maize')
 
 Inspect full soil ``Organic`` profile::
 

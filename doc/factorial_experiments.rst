@@ -30,6 +30,8 @@ Load the default maize simulations and initialize APSIM:
     _apsim = load_default_simulations(crop='Maize', simulations_object=False)
     # instantiate
     apsim = ApsimModel(_apsim)
+    # same as:
+    apsim  = ApsimModel('Maize)
 
 Create an experiment with permutation enabled:
 
@@ -78,7 +80,7 @@ Load the maize simulations again and initialize APSIM:
 .. code-block:: python
 
     _apsim = load_default_simulations(crop='Maize', simulations_object=False)
-    apsimC = APSIMNG(_apsim)
+    apsimC = ApsimModel(_apsim)
 
 Create an experiment with permutation enabled:
 
