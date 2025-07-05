@@ -8,9 +8,9 @@ Users can provide the ``report_name``, which specifies data table name from the 
 
 .. code-block:: python
 
-    from apsimNGpy.core import base_data
+    from apsimNGpy.core.apsim import ApsimModel
     # Option 1: Load default maize simulation
-    model = base_data.load_default_simulations(crop='maize')
+    model = ApsimModel(crop='Maize')
     # Run the simulation
     model.run(report_name='Report')
 
