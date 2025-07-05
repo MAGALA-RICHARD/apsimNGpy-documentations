@@ -20,7 +20,7 @@ You can either load a built-in template or use your own APSIM file.
 .. note::
 
    loading default simulations while using ``ApsimModel`` requires only the name of the default template model without the suffix: ``.apsimx`` these templates are stored in '../Examples' folder.
-   Available models at the time of this writing include the followings;
+   Available models at the time of this writing are shown in the list below. The highlighted names are those that can be passed to ``ApsimModel(model=...)`` to load the corresponding default model.
      - 'UnderReview/SoilTemperature/``SoilTemperature``.apsimx',
      - 'UnderReview/SoilTemperature/``SoilTemperatureExample``.apsimx',
      - 'Examples/``RedClover``.apsimx',
