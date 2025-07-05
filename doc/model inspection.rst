@@ -115,9 +115,10 @@ Try finding path to the cultivar model::
 
     from apsimNGpy import core
     from apsimNGpy.core.core import Models
+    from apsimNGpy.core.apsim import ApsimModel
 
     # Load the default maize simulation
-    model = core.base_data.load_default_simulations(crop="Maize")
+    model = ApsimModel(model= 'Maize')
 
     # Inspect or find specific components
     model.find_model("Weather")
