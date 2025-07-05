@@ -18,10 +18,6 @@ Let's take a look at how it works.
 
 load default ``maize`` module::
 
-    model = base_data.load_default_simulations(crop ='maize')
-
-Same as::
-
     model = ApsimModel(model= 'Maize')
 
 
