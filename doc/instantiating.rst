@@ -69,18 +69,18 @@ You can either load a built-in template or use your own APSIM file.
      - 'Examples/Tutorials/ExcelDataExample.apsimx',
      - 'Examples/Tutorials/EventPublishSubscribe.apsimx',
      - 'Examples/Tutorials/PredictedObserved.apsimx',
-     'Examples/Tutorials/Sensitivity_SobolMethod.apsimx',
-     'Examples/Tutorials/SWIM.apsimx',
-     'Examples/Tutorials/Report.apsimx',
-     'Examples/Tutorials/PropertyUI.apsimx',
-     'Examples/Tutorials/Sensitivity_FactorialANOVA.apsimx',
-     'Examples/Tutorials/Sensitivity_MorrisMethod.apsimx',
-     'Examples/Tutorials/Manager.apsimx',
-     'Examples/Tutorials/Lifecycle/lifecycle.apsimx',
-     'Examples/CLEM/CLEM_Sensibility_HerdManagement.apsimx',
-     'Examples/CLEM/CLEM_Example_Grazing.apsimx',
-     'Examples/CLEM/CLEM_Example_Cropping.apsimx',
-     'Examples/Optimisation/CroptimizRExample.apsimx']
+     - 'Examples/Tutorials/Sensitivity_SobolMethod.apsimx',
+     - 'Examples/Tutorials/SWIM.apsimx',
+     - 'Examples/Tutorials/Report.apsimx',
+     - 'Examples/Tutorials/PropertyUI.apsimx',
+     - 'Examples/Tutorials/Sensitivity_FactorialANOVA.apsimx',
+     - 'Examples/Tutorials/Sensitivity_MorrisMethod.apsimx',
+     - 'Examples/Tutorials/Manager.apsimx',
+     - 'Examples/Tutorials/Lifecycle/lifecycle.apsimx',
+     - 'Examples/CLEM/CLEM_Sensibility_HerdManagement.apsimx',
+     - 'Examples/CLEM/CLEM_Example_Grazing.apsimx',
+     - 'Examples/CLEM/CLEM_Example_Cropping.apsimx',
+     - 'Examples/Optimisation/CroptimizRExample.apsimx'
 
 .. Hint::
 
