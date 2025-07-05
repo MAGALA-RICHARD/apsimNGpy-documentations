@@ -50,7 +50,7 @@ You can either load a built-in template or use your own APSIM file.
      - 'Examples/Maize.apsimx',
      - 'Examples/EucalyptusRotation.apsimx',
      - 'Examples/CsvWeather.apsimx',
-     - 'Examples/Oats.apsimx',
+     - 'Examples/``Oats``.apsimx',
      - 'Examples/CanolaGrazing.apsimx',
      - 'Examples/Wheat.apsimx',
      - 'Examples/Grapevine.apsimx',
