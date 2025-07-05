@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support apsimNGpy development &mdash; apsimNGpy 0.32 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f60b3db5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="apsimNGpy: API Reference" href="api.html" />
+    <link rel="prev" title="Multi-Objective Optimization with apsimNGpy" href="moo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#quick-guides">Quick guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#locating-the-apsim-binaries">Locating the APSIM Binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#changing-setting-the-apsim-installation-binaries-path">Changing/setting the APSIM installation binaries path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <cite>apsimNGpy</cite> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-Line Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OPT.html">Single-Objective Optimization with apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OPT.html#mixed-variable-optimization-in-apsimngpy">Mixed-Variable Optimization in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Support apsimNGpy development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-you-can-support">How You Can Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contact">Contact</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-contribute-to-apsimngpy">How to Contribute to apsimNGpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-issues">Reporting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-code">Contributing Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-documentation">Updating Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-your-pull-request-or-your-contribution">Testing your pull request or your contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimmodel">ApsimModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#contvarproblem">ContVarProblem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#coremodel">CoreModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#modeltools">ModelTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-base-data">apsimNGpy.core.base_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-load-model">apsimNGpy.core.load_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-runner">apsimNGpy.core.runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-utils-database-utils">apsimNGpy.core_utils.database_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-soilmanager">apsimNGpy.manager.soilmanager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-weathermanager">apsimNGpy.manager.weathermanager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-parallel-process">apsimNGpy.parallel.process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-validation-evaluator">apsimNGpy.validation.evaluator</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Support apsimNGpy development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/how_to_cite.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="support-apsimngpy-development">
+<h1>Support apsimNGpy development<a class="headerlink" href="#support-apsimngpy-development" title="Link to this heading"></a></h1>
+<p>Your support helps make continued development of <strong>apsimNGpy</strong> possible.</p>
+<p>Whether you’re using this library for your research, in production systems, or as a learning tool, there are several ways you can contribute to sustaining and improving the project.</p>
+<section id="how-you-can-support">
+<h2>How You Can Support<a class="headerlink" href="#how-you-can-support" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>⭐ <strong>Star the Repository</strong></dt><dd><ul class="simple">
+<li><p>Show your appreciation by starring the project on GitHub.</p></li>
+<li><p>It helps others discover the project and signals its value to the community.</p></li>
+</ul>
+</dd>
+<dt>🐛 <strong>Report Issues and Suggest Features</strong></dt><dd><ul class="simple">
+<li><p>Found a bug or have a feature request? Open an issue on GitHub.</p></li>
+<li><p>Feedback from users helps us improve usability and functionality.</p></li>
+</ul>
+</dd>
+<dt>🔧 <strong>Contribute Code or Documentation</strong></dt><dd><ul class="simple">
+<li><p>We welcome pull requests that add features, fix bugs, or improve docs.</p></li>
+<li><p>See the contributions guidelines below.</p></li>
+</ul>
+</dd>
+<dt>📣 <strong>Spread the Word</strong></dt><dd><ul class="simple">
+<li><p>Share apsimNGpy with colleagues and collaborators.</p></li>
+<li><p>Citing the project in your publications also helps increase visibility.</p></li>
+</ul>
+</dd>
+<dt>💬 <strong>Engage with the Community</strong></dt><dd><ul class="simple">
+<li><p>Join the discussions on GitHub or open a topic for Q&amp;A and support.</p></li>
+<li><p>Community involvement makes open source projects thrive.</p></li>
+</ul>
+</dd>
+<dt>💰 <strong>Fund Development</strong></dt><dd><ul class="simple">
+<li><p>If you or your organization use apsimNGpy extensively, consider sponsoring development.</p></li>
+<li><p>For sponsorships or collaborative development opportunities, see contacts below.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading"></a></h2>
+<p>For questions or collaborations, please contact:</p>
+<p><strong>Dr. Richard Magala</strong>
+Lead Developer, apsimNGpy
+📧 <em>[rmagala640&#64;gmail.com]</em></p>
+<hr class="docutils" />
+<p>Thank you for using and supporting <strong>apsimNGpy</strong>! This software is completely free to use but it is powered by coffee.
+Therefore, if you find apsimNGpy useful, consider buying me a coffee!</p>
+<a class="reference external image-reference" href="https://buymeacoffee.com/magalarichn"><img alt="Buy Me a Coffee" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" style="width: 170px; height: 40px;" />
+</a>
+<section id="how-to-contribute-to-apsimngpy">
+<h3>How to Contribute to apsimNGpy<a class="headerlink" href="#how-to-contribute-to-apsimngpy" title="Link to this heading"></a></h3>
+<p>We welcome contributions from the community, whether they are bug fixes, enhancements, documentation updates, or new features. Here’s how you can contribute to <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code>:</p>
+</section>
+</section>
+<section id="reporting-issues">
+<h2>Reporting Issues<a class="headerlink" href="#reporting-issues" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>apsimNGpy is developed and maintained by a dedicated team of volunteers. We kindly ask that you adhere to our community standards when engaging with the project. Please maintain a respectful tone when reporting issues or interacting with community members.</p>
+</div>
+<p>If you find a bug or have a suggestion for improving <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code>, please first check the <a class="reference external" href="https://github.com/MAGALA-RICHARD/apsimNGpy/issues">Issue Tracker</a> to see if it has already been reported. If it hasn’t, feel free to submit a new issue. Please provide as much detail as possible, including steps to reproduce the issue, the expected outcome, and the actual outcome.</p>
+</section>
+<section id="contributing-code">
+<h2>Contributing Code<a class="headerlink" href="#contributing-code" title="Link to this heading"></a></h2>
+<p>We accept code contributions via Pull Requests (PRs). Here are the steps to contribute:</p>
+<p>Start by forking the <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> repository on GitHub. This creates a copy of the repo under your GitHub account.</p>
+<p>Clone your fork to your local machine:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/MAGALA-RICHARD/apsimNGpy.git
+<span class="nb">cd</span><span class="w"> </span>apsimNGpy
+</pre></div>
+</div>
+</div></blockquote>
+<dl>
+<dt>Create a New Branch</dt><dd><p>Create a new branch for your changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>your-branch-name
+</pre></div>
+</div>
+</dd>
+<dt>Make Your Changes</dt><dd><p>Make the necessary changes or additions to the codebase. Please try to adhere to the coding style already in place.</p>
+</dd>
+<dt>Test Your Changes</dt><dd><p>Run any existing tests, and add new ones if necessary, to ensure your changes do not break existing functionality.</p>
+</dd>
+<dt>Commit Your Changes</dt><dd><p>Commit your changes with a clear commit message that explains what you’ve done:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;A brief explanation of your changes&quot;</span>
+</pre></div>
+</div>
+</dd>
+<dt>Push to GitHub</dt><dd><p>Push your changes to your fork on GitHub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>your-branch-name
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Submit a Pull Request
+Go to the <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> repository on GitHub, and you’ll see a prompt to submit a pull request based on your branch. Click on “Compare &amp; pull request” and describe the changes you’ve made. Finally, submit the pull request.</p>
+</section>
+<section id="updating-documentation">
+<h2>Updating Documentation<a class="headerlink" href="#updating-documentation" title="Link to this heading"></a></h2>
+<p>Improvements or updates to documentation are greatly appreciated. You can submit changes to documentation with the same process used for code contributions.</p>
+</section>
+<section id="testing-your-pull-request-or-your-contribution">
+<h2>Testing your pull request or your contribution<a class="headerlink" href="#testing-your-pull-request-or-your-contribution" title="Link to this heading"></a></h2>
+<p>After making any code improvements, it is important to ensure that all modules are still working correctly. This calls for an explicit test of the added code changes.</p>
+<p><cite>apsimNGpy</cite> tests are implemented via Python’s <code class="docutils literal notranslate"><span class="pre">unittest</span></code> module. We provide a testing framework as shown below.</p>
+<p>First, navigate to your <cite>apsimNGpy</cite> repository or the directory containing <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> in your terminal, and run the following command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>  <span class="c1"># Installs apsimNGpy as an editable package, enabling direct imports</span>
+                <span class="c1">#and reflecting code changes without re-installation</span>
+</pre></div>
+</div>
+<p>Import the necessary modules as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">apsimNGpy.tests.tester_main</span> <span class="kn">import</span> <span class="n">suite</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">run_suite</span>
+<span class="kn">from</span> <span class="nn">apsimNGpy.core.base_data</span> <span class="kn">import</span> <span class="n">load_default_simulations</span>
+</pre></div>
+</div>
+<p>Set up the test and add any test case as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TestCaseAddModule</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="c1"># Set up the model to use</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">load_default_simulations</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;test_edit_model.apsimx&#39;</span>
+
+    <span class="c1"># Add test case</span>
+    <span class="k">def</span> <span class="nf">test_add_crop_replacement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;+++test adding crop replacement++&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add_crop_replacements</span><span class="p">(</span><span class="n">_crop</span><span class="o">=</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">create_experiment</span><span class="p">(</span><span class="n">permutation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, run the test suite. It is recommended to use the <code class="docutils literal notranslate"><span class="pre">run_suite</span></code> method, which executes all registered tests and ensures that dependent modules are functioning correctly. You may need to add your test case before running</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">suite</span><span class="o">.</span><span class="n">addTests</span><span class="p">(</span><span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromTestCase</span><span class="p">(</span><span class="n">TestCaseAddModule</span><span class="p">))</span>
+    <span class="n">run_suite</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="how-to-cite-apsimngpy">
+<h1>How to Cite apsimNGpy<a class="headerlink" href="#how-to-cite-apsimngpy" title="Link to this heading"></a></h1>
+<p>If you use this software, please cite it as below:</p>
+<p><strong>Citation:</strong></p>
+<p>Magala, R. (2025). <em>apsimNGpy: A Python package for running APSIM Next Generation in Python environment</em>. Version 0.39.3, Released on 2025-06-13.
+URL: <a class="reference external" href="https://github.com/MAGALA-RICHARD/apsimNGpy.git">https://github.com/MAGALA-RICHARD/apsimNGpy.git</a></p>
+<p><strong>BibTeX format:</strong></p>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@misc</span><span class="p">{</span><span class="nl">apsimNGpy</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">{Richard Magala}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">{apsimNGpy: A Python package for running APSIM Next Generation in Python environment}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">{2025}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">version</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{0.39.3}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">howpublished</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{\url{https://github.com/MAGALA-RICHARD/apsimNGpy.git}}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">note</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">{If you use this software, please cite it.}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="moo.html" class="btn btn-neutral float-left" title="Multi-Objective Optimization with apsimNGpy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="apsimNGpy: API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, richard magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
