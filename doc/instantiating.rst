@@ -67,7 +67,7 @@ You can either load a built-in template or use your own APSIM file.
      - 'Examples/Tutorials/``Memo``.apsimx',
      - 'Examples/Tutorials/``ClimateController``.apsimx',
      - 'Examples/Tutorials/``ExcelDataExample``.apsimx',
-     - 'Examples/Tutorials/EventPublishSubscribe.apsimx',
+     - 'Examples/Tutorials/``EventPublishSubscribe``.apsimx',
      - 'Examples/Tutorials/``PredictedObserved``.apsimx',
      - 'Examples/Tutorials/``Sensitivity_SobolMethod``.apsimx',
      - 'Examples/Tutorials/``SWIM``.apsimx',
