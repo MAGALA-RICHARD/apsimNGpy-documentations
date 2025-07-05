@@ -321,7 +321,7 @@ You can then optimize this setup using either local or global solvers, as shown 
 
 .. hint::
 
-    You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial.
+    You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial. The inheritance from the MixedVariable is still the same as above
 
 
 Review optimization results
