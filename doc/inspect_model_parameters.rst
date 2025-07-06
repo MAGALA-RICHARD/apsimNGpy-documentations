@@ -367,6 +367,16 @@ Inspect ``Sow using a variable rule`` manager module parameters
      model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule')
 
      # output
+     {'Crop': 'Maize',
+     'StartDate': '1-nov',
+     'EndDate': '10-jan',
+     'MinESW': '100.0',
+     'MinRain': '25.0',
+     'RainDays': '7',
+     'CultivarName': 'Dekalb_XL82',
+     'SowingDepth': '30.0',
+     'RowSpacing': '750.0',
+     'Population': '10'}
 
 
 
