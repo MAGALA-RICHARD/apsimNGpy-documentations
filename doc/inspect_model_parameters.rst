@@ -326,7 +326,9 @@ Example::
         """
 
 .. tip::
-   The major challenge with inspect_model_parameters
+
+   The major challenge with inspect_model_parameters is that it is too verbose, so, ``inspect_model_parameters_by_path`` solves this pr
+
 .. admonition:: GUI Simulation Preview.
 
      If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
