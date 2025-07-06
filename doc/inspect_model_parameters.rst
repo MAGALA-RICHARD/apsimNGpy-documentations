@@ -330,10 +330,12 @@ Example::
    The major challenge with inspect_model_parameters is that it is too verbose, so, ``inspect_model_parameters_by_path`` solves this problem. All that is needed is the path and parameters to be inspected. like in ``inspect_model_parameters``,
    parameters are optional.
 
+Inspect surface organic matter module parameters
 .. code-block:: python
 
    model = ApsimModel('Maize')
    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
+   # out put
     {'InitialCPR': 0.0,
      'InitialCNR': 100.0,
      'NH4': 0.0,
@@ -347,6 +349,15 @@ Example::
      'StandingWt': 0.0,
      'C': 0.0,
      'P': 0.0}
+
+Inspect surface organic matter module parameters by selecting a few parameters
+
+.. code-block:: python
+
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
+    # output
+    {'InitialCNR': 100.0}
+
 
 .. admonition:: GUI Simulation Preview.
 
