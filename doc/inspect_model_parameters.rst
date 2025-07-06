@@ -331,6 +331,7 @@ Example::
    parameters are optional.
 
 Inspect surface organic matter module parameters
+
 .. code-block:: python
 
    model = ApsimModel('Maize')
