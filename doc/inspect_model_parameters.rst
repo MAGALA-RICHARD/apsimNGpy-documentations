@@ -333,7 +333,7 @@ Example::
 
    As with ``inspect_model_parameters``, the parameters argument is optional—if not provided, the method will attempt to extract all available parameters from the model at the given path.
 
-Inspect surface organic matter module parameters
+Inspect ``SurfaceOrganicMatter`` module parameters
 
 .. code-block:: python
 
