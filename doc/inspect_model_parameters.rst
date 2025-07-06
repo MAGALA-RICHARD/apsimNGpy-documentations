@@ -327,7 +327,10 @@ Example::
 
 .. tip::
 
-   The major challenge with inspect_model_parameters is that it is too verbose, so, ``inspect_model_parameters_by_path`` solves this pr
+   The major challenge with inspect_model_parameters is that it is too verbose, so, ``inspect_model_parameters_by_path`` solves this problem. All that is needed is the path and parameters to be inspected. like in ``inspect_model_parameters``,
+   parameters are optional.
+
+.. co
 
 .. admonition:: GUI Simulation Preview.
 
