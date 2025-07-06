@@ -259,6 +259,8 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation',
         model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
+
+        # output
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
 .. caution::
