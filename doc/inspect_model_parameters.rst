@@ -359,6 +359,9 @@ Inspect surface organic matter module parameters by selecting a few parameters
     {'InitialCNR': 100.0}
 
 
+Inspect surface organic matter module parameters by selecting a few parameters
+
+
 .. admonition:: GUI Simulation Preview.
 
      If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
