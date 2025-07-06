@@ -389,6 +389,13 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
     # output
     {'Population': '10'}
 
+.. tip::
+
+   Getting model path can be done in three ways:
+   1. Use ``model.inspect_file`` method
+   2. Use ``model.inspect_model(model_type =...)``
+   3. Use ``copy node path`` method in the graphical user interface
+
 .. admonition:: GUI Simulation Preview.
 
      If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
