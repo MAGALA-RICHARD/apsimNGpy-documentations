@@ -358,9 +358,24 @@ Inspect surface organic matter module parameters by selecting a few parameters
     # output
     {'InitialCNR': 100.0}
 
+Inspect ``Sow using a variable rule`` manager module parameters
 
-Inspect surface organic matter module parameters by selecting a few parameters
+.. code-block:: python
 
+     model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule')
+
+     # output
+
+
+
+
+Inspect ``Sow using a variable rule`` manager module parameters by selecting a few parameters
+
+.. code-block:: python
+
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule', parameters= 'Population')
+    # output
+    {'Population': '10'}
 
 .. admonition:: GUI Simulation Preview.
 
