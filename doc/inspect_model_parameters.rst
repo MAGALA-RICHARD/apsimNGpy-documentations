@@ -335,8 +335,9 @@ Inspect surface organic matter module parameters
 
    model = ApsimModel('Maize')
    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
-   # out put
-    {'InitialCPR': 0.0,
+   # output
+
+   {'InitialCPR': 0.0,
      'InitialCNR': 100.0,
      'NH4': 0.0,
      'NO3': 0.0,
