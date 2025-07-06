@@ -241,6 +241,8 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         simulations='Simulation', model_name='SurfaceOrganicMatter')
+
+        # output
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
          'StandingWt': 0.0,
@@ -273,12 +275,16 @@ Example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='End')
+
+        # output
         datetime.datetime(2000, 12, 31, 0, 0)
 
 Extract ``Start`` year only. let's see with ``start`` year as an example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='Start').year
+
+        # output
         1990
 
 Extract  ``End`` year only::
