@@ -330,7 +330,23 @@ Example::
    The major challenge with inspect_model_parameters is that it is too verbose, so, ``inspect_model_parameters_by_path`` solves this problem. All that is needed is the path and parameters to be inspected. like in ``inspect_model_parameters``,
    parameters are optional.
 
-.. co
+.. code-block:: python
+
+   model = ApsimModel('Maize')
+   model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
+    {'InitialCPR': 0.0,
+     'InitialCNR': 100.0,
+     'NH4': 0.0,
+     'NO3': 0.0,
+     'Cover': 0.0,
+     'LabileP': 0.0,
+     'N': 0.0,
+     'SurfOM': <System.Collections.Generic.List[SurfOrganicMatterType] object at 0x1ae5c10c0>,
+     'InitialResidueMass': 500.0,
+     'LyingWt': 0.0,
+     'StandingWt': 0.0,
+     'C': 0.0,
+     'P': 0.0}
 
 .. admonition:: GUI Simulation Preview.
 
