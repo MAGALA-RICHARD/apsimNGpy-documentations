@@ -327,8 +327,11 @@ Example::
 
 .. tip::
 
-   The major challenge with inspect_model_parameters is that it is too verbose, so, ``inspect_model_parameters_by_path`` solves this problem. All that is needed is the path and parameters to be inspected. like in ``inspect_model_parameters``,
-   parameters are optional.
+   The primary limitation of inspect_model_parameters is its verbosity—it often requires passing ``model_type, model_name`` and ``model_simulation`` or navigating deeply nested structures.
+
+   The inspect_model_parameters_by_path method addresses this by allowing users to simply specify the path to the model component and (optionally) the parameters to inspect. This makes the API more concise and user-friendly.
+
+   As with inspect_model_parameters, the parameters argument is optional—if not provided, the method will attempt to extract all available parameters from the model at the given path.
 
 Inspect surface organic matter module parameters
 
