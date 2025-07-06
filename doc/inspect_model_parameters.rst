@@ -292,12 +292,16 @@ Example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='end_date')
+
+        # output
         datetime.datetime(2000, 12, 31, 0, 0)
 
 
 # Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``::
 
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
+
+        # output
                Depth  InitialValues  SoluteBD  Thickness
         0      0-150            0.0  1.010565      150.0
         1    150-300            0.0  1.071456      150.0
@@ -315,6 +319,9 @@ Example::
 
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
         parameters='InitialValues')
+
+        # output
+
             InitialValues
         0            0.1
         1            0.1
