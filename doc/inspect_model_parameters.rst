@@ -77,6 +77,8 @@ Let's take a look at how it works.
 Inspect full soil ``Organic`` profile::
 
         model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
+
+        # output
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
         0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
         1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
@@ -92,6 +94,8 @@ Inspect full soil ``Organic`` profile::
 Inspect soil ``Physical`` profile::
 
         model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
+
+        # output
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
         0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
         1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
@@ -105,6 +109,8 @@ Inspect soil ``Physical`` profile::
 Inspect soil ``Chemical`` profile::
 
         model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
+
+        # output
                Depth   PH  Thickness
         0      0-150  8.0      150.0
         1    150-300  8.0      150.0
@@ -158,6 +164,8 @@ Inspect ``Report`` model attributes.
 .. code-block:: python
 
         model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
+
+        # output
         {'EventNames': ['[Maize].Harvesting'],
         'VariableNames': ['[Clock].Today',
         '[Maize].Phenology.CurrentStageName',
@@ -172,6 +180,8 @@ Inspect ``Report`` model attributes.
         '[Maize].Total.Wt']}
 
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
+
+        # output
         {'EventNames': ['[Maize].Harvesting']}
 
 Inspect  ``Weather`` path
@@ -182,6 +192,8 @@ Inspect  ``Weather`` path
 .. code-block:: python
 
         model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
+
+        # output
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
 Inspect ``Manager`` script parameters.
@@ -193,6 +205,8 @@ Inspect ``Manager`` script parameters.
 
         model_instance.inspect_model_parameters('Manager',
         simulations='Simulation', model_name='Sow using a variable rule')
+
+        # output
         {'Crop': 'Maize',
         'StartDate': '1-nov',
         'EndDate': '10-jan',
@@ -212,12 +226,16 @@ Inspect ``Manager`` script parameters.
         model_instance.inspect_model_parameters('Manager',
         simulations='Simulation', model_name='Sow using a variable rule',
         parameters='Population')
+
+        # output
         {'Population': '10'}
 
 Inspect ``Cultivar`` parameters::
 
         model_instance.inspect_model_parameters('Cultivar',
         simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
+
+        # output
         {'[Phenology].Juvenile.Target.FixedValue': '210',
         '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
         '[Phenology].Photosensitive.Target.XYPairs.Y': '0, 0, 0',
@@ -230,6 +248,8 @@ Inspect ``Cultivar`` parameters::
 
         >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
+
+        # output
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
 .. caution::
