@@ -64,7 +64,6 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    model inspection
    inspect_model_parameters
    edit
-   cli
    factorial_experiments
    weather
    OPT
