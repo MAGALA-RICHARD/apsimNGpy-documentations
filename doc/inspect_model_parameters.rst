@@ -329,7 +329,7 @@ Example::
 
    The primary limitation of inspect_model_parameters is its verbosity—it often requires passing ``model_type, model_name`` and ``model_simulation`` or navigating deeply nested structures.
 
-   The inspect_model_parameters_by_path method addresses this by allowing users to simply specify the path to the model component and (optionally) the parameters to inspect. This makes the API more concise and user-friendly.
+   The ``inspect_model_parameters_by_path`` method addresses this verbosity problem by allowing users to simply specify the path to the model component and (optionally) the parameters to inspect. This makes the API more concise and user-friendly.
 
    As with inspect_model_parameters, the parameters argument is optional—if not provided, the method will attempt to extract all available parameters from the model at the given path.
 
