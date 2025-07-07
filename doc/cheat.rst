@@ -147,6 +147,7 @@ Most of the time, when modifying model parameters and values, you need the full 
 Finding the path to the manager modules
 
 .. code-block:: python
+
     model.inspect_model('Models.Manager', fullpath=True)
 
 Output
