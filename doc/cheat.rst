@@ -542,58 +542,87 @@ Getting results
     print(problem)
 
 Multi-Objective Optimization with apsimNGpy
+
 In real-world agricultural systems, most objectives — such as maximizing crop yield while minimizing environmental impact — are inherently conflicting. These trade-offs cannot be effectively addressed using single-objective optimization algorithms, which are limited to optimizing one goal at a time. Fortunately, multi-objective optimization algorithms inspired by evolutionary principles are well-suited to handle such complexity by exploring a range of trade-offs between competing objectives.
 
-from apsimNGpy.optimizer.moo import MultiObjectiveProblem, compute_hyper_volume, NSGA2
-from pymoo.optimize import minimize
-import matplotlib.pyplot as plt
-from apsimNGpy.core.apsim import ApsimModel as Runner
-Interpretation
-Runner`: handles model simulation and editing. It is an apsimNGpy class
-MultiObjectiveProblem: wraps your problem into a multi-objective one
-NSGA2: a multi-objective genetic algorithm
-minimize: will be used to minimize the objectives in the finals steps
+.. code-block:: python
+
+   from apsimNGpy.optimizer.moo import MultiObjectiveProblem, compute_hyper_volume, NSGA2,  minimize
+    import matplotlib.pyplot as plt
+    from apsimNGpy.core.apsim import ApsimModel as Runner
+
+.. admonition:: Interpretation
+
+    ``Runner`: handles model simulation and editing. It is an apsimNGpy class.
+
+    ``MultiObjectiveProblem``: wraps your problem into a multi-objective one.
+
+    ``NSGA2``: a multi-objective genetic algorithm.
+
+    ``minimize``: will be used to minimize the objectives in the finals steps.
+
 Initialize the APSIM model runner
-runner = Runner("Maize")
-runner.add_report_variable('[Soil].Nutrient.NO3.kgha[1] as nitrate', report_name='Report')
+
+    runner = Runner("Maize")
+    runner.add_report_variable('[Soil].Nutrient.NO3.kgha[1] as nitrate', report_name='Report')
+
 Defining Objective Functions
+
 Objective functions take APSIM output (as a DataFrame) and return scalar values.
 
-def maximize_yield(df):
-    return -df['Yield'].mean()
+.. code-block:: python
 
-def minimize_nitrate_leaching(df):
-    return df['nitrate'].sum()
+    def maximize_yield(df):
+        return -df['Yield'].mean()
+
+    def minimize_nitrate_leaching(df):
+        return df['nitrate'].sum()
+
 Defining decision variables
-use a list of dicts
-decision_vars = [
-    {'path': '.Simulations.Simulation.Field.Fertilise at sowing',
-     'Amount': "?", 'bounds': [50, 300], 'v_type': 'float'},
 
-    {'path': '.Simulations.Simulation.Field.Sow using a variable rule',
-     'Population': "?", 'bounds': [4, 14], 'v_type': 'float'}
-]
+use a list of dicts
+
+.. code-block:: python
+
+        decision_vars = [
+            {'path': '.Simulations.Simulation.Field.Fertilise at sowing',
+             'Amount': "?", 'bounds': [50, 300], 'v_type': 'float'},
+
+            {'path': '.Simulations.Simulation.Field.Sow using a variable rule',
+             'Population': "?", 'bounds': [4, 14], 'v_type': 'float'}
+        ]
 
 # Then, initialise the problem
-problem = MultiObjectiveProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching], decision_vars=decision_vars)
+
+.. code-block:: python
+
+    problem = MultiObjectiveProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching], decision_vars=decision_vars)
+
 Each dictionary defines:
 
-path: the APSIM model path to the component.
-Amount / Population: the parameter to be optimized (denoted by ‘?’).
-bounds: lower and upper bounds for the optimizer.
-v_type: variable type.
+``path``: the APSIM model path to the component.
+
+``Amount / Population``: the parameter to be optimized (denoted by ‘?’).
+
+``bounds``: lower and upper bounds for the optimizer.
+
+``v_type``: variable type.
+
 2. Add the decision variables after problem initialization
 
 # Initialise the problem
-problem = MultiObjectiveProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching])
 
-problem.add_control(
-    path='.Simulations.Simulation.Field.Fertilise at sowing',
-    Amount='?', bounds=[50, 300], v_type='float')
+.. code-block::
 
-problem.control(
-    path='.Simulations.Simulation.Field.Sow using a variable rule',
-    Population='?', bounds=[4, 14], v_type='float')
+    problem = MultiObjectiveProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching])
+
+    problem.add_control(
+        path='.Simulations.Simulation.Field.Fertilise at sowing',
+        Amount='?', bounds=[50, 300], v_type='float')
+
+    problem.control(
+        path='.Simulations.Simulation.Field.Sow using a variable rule',
+        Population='?', bounds=[4, 14], v_type='float')
 Run the NSGA-II optimizer
 algorithm = NSGA2(pop_size=20)
 
