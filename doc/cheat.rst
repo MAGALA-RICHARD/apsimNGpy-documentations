@@ -96,9 +96,13 @@ Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
 
 2. Load the model from a file on the computer disk
 
-from apsimNGpy.core.apsim import ApsimModel
-model = ApsimModel(model='./Maize.apsimx', out_path = './maize.apsimx')
+.. code-block:: python
+    from apsimNGpy.core.apsim import ApsimModel
+    model = ApsimModel(model='./Maize.apsimx', out_path = './maize.apsimx')
+
 Running loaded models
+
+.. code-block:: python
 from apsimNGpy.core.apsim import ApsimModel
 model = ApsimModel('Pinus')
 model.run()
