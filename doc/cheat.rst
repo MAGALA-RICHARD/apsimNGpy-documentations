@@ -414,52 +414,81 @@ Running the experiment is the same as running the ordinary model
     df[['population']] = pd.Categorical(['Population'])
     sns.catplot(x='Nitrogen', y='Yield', hue='Population', data=df, kind='box')
     plt.show()
+
 If the factors are associated with cultivar, then you need to add a crop replacement
 
-model.add_crop_replacements(_crop='Maize')
-# Create experiment as above
-model.create_experiment(permutation=True, verbose=False)
+.. code-block:: python
+
+    model.add_crop_replacements(_crop='Maize')
+
+Create experiment as above
+
+.. code-block:: python
+
+    model.create_experiment(permutation=True, verbose=False)
+
 Replacing the weather data
-# replace the weather with lonlat specification as follows;
-maize_model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
+# replace the weather with lonlat specification as follows:
+
+.. code-block:: python
+
+    maize_model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
+
+
 Using local weather data on the computer disk
-maize_model.replace_met_file(weather_file = './pathtotheeatherfile')
+
+.. code-block:: python
+
+    maize_model.replace_met_file(weather_file = './pathtotheeatherfile')
+
 Single-Objective Optimization with apsimNGpy
 from apsimNGpy.optimizer.single import ContinuousVariable, MixedVariable
 from apsimNGpy.core.apsim import ApsimModel
 Explanation
 
-ApsimModel`: used to initialize the apsim model and handles model simulation and editing
-ContinuousVariable: wraps your problem setup for continuous variables
-MixedVariable: wraps your problem setup for mixed variables
+``ApsimModel``: used to initialize the apsim model and handles model simulation and editing
+``ContinuousVariable``: wraps your problem setup for continuous variables
+``MixedVariable``: wraps your problem setup for mixed variables
+
 Load the APSIM model. This is typically a single simulation file you want to calibrate or optimize.
 
-maize_model = ApsimModel("Maize") # replace with the template path
-obs = [
-    7000.0, 5000.505, 1000.047, 3504.000, 7820.075,
-    7000.517, 3587.101, 4000.152, 8379.435, 4000.301
-]
-Create your own problem description class
-class Problem(ContinuousVariable):
-    def __init__(self, apsim_model, obs):
-        super().__init__(apsim_model=apsim_model)
-        self.obs = obs
+.. code-block:: python
 
-    def evaluate_objectives(self, **kwargs):
-        # This function runs APSIM and compares the predicted maize yield results with observed data.
-        predicted = self.apsim_model.run(verbose=False).results.Yield
-        # Use root mean square error or another metric.
-        return self.rmse(self.obs, predicted)
+    maize_model = ApsimModel("Maize") # replace with the template path
+    obs = [
+        7000.0, 5000.505, 1000.047, 3504.000, 7820.075,
+        7000.517, 3587.101, 4000.152, 8379.435, 4000.301
+    ]
+
+Create your own problem description class
+
+.. code-block:: python
+
+    class Problem(ContinuousVariable):
+        def __init__(self, apsim_model, obs):
+            super().__init__(apsim_model=apsim_model)
+            self.obs = obs
+
+        def evaluate_objectives(self, **kwargs):
+            # This function runs APSIM and compares the predicted maize yield results with observed data.
+            predicted = self.apsim_model.run(verbose=False).results.Yield
+            # Use root mean square error or another metric.
+            return self.rmse(self.obs, predicted)
 
 # Initialize the class
-problem = Problem(maize_model, obs)
+
+.. code-block:: python
+
+    problem = Problem(maize_model, obs)
 2. Approach 2 is to define directly the objectives and supply the objectives while initializing any of ContinuousVariable or MixedVariable classes.
 
-def maximize_yield(df):
-    # Negate yield to convert to a minimization problem
-    return -df.Yield.mean()
+.. code-block:: python
 
-problem = ContinuousVariable(maize_model, objectives = maximize_yield)
+    def maximize_yield(df):
+        # Negate yield to convert to a minimization problem
+        return -df.Yield.mean()
+
+    problem = ContinuousVariable(maize_model, objectives = maximize_yield)
 Adding control variables/decision variables to the defined problem
 problem.add_control(
     path='.Simulations.Simulation.Field.Fertilise at sowing',
