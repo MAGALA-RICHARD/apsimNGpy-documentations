@@ -70,7 +70,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 .. toctree::
    :maxdepth: 3
-   :caption: Support development
+   :caption: Support Development
 
    how_to_cite
 
