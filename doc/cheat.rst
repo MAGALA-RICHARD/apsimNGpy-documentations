@@ -132,7 +132,8 @@ Method chaining
 
 .. code-block:: python
 
-     df = model('Maize').run.results # terminates to returning a data frame
+     df = model('Maize').run().results # terminates to returning a data frame
+
 
 Inspecting model structure
 
