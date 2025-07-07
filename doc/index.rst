@@ -57,14 +57,29 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :caption: Table of Contents
 
    Home <self>
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Getting Started
+
    getting started
    instantiating
    Usage
+
+   .. toctree::
+   :maxdepth: 4
+   :caption: Model inspection & editing
+
    model inspection
    inspect_model_parameters
    edit
    factorial_experiments
    weather
+
+   .. toctree::
+   :maxdepth: 1
+   :caption: Optimization, Calibration and Trade-off Analysis
+
    OPT
    moo
 
