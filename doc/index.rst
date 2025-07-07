@@ -53,21 +53,21 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Table of Contents
 
    Home <self>
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Getting Started
 
    getting started
    instantiating
    Usage
 
-   .. toctree::
-   :maxdepth: 3
+.. toctree::
+   :maxdepth: 2
    :caption: Inspection & Editing
 
    model inspection
@@ -76,8 +76,8 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    factorial_experiments
    weather
 
-   .. toctree::
-   :maxdepth: 3
+.. toctree::
+   :maxdepth: 2
    :caption: Optimization & Trade-off Analysis
 
    OPT
