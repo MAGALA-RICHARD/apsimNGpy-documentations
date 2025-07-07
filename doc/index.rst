@@ -55,8 +55,6 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    - Global and local sensitivity analysis
    - Distributed computing framework.
 
-.. automodule:: apsimNGpy
-    :members:
 
 .. toctree::
    :maxdepth: 4
