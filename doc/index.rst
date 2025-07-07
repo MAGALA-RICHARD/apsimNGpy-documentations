@@ -67,7 +67,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    Usage
 
    .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Inspection & Editing
 
    model inspection
@@ -77,7 +77,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    weather
 
    .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Optimization & Trade-off Analysis
 
    OPT
