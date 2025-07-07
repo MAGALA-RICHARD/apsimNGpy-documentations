@@ -1,18 +1,5 @@
 apsimNGpy cheatsheet
 ==========================
-Are you working in crop modeling or ecosystem service assessment? Interested in the APSIM process-based model but want something more convenient, extensible, and Python-native?
-
-apsimNGpy is a fast, flexible, and developer-friendly interface to APSIM—designed for simulation, optimization, and data-driven workflows, all in Python.
-
-This cheat sheet walks you through:
-
-Installing and setting up apsimNGpy
-Loading and editing APSIM models programmatically
-Running simulations and extracting results
-Validating model outputs
-Performing parameter optimization and sensitivity analysis
-Whether you’re calibrating a crop model or exploring ecosystem service trade-offs, this guide is your quick-start reference to APSIM smart modeling with Python.
-
 1. Installing apsimNGpy
 
 Installing from PyPI
