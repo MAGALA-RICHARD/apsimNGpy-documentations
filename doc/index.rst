@@ -35,10 +35,6 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :target: https://teams.live.com/l/community/FBAbNOQj7y9dPcoaAI
    :alt: Ask Teams
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Introduction
-
 
 .. admonition:: Introduction
 
@@ -57,7 +53,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 4
    :caption: Table of Contents
 
    Home <self>
@@ -73,6 +69,10 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    moo
    how_to_cite
    cheat
+.. toctree::
+   :maxdepth: 1
+   :caption: API Reference
+
    api
 
 
