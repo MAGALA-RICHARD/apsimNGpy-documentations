@@ -57,7 +57,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
    :caption: Table of Contents
 
    Home <self>
