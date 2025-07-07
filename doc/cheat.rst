@@ -649,3 +649,6 @@ Plot the Pareto Front
     plt.ylabel("N Leaching")
     plt.title("Pareto Front")
     plt.show()
+
+.. image:: ../images/yield_nleach.png
+
