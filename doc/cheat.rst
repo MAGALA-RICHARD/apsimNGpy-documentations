@@ -311,75 +311,109 @@ Inspect SurfaceOrganicMatter module parameters
       'StandingWt': 0.0,
       'C': 0.0,
       'P': 0.0}
+
 Inspect the surface organic matter module parameters by selecting a few parameters
 
-model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
+.. code-block:: python
 
-# output
-{'InitialCNR': 100.0}
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
+
+    # output
+    {'InitialCNR': 100.0}
+
 If all the above is not enough, view the file in the GUI
 
-model.preview_simulation()
+.. code-block:: python
+
+    model.preview_simulation()
+
 Editing the model parameters
 Apart from inspecting the above parameters, we can actually change them
 
 editing the model cultivar
 
-model.edit_model(
-    model_type='Cultivar',
-    simulations='Simulation',
-    commands='[Phenology].Juvenile.Target.FixedValue',
-    values=256,
-    new_cultivar_name = 'B_110-e',
-    model_name='B_110',
-    cultivar_manager='Sow using a variable rule')
-model_name: 'B_110' is an existing cultivar in the Maize Model, which we want to edit. Please note that editing a cultivar without specifying the new_cultivar_name will throw a ValueError. The name should be different to the the one being edited.
+.. code-block:: python
+
+    model.edit_model(
+        model_type='Cultivar',
+        simulations='Simulation',
+        commands='[Phenology].Juvenile.Target.FixedValue',
+        values=256,
+        new_cultivar_name = 'B_110-e',
+        model_name='B_110',
+        cultivar_manager='Sow using a variable rule')
+
+model_name: ``'B_110'`` is an existing cultivar in the Maize Model, which we want to edit. Please note that editing a cultivar without specifying the new_cultivar_name will throw a ValueError. The name should be different to the the one being edited.
 
 Edit a soil organic module:
 
-model = ApsimModel(model='Maize')
-model.edit_model(
-    model_type='Organic',
-    simulations='Simulation',
-    model_name='Organic',
-    Carbon=1.23)
-editing only the top and the second soil layer’s soil carbon
+.. code-block:: python
 
-model.edit_model(
-    model_type='Organic',
-    simulations='Simulation',
-    model_name='Organic',
-    Carbon=[1.23, 1.0])
+    model = ApsimModel(model='Maize')
+    model.edit_model(
+        model_type='Organic',
+        simulations='Simulation',
+        model_name='Organic',
+        Carbon=1.23)
+
+Editing only the top and the second soil layer’s soil carbon
+
+.. code-block:: python
+
+    model.edit_model(
+        model_type='Organic',
+        simulations='Simulation',
+        model_name='Organic',
+        Carbon=[1.23, 1.0])
+
 Editing a manager script:
 
-model.edit_model(
-    model_type='Manager',
-    simulations='Simulation',
-    model_name='Sow using a variable rule',
-    population=8.4)
+.. code-block:: python
+
+    model.edit_model(
+        model_type='Manager',
+        simulations='Simulation',
+        model_name='Sow using a variable rule',
+        population=8.4)
+
 If you prefer little boilerplate code, you are covered with edit_model_by_path.
 
-model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
+.. code-block:: python
+
+    model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
+
 Running Factorial Experiments
 Creating an Experiment
 
-model.create_experiment(permutation=True, verbose=False)  # Default is a permutation experiment
+.. code-block:: python
+
+   model.create_experiment(permutation=True, verbose=False)  # Default is a permutation experiment
+
 Adding Factors
 
 Add nitrogen levels as a continuous factor
-model.add_factor(specification="[Fertilise at sowing].Script.Amount = 0 to 200 step 20", factor_name='Nitrogen')
+
+.. code-block:: python
+
+    model.add_factor(specification="[Fertilise at sowing].Script.Amount = 0 to 200 step 20", factor_name='Nitrogen')
+
 2. Add population density as a categorical factor:
 
-model.add_factor(specification="[Sow using a variable rule].Script.Population = 4, 10, 2, 7, 6",
-                 factor_name='Population')
+.. code-block:: python
+
+    model.add_factor(specification="[Sow using a variable rule].Script.Population = 4, 10, 2, 7, 6",
+                     factor_name='Population')
+
 Running the Experiment
 Running the experiment is the same as running the ordinary model
 
-model.run(report_name='Report')
-df = apsim.results
-df[['population']] = pd.Categorical(['Population'])
-sns.catplot(x='Nitrogen', y='Yield', hue='Population', data=df, kind='box')
-plt.show()
+.. code-block:: python
+
+    model.run(report_name='Report')
+    df = apsim.results
+    df[['population']] = pd.Categorical(['Population'])
+    sns.catplot(x='Nitrogen', y='Yield', hue='Population', data=df, kind='box')
+    plt.show()
 If the factors are associated with cultivar, then you need to add a crop replacement
 
 model.add_crop_replacements(_crop='Maize')
