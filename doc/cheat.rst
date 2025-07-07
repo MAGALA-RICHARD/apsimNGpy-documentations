@@ -103,24 +103,42 @@ Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
 Running loaded models
 
 .. code-block:: python
-from apsimNGpy.core.apsim import ApsimModel
-model = ApsimModel('Pinus')
-model.run()
+    from apsimNGpy.core.apsim import ApsimModel
+    model = ApsimModel('Pinus')
+    model.run()
 Retrieving simulated results
-# Retrieve and save the results
-df = model.results
-df.to_csv('apsim_df_res.csv')  # Save the results to a CSV file
-print(model.results)
+
+.. code-block:: python
+
+    df = model.results
+    df.to_csv('apsim_df_res.csv')  # Save the results to a CSV file
+    print(model.results)
+
+extract target report table
+
+.. code-block:: python
+
+    model.get_simulated_output("Report)
+
 Saving the edited file or model
-model.save('./simulated_pinus.apsimx')
+
+.. code-block:: python
+
+    model.save('./simulated_pinus.apsimx')
+
 Inspecting model structure
+
 Most of the time, when modifying model parameters and values, you need the full path to the specified APSIM model. This is where the inspect_model method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI.
 
-from apsimNGpy.core.apsim import ApsimModel
-model = ApsimModel(model= 'Maize')
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    model = ApsimModel(model= 'Maize')
+
 Finding the path to the manager modules
 
-model.inspect_model('Models.Manager', fullpath=True)
+.. code-block:: python
+    model.inspect_model('Models.Manager', fullpath=True)
 
 # output
 [.Simulations.Simulation.Field.Sow using a variable rule', '.Simulations.Simulation.Field.Fertilise at
