@@ -489,52 +489,71 @@ Create your own problem description class
         return -df.Yield.mean()
 
     problem = ContinuousVariable(maize_model, objectives = maximize_yield)
-Adding control variables/decision variables to the defined problem
-problem.add_control(
-    path='.Simulations.Simulation.Field.Fertilise at sowing',
-    Amount="?", bounds=[50, 300], v_type='int', start_value=150
-)
-problem.add_control(
-    path='.Simulations.Simulation.Field.Sow using a variable rule',
-    Population="?", v_type='int', bounds=[4, 14], start_value=8
-)
-Amount and Populationwill be filled in by the optimizer because they are marked with ‘?’. It is also possible to supply extra parameters associated with any of the model paths, which comes in handy if you want to change them on the fly, but you don’t want to optimize them. An example is shown below.
 
-problem.add_control(
-   path='.Simulations.Simulation.Field.Fertilise at sowing', CultivarName= 'B_110',
-   Amount="?", bounds=[50, 300], v_type='int', start_value=150 )
+Adding control variables/decision variables to the defined problem
+
+.. code-block:: python
+
+    problem.add_control(
+        path='.Simulations.Simulation.Field.Fertilise at sowing',
+        Amount="?", bounds=[50, 300], v_type='int', start_value=150
+    )
+    problem.add_control(
+        path='.Simulations.Simulation.Field.Sow using a variable rule',
+        Population="?", v_type='int', bounds=[4, 14], start_value=8
+    )
+
+``Amount`` and ``Population`` will be filled in by the optimizer because they are marked with ‘?’. It is also possible to supply extra parameters associated with any of the model paths, which comes in handy if you want to change them on the fly, but you don’t want to optimize them. An example is shown below.
+
+.. code-block:: python
+
+       problem.add_control(
+       path='.Simulations.Simulation.Field.Fertilise at sowing', CultivarName= 'B_110',
+       Amount="?", bounds=[50, 300], v_type='int', start_value=150 )
+
 Minimize with any solver
 
-res_local = problem.minimize_with_a_local_solver(
-    method='Powell',
-    options={
-        'maxiter': 100,
-        'disp': True
-    }
-)
+.. code-block:: python
+
+    res_local = problem.minimize_with_a_local_solver(
+        method='Powell',
+        options={
+            'maxiter': 100,
+            'disp': True
+        }
+    )
+
 Changing to another solver
 
-res_local = problem.minimize_with_a_local_solver(
-    method='Nelder-Mead',
-    options={
-        'maxiter': 100,
-        'disp': True
-    }
-)
+.. code-block:: python
+
+    res_local = problem.minimize_with_a_local_solver(
+        method='Nelder-Mead',
+        options={
+            'maxiter': 100,
+            'disp': True
+        }
+    )
 For details about these algorithms, see the minimize documentation.
 
 Run a global optimizer using differential evolution
 
 # Run a global optimizer using differential evolution
 
-res_de = problem.minimize_with_de(
-    popsize=10,
-    maxiter=100,
-    polish=False  # Set to True if you want to refine with a local solver at the end
-)
+.. code-block:: python
+
+    res_de = problem.minimize_with_de(
+        popsize=10,
+        maxiter=100,
+        polish=False  # Set to True if you want to refine with a local solver at the end
+    )
+
 Getting results
 
-print(problem)
+.. code-block:: python
+
+    print(problem)
+
 Multi-Objective Optimization with apsimNGpy
 In real-world agricultural systems, most objectives — such as maximizing crop yield while minimizing environmental impact — are inherently conflicting. These trade-offs cannot be effectively addressed using single-objective optimization algorithms, which are limited to optimizing one goal at a time. Fortunately, multi-objective optimization algorithms inspired by evolutionary principles are well-suited to handle such complexity by exploring a range of trade-offs between competing objectives.
 
