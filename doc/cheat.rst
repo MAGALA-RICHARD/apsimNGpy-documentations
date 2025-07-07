@@ -553,7 +553,7 @@ In real-world agricultural systems, most objectives — such as maximizing crop 
 
 .. admonition:: Interpretation
 
-    ``Runner`: handles model simulation and editing. It is an apsimNGpy class.
+    ``Runner``: handles model simulation and editing. It is an apsimNGpy class.
 
     ``MultiObjectiveProblem``: wraps your problem into a multi-objective one.
 
