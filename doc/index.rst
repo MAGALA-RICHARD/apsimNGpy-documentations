@@ -69,6 +69,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    moo
    how_to_cite
    cheat
+
 .. toctree::
    :maxdepth: 1
    :caption: API Reference
