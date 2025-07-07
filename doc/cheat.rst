@@ -213,88 +213,104 @@ Inspect the full soil Organic profile:
         5  12.0    0.12  1200-1500   0.01  ...   36.587131     0.010         12.0      300.0
         6  12.0    0.12  1500-1800   0.01  ...   22.191217     0.010         12.0      300.0
         [7 rows x 9 columns]
+
 Inspect soil Physical profile:
 
-model.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
+.. code-block:: python
 
-# output
-    AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
-0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
-1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
-2  0.280000  1.093939  0.488438  ...  146.531282     300.0                600.0
-3  0.280000  1.158613  0.480297  ...  144.089091     300.0                900.0
-4  0.280000  1.173012  0.471584  ...  141.475079     300.0               1200.0
-5  0.280000  1.162873  0.457071  ...  137.121171     300.0               1500.0
-6  0.280000  1.187495  0.452332  ...  135.699528     300.0               1800.0
-[7 rows x 17 columns]
+    model.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
+
+    # output
+        AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
+    0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
+    1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
+    2  0.280000  1.093939  0.488438  ...  146.531282     300.0                600.0
+    3  0.280000  1.158613  0.480297  ...  144.089091     300.0                900.0
+    4  0.280000  1.173012  0.471584  ...  141.475079     300.0               1200.0
+    5  0.280000  1.162873  0.457071  ...  137.121171     300.0               1500.0
+    6  0.280000  1.187495  0.452332  ...  135.699528     300.0               1800.0
+    [7 rows x 17 columns]
+
 Inspect soil Chemical profile:
 
+.. code-block:: python
 
-model.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
+    model.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
 
-# output
-       Depth   PH  Thickness
-0      0-150  8.0      150.0
-1    150-300  8.0      150.0
-2    300-600  8.0      300.0
-3    600-900  8.0      300.0
-4   900-1200  8.0      300.0
-5  1200-1500  8.0      300.0
-6  1500-1800  8.0      300.0
+    # output
+           Depth   PH  Thickness
+    0      0-150  8.0      150.0
+    1    150-300  8.0      150.0
+    2    300-600  8.0      300.0
+    3    600-900  8.0      300.0
+    4   900-1200  8.0      300.0
+    5  1200-1500  8.0      300.0
+    6  1500-1800  8.0      300.0
 Getting the current weather/met file
 
-model.inspect_model_parameters('Weather', simulations='Simulation',
-                        model_name='Weather')
+.. code-block:: python
 
-# output
-'%root%/Examples/WeatherFiles/AU_Dalby.met'
+    model.inspect_model_parameters('Weather', simulations='Simulation',
+                            model_name='Weather')
+
+    # output
+    '%root%/Examples/WeatherFiles/AU_Dalby.met'
+
 Inspect Manager script parameters.
 
-model.inspect_model_parameters('Manager',
-simulations='Simulation', model_name='Sow using a variable rule')
+.. code-block:: python
 
-# output
-{'Crop': 'Maize',
-'StartDate': '1-nov',
-'EndDate': '10-jan',
-'MinESW': '100.0',
-'MinRain': '25.0',
-'RainDays': '7',
-'CultivarName': 'Dekalb_XL82',
-'SowingDepth': '30.0',
-'RowSpacing': '750.0',
-'Population': '10'}
+    model.inspect_model_parameters('Manager',
+    simulations='Simulation', model_name='Sow using a variable rule')
+
+    # output
+    {'Crop': 'Maize',
+    'StartDate': '1-nov',
+    'EndDate': '10-jan',
+    'MinESW': '100.0',
+    'MinRain': '25.0',
+    'RainDays': '7',
+    'CultivarName': 'Dekalb_XL82',
+    'SowingDepth': '30.0',
+    'RowSpacing': '750.0',
+    'Population': '10'}
+
 Specify a few parameters
 
-model.inspect_model_parameters('Manager',
-simulations='Simulation', model_name='Sow using a variable rule',
-             parameters=['Population'])
+.. code-block:: python
 
-# output
-{'Population': '10'}
+    model.inspect_model_parameters('Manager',
+    simulations='Simulation', model_name='Sow using a variable rule',
+                 parameters=['Population'])
+
+    # output
+    {'Population': '10'}
+
 The primary limitation of inspect_model_parameters is its verbosity — it often requires passing model_type, model_name and simulations or navigating deeply nested structures.
 
 The inspect_model_parameters_by_path method addresses this verbosity problem by allowing users to simply specify the path to the model component and (optionally) the parameters to inspect. This makes the API more concise and user-friendly.
 
 Inspect SurfaceOrganicMatter module parameters
 
-model = ApsimModel('Maize')
-model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
+.. code-block:: python
 
-# output
-{'InitialCPR': 0.0,
-  'InitialCNR': 100.0,
-  'NH4': 0.0,
-  'NO3': 0.0,
-  'Cover': 0.0,
-  'LabileP': 0.0,
-  'N': 0.0,
-  'SurfOM': <System.Collections.Generic.List[SurfOrganicMatterType] object at 0x1ae5c10c0>,
-  'InitialResidueMass': 500.0,
-  'LyingWt': 0.0,
-  'StandingWt': 0.0,
-  'C': 0.0,
-  'P': 0.0}
+    model = ApsimModel('Maize')
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
+
+    # output
+    {'InitialCPR': 0.0,
+      'InitialCNR': 100.0,
+      'NH4': 0.0,
+      'NO3': 0.0,
+      'Cover': 0.0,
+      'LabileP': 0.0,
+      'N': 0.0,
+      'SurfOM': <System.Collections.Generic.List[SurfOrganicMatterType] object at 0x1ae5c10c0>,
+      'InitialResidueMass': 500.0,
+      'LyingWt': 0.0,
+      'StandingWt': 0.0,
+      'C': 0.0,
+      'P': 0.0}
 Inspect the surface organic matter module parameters by selecting a few parameters
 
 model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
