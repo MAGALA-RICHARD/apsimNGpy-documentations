@@ -69,7 +69,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    moo
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Support development
 
    how_to_cite
