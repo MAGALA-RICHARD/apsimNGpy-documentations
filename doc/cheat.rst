@@ -103,9 +103,11 @@ Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
 Running loaded models
 
 .. code-block:: python
+
     from apsimNGpy.core.apsim import ApsimModel
     model = ApsimModel('Pinus')
     model.run()
+
 Retrieving simulated results
 
 .. code-block:: python
