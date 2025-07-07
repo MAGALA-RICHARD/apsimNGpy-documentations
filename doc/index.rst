@@ -68,6 +68,11 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    OPT
    moo
    how_to_cite
+
+.. toctree::
+   :maxdepth: 1
+   :caption: CheatSheet
+
    cheat
 
 .. toctree::
