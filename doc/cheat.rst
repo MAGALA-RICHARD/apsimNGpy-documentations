@@ -623,20 +623,29 @@ Each dictionary defines:
     problem.control(
         path='.Simulations.Simulation.Field.Sow using a variable rule',
         Population='?', bounds=[4, 14], v_type='float')
-Run the NSGA-II optimizer
-algorithm = NSGA2(pop_size=20)
 
-result = minimize(
-    problem.get_problem(),
-    algorithm,
-    ('n_gen', 10),
-    seed=1,
-    verbose=True
-)
+
+Run the NSGA-II optimizer
+
+.. code-block:: python
+
+    algorithm = NSGA2(pop_size=20)
+
+    result = minimize(
+        problem.get_problem(),
+        algorithm,
+        ('n_gen', 10),
+        seed=1,
+        verbose=True
+    )
+
 Plot the Pareto Front
-F = result.F
-plt.scatter(F[:, 0]* -1, F[:, 1])
-plt.xlabel("Yield")
-plt.ylabel("N Leaching")
-plt.title("Pareto Front")
-plt.show()
+
+.. code-block:: python
+
+    F = result.F
+    plt.scatter(F[:, 0]* -1, F[:, 1])
+    plt.xlabel("Yield")
+    plt.ylabel("N Leaching")
+    plt.title("Pareto Front")
+    plt.show()
