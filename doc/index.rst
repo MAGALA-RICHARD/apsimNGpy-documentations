@@ -69,6 +69,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    OPT
    moo
    how_to_cite
+   cheat
    api
 
 
