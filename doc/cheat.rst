@@ -128,6 +128,12 @@ Saving the edited file or model
 
     model.save('./simulated_pinus.apsimx')
 
+Method chaining
+
+.. code-block:: python
+
+     df = model('Maize').run.results # terminates to returning a data frame
+
 Inspecting model structure
 
 Most of the time, when modifying model parameters and values, you need the full path to the specified APSIM model. This is where the inspect_model method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI.
@@ -171,13 +177,21 @@ The models from APSIM Models namespace are abstracted to use strings. but you ca
 
     # Output
     ['Simulation']
-Whole Model inspection
-model.inspect_file()
 
-Inspecting model parameters
-Using inspect_model_parameters
-from apsimNGpy.core import ApsimModel
-model = ApsimModel('Maize')
+Whole Model inspection
+
+.. code-block:: python
+
+    model.inspect_file()
+
+Inspecting model parameters:
+
+1. Using ``inspect_model_parameters``
+
+.. code-block:: python
+
+    from apsimNGpy.core import ApsimModel
+    model = ApsimModel('Maize')
 Inspect the full soil Organic profile:
 
 model.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
