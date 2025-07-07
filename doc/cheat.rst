@@ -69,20 +69,31 @@ What about the APSIM version?
 .. code-block:: python
     from apsimNGpy.core.config import apsim_version
     print(apsim_version())
+
 Instantiating apsimNGpy Model Objects
 You can either load a built-in template or use your own APSIM file
 
 Load the factory default model
-from apsimNGpy.core import base_data
+
+.. code-block:: python
+
+    from apsimNGpy.core import base_data
+
 # Option 1: Load default maize simulation
-model = base_data.load_default_simulations(crop='Maize')
 
-# Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
-from apsimNGpy.core.apsim import ApsimModel
-model = ApsimModel(model='Maize', out_path = './maize.apsimx')
+.. code-block:: python
 
-# other crops inlcude: Pinus, Barley, Soybean, EucalyptusRotation, Eucalyptus,
-# Sugarcane, Oats, WhiteClover, Sorghum, Potato, Canola, Chickpea, RedClover, Mungbean etc.
+    model = base_data.load_default_simulations(crop='Maize')
+
+Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
+
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    model = ApsimModel(model='Maize', out_path = './maize.apsimx')
+    # other crops inlcude: Pinus, Barley, Soybean, EucalyptusRotation, Eucalyptus,
+    # Sugarcane, Oats, WhiteClover, Sorghum, Potato, Canola, Chickpea, RedClover, Mungbean etc.
+
 2. Load the model from a file on the computer disk
 
 from apsimNGpy.core.apsim import ApsimModel
