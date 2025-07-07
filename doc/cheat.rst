@@ -163,7 +163,9 @@ Names only
     model.inspect_model('Models.Manager', fullpath=False)
     # output
     ['Sow using a variable rule', 'Fertilise at sowing', 'Harvest']
+
 Getting the names of the simulations in the loaded file
+
 .. code-block:: python
 
     model.inspect_model('Models.Core.Simulation', fullpath=False)
@@ -194,20 +196,23 @@ Inspecting model parameters:
 
     from apsimNGpy.core import ApsimModel
     model = ApsimModel('Maize')
+
 Inspect the full soil Organic profile:
 
-model.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
+.. code-block:: python
 
-# output
-   CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
-0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
-1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
-2  12.0    0.60    300-600   0.02  ...  163.972144     0.050         12.0      300.0
-3  12.0    0.30    600-900   0.02  ...   99.454133     0.025         12.0      300.0
-4  12.0    0.18   900-1200   0.01  ...   60.321981     0.015         12.0      300.0
-5  12.0    0.12  1200-1500   0.01  ...   36.587131     0.010         12.0      300.0
-6  12.0    0.12  1500-1800   0.01  ...   22.191217     0.010         12.0      300.0
-[7 rows x 9 columns]
+        model.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
+
+        # output
+           CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
+        0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
+        1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
+        2  12.0    0.60    300-600   0.02  ...  163.972144     0.050         12.0      300.0
+        3  12.0    0.30    600-900   0.02  ...   99.454133     0.025         12.0      300.0
+        4  12.0    0.18   900-1200   0.01  ...   60.321981     0.015         12.0      300.0
+        5  12.0    0.12  1200-1500   0.01  ...   36.587131     0.010         12.0      300.0
+        6  12.0    0.12  1500-1800   0.01  ...   22.191217     0.010         12.0      300.0
+        [7 rows x 9 columns]
 Inspect soil Physical profile:
 
 model.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
