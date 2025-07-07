@@ -140,12 +140,17 @@ Finding the path to the manager modules
 .. code-block:: python
     model.inspect_model('Models.Manager', fullpath=True)
 
-# output
-[.Simulations.Simulation.Field.Sow using a variable rule', '.Simulations.Simulation.Field.Fertilise at
-sowing', '.Simulations.Simulation.Field.Harvest']
+Output
+
+.. code-block:: python
+
+   # [.Simulations.Simulation.Field.Sow using a variable rule', '.Simulations.Simulation.Field.Fertilise at sowing', '.Simulations.Simulation.Field.Harvest']
+
 Names only
 
-model.inspect_model('Models.Manager', fullpath=False)
+.. code-block:: python
+
+   model.inspect_model('Models.Manager', fullpath=False)
 
 # output
  ['Sow using a variable rule', 'Fertilise at sowing', 'Harvest']
