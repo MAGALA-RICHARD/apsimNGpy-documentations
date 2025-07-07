@@ -1,3 +1,4 @@
+
 Are you working in crop modeling or ecosystem service assessment? Interested in the APSIM process-based model but want something more convenient, extensible, and Python-native?
 
 apsimNGpy is a fast, flexible, and developer-friendly interface to APSIM—designed for simulation, optimization, and data-driven workflows, all in Python.
@@ -12,31 +13,43 @@ Performing parameter optimization and sensitivity analysis
 Whether you’re calibrating a crop model or exploring ecosystem service trade-offs, this guide is your quick-start reference to APSIM smart modeling with Python.
 
 1. Installing apsimNGpy
+
 Installing from PyPI
 
-pip install apsimNGpy
+.. code-block:: console
+
+   pip install apsimNGpy
+
 Installing from GitHub
 
-pip install git+https://github.com/MAGALA-RICHARD/apsimNGpy.git
+.. code-block:: console
+
+    pip install git+https://github.com/MAGALA-RICHARD/apsimNGpy.git
+
 Providing the installed APSIM binaries.
 
-Use the terminal. When apsimNGpy is installed, it creates a command line module apsim_bin_path
-apsim_bin_path -u 'path/to/your/apsim/binary/folder/bin'
+1. Use the terminal. When apsimNGpy is installed, it creates a command line module ``apsim_bin_path``
+
+.. code-block:: console
+
+    apsim_bin_path -u 'path/to/your/apsim/binary/folder/bin'
+
 2. Use the config module
 
-from apsimNGpy.core.config import set_apsim_bin_path
+.. code-block:: python
 
-# Set the path to the APSIM binaries:
-set_apsim_bin_path(path=r'path/to/your/apsim/binary/folder/bin')
+    from apsimNGpy.core.config import set_apsim_bin_path
+    set_apsim_bin_path(path=r'path/to/your/apsim/binary/folder/bin')
+
 Getting the APSIM binary path
 
-Use the terminal
+1. Use the terminal
 
 .. code-block:: console
 
     apsim_bin_path -s
 
-Use the config module
+2. Use the config module
 
 .. code-block:: python
 
