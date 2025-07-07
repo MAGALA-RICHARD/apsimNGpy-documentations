@@ -98,7 +98,7 @@ Each dictionary defines:
    Each decision variable specification must contain exactly one parameter marked with ``'?'``. This signifies the target parameter to be optimized during the calibration or search process.
 
 
-Step 3b: Define decision variables (Approach 2 - using ``.add_parameters()``)
+Step 3b: Define decision variables (Approach 2 - using ``add_control()``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of a list, you can add each parameter one at a time.
