@@ -35,6 +35,11 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :target: https://teams.live.com/l/community/FBAbNOQj7y9dPcoaAI
    :alt: Ask Teams
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Introduction
+
+
 .. admonition:: Introduction
 
    apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
