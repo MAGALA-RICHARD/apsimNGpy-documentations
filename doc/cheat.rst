@@ -150,13 +150,13 @@ Names only
 
 .. code-block:: python
 
-   model.inspect_model('Models.Manager', fullpath=False)
-
-# output
- ['Sow using a variable rule', 'Fertilise at sowing', 'Harvest']
+    model.inspect_model('Models.Manager', fullpath=False)
+    # output
+    ['Sow using a variable rule', 'Fertilise at sowing', 'Harvest']
 Getting the names of the simulations in the loaded file
+.. code-block:: python
 
-model.inspect_model('Models.Core.Simulation', fullpath=False)
+   model.inspect_model('Models.Core.Simulation', fullpath=False)
 
 # Output
 ['Simulation']
