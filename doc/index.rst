@@ -67,6 +67,11 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    weather
    OPT
    moo
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Support development
+
    how_to_cite
 
 .. toctree::
