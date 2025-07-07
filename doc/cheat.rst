@@ -58,12 +58,17 @@ Getting the APSIM binary path
    print(config.get_apsim_bin_path())
 
 Viewing apsimNGpy version
-import apsimNGpy
-apsimNGpy.__version__
+
+.. code-block:: python
+
+    import apsimNGpy
+    apsimNGpy.__version__
+
 What about the APSIM version?
 
-from apsimNGpy.core.config import apsim_version
-print(apsim_version())
+.. code-block:: python
+    from apsimNGpy.core.config import apsim_version
+    print(apsim_version())
 Instantiating apsimNGpy Model Objects
 You can either load a built-in template or use your own APSIM file
 
