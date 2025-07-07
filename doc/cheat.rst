@@ -158,17 +158,19 @@ Names only
 Getting the names of the simulations in the loaded file
 .. code-block:: python
 
-   model.inspect_model('Models.Core.Simulation', fullpath=False)
+    model.inspect_model('Models.Core.Simulation', fullpath=False)
+    # Output
+    ['Simulation']
 
-# Output
-['Simulation']
 The models from APSIM Models namespace are abstracted to use strings. but you can still play around with the Models namespace as follows:
 
-from apsimNGpy.core.core import Models
-model.inspect_model(Models.Core.Simulation, fullpath=False)
+.. code-block:: python
 
-# Output
-['Simulation']
+    from apsimNGpy.core.core import Models
+    model.inspect_model(Models.Core.Simulation, fullpath=False)
+
+    # Output
+    ['Simulation']
 Whole Model inspection
 model.inspect_file()
 
