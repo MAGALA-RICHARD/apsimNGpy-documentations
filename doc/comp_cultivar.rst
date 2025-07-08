@@ -94,5 +94,5 @@ To customize the plot we have to import matplotlib
     plt.savefig(r'./Cultivar_Maize Yield Boxplot.png', dpi=600)
     plt.show
 
-.. image:: ../images/Cultivar_Maize Yield Boxplot.png
+.. image:: ../images/Cultivar_Maize.png
 
