@@ -47,6 +47,7 @@ getting info about the simulated output
      17  Zone                              60 non-null     object
     dtypes: float64(9), int64(2), object(7)
     memory usage: 8.6+ KB
+    # most of the columns in the dataset are float
 
 
 
