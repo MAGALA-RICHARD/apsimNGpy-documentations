@@ -73,6 +73,24 @@ Since our major covariate factor is CultivarName, we will next examine the corre
 
 Clearly Melkassa has the lowest yield, and laila performed better than all other cultivars. Let's take a step further and visualize their mean, median, minimum or maximum values using a boxplot
 
+.. code-block:: python
+
+
+    ax = df.boxplot(column='Yield', by='CultivarName',figsize=(10,8), grid=False)
+
+To customize the plot we have to import matplotlib
+
+.. code-block:: python
+
+    from matplotlib import pyplot as plt
+    ax = df.boxplot(column='Yield', by='CultivarName',figsize=(10,8), grid=False)
+    # Customize the plot
+    plt.title('Maize yield boxplot grouped by Cultivar', fontsize=20)
+    plt.suptitle('')  # Remove the default automatic title
+    plt.xlabel('Cultivar Name', fontsize=20)
+    plt.ylabel('Maize Yield (kg ha$^{-1}$)',fontsize=20 )
+
+    plt.savefig(r'D:\PACKAGES\apsimNGpy-documentations\images/Cultivar_Maize Yield Boxplot.png', dpi=600)
 
 .. image:: ../images/Cultivar_Maize Yield Boxplot.png'
 
