@@ -55,9 +55,20 @@ Since our major covariate factor is CultivarName, we will next examine the corre
 
 .. code-block:: python
 
-   mean_yields = df.groupby('CultivarName')['Yield'].mean().sort_values(ascending=False)
-   print(mean_yields)
+    mean_yields = df.groupby('CultivarName')['Yield'].mean().sort_values(ascending=False)
+    print(mean_yields)
 
+    # output
+    CultivarName
+    Laila            6610.2287
+    Pioneer_34K77    6608.3364
+    B_110            6535.0578
+    A_90             6286.9042
+    Dekalb_XL82      5611.6749
+    Melkassa         4831.0817
+    Name: Yield, dtype: float64
+
+Clearly Melkassa has the lowest yield, and laila performed better than all other cultivars
 
 
 
