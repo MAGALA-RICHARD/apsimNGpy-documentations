@@ -49,6 +49,15 @@ getting info about the simulated output
     memory usage: 8.6+ KB
     # most of the columns in the dataset are float
 
+    df.describe()
+
+Since our major covariate factor is CultivarName, we will next examine the corresponding mean yield for each cultivar
+
+.. code-block:: python
+
+   mean_yields = df.groupby('CultivarName')['Yield'].mean().sort_values(ascending=False)
+   print(mean_yields)
+
 
 
 
