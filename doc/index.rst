@@ -95,8 +95,6 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
    comp_cultivar
 
-
-
 .. toctree::
    :maxdepth: 1
    :caption: CheatSheet
