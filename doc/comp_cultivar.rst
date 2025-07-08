@@ -98,3 +98,5 @@ To customize the plot we have to import matplotlib
 
 Obviously, there is no doubt ``Melikassa`` performs poorly in this area in terms of maize yield quarterly percentiles and median are very different fom the rest of the cultivars.
 Meanwhile ``Laila`` and ``B_110`` are similar, but different from that of ``Dekalb_XL82``
+
+Variability across the simulation years
