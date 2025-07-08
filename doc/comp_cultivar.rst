@@ -7,6 +7,7 @@ Firstly, we are going to start by creating a none permutation experiment
 
 .. code-block:: python
 
+    from apsimNGpy.core.apsim import ApsimModel
     model = ApsimModel('Maize')
     model.create_experiment(permutation=False)
     model.add_factor(specification="[Sow using a variable rule].Script.CultivarName =  Dekalb_XL82, Melkassa, Pioneer_34K77, Laila, B_110, A_90")
