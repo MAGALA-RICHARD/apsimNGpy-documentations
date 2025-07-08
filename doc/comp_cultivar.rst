@@ -14,6 +14,9 @@ Firstly, we are going to start by creating a none permutation experiment
     model.run()
     df = model.results
 
+.. note::
+
+   Cultivars ``Dekalb_XL82, Melkassa, Pioneer_34K77, Laila, B_110, A_90`` were selected randomly for demonstration purposes only. We also assumes that they are planted in the same field, therefore same weather and soil factors
 
 getting info about the simulated output
 
