@@ -89,8 +89,8 @@ To customize the plot we have to import matplotlib
     plt.suptitle('')  # Remove the default automatic title
     plt.xlabel('Cultivar Name', fontsize=20)
     plt.ylabel('Maize Yield (kg ha$^{-1}$)',fontsize=20 )
-
-    plt.savefig(r'D:\PACKAGES\apsimNGpy-documentations\images/Cultivar_Maize Yield Boxplot.png', dpi=600)
+    plt.savefig(r'./Cultivar_Maize Yield Boxplot.png', dpi=600)
+    plt.show
 
 .. image:: ../images/Cultivar_Maize Yield Boxplot.png'
 
