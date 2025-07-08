@@ -96,4 +96,3 @@ To customize the plot we have to import matplotlib
 
 .. image:: ../images/Cultivar_Maize Yield Boxplot.png
 
-
