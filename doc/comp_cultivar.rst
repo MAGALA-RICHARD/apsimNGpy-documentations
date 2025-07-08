@@ -17,7 +17,9 @@ Firstly, we are going to start by creating a none permutation experiment
 .. note::
 
    Cultivars ``Dekalb_XL82, Melkassa, Pioneer_34K77, Laila, B_110, A_90`` were selected randomly for demonstration purposes only. We also assumes that they are planted in the same field, therefore, same weather and soil factors
+   To see all the available cultivars and select from a list use::
 
+       model.inspect_model('Cultivar', fullpath=False)
 getting info about the simulated output
 
 .. code-block:: python
