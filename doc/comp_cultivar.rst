@@ -100,3 +100,7 @@ Obviously, there is no doubt ``Melikassa`` performs poorly in this area in terms
 Meanwhile ``Laila`` and ``B_110`` are similar, but different from that of ``Dekalb_XL82``
 
 Variability across the simulation years
+
+.. image:: ../images/Cultivar_Maize_Yield_Lineplot.png
+
+All cultivar had the same annual yield trend byt difference in terms yield are also clearly visible among them
