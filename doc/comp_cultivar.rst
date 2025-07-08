@@ -16,7 +16,7 @@ Firstly, we are going to start by creating a none permutation experiment
 
 .. note::
 
-   Cultivars ``Dekalb_XL82, Melkassa, Pioneer_34K77, Laila, B_110, A_90`` were selected randomly for demonstration purposes only. We also assumes that they are planted in the same field, therefore same weather and soil factors
+   Cultivars ``Dekalb_XL82, Melkassa, Pioneer_34K77, Laila, B_110, A_90`` were selected randomly for demonstration purposes only. We also assumes that they are planted in the same field, therefore, same weather and soil factors
 
 getting info about the simulated output
 
@@ -71,7 +71,9 @@ Since our major covariate factor is CultivarName, we will next examine the corre
     Melkassa         4831.0817
     Name: Yield, dtype: float64
 
-Clearly Melkassa has the lowest yield, and laila performed better than all other cultivars
+Clearly Melkassa has the lowest yield, and laila performed better than all other cultivars. Let's take a step further and visualize their mean, median, minimum or maximum values using a boxplot
 
+
+.. image:: ../images/Cultivar_Maize Yield Boxplot.png'
 
 
