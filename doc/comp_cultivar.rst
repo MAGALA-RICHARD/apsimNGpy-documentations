@@ -103,4 +103,4 @@ Variability across the simulation years
 
 .. image:: ../images/Cultivar_Maize_Yield_Lineplot.png
 
-All cultivar had the same annual yield trend byt difference in terms yield are also clearly visible among them
+All cultivar had the same annual yield trend but there is a year when a_90 had more maize yield than all the others
