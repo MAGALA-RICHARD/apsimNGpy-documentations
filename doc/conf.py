@@ -9,7 +9,7 @@
 project = 'apsimNGpy'
 copyright = '2025, richard magala'
 author = 'richard magala'
-release = '0.32'
+release = '0.39.3.4'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

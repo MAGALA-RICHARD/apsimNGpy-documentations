@@ -8,27 +8,27 @@ Whether you’re using this library for your research, in production systems, or
 How You Can Support
 -------------------
 
-⭐ **Star the Repository**
+1. **Star the Repository**
    - Show your appreciation by starring the project on GitHub.
    - It helps others discover the project and signals its value to the community.
 
-🐛 **Report Issues and Suggest Features**
+2. **Report Issues and Suggest Features**
    - Found a bug or have a feature request? Open an issue on GitHub.
    - Feedback from users helps us improve usability and functionality.
 
-🔧 **Contribute Code or Documentation**
+3. **Contribute Code or Documentation**
    - We welcome pull requests that add features, fix bugs, or improve docs.
    - See the contributions guidelines below.
 
-📣 **Spread the Word**
+4. **Spread the Word**
    - Share apsimNGpy with colleagues and collaborators.
    - Citing the project in your publications also helps increase visibility.
 
-💬 **Engage with the Community**
+5. **Engage with the Community**
    - Join the discussions on GitHub or open a topic for Q&A and support.
    - Community involvement makes open source projects thrive.
 
-💰 **Fund Development**
+6. **Fund Development**
    - If you or your organization use apsimNGpy extensively, consider sponsoring development.
    - For sponsorships or collaborative development opportunities, see contacts below.
 
