@@ -1,6 +1,6 @@
 .. admonition:: Alert
 
-   **⚠️ Compatibility Warning**
+   **⚠️ ``Compatibility Warning``**
 
    The APSIM development team has recently made **significant changes to the internal model structure** in the latest versions of APSIM Next Gen.
 
