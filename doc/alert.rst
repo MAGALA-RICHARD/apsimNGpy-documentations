@@ -1,10 +1,10 @@
 .. admonition:: Alert
 
-   **⚠️ ``Compatibility Warning``**
+   ``**⚠️ Compatibility Warning**``
 
    The APSIM development team has recently made **significant changes to the internal model structure** in the latest versions of APSIM Next Gen.
 
-   As a result, **``apsimNGpy`` is currently not compatible with these newer versions**. This may lead to unexpected errors or failures when attempting to load, manipulate, or run ``.apsimx`` files created or modified with the latest APSIM GUI or binaries.
+   As a result, ``**apsimNGpy`` is currently not compatible with these newer versions**. This may lead to unexpected errors or failures when attempting to load, manipulate, or run ``.apsimx`` files created or modified with the latest APSIM GUI or binaries.
 
    **✅ Workaround:** We strongly recommend using an **earlier version of APSIM Next Gen** (e.g., versions prior to the structural changes) until this issue is resolved.
 
