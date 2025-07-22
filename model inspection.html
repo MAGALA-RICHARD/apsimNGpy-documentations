@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inspect Model &mdash; apsimNGpy 0.39.3.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e505548e"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Inspect Model Parameters" href="inspect_model_parameters.html" />
+    <link rel="prev" title="Running and Retrieving Results" href="Usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#quick-guides">Quick guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#locating-the-apsim-binaries">Locating the APSIM Binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#changing-setting-the-apsim-installation-binaries-path">Changing/setting the APSIM installation binaries path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <cite>apsimNGpy</cite> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Inspection &amp; Editing</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Optimization &amp; Trade-off Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="OPT.html">Single-Objective Optimization with apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OPT.html#mixed-variable-optimization-in-apsimngpy">Mixed-Variable Optimization in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CheatSheet</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimmodel">ApsimModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#continuousvariable">ContinuousVariable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#coremodel">CoreModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#mixedvariable">MixedVariable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#modeltools">ModelTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-base-data">apsimNGpy.core.base_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-load-model">apsimNGpy.core.load_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-runner">apsimNGpy.core.runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-core-utils-database-utils">apsimNGpy.core_utils.database_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-exceptions">apsimNGpy.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-soilmanager">apsimNGpy.manager.soilmanager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-manager-weathermanager">apsimNGpy.manager.weathermanager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-parallel-process">apsimNGpy.parallel.process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#apsimngpy-validation-evaluator">apsimNGpy.validation.evaluator</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Inspect Model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/model inspection.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inspect-model">
+<span id="plain-inspect"></span><h1>Inspect Model<a class="headerlink" href="#inspect-model" title="Link to this heading"></a></h1>
+<p>Most of the time, when modifying model parameters and values, you need the full path to the specified APSIM model.
+This is where the <code class="docutils literal notranslate"><span class="pre">inspect_model</span></code> method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Models can be inspected either by importing the <code class="docutils literal notranslate"><span class="pre">Models</span></code> namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a <code class="docutils literal notranslate"><span class="pre">Models</span></code> attribute path.
+However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.</p>
+</div>
+<p>Let’s take a look at how it works.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">apsimNGpy.core</span> <span class="kn">import</span> <span class="n">base_data</span>
+<span class="kn">from</span> <span class="nn">apsimNGpy.core.core</span> <span class="kn">import</span> <span class="n">Models</span>
+<span class="kn">from</span> <span class="nn">apsimNGpy.core.apsim</span> <span class="kn">import</span> <span class="n">ApsimModel</span>
+</pre></div>
+</div>
+<p>load default <code class="docutils literal notranslate"><span class="pre">maize</span></code> module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span> <span class="s1">&#39;Maize&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Find the path to all the manager script in the simulation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="n">Models</span><span class="o">.</span><span class="n">Manager</span><span class="p">,</span> <span class="n">fullpath</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[</span><span class="o">.</span><span class="n">Simulations</span><span class="o">.</span><span class="n">Simulation</span><span class="o">.</span><span class="n">Field</span><span class="o">.</span><span class="n">Sow</span> <span class="n">using</span> <span class="n">a</span> <span class="n">variable</span> <span class="n">rule</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">Simulations</span><span class="o">.</span><span class="n">Simulation</span><span class="o">.</span><span class="n">Field</span><span class="o">.</span><span class="n">Fertilise</span> <span class="n">at</span>
+<span class="n">sowing</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">Simulations</span><span class="o">.</span><span class="n">Simulation</span><span class="o">.</span><span class="n">Field</span><span class="o">.</span><span class="n">Harvest</span><span class="s1">&#39;]</span>
+</pre></div>
+</div>
+<p>Inspect the full path of the Clock Model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="n">Models</span><span class="o">.</span><span class="n">Clock</span><span class="p">)</span> <span class="c1"># gets the path to the Clock models</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Clock&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Inspect the full path to the crop plants in the simulation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="n">Models</span><span class="o">.</span><span class="n">Core</span><span class="o">.</span><span class="n">IPlant</span><span class="p">)</span> <span class="c1"># gets the path to the crop model</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Field.Maize&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Or use full string path as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="n">Models</span><span class="o">.</span><span class="n">Core</span><span class="o">.</span><span class="n">IPlant</span><span class="p">,</span> <span class="n">fullpath</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># gets you the name of the crop Models</span>
+<span class="p">[</span><span class="s1">&#39;Maize&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Get full path to the fertiliser model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="n">Models</span><span class="o">.</span><span class="n">Fertiliser</span><span class="p">,</span> <span class="n">fullpath</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Field.Fertiliser&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The models from APSIM Models namespace are abstracted to use strings. All you need is to specify the name or the full path to the model enclosed in a stirng as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Clock&#39;</span><span class="p">)</span> <span class="c1"># get the path to the clock model</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Clock&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Alternatively, you can do the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Models.Clock&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Clock&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Repeat inspection of the plant model while using a <code class="docutils literal notranslate"><span class="pre">string</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;IPlant&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Field.Maize&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Inspect using full model namespace path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Models.Core.IPlant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>What about weather model?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Weather&#39;</span><span class="p">)</span> <span class="c1"># inspects the weather module</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Weather&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Alternative:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># or inspect using full model namespace path</span>
+<span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Models.Climate.Weather&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;.Simulations.Simulation.Weather&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Try finding path to the cultivar model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Cultivar&#39;</span><span class="p">,</span> <span class="n">fullpath</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># list all available cultivar names</span>
+<span class="p">[</span><span class="s1">&#39;Hycorn_53&#39;</span><span class="p">,</span>  <span class="s1">&#39;Pioneer_33M54&#39;</span><span class="p">,</span> <span class="s1">&#39;Pioneer_38H20&#39;</span><span class="p">,</span>  <span class="s1">&#39;Pioneer_34K77&#39;</span><span class="p">,</span>  <span class="s1">&#39;Pioneer_39V43&#39;</span><span class="p">,</span>  <span class="s1">&#39;Atrium&#39;</span><span class="p">,</span> <span class="s1">&#39;Laila&#39;</span><span class="p">,</span> <span class="s1">&#39;GH_5019WX&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p># we can get only the names of the cultivar models using the full string path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Models.PMF.Cultivar&#39;</span><span class="p">,</span> <span class="n">fullpath</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;Hycorn_53&#39;</span><span class="p">,</span>  <span class="s1">&#39;Pioneer_33M54&#39;</span><span class="p">,</span> <span class="s1">&#39;Pioneer_38H20&#39;</span><span class="p">,</span>  <span class="s1">&#39;Pioneer_34K77&#39;</span><span class="p">,</span>  <span class="s1">&#39;Pioneer_39V43&#39;</span><span class="p">,</span>  <span class="s1">&#39;Atrium&#39;</span><span class="p">,</span> <span class="s1">&#39;Laila&#39;</span><span class="p">,</span> <span class="s1">&#39;GH_5019WX&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">model_type</span></code> can be any of the following classes from the <cite>Models</cite> namespace, and can be passed as strings or as full path to Models namespace if Models is imported</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'Models.Manager'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Manager&quot;</span></code> – Returns information about the manager scripts in simulations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Models.Core.Simulation</span></code>  or <code class="docutils literal notranslate"><span class="pre">&quot;Simulation&quot;</span></code>– Returns information about the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Models.Climate.Weather</span></code> or <code class="docutils literal notranslate"><span class="pre">'Weather'</span></code> – Returns a list of paths or names pertaining to weather models.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Models.Core.IPlant</span></code> – or <code class="docutils literal notranslate"><span class="pre">'IPlant'</span></code> Returns a list of paths or names for all crop models available in the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Models.Report'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Report&quot;</span></code> returns the available report paths or names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Models.Surface.SurfaceOrganicMatter&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">'SurfaceOrganicMatter'</span></code> returns path to the surface organic module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Models.PMF.Cultivar'</span> <span class="pre">or</span> <span class="pre">``'Cultivar'</span></code> paths or names to all cultivars</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">Models.Clock'</span></code> or <code class="docutils literal notranslate"><span class="pre">'Clock'</span></code> returns all path to the clock models available</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Models.Soils.Physical</span> <span class="pre">|</span> <span class="pre">Models.Soils.Chemical</span> <span class="pre">|</span> <span class="pre">Models.Soils.Organic</span> <span class="pre">|</span> <span class="pre">Models.Soils.Water</span> <span class="pre">|</span> <span class="pre">Models.Soils.Solute</span></code> or <code class="docutils literal notranslate"><span class="pre">'Physical'</span> <span class="pre">|</span> <span class="pre">'Chemical'</span> <span class="pre">|</span> <span class="pre">'Organic'</span> <span class="pre">|</span> <span class="pre">'Water'</span> <span class="pre">|</span> <span class="pre">'Solute'</span></code> path to soil models.</p></li>
+<li><p><em>(``Additional`` model types may be available based on APSIM simulation requirements.)</em></p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In some cases, determining the model type can be challenging. Fortunately, <strong>apsimNGpy</strong> provides a recursive function to simplify this process—the <cite>find_model</cite> method.
+This method helps identify the model type efficiently. However, you need to know the name of the model, such as <strong>Clock</strong> or <strong>Weather</strong>, to use it effectively.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">apsimNGpy</span> <span class="kn">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">apsimNGpy.core.core</span> <span class="kn">import</span> <span class="n">Models</span>
+<span class="kn">from</span> <span class="nn">apsimNGpy.core.apsim</span> <span class="kn">import</span> <span class="n">ApsimModel</span>
+
+<span class="c1"># Load the default maize simulation</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span> <span class="s1">&#39;Maize&#39;</span><span class="p">)</span>
+
+<span class="c1"># Inspect or find specific components</span>
+<span class="n">model</span><span class="o">.</span><span class="n">find_model</span><span class="p">(</span><span class="s2">&quot;Weather&quot;</span><span class="p">)</span>
+<span class="n">Models</span><span class="o">.</span><span class="n">Climate</span><span class="o">.</span><span class="n">Weather</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">find_model</span><span class="p">(</span><span class="s2">&quot;Clock&quot;</span><span class="p">)</span>
+<span class="n">Models</span><span class="o">.</span><span class="n">Clock</span>
+</pre></div>
+</div>
+</section>
+<section id="whole-model-inspection">
+<h1>Whole Model inspection<a class="headerlink" href="#whole-model-inspection" title="Link to this heading"></a></h1>
+<p>Use <code class="docutils literal notranslate"><span class="pre">inspect_file</span></code> method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_file</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/apsim_file_structure.png"><img alt="Tree structure of the APSIM model" class="align-center" src="_images/apsim_file_structure.png" style="width: 100%;" />
+</a>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To include cultivar paths to the above simulation tree, use <code class="docutils literal notranslate"><span class="pre">cultivar</span> <span class="pre">=True</span></code> as shown below.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_file</span><span class="p">(</span><span class="n">cultivar</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only a few key model types are inspected using model.inspect_model under the hood. Inspecting the entire simulation file can produce a large volume of data, much of which may not be relevant or necessary in most use cases.</p>
+<p>If certain models do not appear in the inspection output, this is intentional — the tool selectively inspects components to keep results concise and focused.</p>
+<p>For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api"><span class="std std-ref">API Reference</span></a></p></li>
+<li><p><a class="reference internal" href="inspect_model_parameters.html#inspect-params"><span class="std std-ref">Inspect Model Parameters</span></a></p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Usage.html" class="btn btn-neutral float-left" title="Running and Retrieving Results" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="inspect_model_parameters.html" class="btn btn-neutral float-right" title="Inspect Model Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, richard magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
