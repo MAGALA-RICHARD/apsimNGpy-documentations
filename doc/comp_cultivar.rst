@@ -1,3 +1,4 @@
+.. _comp_cultivar:
 Comparing cultivars yield
 ===============================
 
