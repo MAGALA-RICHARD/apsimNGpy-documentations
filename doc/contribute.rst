@@ -109,3 +109,6 @@ Finally, run the test suite. It is recommended to use the ``run_suite`` method, 
     if __name__ == '__main__':
         suite.addTests(loader.loadTestsFromTestCase(TestCaseAddModule))
         run_suite(2)
+
+
+   - :ref:`faq`
