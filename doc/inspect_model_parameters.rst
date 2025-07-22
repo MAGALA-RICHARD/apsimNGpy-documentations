@@ -1,3 +1,5 @@
+.. _inspect_params:
+
 Inspect Model Parameters
 =============================
 
