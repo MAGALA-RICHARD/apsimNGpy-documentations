@@ -1,3 +1,4 @@
+.. _api:
 apsimNGpy: API Reference
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
