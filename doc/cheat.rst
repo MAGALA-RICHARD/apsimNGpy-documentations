@@ -1,3 +1,5 @@
+.. _cheat:
+
 apsimNGpy cheatsheet
 ==========================
 1. Installing apsimNGpy

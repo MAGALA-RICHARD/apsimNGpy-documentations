@@ -243,3 +243,8 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 .. code-block:: python
 
     model.save('./edited_maize_model.apsimx')
+
+.. seealso::
+
+   - :ref:`API Reference <api>`
+   - :ref:`apsimNGpy Cheat sheat <cheat>`
