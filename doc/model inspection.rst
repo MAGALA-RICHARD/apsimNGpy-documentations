@@ -18,10 +18,6 @@ Let's take a look at how it works.
 
 load default ``maize`` module::
 
-    model = base_data.load_default_simulations(crop ='maize')
-
-Same as::
-
     model = ApsimModel(model= 'Maize')
 
 
@@ -119,9 +115,10 @@ Try finding path to the cultivar model::
 
     from apsimNGpy import core
     from apsimNGpy.core.core import Models
+    from apsimNGpy.core.apsim import ApsimModel
 
     # Load the default maize simulation
-    model = core.base_data.load_default_simulations(crop="Maize")
+    model = ApsimModel(model= 'Maize')
 
     # Inspect or find specific components
     model.find_model("Weather")
@@ -133,7 +130,7 @@ Try finding path to the cultivar model::
 Whole Model inspection
 =====================================
 
-Use `inspect_file`` method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other
+Use ``inspect_file`` method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other
 
 
 .. code-block:: python

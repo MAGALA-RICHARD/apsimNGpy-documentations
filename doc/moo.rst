@@ -1,8 +1,10 @@
 Multi-Objective Optimization with apsimNGpy
 ============================================
 
-This tutorial demonstrates how to perform multi-objective optimization on an APSIM Next Generation model using the `apsimNGpy.optimizer.moo` module. You will learn two ways to specify decision variables and how to run an evolutionary optimization algorithm using `pymoo`.
-This approach enables you to explore trade-offs between objectives like crop yield and environmental outcomes.
+In real-world agricultural systems, most objectives—such as maximizing crop yield while minimizing environmental impact—are inherently conflicting. These trade-offs cannot be effectively addressed using single-objective optimization algorithms, which are limited to optimizing one goal at a time. Fortunately, multi-objective optimization algorithms inspired by evolutionary principles are well-suited to handle such complexity by exploring a range of trade-offs between competing objectives.
+
+This tutorial demonstrates how to perform multi-objective optimization on an APSIM Next Generation model using the apsimNGpy.optimizer.moo module. You will learn two ways to define decision variables and how to apply evolutionary algorithms via the pymoo library. This approach allows you to explore and analyze trade-offs among competing objectives, such as productivity and sustainability, in a robust and flexible way.
+
 
 .. admonition:: Prerequisites
 
@@ -96,7 +98,7 @@ Each dictionary defines:
    Each decision variable specification must contain exactly one parameter marked with ``'?'``. This signifies the target parameter to be optimized during the calibration or search process.
 
 
-Step 3b: Define decision variables (Approach 2 - using ``.add_parameters()``)
+Step 3b: Define decision variables (Approach 2 - using ``add_control()``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of a list, you can add each parameter one at a time.
@@ -181,6 +183,11 @@ The results show trade-offs between competing objectives. You can visualize them
 
    Objectives are typically expressed in different units, and some—such as yield—may have much larger amplitudes.
    This makes determining a suitable reference point challenging. In such cases, normalization can help automatically detect the reference point by applying specific thresholds.
+
+.. attention::
+
+    While multi-objective algorithms like NSGA-II can technically handle single-objective problems,
+    doing so is like using an axe to slice an orange or shooting a mosquito with an m16 —it's overkill. Simpler and more efficient algorithms are better suited for single-objective optimization tasks.
 
 Comparing objectives without mult-objective optimization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

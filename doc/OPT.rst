@@ -142,13 +142,61 @@ Run a local optimization solver. This is suitable for smooth problems and quick 
 
 .. code-block:: python
 
-    res_local = problem.minimize_with_alocal_solver(
+    res_local = problem.minimize_with_a_local_solver(
         method='Powell',
         options={
             'maxiter': 100,
             'disp': True
         }
     )
+You can also change to another method;
+
+.. code-block:: python
+
+    res_local = problem.minimize_with_a_local_solver(
+        method='Nelder-Mead',
+        options={
+            'maxiter': 100,
+            'disp': True
+        }
+    )
+
+✅ A wide range of supported optimization algorithms are shown in the table below;
+
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | Method           | Type                   | Gradient Required | Handles Bounds | Handles Constraints | Notes                                        |
+        +==================+========================+===================+================+=====================+==============================================+
+        | Nelder-Mead      | Local (Derivative-free)| No                | No             | No                  | Simplex algorithm                            |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | Powell           | Local (Derivative-free)| No                | Yes            | No                  | Direction set method                         |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | CG               | Local (Gradient-based) | Yes               | No             | No                  | Conjugate Gradient                           |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | BFGS             | Local (Gradient-based) | Yes               | No             | No                  | Quasi-Newton                                 |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | Newton-CG        | Local (Gradient-based) | Yes               | No             | No                  | Newton's method                              |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | L-BFGS-B         | Local (Gradient-based) | Yes               | Yes            | No                  | Limited memory BFGS                          |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | TNC              | Local (Gradient-based) | Yes               | Yes            | No                  | Truncated Newton                             |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | COBYLA           | Local (Derivative-free)| No                | No             | Yes                 | Constrained optimization by linear approx.   |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | SLSQP            | Local (Gradient-based) | Yes               | Yes            | Yes                 | Sequential Least Squares Programming         |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-constr     | Local (Gradient-based) | Yes               | Yes            | Yes                 | Trust-region constrained                     |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | dogleg           | Local (Gradient-based) | Yes               | No             | No                  | Requires Hessian                             |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-ncg        | Local (Gradient-based) | Yes               | No             | No                  | Newton-CG trust region                       |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-exact      | Local (Gradient-based) | Yes               | No             | No                  | Trust-region, exact Hessian                  |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+        | trust-krylov     | Local (Gradient-based) | Yes               | No             | No                  | Trust-region, Hessian-free                   |
+        +------------------+------------------------+-------------------+----------------+---------------------+----------------------------------------------+
+
+For details about these algorithms, see the `minimize documentation <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize>`_.
+
 
 .. admonition:: Explanation
 
@@ -160,7 +208,7 @@ Run a local optimization solver. This is suitable for smooth problems and quick 
 
     Here, the method used is ``'Powell'``, a **derivative-free** optimization algorithm that performs a directional search in successive, conjugate directions. It is robust for many types of problems, especially when gradient information is unavailable.
 
-The `minimize_with_alocal_solver()` method is a wrapper around `scipy.optimize.minimize`, making it easy to plug in a solver of your choice while passing solver-specific options.
+The `minimize_with_a_local_solver()` method is a wrapper around `scipy.optimize.minimize`, making it easy to plug in a solver of your choice while passing solver-specific options.
 
 
 When optimizing complex models such as APSIM simulations, the shape of the objective function surface can significantly impact the choice of optimization strategy.
@@ -190,6 +238,21 @@ In contrast, global optimizers like differential evolution (DE) are designed to 
         maxiter=100,
         polish=False  # Set to True if you want to refine with a local solver at the end
     )
+
+.. warning::
+
+   Optimization performance heavily depends on how well the objective function is designed. A poorly constructed objective function may lead to misleading results or failed convergence, regardless of the optimization algorithm used.
+
+   Be especially cautious when using gradient-based methods (e.g., ``BFGS``, ``L-BFGS-B``, ``SLSQP``), as they typically assume a smooth and differentiable objective surface. If your objective function is noisy, discontinuous, or based on simulations (such as APSIM), derivative-free methods like ``Powell``, ``Nelder-Mead``, or evolutionary algorithms (e.g., ``NSGA-II``) are often more appropriate.
+
+   Additionally, ensure that:
+
+   - The objective function returns **consistent numeric values** (e.g., `float`) without side effects.
+   - Constraints (if any) are correctly defined and numerically stable.
+   - Bounds on variables are appropriate and not overly restrictive.
+
+   Choosing the right algorithm is **not a guarantee** of good results—objective formulation, variable scaling, and domain understanding are equally critical to successful optimization.
+
 
 Mixed-Variable Optimization in apsimNGpy
 ============================================
@@ -258,11 +321,11 @@ You can then optimize this setup using either local or global solvers, as shown 
 
 .. hint::
 
-    You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial.
+    You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial. The inheritance from the MixedVariable is still the same as above
 
 
 Review optimization results
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 

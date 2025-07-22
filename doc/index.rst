@@ -1,11 +1,4 @@
-.. apsimNGpy documentation master file, created by
-   sphinx-quickstart on Sun Mar 30 22:19:37 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-=======================
-apsimNGpy Documentation
-=======================
+.. apsimNGpy documentation master file.
 
 apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 ================================================================
@@ -43,43 +36,77 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :alt: Ask Teams
 
 
-apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
-Built on object-oriented principles, it provides:
 
-- Fast batch file simulation
-- Model prediction and evaluation
-- Seamless APSIMX file editing
-- APSIM template model inspection
-- Weather data retrieval
-- Efficient soil profile development
-- Parameter optimization (not yet on pipy). We expose a large number of local and global optimization algorithms, including genetic multi-objective optimizations ones
-- Global and local sensitivity analysis
-- Distributed computing framework.
+.. admonition:: Introduction
 
-.. automodule:: apsimNGpy
-    :members:
+   apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
+   Built on object-oriented principles, it provides:
+
+   - Fast batch file simulation
+   - Model prediction and evaluation
+   - Seamless APSIMX file editing
+   - APSIM template model inspection
+   - Weather data retrieval
+   - Efficient soil profile development
+   - Parameter optimization (still undergoing rigorous tests). apsimNGpy support a broad selection of local and global optimization methods., including genetic multi-objective optimizations.
+   - Global and local sensitivity analysis
+   - Distributed computing framework.
+
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Table of Contents
 
    Home <self>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Getting Started
+
    getting started
    instantiating
    Usage
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Inspection & Editing
+
    model inspection
    inspect_model_parameters
    edit
-   cli
    factorial_experiments
    weather
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Optimization & Trade-off Analysis
+
    OPT
    moo
-   decision_making
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Support Development
+
    how_to_cite
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorials
+
+   comp_cultivar
+
+.. toctree::
+   :maxdepth: 1
+   :caption: CheatSheet
+
+   cheat
+
+.. toctree::
+   :maxdepth: 1
+   :caption: API Reference
+
    api
-
-
 
 
 

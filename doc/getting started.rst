@@ -124,7 +124,7 @@ Alternatively, you can use the code at the top of your script as follows
 
 .. code-block:: python
 
-    from apsimNGpy.config import set_apsim_bin_path
+    from apsimNGpy.core.config import set_apsim_bin_path
 
     # Set the path to the APSIM binaries:
     set_apsim_bin_path(path=r'path/to/your/apsim/binary/folder/bin')

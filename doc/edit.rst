@@ -1,3 +1,6 @@
+
+.. caption:: Model Parameter Editing
+
 Editing Model Parameters
 ===========================================
 
@@ -19,38 +22,33 @@ edit_method function signature
 
 ``model_name`` : str, required
     Name of the model instance to modify.
-.. important::
 
-    The following additional kwargs are specific to each each model type.
+The following additional kwargs are specific to each each model type.
 
-    ``**kwargs`` : dict, required
+``**kwargs`` : dict, required
 
-        - ``Weather``:
-            - ``weather_file`` (str): Path to the weather ``.met`` file.
+    - ``Weather``: requires a ``weather_file`` (str) argument, describing path to the ``.met`` weather file.
 
-        - ``Clock``:
-            - Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
+    - ``Clock``: Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
 
-        - ``Manager``:
-            - Variables to update in the Manager script using `update_mgt_by_path`.
-            The parameters in a manager script are specific to each script. See :ref:`inspect_model_parameters:Inspect Model Parameters` for more details. for more details. for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
+    - ``Manager``: Variables to update in the Manager script using ``update_mgt_by_path``. The parameters in a manager script are specific to each script. See :ref:`inspect_model_parameters:Inspect Model Parameters` for more details. for more details. for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
-        - ``Physical | Chemical | Organic | Water:``
-          The supported key word arguments for each model type are given in the table below. Please note the values are layered and thus a ``str`` or ``list`` is accepted.
-          when a value is supplied as ``str``, then it goes to the top soil layer. In case of a ``list``, value are replaced based on their respective index in the list.
-          As a caution if the length of the list supplied exceeds the available number of layers in the profile, a ``RuntimeError`` during model ``runs`` will be raised.
-          It is possible to target a specific layer(s) by supplying the location of that layer(s) using ``indices`` key word argument, if there is a need to target the bottom layer, use ``indices  = [-1]``
+    - ``Physical | Chemical | Organic | Water:``
+      The supported key word arguments for each model type are given in the table below. Please note the values are layered and thus a ``str`` or ``list`` is accepted.
+      when a value is supplied as ``str``, then it goes to the top soil layer. In case of a ``list``, value are replaced based on their respective index in the list.
+      As a caution if the length of the list supplied exceeds the available number of layers in the profile, a ``RuntimeError`` during model ``runs`` will be raised.
+      It is possible to target a specific layer(s) by supplying the location of that layer(s) using ``indices`` key word argument, if there is a need to target the bottom layer, use ``indices  = [-1]``
 
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Soil Model Type  | **Supported key word arguments**                                                                                                     |
-+==================+======================================================================================================================================+
-| Physical         | AirDry, BD, DUL, DULmm, Depth, DepthMidPoints, KS, LL15, LL15mm, PAWC, PAWCmm, SAT, SATmm, SW, SWmm, Thickness, ThicknessCumulative  |
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Organic          | CNR, Carbon, Depth, FBiom, FInert, FOM, Nitrogen, SoilCNRatio, Thickness                                                             |
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Chemical         | Depth, PH, Thickness                                                                                                                 |
-+------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-    - ``SurfaceOrganicMatter``
+        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+        | Soil Model Type  | **Supported key word arguments**                                                                                                     |
+        +==================+======================================================================================================================================+
+        | Physical         | AirDry, BD, DUL, DULmm, Depth, DepthMidPoints, KS, LL15, LL15mm, PAWC, PAWCmm, SAT, SATmm, SW, SWmm, Thickness, ThicknessCumulative  |
+        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+        | Organic          | CNR, Carbon, Depth, FBiom, FInert, FOM, Nitrogen, SoilCNRatio, Thickness                                                             |
+        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+        | Chemical         | Depth, PH, Thickness                                                                                                                 |
+        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+            - ``SurfaceOrganicMatter``
        - InitialCNR: (int)
        - InitialResidueMass (int)
 
@@ -74,12 +72,17 @@ edit_method function signature
     ``NotImplementedError``
         If the logic for the specified `model_type` is not implemented.
 
-Quick Examples::
+Quick Examples:
 
+.. code-block:: python
+        print('start')
         from apsimNGpy.core.apsim import ApsimModel
         model = ApsimModel(model='Maize')
+        print(model)
 
-Edit a cultivar model::
+Edit a cultivar model:
+
+.. code-block:: python
 
     model.edit_model(
         model_type='Cultivar',
@@ -95,24 +98,33 @@ Edit a cultivar model::
     ``model_name: 'B_110'`` is an existing cultivar in the Maize Model, which we want to edit. Please note that editing a cultivar without specifying the  ``new_cultivar_name`` will throw a ``ValueError``.
     The name should be different to the the one being edited.
 
-Edit a soil organic matter module::
+Edit a soil organic matter module:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Organic',
         simulations='Simulation',
         model_name='Organic',
         Carbon=1.23)
 
-Edit multiple soil layers::
+Edit multiple soil layers:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Organic',
         simulations='Simulation',
         model_name='Organic',
         Carbon=[1.23, 1.0])
 
-Edit solute models::
+Edit solute models:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Solute',
         simulations='Simulation',
@@ -125,16 +137,22 @@ Edit solute models::
         model_name='Urea',
         InitialValues=0.002)
 
-Edit a manager script::
+Edit a manager script:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Manager',
         simulations='Simulation',
         model_name='Sow using a variable rule',
         population=8.4)
 
-Edit surface organic matter parameters::
+Edit surface organic matter parameters:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='SurfaceOrganicMatter',
         simulations='Simulation',
@@ -147,8 +165,11 @@ Edit surface organic matter parameters::
         model_name='SurfaceOrganicMatter',
         InitialCNR=85)
 
-Edit Clock start and end dates::
+Edit Clock start and end dates:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Clock',
         simulations='Simulation',
@@ -156,16 +177,22 @@ Edit Clock start and end dates::
         Start='2021-01-01',
         End='2021-01-12')
 
-Edit report variables::
+Edit report variables:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Report',
         simulations='Simulation',
         model_name='Report',
         variable_spec='[Maize].AboveGround.Wt as abw')
 
-Multiple report variables::
+Multiple report variables:
 
+.. code-block:: python
+
+    model = ApsimModel(model='Maize')
     model.edit_model(
         model_type='Report',
         simulations='Simulation',
@@ -180,6 +207,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
+   model = ApsimModel(model='Maize')
    model.edit_model_by_path(path, **kwargs)
 
 .. hint::
@@ -189,6 +217,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
+    model = ApsimModel(model='Maize')
     model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
 
 .. warning::
@@ -201,6 +230,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
+   model = ApsimModel(model='Maize')
    model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
    # outputs: Models.Manager
 

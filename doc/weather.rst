@@ -41,7 +41,7 @@ To use ``get_weather_from_web()``, it requires instantiation of the model as fol
 
 .. code-block:: python
 
-          dt = model.inspect_model_parameters(model_type='Clock', model_name='Clock', simulations='Simulation')
+          dt = maize_model.inspect_model_parameters(model_type='Clock', model_name='Clock', simulations='Simulation')
           start, end = dt['Start'].year, dt['End'].year
           # out put:  1990, 2000
 

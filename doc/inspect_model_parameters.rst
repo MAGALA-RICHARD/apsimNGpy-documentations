@@ -71,12 +71,14 @@ Let's take a look at how it works.
 
 .. code-block:: python
 
-    from apsimNGpy.core import CoreModel
-    model_instance = CoreModel('Maize')
+    from apsimNGpy.core import ApsimModel
+    model_instance = ApsimModel('Maize')
 
 Inspect full soil ``Organic`` profile::
 
         model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
+
+        # output
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
         0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
         1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
@@ -92,6 +94,8 @@ Inspect full soil ``Organic`` profile::
 Inspect soil ``Physical`` profile::
 
         model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
+
+        # output
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
         0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
         1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
@@ -105,6 +109,8 @@ Inspect soil ``Physical`` profile::
 Inspect soil ``Chemical`` profile::
 
         model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
+
+        # output
                Depth   PH  Thickness
         0      0-150  8.0      150.0
         1    150-300  8.0      150.0
@@ -158,6 +164,8 @@ Inspect ``Report`` model attributes.
 .. code-block:: python
 
         model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
+
+        # output
         {'EventNames': ['[Maize].Harvesting'],
         'VariableNames': ['[Clock].Today',
         '[Maize].Phenology.CurrentStageName',
@@ -172,6 +180,8 @@ Inspect ``Report`` model attributes.
         '[Maize].Total.Wt']}
 
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
+
+        # output
         {'EventNames': ['[Maize].Harvesting']}
 
 Inspect  ``Weather`` path
@@ -182,6 +192,8 @@ Inspect  ``Weather`` path
 .. code-block:: python
 
         model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
+
+        # output
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
 Inspect ``Manager`` script parameters.
@@ -193,6 +205,8 @@ Inspect ``Manager`` script parameters.
 
         model_instance.inspect_model_parameters('Manager',
         simulations='Simulation', model_name='Sow using a variable rule')
+
+        # output
         {'Crop': 'Maize',
         'StartDate': '1-nov',
         'EndDate': '10-jan',
@@ -212,12 +226,16 @@ Inspect ``Manager`` script parameters.
         model_instance.inspect_model_parameters('Manager',
         simulations='Simulation', model_name='Sow using a variable rule',
         parameters='Population')
+
+        # output
         {'Population': '10'}
 
 Inspect ``Cultivar`` parameters::
 
         model_instance.inspect_model_parameters('Cultivar',
         simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
+
+        # output
         {'[Phenology].Juvenile.Target.FixedValue': '210',
         '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
         '[Phenology].Photosensitive.Target.XYPairs.Y': '0, 0, 0',
@@ -230,6 +248,8 @@ Inspect ``Cultivar`` parameters::
 
         >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
+
+        # output
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
 .. caution::
@@ -241,6 +261,8 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         simulations='Simulation', model_name='SurfaceOrganicMatter')
+
+        # output
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
          'StandingWt': 0.0,
@@ -257,6 +279,8 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation',
         model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
+
+        # output
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
 .. caution::
@@ -273,12 +297,16 @@ Example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='End')
+
+        # output
         datetime.datetime(2000, 12, 31, 0, 0)
 
 Extract ``Start`` year only. let's see with ``start`` year as an example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='Start').year
+
+        # output
         1990
 
 Extract  ``End`` year only::
@@ -292,12 +320,16 @@ Example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='end_date')
+
+        # output
         datetime.datetime(2000, 12, 31, 0, 0)
 
 
 # Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``::
 
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
+
+        # output
                Depth  InitialValues  SoluteBD  Thickness
         0      0-150            0.0  1.010565      150.0
         1    150-300            0.0  1.071456      150.0
@@ -315,6 +347,9 @@ Example::
 
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
         parameters='InitialValues')
+
+        # output
+
             InitialValues
         0            0.1
         1            0.1
@@ -325,6 +360,82 @@ Example::
         6            0.1
         """
 
+.. tip::
+
+   The primary limitation of inspect_model_parameters is its verbosity—it often requires passing ``model_type, model_name`` and ``simulations`` or navigating deeply nested structures.
+
+   The ``inspect_model_parameters_by_path`` method addresses this verbosity problem by allowing users to simply specify the path to the model component and (optionally) the parameters to inspect. This makes the API more concise and user-friendly.
+
+   As with ``inspect_model_parameters``, the parameters argument is optional—if not provided, the method will attempt to extract all available parameters from the model at the given path.
+
+Inspect ``SurfaceOrganicMatter`` module parameters
+
+.. code-block:: python
+
+   model = ApsimModel('Maize')
+   model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
+   # output
+
+   {'InitialCPR': 0.0,
+     'InitialCNR': 100.0,
+     'NH4': 0.0,
+     'NO3': 0.0,
+     'Cover': 0.0,
+     'LabileP': 0.0,
+     'N': 0.0,
+     'SurfOM': <System.Collections.Generic.List[SurfOrganicMatterType] object at 0x1ae5c10c0>,
+     'InitialResidueMass': 500.0,
+     'LyingWt': 0.0,
+     'StandingWt': 0.0,
+     'C': 0.0,
+     'P': 0.0}
+
+Inspect surface organic matter module parameters by selecting a few parameters
+
+.. code-block:: python
+
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
+    # output
+    {'InitialCNR': 100.0}
+
+Inspect ``Sow using a variable rule`` manager module parameters
+
+.. code-block:: python
+
+     model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule')
+
+     # output
+     {'Crop': 'Maize',
+     'StartDate': '1-nov',
+     'EndDate': '10-jan',
+     'MinESW': '100.0',
+     'MinRain': '25.0',
+     'RainDays': '7',
+     'CultivarName': 'Dekalb_XL82',
+     'SowingDepth': '30.0',
+     'RowSpacing': '750.0',
+     'Population': '10'}
+
+
+
+
+Inspect ``Sow using a variable rule`` manager module parameters by selecting a few parameters
+
+.. code-block:: python
+
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule', parameters= 'Population')
+    # output
+    {'Population': '10'}
+
+.. tip::
+
+   Getting model path can be done in three ways:
+
+       1. Use ``model.inspect_file`` method. Prints a tree of the model structure to the console
+
+       2. Use ``model.inspect_model(model_type =...)``. Returns the path to all the models in the specified class
+
+       3. Use ``copy node path`` method in the graphical user interface
 
 .. admonition:: GUI Simulation Preview.
 
