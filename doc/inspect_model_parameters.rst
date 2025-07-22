@@ -445,3 +445,9 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
 
      model.preview_simulation()
 
+.. seealso::
+
+   - :ref:`API Reference <api>`
+   - :ref:`editor`
+
+

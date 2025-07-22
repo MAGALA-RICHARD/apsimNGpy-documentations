@@ -1,3 +1,4 @@
+.. _editor:
 
 .. caption:: Model Parameter Editing
 
