@@ -1,3 +1,5 @@
+.. _plain_inspect:
+
 Inspect Model
 =============================
 
