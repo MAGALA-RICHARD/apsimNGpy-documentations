@@ -1,8 +1,5 @@
 .. _experiment_api:
 
-===============================
-Creating Experiments with apsimNGpy
-===============================
 
 .. note::
 
@@ -57,7 +54,8 @@ factors like this:
 Finalizing the Experiment
 =========================
 
-Once all factors are defined, finalize the setup and save the modified model:
+Once all factors are defined, finalize the setup and save the modified model. Please note this is entirely optional,
+``add_factor`` is a stand alone method, once you have finished adding factors, you can call the ``run`` to retrieve the results, without calling finalize. finalize is wa built as safe guard for immutability
 
 .. code-block:: python
 
@@ -81,7 +79,7 @@ For advanced usage (e.g., linked script validation, mixed designs), refer to the
 
 .. seealso::
 
-   - :ref:`API Reference <apsimngpy-api>`
+   - :ref:`API Reference <api>`
    - :doc:`../howto/running_batch_sims`
    - APSIM documentation: https://www.apsim.info/
 
