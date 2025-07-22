@@ -4,7 +4,7 @@ How to Cite apsimNGpy
 =====================
 
 If you are planning to use apsimNGpy in any reports or publications, please make sure to refer to the version number you used.
-The version and sub-version numbers can be retrived via apsimNGpy.__version__, e.g., 0.39.X  (replace X with current version).
+The version and sub-version numbers can be retrieved via apsimNGpy.__version__, e.g., 0.39.X  (replace X with current version).
 
 **Citation:**
 
