@@ -80,6 +80,5 @@ For advanced usage (e.g., linked script validation, mixed designs), refer to the
 .. seealso::
 
    - :ref:`API Reference <api>`
-   - :doc:`../howto/running_batch_sims`
    - APSIM documentation: https://magala-richard.github.io/apsimNGpy-documentations/index.html
 
