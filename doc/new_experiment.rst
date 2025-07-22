@@ -3,12 +3,12 @@
 
 .. note::
 
-    ⚠️ Note: The Experiment module, introduced in apsimNGpy v0.3.9.7, addresses recent structural changes in APSIM's factorial experiment handling. While the older create_experiment method in ApsimModel is retained for backward compatibility,
-    users working with newer APSIM models should use the Experiment class for building factorial designs. It offers full support for modern model structures and script-based factors
+    ⚠️ Note: The Experiment module, introduced in apsimNGpy v0.3.9.7, addresses recent structural changes in APSIM file structure changes. While the older ``create_experiment`` method in ApsimModel is retained for backward compatibility,
+    users working with newer APSIM models should use the ``Experiment`` class for building factorial designs. It offers full support for modern model structures and script-based factors
 
-The `Experiment` API in `apsimNGpy` provides a high-level interface to build factorial experiments
+The `Experiment` API in ``apsimNGpy`` provides a high-level interface to build factorial experiments
 programmatically using APSIM. It is ideal for users who want to automate the creation of simulation treatments
-by varying input parameters or management scripts — all without manually editing `.apsimx` files.
+by varying input parameters or management scripts — all without manually editing ``.apsimx`` files.
 
 .. note::
    This feature is especially useful for agronomists and researchers running large design-of-experiment (DoE) simulations.
@@ -21,7 +21,7 @@ The `Experiment` class wraps an existing APSIM model and allows you to:
 - Clone and isolate a base simulation
 - Add multiple input factors (e.g., fertilizer rate, sowing density)
 - Generate permutations or combinations of those factors
-- Export the updated `.apsimx` file with fully configured experiments
+- Export the updated ``.apsimx`` file with fully configured experiments
 
 Getting Started
 ===============
