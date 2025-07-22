@@ -1,3 +1,5 @@
+.. _moo_opt:
+
 Multi-Objective Optimization with apsimNGpy
 ============================================
 
@@ -20,6 +22,7 @@ This tutorial demonstrates how to perform multi-objective optimization on an APS
 
 Step 1: Import required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _moo:
 
 .. code-block:: python
 
@@ -223,3 +226,7 @@ we ge the same pareto front and trade-offs we have seen in that graph? To answer
 
   From the graph above, it is clear that the pattern is no where close to what we could call a clear pareto front that can demonstrate the trade-offs between different objectives.
 
+.. seealso::
+
+   - :ref:`API Reference <api>`
+   - :ref:`single_opt`

@@ -1,3 +1,4 @@
+.. _single_opt:
 
 Single-Objective Optimization with apsimNGpy
 ============================================
@@ -344,4 +345,7 @@ Summary
 | Use case              | Smooth, simple surfaces   | Rugged, multi-modal surfaces  |
 +-----------------------+---------------------------+-------------------------------+
 
+.. seealso::
 
+   - :ref:`API Reference <api>`
+   - :ref:`moo_opt`
