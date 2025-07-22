@@ -160,3 +160,8 @@ Use ``inspect_file`` method to inspects all simulations in the file. This method
     If certain models do not appear in the inspection output, this is intentional — the tool selectively inspects components to keep results concise and focused.
 
     For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI.
+
+.. seealso::
+
+   - :ref:`API Reference <api>`
+   - :ref:`inspect_params`
