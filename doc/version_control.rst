@@ -25,11 +25,11 @@ The ``apsimNGpy`` package is designed to interface with any version of APSIM Nex
 
 .. admonition:: Best Practices for Users
 
-To ensure smooth use of `apsimNGpy`, users are strongly encouraged to:
+    To ensure smooth use of `apsimNGpy`, users are strongly encouraged to:
 
-* **Check the documentation homepage** to confirm the current `latestunit apsimNGpy::version`.
-* **Stay updated** with the most recent version of `apsimNGpy` to benefit from patches, improvements, and compatibility updates.
-* If encountering issues with a new APSIM version, **fall back to a previously tested version** that is known to work with your current `apsimNGpy` setup.
+    * **Check the documentation homepage** to confirm the current `latestunit apsimNGpy::version`.
+    * **Stay updated** with the most recent version of `apsimNGpy` to benefit from patches, improvements, and compatibility updates.
+    * If encountering issues with a new APSIM version, **fall back to a previously tested version** that is known to work with your current `apsimNGpy` setup.
 
 .. tip::
 
