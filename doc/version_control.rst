@@ -1,18 +1,20 @@
- Version Control and APSIM Compatibility in apsimNGpy
-====================================================
+Version Control and APSIM Compatibility in apsimNGpy
+=====================================================
 
-The ``apsimNGpy`` package is designed to interface with any version of APSIM Next Generation (APSIM NG) platform. However, as APSIM NG is under continuous development, changes in its internal structure, APIs, or file formats may occasionally lead to version-breaking issues that impact `apsimNGpy` functionality.
+The ``apsimNGpy`` package is designed to interface with any version of the APSIM Next Generation (APSIM NG) platform. However, because APSIM NG is under continuous development, changes in its internal structure, APIs, or file formats may occasionally lead to version-breaking issues that affect ``apsimNGpy`` functionality.
 
 .. tip::
 
-    To manage this, an automated robot runs **every two days** to check for new APSIM NG development releases. The robot performs the following tasks:
+    To manage this, an automated robot runs **every two days** to check for new APSIM NG development releases. It performs the following tasks:
 
     1. **Downloads and installs** the latest APSIM NG development version.
-    2. **Runs the complete `apsimNGpy` unit test suite** against the new APSIM version.
-    3. **Sends a detailed report** of the test outcomes to the `apsimNGpy` administrators.
-    4. If all tests **pass successfully**, the new APSIM version is marked as the `latestunit apsimNGpy::version` and is published on the documentation homepage. If you click on this button, it will take you direct to the download page of that current tested APSIM version. Please register and continue with the download
+    2. **Runs the complete ``apsimNGpy`` unit test suite** against the new APSIM version.
+    3. **Sends a detailed report** of the test outcomes to the ``apsimNGpy`` administrators.
+    4. If all tests **pass successfully**, the new APSIM version is marked as the ``latestunit apsimNGpy::version`` and is published on the documentation homepage.
 
-    This ensures that users always have access to a known-compatible APSIM version when using `apsimNGpy`.
+    A button on the homepage links directly to the download page for the tested APSIM version. Please register to access the download.
+
+    This workflow ensures that users always have access to a known-compatible APSIM version when using ``apsimNGpy``.
 
 .. admonition:: In Case of Errors
 
@@ -25,13 +27,12 @@ The ``apsimNGpy`` package is designed to interface with any version of APSIM Nex
 
 .. admonition:: Best Practices for Users
 
-    To ensure smooth use of `apsimNGpy`, users are strongly encouraged to:
+    To ensure smooth and reliable use of ``apsimNGpy``, users are strongly encouraged to:
 
-    * **Check the documentation homepage** to confirm the current `latestunit apsimNGpy::version`.
-    * **Stay updated** with the most recent version of `apsimNGpy` to benefit from patches, improvements, and compatibility updates.
-    * If encountering issues with a new APSIM version, **fall back to a previously tested version** that is known to work with your current `apsimNGpy` setup.
+    * **Check the documentation homepage** to confirm the current ``latestunit apsimNGpy::version``.
+    * **Stay updated** with the most recent version of ``apsimNGpy`` to benefit from improvements and compatibility updates.
+    * If issues arise with a new APSIM version, **fall back to a previously tested version** known to work with your current ``apsimNGpy`` setup.
 
 .. tip::
 
-    Using version control wisely can save time, reduce debugging overhead, and ensure reproducibility in modeling workflows.
-
+    Leveraging version control wisely can save time, minimize debugging, and ensure reproducibility in your modeling workflows.
