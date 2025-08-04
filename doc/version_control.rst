@@ -1,7 +1,7 @@
  Version Control and APSIM Compatibility in apsimNGpy
 ====================================================
 
-The `apsimNGpy` package is designed to interface tightly with the APSIM Next Generation (APSIM NG) platform. As APSIM NG is under continuous development, changes in its internal structure, APIs, or file formats may occasionally lead to version-breaking issues that impact `apsimNGpy` functionality.
+The ``apsimNGpy`` package is designed to interface with any version of APSIM Next Generation (APSIM NG) platform. However, as APSIM NG is under continuous development, changes in its internal structure, APIs, or file formats may occasionally lead to version-breaking issues that impact `apsimNGpy` functionality.
 
 .. tip::
 
