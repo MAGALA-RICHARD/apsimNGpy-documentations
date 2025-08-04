@@ -9,7 +9,7 @@ To manage this, an automated robot runs **every two days** to check for new APSI
 1. **Downloads and installs** the latest APSIM NG development version.
 2. **Runs the complete `apsimNGpy` unit test suite** against the new APSIM version.
 3. **Sends a detailed report** of the test outcomes to the `apsimNGpy` administrators.
-4. If all tests **pass successfully**, the new APSIM version is marked as the `latestunit apsimNGpy::version` and is published on the documentation homepage.
+4. If all tests **pass successfully**, the new APSIM version is marked as the `latestunit apsimNGpy::version` and is published on the documentation homepage. If you click on this button, it will take you direct to the download page of that current tested APSIM version. Please register and continue with the download
 
 This ensures that users always have access to a known-compatible APSIM version when using `apsimNGpy`.
 
