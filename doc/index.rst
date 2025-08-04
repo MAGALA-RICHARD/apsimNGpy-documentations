@@ -73,6 +73,12 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 .. toctree::
    :maxdepth: 2
+   :caption: VERSION CONTROL
+
+   version_control
+
+.. toctree::
+   :maxdepth: 2
    :caption: Inspection & Editing
 
    model inspection
