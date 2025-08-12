@@ -11,7 +11,7 @@ You can either load a built-in template or use your own APSIM file.
 
     from apsimNGpy.core import base_data
     # Option 1: Load default maize simulation
-    model = base_data.load_default_simulations(crop='maize')
+    model = base_data.load_default_simulations(crop='Maize')
 
     # Option 2: Equivalent direct instantiation. Supported by versions 0.35 +
     from apsimNGpy.core.apsim import ApsimModel
