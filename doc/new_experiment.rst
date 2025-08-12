@@ -30,9 +30,9 @@ First, create an `Experiment` object by loading a base model:
 
 .. code-block:: python
 
-   from apsimNGpy.experiment import Experiment
+   from apsimNGpy.core.experiment import Experiment
 
-   exp = Experiment("Maize.apsimx", out_path="Maize_experiment.apsimx")
+   exp = Experiment("Maize", out_path="Maize_experiment.apsimx")
 
 Then initialize the experiment block:
 
