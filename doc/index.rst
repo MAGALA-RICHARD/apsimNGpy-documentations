@@ -91,7 +91,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :maxdepth: 2
    :caption: DISTRIBUTED COMPUTING
 
-   multi_core
+   mult_core
 
 .. toctree::
    :maxdepth: 2
