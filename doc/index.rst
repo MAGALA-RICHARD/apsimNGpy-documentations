@@ -89,6 +89,12 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 .. toctree::
    :maxdepth: 2
+   :caption: DISTRIBUTED COMPUTING
+
+   multi_core
+
+.. toctree::
+   :maxdepth: 2
    :caption: Optimization & Trade-off Analysis
 
    OPT
