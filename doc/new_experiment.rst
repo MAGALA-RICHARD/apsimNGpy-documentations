@@ -4,9 +4,9 @@
 .. note::
 
     ⚠️ Note: The Experiment module, introduced in apsimNGpy v0.3.9.7, addresses recent structural changes in APSIM file structure changes. While the older ``create_experiment`` method in ApsimModel is retained for backward compatibility,
-    users working with newer APSIM models should use the ``Experiment`` class for building factorial designs. It offers full support for modern model structures and script-based factors
+    users working with newer APSIM models should use the ``ExperimentManager`` class for building factorial designs. It offers full support for modern model experiment editing
 
-The `Experiment` API in ``apsimNGpy`` provides a high-level interface to build factorial experiments
+The `ExperimentManager` API in ``apsimNGpy`` provides a high-level interface to build factorial experiments
 programmatically using APSIM. It is ideal for users who want to automate the creation of simulation treatments
 by varying input parameters or management scripts — all without manually editing ``.apsimx`` files.
 
@@ -30,7 +30,7 @@ First, create an `Experiment` object by loading a base model:
 
 .. code-block:: python
 
-   from apsimNGpy.core.experiment import ExperimentManager
+   from apsimNGpy.core.experimentmanager import ExperimentManager
 
    exp = ExperimentManager("Maize", out_path="Maize_experiment.apsimx")
 
