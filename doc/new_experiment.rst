@@ -16,7 +16,7 @@ by varying input parameters or management scripts — all without manually editi
 Quick Overview
 ==============
 
-The `Experiment` class wraps an existing APSIM model and allows you to:
+The `ExperimentManager` class wraps an existing APSIM model and allows you to:
 
 - Clone and isolate a base simulation
 - Add multiple input factors (e.g., fertilizer rate, sowing density)
@@ -30,9 +30,9 @@ First, create an `Experiment` object by loading a base model:
 
 .. code-block:: python
 
-   from apsimNGpy.core.experiment import Experiment
+   from apsimNGpy.core.experiment import ExperimentManager
 
-   exp = Experiment("Maize", out_path="Maize_experiment.apsimx")
+   exp = ExperimentManager("Maize", out_path="Maize_experiment.apsimx")
 
 Then initialize the experiment block:
 
@@ -67,7 +67,7 @@ ready to run in APSIM or via automation tools.
 API Summary
 ===========
 
-- :class:`Experiment`: Main entry point to create and manipulate factorial designs.
+- :class:`ExperimentManager`: Main entry point to create and manipulate factorial designs.
 - :meth:`init_experiment`: Prepares the experiment node structure in the model.
 - :meth:`add_factor`: Adds a new varying parameter or script-defined rule.
 - :meth:`finalize`: Validates and commits the experiment structure to the model.
