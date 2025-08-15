@@ -59,7 +59,7 @@ Once all factors are defined, finalize the setup and save the modified model. Pl
 
 .. code-block:: python
 
-   exp.finalize()
+    exp.finalize()
 
 This writes a new `.apsimx` file that contains a complete factorial experiment,
 ready to run in APSIM or via automation tools.
