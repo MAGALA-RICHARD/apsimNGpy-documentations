@@ -19,13 +19,6 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :target: https://pepy.tech/project/apsimNGpy
    :alt: Total PyPI downloads
 
-.. image:: https://static.pepy.tech/badge/apsimNGpy/month
-   :target: https://pepy.tech/project/apsimNGpy
-   :alt: Weekly PyPI downloads
-
-.. image:: https://static.pepy.tech/badge/apsimNGpy/week
-   :target: https://pepy.tech/project/apsimNGpy
-   :alt: Weekly PyPI downloads
 
 .. image:: https://img.shields.io/badge/Join%20Discussions-blue.svg
    :target: https://discord.gg/SU9A6nNv
@@ -35,8 +28,8 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :target: https://teams.live.com/l/community/FBAbNOQj7y9dPcoaAI
    :alt: Ask Teams
 
-.. image:: https://img.shields.io/badge/Latest--Unittest--APSIM--NG-2025.08.7824-blue?style=flat&logo=apachespark
-   :target: https://registration.apsim.info/?version=2025.08.7824.0&product=APSIM%20Next%20Generation
+.. image:: https://img.shields.io/badge/Latest--Unittest--APSIM--NG-2025.08.7837-blue?style=flat&logo=apachespark
+   :target: https://registration.apsim.info/?version=2025.08.7837.0&product=APSIM%20Next%20Generation
    :alt: APSIM Next Generation version
 
 
