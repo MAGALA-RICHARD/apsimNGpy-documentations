@@ -139,7 +139,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. code-block:: python
 
-    model.inspect_file()
+    model.inspect_file(cultivar =False)
 
 
 
@@ -150,7 +150,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. tip::
 
-  To include cultivar paths to the above simulation tree, use ``cultivar =True`` as shown below.
+  To include cultivar paths to the above simulation tree, use ``cultivar =True`` as shown below. For developers who are testing the method using console = False
 
 .. code-block:: python
 
