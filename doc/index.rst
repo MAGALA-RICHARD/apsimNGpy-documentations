@@ -72,7 +72,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 .. toctree::
    :maxdepth: 2
-   :caption: Inspection & Editing
+   :caption: EDITING & INSPECTION
 
    model inspection
    inspect_model_parameters
@@ -88,32 +88,32 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 .. toctree::
    :maxdepth: 2
-   :caption: Optimization & Trade-off Analysis
+   :caption: OPTIMIZATION & TRADE-OFF ANALYSIS
 
    OPT
    moo
 
 .. toctree::
    :maxdepth: 3
-   :caption: Support Development
+   :caption: SUPPORT DEVELOPMENT
 
    how_to_cite
 
 .. toctree::
    :maxdepth: 1
-   :caption: Tutorials
+   :caption: TUTORIALS
 
    comp_cultivar
 
 .. toctree::
    :maxdepth: 1
-   :caption: CheatSheet
+   :caption: CHEATSHEET
 
    cheat
 
 .. toctree::
    :maxdepth: 1
-   :caption: API Reference
+   :caption: API REFERENCE
 
    api
 
