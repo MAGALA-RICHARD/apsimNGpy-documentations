@@ -36,18 +36,27 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 .. admonition:: Introduction
 
-   apsimNGpy is a cutting-edge, open-source framework designed for advanced agroecosystem modeling.
-   Built on object-oriented principles, it provides:
+   apsimNGpy is a cutting-edge, open-source Python framework designed for advanced modeling with APSIM process-based model.
+   Built on object-oriented principles. apsimNGpy extends and augments APSIM Next Generation functionalities within the Python scientific ecosystem,
+   turning GUI-centric workflows into scriptable, reproducible, and scalable pipelines.
 
-   - Fast batch file simulation
-   - Model prediction and evaluation
-   - Seamless APSIMX file editing
-   - APSIM template model inspection
-   - Weather data retrieval
-   - Efficient soil profile development
-   - Parameter optimization (still undergoing rigorous tests). apsimNGpy support a broad selection of local and global optimization methods., including genetic multi-objective optimizations.
-   - Global and local sensitivity analysis
-   - Distributed computing framework.
+    Why use apsimNGpy
+    ======================
+
+    ``Scalable performance.`` Run large experiment sets efficiently via ``multiprocessing/multithreading`` (e.g., factorials, ensembles, calibrations) using a clean, high-level API.
+
+    ``Spatial & data integration``. Leverage Python’s geospatial stack and built-in helpers to fetch and manage soil/weather inputs, enabling landscape-scale analyses.
+
+    ``Optimization & calibration``. Access multi-objective optimization and sensitivity analysis to quantify trade-offs (e.g., yield vs. nitrate loss/GHG) and calibrate parameters.
+
+    ``Reproducible automation``. Run ``APSIM`` using Jupyter/CLI/scripts; outputs land in ``pandas DataFrames`` for downstream analysis, plotting, and reporting.
+
+    ``Full model manipulation``. A modular, object-oriented design supports inspection, editing, experiments, and custom reports without manual GUI interface.
+
+    ``Version resilience``. rather than tying ``apsimNGpy`` to a fixed APSIM version, ``apsimNGpy`` is developed with forward- and backward-compatibility in mind and is actively synchronized with upstream APSIM.
+
+    ``Open and extensible``. ``Apache-2.0`` licensing, clear abstractions, and a plug-friendly architecture make it easy to extend and integrate into existing research pipelines.
+
 
 
 .. toctree::
