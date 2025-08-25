@@ -15,12 +15,13 @@ release = '0.39.3.4'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-        'sphinx.ext.mathjax',
-        ]
+    'sphinx.ext.mathjax',
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['sphinx.ext.duration',
-'sphinx.ext.napoleon',
+                    'sphinx.ext.napoleon',
+                    "sphinx.ext.mathjax",  # required for :math: role to render in HTML
                     'sphinx.ext.doctest',
                     'sphinx.ext.autodoc',
                     'sphinx.ext.autosectionlabel',
@@ -47,8 +48,6 @@ html_theme = "sphinx_rtd_theme"
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", '.apsimx', '.db']
 
-
-
 html_static_path = ['_static']
 
 autosectionlabel_prefix_document = True
@@ -60,4 +59,5 @@ rst_prolog = """
 """
 
 import os, sys
+
 sys.path.insert(0, os.path.abspath('../'))
