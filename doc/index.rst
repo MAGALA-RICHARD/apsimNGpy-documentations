@@ -55,9 +55,9 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
     **Version resilience**. rather than tying ``apsimNGpy`` to a fixed APSIM version, ``apsimNGpy`` is developed with forward- and backward-compatibility in mind and is actively synchronized with upstream APSIM.
 
-    **Open and extensible``. ``Apache-2.0`` licensing, clear abstractions, and a plug-friendly architecture make it easy to extend and integrate into existing research pipelines.
+    **Open and extensible**. ``Apache-2.0`` licensing, clear abstractions, and a plug-friendly architecture make it easy to extend and integrate into existing research pipelines.
 
-    ``Robust model evaluation``. Built-in model prediction evalaution metrics: RMSE, RRMSE, Willmott’s Index of Agreement (WIA), Bias, MAE, Lin's CCC, and R\ :sup:2``
+    **Diverse model evaluation metrics**. Built-in model prediction evalaution metrics: RMSE, RRMSE, Willmott’s Index of Agreement (WIA), Bias, MAE, Lin's CCC, and R\ :sup:2``
 
 
 .. toctree::
