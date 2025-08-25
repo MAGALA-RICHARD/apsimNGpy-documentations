@@ -40,9 +40,6 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    Built on object-oriented principles. apsimNGpy extends and augments APSIM Next Generation functionalities within the Python scientific ecosystem,
    turning GUI-centric workflows into scriptable, reproducible, and scalable pipelines.
 
-    Why use apsimNGpy
-    ======================
-
     ``Scalable performance.`` Run large experiment sets efficiently via ``multiprocessing/multithreading`` (e.g., factorials, ensembles, calibrations) using a clean, high-level API.
 
     ``Spatial & data integration``. Leverage Python’s geospatial stack and built-in helpers to fetch and manage soil/weather inputs, enabling landscape-scale analyses.
@@ -51,12 +48,13 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
     ``Reproducible automation``. Run ``APSIM`` using Jupyter/CLI/scripts; outputs land in ``pandas DataFrames`` for downstream analysis, plotting, and reporting.
 
-    ``Full model manipulation``. A modular, object-oriented design supports inspection, editing, experiments, and custom reports without manual GUI interface.
+    ``Full model manipulation``. A modular, ``object-oriented`` design supports inspection, editing, experiments, and custom reports without manual GUI interface.
 
     ``Version resilience``. rather than tying ``apsimNGpy`` to a fixed APSIM version, ``apsimNGpy`` is developed with forward- and backward-compatibility in mind and is actively synchronized with upstream APSIM.
 
     ``Open and extensible``. ``Apache-2.0`` licensing, clear abstractions, and a plug-friendly architecture make it easy to extend and integrate into existing research pipelines.
 
+    ``Robust model evaluation``. Built-in model prediction evalaution metrics: RMSE, RRMSE, Willmott’s Index of Agreement (WIA), Bias, MAE, Lin's CCC, and R\ :sup:2``
 
 
 .. toctree::
