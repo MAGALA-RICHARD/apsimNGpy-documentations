@@ -37,4 +37,6 @@ The ``apsimNGpy`` package is designed to interface with any version of the APSIM
 
 .. tip::
 
-   APSIM has undergone three major version changes that introduced breaking changes for ``apsimNGpy``. While we can’t test every ``APSIM`` release, versions not explicitly marked as ``tested`` may still work—in our experience, about 98% do—thanks to apsimNGpy’s versatile API. If you hit a compatibility issue, please report it with your APSIM build number and a minimal example.
+   APSIM has undergone three major version changes that introduced breaking changes for ``apsimNGpy``. This implies that there is high chance even for new versions not yet tested ``tested`` to still work.  Based on experience, about 98% do—thanks to apsimNGpy’s versatile API. However, if you hit a compatibility issue, please report it with your APSIM build number and a minimal example.
+
+
