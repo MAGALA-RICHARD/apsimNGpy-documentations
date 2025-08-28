@@ -76,6 +76,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :caption: VERSION CONTROL
 
    version_control
+   manage_env
 
 .. toctree::
    :maxdepth: 2
