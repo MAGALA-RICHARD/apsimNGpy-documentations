@@ -11,6 +11,7 @@ Prerequisite
     pip install python-dotenv
     pip install uv
     mkdir my_project
+    cd my_project
     uv venv # activate as required
     uv init
     uv pip install apsimNGpy
