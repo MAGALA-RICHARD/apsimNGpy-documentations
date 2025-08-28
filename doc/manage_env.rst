@@ -2,7 +2,7 @@ Managing apsimNGpy project environment
 ========================================
 
 
-If you have multiple Python projects using apsimNGpy, or you want to pin a project to a specific APSIM NG build, use a .env file for per-project settings.
+If you have multiple Python projects using apsimNGpy, or you want to pin a project to a specific APSIM NG build, use a .env file for each project settings.
 
 Prerequisite
 
@@ -22,13 +22,12 @@ Add your local APSIM bin path and the build or release No you expect:
 
 The bin path is the one extracted after APSIM install, if you are going to port the project to another person indicate it and provide .env.example file, as this path is different for every computer
 
-the content of the file might look as follows but customize it the way you want it to be.
+The content of the file might look as follows but customize it the way you want it to be.
 
 .. code-block:: ini
    :caption: .env
 
-   APSIM_BIN="C:\Program Files\APSIM2025.8.7837.0\bin"
-   APSIM_VERSION=2025.8.7837.0
+
 
     # Path to the installed APSIM NG's bin folder (quote if it has spaces); use forward slashes on macOS/Linux.
     APSIM_BIN="C:\Program Files\APSIM2025.8.7837.0\bin" #replace with your path
