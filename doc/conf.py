@@ -28,6 +28,7 @@ exclude_patterns = ['sphinx.ext.duration',
                     'sphinx.ext.autosummary',
                     'sphinx.ext.githubpages',
                     "sphinx.ext.intersphinx",
+                    "sphinx_copybutton",
                     ]
 
 intersphinx_mapping = {
