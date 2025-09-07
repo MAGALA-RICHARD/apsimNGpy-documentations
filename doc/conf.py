@@ -59,6 +59,9 @@ rst_prolog = """
 
 """
 
+copybutton_prompt_text = r">>> |\$ "
+copybutton_prompt_is_regexp = True
+
 import os, sys
 
 sys.path.insert(0, os.path.abspath('../'))
