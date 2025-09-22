@@ -48,6 +48,9 @@ Quick guides
 
         In addition, make sure that the APSIM installation binaries folder is added to the system path.
         if you run the following code and returns None you need to do something as explained below.
+.. tip::
+
+    Use the pinned release shown on apsimNGpy’s home page to avoid forward-compatibility issues. That release features the latest APSIM NG version that has passed all unit tests against apsimNGpy’s programmatic API.
 
 - 1. Use command line interface
 
