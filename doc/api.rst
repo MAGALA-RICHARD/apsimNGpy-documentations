@@ -40,7 +40,7 @@ ApsimModel
             Location for SSURGO download. Ignored if `soil_tables` is given.
 
         ``soil_series`` : str
-            Optional component/series filter for SSURGO selection. Be careful if not found an error is raised, safest is to leve it to None, and adormiant one is returned
+            Optional component/series filter for SSURGO selection. Be careful if not found an error is raised, safest is to leve it to None, and a dominant one is returned
 
         ``thickness_sequence`` : sequence[float]
             Explicit thickness layout per layer. If auto, it will be auto-generated from n_layers, m=thickness_growth_rate, thinnest layer and max_depth
