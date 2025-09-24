@@ -110,34 +110,7 @@ ApsimModel
 
          Returns: pandas.DataFrame
 
-.. function:: apsimNGpy.core.apsim.ApsimModel.replace_downloaded_soils(self, soil_tables: Union[dict, list], simulation_names: Union[tuple, list], **kwargs)
 
-   Updates soil parameters and configurations for downloaded soil data in simulation models.
-
-            This method adjusts soil physical and organic parameters based on provided soil tables and applies these
-            adjustments to specified simulation models.
-
-            Parameters:
-            ``soil_tables`` (list): A list containing soil data tables. Expected to contain: see the naming
-            convention in the for APSIM - [0]: DataFrame with physical soil parameters. - [1]: DataFrame with organic
-            soil parameters. - [2]: DataFrame with crop-specific soil parameters. - simulation_names (list of str): Names or identifiers for the simulations to
-            be updated.s
-
-
-            Returns:
-            - self: Returns an instance of the class for ``chaining`` methods.
-
-            This method directly modifies the simulation instances found by ``find_simulations`` method calls,
-            updating physical and organic soil properties, as well as crop-specific parameters like lower limit (``LL``),
-            drain upper limit (``DUL``), saturation (``SAT``), bulk density (``BD``), hydraulic conductivity at saturation (``KS``),
-            and more based on the provided soil tables.
-
-    ->> key-word argument
-
-            ``set_sw_con``: Boolean, set the drainage coefficient for each layer
-            ``adJust_kl``:: Bollean, adjust, kl based on productivity index
-            ``CultvarName``: cultivar name which is in the sowing module for adjusting the rue
-            ``tillage``: specify whether you will be carried to adjust some physical parameters
 
 .. function:: apsimNGpy.core.apsim.ApsimModel.spin_up(self, report_name: str = 'Report', start=None, end=None, spin_var='Carbon', simulations=None)
 
