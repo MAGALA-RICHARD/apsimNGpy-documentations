@@ -86,45 +86,43 @@ ApsimModel
 
         ValueError
         -------------
-             - when a thickness sequence is not auto and has zero or less than zero values
+             when a thickness sequence is not auto and has zero or less than zero values
 
-             - when a thickness sequence is none and thickness value is none
+             when a thickness sequence is none and thickness value is none
 
-             - if thickness value and max depth do not match in terms of units
+             if thickness value and max depth do not match in terms of units
 
 
         Important to note:
         ----------------------
-            - Mutate the target APSIM simulation tree in place:
+         Mutate the target APSIM simulation tree in place:
 
-              - Creates and attaches a **Soil** node if missing when ``attach_missing_sections=True``.
+              1. Creates and attaches a **Soil** node if missing when ``attach_missing_sections=True``.
 
-              - Creates and/or updates child sections (``Physical``, ``Organic``, ``Chemical``,
-
+              2. Creates and/or updates child sections (``Physical``, ``Organic``, ``Chemical``,
                 ``Water``, ``WaterBalance``, ``SoilCrop``) as requested in ``edit_sections``.
 
-              - Overwrites section properties (e.g., layer arrays such as ``Depth``, ``CLL``, ``SAT``,
+              3. Overwrites section properties (e.g., layer arrays such as ``Depth``, ``CLL``, ``SAT``,
+                 ``BD``, solute columns, crop KL/XF, etc.) with values derived from the downloaded profile.
 
-                ``BD``, solute columns, crop KL/XF, etc.) with values derived from the downloaded profile.
-
-            - May add **SoilCrop** children for any names in ``additional_plants`` (and populate their
-              properties), potentially replacing previously set values.
-
-
-            - Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided (runtime and
-              results depend on internet availability and the external service).
+              4. May add **SoilCrop** children for any names in ``additional_plants`` (and populate their
+                  properties), potentially replacing previously set values.
 
 
-            - Emits **log messages** (warnings/info) via the package logger (e.g., when attaching nodes,
-              when both thickness controls are provided, or when sections/columns are absent).
+             5. Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided (runtime and
+                  results depend on internet availability and the external service).
 
 
-            - Caches the computed soil profile **within the helper manager instance** during execution,
-              but does not persist it globally; the APSIM model in memory remains modified after return.
+             6. Emits **log messages** (warnings/info) via the package logger (e.g., when attaching nodes,
+                   when both thickness controls are provided, or when sections/columns are absent).
 
 
-            - Does **not** write any files or save the APSIM document; call the model’s ``save`` method separately
-              if persistence to disk is desired.
+             7. Caches the computed soil profile **within the helper manager instance** during execution,
+                 but does not persist it globally; the APSIM model in memory remains modified after return.
+
+
+             8. Does **not** write any files or save the APSIM document; call the model’s ``save`` method separately
+                  if persistence to disk is desired.
 
 .. function:: apsimNGpy.core.apsim.ApsimModel.read_apsimx_data(self, table=None)
 
@@ -643,7 +641,7 @@ CoreModel
 
             ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, an error is likely.
 
-.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000015BF1B8B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
+.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000013DAC72B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
 
    Detects the model type from a given APSIM model instance or path string.
 
@@ -989,7 +987,7 @@ CoreModel
 
         console: (bool) print to the console
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000015BF1B8B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000013DAC72B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
 
    Inspect the model types and returns the model paths or names.
 
@@ -1107,7 +1105,7 @@ CoreModel
               (be mindful of the difference between *Simulations* (root) and an individual
               *Simulation*).
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000015BF1B8B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000013DAC72B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
    Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
@@ -1374,7 +1372,7 @@ CoreModel
             1. Finds the model object using the given path.
             2. Extracts and returns the requested parameter(s).
 
-.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000015BF1B8B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000015BF1B8B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
+.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000013DAC72B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000013DAC72B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
    Args:
 
@@ -1441,7 +1439,7 @@ CoreModel
    for methods that will alter the simulation objects and need refreshing the second time we call
        @return: self for method chaining
 
-.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000015BF1B8B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
+.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000013DAC72B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
 
    Removes a model from the APSIM Models.Simulations namespace.
 
@@ -1511,8 +1509,11 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.replace_model_from(self, model, model_type: str, model_name: str = None, target_model_name: str = None, simulations: str = None)
 
-   Replace a model e.g., a soil model with another soil model from another APSIM model.
-        The method assumes that the model to replace is already loaded in the current model and is is the same class as source model.
+   @deprecated and will be removed
+        fucntion has not been maintained for along time, use it at your own risk
+
+        Replace a model, e.g., a soil model with another soil model from another APSIM model.
+        The method assumes that the model to replace is already loaded in the current model and the same class as a source model.
         e.g., a soil node to soil node, clock node to clock node, et.c
 
         Args:
@@ -1766,16 +1767,16 @@ CoreModel
 
             Parameters
             ----------
-            ``management`` : dict or tuple
+            ``management``: dict or tuple
                 A dictionary or tuple of management parameters to update. The dictionary should have 'Name' as the key
                 for the management script's name and corresponding values to update. Lists are not allowed as they are mutable
                 and may cause issues with parallel processing. If a tuple is provided, it should be in the form (param_name, param_value).
 
-            ``simulations`` : list of str, optional
+            ``simulations``: list of str, optional
                 List of simulation names to update. If `None`, updates all simulations. This is not recommended for large
                 numbers of simulations as it may result in a high computational load.
 
-            ``out`` : str or pathlike, optional
+            ``out``: str or pathlike, optional
                 Path to save the edited model. If `None`, uses the default output path specified in `self.out_path` or
                 `self.model_info.path`. No need to call `save_edited_file` after updating, as this method handles saving.
 
@@ -2394,45 +2395,43 @@ apsimNGpy.core.base_data
 
         ValueError
         -------------
-             - when a thickness sequence is not auto and has zero or less than zero values
+             when a thickness sequence is not auto and has zero or less than zero values
 
-             - when a thickness sequence is none and thickness value is none
+             when a thickness sequence is none and thickness value is none
 
-             - if thickness value and max depth do not match in terms of units
+             if thickness value and max depth do not match in terms of units
 
 
         Important to note:
         ----------------------
-            - Mutate the target APSIM simulation tree in place:
+         Mutate the target APSIM simulation tree in place:
 
-              - Creates and attaches a **Soil** node if missing when ``attach_missing_sections=True``.
+              1. Creates and attaches a **Soil** node if missing when ``attach_missing_sections=True``.
 
-              - Creates and/or updates child sections (``Physical``, ``Organic``, ``Chemical``,
-
+              2. Creates and/or updates child sections (``Physical``, ``Organic``, ``Chemical``,
                 ``Water``, ``WaterBalance``, ``SoilCrop``) as requested in ``edit_sections``.
 
-              - Overwrites section properties (e.g., layer arrays such as ``Depth``, ``CLL``, ``SAT``,
+              3. Overwrites section properties (e.g., layer arrays such as ``Depth``, ``CLL``, ``SAT``,
+                 ``BD``, solute columns, crop KL/XF, etc.) with values derived from the downloaded profile.
 
-                ``BD``, solute columns, crop KL/XF, etc.) with values derived from the downloaded profile.
-
-            - May add **SoilCrop** children for any names in ``additional_plants`` (and populate their
-              properties), potentially replacing previously set values.
-
-
-            - Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided (runtime and
-              results depend on internet availability and the external service).
+              4. May add **SoilCrop** children for any names in ``additional_plants`` (and populate their
+                  properties), potentially replacing previously set values.
 
 
-            - Emits **log messages** (warnings/info) via the package logger (e.g., when attaching nodes,
-              when both thickness controls are provided, or when sections/columns are absent).
+             5. Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided (runtime and
+                  results depend on internet availability and the external service).
 
 
-            - Caches the computed soil profile **within the helper manager instance** during execution,
-              but does not persist it globally; the APSIM model in memory remains modified after return.
+             6. Emits **log messages** (warnings/info) via the package logger (e.g., when attaching nodes,
+                   when both thickness controls are provided, or when sections/columns are absent).
 
 
-            - Does **not** write any files or save the APSIM document; call the model’s ``save`` method separately
-              if persistence to disk is desired.
+             7. Caches the computed soil profile **within the helper manager instance** during execution,
+                 but does not persist it globally; the APSIM model in memory remains modified after return.
+
+
+             8. Does **not** write any files or save the APSIM document; call the model’s ``save`` method separately
+                  if persistence to disk is desired.
 
    .. method::apsimNGpy.core.apsim.ApsimModel.read_apsimx_data(self, table=None)
 
