@@ -27,7 +27,7 @@ ApsimModel
 
         ``returns``:
 
-            model object
+            model the object for method chaining
 
 .. function:: apsimNGpy.core.apsim.ApsimModel.get_soil_from_web(self, simulation_name: Union[str, tuple, NoneType] = None, *, lonlat: Optional[System.Tuple[Double,Double]] = None, soil_series: Optional[str] = None, thickness_sequence: Optional[Sequence[float]] = 'auto', thickness_value: int = None, max_depth: Optional[int] = 2400, n_layers: int = 10, thinnest_layer: int = 100, thickness_growth_rate: float = 1.5, edit_sections: Optional[Sequence[str]] = None, attach_missing_sections: bool = True, additional_plants: tuple = None, adjust_dul: bool = True)
 
@@ -108,25 +108,29 @@ ApsimModel
         - May add **SoilCrop** children for any names in ``additional_plants`` (and populate their
           properties), potentially replacing previously set values.
 
+
         - Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided (runtime and
           results depend on internet availability and the external service).
+
 
         - Emits **log messages** (warnings/info) via the package logger (e.g., when attaching nodes,
           when both thickness controls are provided, or when sections/columns are absent).
 
+
         - Caches the computed soil profile **within the helper manager instance** during execution,
           but does not persist it globally; the APSIM model in memory remains modified after return.
+
 
         - Does **not** write any files or save the APSIM document; call the model’s ``save`` method separately
           if persistence to disk is desired.
 
 .. function:: apsimNGpy.core.apsim.ApsimModel.read_apsimx_data(self, table=None)
 
-   Read APSIM NG datastore for the current model. Raises FileNotFoundError if the model was initialized from 
+   Read APSIM NG datastore for the current model. Raises FileNotFoundError if the model was initialized from
         default models because those need to be executed first to generate a database.
 
-        The rationale for this method is that you can just access the results from the previous session without running it,
-        if the database is in the same location as the apsimx file.
+        The rationale for this method is that you can just access the results from the previous session without
+        running it, if the database is in the same location as the apsimx file.
 
         Since apsimNGpy clones the apsimx file, the original file is kept with attribute name `_model`, that is what is
         being used to access the dataset
@@ -135,9 +139,14 @@ ApsimModel
 
          Returns: pandas.DataFrame
 
+         Raises
+         ------------
+          KeyError: if table is not found in the database
+
 .. function:: apsimNGpy.core.apsim.ApsimModel.replace_downloaded_soils(self, soil_tables: Union[dict, list], simulation_names: Union[tuple, list], **kwargs)
 
-   Updates soil parameters and configurations for downloaded soil data in simulation models.
+   @deprecated and will be removed in the future versions
+            Updates soil parameters and configurations for downloaded soil data in simulation models.
 
             This method adjusts soil physical and organic parameters based on provided soil tables and applies these
             adjustments to specified simulation models.
@@ -630,7 +639,7 @@ CoreModel
 
             ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, an error is likely.
 
-.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001A8CFE6B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
+.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000277B6A9B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
 
    Detects the model type from a given APSIM model instance or path string.
 
@@ -931,34 +940,41 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.get_weather_from_web(self, lonlat: tuple, start: int, end: int, simulations=<UserOptionMissing>, source='nasa', filename=None)
 
-   Replaces the meteorological (met) file in the model using weather data fetched from an online source.
+   Replaces the weather (met) file in the model using weather data fetched from an online source.
 
-            ``lonlat``: ``tuple`` containing the longitude and latitude coordinates.
+            ``lonlat``: ``tuple``
+                 A tuple containing the longitude and latitude coordinates.
 
-            ``start``: Start date for the weather data retrieval.
+            ``start``: int
+                  Start date for the weather data retrieval.
 
-            ``end``: End date for the weather data retrieval.
+            ``end``: int
+                  End date for the weather data retrieval.
 
-            ``simulations``: str, list of simulations to place the weather data, defaults to ``all`` as a string
+            ``simulations``: str | list[str] default is all or None list of simulations or a singular simulation
+                  name, where to place the weather data, defaults to None, implying ``all`` the available simulations
 
-            ``source``: Source of the weather data. Defaults to 'nasa'.
+            ``source``: str default is 'nasa'
+                 Source of the weather data.
 
-            ``filename``: Name of the file to save the retrieved data. If None, a default name is generated.
+            ``filename``: str default is generated using the base name of the apsimx file in use, and the start and
+                    end years Name of the file to save the retrieved data. If None, a default name is generated.
 
-            ``Returns:``
-             self. replace the weather data with the fetched data.
+            ``Returns: ``
+             model object with the corresponding file replaced with the fetched weather data.
 
-            Example::
+            ..code-block:: python
 
-              from apsimNgpy.core.apsim import ApsimModel
-              model = ApsimModel(model= "Maize")
-              model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
+                  from apsimNgpy.core.apsim import ApsimModel
+                  model = ApsimModel(model= "Maize")
+                  model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end  =2001)
 
-            Changing weather data with unmatching start and end dates in the simulation will lead to ``RuntimeErrors``. To avoid this first check the start and end date before proceedign as follows::
+            Changing weather data with non-matching start and end dates in the simulation will lead to ``RuntimeErrors``.
+            To avoid this, first check the start and end date before proceeding as follows::
 
-              dt = model.inspect_model_parameters(model_class='Clock', model_name='Clock', simulations='Simulation')
-              start, end = dt['Start'].year, dt['End'].year
-              # output: 1990, 2000
+                  dt = model.inspect_model_parameters(model_class='Clock', model_name='Clock', simulations='Simulation')
+                  start, end = dt['Start'].year, dt['End'].year
+                  # output: 1990, 2000
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_file(self, *, cultivar=False, console=True, **kwargs)
 
@@ -969,7 +985,7 @@ CoreModel
 
         console: (bool) print to the console
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001A8CFE6B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000277B6A9B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
 
    Inspect the model types and returns the model paths or names. usefull if you want to identify the path to the
         model for editing the model.
@@ -1065,7 +1081,7 @@ CoreModel
             Models can be inspected either by importing the Models namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a Models object.
             However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001A8CFE6B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000277B6A9B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
    Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
@@ -1332,7 +1348,7 @@ CoreModel
             1. Finds the model object using the given path.
             2. Extracts and returns the requested parameter(s).
 
-.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001A8CFE6B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001A8CFE6B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
+.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000277B6A9B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000277B6A9B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
    Args:
 
@@ -1367,7 +1383,7 @@ CoreModel
    for methods that will alter the simulation objects and need refreshing the second time we call
        @return: self for method chaining
 
-.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001A8CFE6B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
+.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000277B6A9B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
 
    Removes a model from the APSIM Models.Simulations namespace.
 
@@ -2261,7 +2277,7 @@ apsimNGpy.core.base_data
 
         ``returns``:
 
-            model object
+            model the object for method chaining
 
    .. method::apsimNGpy.core.apsim.ApsimModel.get_soil_from_web(self, simulation_name: Union[str, tuple, NoneType] = None, *, lonlat: Optional[System.Tuple[Double,Double]] = None, soil_series: Optional[str] = None, thickness_sequence: Optional[Sequence[float]] = 'auto', thickness_value: int = None, max_depth: Optional[int] = 2400, n_layers: int = 10, thinnest_layer: int = 100, thickness_growth_rate: float = 1.5, edit_sections: Optional[Sequence[str]] = None, attach_missing_sections: bool = True, additional_plants: tuple = None, adjust_dul: bool = True)
 
@@ -2342,25 +2358,29 @@ apsimNGpy.core.base_data
         - May add **SoilCrop** children for any names in ``additional_plants`` (and populate their
           properties), potentially replacing previously set values.
 
+
         - Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided (runtime and
           results depend on internet availability and the external service).
+
 
         - Emits **log messages** (warnings/info) via the package logger (e.g., when attaching nodes,
           when both thickness controls are provided, or when sections/columns are absent).
 
+
         - Caches the computed soil profile **within the helper manager instance** during execution,
           but does not persist it globally; the APSIM model in memory remains modified after return.
+
 
         - Does **not** write any files or save the APSIM document; call the model’s ``save`` method separately
           if persistence to disk is desired.
 
    .. method::apsimNGpy.core.apsim.ApsimModel.read_apsimx_data(self, table=None)
 
-      Read APSIM NG datastore for the current model. Raises FileNotFoundError if the model was initialized from 
+      Read APSIM NG datastore for the current model. Raises FileNotFoundError if the model was initialized from
         default models because those need to be executed first to generate a database.
 
-        The rationale for this method is that you can just access the results from the previous session without running it,
-        if the database is in the same location as the apsimx file.
+        The rationale for this method is that you can just access the results from the previous session without
+        running it, if the database is in the same location as the apsimx file.
 
         Since apsimNGpy clones the apsimx file, the original file is kept with attribute name `_model`, that is what is
         being used to access the dataset
@@ -2369,9 +2389,14 @@ apsimNGpy.core.base_data
 
          Returns: pandas.DataFrame
 
+         Raises
+         ------------
+          KeyError: if table is not found in the database
+
    .. method::apsimNGpy.core.apsim.ApsimModel.replace_downloaded_soils(self, soil_tables: Union[dict, list], simulation_names: Union[tuple, list], **kwargs)
 
-      Updates soil parameters and configurations for downloaded soil data in simulation models.
+      @deprecated and will be removed in the future versions
+            Updates soil parameters and configurations for downloaded soil data in simulation models.
 
             This method adjusts soil physical and organic parameters based on provided soil tables and applies these
             adjustments to specified simulation models.
