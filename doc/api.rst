@@ -100,13 +100,15 @@ ApsimModel
                ``Water``, ``WaterBalance``, ``SoilCrop``) as listed in ``edit_sections``.
             3. Overwrites section properties (e.g., layer arrays such as ``Depth``, ``BD``,
                ``LL15``, ``DUL``, ``SAT``; solutes; crop KL/XF) with downloaded values.
-            4. Adds **SoilCrop** children for any names in ``additional_plants``.
+            4. Add **SoilCrop** children for any names in ``additional_plants``.
             5. Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided.
             6. Emits log messages (warnings/info) when attaching nodes, resolving thickness controls,
                or skipping missing columns.
             7. Caches the computed soil profile in the helper during execution; the in-memory APSIM
                tree remains modified after return.
             8. Does **not** write files; call ``save()`` on the model if you want to persist changes.
+            9. The existing soil-profile structure is completed override by the newly generated soil profile.
+               So, variables like soil thickness, number of soil layers, etc. might be different from the old one.
 
 .. function:: apsimNGpy.core.apsim.ApsimModel.read_apsimx_data(self, table=None)
 
@@ -625,7 +627,7 @@ CoreModel
 
             ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, an error is likely.
 
-.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000017210D7B650>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
+.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
 
    Detects the model type from a given APSIM model instance or path string.
 
@@ -971,7 +973,7 @@ CoreModel
 
         console: (bool) print to the console
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000017210D7B650>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
 
    Inspect the model types and returns the model paths or names.
 
@@ -1089,7 +1091,7 @@ CoreModel
               (be mindful of the difference between *Simulations* (root) and an individual
               *Simulation*).
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000017210D7B650>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
    Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
@@ -1356,7 +1358,7 @@ CoreModel
             1. Finds the model object using the given path.
             2. Extracts and returns the requested parameter(s).
 
-.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000017210D7B650>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000017210D7B650>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
+.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
    Args:
 
@@ -1377,7 +1379,7 @@ CoreModel
    Open the current simulation in the APSIM Next Gen GUI.
 
             This first saves the in-memory simulation to ``self.path`` and then launches
-            the APSIM NG GUI (via :func:`get_apsim_bin_path`) so you can inspect the model
+            the APSIM NG GUI (via: func:`get_apsim_bin_path`) so you can inspect the model
             tree and make quick edits side-by-side.
 
             Returns
@@ -1416,7 +1418,7 @@ CoreModel
    for methods that will alter the simulation objects and need refreshing the second time we call
        @return: self for method chaining
 
-.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x0000017210D7B650>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
+.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
 
    Removes a model from the APSIM Models.Simulations namespace.
 
@@ -2386,13 +2388,15 @@ apsimNGpy.core.base_data
                ``Water``, ``WaterBalance``, ``SoilCrop``) as listed in ``edit_sections``.
             3. Overwrites section properties (e.g., layer arrays such as ``Depth``, ``BD``,
                ``LL15``, ``DUL``, ``SAT``; solutes; crop KL/XF) with downloaded values.
-            4. Adds **SoilCrop** children for any names in ``additional_plants``.
+            4. Add **SoilCrop** children for any names in ``additional_plants``.
             5. Performs **network I/O** to retrieve SSURGO tables when ``lonlat`` is provided.
             6. Emits log messages (warnings/info) when attaching nodes, resolving thickness controls,
                or skipping missing columns.
             7. Caches the computed soil profile in the helper during execution; the in-memory APSIM
                tree remains modified after return.
             8. Does **not** write files; call ``save()`` on the model if you want to persist changes.
+            9. The existing soil-profile structure is completed override by the newly generated soil profile.
+               So, variables like soil thickness, number of soil layers, etc. might be different from the old one.
 
    .. method::apsimNGpy.core.apsim.ApsimModel.read_apsimx_data(self, table=None)
 
