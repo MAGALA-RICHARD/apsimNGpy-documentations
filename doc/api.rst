@@ -536,28 +536,6 @@ CoreModel
                 It is possible to target a specific simulation by specifying simulation name for this case the name is Simulations, so, it could appear as follows
                  model.change_simulation_dates(start_date='2021-01-01', end_date='2021-01-12', simulation = 'Simulation')
 
-.. function:: apsimNGpy.core.core.CoreModel.change_som(self, *, simulations: Union[tuple, list] = None, inrm: int = None, icnr: int = None, surface_om_name='SurfaceOrganicMatter', **kwargs)
-
-   @deprecated in v0.38 +
-
-         Change ``Surface Organic Matter`` (``SOM``) properties in specified simulations.
-
-    Parameters:
-        ``simulations`` (str ort list): List of simulation names to target (default: None).
-
-        ``inrm`` (int): New value for Initial Residue Mass (default: 1250).
-
-        ``icnr``` (int): New value for Initial Carbon to Nitrogen Ratio (default: 27).
-
-        ``surface_om_name`` (str, optional): name of the surface organic matter child defaults to ='SurfaceOrganicMatter'
-
-    Returns:
-        self: The current instance of the class.
-
-.. function:: apsimNGpy.core.core.CoreModel.check_som(self, simulations=None)
-
-   @deprecated in versions 0.38+
-
 .. function:: apsimNGpy.core.core.CoreModel.clean_up(self, db=True, verbose=False, coerce=True, csv=True)
 
    Clears the file cloned the datastore and associated csv files are not deleted if db is set to False defaults to True.
@@ -627,7 +605,7 @@ CoreModel
 
             ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, an error is likely.
 
-.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
+.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
 
    Detects the model type from a given APSIM model instance or path string.
 
@@ -809,16 +787,6 @@ CoreModel
                 '[Maize].AboveGround.Wt as abw',
                 '[Maize].Grain.Total.Wt as grain_weight'])
 
-.. function:: apsimNGpy.core.core.CoreModel.examine_management_info(self, simulations: Union[list, tuple] = None)
-
-   @deprecated in versions 0.38+
-        This will show the current management scripts in the simulation root
-
-        Parameters
-        ----------
-        ``simulations``, optional
-            List or tuple of simulation names to update, if `None` show all simulations.
-
 .. function:: apsimNGpy.core.core.CoreModel.extract_any_soil_physical(self, parameter, simulations: [<class 'list'>, <class 'tuple'>] = <UserOptionMissing>)
 
    Extracts soil physical parameters in the simulation
@@ -973,7 +941,7 @@ CoreModel
 
         console: (bool) print to the console
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
 
    Inspect the model types and returns the model paths or names.
 
@@ -1091,7 +1059,7 @@ CoreModel
               (be mindful of the difference between *Simulations* (root) and an individual
               *Simulation*).
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
    Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
@@ -1100,26 +1068,26 @@ CoreModel
 
         Parameters
         ----------
-        ``model_class`` : str
+        ``model_class``: str
             The name of the model class to inspect (e.g., 'Clock', 'Manager', 'Physical', 'Chemical', 'Water', 'Solute').
             Shorthand names are accepted (e.g., 'Clock', 'Weather') as well as fully qualified names (e.g., 'Models.Clock', 'Models.Climate.Weather').
 
-        ``simulations`` : Union[str, list]
+        ``simulations``: Union[str, list]
             A single simulation name or a list of simulation names within the APSIM context to inspect.
 
-        ``model_name`` : str
+        ``model_name``: str
             The name of the specific model instance within each simulation. For example, if `model_class='Solute'`,
             `model_name` might be 'NH4', 'Urea', or another solute name.
 
-        ``parameters`` : Union[str, set, list, tuple], optional
+        ``parameters``: Union[str, set, list, tuple], optional
             A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
             For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
 
-        ``kwargs`` : dict
+        ``kwargs``: dict
             Reserved for future compatibility; currently unused.
 
         ``Returns``
-        -------
+        ----------
             Union[dict, list, pd.DataFrame, Any]
             The format depends on the model type:
             ``Weather``: file path(s) as string(s)
@@ -1150,7 +1118,12 @@ CoreModel
 
         Examples::
 
+           from apsimNGpy.core.core import CoreModel
            model_instance = CoreModel('Maize')
+
+           or:
+           from apsimNGpy.core.apsim import ApsimModel
+           model_instance = ApsimModel('Maize')
 
         Inspect full soil ``Organic`` profile::
 
@@ -1358,7 +1331,7 @@ CoreModel
             1. Finds the model object using the given path.
             2. Extracts and returns the requested parameter(s).
 
-.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
+.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
    Args:
 
@@ -1418,7 +1391,7 @@ CoreModel
    for methods that will alter the simulation objects and need refreshing the second time we call
        @return: self for method chaining
 
-.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001BB45A1B620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
+.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
 
    Removes a model from the APSIM Models.Simulations namespace.
 
@@ -1489,7 +1462,7 @@ CoreModel
 .. function:: apsimNGpy.core.core.CoreModel.replace_model_from(self, model, model_type: str, model_name: str = None, target_model_name: str = None, simulations: str = None)
 
    @deprecated and will be removed
-        fucntion has not been maintained for along time, use it at your own risk
+        function has not been maintained for a long time, use it at your own risk
 
         Replace a model, e.g., a soil model with another soil model from another APSIM model.
         The method assumes that the model to replace is already loaded in the current model and the same class as a source model.
