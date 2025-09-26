@@ -92,8 +92,9 @@ ApsimModel
 
          - if thickness value and max depth do not match in terms of units
 
+
         Side Effects
-        ------------
+        -------------------------
         - Mutate the target APSIM simulation tree in place:
 
           - Creates and attaches a **Soil** node if missing when ``attach_missing_sections=True``.
@@ -640,7 +641,7 @@ CoreModel
 
             ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, an error is likely.
 
-.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001522B52B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
+.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000225A238B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
 
    Detects the model type from a given APSIM model instance or path string.
 
@@ -986,33 +987,43 @@ CoreModel
 
         console: (bool) print to the console
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001522B52B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000225A238B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
 
-   Inspect the model types and returns the model paths or names. usefull if you want to identify the path to the
-        model for editing the model.
+   Inspect the model types and returns the model paths or names.
 
-        ``model_class``: (Models) e.g. ``Models.Clock`` or just ``'Clock'`` will return all fullpath or names
-            of models in the type Clock ``-Models.Manager`` returns information about the manager scripts in simulations. strings are allowed
-            to, in the case you may not need to import the global namespace, Models. e.g ``Models.Clock`` will still work well.
-            ``-Models.Core.Simulation`` returns information about the simulation -Models.Climate.Weather returns a list of
-            paths or names pertaining to weather models ``-Models.Core.IPlant``  returns a list of paths or names pertaining
-            to all crops models available in the simulation.
+        When is it needed?
+        --------------------
+         useful if you want to identify the paths or name of the model for further editing the model.
 
-        ``fullpath``: (bool) return the full path of the model
-        relative to the parent simulations node. please note the difference between simulations and simulation.
+        Parameters
+        --------------
 
-        Return: list[str]: list of all full paths or names of the model relative to the parent simulations node 
+        model_class : type | str
+            The APSIM model type to search for. You may pass either a class (e.g.,
+            Models.Clock, Models.Manager) or a string. Strings can be short names
+            (e.g., "Clock", "Manager") or fully qualified (e.g., "Models.Core.Simulation",
+            "Models.Climate.Weather", "Models.Core.IPlant").
 
+        fullpath : bool, optional (default: False)
+            If False, return the model *name* only.
+            If True, return the model’s *full path* relative to the Simulations root.
+
+        Returns
+        -------
+        list[str]
+            A list of model names or full paths, depending on `fullpath`.
 
         Examples::
 
-             from apsimNGpy.core import base_data
+             from apsimNGpy.core.apsim import ApsimModel
              from apsimNGpy.core.core import Models
+
+
         load default ``maize`` module::
 
-             model = base_data.load_default_simulations(crop ='maize')
+             model = ApsimModel('Maize')
 
-        Find the path to all the manager script in the simulation::
+        Find the path to all the manager scripts in the simulation::
 
              model.inspect_model(Models.Manager, fullpath=True)
              [.Simulations.Simulation.Field.Sow using a variable rule', '.Simulations.Simulation.Field.Fertilise at
@@ -1028,11 +1039,11 @@ CoreModel
              model.inspect_model(Models.Core.IPlant) # gets the path to the crop model
              ['.Simulations.Simulation.Field.Maize']
 
-        Or use full string path as follows::
+        Or use the full string path as follows::
 
              model.inspect_model(Models.Core.IPlant, fullpath=False) # gets you the name of the crop Models
              ['Maize']
-        Get full path to the fertiliser model::
+        Get the full path to the fertilizer model::
 
              model.inspect_model(Models.Fertiliser, fullpath=True)
              ['.Simulations.Simulation.Field.Fertiliser']
@@ -1052,11 +1063,11 @@ CoreModel
              model.inspect_model('IPlant')
              ['.Simulations.Simulation.Field.Maize']
 
-        Inspect using full model namespace path::
+        Inspect using the full model namespace path::
 
              model.inspect_model('Models.Core.IPlant')
 
-        What about weather model?::
+        What about the weather model?::
 
              model.inspect_model('Weather') # inspects the weather module
              ['.Simulations.Simulation.Weather']
@@ -1067,22 +1078,33 @@ CoreModel
              model.inspect_model('Models.Climate.Weather')
              ['.Simulations.Simulation.Weather']
 
-        Try finding path to the cultivar model::
+        Try finding the path to the cultivar model::
 
              model.inspect_model('Cultivar', fullpath=False) # list all available cultivar names
-             ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',  'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
+             ['Hycorn_53', 'Pioneer_33M54', 'Pioneer_38H20','Pioneer_34K77', 'Pioneer_39V43','Atrium', 'Laila', 'GH_5019WX']
 
         # we can get only the names of the cultivar models using the full string path::
 
              model.inspect_model('Models.PMF.Cultivar', fullpath = False)
-             ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',  'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
+             ['Hycorn_53','Pioneer_33M54', 'Pioneer_38H20','Pioneer_34K77', 'Pioneer_39V43','Atrium', 'Laila', 'GH_5019WX']
 
         .. tip::
 
-            Models can be inspected either by importing the Models namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a Models object.
-            However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.
+            Models can be inspected either by importing the Models namespace or by using string paths. The most reliable
+             approach is to provide the full model path—either as a string or as the ``Models`` object.
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001522B52B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
+            However, remembering full paths can be tedious, so allowing partial model names or references can significantly
+             save time during development and exploration.
+
+        ..note::
+
+            - You do not need to import `Models` if you pass a string; both short and
+              fully qualified names are supported.
+            - “Full path” is the APSIM tree path **relative to the Simulations node**
+              (be mindful of the difference between *Simulations* (root) and an individual
+              *Simulation*).
+
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000225A238B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
    Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
@@ -1349,7 +1371,7 @@ CoreModel
             1. Finds the model object using the given path.
             2. Extracts and returns the requested parameter(s).
 
-.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001522B52B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001522B52B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
+.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000225A238B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000225A238B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
    Args:
 
@@ -1384,7 +1406,7 @@ CoreModel
    for methods that will alter the simulation objects and need refreshing the second time we call
        @return: self for method chaining
 
-.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000001522B52B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
+.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000225A238B5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
 
    Removes a model from the APSIM Models.Simulations namespace.
 
@@ -2343,8 +2365,9 @@ apsimNGpy.core.base_data
 
          - if thickness value and max depth do not match in terms of units
 
+
         Side Effects
-        ------------
+        -------------------------
         - Mutate the target APSIM simulation tree in place:
 
           - Creates and attaches a **Soil** node if missing when ``attach_missing_sections=True``.
