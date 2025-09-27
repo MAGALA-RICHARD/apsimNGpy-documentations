@@ -584,10 +584,10 @@ CoreModel
         ``rename`` : str, optional
             The new name for the cloned model. If not provided, the clone will be renamed using
             the original name with a `_clone` suffix.
-        ``adoptive_parent_name`` : str, optional
+        ``adoptive_parent_name``: str, optional
             The name of the parent model where the cloned model should be moved. If not provided,
             the model will be placed under the default parent of the specified type.
-        ``in_place`` : bool, optional
+        ``in_place``: bool, optional
             If ``True``, the cloned model remains in the same location but is duplicated. Defaults to ``False``.
 
         Returns:
@@ -599,8 +599,8 @@ CoreModel
         -------
          Create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name ``"new_clock`"`::
 
-            from apsimNGpy.core.base_data import load_default_simulations
-            model  = load_default_simulations('Maize')
+            from apsimNGpy.core.apsim import ApsimModel
+            model = ApsimModel('Maize')
             model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
 
 .. function:: apsimNGpy.core.core.CoreModel.create_experiment(self, permutation: 'bool' = True, base_name: 'str' = None, **kwargs)
@@ -803,6 +803,160 @@ CoreModel
                 variable_spec=[
                 '[Maize].AboveGround.Wt as abw',
                 '[Maize].Grain.Total.Wt as grain_weight'])
+
+.. function:: apsimNGpy.core.core.CoreModel.edit_model_by_path(self, path: 'str', **kwargs)
+
+   Edit a model component located by an APSIM path, dispatching to type-specific editors.
+
+        This function resolves a node under ``self.Simulations`` using an APSIM path, then
+        edits that node by delegating to the appropriate editor based on the node’s runtime
+        type. It supports common APSIM NG components (e.g., Weather, Manager, Cultivar, Clock,
+        Soil subcomponents, Report, SurfaceOrganicMatter). Unsupported types raise
+        :class:`NotImplementedError`.
+
+        Resolution strategy
+        -------------------
+        1. Try ``self.Simulations.FindByPath(path)``.
+        2. If unavailable (older APIs), fall back to :func:`get_node_by_path(self.Simulations, path)`.
+        3. Extract the concrete model instance from either ``.Value`` or, if absent, attempts
+           to unwrap via ``.Model`` and cast to known APSIM types with
+           :class:`CastHelper.CastAs[T]`. If casting fails, a :class:`ValueError` is raised.
+
+        Parameters
+        ----------
+        path : str
+            APSIM path to a target node under ``self.Simulations`` (e.g.,
+            ``'[Simulations].Ames.Maize.Weather'`` or similar canonical path).
+        **kwargs
+            Keyword arguments controlling the edit. The keys accepted depend on the
+            resolved component type (see **Type-specific editing** below). The following
+            special keys are intercepted and *not* forwarded:
+            - ``simulations`` / ``simulation`` : selector(s) used for cultivar edits
+              and other multi-simulation operations; forwarded where applicable.
+            - ``verbose`` : bool, optional; enables additional logging in some editors.
+
+        Type-specific editing
+        ---------------------
+        The function performs a structural match on the resolved model type and dispatches to
+        the corresponding private helper or inline routine:
+
+        - :class:`Models.Climate.Weather`
+          Calls ``self._set_weather_path(values, param_values=kwargs, verbose=verbose)``.
+          Typical parameters include things such as a new weather file path (implementation-specific).
+
+        - :class:`Models.Manager`
+          Validates that provided keys in ``kwargs`` match the manager script’s
+          ``Parameters[i].Key`` set. On mismatch, raises :class:`ValueError`.
+          On success, updates the corresponding parameter values by constructing
+          ``KeyValuePair[String, String]`` entries. No extra keys are permitted.
+
+        - :class:`Models.PMF.Cultivar`
+          Ensures cultivar replacements exist under ``Replacements`` (creates them if needed).
+          Then calls ``_edit_in_cultivar(self, model_name=values.Name, simulations=simulations, param_values=kwargs, verbose=verbose)``.
+          Expects cultivar-specific keys in ``kwargs`` (implementation-specific).
+
+        - :class:`Models.Clock`
+          Calls ``self._set_clock_vars(values, param_values=kwargs)``. Typical keys:
+          ``StartDate``, ``EndDate`` (exact names depend on your clock editor).
+
+        - Soil components
+          ``Models.Soils.Physical`` | ``Models.Soils.Chemical`` | ``Models.Soils.Organic`` |
+          ``Models.Soils.Water`` | ``Models.Soils.Solute``
+          Delegates to ``self.replace_soils_values_by_path(node_path=path, **kwargs)``.
+          Accepts property/value overrides appropriate to the soil table(s) addressed by ``path``.
+
+        - :class:`Models.Report`
+          Calls ``self._set_report_vars(values, param_values=kwargs, verbose=verbose)``.
+          Typical keys include columns/variables and event names (implementation-specific).
+
+        - :class:`Models.Surface.SurfaceOrganicMatter`
+          Requires at least one of:
+          ``'SurfOM', 'InitialCPR', 'InitialResidueMass', 'InitialCNR', 'IncorporatedP'``.
+          If none supplied, raises: class:`ValueError`.
+          Calls ``self._set_surface_organic_matter(values, param_values=kwargs, verbose=verbose)``.
+
+        Unsupported types
+        -----------------
+        If the resolved type does not match any of the above, a :class:`NotImplementedError`
+        is raised with the concrete type name.
+
+        Behavior of the method
+        ------------------------
+        - Any of ``'simulation'``, ``'simulations'``, and ``'verbose'`` present in ``kwargs``
+          are consumed by this function and not forwarded verbatim (except where explicitly used).
+        - For Manager edits, unknown parameter keys cause a hard failure (strict validation).
+        - For Cultivar edits, the function may mutate the model tree by creating necessary
+          crop replacements under ``Replacements`` if missing.
+
+        Returns
+        -------
+        Self
+            The same model/manager instance (to allow method chaining).
+
+        Raises
+        ------
+        ValueError
+            - If no node is found for ``path``.
+            - If a Manager parameter key is invalid for the target Manager.
+            - If a SurfaceOrganicMatter edit is requested with no supported keys.
+            - If a model is un castable or unsupported for this method.
+        AttributeError
+            If required APIs are missing on ``self.Simulations`` or resolved nodes.
+        NotImplementedError
+            If the resolved node type has no implemented editor.
+        Exception
+            Any error propagated by delegated helpers (e.g., file I/O, parsing).
+
+        Notes
+        -----
+        - **Path semantics: ** The exact path syntax should match what
+          ``FindByPath`` or the fallback ``get_node_by_path`` expects in your APSIM build.
+        - **Type casting: ** When ``.Value`` is absent, the function attempts to unwrap from
+          ``.Model`` and cast across a small set of known APSIM types using ``CastHelper``.
+        - **Non-idempotent operations: ** Some edits (e.g., cultivar replacements creation)
+          may modify the model structure, not only values.
+        - **Concurrency: ** Edits mutate in-memory state; synchronize if calling from
+          multiple threads/processes.
+
+        Examples
+        --------
+        Edit a Manager script parameter::
+
+            model.edit_model_by_path(
+                ".Simulations.Simulation.Field.Sow using a variable rule",
+                verbose=True,
+                Population =10)
+
+        Point a Weather component to a new ``.met`` file::
+
+            model.edit_model_by_path(
+                path='.Simulations.Simulation.Weather'
+                FileName="data/weather/Ames_2020.met"
+            )
+
+        Change Clock dates::
+
+            model.edit_model_by_path(
+               ".Simulations.Simulation.Clock",
+                StartDate="2020-01-01",
+                EndDate="2020-12-31"
+            )
+
+        Update soil water properties at a specific path::
+
+            model.edit_model_by_path(
+                ".Simulations.Simulation.Field.Soil.Physical",
+                LL15="[0.26, 0.18, 0.10, 0.12]",
+            )
+
+        Apply cultivar edits across selected simulations::
+
+            model.edit_model_by_path(
+                ".Simulations.Simulation.Field.Maize.CultivarFolder.mh18",
+                simulations=("Sim_A", "Sim_B"),
+                verbose=True,
+                Phenology.EmergencePhase.Photoperiod="Short",
+            )
 
 .. function:: apsimNGpy.core.core.CoreModel.extract_any_soil_physical(self, parameter, simulations: '[list, tuple]' = <UserOptionMissing>)
 
@@ -1788,13 +1942,13 @@ CoreModel
         ``simulations`` : Union[tuple, list], optional
             List of simulation names to run. If None, runs all simulations.
 
-        ``clean_up`` : bool, optional
+        ``clean_up``: bool, optional
             If True, removes the existing database before running.
 
-        ``verbose`` : bool, optional
+        ``verbose``: bool, optional
             If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-        ``kwargs`` : dict
+        ``kwargs``: dict
             Additional keyword arguments, e.g., to_csv=True
 
         Returns
@@ -1813,9 +1967,9 @@ CoreModel
               model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
               model.run(report_name = "Report")
 
-.. function:: apsimNGpy.core.core.CoreModel.save(self, file_name=None)
+.. function:: apsimNGpy.core.core.CoreModel.save(self, file_name: 'Union[str, Path, None]' = None)
 
-   Persist the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
+   Saves the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
 
         This method writes the model to a file, using a version-aware strategy:
 
@@ -1866,7 +2020,7 @@ CoreModel
           ``str(self.path)`` without additional validation. If you require parent
           directory creation or suffix checks (e.g., ``.apsimx``), perform them before
           calling ``save``.
-        - **Reload semantics:** Post-save recompilation and restart ensure any code
+        - **Reload semantics: ** Post-save recompilation and restart ensure any code
           generation or cached reflection is refreshed to match the serialized model.
 
         Examples
@@ -1884,20 +2038,6 @@ CoreModel
         recompile : Rebuild internal/compiled artifacts for the model.
         restart_model : Reload/refresh the model instance after recompilation.
         save_model_to_file : Legacy writer for older APSIM NG versions.
-
-.. function:: apsimNGpy.core.core.CoreModel.save_edited_file(self, out_path: 'os.PathLike' = None, reload: 'bool' = False) -> "Union['CoreModel', None]"
-
-   Saves the model to the local drive.
-            @deprecated: use save() method instead
-
-            Notes: - If `out_path` is None, the `save_model_to_file` function extracts the filename from the
-            `Model.Core.Simulation` object. - `out_path`, however, is given high priority. Therefore,
-            we first evaluate if it is not None before extracting from the file. - This is crucial if you want to
-            give the file a new name different from the original one while saving.
-
-            Parameters
-            - out_path (str): Desired path for the .apsimx file, by default, None.
-            - reload (bool): Whether to load the file using the `out_path` or the model's original file name.
 
 .. function:: apsimNGpy.core.core.CoreModel.set_categorical_factor(self, factor_path: 'str', categories: 'Union[list, tuple]', factor_name: 'str' = None)
 
