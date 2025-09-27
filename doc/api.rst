@@ -298,7 +298,7 @@ CoreModel
     It is designed to be base class for all apsimNGpy models.
 
     Parameters:
-
+    -------------
         ``model`` (os.PathLike): The file path to the APSIM NG model. This parameter specifies the model file to be used in the simulation.
 
         ``out_path`` (str, optional): The path where the output file should be saved. If not provided, the output will be saved with the same name as the model file in the current dir_path.
@@ -307,7 +307,9 @@ CoreModel
 
         ``experiment`` (bool, optional): Specifies whether to initiate your model as an experiment defaults to false
           by default, the experiment is created with permutation but permutation can be passed as a kewy word argument to change
+
     Keyword parameters:
+    -------------------
       **``copy`` (bool, deprecated)**: Specifies whether to clone the simulation file. This parameter is deprecated because the simulation file is now automatically cloned by default.
 
     .. tip::
@@ -1813,11 +1815,75 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.save(self, file_name=None)
 
-   Save the simulation models to file
+   Persist the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
 
-        ``file_name``: The name of the file to save the defaults to none, taking the exising filename
+        This method writes the model to a file, using a version-aware strategy:
 
-        Returns: model object
+        * If ``APSIM_VERSION_NO > BASE_RELEASE_NO`` **or**
+          ``APSIM_VERSION_NO == GITHUB_RELEASE_NO``: call
+          ``self.Simulations.Write(path)``.
+        * Otherwise: obtain the underlying node via
+          ``getattr(self.Simulations, 'Node', self.Simulations)`` and call
+          :func:`save_model_to_file`.
+
+        After writing, the model is recompiled via :func:`recompile(self)` and the
+        in-memory instance is refreshed using :meth:`restart_model`, ensuring the
+        object graph reflects the just-saved state.
+
+        Parameters
+        ----------
+        file_name : str or pathlib.Path, optional
+            Output path for the saved model file. If omitted (``None``), the method
+            uses the instance's existing ``self.path``. The resolved path is also
+            written back to ``self.path`` for consistency.
+
+        Returns
+        -------
+        Self
+            The same model/manager instance to support method chaining.
+
+        Raises
+        ------
+        OSError
+            If the file cannot be written due to I/O errors, permissions, or invalid path.
+        AttributeError
+            If required attributes (e.g., ``self.Simulations``) or methods are missing.
+        Exception
+            Any exception propagated by :func:`save_model_to_file`, :func:`recompile`,
+            or :meth:`restart_model`.
+
+        Side Effects
+        ------------
+        - Sets ``self.path`` to the resolved output path (string).
+        - Writes the model file to disk (overwrites if it exists).
+        - Recompiles the model and restarts the in-memory instance.
+
+        Notes
+        -----
+        - **Version-aware save:** Uses either ``Simulations.Write`` or the legacy
+          ``save_model_to_file`` depending on version constants.
+        - **Path normalization:** The path is stringified via ``str(file_name)`` /
+          ``str(self.path)`` without additional validation. If you require parent
+          directory creation or suffix checks (e.g., ``.apsimx``), perform them before
+          calling ``save``.
+        - **Reload semantics:** Post-save recompilation and restart ensure any code
+          generation or cached reflection is refreshed to match the serialized model.
+
+        Examples
+        --------
+        Save to the current file path tracked by the instance::
+
+            model.save()
+
+        Save to a new path and continue working with the refreshed instance::
+
+            model.save("outputs/Scenario_A.apsimx").run()
+
+        See Also
+        --------
+        recompile : Rebuild internal/compiled artifacts for the model.
+        restart_model : Reload/refresh the model instance after recompilation.
+        save_model_to_file : Legacy writer for older APSIM NG versions.
 
 .. function:: apsimNGpy.core.core.CoreModel.save_edited_file(self, out_path: 'os.PathLike' = None, reload: 'bool' = False) -> "Union['CoreModel', None]"
 
