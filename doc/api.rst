@@ -467,11 +467,27 @@ CoreModel
             returns instance of apsimNGpy.core.core.apsim.ApsimModel or apsimNGpy.core.core.apsim.CoreModel
            raises an erros if a report is not found
 
-        Example::
+        Examples:
 
-            from apsimNGpy import core
-            model = core.base_data.load_default_simulations('Maize')
-            model.add_report_variable(variable_spec = '[Clock].Today as Date', report_name = 'Report')
+            >>> from apsimNGpy.core.apsim import ApsimModel
+            >>> model = ApsimModel('Maize')
+            >>> model.add_report_variable(variable_spec = '[Clock].Today as Date', report_name = 'Report')
+            # isnepct the report
+            >>> model.inspect_model_parameters(model_type='Models.Report', model_name='Report')
+            {'EventNames': ['[Maize].Harvesting'],
+                 'VariableNames': ['[Clock].Today',
+                  '[Maize].Phenology.CurrentStageName',
+                  '[Maize].AboveGround.Wt',
+                  '[Maize].AboveGround.N',
+                  '[Maize].Grain.Total.Wt*10 as Yield',
+                  '[Maize].Grain.Wt',
+                  '[Maize].Grain.Size',
+                  '[Maize].Grain.NumberFunction',
+                  '[Maize].Grain.Total.Wt',
+                  '[Maize].Grain.N',
+                  '[Maize].Total.Wt',
+                  '[Clock].Today as Date']}
+        The new report variable is appended at the end of the existing ones
 
 .. function:: apsimNGpy.core.core.CoreModel.change_report(self, *, command: str, report_name='Report', simulations=None, set_DayAfterLastOutput=None, **kwargs)
 
@@ -605,7 +621,7 @@ CoreModel
 
             ``base_name`` is optional but the experiment may not be created if there are more than one base simulations. Therefore, an error is likely.
 
-.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
+.. function:: apsimNGpy.core.core.CoreModel.detect_model_type(self, model_instance: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000002AC4AEFB5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)])
 
    Detects the model type from a given APSIM model instance or path string.
 
@@ -941,7 +957,7 @@ CoreModel
 
         console: (bool) print to the console
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000002AC4AEFB5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)], fullpath=True, **kwargs)
 
    Inspect the model types and returns the model paths or names.
 
@@ -1059,7 +1075,7 @@ CoreModel
               (be mindful of the difference between *Simulations* (root) and an individual
               *Simulation*).
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000002AC4AEFB5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), str], model_name: str, simulations: Union[str, list] = <UserOptionMissing>, parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
    Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
@@ -1331,7 +1347,7 @@ CoreModel
             1. Finds the model object using the given path.
             2. Extracts and returns the requested parameter(s).
 
-.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
+.. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000002AC4AEFB5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), new_parent_type: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000002AC4AEFB5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
    Args:
 
@@ -1391,7 +1407,7 @@ CoreModel
    for methods that will alter the simulation objects and need refreshing the second time we call
        @return: self for method chaining
 
-.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x00000233C4CAB620>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
+.. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_class: Field(name='Models',type=<class 'object'>,default=<module 'Models'>,default_factory=<dataclasses._MISSING_TYPE object at 0x000002AC4AEFB5F0>,init=False,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD), model_name: str = None)
 
    Removes a model from the APSIM Models.Simulations namespace.
 
@@ -1415,6 +1431,51 @@ CoreModel
                model = core.base_data.load_default_simulations(crop = 'Maize')
                model.remove_model(Models.Clock) #deletes the clock node
                model.remove_model(Models.Climate.Weather) #deletes the weather node
+
+.. function:: apsimNGpy.core.core.CoreModel.remove_report_variable(self, variable_spec: Union[list, tuple, str], report_name: str | None = None)
+
+   Remove one or more variable expressions from an APSIM Report component.
+
+        Parameters
+        ----------
+        variable_spec : str | list[str] | tuple[str, ...]
+            Variable expression(s) to remove, e.g. ``"[Clock].Today"`` or
+            ``"[Clock].Today as Date"``. You may pass a single string or a list/tuple.
+            Matching is done by exact text **after whitespace normalization**
+            (consecutive spaces collapsed), so minor spacing differences are tolerated.
+        report_name : str, optional
+            Name of the Report component to modify. If ``None``, the default
+            resolver (``self._get_report``) is used to locate the target report.
+
+        Returns
+        -------
+        list[str]
+            The updated list of variable expressions remaining in the report
+            (in original order, without duplicates).
+
+        Notes
+        -----
+        - Variables not present are ignored (no error raised).
+        - Order is preserved; duplicates are removed.
+        - The model is saved at the end of this call.
+
+        Examples
+        --------
+        >>> model= CoreModel('Maize')
+        >>> model.add_report_variable(variable_spec='[Clock].Today as Date', report_name='Report')
+        >>> model.remove_report_variable(variable_spec='[Clock].Today as Date', report_name='Report')
+        >>> model.inspect_model_parameters('Models.Report', 'Report')['VariableNames']
+        ['[Clock].Today',
+         '[Maize].Phenology.CurrentStageName',
+         '[Maize].AboveGround.Wt',
+         '[Maize].AboveGround.N',
+         '[Maize].Grain.Total.Wt*10 as Yield',
+         '[Maize].Grain.Wt',
+         '[Maize].Grain.Size',
+         '[Maize].Grain.NumberFunction',
+         '[Maize].Grain.Total.Wt',
+         '[Maize].Grain.N',
+         '[Maize].Total.Wt']
 
 .. function:: apsimNGpy.core.core.CoreModel.rename_model(self, model_type, *, old_name, new_name)
 
