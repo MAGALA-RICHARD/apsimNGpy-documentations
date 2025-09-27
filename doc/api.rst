@@ -12,8 +12,7 @@ ApsimModel
     This implies that you can still run the model and modify parameters as needed.
     Example:
         >>> from apsimNGpy.core.apsim import ApsimModel
-        >>> path_model = ApsimModel('Maize').path
-        >>> model = ApsimModel(path_model, set_wd=Path.home())# replace with your path
+        >>> model = ApsimModel('Maize')
         >>> model.run(report_name='Report') # report is the default, please replace it as needed
 
 .. function:: apsimNGpy.core.apsim.ApsimModel.adjust_dul(self, simulations: Union[tuple, list] = None)
