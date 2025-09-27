@@ -10,11 +10,56 @@ This is where the ``inspect_model`` method becomes useful—it allows you to ins
     Models can be inspected either by importing the ``Models`` namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a ``Models`` attribute path.
     However, remembering full paths can be tedious, so allowing partial model names or references can significantly save time during development and exploration.
 
+If you are stranded, check the list below, red color are the modules,
+and not allowed in this function and below each module are the model types
+
+``Models``:
+  - Models.Clock
+  - Models.Fertiliser
+  - Models.Irrigation
+  - Models.Manager
+  - Models.Memo
+  - Models.MicroClimate
+  - Models.Operations
+  - Models.Report
+  - Models.Summary
+``Models.Climate``:
+  - Models.Climate.Weather
+``Models.Core``:
+  - Models.Core.Folder
+  - Models.Core.Simulation
+  - Models.Core.Simulations
+  - Models.Core.Zone
+``Models.Factorial``:
+  - Models.Factorial.Experiment
+  - Models.Factorial.Factors
+  - Models.Factorial.Permutation
+``Models.PMF``:
+  - Models.PMF.Cultivar
+  - Models.PMF.Plant
+``Models.Soils``:
+  - Models.Soils.Arbitrator.SoilArbitrator
+  - Models.Soils.CERESSoilTemperature
+  - Models.Soils.Chemical
+  - Models.Soils.Nutrients.Nutrient
+  - Models.Soils.Organic
+  - Models.Soils.Physical
+  - Models.Soils.Sample
+  - Models.Soils.Soil
+  - Models.Soils.SoilCrop
+  - Models.Soils.Solute
+  - Models.Soils.Water
+``Models.Storage``:
+  - Models.Storage.DataStore
+``Models.Surface``:
+  - Models.Surface.SurfaceOrganicMatter
+``Models.WaterModel``:
+  - Models.WaterModel.WaterBalance
+
 Let's take a look at how it works.
 
 .. code-block:: python
 
-         from apsimNGpy.core import base_data
          from apsimNGpy.core.core import Models
          from apsimNGpy.core.apsim import ApsimModel
 
