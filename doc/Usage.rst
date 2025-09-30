@@ -10,7 +10,7 @@ Users can provide the ``report_name``, which specifies data table name from the 
 
     from apsimNGpy.core.apsim import ApsimModel
     # Option 1: Load default maize simulation
-    model = ApsimModel(crop='Maize') # case sensitive
+    model = ApsimModel('Maize') # case sensitive
     # Run the simulation
     model.run(report_name='Report')
 
