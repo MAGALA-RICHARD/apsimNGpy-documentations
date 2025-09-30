@@ -31,7 +31,7 @@ Load the default maize simulations and initialize APSIM:
     # instantiate
     apsim = ApsimModel(_apsim)
     # same as:
-    apsim  = ApsimModel('Maize)
+    apsim  = ApsimModel('Maize')
 
 Create an experiment with permutation enabled:
 
