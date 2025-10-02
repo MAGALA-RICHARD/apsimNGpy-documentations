@@ -67,14 +67,16 @@ If ``agg_func`` is specified, it can be one of: mean, median, sum, min, or max. 
 
 Customization
 ===================
-
-If you dont want to use the above API, you can still build things from scratch
+If you don’t want to use the higher-level API, you can build the pipeline from scratch.
+The simplest path is to decorate your worker with write_results_to_sql, which writes the worker’s return
+value to the database after each run. The worker must return either a pandas DataFrame or a dict—that way you control exactly which variables/columns are written.
+Alternatively, skip the decorator and call your own writer/aggregator inside the worker, as shown below.
 
 .. code-block:: python
 
             from pathlib import Path
             from apsimNGpy.core.apsim import ApsimModel
-            from apsimNGpy.core_utils.database_utils import read_db_table
+            from apsimNGpy.core_utils.database_utils import read_db_table, write_results_to_sql
             from apsimNGpy.parallel.process import custom_parallel
             import pandas as pd
             from sqlalchemy import create_engine
@@ -82,6 +84,12 @@ If you dont want to use the above API, you can still build things from scratch
 
             DATABAse = str(Path('test_custom.db').resolve())
 
+
+
+Minimal example 1: Writing your own worker and data storage function
+=====================================================================
+
+.. code-block:: python
             # define function to insert insert results
             def insert_results(db_path, results, table_name):
                 """
@@ -111,9 +119,34 @@ If you dont want to use the above API, you can still build things from scratch
                 df = model.results
                 # we can even create column for each simulation
                 df['nitrogen rate'] = nitrogen_rate
-                insert_results(DATABAse, df, 'Report')
-                model.clean_up()
 
+                insert_results(db_path = DATABAse, results =df, table_name='Report')
+                model.clean_up()
+                # no need to return results
+
+Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils (only latest version)
+==============================================================================================
+
+.. code-block:: python
+
+            @write_results_to_sql(DATABAse, table='Report', if_exists='append')
+            def worker(nitrogen_rate, model):
+                out_path = Path(f"_{nitrogen_rate}.apsimx").resolve()
+                model = ApsimModel(model, out_path=out_path)
+                model.edit_model("Models.Manager", model_name='Fertilise at sowing', Amount=nitrogen_rate)
+                model.run(report_name="Report")
+                df = model.results
+                # we can even create column for each simulation
+                df['nitrogen rate'] = nitrogen_rate
+                model.clean_up()
+                return df
+
+Excute
+=========
+Always run parallel code under the standard Python entry-point guard: ``if __name__ == '__main__':``
+Without the guard, top-level code re-executes in each child and can recursively spawn processes.
+
+.. code-block:: python
 
             if __name__ == '__main__':
 
@@ -122,7 +155,9 @@ If you dont want to use the above API, you can still build things from scratch
                 # get the results
                 data = read_db_table(DATABAse, report_name="Report")
 
-            Processing via 'worker' please wait!:  |██████████| 100.0%| [40/40]| Complete | 0.76s/iteration | Elapsed time: 00:00:30.591
+Processing please wait!:  ██████████ 100% (40/40) >> completed (elapsed=>0:30, eta=>00:00) , (0.76 s/iteration or 1.23 iteration/s)
+
+.. code-block:: python
 
             print(data)
                 SimulationName  SimulationID  ...  source_table nitrogen rate
@@ -148,3 +183,6 @@ Our 40 simulations ran in 30 seconds only, almost 0.76 seconds per simulation.
    such as RAM, processor clock speed, and the number of CPU cores.
 
 
+Working in notebooks (Jupyter/Colab)
+=====================================
+The safest pattern is to place worker functions in a separate .py module and import them:
