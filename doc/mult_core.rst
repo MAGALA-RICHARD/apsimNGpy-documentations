@@ -141,8 +141,9 @@ Minimal example 2: Writing your own worker and use data storage decorator from d
                 return df
 
 Excute
-==================
-Must be run below the guard as shown below:
+=========
+Must be run below the guard as shown below. in interactive environments like jupiter notebooks,
+the worker must be defined in another script and imported there not a good advise though.
 
 .. code-block:: python
 
@@ -153,7 +154,9 @@ Must be run below the guard as shown below:
                 # get the results
                 data = read_db_table(DATABAse, report_name="Report")
 
-            Processing please wait!:  ██████████ 100% (40/40) >> completed (elapsed=>0:30, eta=>00:00) , (0.76 s/iteration or 1.23 iteration/s)
+Processing please wait!:  ██████████ 100% (40/40) >> completed (elapsed=>0:30, eta=>00:00) , (0.76 s/iteration or 1.23 iteration/s)
+
+.. code-block:: python
 
             print(data)
                 SimulationName  SimulationID  ...  source_table nitrogen rate
