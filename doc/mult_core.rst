@@ -181,3 +181,6 @@ Our 40 simulations ran in 30 seconds only, almost 0.76 seconds per simulation.
    such as RAM, processor clock speed, and the number of CPU cores.
 
 
+Working in notebooks (Jupyter/Colab)
+=====================================
+The safest pattern is to place worker functions in a separate .py module and import them:
