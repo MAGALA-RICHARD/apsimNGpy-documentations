@@ -123,7 +123,7 @@ Minimal example 1: Writing your own worker and data storage function
                 model.clean_up()
                 # no need to return results
 
-Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils
+Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils (only latest version)
 ==============================================================================================
 
 .. code-block:: python
