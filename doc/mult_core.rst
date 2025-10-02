@@ -90,6 +90,7 @@ Minimal example 1: Writing your own worker and data storage function
 =====================================================================
 
 .. code-block:: python
+
             # define function to insert insert results
             def insert_results(db_path, results, table_name):
                 """
