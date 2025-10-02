@@ -121,7 +121,7 @@ Minimal example 1: Writing your own worker and data storage fucntion
 
                 insert_results(db_path = DATABAse, results =df, table_name='Report')
                 model.clean_up()
-                return df
+                # no need to return results
 
 Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils
 ==============================================================================================
