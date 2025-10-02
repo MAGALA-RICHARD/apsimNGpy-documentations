@@ -143,6 +143,7 @@ Minimal example 2: Writing your own worker and use data storage decorator from d
 Excute
 =========
 Always run parallel code under the standard Python entry-point guard: ``if __name__ == '__main__':``
+Without the guard, top-level code re-executes in each child and can recursively spawn processes.
 
 .. code-block:: python
 
