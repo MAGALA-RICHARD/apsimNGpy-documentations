@@ -67,11 +67,11 @@ If ``agg_func`` is specified, it can be one of: mean, median, sum, min, or max. 
 
 Customization
 ===================
-
 If you don’t want to use the higher-level API, you can build the pipeline from scratch.
 The simplest path is to decorate your worker with write_results_to_sql, which writes the worker’s return
 value to the database after each run. The worker must return either a pandas DataFrame or a dict—that way you control exactly which variables/columns are written.
-Alternatively, skip the decorator and call your own writer/aggregator inside the worker, as shown belw
+Alternatively, skip the decorator and call your own writer/aggregator inside the worker, as shown below.
+
 .. code-block:: python
 
             from pathlib import Path
@@ -84,6 +84,12 @@ Alternatively, skip the decorator and call your own writer/aggregator inside the
 
             DATABAse = str(Path('test_custom.db').resolve())
 
+
+
+Minimal example 1: Writing your own worker and data storage function
+=====================================================================
+
+.. code-block:: python
             # define function to insert insert results
             def insert_results(db_path, results, table_name):
                 """
@@ -104,11 +110,6 @@ Alternatively, skip the decorator and call your own writer/aggregator inside the
                 engine = create_engine(f"sqlite:///{db_path}")
                 results.to_sql(table_name, con=engine, if_exists='append', index=False)
 
-
-Minimal example 1: Writing your own worker and data storage function
-=====================================================================
-
-.. code-block:: python
 
             def worker(nitrogen_rate, model):
                 out_path = Path(f"_{nitrogen_rate}.apsimx").resolve()
