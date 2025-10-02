@@ -142,8 +142,7 @@ Minimal example 2: Writing your own worker and use data storage decorator from d
 
 Excute
 =========
-Must be run below the guard as shown below. in interactive environments like jupiter notebooks,
-the worker must be defined in another script and imported there not a good advise though.
+Always run parallel code under the standard Python entry-point guard: ``if __name__ == '__main__':``
 
 .. code-block:: python
 
