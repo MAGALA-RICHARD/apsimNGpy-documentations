@@ -144,7 +144,7 @@ Excute
 ==================
 Must be run below the guard as shown below:
 
-..code-block::
+.. code-block:: python
 
             if __name__ == '__main__':
 
