@@ -105,7 +105,7 @@ Alternatively, skip the decorator and call your own writer/aggregator inside the
                 results.to_sql(table_name, con=engine, if_exists='append', index=False)
 
 
-Minimal example 1: Writing your own worker and data storage fucntion
+Minimal example 1: Writing your own worker and data storage function
 =====================================================================
 
 .. code-block:: python
@@ -153,7 +153,7 @@ Must be run below the guard as shown below:
                 # get the results
                 data = read_db_table(DATABAse, report_name="Report")
 
-            Processing please wait!:  ██████████ 100% (40/40) >> completed (elapsed=>01:05, eta=>00:00) , (1.6257 s/iteration or 0.615 iteration/s)
+            Processing please wait!:  ██████████ 100% (40/40) >> completed (elapsed=>0:30, eta=>00:00) , (0.76 s/iteration or 1.23 iteration/s)
 
             print(data)
                 SimulationName  SimulationID  ...  source_table nitrogen rate
