@@ -2,6 +2,7 @@ Distributed Computing
 =========================
 
 Distributed computing (or parallelism) is the practice of dividing computing tasks among multiple processing resources to speed up computations.
+See Li, Z., Qi, Z., Liu, Y., Zheng, Y., & Yang, Y. (2023). A modularized parallel distributed High–Performance computing framework for simulating seasonal frost dynamics in Canadian croplands. Computers and Electronics in Agriculture, 212, 108057.
 
 In apsimNGpy, this is achieved through the MultiCoreManager API, which abstracts away most of the setup required for distributing tasks.
 
