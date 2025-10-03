@@ -1,7 +1,10 @@
 from apsimNGpy.core.apsim import ApsimModel
 from apsimNGpy.core_utils.database_utils import write_results_to_sql
 from pathlib import Path
+
 DATABAse = str(Path('test_custom.db').resolve())
+
+
 @write_results_to_sql(DATABAse, table='Report', if_exists='append')
 def worker(nitrogen_rate, model):
     out_path = Path(f"_{nitrogen_rate}.apsimx").resolve()
