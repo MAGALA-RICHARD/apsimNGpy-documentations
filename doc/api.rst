@@ -2098,221 +2098,126 @@ email: magalarich20@gmail.com
 
 .. py:method:: apsimNGpy.core.apsim.ApsimModel.plot_mva(self, table: pandas.core.frame.DataFrame, time_col: Hashable, response: Hashable, *, window: int = 5, min_period: int = 1, grouping: Union[Hashable, collections.abc.Sequence[Hashable], NoneType] = None, preserve_start: bool = True, kind: str = 'line', estimator='mean', plot_raw: bool = False, raw_alpha: float = 0.35, raw_linewidth: float = 1.0, auto_datetime: bool = False, ylabel: Optional[str] = None, return_data: bool = False, **kwargs) -> seaborn.axisgrid.FacetGrid | tuple[seaborn.axisgrid.FacetGrid, pandas.core.frame.DataFrame] (inherited)
 
-   Plot a centered moving average (MVA) of `response` using seaborn.relplot.
+   Plot a centered moving-average (MVA) of a response using ``seaborn.relplot``.
 
-   Enhancements over a direct relplot call:
-     - Computes MVA with `mva(...)` and **plots the smoothed series**
-     - Auto-assigns `hue` from `grouping` (supports multi-column grouping)
-     - Optional overlay of the **raw** series for comparison
-     - Preserves original row order and handles NaN groups
-
-     Notes
-     -----
-       This function uses :func:`seaborn.relplot` and inherits its keyword
-       arguments via **kwargs. See Seaborn docs for details:
-       https://seaborn.pydata.org/generated/seaborn.relplot.html
-
-.. py:method:: apsimNGpy.core.apsim.ApsimModel.boxplot(self, column, *, table=None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
-
-   Plot a boxplot from the simulation results using ``pandas.DataFrame.boxplot`` see more documentation at pandas heren
-   =======================================================================.
-   column: str required
-   table: str optional str of the database table or data frame to use if ``table`` is provided, otherwise the self.results`` table is used
-
-.. py:method:: apsimNGpy.core.apsim.ApsimModel.distribution(data=None, *, x=None, y=None, hue=None, weights=None, stat='count', bins='auto', binwidth=None, binrange=None, discrete=None, cumulative=False, common_bins=True, common_norm=True, multiple='layer', element='bars', fill=True, shrink=1, kde=False, kde_kws=None, line_kws=None, thresh=0, pthresh=None, pmax=None, cbar=False, cbar_ax=None, cbar_kws=None, palette=None, hue_order=None, hue_norm=None, color=None, log_scale=None, legend=True, ax=None, **kwargs) (inherited)
-
-   Plot distribution for a numeric variable. It uses ``seaborn.histplot`` function.
-           x is the numeric variable in the specified table
-           =========================================================================================================
-
-           Notes
-             -----
-               This function uses :func:`seaborn.histplot` and inherits its keyword
-               arguments via **kwargs. See Seaborn docs for details:
-               https://seaborn.pydata.org/generated/seaborn.histplot.html
-
-
-
-   Plot univariate or bivariate histograms to show distributions of datasets.
-
-   A histogram is a classic visualization tool that represents the distribution
-   of one or more variables by counting the number of observations that fall within
-   discrete bins.
-
-   This function can normalize the statistic computed within each bin to estimate
-   frequency, density or probability mass, and it can add a smooth curve obtained
-   using a kernel density estimate, similar to :func:`kdeplot`.
-
-   More information is provided in the :ref:`user guide <tutorial_hist>`.
+   Enhancements over a direct ``relplot`` call:
+   - Computes and plots a smoothed series via :func:`apsimNGpy.stats.data_insights.mva`.
+   - Supports multi-column grouping; will auto-construct a composite hue if needed.
+   - Optional overlay of the raw (unsmoothed) series for comparison.
+   - Stable (mergesort) time ordering.
 
    Parameters
    ----------
-   data : :class:`pandas.DataFrame`, :class:`numpy.ndarray`, mapping, or sequence
-       Input data structure. Either a long-form collection of vectors that can be
-       assigned to named variables or a wide-form dataset that will be internally
-       reshaped.
-   x, y : vectors or keys in ``data``
-       Variables that specify positions on the x and y axes.
-   hue : vector or key in ``data``
-       Semantic variable that is mapped to determine the color of plot elements.
-   weights : vector or key in ``data``
-       If provided, weight the contribution of the corresponding data points
-       towards the count in each bin by these factors.
-   stat : str
-       Aggregate statistic to compute in each bin.
-
-       - `count`: show the number of observations in each bin
-       - `frequency`: show the number of observations divided by the bin width
-       - `probability` or `proportion`: normalize such that bar heights sum to 1
-       - `percent`: normalize such that bar heights sum to 100
-       - `density`: normalize such that the total area of the histogram equals 1
-   bins : str, number, vector, or a pair of such values
-       Generic bin parameter that can be the name of a reference rule,
-       the number of bins, or the breaks of the bins.
-       Passed to :func:`numpy.histogram_bin_edges`.
-   binwidth : number or pair of numbers
-       Width of each bin, overrides ``bins`` but can be used with
-       ``binrange``.
-   binrange : pair of numbers or a pair of pairs
-       Lowest and highest value for bin edges; can be used either
-       with ``bins`` or ``binwidth``. Defaults to data extremes.
-   discrete : bool
-       If True, default to ``binwidth=1`` and draw the bars so that they are
-       centered on their corresponding data points. This avoids "gaps" that may
-       otherwise appear when using discrete (integer) data.
-   cumulative : bool
-       If True, plot the cumulative counts as bins increase.
-   common_bins : bool
-       If True, use the same bins when semantic variables produce multiple
-       plots. If using a reference rule to determine the bins, it will be computed
-       with the full dataset.
-   common_norm : bool
-       If True and using a normalized statistic, the normalization will apply over
-       the full dataset. Otherwise, normalize each histogram independently.
-   multiple : {"layer", "dodge", "stack", "fill"}
-       Approach to resolving multiple elements when semantic mapping creates subsets.
-       Only relevant with univariate data.
-   element : {"bars", "step", "poly"}
-       Visual representation of the histogram statistic.
-       Only relevant with univariate data.
-   fill : bool
-       If True, fill in the space under the histogram.
-       Only relevant with univariate data.
-   shrink : number
-       Scale the width of each bar relative to the binwidth by this factor.
-       Only relevant with univariate data.
-   kde : bool
-       If True, compute a kernel density estimate to smooth the distribution
-       and show on the plot as (one or more) line(s).
-       Only relevant with univariate data.
-   kde_kws : dict
-       Parameters that control the KDE computation, as in :func:`kdeplot`.
-   line_kws : dict
-       Parameters that control the KDE visualization, passed to
-       :meth:`matplotlib.axes.Axes.plot`.
-   thresh : number or None
-       Cells with a statistic less than or equal to this value will be transparent.
-       Only relevant with bivariate data.
-   pthresh : number or None
-       Like ``thresh``, but a value in [0, 1] such that cells with aggregate counts
-       (or other statistics, when used) up to this proportion of the total will be
-       transparent.
-   pmax : number or None
-       A value in [0, 1] that sets that saturation point for the colormap at a value
-       such that cells below constitute this proportion of the total count (or
-       other statistic, when used).
-   cbar : bool
-       If True, add a colorbar to annotate the color mapping in a bivariate plot.
-       Note: Does not currently support plots with a ``hue`` variable well.
-   cbar_ax : :class:`matplotlib.axes.Axes`
-       Pre-existing axes for the colorbar.
-   cbar_kws : dict
-       Additional parameters passed to :meth:`matplotlib.figure.Figure.colorbar`.
-   palette : string, list, dict, or :class:`matplotlib.colors.Colormap`
-       Method for choosing the colors to use when mapping the ``hue`` semantic.
-       String values are passed to :func:`color_palette`. List or dict values
-       imply categorical mapping, while a colormap object implies numeric mapping.
-   hue_order : vector of strings
-       Specify the order of processing and plotting for categorical levels of the
-       ``hue`` semantic.
-   hue_norm : tuple or :class:`matplotlib.colors.Normalize`
-       Either a pair of values that set the normalization range in data units
-       or an object that will map from data units into a [0, 1] interval. Usage
-       implies numeric mapping.
-   color : :mod:`matplotlib color <matplotlib.colors>`
-       Single color specification for when hue mapping is not used. Otherwise, the
-       plot will try to hook into the matplotlib property cycle.
-   log_scale : bool or number, or pair of bools or numbers
-       Set axis scale(s) to log. A single value sets the data axis for any numeric
-       axes in the plot. A pair of values sets each axis independently.
-       Numeric values are interpreted as the desired base (default 10).
-       When `None` or `False`, seaborn defers to the existing Axes scale.
-   legend : bool
-       If False, suppress the legend for semantic variables.
-   ax : :class:`matplotlib.axes.Axes`
-       Pre-existing axes for the plot. Otherwise, call :func:`matplotlib.pyplot.gca`
-       internally.
-   kwargs
-       Other keyword arguments are passed to one of the following matplotlib
-       functions:
-
-       - :meth:`matplotlib.axes.Axes.bar` (univariate, element="bars")
-       - :meth:`matplotlib.axes.Axes.fill_between` (univariate, other element, fill=True)
-       - :meth:`matplotlib.axes.Axes.plot` (univariate, other element, fill=False)
-       - :meth:`matplotlib.axes.Axes.pcolormesh` (bivariate)
+   table : pandas.DataFrame or str
+       Data source or table name; if ``None``, use :pyattr:`results`.
+   time_col : hashable
+       Time (x-axis) column.
+   response : hashable
+       Response (y) column to smooth.
+   window : int, default=5
+       MVA window size.
+   min_period : int, default=1
+       Minimum periods for the rolling mean.
+   grouping : hashable or sequence of hashable, optional
+       One or more grouping columns.
+   preserve_start : bool, default=True
+       Preserve initial values when centering.
+   kind : {"line","scatter"}, default="line"
+       Passed to ``sns.relplot``.
+   estimator : str or None, default="mean"
+       Passed to ``sns.relplot`` (set to ``None`` to plot raw observations).
+   plot_raw : bool, default=False
+       Overlay the raw series on each facet.
+   raw_alpha : float, default=0.35
+       Alpha for the raw overlay.
+   raw_linewidth : float, default=1.0
+       Line width for the raw overlay.
+   auto_datetime : bool, default=False
+       Attempt to convert ``time_col`` to datetime.
+   ylabel : str, optional
+       Custom y-axis label; default is generated from window/response.
+   return_data : bool, default=False
+       If ``True``, return ``(FacetGrid, smoothed_df)``.
 
    Returns
    -------
-   :class:`matplotlib.axes.Axes`
-       The matplotlib axes containing the plot.
-
-   See Also
-   --------
-   displot : Figure-level interface to distribution plot functions.
-   kdeplot : Plot univariate or bivariate distributions using kernel density estimation.
-   rugplot : Plot a tick at each observation value along the x and/or y axes.
-   ecdfplot : Plot empirical cumulative distribution functions.
-   jointplot : Draw a bivariate plot with univariate marginal distributions.
+   seaborn.FacetGrid
+       The relplot grid, or ``(grid, smoothed_df)`` if ``return_data=True``.
 
    Notes
    -----
+   This function calls :func:`seaborn.relplot` and accepts its keyword arguments
+   via ``**kwargs``. See:
+   https://seaborn.pydata.org/generated/seaborn/relplot.html
 
-   The choice of bins for computing and plotting a histogram can exert
-   substantial influence on the insights that one is able to draw from the
-   visualization. If the bins are too large, they may erase important features.
-   On the other hand, bins that are too small may be dominated by random
-   variability, obscuring the shape of the true underlying distribution. The
-   default bin size is determined using a reference rule that depends on the
-   sample size and variance. This works well in many cases, (i.e., with
-   "well-behaved" data) but it fails in others. It is always a good to try
-   different bin sizes to be sure that you are not missing something important.
-   This function allows you to specify bins in several different ways, such as
-   by setting the total number of bins to use, the width of each bin, or the
-   specific locations where the bins should break.
+.. py:method:: apsimNGpy.core.apsim.ApsimModel.boxplot(self, column, *, table=None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
 
-   Examples
-   --------
+   Plot a boxplot from simulation results using ``pandas.DataFrame.boxplot``.
 
-   .. include:: ../docstrings/histplot.rst
+   Parameters
+   ----------
+   column : str
+       Column to plot.
+   table : str or pandas.DataFrame, optional
+       Table name or DataFrame; if omitted, use :pyattr:`results`.
+   by : str, optional
+       Grouping column.
+   figsize : tuple, default=(10, 8)
+   grid : bool, default=False
+   **kwargs
+       Forwarded to :meth:`pandas.DataFrame.boxplot`.
+
+   Returns
+   -------
+   matplotlib.axes.Axes
+
+.. py:method:: apsimNGpy.core.apsim.ApsimModel.distribution(self, x, *, table=None, **kwargs) (inherited)
+
+   Plot a univariate distribution/histogram using :func:`seaborn.histplot`.
+
+   Parameters
+   ----------
+   x : str
+       Numeric column to plot.
+   table : str or pandas.DataFrame, optional
+       Table name or DataFrame; if omitted, use :pyattr:`results`.
+   **kwargs
+       Forwarded to :func:`seaborn.histplot`.
+
+   Raises
+   ------
+   ValueError
+       If ``x`` is a string-typed column.
+
+   Notes
+   -----
+   This function calls :func:`seaborn.histplot` and accepts its keyword arguments
+   via ``**kwargs``. See:
+   https://seaborn.pydata.org/generated/seaborn/histplot.html
 
 .. py:method:: apsimNGpy.core.apsim.ApsimModel.series_plot(data=None, *, x=None, y=None, hue=None, size=None, style=None, units=None, weights=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, dashes=True, markers=None, style_order=None, estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, orient='x', sort=True, err_style='band', err_kws=None, legend='auto', ci='deprecated', ax=None, **kwargs) (inherited)
 
            Just a wrapper for seaborn.lineplot that supports multiple y columns that could be provided as a list
 
-           Examples::
+           Examples:
+           ------------
 
-              from apsimNGpy.core.apsim import ApsimModel
-              model = ApsimModel(model= 'Maize')
+              >>>from apsimNGpy.core.apsim import ApsimModel
+              >>> model = ApsimModel(model= 'Maize')
               # run the results
-              model.run(report_names='Report')
-              model.series_plot(x='Maize.Grain.Size', y='Yield', table='Report')
-              model.render_plot(show=True, ylabel = 'Maize yield', xlabel ='Maize grain size')
+              >>> model.run(report_names='Report')
+              >>>model.series_plot(x='Maize.Grain.Size', y='Yield', table='Report')
+              >>>model.render_plot(show=True, ylabel = 'Maize yield', xlabel ='Maize grain size')
 
-           Plot two variables::
+           Plot two variables:
 
-              model.series_plot(x='Yield', y=['Maize.Grain.N', 'Maize.Grain.Size'], table= 'Report')
+              >>>model.series_plot(x='Yield', y=['Maize.Grain.N', 'Maize.Grain.Size'], table= 'Report')
 
-            see below or https://seaborn.pydata.org/generated/seaborn.lineplot.html 
+           Notes
+           -----
+           This function calls :func:`seaborn.lineplot` and accepts its keyword arguments
+           via ``**kwargs``. See:
+           https://seaborn.pydata.org/generated/seaborn/lineplot.html see below or https://seaborn.pydata.org/generated/seaborn.lineplot.html 
 
            =============================================================================================================================================
 
@@ -2471,114 +2376,12 @@ email: magalarich20@gmail.com
 
    .. include:: ../docstrings/lineplot.rst
 
-.. py:method:: apsimNGpy.core.apsim.ApsimModel.scatter_plot(data=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
+.. py:method:: apsimNGpy.core.apsim.ApsimModel.scatter_plot(self, table=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
 
-           Plot scatter plot using seaborn with flexible aesthetic mappings.
-           reference: https://seaborn.pydata.org/generated/seaborn.scatterplot.html. Check seaborn documentation below for more details 
+   Plot scatter plot using seaborn with flexible aesthetic mappings.
+   reference: https://seaborn.pydata.org/generated/seaborn.scatterplot.html. Check seaborn documentation below for more details 
 
-           ================================================================================================================================
-
-   Draw a scatter plot with possibility of several semantic groupings.
-
-   The relationship between `x` and `y` can be shown for different subsets
-   of the data using the `hue`, `size`, and `style` parameters. These
-   parameters control what visual semantics are used to identify the different
-   subsets. It is possible to show up to three dimensions independently by
-   using all three semantic types, but this style of plot can be hard to
-   interpret and is often ineffective. Using redundant semantics (i.e. both
-   `hue` and `style` for the same variable) can be helpful for making
-   graphics more accessible.
-
-   See the :ref:`tutorial <relational_tutorial>` for more information.
-
-   The default treatment of the `hue` (and to a lesser extent, `size`)
-   semantic, if present, depends on whether the variable is inferred to
-   represent "numeric" or "categorical" data. In particular, numeric variables
-   are represented with a sequential colormap by default, and the legend
-   entries show regular "ticks" with values that may or may not exist in the
-   data. This behavior can be controlled through various parameters, as
-   described and illustrated below.
-
-   Parameters
-   ----------
-   data : :class:`pandas.DataFrame`, :class:`numpy.ndarray`, mapping, or sequence
-       Input data structure. Either a long-form collection of vectors that can be
-       assigned to named variables or a wide-form dataset that will be internally
-       reshaped.
-   x, y : vectors or keys in ``data``
-       Variables that specify positions on the x and y axes.
-   hue : vector or key in `data`
-       Grouping variable that will produce points with different colors.
-       Can be either categorical or numeric, although color mapping will
-       behave differently in latter case.
-   size : vector or key in `data`
-       Grouping variable that will produce points with different sizes.
-       Can be either categorical or numeric, although size mapping will
-       behave differently in latter case.
-   style : vector or key in `data`
-       Grouping variable that will produce points with different markers.
-       Can have a numeric dtype but will always be treated as categorical.
-   palette : string, list, dict, or :class:`matplotlib.colors.Colormap`
-       Method for choosing the colors to use when mapping the ``hue`` semantic.
-       String values are passed to :func:`color_palette`. List or dict values
-       imply categorical mapping, while a colormap object implies numeric mapping.
-   hue_order : vector of strings
-       Specify the order of processing and plotting for categorical levels of the
-       ``hue`` semantic.
-   hue_norm : tuple or :class:`matplotlib.colors.Normalize`
-       Either a pair of values that set the normalization range in data units
-       or an object that will map from data units into a [0, 1] interval. Usage
-       implies numeric mapping.
-   sizes : list, dict, or tuple
-       An object that determines how sizes are chosen when `size` is used.
-       List or dict arguments should provide a size for each unique data value,
-       which forces a categorical interpretation. The argument may also be a
-       min, max tuple.
-   size_order : list
-       Specified order for appearance of the `size` variable levels,
-       otherwise they are determined from the data. Not relevant when the
-       `size` variable is numeric.
-   size_norm : tuple or Normalize object
-       Normalization in data units for scaling plot objects when the
-       `size` variable is numeric.
-   markers : boolean, list, or dictionary
-       Object determining how to draw the markers for different levels of the
-       `style` variable. Setting to `True` will use default markers, or
-       you can pass a list of markers or a dictionary mapping levels of the
-       `style` variable to markers. Setting to `False` will draw
-       marker-less lines.  Markers are specified as in matplotlib.
-   style_order : list
-       Specified order for appearance of the `style` variable levels
-       otherwise they are determined from the data. Not relevant when the
-       `style` variable is numeric.
-   legend : "auto", "brief", "full", or False
-       How to draw the legend. If "brief", numeric `hue` and `size`
-       variables will be represented with a sample of evenly spaced values.
-       If "full", every group will get an entry in the legend. If "auto",
-       choose between brief or full representation based on number of levels.
-       If `False`, no legend data is added and no legend is drawn.
-   ax : :class:`matplotlib.axes.Axes`
-       Pre-existing axes for the plot. Otherwise, call :func:`matplotlib.pyplot.gca`
-       internally.
-   kwargs : key, value mappings
-       Other keyword arguments are passed down to
-       :meth:`matplotlib.axes.Axes.scatter`.
-
-   Returns
-   -------
-   :class:`matplotlib.axes.Axes`
-       The matplotlib axes containing the plot.
-
-   See Also
-   --------
-   lineplot : Plot data using lines.
-   stripplot : Plot a categorical scatter with jitter.
-   swarmplot : Plot a categorical scatter with non-overlapping points.
-
-   Examples
-   --------
-
-   .. include:: ../docstrings/scatterplot.rst
+   ================================================================================================================================
 
 .. py:method:: apsimNGpy.core.apsim.ApsimModel.cat_plot(data=None, *, x=None, y=None, hue=None, row=None, col=None, kind='strip', estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, units=None, weights=None, order=None, hue_order=None, row_order=None, col_order=None, col_wrap=None, height=5, aspect=1, log_scale=None, native_scale=False, formatter=None, orient=None, color=None, palette=None, hue_norm=None, legend='auto', legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, ci=<deprecated>, **kwargs) (inherited)
 
@@ -4906,221 +4709,126 @@ apsimNGpy.core.experimentmanager
 
 .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.plot_mva(self, table: pandas.core.frame.DataFrame, time_col: Hashable, response: Hashable, *, window: int = 5, min_period: int = 1, grouping: Union[Hashable, collections.abc.Sequence[Hashable], NoneType] = None, preserve_start: bool = True, kind: str = 'line', estimator='mean', plot_raw: bool = False, raw_alpha: float = 0.35, raw_linewidth: float = 1.0, auto_datetime: bool = False, ylabel: Optional[str] = None, return_data: bool = False, **kwargs) -> seaborn.axisgrid.FacetGrid | tuple[seaborn.axisgrid.FacetGrid, pandas.core.frame.DataFrame] (inherited)
 
-   Plot a centered moving average (MVA) of `response` using seaborn.relplot.
+   Plot a centered moving-average (MVA) of a response using ``seaborn.relplot``.
 
-   Enhancements over a direct relplot call:
-     - Computes MVA with `mva(...)` and **plots the smoothed series**
-     - Auto-assigns `hue` from `grouping` (supports multi-column grouping)
-     - Optional overlay of the **raw** series for comparison
-     - Preserves original row order and handles NaN groups
-
-     Notes
-     -----
-       This function uses :func:`seaborn.relplot` and inherits its keyword
-       arguments via **kwargs. See Seaborn docs for details:
-       https://seaborn.pydata.org/generated/seaborn.relplot.html
-
-.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.boxplot(self, column, *, table=None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
-
-   Plot a boxplot from the simulation results using ``pandas.DataFrame.boxplot`` see more documentation at pandas heren
-   =======================================================================.
-   column: str required
-   table: str optional str of the database table or data frame to use if ``table`` is provided, otherwise the self.results`` table is used
-
-.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.distribution(data=None, *, x=None, y=None, hue=None, weights=None, stat='count', bins='auto', binwidth=None, binrange=None, discrete=None, cumulative=False, common_bins=True, common_norm=True, multiple='layer', element='bars', fill=True, shrink=1, kde=False, kde_kws=None, line_kws=None, thresh=0, pthresh=None, pmax=None, cbar=False, cbar_ax=None, cbar_kws=None, palette=None, hue_order=None, hue_norm=None, color=None, log_scale=None, legend=True, ax=None, **kwargs) (inherited)
-
-   Plot distribution for a numeric variable. It uses ``seaborn.histplot`` function.
-           x is the numeric variable in the specified table
-           =========================================================================================================
-
-           Notes
-             -----
-               This function uses :func:`seaborn.histplot` and inherits its keyword
-               arguments via **kwargs. See Seaborn docs for details:
-               https://seaborn.pydata.org/generated/seaborn.histplot.html
-
-
-
-   Plot univariate or bivariate histograms to show distributions of datasets.
-
-   A histogram is a classic visualization tool that represents the distribution
-   of one or more variables by counting the number of observations that fall within
-   discrete bins.
-
-   This function can normalize the statistic computed within each bin to estimate
-   frequency, density or probability mass, and it can add a smooth curve obtained
-   using a kernel density estimate, similar to :func:`kdeplot`.
-
-   More information is provided in the :ref:`user guide <tutorial_hist>`.
+   Enhancements over a direct ``relplot`` call:
+   - Computes and plots a smoothed series via :func:`apsimNGpy.stats.data_insights.mva`.
+   - Supports multi-column grouping; will auto-construct a composite hue if needed.
+   - Optional overlay of the raw (unsmoothed) series for comparison.
+   - Stable (mergesort) time ordering.
 
    Parameters
    ----------
-   data : :class:`pandas.DataFrame`, :class:`numpy.ndarray`, mapping, or sequence
-       Input data structure. Either a long-form collection of vectors that can be
-       assigned to named variables or a wide-form dataset that will be internally
-       reshaped.
-   x, y : vectors or keys in ``data``
-       Variables that specify positions on the x and y axes.
-   hue : vector or key in ``data``
-       Semantic variable that is mapped to determine the color of plot elements.
-   weights : vector or key in ``data``
-       If provided, weight the contribution of the corresponding data points
-       towards the count in each bin by these factors.
-   stat : str
-       Aggregate statistic to compute in each bin.
-
-       - `count`: show the number of observations in each bin
-       - `frequency`: show the number of observations divided by the bin width
-       - `probability` or `proportion`: normalize such that bar heights sum to 1
-       - `percent`: normalize such that bar heights sum to 100
-       - `density`: normalize such that the total area of the histogram equals 1
-   bins : str, number, vector, or a pair of such values
-       Generic bin parameter that can be the name of a reference rule,
-       the number of bins, or the breaks of the bins.
-       Passed to :func:`numpy.histogram_bin_edges`.
-   binwidth : number or pair of numbers
-       Width of each bin, overrides ``bins`` but can be used with
-       ``binrange``.
-   binrange : pair of numbers or a pair of pairs
-       Lowest and highest value for bin edges; can be used either
-       with ``bins`` or ``binwidth``. Defaults to data extremes.
-   discrete : bool
-       If True, default to ``binwidth=1`` and draw the bars so that they are
-       centered on their corresponding data points. This avoids "gaps" that may
-       otherwise appear when using discrete (integer) data.
-   cumulative : bool
-       If True, plot the cumulative counts as bins increase.
-   common_bins : bool
-       If True, use the same bins when semantic variables produce multiple
-       plots. If using a reference rule to determine the bins, it will be computed
-       with the full dataset.
-   common_norm : bool
-       If True and using a normalized statistic, the normalization will apply over
-       the full dataset. Otherwise, normalize each histogram independently.
-   multiple : {"layer", "dodge", "stack", "fill"}
-       Approach to resolving multiple elements when semantic mapping creates subsets.
-       Only relevant with univariate data.
-   element : {"bars", "step", "poly"}
-       Visual representation of the histogram statistic.
-       Only relevant with univariate data.
-   fill : bool
-       If True, fill in the space under the histogram.
-       Only relevant with univariate data.
-   shrink : number
-       Scale the width of each bar relative to the binwidth by this factor.
-       Only relevant with univariate data.
-   kde : bool
-       If True, compute a kernel density estimate to smooth the distribution
-       and show on the plot as (one or more) line(s).
-       Only relevant with univariate data.
-   kde_kws : dict
-       Parameters that control the KDE computation, as in :func:`kdeplot`.
-   line_kws : dict
-       Parameters that control the KDE visualization, passed to
-       :meth:`matplotlib.axes.Axes.plot`.
-   thresh : number or None
-       Cells with a statistic less than or equal to this value will be transparent.
-       Only relevant with bivariate data.
-   pthresh : number or None
-       Like ``thresh``, but a value in [0, 1] such that cells with aggregate counts
-       (or other statistics, when used) up to this proportion of the total will be
-       transparent.
-   pmax : number or None
-       A value in [0, 1] that sets that saturation point for the colormap at a value
-       such that cells below constitute this proportion of the total count (or
-       other statistic, when used).
-   cbar : bool
-       If True, add a colorbar to annotate the color mapping in a bivariate plot.
-       Note: Does not currently support plots with a ``hue`` variable well.
-   cbar_ax : :class:`matplotlib.axes.Axes`
-       Pre-existing axes for the colorbar.
-   cbar_kws : dict
-       Additional parameters passed to :meth:`matplotlib.figure.Figure.colorbar`.
-   palette : string, list, dict, or :class:`matplotlib.colors.Colormap`
-       Method for choosing the colors to use when mapping the ``hue`` semantic.
-       String values are passed to :func:`color_palette`. List or dict values
-       imply categorical mapping, while a colormap object implies numeric mapping.
-   hue_order : vector of strings
-       Specify the order of processing and plotting for categorical levels of the
-       ``hue`` semantic.
-   hue_norm : tuple or :class:`matplotlib.colors.Normalize`
-       Either a pair of values that set the normalization range in data units
-       or an object that will map from data units into a [0, 1] interval. Usage
-       implies numeric mapping.
-   color : :mod:`matplotlib color <matplotlib.colors>`
-       Single color specification for when hue mapping is not used. Otherwise, the
-       plot will try to hook into the matplotlib property cycle.
-   log_scale : bool or number, or pair of bools or numbers
-       Set axis scale(s) to log. A single value sets the data axis for any numeric
-       axes in the plot. A pair of values sets each axis independently.
-       Numeric values are interpreted as the desired base (default 10).
-       When `None` or `False`, seaborn defers to the existing Axes scale.
-   legend : bool
-       If False, suppress the legend for semantic variables.
-   ax : :class:`matplotlib.axes.Axes`
-       Pre-existing axes for the plot. Otherwise, call :func:`matplotlib.pyplot.gca`
-       internally.
-   kwargs
-       Other keyword arguments are passed to one of the following matplotlib
-       functions:
-
-       - :meth:`matplotlib.axes.Axes.bar` (univariate, element="bars")
-       - :meth:`matplotlib.axes.Axes.fill_between` (univariate, other element, fill=True)
-       - :meth:`matplotlib.axes.Axes.plot` (univariate, other element, fill=False)
-       - :meth:`matplotlib.axes.Axes.pcolormesh` (bivariate)
+   table : pandas.DataFrame or str
+       Data source or table name; if ``None``, use :pyattr:`results`.
+   time_col : hashable
+       Time (x-axis) column.
+   response : hashable
+       Response (y) column to smooth.
+   window : int, default=5
+       MVA window size.
+   min_period : int, default=1
+       Minimum periods for the rolling mean.
+   grouping : hashable or sequence of hashable, optional
+       One or more grouping columns.
+   preserve_start : bool, default=True
+       Preserve initial values when centering.
+   kind : {"line","scatter"}, default="line"
+       Passed to ``sns.relplot``.
+   estimator : str or None, default="mean"
+       Passed to ``sns.relplot`` (set to ``None`` to plot raw observations).
+   plot_raw : bool, default=False
+       Overlay the raw series on each facet.
+   raw_alpha : float, default=0.35
+       Alpha for the raw overlay.
+   raw_linewidth : float, default=1.0
+       Line width for the raw overlay.
+   auto_datetime : bool, default=False
+       Attempt to convert ``time_col`` to datetime.
+   ylabel : str, optional
+       Custom y-axis label; default is generated from window/response.
+   return_data : bool, default=False
+       If ``True``, return ``(FacetGrid, smoothed_df)``.
 
    Returns
    -------
-   :class:`matplotlib.axes.Axes`
-       The matplotlib axes containing the plot.
-
-   See Also
-   --------
-   displot : Figure-level interface to distribution plot functions.
-   kdeplot : Plot univariate or bivariate distributions using kernel density estimation.
-   rugplot : Plot a tick at each observation value along the x and/or y axes.
-   ecdfplot : Plot empirical cumulative distribution functions.
-   jointplot : Draw a bivariate plot with univariate marginal distributions.
+   seaborn.FacetGrid
+       The relplot grid, or ``(grid, smoothed_df)`` if ``return_data=True``.
 
    Notes
    -----
+   This function calls :func:`seaborn.relplot` and accepts its keyword arguments
+   via ``**kwargs``. See:
+   https://seaborn.pydata.org/generated/seaborn/relplot.html
 
-   The choice of bins for computing and plotting a histogram can exert
-   substantial influence on the insights that one is able to draw from the
-   visualization. If the bins are too large, they may erase important features.
-   On the other hand, bins that are too small may be dominated by random
-   variability, obscuring the shape of the true underlying distribution. The
-   default bin size is determined using a reference rule that depends on the
-   sample size and variance. This works well in many cases, (i.e., with
-   "well-behaved" data) but it fails in others. It is always a good to try
-   different bin sizes to be sure that you are not missing something important.
-   This function allows you to specify bins in several different ways, such as
-   by setting the total number of bins to use, the width of each bin, or the
-   specific locations where the bins should break.
+.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.boxplot(self, column, *, table=None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
 
-   Examples
-   --------
+   Plot a boxplot from simulation results using ``pandas.DataFrame.boxplot``.
 
-   .. include:: ../docstrings/histplot.rst
+   Parameters
+   ----------
+   column : str
+       Column to plot.
+   table : str or pandas.DataFrame, optional
+       Table name or DataFrame; if omitted, use :pyattr:`results`.
+   by : str, optional
+       Grouping column.
+   figsize : tuple, default=(10, 8)
+   grid : bool, default=False
+   **kwargs
+       Forwarded to :meth:`pandas.DataFrame.boxplot`.
+
+   Returns
+   -------
+   matplotlib.axes.Axes
+
+.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.distribution(self, x, *, table=None, **kwargs) (inherited)
+
+   Plot a univariate distribution/histogram using :func:`seaborn.histplot`.
+
+   Parameters
+   ----------
+   x : str
+       Numeric column to plot.
+   table : str or pandas.DataFrame, optional
+       Table name or DataFrame; if omitted, use :pyattr:`results`.
+   **kwargs
+       Forwarded to :func:`seaborn.histplot`.
+
+   Raises
+   ------
+   ValueError
+       If ``x`` is a string-typed column.
+
+   Notes
+   -----
+   This function calls :func:`seaborn.histplot` and accepts its keyword arguments
+   via ``**kwargs``. See:
+   https://seaborn.pydata.org/generated/seaborn/histplot.html
 
 .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.series_plot(data=None, *, x=None, y=None, hue=None, size=None, style=None, units=None, weights=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, dashes=True, markers=None, style_order=None, estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, orient='x', sort=True, err_style='band', err_kws=None, legend='auto', ci='deprecated', ax=None, **kwargs) (inherited)
 
            Just a wrapper for seaborn.lineplot that supports multiple y columns that could be provided as a list
 
-           Examples::
+           Examples:
+           ------------
 
-              from apsimNGpy.core.apsim import ApsimModel
-              model = ApsimModel(model= 'Maize')
+              >>>from apsimNGpy.core.apsim import ApsimModel
+              >>> model = ApsimModel(model= 'Maize')
               # run the results
-              model.run(report_names='Report')
-              model.series_plot(x='Maize.Grain.Size', y='Yield', table='Report')
-              model.render_plot(show=True, ylabel = 'Maize yield', xlabel ='Maize grain size')
+              >>> model.run(report_names='Report')
+              >>>model.series_plot(x='Maize.Grain.Size', y='Yield', table='Report')
+              >>>model.render_plot(show=True, ylabel = 'Maize yield', xlabel ='Maize grain size')
 
-           Plot two variables::
+           Plot two variables:
 
-              model.series_plot(x='Yield', y=['Maize.Grain.N', 'Maize.Grain.Size'], table= 'Report')
+              >>>model.series_plot(x='Yield', y=['Maize.Grain.N', 'Maize.Grain.Size'], table= 'Report')
 
-            see below or https://seaborn.pydata.org/generated/seaborn.lineplot.html 
+           Notes
+           -----
+           This function calls :func:`seaborn.lineplot` and accepts its keyword arguments
+           via ``**kwargs``. See:
+           https://seaborn.pydata.org/generated/seaborn/lineplot.html see below or https://seaborn.pydata.org/generated/seaborn.lineplot.html 
 
            =============================================================================================================================================
 
@@ -5279,114 +4987,12 @@ apsimNGpy.core.experimentmanager
 
    .. include:: ../docstrings/lineplot.rst
 
-.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.scatter_plot(data=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
+.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.scatter_plot(self, table=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
 
-           Plot scatter plot using seaborn with flexible aesthetic mappings.
-           reference: https://seaborn.pydata.org/generated/seaborn.scatterplot.html. Check seaborn documentation below for more details 
+   Plot scatter plot using seaborn with flexible aesthetic mappings.
+   reference: https://seaborn.pydata.org/generated/seaborn.scatterplot.html. Check seaborn documentation below for more details 
 
-           ================================================================================================================================
-
-   Draw a scatter plot with possibility of several semantic groupings.
-
-   The relationship between `x` and `y` can be shown for different subsets
-   of the data using the `hue`, `size`, and `style` parameters. These
-   parameters control what visual semantics are used to identify the different
-   subsets. It is possible to show up to three dimensions independently by
-   using all three semantic types, but this style of plot can be hard to
-   interpret and is often ineffective. Using redundant semantics (i.e. both
-   `hue` and `style` for the same variable) can be helpful for making
-   graphics more accessible.
-
-   See the :ref:`tutorial <relational_tutorial>` for more information.
-
-   The default treatment of the `hue` (and to a lesser extent, `size`)
-   semantic, if present, depends on whether the variable is inferred to
-   represent "numeric" or "categorical" data. In particular, numeric variables
-   are represented with a sequential colormap by default, and the legend
-   entries show regular "ticks" with values that may or may not exist in the
-   data. This behavior can be controlled through various parameters, as
-   described and illustrated below.
-
-   Parameters
-   ----------
-   data : :class:`pandas.DataFrame`, :class:`numpy.ndarray`, mapping, or sequence
-       Input data structure. Either a long-form collection of vectors that can be
-       assigned to named variables or a wide-form dataset that will be internally
-       reshaped.
-   x, y : vectors or keys in ``data``
-       Variables that specify positions on the x and y axes.
-   hue : vector or key in `data`
-       Grouping variable that will produce points with different colors.
-       Can be either categorical or numeric, although color mapping will
-       behave differently in latter case.
-   size : vector or key in `data`
-       Grouping variable that will produce points with different sizes.
-       Can be either categorical or numeric, although size mapping will
-       behave differently in latter case.
-   style : vector or key in `data`
-       Grouping variable that will produce points with different markers.
-       Can have a numeric dtype but will always be treated as categorical.
-   palette : string, list, dict, or :class:`matplotlib.colors.Colormap`
-       Method for choosing the colors to use when mapping the ``hue`` semantic.
-       String values are passed to :func:`color_palette`. List or dict values
-       imply categorical mapping, while a colormap object implies numeric mapping.
-   hue_order : vector of strings
-       Specify the order of processing and plotting for categorical levels of the
-       ``hue`` semantic.
-   hue_norm : tuple or :class:`matplotlib.colors.Normalize`
-       Either a pair of values that set the normalization range in data units
-       or an object that will map from data units into a [0, 1] interval. Usage
-       implies numeric mapping.
-   sizes : list, dict, or tuple
-       An object that determines how sizes are chosen when `size` is used.
-       List or dict arguments should provide a size for each unique data value,
-       which forces a categorical interpretation. The argument may also be a
-       min, max tuple.
-   size_order : list
-       Specified order for appearance of the `size` variable levels,
-       otherwise they are determined from the data. Not relevant when the
-       `size` variable is numeric.
-   size_norm : tuple or Normalize object
-       Normalization in data units for scaling plot objects when the
-       `size` variable is numeric.
-   markers : boolean, list, or dictionary
-       Object determining how to draw the markers for different levels of the
-       `style` variable. Setting to `True` will use default markers, or
-       you can pass a list of markers or a dictionary mapping levels of the
-       `style` variable to markers. Setting to `False` will draw
-       marker-less lines.  Markers are specified as in matplotlib.
-   style_order : list
-       Specified order for appearance of the `style` variable levels
-       otherwise they are determined from the data. Not relevant when the
-       `style` variable is numeric.
-   legend : "auto", "brief", "full", or False
-       How to draw the legend. If "brief", numeric `hue` and `size`
-       variables will be represented with a sample of evenly spaced values.
-       If "full", every group will get an entry in the legend. If "auto",
-       choose between brief or full representation based on number of levels.
-       If `False`, no legend data is added and no legend is drawn.
-   ax : :class:`matplotlib.axes.Axes`
-       Pre-existing axes for the plot. Otherwise, call :func:`matplotlib.pyplot.gca`
-       internally.
-   kwargs : key, value mappings
-       Other keyword arguments are passed down to
-       :meth:`matplotlib.axes.Axes.scatter`.
-
-   Returns
-   -------
-   :class:`matplotlib.axes.Axes`
-       The matplotlib axes containing the plot.
-
-   See Also
-   --------
-   lineplot : Plot data using lines.
-   stripplot : Plot a categorical scatter with jitter.
-   swarmplot : Plot a categorical scatter with non-overlapping points.
-
-   Examples
-   --------
-
-   .. include:: ../docstrings/scatterplot.rst
+   ================================================================================================================================
 
 .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.cat_plot(data=None, *, x=None, y=None, hue=None, row=None, col=None, kind='strip', estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, units=None, weights=None, order=None, hue_order=None, row_order=None, col_order=None, col_wrap=None, height=5, aspect=1, log_scale=None, native_scale=False, formatter=None, orient=None, color=None, palette=None, hue_norm=None, legend='auto', legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, ci=<deprecated>, **kwargs) (inherited)
 
