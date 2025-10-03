@@ -2,6 +2,7 @@ Distributed Computing
 =========================
 
 Distributed computing (or parallelism) is the practice of dividing computing tasks among multiple processing resources to speed up computations.
+See Li, Z., Qi, Z., Liu, Y., Zheng, Y., & Yang, Y. (2023). A modularized parallel distributed High–Performance computing framework for simulating seasonal frost dynamics in Canadian croplands. Computers and Electronics in Agriculture, 212, 108057.
 
 In apsimNGpy, this is achieved through the MultiCoreManager API, which abstracts away most of the setup required for distributing tasks.
 
@@ -90,6 +91,7 @@ Minimal example 1: Writing your own worker and data storage function
 =====================================================================
 
 .. code-block:: python
+
             # define function to insert insert results
             def insert_results(db_path, results, table_name):
                 """
@@ -109,8 +111,7 @@ Minimal example 1: Writing your own worker and data storage function
 
                 engine = create_engine(f"sqlite:///{db_path}")
                 results.to_sql(table_name, con=engine, if_exists='append', index=False)
-
-
+            # ____________worker___________________________-
             def worker(nitrogen_rate, model):
                 out_path = Path(f"_{nitrogen_rate}.apsimx").resolve()
                 model = ApsimModel(model, out_path=out_path)
