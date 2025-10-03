@@ -1,0 +1,1086 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Index &mdash; apsimNGpy 0.39.3.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e505548e"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#quick-guides">Quick guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#locating-the-apsim-binaries">Locating the APSIM Binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#changing-setting-the-apsim-installation-binaries-path">Changing/setting the APSIM installation binaries path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <cite>apsimNGpy</cite> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#minimal-example-1-writing-your-own-worker-and-data-storage-function">Minimal example 1: Writing your own worker and data storage function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#minimal-example-2-writing-your-own-worker-and-use-data-storage-decorator-from-data-base-utils-only-latest-version">Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils (only latest version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="OPT.html">Single-Objective Optimization with apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OPT.html#mixed-variable-optimization-in-apsimngpy">Mixed-Variable Optimization in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.optimizer.moo.MultiObjectiveProblem.add_control">add_control() (apsimNGpy.optimizer.moo.MultiObjectiveProblem method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.optimizer.single.ContinuousVariable.add_control">(apsimNGpy.optimizer.single.ContinuousVariable method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.optimizer.single.MixedVariable.add_control">(apsimNGpy.optimizer.single.MixedVariable method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.add_crop_replacements">add_crop_replacements() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_crop_replacements">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.add_db_table">add_db_table() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_db_table">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.add_fac">add_fac() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_fac">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.add_factor">add_factor() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_factor">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.add_model">add_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.exceptions.ApsimBinPathConfigError.add_note">add_note() (apsimNGpy.exceptions.ApsimBinPathConfigError method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.exceptions.ApsimNGpyError.add_note">(apsimNGpy.exceptions.ApsimNGpyError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ApsimNotFoundError.add_note">(apsimNGpy.exceptions.ApsimNotFoundError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ApsimRuntimeError.add_note">(apsimNGpy.exceptions.ApsimRuntimeError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.CastCompilationError.add_note">(apsimNGpy.exceptions.CastCompilationError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.EmptyDateFrameError.add_note">(apsimNGpy.exceptions.EmptyDateFrameError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ForgotToRunError.add_note">(apsimNGpy.exceptions.ForgotToRunError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.InvalidInputErrors.add_note">(apsimNGpy.exceptions.InvalidInputErrors method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ModelNotFoundError.add_note">(apsimNGpy.exceptions.ModelNotFoundError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.NodeNotFoundError.add_note">(apsimNGpy.exceptions.NodeNotFoundError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.TableNotFoundError.add_note">(apsimNGpy.exceptions.TableNotFoundError method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.add_report_variable">add_report_variable() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_report_variable">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.adjust_dul">adjust_dul() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.adjust_dul">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.manager.soilmanager.OrganiseSoilProfile.adjust_SAT_BD_DUL">adjust_SAT_BD_DUL() (apsimNGpy.manager.soilmanager.OrganiseSoilProfile method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel">apsimNGpy.core.apsim.ApsimModel (built-in class)</a>
+</li>
+      <li>
+    apsimNGpy.core.config.any_bin_path_from_env()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.config.any_bin_path_from_env">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core.config.get_bin_use_history()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.config.get_bin_use_history">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core.config.list_drives()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.config.list_drives">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core.config.scan_drive_for_bin()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.config.scan_drive_for_bin">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core.config.set_apsim_bin_path()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.config.set_apsim_bin_path">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core.config.stamp_name_with_version()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.config.stamp_name_with_version">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager">apsimNGpy.core.experimentmanager.ExperimentManager (built-in class)</a>
+</li>
+      <li>
+    apsimNGpy.core.mult_cores.is_my_iterable()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.mult_cores.is_my_iterable">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager">apsimNGpy.core.mult_cores.MultiCoreManager (built-in class)</a>
+</li>
+      <li>
+    apsimNGpy.core.mult_cores.simulation_exists()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.mult_cores.simulation_exists">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.pythonet_config.ConfigRuntimeInfo">apsimNGpy.core.pythonet_config.ConfigRuntimeInfo (built-in class)</a>
+</li>
+      <li>
+    apsimNGpy.core.pythonet_config.get_apsim_file_reader()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.pythonet_config.get_apsim_file_reader">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core.pythonet_config.get_apsim_version()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.pythonet_config.get_apsim_version">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core.pythonet_config.is_file_format_modified()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.pythonet_config.is_file_format_modified">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    apsimNGpy.core_utils.database_utils.chunker()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.chunker">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.clear_all_tables()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.clear_all_tables">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.clear_table()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.clear_table">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.dataview_to_dataframe()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.dataview_to_dataframe">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.delete_all_tables()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.delete_all_tables">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.delete_table()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.delete_table">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.get_db_table_names()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.get_db_table_names">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.read_db_table()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.read_db_table">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.read_with_query()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.read_with_query">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.core_utils.database_utils.write_results_to_sql()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.write_results_to_sql">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.exceptions.ApsimBinPathConfigError">apsimNGpy.exceptions.ApsimBinPathConfigError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.ApsimNGpyError">apsimNGpy.exceptions.ApsimNGpyError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.ApsimNotFoundError">apsimNGpy.exceptions.ApsimNotFoundError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.ApsimRuntimeError">apsimNGpy.exceptions.ApsimRuntimeError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.CastCompilationError">apsimNGpy.exceptions.CastCompilationError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.EmptyDateFrameError">apsimNGpy.exceptions.EmptyDateFrameError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.ForgotToRunError">apsimNGpy.exceptions.ForgotToRunError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.InvalidInputErrors">apsimNGpy.exceptions.InvalidInputErrors (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.ModelNotFoundError">apsimNGpy.exceptions.ModelNotFoundError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.NodeNotFoundError">apsimNGpy.exceptions.NodeNotFoundError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.exceptions.TableNotFoundError">apsimNGpy.exceptions.TableNotFoundError (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.manager.soilmanager.OrganiseSoilProfile">apsimNGpy.manager.soilmanager.OrganiseSoilProfile (built-in class)</a>
+</li>
+      <li>
+    apsimNGpy.manager.soilmanager.set_depth()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.manager.soilmanager.set_depth">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.manager.soilmanager.SoilsProfiles">apsimNGpy.manager.soilmanager.SoilsProfiles (built-in class)</a>
+</li>
+      <li>
+    apsimNGpy.manager.weathermanager.daterange()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.daterange">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.manager.weathermanager.day_of_year_to_date()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.day_of_year_to_date">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.manager.weathermanager.get_iem_by_station()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.get_iem_by_station">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.manager.weathermanager.merge_columns()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.merge_columns">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.manager.weathermanager.read_apsim_met()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.read_apsim_met">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.optimizer.moo.MultiObjectiveProblem">apsimNGpy.optimizer.moo.MultiObjectiveProblem (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.optimizer.single.ContinuousVariable">apsimNGpy.optimizer.single.ContinuousVariable (built-in class)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.optimizer.single.MixedVariable">apsimNGpy.optimizer.single.MixedVariable (built-in class)</a>
+</li>
+      <li>
+    apsimNGpy.parallel.process.custom_parallel()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.parallel.process.custom_parallel">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    apsimNGpy.parallel.process.custom_parallel_chunks()
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.parallel.process.custom_parallel_chunks">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.validation.evaluator.Validate">apsimNGpy.validation.evaluator.Validate (built-in class)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.boxplot">boxplot() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.boxplot">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li>
+    built-in function
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.config.any_bin_path_from_env">apsimNGpy.core.config.any_bin_path_from_env()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.config.get_bin_use_history">apsimNGpy.core.config.get_bin_use_history()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.config.list_drives">apsimNGpy.core.config.list_drives()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.config.scan_drive_for_bin">apsimNGpy.core.config.scan_drive_for_bin()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.config.set_apsim_bin_path">apsimNGpy.core.config.set_apsim_bin_path()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.config.stamp_name_with_version">apsimNGpy.core.config.stamp_name_with_version()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.mult_cores.is_my_iterable">apsimNGpy.core.mult_cores.is_my_iterable()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.mult_cores.simulation_exists">apsimNGpy.core.mult_cores.simulation_exists()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.pythonet_config.get_apsim_file_reader">apsimNGpy.core.pythonet_config.get_apsim_file_reader()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.pythonet_config.get_apsim_version">apsimNGpy.core.pythonet_config.get_apsim_version()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.pythonet_config.is_file_format_modified">apsimNGpy.core.pythonet_config.is_file_format_modified()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.chunker">apsimNGpy.core_utils.database_utils.chunker()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.clear_all_tables">apsimNGpy.core_utils.database_utils.clear_all_tables()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.clear_table">apsimNGpy.core_utils.database_utils.clear_table()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.dataview_to_dataframe">apsimNGpy.core_utils.database_utils.dataview_to_dataframe()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.delete_all_tables">apsimNGpy.core_utils.database_utils.delete_all_tables()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.delete_table">apsimNGpy.core_utils.database_utils.delete_table()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.get_db_table_names">apsimNGpy.core_utils.database_utils.get_db_table_names()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.read_db_table">apsimNGpy.core_utils.database_utils.read_db_table()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.read_with_query">apsimNGpy.core_utils.database_utils.read_with_query()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core_utils.database_utils.write_results_to_sql">apsimNGpy.core_utils.database_utils.write_results_to_sql()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.manager.soilmanager.set_depth">apsimNGpy.manager.soilmanager.set_depth()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.daterange">apsimNGpy.manager.weathermanager.daterange()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.day_of_year_to_date">apsimNGpy.manager.weathermanager.day_of_year_to_date()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.get_iem_by_station">apsimNGpy.manager.weathermanager.get_iem_by_station()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.merge_columns">apsimNGpy.manager.weathermanager.merge_columns()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.manager.weathermanager.read_apsim_met">apsimNGpy.manager.weathermanager.read_apsim_met()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.parallel.process.custom_parallel">apsimNGpy.parallel.process.custom_parallel()</a>
+</li>
+        <li><a href="api.html#apsimNGpy.parallel.process.custom_parallel_chunks">apsimNGpy.parallel.process.custom_parallel_chunks()</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.cat_plot">cat_plot() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.cat_plot">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.change_report">change_report() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.change_report">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.change_simulation_dates">change_simulation_dates() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.change_simulation_dates">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.clean_up">clean_up() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.clean_up">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.clean_up_data">clean_up_data() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.clear_db">clear_db() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.clear_scratch">clear_scratch() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.clone_model">clone_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.clone_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.create_experiment">create_experiment() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.create_experiment">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.manager.soilmanager.OrganiseSoilProfile.decreasing_exponential_function">decreasing_exponential_function() (apsimNGpy.manager.soilmanager.OrganiseSoilProfile method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.detect_model_type">detect_model_type() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.detect_model_type">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.distribution">distribution() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.distribution">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.edit_cultivar">edit_cultivar() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.edit_cultivar">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.edit_model">edit_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.edit_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.edit_model_by_path">edit_model_by_path() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.edit_model_by_path">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.extract_any_soil_physical">extract_any_soil_physical() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.extract_any_soil_physical">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.extract_soil_physical">extract_soil_physical() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.extract_soil_physical">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.extract_start_end_years">extract_start_end_years() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.extract_start_end_years">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.finalize">finalize() (apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.find_model">find_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.find_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.get_crop_replacement">get_crop_replacement() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.get_crop_replacement">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.get_model_paths">get_model_paths() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.get_model_paths">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.get_simulated_output">get_simulated_output() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.get_simulated_output">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.get_simulated_output">(apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.get_soil_from_web">get_soil_from_web() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.get_soil_from_web">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.get_weather_from_file">get_weather_from_file() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.get_weather_from_file">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.get_weather_from_web">get_weather_from_web() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.get_weather_from_web">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment">init_experiment() (apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.insert_data">insert_data() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_file">inspect_file() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model">inspect_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters">inspect_model_parameters() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model_parameters">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path">inspect_model_parameters_by_path() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model_parameters_by_path">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.optimizer.moo.MultiObjectiveProblem.is_mixed_type_vars">is_mixed_type_vars() (apsimNGpy.optimizer.moo.MultiObjectiveProblem method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.optimizer.single.ContinuousVariable.minimize_with_a_local_solver">minimize_with_a_local_solver() (apsimNGpy.optimizer.single.ContinuousVariable method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.optimizer.single.MixedVariable.minimize_with_a_local_solver">(apsimNGpy.optimizer.single.MixedVariable method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.optimizer.single.MixedVariable.minimize_with_alocal_solver">minimize_with_alocal_solver() (apsimNGpy.optimizer.single.MixedVariable method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.optimizer.single.ContinuousVariable.minimize_with_de">minimize_with_de() (apsimNGpy.optimizer.single.ContinuousVariable method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.optimizer.single.MixedVariable.minimize_with_de">(apsimNGpy.optimizer.single.MixedVariable method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.move_model">move_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.move_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.optimizer.moo.MultiObjectiveProblem.optimization_type">optimization_type() (apsimNGpy.optimizer.moo.MultiObjectiveProblem method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.optimizer.single.ContinuousVariable.optimization_type">(apsimNGpy.optimizer.single.ContinuousVariable method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.optimizer.single.MixedVariable.optimization_type">(apsimNGpy.optimizer.single.MixedVariable method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.plot_mva">plot_mva() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.plot_mva">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.preview_simulation">preview_simulation() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.preview_simulation">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.read_apsimx_data">read_apsimx_data() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.read_apsimx_data">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.recompile_edited_model">recompile_edited_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.recompile_edited_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.refresh_model">refresh_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.refresh_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.remove_model">remove_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.remove_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.remove_report_variable">remove_report_variable() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.remove_report_variable">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.rename_model">rename_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.rename_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.replace_downloaded_soils">replace_downloaded_soils() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.replace_downloaded_soils">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.replace_met_file">replace_met_file() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.replace_met_file">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.replace_model_from">replace_model_from() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.replace_model_from">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.replace_soil_property_values">replace_soil_property_values() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.replace_soil_property_values">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.replace_soils_values_by_path">replace_soils_values_by_path() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.replace_soils_values_by_path">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.replicate_file">replicate_file() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.replicate_file">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.restart_model">restart_model() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.restart_model">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.run">run() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.run">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.run_all_jobs">run_all_jobs() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.run_parallel">run_parallel() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.save">save() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.save">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.save_tocsv">save_tocsv() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager.save_tosql">save_tosql() (apsimNGpy.core.mult_cores.MultiCoreManager method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.scatter_plot">scatter_plot() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.scatter_plot">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.series_plot">series_plot() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.series_plot">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.set_categorical_factor">set_categorical_factor() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.set_categorical_factor">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.set_continuous_factor">set_continuous_factor() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.set_continuous_factor">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.manager.soilmanager.OrganiseSoilProfile.set_depth">set_depth() (apsimNGpy.manager.soilmanager.OrganiseSoilProfile method)</a>
+</li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.show_met_file_in_simulation">show_met_file_in_simulation() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.show_met_file_in_simulation">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.spin_up">spin_up() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.spin_up">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.summarize_numeric">summarize_numeric() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.summarize_numeric">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.update_cultivar">update_cultivar() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.update_cultivar">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.update_mgt">update_mgt() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.update_mgt">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.core.apsim.ApsimModel.update_mgt_by_path">update_mgt_by_path() (apsimNGpy.core.apsim.ApsimModel method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.update_mgt_by_path">(apsimNGpy.core.experimentmanager.ExperimentManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#apsimNGpy.optimizer.single.ContinuousVariable.update_pbar">update_pbar() (apsimNGpy.optimizer.single.ContinuousVariable method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.optimizer.single.MixedVariable.update_pbar">(apsimNGpy.optimizer.single.MixedVariable method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#apsimNGpy.exceptions.ApsimBinPathConfigError.with_traceback">with_traceback() (apsimNGpy.exceptions.ApsimBinPathConfigError method)</a>
+
+      <ul>
+        <li><a href="api.html#apsimNGpy.exceptions.ApsimNGpyError.with_traceback">(apsimNGpy.exceptions.ApsimNGpyError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ApsimNotFoundError.with_traceback">(apsimNGpy.exceptions.ApsimNotFoundError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ApsimRuntimeError.with_traceback">(apsimNGpy.exceptions.ApsimRuntimeError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.CastCompilationError.with_traceback">(apsimNGpy.exceptions.CastCompilationError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.EmptyDateFrameError.with_traceback">(apsimNGpy.exceptions.EmptyDateFrameError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ForgotToRunError.with_traceback">(apsimNGpy.exceptions.ForgotToRunError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.InvalidInputErrors.with_traceback">(apsimNGpy.exceptions.InvalidInputErrors method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.ModelNotFoundError.with_traceback">(apsimNGpy.exceptions.ModelNotFoundError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.NodeNotFoundError.with_traceback">(apsimNGpy.exceptions.NodeNotFoundError method)</a>
+</li>
+        <li><a href="api.html#apsimNGpy.exceptions.TableNotFoundError.with_traceback">(apsimNGpy.exceptions.TableNotFoundError method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, richard magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
