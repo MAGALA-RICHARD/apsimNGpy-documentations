@@ -5444,7 +5444,7 @@ apsimNGpy.exceptions
 
 .. py:class:: apsimNGpy.exceptions.TableNotFoundError
 
-   table not found error.
+   the table was not found error.
 
 .. py:method:: apsimNGpy.exceptions.TableNotFoundError.with_traceback() (inherited)
 
