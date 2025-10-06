@@ -287,7 +287,7 @@ email: magalarich20@gmail.com
 
    As shown above, everything is saved in the scratch folder; if
    the path is not abolutely provided, e.g., a relative path. If the path is not provided as shown below,
-    the reference path is current path for the isntance model.
+   the reference path is the current path for the isntance model.
       >>> model = ApsimModel("Maize",  out_path='saved_maize.apsimx')
       >>> model.path
       'scratch\saved_maize.apsimx'
@@ -2704,7 +2704,7 @@ apsimNGpy.core.experimentmanager
 
    As shown above, everything is saved in the scratch folder; if
    the path is not abolutely provided, e.g., a relative path. If the path is not provided as shown below,
-    the reference path is current path for the isntance model.
+   the reference path is the current path for the isntance model.
       >>> model = ApsimModel("Maize",  out_path='saved_maize.apsimx')
       >>> model.path
       'scratch\saved_maize.apsimx'
