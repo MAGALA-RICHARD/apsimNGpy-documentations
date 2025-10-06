@@ -352,6 +352,7 @@ Classes
         >>> df = model.results
         # do something with the results e.g. get the mean of nuemric columns
         >>> df.mean(numeric_only=True)
+
            Out[12]:
            CheckpointID                     1.000000
            SimulationID                     1.000000
@@ -365,14 +366,15 @@ Classes
            Maize.Grain.N                    7.459296
            Maize.Total.Wt                1340.837427
 
-   # If there are more than one database tables or `reports` as called in APSIM, results are concatenated along the axis 0, implying along rows.
-   The example below mimicks this scneario.
+    If there are more than one database tables or `reports` as called in APSIM, results are concatenated along the axis 0, implying along rows.
+    The example below mimicks this scneario.
         >>> model.add_db_table(variable_spec=['[Clock].Today.Year as year','sum([Soil].Nutrient.TotalC)/1000 from 01-jan to [clock].Today as soc'], rename='soc')
         # inspect the reports
         >>> model.inspect_model('Models.Report', fullpath=False)
         ['Report', 'soc']
         >>> model.run()
         >>> model.results
+
                     CheckpointID  SimulationID   Zone  ... source_table    year        soc
            0              1             1  Field  ...       Report     NaN        NaN
            1              1             1  Field  ...       Report     NaN        NaN
@@ -396,8 +398,10 @@ Classes
            19             1             1  Field  ...          soc  1999.0  78.872767
            20             1             1  Field  ...          soc  2000.0  79.916413
            [21 rows x 17 columns]
-   By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
-   which does not take in any argument, we can only decide this when calling the `run` method as shown below.
+
+    By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
+    which does not take in any argument, we can only decide this when calling the `run` method as shown below.
+
        >>> model.run(report_name='soc')
        >>> model.results
            CheckpointID  SimulationID     Zone        year    soc          source_table
@@ -3070,6 +3074,7 @@ Classes
         >>> df = model.results
         # do something with the results e.g. get the mean of nuemric columns
         >>> df.mean(numeric_only=True)
+
            Out[12]:
            CheckpointID                     1.000000
            SimulationID                     1.000000
@@ -3083,14 +3088,15 @@ Classes
            Maize.Grain.N                    7.459296
            Maize.Total.Wt                1340.837427
 
-   # If there are more than one database tables or `reports` as called in APSIM, results are concatenated along the axis 0, implying along rows.
-   The example below mimicks this scneario.
+    If there are more than one database tables or `reports` as called in APSIM, results are concatenated along the axis 0, implying along rows.
+    The example below mimicks this scneario.
         >>> model.add_db_table(variable_spec=['[Clock].Today.Year as year','sum([Soil].Nutrient.TotalC)/1000 from 01-jan to [clock].Today as soc'], rename='soc')
         # inspect the reports
         >>> model.inspect_model('Models.Report', fullpath=False)
         ['Report', 'soc']
         >>> model.run()
         >>> model.results
+
                     CheckpointID  SimulationID   Zone  ... source_table    year        soc
            0              1             1  Field  ...       Report     NaN        NaN
            1              1             1  Field  ...       Report     NaN        NaN
@@ -3114,8 +3120,10 @@ Classes
            19             1             1  Field  ...          soc  1999.0  78.872767
            20             1             1  Field  ...          soc  2000.0  79.916413
            [21 rows x 17 columns]
-   By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
-   which does not take in any argument, we can only decide this when calling the `run` method as shown below.
+
+    By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
+    which does not take in any argument, we can only decide this when calling the `run` method as shown below.
+
        >>> model.run(report_name='soc')
        >>> model.results
            CheckpointID  SimulationID     Zone        year    soc          source_table
