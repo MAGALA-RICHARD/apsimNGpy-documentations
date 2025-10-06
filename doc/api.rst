@@ -254,7 +254,7 @@ email: magalarich20@gmail.com
    -----
    - **Version-aware save:** Uses either ``Simulations.Write`` or the legacy
      ``save_model_to_file`` depending on version constants.
-   - **Path normalization:** The path is stringified via ``str(file_name)`` /
+   - **Path normalization: ** The path is stringified via ``str(file_name)`` ust in case it is pathlib object /
      ``str(self.path)`` without additional validation. If you require parent
      directory creation or suffix checks (e.g., ``.apsimx``), perform them before
      calling ``save``.
@@ -270,21 +270,35 @@ email: magalarich20@gmail.com
        >>> model.path
        scratch\saved_maize.apsimx
 
-   Save to a new path and continue working with the refreshed instance:
+   Save to a new path and continue working with the refreshed instance
        >>> model.save(file_name='out_maize.apsimx', reload=True)
        # check the path
        >>> model.path
        'out_maize.apsimx'
-       # possible to run again the refreshed model
+       # possible to run again the refreshed model.
        >>> model.run()
 
    Save to a new path without refreshing the instance path
-       >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
-       >>> model.save(file_name='out_maize.apsimx', reload=False)
-       # check the current reference path for the model
-       >>> model.path
-       scratch\saved_maize.apsimx
-       When reload is False, the original referenced path remains as shown above
+     >>> model = ApsimModel("Maize",  out_path='saved_maize.apsimx')
+     >>> model.save(file_name='out_maize.apsimx', reload=False)
+     # check the current reference path for the model.
+      >>> model.path 'scratch\saved_maize.apsimx'
+      # When reload is False, the original referenced path remains as shown above
+
+   As shown above, everything is saved in the scratch folder; if
+   the path is not abolutely provided, e.g., a relative path. If the path is not provided as shown below,
+    the reference path is current path for the isntance model.
+      >>> model = ApsimModel("Maize",  out_path='saved_maize.apsimx')
+      >>> model.path
+      'scratch\saved_maize.apsimx'
+      # save the model without providing the path.
+      >>> model.save()# uses the default, in this case the defaul path is the existing path
+      >>> model.path
+      'scratch\saved_maize.apsimx'
+
+   In the above case, both reload = `False` or `True`, will produce the same reference path for the live
+   instance class.
+
 
    See Also
    --------
@@ -2657,7 +2671,7 @@ apsimNGpy.core.experimentmanager
    -----
    - **Version-aware save:** Uses either ``Simulations.Write`` or the legacy
      ``save_model_to_file`` depending on version constants.
-   - **Path normalization:** The path is stringified via ``str(file_name)`` /
+   - **Path normalization: ** The path is stringified via ``str(file_name)`` ust in case it is pathlib object /
      ``str(self.path)`` without additional validation. If you require parent
      directory creation or suffix checks (e.g., ``.apsimx``), perform them before
      calling ``save``.
@@ -2673,21 +2687,35 @@ apsimNGpy.core.experimentmanager
        >>> model.path
        scratch\saved_maize.apsimx
 
-   Save to a new path and continue working with the refreshed instance:
+   Save to a new path and continue working with the refreshed instance
        >>> model.save(file_name='out_maize.apsimx', reload=True)
        # check the path
        >>> model.path
        'out_maize.apsimx'
-       # possible to run again the refreshed model
+       # possible to run again the refreshed model.
        >>> model.run()
 
    Save to a new path without refreshing the instance path
-       >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
-       >>> model.save(file_name='out_maize.apsimx', reload=False)
-       # check the current reference path for the model
-       >>> model.path
-       scratch\saved_maize.apsimx
-       When reload is False, the original referenced path remains as shown above
+     >>> model = ApsimModel("Maize",  out_path='saved_maize.apsimx')
+     >>> model.save(file_name='out_maize.apsimx', reload=False)
+     # check the current reference path for the model.
+      >>> model.path 'scratch\saved_maize.apsimx'
+      # When reload is False, the original referenced path remains as shown above
+
+   As shown above, everything is saved in the scratch folder; if
+   the path is not abolutely provided, e.g., a relative path. If the path is not provided as shown below,
+    the reference path is current path for the isntance model.
+      >>> model = ApsimModel("Maize",  out_path='saved_maize.apsimx')
+      >>> model.path
+      'scratch\saved_maize.apsimx'
+      # save the model without providing the path.
+      >>> model.save()# uses the default, in this case the defaul path is the existing path
+      >>> model.path
+      'scratch\saved_maize.apsimx'
+
+   In the above case, both reload = `False` or `True`, will produce the same reference path for the live
+   instance class.
+
 
    See Also
    --------
