@@ -332,11 +332,11 @@ Classes
    It must be called only after invoking ``run()``. If accessed before the simulation is run, it will raise an error.
 
    Notes:
-       - The ``run()`` method should be called with a valid ``report name`` or a list of report names (i.e., APSIM report table names).
+       - The ``run()`` method should be called with a valid ``report name`` or a list of report names.
        - If `report_names` is not provided (i.e., ``None``), the system will inspect the model and automatically detect all available report components.
          These reports will then be used to collect the data.
        - If multiple report names are used, their corresponding data tables will be concatenated along the rows.
-       _ after Model run has been called, use can still get results by calling ``get_simulated_output``, it accepts one argument ``report_names``
+
 
    Returns:
        pd.DataFrame: A DataFrame containing the simulation output results.
@@ -349,7 +349,7 @@ Classes
         # run the simulation
         >>> model.run()
         # get the results
-        >>> df= model.results
+        >>> df = model.results
         # do something with the results e.g. get the mean of nuemric columns
         >>> df.mean(numeric_only=True)
            Out[12]:
@@ -373,29 +373,29 @@ Classes
         ['Report', 'soc']
         >>> model.run()
         >>> model.results
-                CheckpointID  SimulationID   Zone  ... source_table    year        soc
-       0              1             1  Field  ...       Report     NaN        NaN
-       1              1             1  Field  ...       Report     NaN        NaN
-       2              1             1  Field  ...       Report     NaN        NaN
-       3              1             1  Field  ...       Report     NaN        NaN
-       4              1             1  Field  ...       Report     NaN        NaN
-       5              1             1  Field  ...       Report     NaN        NaN
-       6              1             1  Field  ...       Report     NaN        NaN
-       7              1             1  Field  ...       Report     NaN        NaN
-       8              1             1  Field  ...       Report     NaN        NaN
-       9              1             1  Field  ...       Report     NaN        NaN
-       10             1             1  Field  ...          soc  1990.0  77.831512
-       11             1             1  Field  ...          soc  1991.0  78.501766
-       12             1             1  Field  ...          soc  1992.0  78.916339
-       13             1             1  Field  ...          soc  1993.0  78.707094
-       14             1             1  Field  ...          soc  1994.0  78.191686
-       15             1             1  Field  ...          soc  1995.0  78.573085
-       16             1             1  Field  ...          soc  1996.0  78.724598
-       17             1             1  Field  ...          soc  1997.0  79.043935
-       18             1             1  Field  ...          soc  1998.0  78.343111
-       19             1             1  Field  ...          soc  1999.0  78.872767
-       20             1             1  Field  ...          soc  2000.0  79.916413
-       [21 rows x 17 columns]
+                    CheckpointID  SimulationID   Zone  ... source_table    year        soc
+           0              1             1  Field  ...       Report     NaN        NaN
+           1              1             1  Field  ...       Report     NaN        NaN
+           2              1             1  Field  ...       Report     NaN        NaN
+           3              1             1  Field  ...       Report     NaN        NaN
+           4              1             1  Field  ...       Report     NaN        NaN
+           5              1             1  Field  ...       Report     NaN        NaN
+           6              1             1  Field  ...       Report     NaN        NaN
+           7              1             1  Field  ...       Report     NaN        NaN
+           8              1             1  Field  ...       Report     NaN        NaN
+           9              1             1  Field  ...       Report     NaN        NaN
+           10             1             1  Field  ...          soc  1990.0  77.831512
+           11             1             1  Field  ...          soc  1991.0  78.501766
+           12             1             1  Field  ...          soc  1992.0  78.916339
+           13             1             1  Field  ...          soc  1993.0  78.707094
+           14             1             1  Field  ...          soc  1994.0  78.191686
+           15             1             1  Field  ...          soc  1995.0  78.573085
+           16             1             1  Field  ...          soc  1996.0  78.724598
+           17             1             1  Field  ...          soc  1997.0  79.043935
+           18             1             1  Field  ...          soc  1998.0  78.343111
+           19             1             1  Field  ...          soc  1999.0  78.872767
+           20             1             1  Field  ...          soc  2000.0  79.916413
+           [21 rows x 17 columns]
    By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
    which does not take in any argument, we can only decide this when calling the `run` method as shown below.
        >>> model.run(report_name='soc')
@@ -3050,11 +3050,11 @@ Classes
    It must be called only after invoking ``run()``. If accessed before the simulation is run, it will raise an error.
 
    Notes:
-       - The ``run()`` method should be called with a valid ``report name`` or a list of report names (i.e., APSIM report table names).
+       - The ``run()`` method should be called with a valid ``report name`` or a list of report names.
        - If `report_names` is not provided (i.e., ``None``), the system will inspect the model and automatically detect all available report components.
          These reports will then be used to collect the data.
        - If multiple report names are used, their corresponding data tables will be concatenated along the rows.
-       _ after Model run has been called, use can still get results by calling ``get_simulated_output``, it accepts one argument ``report_names``
+
 
    Returns:
        pd.DataFrame: A DataFrame containing the simulation output results.
@@ -3067,7 +3067,7 @@ Classes
         # run the simulation
         >>> model.run()
         # get the results
-        >>> df= model.results
+        >>> df = model.results
         # do something with the results e.g. get the mean of nuemric columns
         >>> df.mean(numeric_only=True)
            Out[12]:
@@ -3091,29 +3091,29 @@ Classes
         ['Report', 'soc']
         >>> model.run()
         >>> model.results
-                CheckpointID  SimulationID   Zone  ... source_table    year        soc
-       0              1             1  Field  ...       Report     NaN        NaN
-       1              1             1  Field  ...       Report     NaN        NaN
-       2              1             1  Field  ...       Report     NaN        NaN
-       3              1             1  Field  ...       Report     NaN        NaN
-       4              1             1  Field  ...       Report     NaN        NaN
-       5              1             1  Field  ...       Report     NaN        NaN
-       6              1             1  Field  ...       Report     NaN        NaN
-       7              1             1  Field  ...       Report     NaN        NaN
-       8              1             1  Field  ...       Report     NaN        NaN
-       9              1             1  Field  ...       Report     NaN        NaN
-       10             1             1  Field  ...          soc  1990.0  77.831512
-       11             1             1  Field  ...          soc  1991.0  78.501766
-       12             1             1  Field  ...          soc  1992.0  78.916339
-       13             1             1  Field  ...          soc  1993.0  78.707094
-       14             1             1  Field  ...          soc  1994.0  78.191686
-       15             1             1  Field  ...          soc  1995.0  78.573085
-       16             1             1  Field  ...          soc  1996.0  78.724598
-       17             1             1  Field  ...          soc  1997.0  79.043935
-       18             1             1  Field  ...          soc  1998.0  78.343111
-       19             1             1  Field  ...          soc  1999.0  78.872767
-       20             1             1  Field  ...          soc  2000.0  79.916413
-       [21 rows x 17 columns]
+                    CheckpointID  SimulationID   Zone  ... source_table    year        soc
+           0              1             1  Field  ...       Report     NaN        NaN
+           1              1             1  Field  ...       Report     NaN        NaN
+           2              1             1  Field  ...       Report     NaN        NaN
+           3              1             1  Field  ...       Report     NaN        NaN
+           4              1             1  Field  ...       Report     NaN        NaN
+           5              1             1  Field  ...       Report     NaN        NaN
+           6              1             1  Field  ...       Report     NaN        NaN
+           7              1             1  Field  ...       Report     NaN        NaN
+           8              1             1  Field  ...       Report     NaN        NaN
+           9              1             1  Field  ...       Report     NaN        NaN
+           10             1             1  Field  ...          soc  1990.0  77.831512
+           11             1             1  Field  ...          soc  1991.0  78.501766
+           12             1             1  Field  ...          soc  1992.0  78.916339
+           13             1             1  Field  ...          soc  1993.0  78.707094
+           14             1             1  Field  ...          soc  1994.0  78.191686
+           15             1             1  Field  ...          soc  1995.0  78.573085
+           16             1             1  Field  ...          soc  1996.0  78.724598
+           17             1             1  Field  ...          soc  1997.0  79.043935
+           18             1             1  Field  ...          soc  1998.0  78.343111
+           19             1             1  Field  ...          soc  1999.0  78.872767
+           20             1             1  Field  ...          soc  2000.0  79.916413
+           [21 rows x 17 columns]
    By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
    which does not take in any argument, we can only decide this when calling the `run` method as shown below.
        >>> model.run(report_name='soc')
