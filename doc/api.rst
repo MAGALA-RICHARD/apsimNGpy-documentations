@@ -263,28 +263,28 @@ email: magalarich20@gmail.com
 
    Examples
    --------
-   Save to the current file path tracked by the instance::
+   check the current path before saving the model
        >>> from apsimNGpy.core.apsim import ApsimModel
        >>> from pathlib import Path
        >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
        >>> model.path
        scratch\saved_maize.apsimx
-        Save to a new path and continue working with the refreshed instance::
+
+   Save to a new path and continue working with the refreshed instance:
        >>> model.save(file_name='out_maize.apsimx', reload=True)
+       # check the path
        >>> model.path
-       >>> 'out_maize.apsimx'
-       # relaod = False
+       'out_maize.apsimx'
+       # possible to run again the refreshed model
+       >>> model.run()
+
+   Save to a new path without refreshing the instance path
        >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
        >>> model.save(file_name='out_maize.apsimx', reload=False)
        # check the current reference path for the model
-       >>>model.path
+       >>> model.path
        scratch\saved_maize.apsimx
-   When reload is False, it the original referenced path remains as shown above
-
-
-
-
-       model.save("outputs/Scenario_A.apsimx").run()
+       When reload is False, the original referenced path remains as shown above
 
    See Also
    --------
@@ -2666,28 +2666,28 @@ apsimNGpy.core.experimentmanager
 
    Examples
    --------
-   Save to the current file path tracked by the instance::
+   check the current path before saving the model
        >>> from apsimNGpy.core.apsim import ApsimModel
        >>> from pathlib import Path
        >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
        >>> model.path
        scratch\saved_maize.apsimx
-        Save to a new path and continue working with the refreshed instance::
+
+   Save to a new path and continue working with the refreshed instance:
        >>> model.save(file_name='out_maize.apsimx', reload=True)
+       # check the path
        >>> model.path
-       >>> 'out_maize.apsimx'
-       # relaod = False
+       'out_maize.apsimx'
+       # possible to run again the refreshed model
+       >>> model.run()
+
+   Save to a new path without refreshing the instance path
        >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
        >>> model.save(file_name='out_maize.apsimx', reload=False)
        # check the current reference path for the model
-       >>>model.path
+       >>> model.path
        scratch\saved_maize.apsimx
-   When reload is False, it the original referenced path remains as shown above
-
-
-
-
-       model.save("outputs/Scenario_A.apsimx").run()
+       When reload is False, the original referenced path remains as shown above
 
    See Also
    --------
