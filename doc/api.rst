@@ -202,7 +202,7 @@ email: magalarich20@gmail.com
 
    :return: self
 
-.. py:method:: apsimNGpy.core.apsim.ApsimModel.save(self, file_name: 'Union[str, Path, None]' = None) (inherited)
+.. py:method:: apsimNGpy.core.apsim.ApsimModel.save(self, file_name: 'Union[str, Path, None]' = None, reload=True) (inherited)
 
    Saves the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
 
@@ -226,6 +226,9 @@ email: magalarich20@gmail.com
        uses the instance's existing ``self.path``. The resolved path is also
        written back to ``self.path`` for consistency.
 
+   reload: bool Optional default is True
+        resets the reference path to the one provided after serializing to disk. this implies that the self.path will be the provided file_name
+
    Returns
    -------
    Self
@@ -245,7 +248,7 @@ email: magalarich20@gmail.com
    ------------
    - Sets ``self.path`` to the resolved output path (string).
    - Writes the model file to disk (overwrites if it exists).
-   - Recompiles the model and restarts the in-memory instance.
+   - If reload is True (default), recompiles the model and restarts the in-memory instance.
 
    Notes
    -----
@@ -261,10 +264,25 @@ email: magalarich20@gmail.com
    Examples
    --------
    Save to the current file path tracked by the instance::
+       >>> from apsimNGpy.core.apsim import ApsimModel
+       >>> from pathlib import Path
+       >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
+       >>> model.path
+       scratch\saved_maize.apsimx
+        Save to a new path and continue working with the refreshed instance::
+       >>> model.save(file_name='out_maize.apsimx', reload=True)
+       >>> model.path
+       >>> 'out_maize.apsimx'
+       # relaod = False
+       >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
+       >>> model.save(file_name='out_maize.apsimx', reload=False)
+       # check the current reference path for the model
+       >>>model.path
+       scratch\saved_maize.apsimx
+   When reload is False, it the original referenced path remains as shown above
 
-       model.save()
 
-   Save to a new path and continue working with the refreshed instance::
+
 
        model.save("outputs/Scenario_A.apsimx").run()
 
@@ -2587,7 +2605,7 @@ apsimNGpy.core.experimentmanager
 
    :return: self
 
-.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.save(self, file_name: 'Union[str, Path, None]' = None) (inherited)
+.. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.save(self, file_name: 'Union[str, Path, None]' = None, reload=True) (inherited)
 
    Saves the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
 
@@ -2611,6 +2629,9 @@ apsimNGpy.core.experimentmanager
        uses the instance's existing ``self.path``. The resolved path is also
        written back to ``self.path`` for consistency.
 
+   reload: bool Optional default is True
+        resets the reference path to the one provided after serializing to disk. this implies that the self.path will be the provided file_name
+
    Returns
    -------
    Self
@@ -2630,7 +2651,7 @@ apsimNGpy.core.experimentmanager
    ------------
    - Sets ``self.path`` to the resolved output path (string).
    - Writes the model file to disk (overwrites if it exists).
-   - Recompiles the model and restarts the in-memory instance.
+   - If reload is True (default), recompiles the model and restarts the in-memory instance.
 
    Notes
    -----
@@ -2646,10 +2667,25 @@ apsimNGpy.core.experimentmanager
    Examples
    --------
    Save to the current file path tracked by the instance::
+       >>> from apsimNGpy.core.apsim import ApsimModel
+       >>> from pathlib import Path
+       >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
+       >>> model.path
+       scratch\saved_maize.apsimx
+        Save to a new path and continue working with the refreshed instance::
+       >>> model.save(file_name='out_maize.apsimx', reload=True)
+       >>> model.path
+       >>> 'out_maize.apsimx'
+       # relaod = False
+       >>> model = ApsimModel("Maize", out_path='saved_maize.apsimx')
+       >>> model.save(file_name='out_maize.apsimx', reload=False)
+       # check the current reference path for the model
+       >>>model.path
+       scratch\saved_maize.apsimx
+   When reload is False, it the original referenced path remains as shown above
 
-       model.save()
 
-   Save to a new path and continue working with the refreshed instance::
+
 
        model.save("outputs/Scenario_A.apsimx").run()
 
@@ -4749,7 +4785,7 @@ apsimNGpy.core.mult_cores
    >>> mgr.results.head()
       sim_id  yield  n2o
    0       1   10.2  0.8
-   >>> mgr.save("outputs/simulations.db", table_name="maize_runs", if_exists="append")
+   >>> mgr.save("outputs/simulations.db")
 
 .. py:method:: apsimNGpy.core.mult_cores.MultiCoreManager.save_tocsv(self, path_or_buf, **kwargs)
 
@@ -5035,7 +5071,7 @@ apsimNGpy.core.pythonet_config
    --------
    load_pythonnet : Initialize pythonnet/CLR for APSIM binaries.
 
-.. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified()
+.. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin')) -> bool
 
    Checks if the APSIM.CORE.dll is present in the bin path. Normally, the new APSIM version has this dll
    @return: bool
