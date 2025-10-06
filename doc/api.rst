@@ -208,16 +208,9 @@ email: magalarich20@gmail.com
 
    This method writes the model to a file, using a version-aware strategy:
 
-   * If ``APSIM_VERSION_NO > BASE_RELEASE_NO`` **or**
-     ``APSIM_VERSION_NO == GITHUB_RELEASE_NO``: call
-     ``self.Simulations.Write(path)``.
-   * Otherwise: obtain the underlying node via
-     ``getattr(self.Simulations, 'Node', self.Simulations)`` and call
-     :func:`save_model_to_file`.
-
    After writing, the model is recompiled via :func:`recompile(self)` and the
    in-memory instance is refreshed using :meth:`restart_model`, ensuring the
-   object graph reflects the just-saved state if the user specified `relaod = True`.
+   object graph reflects the just-saved state. This is now only impozed if the user specified `relaod = True`.
 
    Parameters
    ----------
@@ -252,10 +245,8 @@ email: magalarich20@gmail.com
 
    Notes
    -----
-   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is pathlib object /
+   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is a pathlib object /
 
-     directory creation or suffix checks (e.g., ``.apsimx``), perform them before
-     calling ``save``.
    - *Reload semantics:* Post-save recompilation and restart ensure any code
      generation or cached reflection is refreshed to match the serialized model.
 
@@ -2623,16 +2614,9 @@ apsimNGpy.core.experimentmanager
 
    This method writes the model to a file, using a version-aware strategy:
 
-   * If ``APSIM_VERSION_NO > BASE_RELEASE_NO`` **or**
-     ``APSIM_VERSION_NO == GITHUB_RELEASE_NO``: call
-     ``self.Simulations.Write(path)``.
-   * Otherwise: obtain the underlying node via
-     ``getattr(self.Simulations, 'Node', self.Simulations)`` and call
-     :func:`save_model_to_file`.
-
    After writing, the model is recompiled via :func:`recompile(self)` and the
    in-memory instance is refreshed using :meth:`restart_model`, ensuring the
-   object graph reflects the just-saved state if the user specified `relaod = True`.
+   object graph reflects the just-saved state. This is now only impozed if the user specified `relaod = True`.
 
    Parameters
    ----------
@@ -2667,10 +2651,8 @@ apsimNGpy.core.experimentmanager
 
    Notes
    -----
-   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is pathlib object /
+   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is a pathlib object /
 
-     directory creation or suffix checks (e.g., ``.apsimx``), perform them before
-     calling ``save``.
    - *Reload semantics:* Post-save recompilation and restart ensure any code
      generation or cached reflection is refreshed to match the serialized model.
 
