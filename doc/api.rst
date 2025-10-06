@@ -217,17 +217,17 @@ email: magalarich20@gmail.com
 
    After writing, the model is recompiled via :func:`recompile(self)` and the
    in-memory instance is refreshed using :meth:`restart_model`, ensuring the
-   object graph reflects the just-saved state.
+   object graph reflects the just-saved state if the user specified `relaod = True`.
 
    Parameters
    ----------
    file_name : str or pathlib.Path, optional
        Output path for the saved model file. If omitted (``None``), the method
-       uses the instance's existing ``self.path``. The resolved path is also
-       written back to ``self.path`` for consistency.
+       uses the instance's existing ``path``. The resolved path is also
+       written back to instance `path` attribute for consistency if reload is True.
 
    reload: bool Optional default is True
-        resets the reference path to the one provided after serializing to disk. this implies that the self.path will be the provided file_name
+        resets the reference path to the one provided after serializing to disk. This implies that the instance `path` will be the provided `file_name`
 
    Returns
    -------
@@ -252,13 +252,11 @@ email: magalarich20@gmail.com
 
    Notes
    -----
-   - **Version-aware save:** Uses either ``Simulations.Write`` or the legacy
-     ``save_model_to_file`` depending on version constants.
-   - **Path normalization: ** The path is stringified via ``str(file_name)`` ust in case it is pathlib object /
-     ``str(self.path)`` without additional validation. If you require parent
+   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is pathlib object /
+
      directory creation or suffix checks (e.g., ``.apsimx``), perform them before
      calling ``save``.
-   - **Reload semantics: ** Post-save recompilation and restart ensure any code
+   - *Reload semantics:* Post-save recompilation and restart ensure any code
      generation or cached reflection is refreshed to match the serialized model.
 
    Examples
@@ -2634,17 +2632,17 @@ apsimNGpy.core.experimentmanager
 
    After writing, the model is recompiled via :func:`recompile(self)` and the
    in-memory instance is refreshed using :meth:`restart_model`, ensuring the
-   object graph reflects the just-saved state.
+   object graph reflects the just-saved state if the user specified `relaod = True`.
 
    Parameters
    ----------
    file_name : str or pathlib.Path, optional
        Output path for the saved model file. If omitted (``None``), the method
-       uses the instance's existing ``self.path``. The resolved path is also
-       written back to ``self.path`` for consistency.
+       uses the instance's existing ``path``. The resolved path is also
+       written back to instance `path` attribute for consistency if reload is True.
 
    reload: bool Optional default is True
-        resets the reference path to the one provided after serializing to disk. this implies that the self.path will be the provided file_name
+        resets the reference path to the one provided after serializing to disk. This implies that the instance `path` will be the provided `file_name`
 
    Returns
    -------
@@ -2669,13 +2667,11 @@ apsimNGpy.core.experimentmanager
 
    Notes
    -----
-   - **Version-aware save:** Uses either ``Simulations.Write`` or the legacy
-     ``save_model_to_file`` depending on version constants.
-   - **Path normalization: ** The path is stringified via ``str(file_name)`` ust in case it is pathlib object /
-     ``str(self.path)`` without additional validation. If you require parent
+   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is pathlib object /
+
      directory creation or suffix checks (e.g., ``.apsimx``), perform them before
      calling ``save``.
-   - **Reload semantics: ** Post-save recompilation and restart ensure any code
+   - *Reload semantics:* Post-save recompilation and restart ensure any code
      generation or cached reflection is refreshed to match the serialized model.
 
    Examples
