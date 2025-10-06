@@ -245,7 +245,7 @@ email: magalarich20@gmail.com
 
    Notes
    -----
-   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is a pathlib object /
+   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is a pathlib object.
 
    - *Reload semantics:* Post-save recompilation and restart ensure any code
      generation or cached reflection is refreshed to match the serialized model.
@@ -2651,7 +2651,7 @@ apsimNGpy.core.experimentmanager
 
    Notes
    -----
-   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is a pathlib object /
+   - *Path normalization:* The path is stringified via ``str(file_name)`` just in case it is a pathlib object.
 
    - *Reload semantics:* Post-save recompilation and restart ensure any code
      generation or cached reflection is refreshed to match the serialized model.
