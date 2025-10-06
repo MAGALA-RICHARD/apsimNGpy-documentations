@@ -12,7 +12,7 @@ def worker(nitrogen_rate, model):
     model.edit_model("Models.Manager", model_name='Fertilise at sowing', Amount=nitrogen_rate)
     model.run(report_name="Report")
     df = model.results
-    # we can even create column for each simulation
+    # we can even create a column for each simulation
     df['nitrogen rate'] = nitrogen_rate
 
     model.clean_up()
