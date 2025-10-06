@@ -326,100 +326,115 @@ Classes
 
    Legacy method for retrieving simulation results.
 
-   This method is implemented as a ``property`` to enable lazy loading—results are only loaded into memory when explicitly accessed.
-   This design helps optimize ``memory`` usage, especially for ``large`` simulations.
+   This method is implemented as a ``property`` to enable lazy loading—results are
+   only loaded into memory when explicitly accessed. This design helps optimize
+   ``memory`` usage, especially for ``large`` simulations.
 
-   It must be called only after invoking ``run()``. If accessed before the simulation is run, it will raise an error.
+   It must be called only after invoking ``run()``. If accessed before the simulation
+   is run, it will raise an error.
 
-   Notes:
-       - The ``run()`` method should be called with a valid ``report name`` or a list of report names.
-       - If `report_names` is not provided (i.e., ``None``), the system will inspect the model and automatically detect all available report components.
-         These reports will then be used to collect the data.
-       - If multiple report names are used, their corresponding data tables will be concatenated along the rows.
+   Notes
+   -----
+   - The ``run()`` method should be called with a valid ``report name`` or a list of
+     report names.
+   - If ``report_names`` is not provided (i.e., ``None``), the system will inspect
+     the model and automatically detect all available report components. These
+     reports will then be used to collect the data.
+   - If multiple report names are used, their corresponding data tables will be
+     concatenated along the rows.
 
-
-   Returns:
-       pd.DataFrame: A DataFrame containing the simulation output results.
+   Returns
+   -------
+   pd.DataFrame
+       A DataFrame containing the simulation output results.
 
    Examples
-   ----------
-        >>> from apsimNGpy.core.apsim import ApsimModel
-        # create an instance of ApsimModel class
-        >>> model = ApsimModel("Maize", out_path="my_maize_model.apsimx")
-        # run the simulation
-        >>> model.run()
-        # get the results
-        >>> df = model.results
-        # do something with the results e.g. get the mean of nuemric columns
-        >>> df.mean(numeric_only=True)
+   --------
+   >>> from apsimNGpy.core.apsim import ApsimModel
+   # create an instance of ApsimModel class
+   >>> model = ApsimModel("Maize", out_path="my_maize_model.apsimx")
+   # run the simulation
+   >>> model.run()
+   # get the results
+   >>> df = model.results
+   # do something with the results e.g. get the mean of numeric columns
+   >>> df.mean(numeric_only=True)
+   Out[12]:
+   CheckpointID                     1.000000
+   SimulationID                     1.000000
+   Maize.AboveGround.Wt          1225.099950
+   Maize.AboveGround.N             12.381196
+   Yield                         5636.529504
+   Maize.Grain.Wt                 563.652950
+   Maize.Grain.Size                 0.284941
+   Maize.Grain.NumberFunction    1986.770519
+   Maize.Grain.Total.Wt           563.652950
+   Maize.Grain.N                    7.459296
+   Maize.Total.Wt                1340.837427
 
-           Out[12]:
-           CheckpointID                     1.000000
-           SimulationID                     1.000000
-           Maize.AboveGround.Wt          1225.099950
-           Maize.AboveGround.N             12.381196
-           Yield                         5636.529504
-           Maize.Grain.Wt                 563.652950
-           Maize.Grain.Size                 0.284941
-           Maize.Grain.NumberFunction    1986.770519
-           Maize.Grain.Total.Wt           563.652950
-           Maize.Grain.N                    7.459296
-           Maize.Total.Wt                1340.837427
+   If there are more than one database tables or `reports` as called in APSIM,
+   results are concatenated along the axis 0, implying along rows.
+   The example below mimics this scenario.
 
-    If there are more than one database tables or `reports` as called in APSIM, results are concatenated along the axis 0, implying along rows.
-    The example below mimicks this scneario.
-        >>> model.add_db_table(variable_spec=['[Clock].Today.Year as year','sum([Soil].Nutrient.TotalC)/1000 from 01-jan to [clock].Today as soc'], rename='soc')
-        # inspect the reports
-        >>> model.inspect_model('Models.Report', fullpath=False)
-        ['Report', 'soc']
-        >>> model.run()
-        >>> model.results
+   >>> model.add_db_table(
+   ...     variable_spec=['[Clock].Today.Year as year',
+   ...                    'sum([Soil].Nutrient.TotalC)/1000 from 01-jan to [clock].Today as soc'],
+   ...     rename='soc'
+   ... )
+   # inspect the reports
+   >>> model.inspect_model('Models.Report', fullpath=False)
+   ['Report', 'soc']
+   >>> model.run()
+   >>> model.results
+       CheckpointID  SimulationID   Zone  ... source_table    year        soc
+   0              1             1  Field  ...       Report     NaN        NaN
+   1              1             1  Field  ...       Report     NaN        NaN
+   2              1             1  Field  ...       Report     NaN        NaN
+   3              1             1  Field  ...       Report     NaN        NaN
+   4              1             1  Field  ...       Report     NaN        NaN
+   5              1             1  Field  ...       Report     NaN        NaN
+   6              1             1  Field  ...       Report     NaN        NaN
+   7              1             1  Field  ...       Report     NaN        NaN
+   8              1             1  Field  ...       Report     NaN        NaN
+   9              1             1  Field  ...       Report     NaN        NaN
+   10             1             1  Field  ...          soc  1990.0  77.831512
+   11             1             1  Field  ...          soc  1991.0  78.501766
+   12             1             1  Field  ...          soc  1992.0  78.916339
+   13             1             1  Field  ...          soc  1993.0  78.707094
+   14             1             1  Field  ...          soc  1994.0  78.191686
+   15             1             1  Field  ...          soc  1995.0  78.573085
+   16             1             1  Field  ...          soc  1996.0  78.724598
+   17             1             1  Field  ...          soc  1997.0  79.043935
+   18             1             1  Field  ...          soc  1998.0  78.343111
+   19             1             1  Field  ...          soc  1999.0  78.872767
+   20             1             1  Field  ...          soc  2000.0  79.916413
+   [21 rows x 17 columns]
 
-                    CheckpointID  SimulationID   Zone  ... source_table    year        soc
-           0              1             1  Field  ...       Report     NaN        NaN
-           1              1             1  Field  ...       Report     NaN        NaN
-           2              1             1  Field  ...       Report     NaN        NaN
-           3              1             1  Field  ...       Report     NaN        NaN
-           4              1             1  Field  ...       Report     NaN        NaN
-           5              1             1  Field  ...       Report     NaN        NaN
-           6              1             1  Field  ...       Report     NaN        NaN
-           7              1             1  Field  ...       Report     NaN        NaN
-           8              1             1  Field  ...       Report     NaN        NaN
-           9              1             1  Field  ...       Report     NaN        NaN
-           10             1             1  Field  ...          soc  1990.0  77.831512
-           11             1             1  Field  ...          soc  1991.0  78.501766
-           12             1             1  Field  ...          soc  1992.0  78.916339
-           13             1             1  Field  ...          soc  1993.0  78.707094
-           14             1             1  Field  ...          soc  1994.0  78.191686
-           15             1             1  Field  ...          soc  1995.0  78.573085
-           16             1             1  Field  ...          soc  1996.0  78.724598
-           17             1             1  Field  ...          soc  1997.0  79.043935
-           18             1             1  Field  ...          soc  1998.0  78.343111
-           19             1             1  Field  ...          soc  1999.0  78.872767
-           20             1             1  Field  ...          soc  2000.0  79.916413
-           [21 rows x 17 columns]
+   By default all the tables are returned and the column ``source_table`` tells us
+   the source table for each row. Since ``results`` is a property attribute,
+   which does not take in any argument, we can only decide this when calling the
+   ``run`` method as shown below.
 
-    By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
-    which does not take in any argument, we can only decide this when calling the `run` method as shown below.
+   >>> model.run(report_name='soc')
+   >>> model.results
+       CheckpointID  SimulationID   Zone    year        soc source_table
+   0              1             1  Field  1990.0  77.831512          soc
+   1              1             1  Field  1991.0  78.501766          soc
+   2              1             1  Field  1992.0  78.916339          soc
+   3              1             1  Field  1993.0  78.707094          soc
+   4              1             1  Field  1994.0  78.191686          soc
+   5              1             1  Field  1995.0  78.573085          soc
+   6              1             1  Field  1996.0  78.724598          soc
+   7              1             1  Field  1997.0  79.043935          soc
+   8              1             1  Field  1998.0  78.343111          soc
+   9              1             1  Field  1999.0  78.872767          soc
+   10             1             1  Field  2000.0  79.916413          soc
 
-       >>> model.run(report_name='soc')
-       >>> model.results
-           CheckpointID  SimulationID     Zone        year    soc          source_table
-               0              1             1  Field  1990  77.831512          soc
-               1              1             1  Field  1991  78.501766          soc
-               2              1             1  Field  1992  78.916339          soc
-               3              1             1  Field  1993  78.707094          soc
-               4              1             1  Field  1994  78.191686          soc
-               5              1             1  Field  1995  78.573085          soc
-               6              1             1  Field  1996  78.724598          soc
-               7              1             1  Field  1997  79.043935          soc
-               8              1             1  Field  1998  78.343111          soc
-               9              1             1  Field  1999  78.872767          soc
-               10             1             1  Field  2000  79.916413          soc
-       The above example has dataset only from one database table specified at run time
+   The above example has dataset only from one database table specified at run time.
 
-       See also :
-          get_simulated_output
+   See also
+   --------
+   get_simulated_output
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.get_simulated_output(self, report_names: 'Union[str, list]', axis=0, **kwargs) -> 'pd.DataFrame' (inherited)
 
@@ -3054,100 +3069,115 @@ Classes
 
    Legacy method for retrieving simulation results.
 
-   This method is implemented as a ``property`` to enable lazy loading—results are only loaded into memory when explicitly accessed.
-   This design helps optimize ``memory`` usage, especially for ``large`` simulations.
+   This method is implemented as a ``property`` to enable lazy loading—results are
+   only loaded into memory when explicitly accessed. This design helps optimize
+   ``memory`` usage, especially for ``large`` simulations.
 
-   It must be called only after invoking ``run()``. If accessed before the simulation is run, it will raise an error.
+   It must be called only after invoking ``run()``. If accessed before the simulation
+   is run, it will raise an error.
 
-   Notes:
-       - The ``run()`` method should be called with a valid ``report name`` or a list of report names.
-       - If `report_names` is not provided (i.e., ``None``), the system will inspect the model and automatically detect all available report components.
-         These reports will then be used to collect the data.
-       - If multiple report names are used, their corresponding data tables will be concatenated along the rows.
+   Notes
+   -----
+   - The ``run()`` method should be called with a valid ``report name`` or a list of
+     report names.
+   - If ``report_names`` is not provided (i.e., ``None``), the system will inspect
+     the model and automatically detect all available report components. These
+     reports will then be used to collect the data.
+   - If multiple report names are used, their corresponding data tables will be
+     concatenated along the rows.
 
-
-   Returns:
-       pd.DataFrame: A DataFrame containing the simulation output results.
+   Returns
+   -------
+   pd.DataFrame
+       A DataFrame containing the simulation output results.
 
    Examples
-   ----------
-        >>> from apsimNGpy.core.apsim import ApsimModel
-        # create an instance of ApsimModel class
-        >>> model = ApsimModel("Maize", out_path="my_maize_model.apsimx")
-        # run the simulation
-        >>> model.run()
-        # get the results
-        >>> df = model.results
-        # do something with the results e.g. get the mean of nuemric columns
-        >>> df.mean(numeric_only=True)
+   --------
+   >>> from apsimNGpy.core.apsim import ApsimModel
+   # create an instance of ApsimModel class
+   >>> model = ApsimModel("Maize", out_path="my_maize_model.apsimx")
+   # run the simulation
+   >>> model.run()
+   # get the results
+   >>> df = model.results
+   # do something with the results e.g. get the mean of numeric columns
+   >>> df.mean(numeric_only=True)
+   Out[12]:
+   CheckpointID                     1.000000
+   SimulationID                     1.000000
+   Maize.AboveGround.Wt          1225.099950
+   Maize.AboveGround.N             12.381196
+   Yield                         5636.529504
+   Maize.Grain.Wt                 563.652950
+   Maize.Grain.Size                 0.284941
+   Maize.Grain.NumberFunction    1986.770519
+   Maize.Grain.Total.Wt           563.652950
+   Maize.Grain.N                    7.459296
+   Maize.Total.Wt                1340.837427
 
-           Out[12]:
-           CheckpointID                     1.000000
-           SimulationID                     1.000000
-           Maize.AboveGround.Wt          1225.099950
-           Maize.AboveGround.N             12.381196
-           Yield                         5636.529504
-           Maize.Grain.Wt                 563.652950
-           Maize.Grain.Size                 0.284941
-           Maize.Grain.NumberFunction    1986.770519
-           Maize.Grain.Total.Wt           563.652950
-           Maize.Grain.N                    7.459296
-           Maize.Total.Wt                1340.837427
+   If there are more than one database tables or `reports` as called in APSIM,
+   results are concatenated along the axis 0, implying along rows.
+   The example below mimics this scenario.
 
-    If there are more than one database tables or `reports` as called in APSIM, results are concatenated along the axis 0, implying along rows.
-    The example below mimicks this scneario.
-        >>> model.add_db_table(variable_spec=['[Clock].Today.Year as year','sum([Soil].Nutrient.TotalC)/1000 from 01-jan to [clock].Today as soc'], rename='soc')
-        # inspect the reports
-        >>> model.inspect_model('Models.Report', fullpath=False)
-        ['Report', 'soc']
-        >>> model.run()
-        >>> model.results
+   >>> model.add_db_table(
+   ...     variable_spec=['[Clock].Today.Year as year',
+   ...                    'sum([Soil].Nutrient.TotalC)/1000 from 01-jan to [clock].Today as soc'],
+   ...     rename='soc'
+   ... )
+   # inspect the reports
+   >>> model.inspect_model('Models.Report', fullpath=False)
+   ['Report', 'soc']
+   >>> model.run()
+   >>> model.results
+       CheckpointID  SimulationID   Zone  ... source_table    year        soc
+   0              1             1  Field  ...       Report     NaN        NaN
+   1              1             1  Field  ...       Report     NaN        NaN
+   2              1             1  Field  ...       Report     NaN        NaN
+   3              1             1  Field  ...       Report     NaN        NaN
+   4              1             1  Field  ...       Report     NaN        NaN
+   5              1             1  Field  ...       Report     NaN        NaN
+   6              1             1  Field  ...       Report     NaN        NaN
+   7              1             1  Field  ...       Report     NaN        NaN
+   8              1             1  Field  ...       Report     NaN        NaN
+   9              1             1  Field  ...       Report     NaN        NaN
+   10             1             1  Field  ...          soc  1990.0  77.831512
+   11             1             1  Field  ...          soc  1991.0  78.501766
+   12             1             1  Field  ...          soc  1992.0  78.916339
+   13             1             1  Field  ...          soc  1993.0  78.707094
+   14             1             1  Field  ...          soc  1994.0  78.191686
+   15             1             1  Field  ...          soc  1995.0  78.573085
+   16             1             1  Field  ...          soc  1996.0  78.724598
+   17             1             1  Field  ...          soc  1997.0  79.043935
+   18             1             1  Field  ...          soc  1998.0  78.343111
+   19             1             1  Field  ...          soc  1999.0  78.872767
+   20             1             1  Field  ...          soc  2000.0  79.916413
+   [21 rows x 17 columns]
 
-                    CheckpointID  SimulationID   Zone  ... source_table    year        soc
-           0              1             1  Field  ...       Report     NaN        NaN
-           1              1             1  Field  ...       Report     NaN        NaN
-           2              1             1  Field  ...       Report     NaN        NaN
-           3              1             1  Field  ...       Report     NaN        NaN
-           4              1             1  Field  ...       Report     NaN        NaN
-           5              1             1  Field  ...       Report     NaN        NaN
-           6              1             1  Field  ...       Report     NaN        NaN
-           7              1             1  Field  ...       Report     NaN        NaN
-           8              1             1  Field  ...       Report     NaN        NaN
-           9              1             1  Field  ...       Report     NaN        NaN
-           10             1             1  Field  ...          soc  1990.0  77.831512
-           11             1             1  Field  ...          soc  1991.0  78.501766
-           12             1             1  Field  ...          soc  1992.0  78.916339
-           13             1             1  Field  ...          soc  1993.0  78.707094
-           14             1             1  Field  ...          soc  1994.0  78.191686
-           15             1             1  Field  ...          soc  1995.0  78.573085
-           16             1             1  Field  ...          soc  1996.0  78.724598
-           17             1             1  Field  ...          soc  1997.0  79.043935
-           18             1             1  Field  ...          soc  1998.0  78.343111
-           19             1             1  Field  ...          soc  1999.0  78.872767
-           20             1             1  Field  ...          soc  2000.0  79.916413
-           [21 rows x 17 columns]
+   By default all the tables are returned and the column ``source_table`` tells us
+   the source table for each row. Since ``results`` is a property attribute,
+   which does not take in any argument, we can only decide this when calling the
+   ``run`` method as shown below.
 
-    By default all the tables are returned and the column `source_table` tells us the source table for each row. Since results is a property attribute,
-    which does not take in any argument, we can only decide this when calling the `run` method as shown below.
+   >>> model.run(report_name='soc')
+   >>> model.results
+       CheckpointID  SimulationID   Zone    year        soc source_table
+   0              1             1  Field  1990.0  77.831512          soc
+   1              1             1  Field  1991.0  78.501766          soc
+   2              1             1  Field  1992.0  78.916339          soc
+   3              1             1  Field  1993.0  78.707094          soc
+   4              1             1  Field  1994.0  78.191686          soc
+   5              1             1  Field  1995.0  78.573085          soc
+   6              1             1  Field  1996.0  78.724598          soc
+   7              1             1  Field  1997.0  79.043935          soc
+   8              1             1  Field  1998.0  78.343111          soc
+   9              1             1  Field  1999.0  78.872767          soc
+   10             1             1  Field  2000.0  79.916413          soc
 
-       >>> model.run(report_name='soc')
-       >>> model.results
-           CheckpointID  SimulationID     Zone        year    soc          source_table
-               0              1             1  Field  1990  77.831512          soc
-               1              1             1  Field  1991  78.501766          soc
-               2              1             1  Field  1992  78.916339          soc
-               3              1             1  Field  1993  78.707094          soc
-               4              1             1  Field  1994  78.191686          soc
-               5              1             1  Field  1995  78.573085          soc
-               6              1             1  Field  1996  78.724598          soc
-               7              1             1  Field  1997  79.043935          soc
-               8              1             1  Field  1998  78.343111          soc
-               9              1             1  Field  1999  78.872767          soc
-               10             1             1  Field  2000  79.916413          soc
-       The above example has dataset only from one database table specified at run time
+   The above example has dataset only from one database table specified at run time.
 
-       See also :
-          get_simulated_output
+   See also
+   --------
+   get_simulated_output
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.get_simulated_output(self, report_names: 'Union[str, list]', axis=0, **kwargs) -> 'pd.DataFrame' (inherited)
 
