@@ -2842,6 +2842,49 @@ Functions
    for windows-only
    @return: list of available drives on windows pc
 
+.. py:function:: apsimNGpy.core.config.load_crop_from_disk(crop: str, out: Union[str, pathlib.Path], bin_path=None, cache_path=True)
+
+   Load a default APSIM crop simulation file from disk by specifying only the crop name.
+
+   This function locates and copies an `.apsimx` file associated with the specified crop from the APSIM
+   Examples directory into a working directory. It is useful when programmatically running default
+   simulations for different crops without manually opening them in GUI.
+
+   Parameters
+   ----------
+   crop: (str)
+       The name of the crop to load (e.g., 'Maize', 'Soybean', 'Barley', 'Mungbean', 'Pinus', 'Eucalyptus').
+       The name is case-insensitive and must-match an existing `.apsimx` file in the APSIM Examples folder.
+
+   out: (str, optional)
+        A custom output path where the `.apsimx` file should be copied.
+        If not provided, a temporary file will be created in the working directory. this is stamped with the APSIM version being used
+
+
+   bin_path: (str, optional):
+      no restriction we can laod from  another bin path
+   cache_path: (str, optional):
+
+       keep the path in memory for the next request
+
+   Returns
+   ________
+       `str`: The path to the copied `.apsimx` file ready for further manipulation or simulation.
+
+   .. caution::
+
+     The method catches the results, so if the file is removed from the disk, there may be issues> If this case
+     is anticipated, turn off the cach_path to False.
+
+   Raises
+   ________
+       ``FileNotFoundError``: If the APSIM binary path cannot be resolved or the crop simulation file does not exist.
+
+   Example::
+
+       >>> load_crop_from_disk("Maize", out ='my_maize_example.apsimx')
+       'C:/path/to/temp_uuid_Maize.apsimx'
+
 .. py:function:: apsimNGpy.core.config.scan_drive_for_bin()
 
    This function uses scan_dir_for_bin to scan all drive directories.
@@ -2889,7 +2932,7 @@ Functions
 
    .. seealso::
 
-       Related API: :meth:`get_apsim_bin_path`.
+     - :py:meth:`get_apsim_bin_path` — returns the APSIM bin directory.
 
 .. py:function:: apsimNGpy.core.config.stamp_name_with_version(file_name)
 
