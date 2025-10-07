@@ -581,112 +581,111 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
-   Renames a model within the APSIM simulation tree.
+    Renames a model within the APSIM simulation tree.
 
-   This method searches for a model of the specified type and current name,
-   then updates its name to the new one provided. After renaming, it saves
-   the updated simulation file to enforce the changes.
+    This method searches for a model of the specified type and current name,
+    then updates its name to the new one provided. After renaming, it saves
+    the updated simulation file to enforce the changes.
 
-   Parameters
-   ----------
-   model_type : str
-       The type of the model to rename (e.g., "Manager", "Clock", etc.).
-   old_name : str
-       The current name of the model to be renamed.
-   new_name : str
-       The new name to assign to the model.
+    Parameters
+    ----------
+    model_type : str
+        The type of the model to rename (e.g., "Manager", "Clock", etc.).
+    old_name : str
+        The current name of the model to be renamed.
+    new_name : str
+        The new name to assign to the model.
 
-   Returns
-   -------
-   self : object
-       Returns the modified object to allow for method chaining.
+    Returns
+    -------
+    self : object
+        Returns the modified object to allow for method chaining.
 
-   Raises
-   ------
-   ValueError
-       If the model of the specified type and name is not found.
+    Raises
+    ------
+    ValueError
+        If the model of the specified type and name is not found.
 
-   .. Note::
+   .. tip::
 
-       This method uses ``get_or_check_model`` with action='get' to locate the model,
-       and then updates the model's `Name` attribute. ``save()`` is called
-       immediately after to apply and enfoce the change.
+        This method uses ``get_or_check_model`` with action='get' to locate the model,
+        and then updates the model's `Name` attribute. The model is serialized using the `save()`
+        immediately after to apply and enfoce the change.
 
-   Examples
-   ---------
-      >>> from apsimNGpy.core.apsim import ApsimModel
-      >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
-      >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
-      # check if it has been successfully renamed
-      >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
-       ['my_simulation']
-      # The alternative is to use model.inspect_file to see your changes
-      >>> model.inspect_file()
-      └── Simulations: .Simulations
-       ├── DataStore: .Simulations.DataStore
-       └── my_simulation: .Simulations.my_simulation
-           ├── Clock: .Simulations.my_simulation.Clock
-           ├── Field: .Simulations.my_simulation.Field
-           │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
-           │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
-           │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
-           │   ├── Maize: .Simulations.my_simulation.Field.Maize
-           │   ├── Report: .Simulations.my_simulation.Field.Report
-           │   ├── Soil: .Simulations.my_simulation.Field.Soil
-           │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
-           │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
-           │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
-           │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
-           │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
-           │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
-           │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
-           │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
-           │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
-           │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
-           ├── Graph: .Simulations.my_simulation.Graph
-           │   └── Series: .Simulations.my_simulation.Graph.Series
-           ├── MicroClimate: .Simulations.my_simulation.MicroClimate
-           ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
-           ├── Summary: .Simulations.my_simulation.Summary
-           └── Weather: .Simulations.my_simulation.Weather
+    Examples
+    ---------
+       >>> from apsimNGpy.core.apsim import ApsimModel
+       >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
+       >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
+       # check if it has been successfully renamed
+       >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
+        ['my_simulation']
+       # The alternative is to use model.inspect_file to see your changes
+       >>> model.inspect_file()
+       └── Simulations: .Simulations
+        ├── DataStore: .Simulations.DataStore
+        └── my_simulation: .Simulations.my_simulation
+            ├── Clock: .Simulations.my_simulation.Clock
+            ├── Field: .Simulations.my_simulation.Field
+            │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
+            │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
+            │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
+            │   ├── Maize: .Simulations.my_simulation.Field.Maize
+            │   ├── Report: .Simulations.my_simulation.Field.Report
+            │   ├── Soil: .Simulations.my_simulation.Field.Soil
+            │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
+            │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
+            │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
+            │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
+            │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
+            │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
+            │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
+            │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
+            │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
+            │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
+            ├── Graph: .Simulations.my_simulation.Graph
+            │   └── Series: .Simulations.my_simulation.Graph.Series
+            ├── MicroClimate: .Simulations.my_simulation.MicroClimate
+            ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
+            ├── Summary: .Simulations.my_simulation.Summary
+            └── Weather: .Simulations.my_simulation.Weather
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
-   Clone an existing  ``model`` and move it to a specified parent within the simulation structure.
-   The function modifies the simulation structure by adding the cloned model to the ``designated parent``.
+   Clone an existing ``model`` and move it to a specified parent within the simulation structure.
+   The function modifies the simulation structure by adding the cloned model to the designated parent.
 
-   This function is useful when a model instance needs to be duplicated and repositioned in the ``APSIM`` simulation
+   This function is useful when a model instance needs to be duplicated and repositioned in the `APSIM` simulation
    hierarchy without manually redefining its structure.
 
    Parameters:
    ----------
-   ``model_class`` : Models
+   model_class: Models
        The type of the model to be cloned, e.g., `Models.Simulation` or `Models.Clock`.
-   ``model_name`` : str
+   model_name: str
        The unique identification name of the model instance to be cloned, e.g., `"clock1"`.
-   ``adoptive_parent_type`` : Models
+   adoptive_parent_type: Models
        The type of the new parent model where the cloned model will be placed.
-   ``rename`` : str, optional
+   rename: str, optional
        The new name for the cloned model. If not provided, the clone will be renamed using
        the original name with a `_clone` suffix.
-   ``adoptive_parent_name``: str, optional
+   adoptive_parent_name: str, optional
        The name of the parent model where the cloned model should be moved. If not provided,
        the model will be placed under the default parent of the specified type.
-   ``in_place``: bool, optional
+   in_place: bool, optional
        If ``True``, the cloned model remains in the same location but is duplicated. Defaults to ``False``.
 
    Returns:
    -------
    None
 
-
    Example:
    -------
-    Create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name ``"new_clock`"`::
+    Create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name `"new_clock`:
 
-       from apsimNGpy.core.apsim import ApsimModel
-       model = ApsimModel('Maize')
-       model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
+       >>> from apsimNGpy.core.apsim import ApsimModel
+       >>> model = ApsimModel('Maize')
+       >>> model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
 
    .. py:staticmethod:: apsimNGpy.core.apsim.ApsimModel.find_model(model_name: 'str') (inherited)
 
@@ -3352,112 +3351,111 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
-   Renames a model within the APSIM simulation tree.
+    Renames a model within the APSIM simulation tree.
 
-   This method searches for a model of the specified type and current name,
-   then updates its name to the new one provided. After renaming, it saves
-   the updated simulation file to enforce the changes.
+    This method searches for a model of the specified type and current name,
+    then updates its name to the new one provided. After renaming, it saves
+    the updated simulation file to enforce the changes.
 
-   Parameters
-   ----------
-   model_type : str
-       The type of the model to rename (e.g., "Manager", "Clock", etc.).
-   old_name : str
-       The current name of the model to be renamed.
-   new_name : str
-       The new name to assign to the model.
+    Parameters
+    ----------
+    model_type : str
+        The type of the model to rename (e.g., "Manager", "Clock", etc.).
+    old_name : str
+        The current name of the model to be renamed.
+    new_name : str
+        The new name to assign to the model.
 
-   Returns
-   -------
-   self : object
-       Returns the modified object to allow for method chaining.
+    Returns
+    -------
+    self : object
+        Returns the modified object to allow for method chaining.
 
-   Raises
-   ------
-   ValueError
-       If the model of the specified type and name is not found.
+    Raises
+    ------
+    ValueError
+        If the model of the specified type and name is not found.
 
-   .. Note::
+   .. tip::
 
-       This method uses ``get_or_check_model`` with action='get' to locate the model,
-       and then updates the model's `Name` attribute. ``save()`` is called
-       immediately after to apply and enfoce the change.
+        This method uses ``get_or_check_model`` with action='get' to locate the model,
+        and then updates the model's `Name` attribute. The model is serialized using the `save()`
+        immediately after to apply and enfoce the change.
 
-   Examples
-   ---------
-      >>> from apsimNGpy.core.apsim import ApsimModel
-      >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
-      >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
-      # check if it has been successfully renamed
-      >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
-       ['my_simulation']
-      # The alternative is to use model.inspect_file to see your changes
-      >>> model.inspect_file()
-      └── Simulations: .Simulations
-       ├── DataStore: .Simulations.DataStore
-       └── my_simulation: .Simulations.my_simulation
-           ├── Clock: .Simulations.my_simulation.Clock
-           ├── Field: .Simulations.my_simulation.Field
-           │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
-           │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
-           │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
-           │   ├── Maize: .Simulations.my_simulation.Field.Maize
-           │   ├── Report: .Simulations.my_simulation.Field.Report
-           │   ├── Soil: .Simulations.my_simulation.Field.Soil
-           │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
-           │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
-           │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
-           │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
-           │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
-           │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
-           │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
-           │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
-           │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
-           │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
-           ├── Graph: .Simulations.my_simulation.Graph
-           │   └── Series: .Simulations.my_simulation.Graph.Series
-           ├── MicroClimate: .Simulations.my_simulation.MicroClimate
-           ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
-           ├── Summary: .Simulations.my_simulation.Summary
-           └── Weather: .Simulations.my_simulation.Weather
+    Examples
+    ---------
+       >>> from apsimNGpy.core.apsim import ApsimModel
+       >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
+       >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
+       # check if it has been successfully renamed
+       >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
+        ['my_simulation']
+       # The alternative is to use model.inspect_file to see your changes
+       >>> model.inspect_file()
+       └── Simulations: .Simulations
+        ├── DataStore: .Simulations.DataStore
+        └── my_simulation: .Simulations.my_simulation
+            ├── Clock: .Simulations.my_simulation.Clock
+            ├── Field: .Simulations.my_simulation.Field
+            │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
+            │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
+            │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
+            │   ├── Maize: .Simulations.my_simulation.Field.Maize
+            │   ├── Report: .Simulations.my_simulation.Field.Report
+            │   ├── Soil: .Simulations.my_simulation.Field.Soil
+            │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
+            │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
+            │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
+            │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
+            │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
+            │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
+            │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
+            │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
+            │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
+            │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
+            ├── Graph: .Simulations.my_simulation.Graph
+            │   └── Series: .Simulations.my_simulation.Graph.Series
+            ├── MicroClimate: .Simulations.my_simulation.MicroClimate
+            ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
+            ├── Summary: .Simulations.my_simulation.Summary
+            └── Weather: .Simulations.my_simulation.Weather
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
-   Clone an existing  ``model`` and move it to a specified parent within the simulation structure.
-   The function modifies the simulation structure by adding the cloned model to the ``designated parent``.
+   Clone an existing ``model`` and move it to a specified parent within the simulation structure.
+   The function modifies the simulation structure by adding the cloned model to the designated parent.
 
-   This function is useful when a model instance needs to be duplicated and repositioned in the ``APSIM`` simulation
+   This function is useful when a model instance needs to be duplicated and repositioned in the `APSIM` simulation
    hierarchy without manually redefining its structure.
 
    Parameters:
    ----------
-   ``model_class`` : Models
+   model_class: Models
        The type of the model to be cloned, e.g., `Models.Simulation` or `Models.Clock`.
-   ``model_name`` : str
+   model_name: str
        The unique identification name of the model instance to be cloned, e.g., `"clock1"`.
-   ``adoptive_parent_type`` : Models
+   adoptive_parent_type: Models
        The type of the new parent model where the cloned model will be placed.
-   ``rename`` : str, optional
+   rename: str, optional
        The new name for the cloned model. If not provided, the clone will be renamed using
        the original name with a `_clone` suffix.
-   ``adoptive_parent_name``: str, optional
+   adoptive_parent_name: str, optional
        The name of the parent model where the cloned model should be moved. If not provided,
        the model will be placed under the default parent of the specified type.
-   ``in_place``: bool, optional
+   in_place: bool, optional
        If ``True``, the cloned model remains in the same location but is duplicated. Defaults to ``False``.
 
    Returns:
    -------
    None
 
-
    Example:
    -------
-    Create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name ``"new_clock`"`::
+    Create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name `"new_clock`:
 
-       from apsimNGpy.core.apsim import ApsimModel
-       model = ApsimModel('Maize')
-       model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
+       >>> from apsimNGpy.core.apsim import ApsimModel
+       >>> model = ApsimModel('Maize')
+       >>> model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
 
    .. py:staticmethod:: apsimNGpy.core.experimentmanager.ExperimentManager.find_model(model_name: 'str') (inherited)
 
