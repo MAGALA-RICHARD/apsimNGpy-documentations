@@ -841,12 +841,6 @@ Classes
    Soil subcomponents, Report, SurfaceOrganicMatter). Unsupported types raise
    :class:`NotImplementedError`.
 
-   Resolution strategy
-   -------------------
-   1. Try ``self.Simulations.FindByPath(path)``.
-   2. If unavailable (older APIs), fall back to :func:`get_node_by_path(self.Simulations, path)`.
-   3. Extract the concrete model instance from ``.Value`` or, if absent, unwrap via ``.Model`` and
-      cast to known APSIM types with ``CastHelper.CastAs[T]``. If casting fails, a :class:`ValueError` is raised.
 
    Parameters
    ----------
@@ -879,13 +873,13 @@ Classes
    - :class:`Models.Clock`
      Calls `self._set_clock_vars(values, param_values=kwargs)` (e.g., `StartDate`, `EndDate`).
 
-   - Soil components
-     `Models.Soils.Physical` | `Models.Soils.Chemical` | `Models.Soils.Organic` |
-     ``Models.Soils.Water`` | ``Models.Soils.Solute``
+   Soil components:
+     Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic |
+     Models.Soils.Water | Models.Soils.Solute
      Delegates to ``self.replace_soils_values_by_path(node_path=path, **kwargs)``.
 
-   - :class:`Models.Report`
-     Calls ``self._set_report_vars(values, param_values=kwargs, verbose=verbose)`` (variables, events, etc.).
+   - :class:`Models.Report`:
+     Calls self._set_report_vars(values, param_values=kwargs, verbose=verbose) (variables, events, etc.).
 
    - :class:`Models.Surface.SurfaceOrganicMatter`
      Requires at least one of:
@@ -895,8 +889,6 @@ Classes
 
    Behavior
    --------
-   - Keys ``'simulation'``, ``'simulations'``, and ``'verbose'`` are consumed by this method
-     and only forwarded where explicitly supported.
    - Manager edits validate keys strictly (unknown keys fail).
    - Cultivar edits may mutate the model tree (creating entries under ``Replacements``).
 
@@ -3662,12 +3654,6 @@ Classes
    Soil subcomponents, Report, SurfaceOrganicMatter). Unsupported types raise
    :class:`NotImplementedError`.
 
-   Resolution strategy
-   -------------------
-   1. Try ``self.Simulations.FindByPath(path)``.
-   2. If unavailable (older APIs), fall back to :func:`get_node_by_path(self.Simulations, path)`.
-   3. Extract the concrete model instance from ``.Value`` or, if absent, unwrap via ``.Model`` and
-      cast to known APSIM types with ``CastHelper.CastAs[T]``. If casting fails, a :class:`ValueError` is raised.
 
    Parameters
    ----------
@@ -3700,13 +3686,13 @@ Classes
    - :class:`Models.Clock`
      Calls `self._set_clock_vars(values, param_values=kwargs)` (e.g., `StartDate`, `EndDate`).
 
-   - Soil components
-     `Models.Soils.Physical` | `Models.Soils.Chemical` | `Models.Soils.Organic` |
-     ``Models.Soils.Water`` | ``Models.Soils.Solute``
+   Soil components:
+     Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic |
+     Models.Soils.Water | Models.Soils.Solute
      Delegates to ``self.replace_soils_values_by_path(node_path=path, **kwargs)``.
 
-   - :class:`Models.Report`
-     Calls ``self._set_report_vars(values, param_values=kwargs, verbose=verbose)`` (variables, events, etc.).
+   - :class:`Models.Report`:
+     Calls self._set_report_vars(values, param_values=kwargs, verbose=verbose) (variables, events, etc.).
 
    - :class:`Models.Surface.SurfaceOrganicMatter`
      Requires at least one of:
@@ -3716,8 +3702,6 @@ Classes
 
    Behavior
    --------
-   - Keys ``'simulation'``, ``'simulations'``, and ``'verbose'`` are consumed by this method
-     and only forwarded where explicitly supported.
    - Manager edits validate keys strictly (unknown keys fail).
    - Cultivar edits may mutate the model tree (creating entries under ``Replacements``).
 
