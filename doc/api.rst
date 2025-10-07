@@ -2481,25 +2481,32 @@ Classes
    This is different from ``add_report_variable`` in that it creates a new, named report
    table that collects data based on a given list of _variables and events. actu
 
-   :Args:
-       ``variable_spec`` (list or str): A list of APSIM variable paths to include in the report table.
-                                    If a string is passed, it will be converted to a list.
-       ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of _variables.
-                                                Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
-                                                '[crop_name].Harvesting' etc.,,
-       ``rename`` (str): The name of the report table to be added. Defaults to 'my_table'.
+   Parameters:
+   ----------
+   variable_spec: (list or str)
+       A list of APSIM variable paths to include in the report table.
+       If a string is passed, it will be converted to a list.
 
-       ``simulation_name`` (str,tuple, or list, Optional): if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
-                       If it is none, all Simulations in the file will be updated with the new db_table
+   set_event_names: (list or str, optional):
+      A list of APSIM events that trigger the recording of _variables.
+       Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
+       '[crop_name].Harvesting' etc.
 
-   ``Raises``:
-       ``ValueError``: If no variable_spec is provided.
-       ``RuntimeError``: If no Zone is found in the current simulation scope.
+   rename: (str): The name of the report table to be added. Defaults to 'my_table'.
 
-   : Example::
+   simulation_name: (str,tuple, or list, Optional)
+      if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
+      If it is none, all Simulations in the file will be updated with the new db_table
 
-          from apsimNGpy import core
-          model = core.base_data.load_default_simulations(crop = 'Maize')
+   Raises:
+   ______
+   ``ValueError``: If no variable_spec is provided.
+   ``RuntimeError``: If no Zone is found in the current simulation scope.
+
+   Examples::
+
+          from apsimNGpy.core.apsim import ApsimModel
+          model = ApsimModel('Maize')
           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1'], rename='report2')
           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1', '[Maize].Grain.Total.Wt*10 as Yield'], rename='report2', set_event_names=['[Maize].Harvesting','[Clock].EndOfYear' ])
 
@@ -5353,25 +5360,32 @@ Classes
    This is different from ``add_report_variable`` in that it creates a new, named report
    table that collects data based on a given list of _variables and events. actu
 
-   :Args:
-       ``variable_spec`` (list or str): A list of APSIM variable paths to include in the report table.
-                                    If a string is passed, it will be converted to a list.
-       ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of _variables.
-                                                Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
-                                                '[crop_name].Harvesting' etc.,,
-       ``rename`` (str): The name of the report table to be added. Defaults to 'my_table'.
+   Parameters:
+   ----------
+   variable_spec: (list or str)
+       A list of APSIM variable paths to include in the report table.
+       If a string is passed, it will be converted to a list.
 
-       ``simulation_name`` (str,tuple, or list, Optional): if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
-                       If it is none, all Simulations in the file will be updated with the new db_table
+   set_event_names: (list or str, optional):
+      A list of APSIM events that trigger the recording of _variables.
+       Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
+       '[crop_name].Harvesting' etc.
 
-   ``Raises``:
-       ``ValueError``: If no variable_spec is provided.
-       ``RuntimeError``: If no Zone is found in the current simulation scope.
+   rename: (str): The name of the report table to be added. Defaults to 'my_table'.
 
-   : Example::
+   simulation_name: (str,tuple, or list, Optional)
+      if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
+      If it is none, all Simulations in the file will be updated with the new db_table
 
-          from apsimNGpy import core
-          model = core.base_data.load_default_simulations(crop = 'Maize')
+   Raises:
+   ______
+   ``ValueError``: If no variable_spec is provided.
+   ``RuntimeError``: If no Zone is found in the current simulation scope.
+
+   Examples::
+
+          from apsimNGpy.core.apsim import ApsimModel
+          model = ApsimModel('Maize')
           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1'], rename='report2')
           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1', '[Maize].Grain.Total.Wt*10 as Yield'], rename='report2', set_event_names=['[Maize].Harvesting','[Clock].EndOfYear' ])
 
