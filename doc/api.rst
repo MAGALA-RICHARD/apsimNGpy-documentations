@@ -593,74 +593,78 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
-    Renames a model within the APSIM simulation tree.
+      Renames a model within the APSIM simulation tree.
 
-    This method searches for a model of the specified type and current name,
-    then updates its name to the new one provided. After renaming, it saves
-    the updated simulation file to enforce the changes.
+      This method searches for a model of the specified type and current name,
+      then updates its name to the new one provided. After renaming, it saves
+      the updated simulation file to enforce the changes.
 
-    Parameters
-    ----------
-    model_type : str
-        The type of the model to rename (e.g., "Manager", "Clock", etc.).
-    old_name : str
-        The current name of the model to be renamed.
-    new_name : str
-        The new name to assign to the model.
+      Parameters
+      ----------
+      model_type : str
+          The type of the model to rename (e.g., "Manager", "Clock", etc.).
+      old_name : str
+          The current name of the model to be renamed.
+      new_name : str
+          The new name to assign to the model.
 
-    Returns
-    -------
-    self : object
-        Returns the modified object to allow for method chaining.
+      Returns
+      -------
+      self : object
+          Returns the modified object to allow for method chaining.
 
-    Raises
-    ------
-    ValueError
-        If the model of the specified type and name is not found.
+      Raises
+      ------
+      ValueError
+          If the model of the specified type and name is not found.
 
-   .. tip::
+     .. tip::
 
-        This method uses ``get_or_check_model`` with action='get' to locate the model,
-        and then updates the model's `Name` attribute. The model is serialized using the `save()`
-        immediately after to apply and enfoce the change.
+          This method uses ``get_or_check_model`` with action='get' to locate the model,
+          and then updates the model's `Name` attribute. The model is serialized using the `save()`
+          immediately after to apply and enfoce the change.
 
-    Examples
-    ---------
-       >>> from apsimNGpy.core.apsim import ApsimModel
-       >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
-       >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
-       # check if it has been successfully renamed
-       >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
-        ['my_simulation']
-       # The alternative is to use model.inspect_file to see your changes
-       >>> model.inspect_file()
-       └── Simulations: .Simulations
-        ├── DataStore: .Simulations.DataStore
-        └── my_simulation: .Simulations.my_simulation
-            ├── Clock: .Simulations.my_simulation.Clock
-            ├── Field: .Simulations.my_simulation.Field
-            │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
-            │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
-            │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
-            │   ├── Maize: .Simulations.my_simulation.Field.Maize
-            │   ├── Report: .Simulations.my_simulation.Field.Report
-            │   ├── Soil: .Simulations.my_simulation.Field.Soil
-            │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
-            │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
-            │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
-            │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
-            │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
-            │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
-            │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
-            │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
-            │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
-            │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
-            ├── Graph: .Simulations.my_simulation.Graph
-            │   └── Series: .Simulations.my_simulation.Graph.Series
-            ├── MicroClimate: .Simulations.my_simulation.MicroClimate
-            ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
-            ├── Summary: .Simulations.my_simulation.Summary
-            └── Weather: .Simulations.my_simulation.Weather
+      Examples
+      ---------
+         >>> from apsimNGpy.core.apsim import ApsimModel
+         >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
+         >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
+         # check if it has been successfully renamed
+         >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
+          ['my_simulation']
+         # The alternative is to use model.inspect_file to see your changes
+         >>> model.inspect_file()
+         └── Simulations: .Simulations
+          ├── DataStore: .Simulations.DataStore
+          └── my_simulation: .Simulations.my_simulation
+              ├── Clock: .Simulations.my_simulation.Clock
+              ├── Field: .Simulations.my_simulation.Field
+              │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
+              │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
+              │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
+              │   ├── Maize: .Simulations.my_simulation.Field.Maize
+              │   ├── Report: .Simulations.my_simulation.Field.Report
+              │   ├── Soil: .Simulations.my_simulation.Field.Soil
+              │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
+              │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
+              │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
+              │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
+              │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
+              │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
+              │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
+              │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
+              │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
+              │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
+              ├── Graph: .Simulations.my_simulation.Graph
+              │   └── Series: .Simulations.my_simulation.Graph.Series
+              ├── MicroClimate: .Simulations.my_simulation.MicroClimate
+              ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
+              ├── Summary: .Simulations.my_simulation.Summary
+              └── Weather: .Simulations.my_simulation.Weather
+
+   .. seealso::
+
+       Related APIs: :meth:`add_model` and :meth:`move_model`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
@@ -755,6 +759,9 @@ Classes
                ├── SoilArbitrator: .Simulations.Simulation.SoilArbitrator
                ├── Summary: .Simulations.Simulation.Summary
                └── Weather: .Simulations.Simulation.Weather
+   .. seealso::
+
+      Related APIs: :meth:`add_model` and :meth:`move_model`.
 
    .. py:staticmethod:: apsimNGpy.core.apsim.ApsimModel.find_model(model_name: 'str') (inherited)
 
@@ -838,6 +845,10 @@ Classes
    ... adoptive_parent='Simulations',
    ... rename='soybean_replaced',
    ... source='Soybean')  # basically adding another simulation from soybean to the maize simulation
+
+   .. seealso::
+
+       Related APIs: :meth:`clone_model` and :meth:`move_model`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.detect_model_type(self, model_instance: 'Union[str, Models]') (inherited)
 
@@ -946,8 +957,10 @@ Classes
            simulations=("Sim_A", "Sim_B"),
            verbose=True,
            **{"Phenology.EmergencePhase.Photoperiod": "Short"} )
-   See also:
-      `edit_model`
+
+   .. seealso::
+
+      Related API: :meth:`edit_model`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.edit_model(self, model_type: 'str', model_name: 'str', simulations: 'Union[str, list]' = 'all', verbose=False, **kwargs) (inherited)
 
@@ -1111,6 +1124,10 @@ Classes
            '[Maize].AboveGround.Wt as abw',
            '[Maize].Grain.Total.Wt as grain_weight'])
            @param simulations:
+
+   .. seealso::
+
+      Related API: :meth:`edit_model_by_path`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.add_report_variable(self, variable_spec: 'Union[list, str, tuple]', report_name: 'str' = None, set_event_names: 'Union[str, list]' = None) (inherited)
 
@@ -3454,74 +3471,78 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
-    Renames a model within the APSIM simulation tree.
+      Renames a model within the APSIM simulation tree.
 
-    This method searches for a model of the specified type and current name,
-    then updates its name to the new one provided. After renaming, it saves
-    the updated simulation file to enforce the changes.
+      This method searches for a model of the specified type and current name,
+      then updates its name to the new one provided. After renaming, it saves
+      the updated simulation file to enforce the changes.
 
-    Parameters
-    ----------
-    model_type : str
-        The type of the model to rename (e.g., "Manager", "Clock", etc.).
-    old_name : str
-        The current name of the model to be renamed.
-    new_name : str
-        The new name to assign to the model.
+      Parameters
+      ----------
+      model_type : str
+          The type of the model to rename (e.g., "Manager", "Clock", etc.).
+      old_name : str
+          The current name of the model to be renamed.
+      new_name : str
+          The new name to assign to the model.
 
-    Returns
-    -------
-    self : object
-        Returns the modified object to allow for method chaining.
+      Returns
+      -------
+      self : object
+          Returns the modified object to allow for method chaining.
 
-    Raises
-    ------
-    ValueError
-        If the model of the specified type and name is not found.
+      Raises
+      ------
+      ValueError
+          If the model of the specified type and name is not found.
 
-   .. tip::
+     .. tip::
 
-        This method uses ``get_or_check_model`` with action='get' to locate the model,
-        and then updates the model's `Name` attribute. The model is serialized using the `save()`
-        immediately after to apply and enfoce the change.
+          This method uses ``get_or_check_model`` with action='get' to locate the model,
+          and then updates the model's `Name` attribute. The model is serialized using the `save()`
+          immediately after to apply and enfoce the change.
 
-    Examples
-    ---------
-       >>> from apsimNGpy.core.apsim import ApsimModel
-       >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
-       >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
-       # check if it has been successfully renamed
-       >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
-        ['my_simulation']
-       # The alternative is to use model.inspect_file to see your changes
-       >>> model.inspect_file()
-       └── Simulations: .Simulations
-        ├── DataStore: .Simulations.DataStore
-        └── my_simulation: .Simulations.my_simulation
-            ├── Clock: .Simulations.my_simulation.Clock
-            ├── Field: .Simulations.my_simulation.Field
-            │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
-            │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
-            │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
-            │   ├── Maize: .Simulations.my_simulation.Field.Maize
-            │   ├── Report: .Simulations.my_simulation.Field.Report
-            │   ├── Soil: .Simulations.my_simulation.Field.Soil
-            │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
-            │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
-            │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
-            │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
-            │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
-            │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
-            │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
-            │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
-            │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
-            │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
-            ├── Graph: .Simulations.my_simulation.Graph
-            │   └── Series: .Simulations.my_simulation.Graph.Series
-            ├── MicroClimate: .Simulations.my_simulation.MicroClimate
-            ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
-            ├── Summary: .Simulations.my_simulation.Summary
-            └── Weather: .Simulations.my_simulation.Weather
+      Examples
+      ---------
+         >>> from apsimNGpy.core.apsim import ApsimModel
+         >>> model = ApsimModel(model = 'Maize', out_path='my_maize.apsimx')
+         >>> model.rename_model(model_type="Models.Core.Simulation", old_name ='Simulation', new_name='my_simulation')
+         # check if it has been successfully renamed
+         >>> model.inspect_model(model_type='Models.Core.Simulation', fullpath = False)
+          ['my_simulation']
+         # The alternative is to use model.inspect_file to see your changes
+         >>> model.inspect_file()
+         └── Simulations: .Simulations
+          ├── DataStore: .Simulations.DataStore
+          └── my_simulation: .Simulations.my_simulation
+              ├── Clock: .Simulations.my_simulation.Clock
+              ├── Field: .Simulations.my_simulation.Field
+              │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
+              │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
+              │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
+              │   ├── Maize: .Simulations.my_simulation.Field.Maize
+              │   ├── Report: .Simulations.my_simulation.Field.Report
+              │   ├── Soil: .Simulations.my_simulation.Field.Soil
+              │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
+              │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
+              │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
+              │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
+              │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
+              │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
+              │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
+              │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
+              │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
+              │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
+              ├── Graph: .Simulations.my_simulation.Graph
+              │   └── Series: .Simulations.my_simulation.Graph.Series
+              ├── MicroClimate: .Simulations.my_simulation.MicroClimate
+              ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
+              ├── Summary: .Simulations.my_simulation.Summary
+              └── Weather: .Simulations.my_simulation.Weather
+
+   .. seealso::
+
+       Related APIs: :meth:`add_model` and :meth:`move_model`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
@@ -3616,6 +3637,9 @@ Classes
                ├── SoilArbitrator: .Simulations.Simulation.SoilArbitrator
                ├── Summary: .Simulations.Simulation.Summary
                └── Weather: .Simulations.Simulation.Weather
+   .. seealso::
+
+      Related APIs: :meth:`add_model` and :meth:`move_model`.
 
    .. py:staticmethod:: apsimNGpy.core.experimentmanager.ExperimentManager.find_model(model_name: 'str') (inherited)
 
@@ -3699,6 +3723,10 @@ Classes
    ... adoptive_parent='Simulations',
    ... rename='soybean_replaced',
    ... source='Soybean')  # basically adding another simulation from soybean to the maize simulation
+
+   .. seealso::
+
+       Related APIs: :meth:`clone_model` and :meth:`move_model`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.detect_model_type(self, model_instance: 'Union[str, Models]') (inherited)
 
@@ -3807,8 +3835,10 @@ Classes
            simulations=("Sim_A", "Sim_B"),
            verbose=True,
            **{"Phenology.EmergencePhase.Photoperiod": "Short"} )
-   See also:
-      `edit_model`
+
+   .. seealso::
+
+      Related API: :meth:`edit_model`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.edit_model(self, model_type: 'str', model_name: 'str', simulations: 'Union[str, list]' = 'all', verbose=False, **kwargs) (inherited)
 
@@ -3972,6 +4002,10 @@ Classes
            '[Maize].AboveGround.Wt as abw',
            '[Maize].Grain.Total.Wt as grain_weight'])
            @param simulations:
+
+   .. seealso::
+
+      Related API: :meth:`edit_model_by_path`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_report_variable(self, variable_spec: 'Union[list, str, tuple]', report_name: 'str' = None, set_event_names: 'Union[str, list]' = None) (inherited)
 
