@@ -2003,6 +2003,10 @@ Classes
 
    >>> model.get_weather_from_file("data/ames_2020", simulations=("SimA", "SimB"))# amke sure they exists
 
+   .. seealso::
+
+       Related APIs: :meth:`edit_model` and :meth:`edit_model_by_path`.
+
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.get_weather_from_web(self, lonlat: 'tuple', start: 'int', end: 'int', simulations=<UserOptionMissing>, source='nasa', filename=None) (inherited)
 
     Replaces the weather (met) file in the model using weather data fetched from an online source. Internally, calls get_weather_from_file after downloading the weather
@@ -4911,6 +4915,10 @@ Classes
    Update only two simulations (suffix added automatically):
 
    >>> model.get_weather_from_file("data/ames_2020", simulations=("SimA", "SimB"))# amke sure they exists
+
+   .. seealso::
+
+       Related APIs: :meth:`edit_model` and :meth:`edit_model_by_path`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.get_weather_from_web(self, lonlat: 'tuple', start: 'int', end: 'int', simulations=<UserOptionMissing>, source='nasa', filename=None) (inherited)
 
