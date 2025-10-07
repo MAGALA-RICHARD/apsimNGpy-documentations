@@ -535,49 +535,58 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, **kwargs) -> "'CoreModel'" (inherited)
 
-    Run ``APSIM`` model simulations.
+     Run ``APSIM`` model simulations. Does not collect the simulated output
 
-    Parameters
-    ----------
-    ``report_name`` : Union[tuple, list, str], optional
-        Defaults to APSIM default Report Name if not specified.
-        - If iterable, all report tables are read and aggregated into one DataFrame.
-        - If None, runs without collecting database results.
-        - If str, a single DataFrame is returned.
+     Parameters
+     ----------
+     report_name: Union[tuple, list, str], optional
+         Defaults to APSIM default Report Name if not specified.
+         - If iterable, all report tables are read and aggregated into one DataFrame.
 
-    ``simulations`` : Union[tuple, list], optional
-        List of simulation names to run. If None, runs all simulations.
+     simulations: Union[tuple, list], optional
+         List of simulation names to run. If None, runs all simulations.
 
-    ``clean_up``: bool, optional
-        If True, removes the existing database before running.
+     clean_up: bool, optional
+         If True, removes the existing database before running.
 
-    ``verbose``: bool, optional
-        If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
+     verbose: bool, optional
+         If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-    ``kwargs``: dict
-        Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
-        a csv file directly stored at the location of the running apsimx file.
+     kwargs: **dict
+         Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
+         a csv file directly stored at the location of the running apsimx file.
 
-    Warning:
-    --------------
-    In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
+     Warning:
+     --------------
+     In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
 
 
-    Returns
-    -------
-    ``CoreModel``
-        Instance of the class CoreModel.
-   ``RuntimeError``
-        Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
-        mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
+     Returns
+     -------
+     ``CoreModel``
+         Instance of the class CoreModel.
+    ``RuntimeError``
+         Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
+         mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
 
-   Example:
+    Example:
 
-   Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
+    Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
 
-          from apsimNGpy.core.apsim import ApsimModel
-          model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
-          model.run(report_name = "Report")
+           from apsimNGpy.core.apsim import ApsimModel
+           model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
+           model.run(report_name = "Report")
+           # check if the run was successful
+           model.ran_ok
+           'True'
+
+    .. note::
+
+       Updates the ``ran_ok`` flag to ``True`` if no error was encountered.
+
+   .. seealso::
+
+        Related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
@@ -3383,49 +3392,58 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, **kwargs) -> "'CoreModel'" (inherited)
 
-    Run ``APSIM`` model simulations.
+     Run ``APSIM`` model simulations. Does not collect the simulated output
 
-    Parameters
-    ----------
-    ``report_name`` : Union[tuple, list, str], optional
-        Defaults to APSIM default Report Name if not specified.
-        - If iterable, all report tables are read and aggregated into one DataFrame.
-        - If None, runs without collecting database results.
-        - If str, a single DataFrame is returned.
+     Parameters
+     ----------
+     report_name: Union[tuple, list, str], optional
+         Defaults to APSIM default Report Name if not specified.
+         - If iterable, all report tables are read and aggregated into one DataFrame.
 
-    ``simulations`` : Union[tuple, list], optional
-        List of simulation names to run. If None, runs all simulations.
+     simulations: Union[tuple, list], optional
+         List of simulation names to run. If None, runs all simulations.
 
-    ``clean_up``: bool, optional
-        If True, removes the existing database before running.
+     clean_up: bool, optional
+         If True, removes the existing database before running.
 
-    ``verbose``: bool, optional
-        If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
+     verbose: bool, optional
+         If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-    ``kwargs``: dict
-        Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
-        a csv file directly stored at the location of the running apsimx file.
+     kwargs: **dict
+         Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
+         a csv file directly stored at the location of the running apsimx file.
 
-    Warning:
-    --------------
-    In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
+     Warning:
+     --------------
+     In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
 
 
-    Returns
-    -------
-    ``CoreModel``
-        Instance of the class CoreModel.
-   ``RuntimeError``
-        Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
-        mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
+     Returns
+     -------
+     ``CoreModel``
+         Instance of the class CoreModel.
+    ``RuntimeError``
+         Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
+         mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
 
-   Example:
+    Example:
 
-   Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
+    Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
 
-          from apsimNGpy.core.apsim import ApsimModel
-          model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
-          model.run(report_name = "Report")
+           from apsimNGpy.core.apsim import ApsimModel
+           model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
+           model.run(report_name = "Report")
+           # check if the run was successful
+           model.ran_ok
+           'True'
+
+    .. note::
+
+       Updates the ``ran_ok`` flag to ``True`` if no error was encountered.
+
+   .. seealso::
+
+        Related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
