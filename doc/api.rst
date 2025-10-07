@@ -445,11 +445,11 @@ Classes
 
    Parameters:
    -----------
-   ``report_names``: Union[str, list]
+   report_names: (str, iterable)
        Name or list names of report tables to read. These should match the
        report names in the simulation output.
 
-   ``axis`` int, Optional. Default to 0
+   axis: int, Optional. Default to 0
        concatenation axis numbers for multiple reports or database tables. if axis is 0, source_table column is populated to show source of the data for each row
 
    Returns:
@@ -459,10 +459,10 @@ Classes
 
    Raises:
    -------
-   ``ValueError``
+   ValueError
        If any of the requested report names are not found in the available tables.
 
-   ``RuntimeError``
+   RuntimeError
        If the simulation has not been ``run`` successfully before attempting to read data.
    Examples
    --------
@@ -3359,11 +3359,11 @@ Classes
 
    Parameters:
    -----------
-   ``report_names``: Union[str, list]
+   report_names: (str, iterable)
        Name or list names of report tables to read. These should match the
        report names in the simulation output.
 
-   ``axis`` int, Optional. Default to 0
+   axis: int, Optional. Default to 0
        concatenation axis numbers for multiple reports or database tables. if axis is 0, source_table column is populated to show source of the data for each row
 
    Returns:
@@ -3373,10 +3373,10 @@ Classes
 
    Raises:
    -------
-   ``ValueError``
+   ValueError
        If any of the requested report names are not found in the available tables.
 
-   ``RuntimeError``
+   RuntimeError
        If the simulation has not been ``run`` successfully before attempting to read data.
    Examples
    --------
