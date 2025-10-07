@@ -2785,7 +2785,7 @@ Classes
        If None, results will be all the table names inside concatenated along the axis 0 (not recommended)
    x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax
        Passed through to :func:`seaborn.scatterplot`.
-   **Kwargs
+   ** Kwargs
        Additional keyword args for Seaborn.
    See the reference below for all the kwargs.
    reference; https://seaborn.pydata.org/generated/seaborn.scatterplot.html 
@@ -2799,7 +2799,7 @@ Classes
    Parameters
    ----------
    table : str or pandas.DataFrame, optional
-   x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
+        x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
    hue_order, row_order, col_order, col_wrap, height, aspect, log_scale, native_scale, formatter,
    orient, color, palette, hue_norm, legend, legend_out, sharex, sharey, margin_titles, facet_kws
        Passed through to :func:`seaborn.catplot`.
@@ -2849,16 +2849,24 @@ Functions
 
 .. py:function:: apsimNGpy.core.config.set_apsim_bin_path(path: Union[str, pathlib.Path], raise_errors: bool = True, verbose: bool = False) -> bool
 
-   Validate and persist the APSIM binary folder path.
+   Validate and write the bin path to the config file, where it is accessed by ``get_apsim_bin_path``.
 
-   The provided `path` should point to (or contain) the APSIM `bin` directory that
-   includes the required binaries:
+   Parameters
+   ___________
+   path : Union[str, Path]
+       The provided `path` should point to (or contain) the APSIM `bin` directory that
+       includes the required binaries:
+         - Windows: Models.dll AND Models.exe
+         - macOS/Linux: Models.dll AND Models (unix executable)
+       If `path` is a parent directory, the function will search recursively to locate
+       a matching `bin` directory. The first match is used.
 
-     - Windows: Models.dll AND Models.exe
-     - macOS/Linux: Models.dll AND Models (unix executable)
+   raise_errors : bool, default is True
+       Whether to raise an error in case of errors. for testing purposes only
 
-   If `path` is a parent directory, the function will search recursively to locate
-   a matching `bin` directory. The first match is used.
+   verbose: bool
+      whether to print messages to the console or not
+
 
    Returns
    -------
@@ -5682,7 +5690,7 @@ Classes
        If None, results will be all the table names inside concatenated along the axis 0 (not recommended)
    x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax
        Passed through to :func:`seaborn.scatterplot`.
-   **Kwargs
+   ** Kwargs
        Additional keyword args for Seaborn.
    See the reference below for all the kwargs.
    reference; https://seaborn.pydata.org/generated/seaborn.scatterplot.html 
@@ -5696,7 +5704,7 @@ Classes
    Parameters
    ----------
    table : str or pandas.DataFrame, optional
-   x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
+        x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
    hue_order, row_order, col_order, col_wrap, height, aspect, log_scale, native_scale, formatter,
    orient, color, palette, hue_norm, legend, legend_out, sharex, sharey, margin_titles, facet_kws
        Passed through to :func:`seaborn.catplot`.
@@ -6071,8 +6079,8 @@ Functions
    ----------
    method: {"string", "file"}, optional
        Which reader to return:
-       - ``"string"`` >>> returns ``FileFormat.ReadFromString``.
-       - ``"file"``   >>> returns ``FileFormat.ReadFromFile``.
+       - "string" >>> returns ``FileFormat.ReadFromString``.
+       - "file" >>> returns ``FileFormat.ReadFromFile``.
        Defaults to ``"string"``.
 
    Returns
@@ -6161,7 +6169,7 @@ Functions
 
 .. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin')) -> bool
 
-   Checks if the APSIM.CORE.dll is present in the bin path. Normally, the new APSIM version has this dll
+   Checks if the APSIM.CORE.dll is present in the bin path. Normally, the new APSIM version has this dll file
    @return: bool
 
 Classes
