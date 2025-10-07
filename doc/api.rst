@@ -1996,7 +1996,8 @@ Classes
    Examples
    --------
    Update all Weather nodes:
-
+   >>> from apsimNGpy.core.apsim import ApsimModel
+   >>> model = ApsimModel("Maize")
    >>> model.get_weather_from_file("data/ames_2020.met")
 
    Update only two simulations (suffix added automatically):
@@ -4909,7 +4910,8 @@ Classes
    Examples
    --------
    Update all Weather nodes:
-
+   >>> from apsimNGpy.core.apsim import ApsimModel
+   >>> model = ApsimModel("Maize")
    >>> model.get_weather_from_file("data/ames_2020.met")
 
    Update only two simulations (suffix added automatically):
