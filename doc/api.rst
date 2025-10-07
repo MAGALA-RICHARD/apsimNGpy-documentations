@@ -205,7 +205,7 @@ Classes
 
    Any structure of apsimx file can be handled.
 
-   ..note::
+   .. note::
 
         The simulations are c# referenced objects, and their manipulation maybe for advanced users only.
 
@@ -218,14 +218,17 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.restart_model(self, model_info=None) (inherited)
 
-   ``model_info``: A named tuple object returned by `load_apsim_model` from the `model_loader` module.
+   Parameters:
+   ----------
+   model_info: collections.NamedTuple.
+      A named tuple object returned by `load_apsim_model` from the `model_loader` module.
 
    Notes:
    - This parameter is crucial whenever we need to ``reinitialize`` the model, especially after updating management practices or editing the file.
    - In some cases, this method is executed automatically.
    - If ``model_info`` is not specified, the simulation will be reinitialized from `self`.
 
-   This function is called by ``save_edited_file`` and ``update_mgt``.
+   This function is called by ``save_edited_file``, `save' and ``update_mgt``.
 
    :return: self
 
@@ -535,7 +538,8 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, **kwargs) -> "'CoreModel'" (inherited)
 
-     Run ``APSIM`` model simulations. Does not collect the simulated output
+     Run APSIM model simulations to write the results either to SQLite data base or csv file. Does not collect the
+      simulated output inot memory. For this purpose. Please see  related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
      Parameters
      ----------
@@ -563,8 +567,7 @@ Classes
 
      Returns
      -------
-     ``CoreModel``
-         Instance of the class CoreModel.
+         Instance of the respective model class e.g.,  ApsimModel, ExperimentManager.
     ``RuntimeError``
          Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
          mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
@@ -1241,7 +1244,7 @@ Classes
    Args:
    -----
 
-   model_class:  Models
+   model_type:  Models
        type of model tied to Models Namespace
 
    new_parent_type: Models.
@@ -1271,6 +1274,7 @@ Classes
 
    - suffix: str, optional
        a suffix to attach with the copies. Default to "replicate"
+
    Returns:
    -------
    - A  generator(str) is returned.
@@ -3062,7 +3066,7 @@ Classes
 
    Any structure of apsimx file can be handled.
 
-   ..note::
+   .. note::
 
         The simulations are c# referenced objects, and their manipulation maybe for advanced users only.
 
@@ -3075,14 +3079,17 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.restart_model(self, model_info=None) (inherited)
 
-   ``model_info``: A named tuple object returned by `load_apsim_model` from the `model_loader` module.
+   Parameters:
+   ----------
+   model_info: collections.NamedTuple.
+      A named tuple object returned by `load_apsim_model` from the `model_loader` module.
 
    Notes:
    - This parameter is crucial whenever we need to ``reinitialize`` the model, especially after updating management practices or editing the file.
    - In some cases, this method is executed automatically.
    - If ``model_info`` is not specified, the simulation will be reinitialized from `self`.
 
-   This function is called by ``save_edited_file`` and ``update_mgt``.
+   This function is called by ``save_edited_file``, `save' and ``update_mgt``.
 
    :return: self
 
@@ -3392,7 +3399,8 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, **kwargs) -> "'CoreModel'" (inherited)
 
-     Run ``APSIM`` model simulations. Does not collect the simulated output
+     Run APSIM model simulations to write the results either to SQLite data base or csv file. Does not collect the
+      simulated output inot memory. For this purpose. Please see  related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
      Parameters
      ----------
@@ -3420,8 +3428,7 @@ Classes
 
      Returns
      -------
-     ``CoreModel``
-         Instance of the class CoreModel.
+         Instance of the respective model class e.g.,  ApsimModel, ExperimentManager.
     ``RuntimeError``
          Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
          mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
@@ -4098,7 +4105,7 @@ Classes
    Args:
    -----
 
-   model_class:  Models
+   model_type:  Models
        type of model tied to Models Namespace
 
    new_parent_type: Models.
@@ -4128,6 +4135,7 @@ Classes
 
    - suffix: str, optional
        a suffix to attach with the copies. Default to "replicate"
+
    Returns:
    -------
    - A  generator(str) is returned.
