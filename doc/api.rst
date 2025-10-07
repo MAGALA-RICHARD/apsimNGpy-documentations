@@ -2029,18 +2029,18 @@ Classes
     Returns:
        model object with the corresponding file replaced with the fetched weather data.
 
-    ..code-block:: python
-
-          from apsimNgpy.core.apsim import ApsimModel
-          model = ApsimModel(model= "Maize")
-          model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end = 2001)
+   Examples
+   ----------
+    >>> from apsimNGpy.core.apsim import ApsimModel
+    >>> model = ApsimModel(model= "Maize")
+    >>> model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end = 2001)
 
     Changing weather data with non-matching start and end dates in the simulation will lead to RuntimeErrors.
     To avoid this, first check the start and end date before proceeding as follows:
 
-          >>> dt = model.inspect_model_parameters(model_class='Clock', model_name='Clock', simulations='Simulation')
-          >>> start, end = dt['Start'].year, dt['End'].year
-          # output: 1990, 2000
+      >>> dt = model.inspect_model_parameters(model_class='Clock', model_name='Clock', simulations='Simulation')
+      >>> start, end = dt['Start'].year, dt['End'].year
+      # output: 1990, 2000
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.show_met_file_in_simulation(self, simulations: 'list' = None) (inherited)
 
@@ -4938,18 +4938,18 @@ Classes
     Returns:
        model object with the corresponding file replaced with the fetched weather data.
 
-    ..code-block:: python
-
-          from apsimNgpy.core.apsim import ApsimModel
-          model = ApsimModel(model= "Maize")
-          model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end = 2001)
+   Examples
+   ----------
+    >>> from apsimNGpy.core.apsim import ApsimModel
+    >>> model = ApsimModel(model= "Maize")
+    >>> model.get_weather_from_web(lonlat = (-93.885490, 42.060650), start = 1990, end = 2001)
 
     Changing weather data with non-matching start and end dates in the simulation will lead to RuntimeErrors.
     To avoid this, first check the start and end date before proceeding as follows:
 
-          >>> dt = model.inspect_model_parameters(model_class='Clock', model_name='Clock', simulations='Simulation')
-          >>> start, end = dt['Start'].year, dt['End'].year
-          # output: 1990, 2000
+      >>> dt = model.inspect_model_parameters(model_class='Clock', model_name='Clock', simulations='Simulation')
+      >>> start, end = dt['Start'].year, dt['End'].year
+      # output: 1990, 2000
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.show_met_file_in_simulation(self, simulations: 'list' = None) (inherited)
 
