@@ -435,9 +435,9 @@ Classes
 
    The above example has dataset only from one database table specified at run time.
 
-   See also
-   --------
-   `get_simulated_output`
+   .. seealso::
+
+      Related API: :meth:`get_simulated_output`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.get_simulated_output(self, report_names: 'Union[str, list]', axis=0, **kwargs) -> 'pd.DataFrame' (inherited)
 
@@ -536,60 +536,64 @@ Classes
    10             1             1  ...            NaN             NaN
    [11 rows x 19 columns]
 
+   .. seealso::
+
+      Related API: :attr:`results`.
+
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, **kwargs) -> "'CoreModel'" (inherited)
 
-     Run APSIM model simulations to write the results either to SQLite data base or csv file. Does not collect the
-      simulated output inot memory. For this purpose. Please see  related APIs: :attr:`results` and :meth:`get_simulated_output`.
+    Run APSIM model simulations to write the results either to SQLite data base or csv file. Does not collect the
+     simulated output inot memory. For this purpose. Please see  related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
-     Parameters
-     ----------
-     report_name: Union[tuple, list, str], optional
-         Defaults to APSIM default Report Name if not specified.
-         - If iterable, all report tables are read and aggregated into one DataFrame.
+    Parameters
+    ----------
+    report_name: Union[tuple, list, str], optional
+        Defaults to APSIM default Report Name if not specified.
+        - If iterable, all report tables are read and aggregated into one DataFrame.
 
-     simulations: Union[tuple, list], optional
-         List of simulation names to run. If None, runs all simulations.
+    simulations: Union[tuple, list], optional
+        List of simulation names to run. If None, runs all simulations.
 
-     clean_up: bool, optional
-         If True, removes the existing database before running.
+    clean_up: bool, optional
+        If True, removes the existing database before running.
 
-     verbose: bool, optional
-         If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
+    verbose: bool, optional
+        If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-     kwargs: **dict
-         Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
-         a csv file directly stored at the location of the running apsimx file.
+    kwargs: **dict
+        Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
+        a csv file directly stored at the location of the running apsimx file.
 
-     Warning:
-     --------------
-     In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
+    Warning:
+    --------------
+    In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
 
 
-     Returns
-     -------
-         Instance of the respective model class e.g.,  ApsimModel, ExperimentManager.
-    ``RuntimeError``
-         Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
-         mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
+    Returns
+    -------
+        Instance of the respective model class e.g.,  ApsimModel, ExperimentManager.
+   ``RuntimeError``
+        Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
+        mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
 
-    Example:
+   Example:
 
-    Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
+   Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
 
-           from apsimNGpy.core.apsim import ApsimModel
-           model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
-           model.run(report_name = "Report")
-           # check if the run was successful
-           model.ran_ok
-           'True'
+          from apsimNGpy.core.apsim import ApsimModel
+          model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
+          model.run(report_name = "Report")
+          # check if the run was successful
+          model.ran_ok
+          'True'
 
-    .. note::
+   .. note::
 
-       Updates the ``ran_ok`` flag to ``True`` if no error was encountered.
+      Updates the ``ran_ok`` flag to ``True`` if no error was encountered.
 
    .. seealso::
 
-        Related APIs: :attr:`results` and :meth:`get_simulated_output`.
+       Related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
@@ -664,7 +668,7 @@ Classes
 
    .. seealso::
 
-       Related APIs: :meth:`add_model` and :meth:`move_model`.
+       Related APIs: :meth:`add_model`, :meth:`clone_model`and :meth:`move_model`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
@@ -1173,6 +1177,10 @@ Classes
          '[Clock].Today as Date']}
    The new report variable is appended at the end of the existing ones
 
+   .. seealso::
+
+       Related APIs: :meth:`remove_report_variable` and :meth:`add_db_table`.
+
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.remove_report_variable(self, variable_spec: 'Union[list, tuple, str]', report_name: 'str | None' = None) (inherited)
 
    Remove one or more variable expressions from an APSIM Report component.
@@ -1230,6 +1238,10 @@ Classes
     '[Maize].Grain.Total.Wt',
     '[Maize].Grain.N',
     '[Maize].Total.Wt']
+
+   .. seealso::
+
+       Related APIs: :meth:`add_report_variable` and :meth:`add_db_table`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.remove_model(self, model_type: 'Models', model_name: 'str' = None) (inherited)
 
@@ -3313,9 +3325,9 @@ Classes
 
    The above example has dataset only from one database table specified at run time.
 
-   See also
-   --------
-   `get_simulated_output`
+   .. seealso::
+
+      Related API: :meth:`get_simulated_output`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.get_simulated_output(self, report_names: 'Union[str, list]', axis=0, **kwargs) -> 'pd.DataFrame' (inherited)
 
@@ -3414,60 +3426,64 @@ Classes
    10             1             1  ...            NaN             NaN
    [11 rows x 19 columns]
 
+   .. seealso::
+
+      Related API: :attr:`results`.
+
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, **kwargs) -> "'CoreModel'" (inherited)
 
-     Run APSIM model simulations to write the results either to SQLite data base or csv file. Does not collect the
-      simulated output inot memory. For this purpose. Please see  related APIs: :attr:`results` and :meth:`get_simulated_output`.
+    Run APSIM model simulations to write the results either to SQLite data base or csv file. Does not collect the
+     simulated output inot memory. For this purpose. Please see  related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
-     Parameters
-     ----------
-     report_name: Union[tuple, list, str], optional
-         Defaults to APSIM default Report Name if not specified.
-         - If iterable, all report tables are read and aggregated into one DataFrame.
+    Parameters
+    ----------
+    report_name: Union[tuple, list, str], optional
+        Defaults to APSIM default Report Name if not specified.
+        - If iterable, all report tables are read and aggregated into one DataFrame.
 
-     simulations: Union[tuple, list], optional
-         List of simulation names to run. If None, runs all simulations.
+    simulations: Union[tuple, list], optional
+        List of simulation names to run. If None, runs all simulations.
 
-     clean_up: bool, optional
-         If True, removes the existing database before running.
+    clean_up: bool, optional
+        If True, removes the existing database before running.
 
-     verbose: bool, optional
-         If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
+    verbose: bool, optional
+        If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-     kwargs: **dict
-         Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
-         a csv file directly stored at the location of the running apsimx file.
+    kwargs: **dict
+        Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
+        a csv file directly stored at the location of the running apsimx file.
 
-     Warning:
-     --------------
-     In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
+    Warning:
+    --------------
+    In my experience with Models.exe, CSV outputs are not always overwritten; after edits, stale results can persist. Proceed with caution.
 
 
-     Returns
-     -------
-         Instance of the respective model class e.g.,  ApsimModel, ExperimentManager.
-    ``RuntimeError``
-         Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
-         mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
+    Returns
+    -------
+        Instance of the respective model class e.g.,  ApsimModel, ExperimentManager.
+   ``RuntimeError``
+        Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
+        mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
 
-    Example:
+   Example:
 
-    Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
+   Instantiate an ``apsimNGpy.core.apsim.ApsimModel`` object and run::
 
-           from apsimNGpy.core.apsim import ApsimModel
-           model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
-           model.run(report_name = "Report")
-           # check if the run was successful
-           model.ran_ok
-           'True'
+          from apsimNGpy.core.apsim import ApsimModel
+          model = ApsimModel(model= 'Maize')# replace with your path to the apsim template model
+          model.run(report_name = "Report")
+          # check if the run was successful
+          model.ran_ok
+          'True'
 
-    .. note::
+   .. note::
 
-       Updates the ``ran_ok`` flag to ``True`` if no error was encountered.
+      Updates the ``ran_ok`` flag to ``True`` if no error was encountered.
 
    .. seealso::
 
-        Related APIs: :attr:`results` and :meth:`get_simulated_output`.
+       Related APIs: :attr:`results` and :meth:`get_simulated_output`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.rename_model(self, model_type, *, old_name, new_name) (inherited)
 
@@ -3542,7 +3558,7 @@ Classes
 
    .. seealso::
 
-       Related APIs: :meth:`add_model` and :meth:`move_model`.
+       Related APIs: :meth:`add_model`, :meth:`clone_model`and :meth:`move_model`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
@@ -4051,6 +4067,10 @@ Classes
          '[Clock].Today as Date']}
    The new report variable is appended at the end of the existing ones
 
+   .. seealso::
+
+       Related APIs: :meth:`remove_report_variable` and :meth:`add_db_table`.
+
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.remove_report_variable(self, variable_spec: 'Union[list, tuple, str]', report_name: 'str | None' = None) (inherited)
 
    Remove one or more variable expressions from an APSIM Report component.
@@ -4108,6 +4128,10 @@ Classes
     '[Maize].Grain.Total.Wt',
     '[Maize].Grain.N',
     '[Maize].Total.Wt']
+
+   .. seealso::
+
+       Related APIs: :meth:`add_report_variable` and :meth:`add_db_table`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.remove_model(self, model_type: 'Models', model_name: 'str' = None) (inherited)
 
