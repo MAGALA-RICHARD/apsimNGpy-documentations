@@ -2693,6 +2693,10 @@ Classes
    -------
    matplotlib.axes.Axes
 
+   .. seealso::
+
+          Related APIs: :meth:`cat_plot`.
+
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.distribution(self, x, *, table=None, **kwargs) (inherited)
 
    Plot a uni-variate distribution/histogram using :func:`seaborn.histplot`.
@@ -2766,6 +2770,10 @@ Classes
 
    =============================================================================================================================================
 
+   .. seealso::
+
+      Related APIs: :meth:`plot_mva`.
+
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.scatter_plot(self, table=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
 
    Scatter plot using :func:`seaborn.scatterplot` with flexible aesthetic mappings.
@@ -2805,6 +2813,9 @@ Classes
    reference https://seaborn.pydata.org/generated/seaborn.catplot.html
 
    =========================================================================================================
+   .. seealso::
+
+        Related APIs: :meth:`distribution`.
 
 apsimNGpy.core.config
 ---------------------
@@ -5579,6 +5590,10 @@ Classes
    -------
    matplotlib.axes.Axes
 
+   .. seealso::
+
+          Related APIs: :meth:`cat_plot`.
+
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.distribution(self, x, *, table=None, **kwargs) (inherited)
 
    Plot a uni-variate distribution/histogram using :func:`seaborn.histplot`.
@@ -5652,6 +5667,10 @@ Classes
 
    =============================================================================================================================================
 
+   .. seealso::
+
+      Related APIs: :meth:`plot_mva`.
+
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.scatter_plot(self, table=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
 
    Scatter plot using :func:`seaborn.scatterplot` with flexible aesthetic mappings.
@@ -5691,6 +5710,9 @@ Classes
    reference https://seaborn.pydata.org/generated/seaborn.catplot.html
 
    =========================================================================================================
+   .. seealso::
+
+        Related APIs: :meth:`distribution`.
 
 apsimNGpy.core.mult_cores
 -------------------------
