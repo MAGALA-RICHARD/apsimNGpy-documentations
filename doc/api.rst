@@ -835,7 +835,7 @@ Classes
 
    Edit a model component located by an APSIM path, dispatching to type-specific editors.
 
-   This method resolves a node under ``self.Simulations`` using an APSIM path, then
+   This method resolves a node under `instance.Simulations` using an APSIM path, then
    edits that node by delegating to an editor based on the node’s runtime type.
    It supports common APSIM NG components (e.g., Weather, Manager, Cultivar, Clock,
    Soil subcomponents, Report, SurfaceOrganicMatter). Unsupported types raise
@@ -857,7 +857,6 @@ Classes
        Editor-specific keyword arguments. Accepted keys depend on the resolved model or component type
        (see *Type-specific editing*). The following special keys are intercepted and **not**
        forwarded verbatim:
-       - `simulation` / `simulations` : selector(s) for cultivar or multi-simulation edits.
        - `verbose`: bool; enable additional logging in some editors.
 
    Type-specific editing
@@ -865,23 +864,23 @@ Classes
    Dispatch is based on the resolved model type:
 
    - :class:`Models.Climate.Weather`
-     Calls ``self._set_weather_path(values, param_values=kwargs, verbose=verbose)``.
+     Calls `self._set_weather_path(values, param_values=kwargs, verbose=verbose)`.
      Typical parameters include a new weather file path (implementation-specific).
 
    - :class:`Models.Manager`
-     Validates that provided keys in ``kwargs`` match the manager script’s
-     ``Parameters[i].Key`` set; unknown keys raise :class:`ValueError`. On success,
-     updates parameter values via ``KeyValuePair[String, String]``.
+     Validates that provided keys in `kwargs` match the manager script’s
+     `Parameters[i].Key` set; unknown keys raise :class:`ValueError`. On success,
+     updates parameter values via `KeyValuePair[String, String]`.
 
    - :class:`Models.PMF.Cultivar`
-     Ensures cultivar replacements exist under ``Replacements`` (creates as needed), then calls
-     ``_edit_in_cultivar(self, model_name=values.Name, simulations=simulations, param_values=kwargs, verbose=verbose)``.
+     Ensures cultivar replacements exist under `Replacements` (creates as needed), then calls
+     `_edit_in_cultivar(model_name=values.Name, simulations=simulations, param_values=kwargs, verbose=verbose)`.
 
    - :class:`Models.Clock`
-     Calls ``self._set_clock_vars(values, param_values=kwargs)`` (e.g., ``StartDate``, ``EndDate``).
+     Calls `self._set_clock_vars(values, param_values=kwargs)` (e.g., `StartDate`, `EndDate`).
 
    - Soil components
-     ``Models.Soils.Physical`` | ``Models.Soils.Chemical`` | ``Models.Soils.Organic`` |
+     `Models.Soils.Physical` | `Models.Soils.Chemical` | `Models.Soils.Organic` |
      ``Models.Soils.Water`` | ``Models.Soils.Solute``
      Delegates to ``self.replace_soils_values_by_path(node_path=path, **kwargs)``.
 
@@ -890,9 +889,9 @@ Classes
 
    - :class:`Models.Surface.SurfaceOrganicMatter`
      Requires at least one of:
-     ``'SurfOM'``, ``'InitialCPR'``, ``'InitialResidueMass'``, ``'InitialCNR'``, ``'IncorporatedP'``.
+     `'SurfOM'`, `'InitialCPR'`, `'InitialResidueMass'`, `'InitialCNR'`, `'IncorporatedP'`.
      If none supplied, raises :class:`ValueError`. Calls
-     ``self._set_surface_organic_matter(values, param_values=kwargs, verbose=verbose)``.
+
 
    Behavior
    --------
@@ -969,37 +968,33 @@ Classes
 
    Parameters
    ----------
-   ``model_class``: str
+   model_class: str, required
        Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
 
-   ``simulations``: Union[str, list], optional
+   simulations: Union[str, list], optional
        A simulation name or list of simulation names in which to search. Defaults to all simulations in the model.
 
-   ``model_name``: str
+   model_name: str, required
        Name of the model instance to modify.
-   ``cachit``: bool, optional
-      used to cache results for model selection. Defaults to False. Important during repeated calls, like in optimization.
-      please do not cache, when you expect to make model adjustment, such as adding new child nodes
 
-   ``cache_size``: int, optional
-      maximum number of caches that can be made to avoid memory leaks in case cacheit is true. Defaults to 300
+   kwargs
+   ------
 
-   ``**kwargs``: dict
-       Additional keyword arguments specific to the model type. These vary by component:
+   Additional keyword arguments specific to the model type. Atleast one key word argument is required. These vary by component:
 
-       - ``Weather``:
-           - ``weather_file`` (str): Path to the weather ``.met`` file.
+   Models.Climate.Weather:
+       `weather_file` (str): Path to the weather `.met` file.
 
-       - ``Clock``:
-           - Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
+   Models.Clock:
+       Date properties such as `Start` and `End` in ISO format (e.g., '2021-01-01').
 
-       - ``Manager``:
-           - Variables to update in the Manager script using `update_mgt_by_path`.
+   Models.Manager:
+       Variables to update in the Manager script using `update_mgt_by_path`.
 
-       - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
-           - Variables to replace using ``replace_soils_values_by_path``.
+   Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:
+       Variables to replace using `replace_soils_values_by_path`.
 
-       Valid ``parameters`` are shown below;
+       Valid `parameters` are shown below;
 
        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
        | Soil Model Type  | **Supported key word arguments**                                                                                                     |
@@ -1011,15 +1006,21 @@ Classes
        | Chemical         | Depth, PH, Thickness                                                                                                                 |
        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 
-       - ``Report``:
-           - ``report_name`` (str): Name of the report model (optional depending on structure).
-           - ``variable_spec`` (list[str] or str): Variables to include in the report.
-           - ``set_event_names`` (list[str], optional): Events that trigger the report.
+   Models.Report:
+     report_name (str):
+        Name of the report model (optional depending on structure).
+     variable_spec`   (list[str] or str):
+        Variables to include in the report.
+     set_event_names` (list[str], optional):
+        Events that trigger the report.
 
-       - ``Cultivar``:
-           - ``commands`` (str): APSIM path to the cultivar parameter to update.
-           - ``values`` (Any): Value to assign.
-           - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
+   Models.PMF.Cultivar:
+       commands (str):
+          APSIM path to the cultivar parameter to update.
+       values: (Any)
+          Value to assign.
+       cultivar_manager: (str)
+          Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
    .. warning::
 
@@ -3655,7 +3656,7 @@ Classes
 
    Edit a model component located by an APSIM path, dispatching to type-specific editors.
 
-   This method resolves a node under ``self.Simulations`` using an APSIM path, then
+   This method resolves a node under `instance.Simulations` using an APSIM path, then
    edits that node by delegating to an editor based on the node’s runtime type.
    It supports common APSIM NG components (e.g., Weather, Manager, Cultivar, Clock,
    Soil subcomponents, Report, SurfaceOrganicMatter). Unsupported types raise
@@ -3677,7 +3678,6 @@ Classes
        Editor-specific keyword arguments. Accepted keys depend on the resolved model or component type
        (see *Type-specific editing*). The following special keys are intercepted and **not**
        forwarded verbatim:
-       - `simulation` / `simulations` : selector(s) for cultivar or multi-simulation edits.
        - `verbose`: bool; enable additional logging in some editors.
 
    Type-specific editing
@@ -3685,23 +3685,23 @@ Classes
    Dispatch is based on the resolved model type:
 
    - :class:`Models.Climate.Weather`
-     Calls ``self._set_weather_path(values, param_values=kwargs, verbose=verbose)``.
+     Calls `self._set_weather_path(values, param_values=kwargs, verbose=verbose)`.
      Typical parameters include a new weather file path (implementation-specific).
 
    - :class:`Models.Manager`
-     Validates that provided keys in ``kwargs`` match the manager script’s
-     ``Parameters[i].Key`` set; unknown keys raise :class:`ValueError`. On success,
-     updates parameter values via ``KeyValuePair[String, String]``.
+     Validates that provided keys in `kwargs` match the manager script’s
+     `Parameters[i].Key` set; unknown keys raise :class:`ValueError`. On success,
+     updates parameter values via `KeyValuePair[String, String]`.
 
    - :class:`Models.PMF.Cultivar`
-     Ensures cultivar replacements exist under ``Replacements`` (creates as needed), then calls
-     ``_edit_in_cultivar(self, model_name=values.Name, simulations=simulations, param_values=kwargs, verbose=verbose)``.
+     Ensures cultivar replacements exist under `Replacements` (creates as needed), then calls
+     `_edit_in_cultivar(model_name=values.Name, simulations=simulations, param_values=kwargs, verbose=verbose)`.
 
    - :class:`Models.Clock`
-     Calls ``self._set_clock_vars(values, param_values=kwargs)`` (e.g., ``StartDate``, ``EndDate``).
+     Calls `self._set_clock_vars(values, param_values=kwargs)` (e.g., `StartDate`, `EndDate`).
 
    - Soil components
-     ``Models.Soils.Physical`` | ``Models.Soils.Chemical`` | ``Models.Soils.Organic`` |
+     `Models.Soils.Physical` | `Models.Soils.Chemical` | `Models.Soils.Organic` |
      ``Models.Soils.Water`` | ``Models.Soils.Solute``
      Delegates to ``self.replace_soils_values_by_path(node_path=path, **kwargs)``.
 
@@ -3710,9 +3710,9 @@ Classes
 
    - :class:`Models.Surface.SurfaceOrganicMatter`
      Requires at least one of:
-     ``'SurfOM'``, ``'InitialCPR'``, ``'InitialResidueMass'``, ``'InitialCNR'``, ``'IncorporatedP'``.
+     `'SurfOM'`, `'InitialCPR'`, `'InitialResidueMass'`, `'InitialCNR'`, `'IncorporatedP'`.
      If none supplied, raises :class:`ValueError`. Calls
-     ``self._set_surface_organic_matter(values, param_values=kwargs, verbose=verbose)``.
+
 
    Behavior
    --------
@@ -3789,37 +3789,33 @@ Classes
 
    Parameters
    ----------
-   ``model_class``: str
+   model_class: str, required
        Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
 
-   ``simulations``: Union[str, list], optional
+   simulations: Union[str, list], optional
        A simulation name or list of simulation names in which to search. Defaults to all simulations in the model.
 
-   ``model_name``: str
+   model_name: str, required
        Name of the model instance to modify.
-   ``cachit``: bool, optional
-      used to cache results for model selection. Defaults to False. Important during repeated calls, like in optimization.
-      please do not cache, when you expect to make model adjustment, such as adding new child nodes
 
-   ``cache_size``: int, optional
-      maximum number of caches that can be made to avoid memory leaks in case cacheit is true. Defaults to 300
+   kwargs
+   ------
 
-   ``**kwargs``: dict
-       Additional keyword arguments specific to the model type. These vary by component:
+   Additional keyword arguments specific to the model type. Atleast one key word argument is required. These vary by component:
 
-       - ``Weather``:
-           - ``weather_file`` (str): Path to the weather ``.met`` file.
+   Models.Climate.Weather:
+       `weather_file` (str): Path to the weather `.met` file.
 
-       - ``Clock``:
-           - Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
+   Models.Clock:
+       Date properties such as `Start` and `End` in ISO format (e.g., '2021-01-01').
 
-       - ``Manager``:
-           - Variables to update in the Manager script using `update_mgt_by_path`.
+   Models.Manager:
+       Variables to update in the Manager script using `update_mgt_by_path`.
 
-       - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
-           - Variables to replace using ``replace_soils_values_by_path``.
+   Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:
+       Variables to replace using `replace_soils_values_by_path`.
 
-       Valid ``parameters`` are shown below;
+       Valid `parameters` are shown below;
 
        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
        | Soil Model Type  | **Supported key word arguments**                                                                                                     |
@@ -3831,15 +3827,21 @@ Classes
        | Chemical         | Depth, PH, Thickness                                                                                                                 |
        +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 
-       - ``Report``:
-           - ``report_name`` (str): Name of the report model (optional depending on structure).
-           - ``variable_spec`` (list[str] or str): Variables to include in the report.
-           - ``set_event_names`` (list[str], optional): Events that trigger the report.
+   Models.Report:
+     report_name (str):
+        Name of the report model (optional depending on structure).
+     variable_spec`   (list[str] or str):
+        Variables to include in the report.
+     set_event_names` (list[str], optional):
+        Events that trigger the report.
 
-       - ``Cultivar``:
-           - ``commands`` (str): APSIM path to the cultivar parameter to update.
-           - ``values`` (Any): Value to assign.
-           - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
+   Models.PMF.Cultivar:
+       commands (str):
+          APSIM path to the cultivar parameter to update.
+       values: (Any)
+          Value to assign.
+       cultivar_manager: (str)
+          Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
    .. warning::
 
