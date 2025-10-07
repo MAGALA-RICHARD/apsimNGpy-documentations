@@ -778,7 +778,7 @@ Classes
 
    Parameters:
    -----------
-   model_class: (str or Models object)
+   model_type: (str or Models object)
       The type of model to add, e.g., `Models.Clock` or just `"Clock"`. if the APSIM Models namespace is exposed to the current script, then model_class can be Models.Clock without strings quotes
 
    rename (str):
@@ -943,7 +943,7 @@ Classes
 
    Parameters
    ----------
-   model_class: str, required
+   model_type: str, required
        Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
 
    simulations: Union[str, list], optional
@@ -951,6 +951,8 @@ Classes
 
    model_name: str, required
        Name of the model instance to modify.
+   verbose: bool, optional
+       print the status of the editting activities
 
    kwargs
    ------
@@ -1011,7 +1013,7 @@ Classes
 
    Example of how to edit a cultivar model::
 
-       model.edit_model(model_class='Cultivar',
+       model.edit_model(model_type='Cultivar',
             simulations='Simulation',
             commands='[Phenology].Juvenile.Target.FixedValue',
             values=256,
@@ -1022,7 +1024,7 @@ Classes
    Edit a soil organic matter module::
 
        model.edit_model(
-            model_class='Organic',
+            model_type='Organic',
             simulations='Simulation',
             model_name='Organic',
             Carbon=1.23)
@@ -1030,7 +1032,7 @@ Classes
    Edit multiple soil layers::
 
        model.edit_model(
-            model_class='Organic',
+            model_type='Organic',
             simulations='Simulation',
             model_name='Organic',
             Carbon=[1.23, 1.0])
@@ -1038,7 +1040,7 @@ Classes
    Example of how to edit solute models::
 
       model.edit_model(
-            model_class='Solute',
+            model_type='Solute',
             simulations='Simulation',
             model_name='NH4',
             InitialValues=0.2)
@@ -1051,7 +1053,7 @@ Classes
    Edit a manager script::
 
       model.edit_model(
-           model_class='Manager',
+           model_type='Manager',
            simulations='Simulation',
            model_name='Sow using a variable rule',
            population=8.4)
@@ -1059,13 +1061,13 @@ Classes
    Edit surface organic matter parameters::
 
        model.edit_model(
-           model_class='SurfaceOrganicMatter',
+           model_type='SurfaceOrganicMatter',
            simulations='Simulation',
            model_name='SurfaceOrganicMatter',
            InitialResidueMass=2500)
 
        model.edit_model(
-           model_class='SurfaceOrganicMatter',
+           model_type='SurfaceOrganicMatter',
            simulations='Simulation',
            model_name='SurfaceOrganicMatter',
            InitialCNR=85)
@@ -1073,7 +1075,7 @@ Classes
    Edit Clock start and end dates::
 
        model.edit_model(
-           model_class='Clock',
+           model_type='Clock',
            simulations='Simulation',
            model_name='Clock',
            Start='2021-01-01',
@@ -1082,7 +1084,7 @@ Classes
    Edit report _variables::
 
        model.edit_model(
-           model_class='Report',
+           model_type='Report',
            simulations='Simulation',
            model_name='Report',
            variable_spec='[Maize].AboveGround.Wt as abw')
@@ -1090,7 +1092,7 @@ Classes
    Multiple report _variables::
 
        model.edit_model(
-           model_class='Report',
+           model_type='Report',
            simulations='Simulation',
            model_name='Report',
            variable_spec=[
@@ -3624,7 +3626,7 @@ Classes
 
    Parameters:
    -----------
-   model_class: (str or Models object)
+   model_type: (str or Models object)
       The type of model to add, e.g., `Models.Clock` or just `"Clock"`. if the APSIM Models namespace is exposed to the current script, then model_class can be Models.Clock without strings quotes
 
    rename (str):
@@ -3789,7 +3791,7 @@ Classes
 
    Parameters
    ----------
-   model_class: str, required
+   model_type: str, required
        Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
 
    simulations: Union[str, list], optional
@@ -3797,6 +3799,8 @@ Classes
 
    model_name: str, required
        Name of the model instance to modify.
+   verbose: bool, optional
+       print the status of the editting activities
 
    kwargs
    ------
@@ -3857,7 +3861,7 @@ Classes
 
    Example of how to edit a cultivar model::
 
-       model.edit_model(model_class='Cultivar',
+       model.edit_model(model_type='Cultivar',
             simulations='Simulation',
             commands='[Phenology].Juvenile.Target.FixedValue',
             values=256,
@@ -3868,7 +3872,7 @@ Classes
    Edit a soil organic matter module::
 
        model.edit_model(
-            model_class='Organic',
+            model_type='Organic',
             simulations='Simulation',
             model_name='Organic',
             Carbon=1.23)
@@ -3876,7 +3880,7 @@ Classes
    Edit multiple soil layers::
 
        model.edit_model(
-            model_class='Organic',
+            model_type='Organic',
             simulations='Simulation',
             model_name='Organic',
             Carbon=[1.23, 1.0])
@@ -3884,7 +3888,7 @@ Classes
    Example of how to edit solute models::
 
       model.edit_model(
-            model_class='Solute',
+            model_type='Solute',
             simulations='Simulation',
             model_name='NH4',
             InitialValues=0.2)
@@ -3897,7 +3901,7 @@ Classes
    Edit a manager script::
 
       model.edit_model(
-           model_class='Manager',
+           model_type='Manager',
            simulations='Simulation',
            model_name='Sow using a variable rule',
            population=8.4)
@@ -3905,13 +3909,13 @@ Classes
    Edit surface organic matter parameters::
 
        model.edit_model(
-           model_class='SurfaceOrganicMatter',
+           model_type='SurfaceOrganicMatter',
            simulations='Simulation',
            model_name='SurfaceOrganicMatter',
            InitialResidueMass=2500)
 
        model.edit_model(
-           model_class='SurfaceOrganicMatter',
+           model_type='SurfaceOrganicMatter',
            simulations='Simulation',
            model_name='SurfaceOrganicMatter',
            InitialCNR=85)
@@ -3919,7 +3923,7 @@ Classes
    Edit Clock start and end dates::
 
        model.edit_model(
-           model_class='Clock',
+           model_type='Clock',
            simulations='Simulation',
            model_name='Clock',
            Start='2021-01-01',
@@ -3928,7 +3932,7 @@ Classes
    Edit report _variables::
 
        model.edit_model(
-           model_class='Report',
+           model_type='Report',
            simulations='Simulation',
            model_name='Report',
            variable_spec='[Maize].AboveGround.Wt as abw')
@@ -3936,7 +3940,7 @@ Classes
    Multiple report _variables::
 
        model.edit_model(
-           model_class='Report',
+           model_type='Report',
            simulations='Simulation',
            model_name='Report',
            variable_spec=[
