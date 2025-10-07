@@ -2887,6 +2887,10 @@ Functions
    >>> # Set the desired path (either the bin folder or a parent)
    >>> config.set_apsim_bin_path('/path/to/APSIM/2025/bin', verbose=True)
 
+   .. seealso::
+
+       Related API: :meth:`get_apsim_bin_path`.
+
 .. py:function:: apsimNGpy.core.config.stamp_name_with_version(file_name)
 
    we stamp every file name with the version, which allows the user to open it in the appropriate version it was created
