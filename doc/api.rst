@@ -159,19 +159,19 @@ Classes
 
    Parameters:
    ----------
-   ``report_name`` : str, optional (default: 'Report')
+   report_name: str, optional (default: 'Report')
        The name of the aPSim report to be used for simulation results.
 
-   ``start`` : str, optional
+   start: str, optional
        The start date for the simulation (e.g., '01-01-2023'). If provided, it will change the simulation start date.
 
-   ``end`` : str, optional
+   end: str, optional
        The end date for the simulation (e.g., '3-12-2023'). If provided, it will change the simulation end date.
 
-   ``spin_var`` : str, optional (default: 'Carbon'). the difference between the start and end date will determine the spin-up period
+   spin_var: str, optional (default: 'Carbon'). the difference between the start and end date will determine the spin-up period
        The variable representing the child of spin-up operation. Supported values are 'Carbon' or 'DUL'.
 
-   ``Returns:``
+   Returns:
    -------
    self : ApsimModel
        The modified ``ApsimModel`` object after the spin-up operation.
@@ -183,12 +183,12 @@ Classes
    default models because those need to be executed first to generate a database.
 
    The rationale for this method is that you can just access the results from the previous session without
-   running it, if the database is in the same location as the apsimx file.
+   running it if the database is in the same location as the apsimx file.
 
    Since apsimNGpy clones the apsimx file, the original file is kept with attribute name `_model`, that is what is
    being used to access the dataset
 
-   table (str): name of the database table to read if none of all tables are returned
+   table: (str) name of the database table to read if none of all tables are returned
 
     Returns: pandas.DataFrame
 
@@ -1286,7 +1286,7 @@ Classes
    model_name: str
         Name of the model e.g., Clock, or Clock2, whatever name that was given to the model
 
-   New_parent_name``:  str
+   new_parent_name``:  str
       The new parent names =Field2, this field is optional but important if you have nested simulations
 
    Returns:
@@ -2476,39 +2476,42 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.add_db_table(self, variable_spec: 'list' = None, set_event_names: 'list' = None, rename: 'str' = None, simulation_name: 'Union[str, list, tuple]' = <UserOptionMissing>) (inherited)
 
-   Adds a new database table, which ``APSIM`` calls ``Report`` (Models.Report) to the ``Simulation`` under a Simulation Zone.
+    Adds a new database table, which ``APSIM`` calls ``Report`` (Models.Report) to the ``Simulation`` under a Simulation Zone.
 
-   This is different from ``add_report_variable`` in that it creates a new, named report
-   table that collects data based on a given list of _variables and events. actu
+    This is different from ``add_report_variable`` in that it creates a new, named report
+    table that collects data based on a given list of _variables and events. actu
 
-   Parameters:
-   ----------
-   variable_spec: (list or str)
-       A list of APSIM variable paths to include in the report table.
-       If a string is passed, it will be converted to a list.
+    Parameters:
+    ----------
+    variable_spec: (list or str)
+        A list of APSIM variable paths to include in the report table.
+        If a string is passed, it will be converted to a list.
 
-   set_event_names: (list or str, optional):
-      A list of APSIM events that trigger the recording of _variables.
-       Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
-       '[crop_name].Harvesting' etc.
+    set_event_names: (list or str, optional):
+       A list of APSIM events that trigger the recording of _variables.
+        Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
+        '[crop_name].Harvesting' etc.
 
-   rename: (str): The name of the report table to be added. Defaults to 'my_table'.
+    rename: (str): The name of the report table to be added. Defaults to 'my_table'.
 
-   simulation_name: (str,tuple, or list, Optional)
-      if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
-      If it is none, all Simulations in the file will be updated with the new db_table
+    simulation_name: (str,tuple, or list, Optional)
+       if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
+       If it is none, all Simulations in the file will be updated with the new db_table
 
-   Raises:
-   ______
-   ``ValueError``: If no variable_spec is provided.
-   ``RuntimeError``: If no Zone is found in the current simulation scope.
+    Raises:
+    ______
+    ``ValueError``: If no variable_spec is provided.
+    ``RuntimeError``: If no Zone is found in the current simulation scope.
 
-   Examples::
+    Examples::
 
-          from apsimNGpy.core.apsim import ApsimModel
-          model = ApsimModel('Maize')
-          model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1'], rename='report2')
-          model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1', '[Maize].Grain.Total.Wt*10 as Yield'], rename='report2', set_event_names=['[Maize].Harvesting','[Clock].EndOfYear' ])
+           from apsimNGpy.core.apsim import ApsimModel
+           model = ApsimModel('Maize')
+           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1'], rename='report2')
+           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1', '[Maize].Grain.Total.Wt*10 as Yield'], rename='report2', set_event_names=['[Maize].Harvesting','[Clock].EndOfYear' ])
+   .. seealso::
+
+    Related APIs: :meth:`remove_report_variables` and :meth:`add_report_variables`.
 
    .. py:attribute:: apsimNGpy.core.apsim.ApsimModel.Datastore (inherited)
 
@@ -3066,19 +3069,19 @@ Classes
 
    Parameters:
    ----------
-   ``report_name`` : str, optional (default: 'Report')
+   report_name: str, optional (default: 'Report')
        The name of the aPSim report to be used for simulation results.
 
-   ``start`` : str, optional
+   start: str, optional
        The start date for the simulation (e.g., '01-01-2023'). If provided, it will change the simulation start date.
 
-   ``end`` : str, optional
+   end: str, optional
        The end date for the simulation (e.g., '3-12-2023'). If provided, it will change the simulation end date.
 
-   ``spin_var`` : str, optional (default: 'Carbon'). the difference between the start and end date will determine the spin-up period
+   spin_var: str, optional (default: 'Carbon'). the difference between the start and end date will determine the spin-up period
        The variable representing the child of spin-up operation. Supported values are 'Carbon' or 'DUL'.
 
-   ``Returns:``
+   Returns:
    -------
    self : ApsimModel
        The modified ``ApsimModel`` object after the spin-up operation.
@@ -3090,12 +3093,12 @@ Classes
    default models because those need to be executed first to generate a database.
 
    The rationale for this method is that you can just access the results from the previous session without
-   running it, if the database is in the same location as the apsimx file.
+   running it if the database is in the same location as the apsimx file.
 
    Since apsimNGpy clones the apsimx file, the original file is kept with attribute name `_model`, that is what is
    being used to access the dataset
 
-   table (str): name of the database table to read if none of all tables are returned
+   table: (str) name of the database table to read if none of all tables are returned
 
     Returns: pandas.DataFrame
 
@@ -4193,7 +4196,7 @@ Classes
    model_name: str
         Name of the model e.g., Clock, or Clock2, whatever name that was given to the model
 
-   New_parent_name``:  str
+   new_parent_name``:  str
       The new parent names =Field2, this field is optional but important if you have nested simulations
 
    Returns:
@@ -5355,39 +5358,42 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_db_table(self, variable_spec: 'list' = None, set_event_names: 'list' = None, rename: 'str' = None, simulation_name: 'Union[str, list, tuple]' = <UserOptionMissing>) (inherited)
 
-   Adds a new database table, which ``APSIM`` calls ``Report`` (Models.Report) to the ``Simulation`` under a Simulation Zone.
+    Adds a new database table, which ``APSIM`` calls ``Report`` (Models.Report) to the ``Simulation`` under a Simulation Zone.
 
-   This is different from ``add_report_variable`` in that it creates a new, named report
-   table that collects data based on a given list of _variables and events. actu
+    This is different from ``add_report_variable`` in that it creates a new, named report
+    table that collects data based on a given list of _variables and events. actu
 
-   Parameters:
-   ----------
-   variable_spec: (list or str)
-       A list of APSIM variable paths to include in the report table.
-       If a string is passed, it will be converted to a list.
+    Parameters:
+    ----------
+    variable_spec: (list or str)
+        A list of APSIM variable paths to include in the report table.
+        If a string is passed, it will be converted to a list.
 
-   set_event_names: (list or str, optional):
-      A list of APSIM events that trigger the recording of _variables.
-       Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
-       '[crop_name].Harvesting' etc.
+    set_event_names: (list or str, optional):
+       A list of APSIM events that trigger the recording of _variables.
+        Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
+        '[crop_name].Harvesting' etc.
 
-   rename: (str): The name of the report table to be added. Defaults to 'my_table'.
+    rename: (str): The name of the report table to be added. Defaults to 'my_table'.
 
-   simulation_name: (str,tuple, or list, Optional)
-      if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
-      If it is none, all Simulations in the file will be updated with the new db_table
+    simulation_name: (str,tuple, or list, Optional)
+       if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
+       If it is none, all Simulations in the file will be updated with the new db_table
 
-   Raises:
-   ______
-   ``ValueError``: If no variable_spec is provided.
-   ``RuntimeError``: If no Zone is found in the current simulation scope.
+    Raises:
+    ______
+    ``ValueError``: If no variable_spec is provided.
+    ``RuntimeError``: If no Zone is found in the current simulation scope.
 
-   Examples::
+    Examples::
 
-          from apsimNGpy.core.apsim import ApsimModel
-          model = ApsimModel('Maize')
-          model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1'], rename='report2')
-          model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1', '[Maize].Grain.Total.Wt*10 as Yield'], rename='report2', set_event_names=['[Maize].Harvesting','[Clock].EndOfYear' ])
+           from apsimNGpy.core.apsim import ApsimModel
+           model = ApsimModel('Maize')
+           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1'], rename='report2')
+           model.add_db_table(variable_spec=['[Clock].Today', '[Soil].Nutrient.TotalC[1]/1000 as SOC1', '[Maize].Grain.Total.Wt*10 as Yield'], rename='report2', set_event_names=['[Maize].Harvesting','[Clock].EndOfYear' ])
+   .. seealso::
+
+    Related APIs: :meth:`remove_report_variables` and :meth:`add_report_variables`.
 
    .. py:attribute:: apsimNGpy.core.experimentmanager.ExperimentManager.Datastore (inherited)
 
