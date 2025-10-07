@@ -1959,14 +1959,14 @@ Classes
    Parameters
    ----------
    weather_file: str | Path
-       Path (absolute or relative) to a ``.met`` file. If the suffix is missing,
-       ``.met`` is appended. A ``FileNotFoundError`` is raised if the final path
+       Path (absolute or relative) to a `.met` file. If the suffix is missing,
+       `.met` is appended. A `FileNotFoundError` is raised if the final path
        does not exist. The path is resolved to an absolute path to avoid ambiguity.
    simulations: None | str | Iterable[str], optional
        Which simulations to update:
-       - ``None`` (default): update **all** Weather nodes found under ``self.Simulations``.
-       - ``str`` or iterable of names: only update Weather nodes within the named
-         simulation(s). A ``ValueError`` is raised if a requested simulation has
+       - `None` (default): update *all* Weather nodes found under `Simulations`.
+       - `str` or iterable of names: only update Weather nodes within the named
+         simulation(s). A `ValueError` is raised if a requested simulation has
          no Weather nodes.
 
    Returns
@@ -1982,8 +1982,8 @@ Classes
 
    Side Effects
    ------------
-   Sets ``w.FileName`` for each targeted ``Models.Climate.Weather`` node to the
-   resolved path of ``weather_file``. The file is **not** copied; only the path
+   Sets `w.FileName` for each targeted `Models.Climate.Weather` node to the
+   resolved path of `weather_file`. The file is *not* copied; only the path
    inside the APSIM document is changed.
 
    Notes
@@ -4868,14 +4868,14 @@ Classes
    Parameters
    ----------
    weather_file: str | Path
-       Path (absolute or relative) to a ``.met`` file. If the suffix is missing,
-       ``.met`` is appended. A ``FileNotFoundError`` is raised if the final path
+       Path (absolute or relative) to a `.met` file. If the suffix is missing,
+       `.met` is appended. A `FileNotFoundError` is raised if the final path
        does not exist. The path is resolved to an absolute path to avoid ambiguity.
    simulations: None | str | Iterable[str], optional
        Which simulations to update:
-       - ``None`` (default): update **all** Weather nodes found under ``self.Simulations``.
-       - ``str`` or iterable of names: only update Weather nodes within the named
-         simulation(s). A ``ValueError`` is raised if a requested simulation has
+       - `None` (default): update *all* Weather nodes found under `Simulations`.
+       - `str` or iterable of names: only update Weather nodes within the named
+         simulation(s). A `ValueError` is raised if a requested simulation has
          no Weather nodes.
 
    Returns
@@ -4891,8 +4891,8 @@ Classes
 
    Side Effects
    ------------
-   Sets ``w.FileName`` for each targeted ``Models.Climate.Weather`` node to the
-   resolved path of ``weather_file``. The file is **not** copied; only the path
+   Sets `w.FileName` for each targeted `Models.Climate.Weather` node to the
+   resolved path of `weather_file`. The file is *not* copied; only the path
    inside the APSIM document is changed.
 
    Notes
