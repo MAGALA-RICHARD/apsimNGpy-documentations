@@ -6552,6 +6552,10 @@ Functions
    results : DataFrame or list or dict of DataFrames
        Simulation output(s) from the specified report table(s).
 
+   .. seealso::
+
+         Related API: :func:`~apsimNGpy.core.runner.run_model_externally`
+
 .. py:function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=True) -> '[pd.DataFrame]'
 
    This function acts as a wrapper around the ``APSIM`` command line recursive tool, automating
@@ -6590,6 +6594,10 @@ Functions
 
         df = run_from_dir(str(mock_data), pattern="*.apsimx", verbose=True, recursive=True)  # All files that match the pattern
 
+   .. seealso::
+
+      Related API: :func:`~apsimNGpy.core.runner.run_model_externally`
+
 .. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
 
    Run APSIM externally (cross-platform) with safe defaults.
@@ -6599,6 +6607,10 @@ Functions
    - Uses UTF-8 decoding with error replacement.
    - Enforces a timeout and returns a CompletedProcess-like object.
    - Does NOT use shell, eliminating injection risk.
+
+   .. seealso::
+
+         Related API: :func:`~apsimNGpy.core.runner.run_from_dir`
 
 .. py:function:: apsimNGpy.core.runner.upgrade_apsim_file(file: 'str', verbose: 'bool' = True)
 
@@ -6693,17 +6705,40 @@ Functions
 
    Deletes all rows from all user-defined tables in the given SQLite database.
 
-   ``db``: Path to the SQLite database file.
+   Parameters
+   ----------
+   db : str | Path
+       Path to the SQLite database file.
 
-   ``return``: None
+   Returns
+   -------
+   None
+       This function does not return a value.
 
-.. py:function:: apsimNGpy.core_utils.database_utils.clear_table(db, table_name)
+   .. seealso::
 
-   ``db``: path to db.
+      Related API: :meth:`~apsimNGpy.core_utils.database_utils.clear_table`
 
-   ``table_name``: name of the table to clear.
+.. py:function:: apsimNGpy.core_utils.database_utils.clear_table(db: 'Union[str, Path]', table_name: 'str')
 
-   ``return``: None
+   Deletes all rows from all user-defined tables in the given SQLite database.
+
+   Parameters
+   ----------
+   db : str | Path
+       Path to the SQLite database file.
+
+   table_name : str
+        Name of the target table to delete from the database `db`
+
+   Returns
+   -------
+   None
+       This function does not return a value.
+
+   .. seealso::
+
+      Related API: :meth:`~apsimNGpy.core_utils.database_utils.clear_all_tables`
 
 .. py:function:: apsimNGpy.core_utils.database_utils.dataview_to_dataframe(_model, reports)
 
@@ -6906,18 +6941,24 @@ Functions
                con.close()
    Examples:
 
-   >>> from pandas import DataFrame
-   >>> from apsimNGpy.core_utils.database_utils import write_results_to_sql, read_db_table
-   >>> @write_results_to_sql(db_path="db.db", table="Report", if_exists="replace")
-   ... def get_report():
-   ...     # Return a DataFrame to be written to SQLite
-   ...     return DataFrame({"x": [2], "y": [4]})
+       >>> from pandas import DataFrame
+       >>> from apsimNGpy.core_utils.database_utils import write_results_to_sql, read_db_table
+       >>> @write_results_to_sql(db_path="db.db", table="Report", if_exists="replace")
+       ... def get_report():
+       ...     # Return a DataFrame to be written to SQLite
+       ...     return DataFrame({"x": [2], "y": [4]})
 
-   >>> _ = get_report()  # executes and writes to db.db::Report
-   >>> db = read_db_table("db.db", report_name="Report")
-   >>> print(db.to_string(index=False))
-    x  y
-    2  4
+       >>> _ = get_report()  # executes and writes to db.db::Report
+       >>> db = read_db_table("db.db", report_name="Report")
+       >>> print(db.to_string(index=False))
+        x  y
+        2  4
+
+   .. seealso::
+
+         Related API:
+         :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.save_tosql`,
+         :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.insert_data`
 
 apsimNGpy.exceptions
 --------------------
