@@ -3216,7 +3216,7 @@ Classes
         ['.Simulations.Experiment.Factors.Permutation.initial_carbon',
         '.Simulations.Experiment.Factors.Permutation.carbon']
 
-    Tt is showing two factors, but as shown above, they have the same arguments
+   The output from the code snippet above is showing two factors, but as shown above, they have the same arguments
 
     2.Invalid specification path to the target parameters
     -------------------------------------------------------------------------
