@@ -6244,6 +6244,175 @@ Classes
 
    Default: ``True``
 
+apsimNGpy.core.runner
+---------------------
+
+Functions
+^^^^^^^^^
+
+.. py:function:: apsimNGpy.core.runner.collect_csv_by_model_path(model_path) -> 'dict[Any, Any]'
+
+   Collects the data from the simulated model after run
+
+.. py:function:: apsimNGpy.core.runner.collect_csv_from_dir(dir_path, pattern, recursive=False) -> 'pd.DataFrame'
+
+   Collects the csf=v files in a directory using a pattern, usually the pattern resembling the one of the simulations used to generate those csv files
+   ``dir_path``: (str) path where to look for csv files
+   ``recursive``: (bool) whether to recursively search through the directory defaults to false:
+   ``pattern``:(str) pattern of the apsim files that produced the csv files through simulations
+
+   returns
+       a generator object with pandas data frames
+
+   Example::
+
+        mock_data = Path.home() / 'mock_data' # this a mock directory substitute accordingly
+        df1= list(collect_csv_from_dir(mock_data, '*.apsimx', recursive=True)) # collects all csf file produced by apsimx recursively
+        df2= list(collect_csv_from_dir(mock_data, '*.apsimx',  recursive=False)) # collects all csf file produced by apsimx only in the specified directory directory
+
+.. py:function:: apsimNGpy.core.runner.get_apsim_version(verbose: 'bool' = False)
+
+   Display version information of the apsim model currently in the apsimNGpy config environment.
+
+   ``verbose``: (bool) Prints the version information ``instantly``
+
+   Example::
+
+           apsim_version = get_apsim_version()
+
+.. py:function:: apsimNGpy.core.runner.get_matching_files(dir_path: 'Union[str, Path]', pattern: 'str', recursive: 'bool' = False) -> 'List[Path]'
+
+   Search for files matching a given pattern in the specified directory.
+
+   Args:
+       ``dir_path`` (Union[str, Path]): The directory path to search in.
+       ``pattern`` (str): The filename pattern to match (e.g., "*.apsimx").
+       ``recursive`` (bool): If True, search recursively; otherwise, search only in the top-level directory.
+
+   Returns:
+       List[Path]: A ``list`` of matching Path objects.
+
+   Raises:
+       ``ValueError: `` If no matching files are found.
+
+.. py:function:: apsimNGpy.core.runner.run(self, report_name=None, simulations=None, clean=False, multithread=True, verbose=False, get_dict=False, **kwargs)
+
+   Run APSIM model simulations.
+
+   Parameters
+   ----------
+   report_name : str or list of str, optional
+       Name(s) of report table(s) to retrieve. If not specified or missing in the database,
+       the model still runs and results can be accessed later.
+
+   simulations : list of str, optional
+       Names of simulations to run. If None, all simulations are executed.
+
+   clean : bool, default False
+       If True, deletes the existing database file before running.
+
+   multithread : bool, default True
+       If True, runs simulations using multiple threads.
+
+   verbose : bool, default False
+       If True, prints diagnostic messages (e.g., missing report names).
+
+   get_dict : bool, default False
+       If True, returns results as a dictionary {table_name: DataFrame}.
+
+   Returns
+   -------
+   results : DataFrame or list or dict of DataFrames
+       Simulation output(s) from the specified report table(s).
+
+.. py:function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=True) -> '[pd.DataFrame]'
+
+   This function acts as a wrapper around the ``APSIM`` command line recursive tool, automating
+   the execution of APSIM simulations on all files matching a given pattern in a specified
+   directory. It facilitates running simulations recursively across directories and outputs
+   the results for each file are stored to a csv file in the same directory as the file'.
+
+   What this function does is that it makes it easy to retrieve the simulated files, returning a generator that
+   yields data frames
+
+   Parameters
+   ____________
+   dir_path: (str or Path, required).
+      The path to the directory where the simulation files are located.
+   pattern: (str, required)
+      The file pattern to match for simulation files (e.g., "*.apsimx").
+   recursive: (bool, optional)
+     Recursively search through subdirectories for files matching the file specification.
+   write_tocsv: (bool, optional)
+     specify whether to write the simulation results to a csv. if true, the exported csv files bear the same name as the input apsimx file name
+       with suffix reportname.csv. if it is ``False``. If ``verbose``, the progress is printed as the elapsed time and the successfully saved csv
+
+   :returns:
+       generator that yields data frames knitted by pandas
+
+
+   Example::
+
+        mock_data = Path.home() / 'mock_data'  # As an example, let's mock some data; move the APSIM files to this directory before running
+        mock_data.mkdir(parents=True, exist_ok=True)
+
+        from apsimNGpy.core.base_data import load_default_simulations
+        path_to_model = load_default_simulations(crop='maize', simulations_object=False)  # Get base model
+
+        ap = path_to_model.replicate_file(k=10, path=mock_data) if not list(mock_data.rglob("*.apsimx")) else None
+
+        df = run_from_dir(str(mock_data), pattern="*.apsimx", verbose=True, recursive=True)  # All files that match the pattern
+
+.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
+
+   Run APSIM externally (cross-platform) with safe defaults.
+
+   - Validates an executable and model path.
+   - Captures stderr always; stdout only if verbose.
+   - Uses UTF-8 decoding with error replacement.
+   - Enforces a timeout and returns a CompletedProcess-like object.
+   - Does NOT use shell, eliminating injection risk.
+
+.. py:function:: apsimNGpy.core.runner.upgrade_apsim_file(file: 'str', verbose: 'bool' = True)
+
+   Upgrade a file to the latest version of the .apsimx file format without running the file.
+
+   Parameters
+   ---------------
+   ``file``: file to be upgraded to the newest version
+
+   ``verbose``: Write detailed messages to stdout when a conversion starts/finishes.
+
+   ``return``
+      The latest version of the .apsimx file with the same name as the input file
+
+   Example::
+
+       from apsimNGpy.core.base_data import load_default_simulations
+       filep =load_default_simulations(simulations_object= False)# this is just an example perhaps you need to pass a lower verion file because this one is extracted from thecurrent model as the excutor
+       upgrade_file =upgrade_apsim_file(filep, verbose=False)
+
+Classes
+^^^^^^^
+
+.. py:class:: apsimNGpy.core.runner.RunError
+
+   Raised when the APSIM external run fails.
+
+   .. py:method:: apsimNGpy.core.runner.RunError.with_traceback() (inherited)
+
+   Exception.with_traceback(tb) --
+   set self.__traceback__ to tb and return self.
+
+   .. py:method:: apsimNGpy.core.runner.RunError.add_note() (inherited)
+
+   Exception.add_note(note) --
+   add a note to the exception
+
+   .. py:attribute:: apsimNGpy.core.runner.RunError.args (inherited)
+
+   Default: ``<attribute 'args' of 'BaseException' objects>``
+
 apsimNGpy.core_utils.database_utils
 -----------------------------------
 
