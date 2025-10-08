@@ -2824,6 +2824,21 @@ Functions
 
            APSIM_BIN_PATH / APSIM_PATH / APSIM/ Models
 
+.. py:function:: apsimNGpy.core.config.get_apsim_bin_path()
+
+   Returns the path to the apsim bin folder from either auto-detection or from the path already supplied by the user
+   through the apsimNgp config.ini file in the user home dir_path. the location folder is called
+   The function is silent does not raise any exception but return empty string in all cases
+   :return:
+
+   Example::
+
+     bin_path = get_apsim_bin_path()
+
+   .. seealso::
+
+          :func:`~apsimNGpy.core.config.set_apsim_bin_path`
+
 .. py:function:: apsimNGpy.core.config.get_bin_use_history()
 
    shows the bins that have been used only those still available on the computer as valid paths are shown.
@@ -2885,47 +2900,47 @@ Functions
 
 .. py:function:: apsimNGpy.core.config.set_apsim_bin_path(path: Union[str, pathlib.Path], raise_errors: bool = True, verbose: bool = False) -> bool
 
-   Validate and write the bin path to the config file, where it is accessed by ``get_apsim_bin_path``.
+    Validate and write the bin path to the config file, where it is accessed by ``get_apsim_bin_path``.
 
-   Parameters
-   ___________
-   path : Union[str, Path]
-       The provided `path` should point to (or contain) the APSIM `bin` directory that
-       includes the required binaries:
-         - Windows: Models.dll AND Models.exe
-         - macOS/Linux: Models.dll AND Models (unix executable)
-       If `path` is a parent directory, the function will search recursively to locate
-       a matching `bin` directory. The first match is used.
+    Parameters
+    ___________
+    path : Union[str, Path]
+        The provided `path` should point to (or contain) the APSIM `bin` directory that
+        includes the required binaries:
+          - Windows: Models.dll AND Models.exe
+          - macOS/Linux: Models.dll AND Models (unix executable)
+        If `path` is a parent directory, the function will search recursively to locate
+        a matching `bin` directory. The first match is used.
 
-   raise_errors : bool, default is True
-       Whether to raise an error in case of errors. for testing purposes only
+    raise_errors : bool, default is True
+        Whether to raise an error in case of errors. for testing purposes only
 
-   verbose: bool
-      whether to print messages to the console or not
+    verbose: bool
+       whether to print messages to the console or not
 
 
-   Returns
-   -------
-   bool
-       True if the configuration was updated (or already valid and set to the same
-       resolved path), False if validation failed and `raise_errors=False`.
+    Returns
+    -------
+    bool
+        True if the configuration was updated (or already valid and set to the same
+        resolved path), False if validation failed and `raise_errors=False`.
 
-   Raises
-   ------
-   ValueError
-       If no valid APSIM binary directory is found and `raise_errors=True`.
+    Raises
+    ------
+    ValueError
+        If no valid APSIM binary directory is found and `raise_errors=True`.
 
-   Examples
-   --------
-   >>> from apsimNGpy.core import config
-   >>> # Check the current path
-   >>> current = config.get_apsim_bin_path()
-   >>> # Set the desired path (either the bin folder or a parent)
-   >>> config.set_apsim_bin_path('/path/to/APSIM/2025/bin', verbose=True)
+    Examples
+    --------
+    >>> from apsimNGpy.core import config
+    >>> # Check the current path
+    >>> current = config.get_apsim_bin_path()
+    >>> # Set the desired path (either the bin folder or a parent)
+    >>> config.set_apsim_bin_path('/path/to/APSIM/2025/bin', verbose=True)
 
    .. seealso::
 
-     - :py:meth:`get_apsim_bin_path` — returns the APSIM bin directory.
+           :func:`~apsimNGpy.core.config.get_apsim_bin_path`
 
 .. py:function:: apsimNGpy.core.config.stamp_name_with_version(file_name)
 
@@ -3022,19 +3037,35 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
-   Adds a new factor to the experiment based on an APSIM script specification.
+    Adds a new factor to the experiment based on an APSIM script specification.
 
-   Args:
-       specification (str): A script-like APSIM expression that defines the parameter variation.
-       factor_name (str, optional): A unique name for the factor; auto-generated if not provided.
-       **kwargs: Optional metadata or configuration (not yet used internally).
+   Parameters
+   ----------
+    specification: (str)
+        A script-like APSIM expression that defines the parameter variation.
 
-   Raises:
-       ValueError: If a Script-based specification references a non-existent or unlinked manager script.
+    factor_name: (str, optional)
+        A unique name for the factor. If not provided, factor_name auto-generated as the variable parameter name,
+        usually the last string before real variables in specification string.
 
-   Side Effects:
-       Inserts the factor into the appropriate parent node (Permutation or Factors).
-       If a factor at the same index already exists, it is safely deleted before inserting the new one.
+    **kwargs: Optional metadata or configuration (not yet used internally).
+
+    Raises
+    _______
+        ValueError: If a Script-based specification references a non-existent or unlinked manager script.
+
+    Side Effects:
+        Inserts the factor into the appropriate parent node (Permutation or Factors).
+        If a factor at the same index already exists, it is safely deleted before inserting the new one.
+
+   Examples::
+
+        from apsimNGpy.core.experimentmanager import ExperimentManager
+        # initialize the model
+        experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
+        # initialize experiment without permutation crossing of the factors
+        experiment.init_experiment(permutation=True)
+        experiment.add_factor('')
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
