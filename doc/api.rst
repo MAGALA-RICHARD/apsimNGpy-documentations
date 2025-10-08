@@ -3040,7 +3040,7 @@ Classes
 
    .. seealso::
 
-      :meth:`~apsimNgpy.core.experimentmanager.ExperimentManager.add_factor`
+      :meth:`add_factor`
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
@@ -3094,6 +3094,51 @@ Classes
    .. code-block:: none
 
       ['.Simulations.Experiment']
+
+   Now we are ready to add factors
+
+   1. Add a factor associated with a manager script
+   ------------------------------------------------
+
+   .. code-block:: python
+
+        experiment.add_factor(specification=f"[Sow using a variable rule].Script.Population = 6, 10", factor_name='Population')
+
+   2. Add a factor associated with a soil sode e.g., soil organic like initial soil organic carbon
+
+   .. code-block:: python
+
+       experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
+
+   Check how many factors have been added to the model
+
+   .. code-block:: python
+
+     experiment.n_factors
+       2
+   it is possible to inspect the factors
+
+   .. code-block:: python
+
+     experiment.inspect_model('Models.Factorial.Factor')
+
+   .. code-block:: none
+
+       ['.Simulations.Experiment.Factors.Permutation.Nitrogen',
+       '.Simulations.Experiment.Factors.Permutation.'initial_carbon']
+
+   Checking the names of the factors as given
+
+   .. code-block:: python
+
+      experiment.inspect_model('Models.Factorial.Factor', fullpath=False)
+
+   .. code-block:: none
+      ['Nitrogen', 'initial_carbon']
+
+   Saving the experiment is the same as in :class:`~apsimNGpy.core.ApsimModel
+
+   .. code-block:: python
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
