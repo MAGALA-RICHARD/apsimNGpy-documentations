@@ -2368,7 +2368,7 @@ Classes
    factor_name: (str), required
        expected to be the user-desired name of the factor being specified e.g., population
 
-   This method is overwritten in :class:`~apsimNGpy.experimentmanager.ExperimentManager` class.
+   This method is overwritten in :class:`~apsimNGpy.core.experimentmanager.ExperimentManager` class.
 
    @deprecated and will be removed in future versions for this class.
 
