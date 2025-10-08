@@ -6762,76 +6762,88 @@ Functions
 
    ⚠️ Proceed with caution: this operation is irreversible.
 
-.. py:function:: apsimNGpy.core_utils.database_utils.get_db_table_names(d_b)
+.. py:function:: apsimNGpy.core_utils.database_utils.get_db_table_names(db)
 
-   ``d_b``: database name or path.
+   Parameter
+   -----------
+   db : database name or path.
 
-   ``return:`` all names ``SQL`` database table ``names`` existing within the database
+   return: list of table names
+      All names ``SQL`` database table ``names`` existing within the database
 
-.. py:function:: apsimNGpy.core_utils.database_utils.read_db_table(db, report_name)
+.. py:function:: apsimNGpy.core_utils.database_utils.read_db_table(db: 'Union[str, Path]', report_name: 'str')
 
-   Connects to a specified database, retrieves the entire contents of a specified table,
-   and returns the results as a Pandas DataFrame.
+   Connects to a specified SQLite database, retrieves the entire contents of a
+   specified table, and returns the results as a pandas DataFrame.
 
-   Args:
-       ``db`` (str): The database file path or identifier to connect to.
+   Parameters
+   ----------
+   db : str | Path
+       Path to the SQLite database file.
+   report_name : str
+       Name of the table in the database from which to retrieve data.
 
-       ``report_name`` (str): name of the database table: The name of the table in the database from which to retrieve data.
+   Returns
+   -------
+   pandas.DataFrame
+       A DataFrame containing all records from the specified table.
 
-   Returns:
-       ``pandas.DataFrame``: A DataFrame containing all the records from the specified table.
+   Examples
+   --------
+   >>> database_path = 'your_database.sqlite'
+   >>> table_name = 'your_table'
+   >>> ddf = read_db_table(database_path, table_name)
+   >>> print(ddf)
 
-   The function establishes a connection to the specified SQLite database, constructs and executes a SQL query
-   to select all records from the specified table, fetches the results into a DataFrame, then closes the database connection.
-
-   Examples:
-       # Define the database and the table name
-
-       >>> database_path = 'your_database.sqlite'
-       >>> table_name = 'your_table'
-
-       # Get the table data as a DataFrame
-
-       >>> ddf = read_db_table(database_path, table_name)
-
-       # Work with the DataFrame
-       >>> print(ddf)
-
-   Note:
-       - Ensure that the database path and table name are correct.
-       - The function uses 'sqlite3' for connecting to the database; make sure it is appropriate for your database.
-       - This function retrieves all records from the specified table. Use with caution if the table is very large.
+   Notes
+   -----
+   - Establishes a connection to the SQLite database, executes ``SELECT *`` on the
+     specified table, loads the result into a DataFrame, and then closes the
+     connection.
+   - Ensure that the database path and table name are correct.
+   - This function retrieves **all** records; use with caution for very large
+     tables.
 
 .. py:function:: apsimNGpy.core_utils.database_utils.read_with_query(db, query)
 
-   Executes an SQL query on a specified database and returns the result as a Pandas DataFrame.
+   Executes an SQL query on a specified SQLite database and returns the result as a
+   pandas DataFrame.
 
-   Args:
-   ``db`` (str): The database file path or identifier to connect to.
+   Parameters
+   ----------
+   db : str
+       Database file path or identifier to connect to.
+   query : str
+       SQL query string to execute. Must be a valid ``SELECT`` statement.
 
-   ``query`` (str): The SQL query string to be executed. The query should be a valid SQL SELECT statement.
+   Returns
+   -------
+   pandas.DataFrame
+       A DataFrame containing the results of the SQL query.
 
-   ``Returns:``
-   ``pandas.DataFrame``: A DataFrame containing the results of the SQL query.
+   Examples
+   --------
+   # Define the database and the query
+   >>> database_path = 'your_database.sqlite'
+   >>> sql_query = 'SELECT * FROM your_table WHERE condition = values'
 
-   The function opens a connection to the specified SQLite database, executes the given SQL query,
-   fetches the results into a DataFrame, then closes the database connection.
+   # Get the query result as a DataFrame
+   >>> df = read_with_query(database_path, sql_query)
 
-   Example:
-       # Define the database and the query
+   # Work with the DataFrame
+   >>> print(df)
 
-       >>> database_path = 'your_database.sqlite'
-       >>> sql_query = 'SELECT * FROM your_table WHERE condition = values'
+   Notes
+   -----
+   - Opens a connection to the SQLite database, executes the given query,
+     loads the results into a DataFrame, and then closes the connection.
+   - Ensure that the database path and query are correct and that the query
+     is a proper SQL ``SELECT`` statement.
+   - Uses ``sqlite3`` for the connection; confirm it is appropriate for your database.
 
-       # Get the query result as a DataFrame
+   .. seealso::
 
-       >>>df = read_with_query(database_path, sql_query)
-
-       # Work with the DataFrame
-       >>> print(df)
-
-   Note: Ensure that the database path and the query are correct and that the query is a proper SQL SELECT statement.
-   The function uses ``sqlite3`` for connecting to the database; make sure it is appropriate for your database.
+      Related API: :meth:`~apsimNGpy.core_utils.database_utils.read_db_table`
 
 .. py:function:: apsimNGpy.core_utils.database_utils.write_results_to_sql(db_path: 'Union[str, Path]', table: 'str' = 'Report', *, if_exists: "Literal['fail', 'replace', 'append']" = 'append', insert_fn: 'InsertFn | None' = None, ensure_parent: 'bool' = True) -> 'Callable'
 
