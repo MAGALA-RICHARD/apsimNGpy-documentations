@@ -2256,6 +2256,12 @@ Classes
          (be mindful of the difference between *Simulations* (root) and an individual
          *Simulation*).
 
+   .. seealso::
+
+      Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`,
+      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`,
+      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_paramters_by_path`
+
    .. py:property:: apsimNGpy.core.apsim.ApsimModel.configs (inherited)
 
    records activities or modifications to the model including changes to the file
@@ -5428,6 +5434,12 @@ Classes
        - “Full path” is the APSIM tree path **relative to the Simulations node**
          (be mindful of the difference between *Simulations* (root) and an individual
          *Simulation*).
+
+   .. seealso::
+
+      Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`,
+      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`,
+      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_paramters_by_path`
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.configs (inherited)
 
