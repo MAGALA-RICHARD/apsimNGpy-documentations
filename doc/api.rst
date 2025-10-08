@@ -5802,6 +5802,10 @@ Classes
    results: (Pd.DataFrame, dict) The results that will be inserted into the table
    table: str (name of the table to insert)
 
+   .. seealso::
+
+      :func:`~apsimNGpy.core_utils.database_utils.write_results_to_sql`
+
    .. py:property:: apsimNGpy.core.mult_cores.MultiCoreManager.tables
 
    Summarizes all the tables that have been created from the simulations
@@ -6134,7 +6138,7 @@ Functions
    Raises
    ------
    NotImplementedError
-       If `method` is not one of `"string"` or `"file"`.
+       If `method` is not one of `string` or `file`.
    AttributeError
        If the underlying APSIM ``FileFormat`` type does not expose the
        expected reader method (environment/binaries misconfigured).
