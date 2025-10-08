@@ -3203,7 +3203,8 @@ Classes
        experiment.init_experiment(permutation=True)
        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='carbon')
-    By default specification are evaluated based on all the factor arguments, therefore, the above
+
+    By default, specifications are evaluated based on all the factor arguments. Therefore, the above
     example will produce two identical factors that are not ideal. the code below proves this argument.
 
     .. code-block:: python
@@ -3216,6 +3217,34 @@ Classes
         '.Simulations.Experiment.Factors.Permutation.carbon']
 
     Tt is showing two factors, but as shown above, they have the same arguments
+
+    2.Invalid specification path to the target parameters
+    -------------------------------------------------------------------------
+    This can occur in several ways, but the most common case is referencing models not available in the script,
+     or adding quotes to variable descriptions
+
+    .. code-block:: python
+
+       from apsimNGpy.core.experimentmanager import ExperimentManager
+       # initialize the model
+       experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
+       # initialize experiment without permutation crossing of the factors
+       experiment.init_experiment(permutation=True)
+
+    Invalid path because of extra quotes on the level set of the factors::
+
+       experiment.add_factor(specification='[Organic].Carbon[1] = "1.2, 1.8"', factor_name='initial_carbon')
+
+    correct alternative::
+
+        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
+
+    Invalid path because of extra space::
+
+       experiment.add_factor(specification='[Organic]. Carbon[1] = "1.2, 1.8"', factor_name='initial_carbon')
+
+    correct alternative::
+        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
