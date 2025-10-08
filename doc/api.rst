@@ -6219,7 +6219,7 @@ Functions
 
    Parameters
    ---------
-   bin_path: Union[str, Path, None],
+   bin_path: Union[str, Path, None]
         default is the current bin_path for apsimNGpy, used only when bin_path is None.
 
    :returns:
