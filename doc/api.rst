@@ -661,7 +661,9 @@ Classes
 
    .. seealso::
 
-       Related APIs: :meth:`add_model`, :meth:`clone_model`and :meth:`move_model`.
+       Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.add_model`,
+       :meth:`~apsimNGpy.core.apsim.ApsimModel.clone_model`, and
+       :meth:`~apsimNGpy.core.apsim.ApsimModel.move_model`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
@@ -3832,7 +3834,9 @@ Classes
 
    .. seealso::
 
-       Related APIs: :meth:`add_model`, :meth:`clone_model`and :meth:`move_model`.
+       Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.add_model`,
+       :meth:`~apsimNGpy.core.apsim.ApsimModel.clone_model`, and
+       :meth:`~apsimNGpy.core.apsim.ApsimModel.move_model`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None) (inherited)
 
