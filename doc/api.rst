@@ -6823,15 +6823,15 @@ Functions
 
    Examples
    --------
-   # Define the database and the query
-   >>> database_path = 'your_database.sqlite'
-   >>> sql_query = 'SELECT * FROM your_table WHERE condition = values'
+   Define the database and the query
 
-   # Get the query result as a DataFrame
-   >>> df = read_with_query(database_path, sql_query)
+   .. code-block:: python
 
-   # Work with the DataFrame
-   >>> print(df)
+       database_path = 'your_database.sqlite'
+       sql_query = 'SELECT * FROM your_table WHERE condition = values'
+
+       # Get the query result as a DataFrame
+       df = read_with_query(database_path, sql_query)
 
    Notes
    -----
@@ -6839,7 +6839,7 @@ Functions
      loads the results into a DataFrame, and then closes the connection.
    - Ensure that the database path and query are correct and that the query
      is a proper SQL ``SELECT`` statement.
-   - Uses ``sqlite3`` for the connection; confirm it is appropriate for your database.
+   - Uses `sqlite3` for the connection; confirm it is appropriate for your database.
 
    .. seealso::
 
