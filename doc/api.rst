@@ -2258,9 +2258,10 @@ Classes
 
    .. seealso::
 
-      Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`,
-      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`,
-      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_paramters_by_path`
+          Related APIs:
+          :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`,
+          :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`,
+          :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path`
 
    .. py:property:: apsimNGpy.core.apsim.ApsimModel.configs (inherited)
 
@@ -5437,9 +5438,10 @@ Classes
 
    .. seealso::
 
-      Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`,
-      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`,
-      :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_paramters_by_path`
+          Related APIs:
+          :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`,
+          :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`,
+          :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path`
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.configs (inherited)
 
