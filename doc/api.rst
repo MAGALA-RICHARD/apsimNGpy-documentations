@@ -3044,120 +3044,126 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
-      Adds a new factor to the experiment based on an APSIM script specification.
+       Adds a new factor to the experiment based on an APSIM script specification.
 
-     Parameters
-     ----------
-      specification: (str)
-          A script-like APSIM expression that defines the parameter variation.
+      Parameters
+      ----------
+       specification: (str)
+           A script-like APSIM expression that defines the parameter variation.
 
-      factor_name: (str, optional)
-          A unique name for the factor. If not provided, factor_name auto-generated as the variable parameter name,
-          usually the last string before real variables in specification string.
+       factor_name: (str, optional)
+           A unique name for the factor. If not provided, factor_name auto-generated as the variable parameter name,
+           usually the last string before real variables in specification string.
 
-      **kwargs: Optional metadata or configuration (not yet used internally).
+       **kwargs: Optional metadata or configuration (not yet used internally).
 
-      Raises
-      _______
-          ValueError: If a Script-based specification references a non-existent or unlinked manager script.
+       Raises
+       _______
+           ValueError: If a Script-based specification references a non-existent or unlinked manager script.
 
-      Side Effects:
-          Inserts the factor into the appropriate parent node (Permutation or Factors).
-          If a factor at the same index already exists, it is safely deleted before inserting the new one.
+       Side Effects:
+           Inserts the factor into the appropriate parent node (Permutation or Factors).
+           If a factor at the same index already exists, it is safely deleted before inserting the new one.
 
-     Examples::
+      Examples::
 
-          from apsimNGpy.core.experimentmanager import ExperimentManager
-          # initialize the model
-          experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
-          # initialize experiment without permutation crossing of the factors
-          experiment.init_experiment(permutation=True)
+           from apsimNGpy.core.experimentmanager import ExperimentManager
+           # initialize the model
+           experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
+           # initialize experiment without permutation crossing of the factors
+           experiment.init_experiment(permutation=True)
 
-   All methods from :class:`~apsimNGpy.core.apsim.ApsimModel` are available in this
-   class and are not altered in any way. For example, we can still inspect, run,
-   and visualize the results:
+    All methods from :class:`~apsimNGpy.core.apsim.ApsimModel` are available in this
+    class and are not altered in any way. For example, we can still inspect, run,
+    and visualize the results:
+
+    .. code-block:: python
+
+       experiment.inspect_model('Models.Manager')
+
+    .. code-block:: none
+
+       ['.Simulations.Experiment.Simulation.Field.Sow using a variable rule',
+        '.Simulations.Experiment.Simulation.Field.Fertilise at sowing',
+        '.Simulations.Experiment.Simulation.Field.Harvest']
+
+    .. code-block:: python
+
+       experiment.inspect_model('Models.Factorial.Experiment')
+
+    .. code-block:: none
+
+       ['.Simulations.Experiment']
+
+    Now we are ready to add factors
+
+    1. Add a factor associated with a manager script
+    ------------------------------------------------
+
+    .. code-block:: python
+
+         experiment.add_factor(specification=f"[Sow using a variable rule].Script.Population = 6, 10", factor_name='Population')
+
+    2. Add a factor associated with a soil sode e.g., soil organic like initial soil organic carbon
+    -----------------------------------------------------------------------------------------------
+
+    .. code-block:: python
+
+        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
+
+    Check how many factors have been added to the model
+
+    .. code-block:: python
+
+      experiment.n_factors
+        2
+    it is possible to inspect the factors
+
+    .. code-block:: python
+
+      experiment.inspect_model('Models.Factorial.Factor')
+
+    .. code-block:: none
+
+        ['.Simulations.Experiment.Factors.Permutation.Nitrogen',
+        '.Simulations.Experiment.Factors.Permutation.'initial_carbon']
+
+    Checking the names of the factors as given
+
+    .. code-block:: python
+
+       experiment.inspect_model('Models.Factorial.Factor', fullpath=False)
+
+    .. code-block:: none
+       ['Nitrogen', 'initial_carbon']
+
+    We are ready to :meth: `~apsimNGpy.experimentmanager.ExperimentManager.run` the model
+
+    .. code-block:: python
+
+         experiment.run()
+         # get results
+         df = experiment.results
+         # compute the mean across each experiment
+         df.groupby(['Population', 'initial_carbon'])['Yield'].mean()
+
+    .. code-block:: none
+
+                 Population  initial_carbon
+        10          1.2               6287.538183
+                    1.8               6225.861601
+        6           1.2               5636.529504
+                    1.8               5608.971306
+        Name: Yield, dtype: float64
+
+    Saving the experiment is the same as in :class:`~apsimNGpy.core.apsim.ApsimModel`
 
    .. code-block:: python
 
-      experiment.inspect_model('Models.Manager')
+       experiment.save()
 
-   .. code-block:: none
-
-      ['.Simulations.Experiment.Simulation.Field.Sow using a variable rule',
-       '.Simulations.Experiment.Simulation.Field.Fertilise at sowing',
-       '.Simulations.Experiment.Simulation.Field.Harvest']
-
-   .. code-block:: python
-
-      experiment.inspect_model('Models.Factorial.Experiment')
-
-   .. code-block:: none
-
-      ['.Simulations.Experiment']
-
-   Now we are ready to add factors
-
-   1. Add a factor associated with a manager script
-   ------------------------------------------------
-
-   .. code-block:: python
-
-        experiment.add_factor(specification=f"[Sow using a variable rule].Script.Population = 6, 10", factor_name='Population')
-
-   2. Add a factor associated with a soil sode e.g., soil organic like initial soil organic carbon
-   -----------------------------------------------------------------------------------------------
-
-   .. code-block:: python
-
-       experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
-
-   Check how many factors have been added to the model
-
-   .. code-block:: python
-
-     experiment.n_factors
-       2
-   it is possible to inspect the factors
-
-   .. code-block:: python
-
-     experiment.inspect_model('Models.Factorial.Factor')
-
-   .. code-block:: none
-
-       ['.Simulations.Experiment.Factors.Permutation.Nitrogen',
-       '.Simulations.Experiment.Factors.Permutation.'initial_carbon']
-
-   Checking the names of the factors as given
-
-   .. code-block:: python
-
-      experiment.inspect_model('Models.Factorial.Factor', fullpath=False)
-
-   .. code-block:: none
-      ['Nitrogen', 'initial_carbon']
-
-   We are read to :meth: `~apsimNGpy.experimentmanager.ExperimentManager.run` the model
-
-   .. code-block:: python
-
-        experiment.run()
-        # get results
-        df = experiment.results
-        # compute the mean across each experiment
-        df.groupby(['Population', 'initial_carbon'])['Yield'].mean()
-   .. code-block:: none
-
-            Population  initial_carbon
-   10          1.2               6287.538183
-               1.8               6225.861601
-   6           1.2               5636.529504
-               1.8               5608.971306
-   Name: Yield, dtype: float64
-
-   Saving the experiment is the same as in :class:`~apsimNGpy.core.ApsimModel
-
-   .. code-block:: python
+   See more details in :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.save`. or in:
+   :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
