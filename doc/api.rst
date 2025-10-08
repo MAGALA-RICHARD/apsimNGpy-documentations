@@ -7356,6 +7356,7 @@ Functions
 
     >>> for _ in run_parallel(download, urls, use_thread=True, verbose=True):
     ...     pass
+
     .. seealso::
 
            :func:`~apsimNGpy.parallel.process.custom_parallel_chunks`
