@@ -6215,12 +6215,14 @@ Functions
 
 .. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified(bin_path: Union[str, pathlib.Path, NoneType] = None) -> bool
 
-   Checks if the APSIM.CORE.dll is present in the bin path. Normally, the new APSIM version has this dll file
-   paramters
-   ---------
-   bin_path: Union[str, Path, None], default is the current bin_path for apsimNGpy, used only when bin_path is None.
+   Checks if the APSIM.CORE.dll is present in the bin path. Normally, the new APSIM version has this dll file.
 
-   returns:
+   Parameters
+   ---------
+   bin_path: Union[str, Path, None],
+        default is the current bin_path for apsimNGpy, used only when bin_path is None.
+
+   :returns:
      bool
 
 Classes
