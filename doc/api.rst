@@ -5894,6 +5894,10 @@ Classes
    0       1   10.2  0.8
    >>> mgr.save("outputs/simulations.db")
 
+   .. seealso::
+
+      :func:`~apsimNGpy.core_utils.database_utils.write_results_to_sql`
+
    .. py:method:: apsimNGpy.core.mult_cores.MultiCoreManager.save_tocsv(self, path_or_buf, **kwargs)
 
    Persist simulation results to a SQLite database table.
@@ -6219,8 +6223,8 @@ Functions
 
    Parameters
    ---------
-   bin_path: Union[str, Path, None]
-        default is the current bin_path for apsimNGpy, used only when bin_path is None.
+   bin_path: Union[str, Path, None].
+        Default is the current bin_path for apsimNGpy, used only when bin_path is None.
 
    :returns:
      bool
@@ -7309,49 +7313,52 @@ Functions
 
 .. py:function:: apsimNGpy.parallel.process.custom_parallel(func, iterable: 'Iterable', *args, **kwargs)
 
-   Run a function in parallel using threads or processes.
+    Run a function in parallel using threads or processes.
 
-   Parameters
-   ----------
-   func : callable
-       The function to run in parallel.
-   iterable : iterable
-       An iterable of items to be processed by ``func``.
-   *args
-       Additional positional arguments to pass to ``func``.
+    Parameters
+    ----------
+    func : callable
+        The function to run in parallel.
+    iterable : iterable
+        An iterable of items to be processed by ``func``.
+    *args
+        Additional positional arguments to pass to ``func``.
 
-   Yields
-   ------
-   Any
-       The result of ``func`` for each item in ``iterable``.
+    Yields
+    ------
+    Any
+        The result of ``func`` for each item in ``iterable``.
 
-   Other Parameters
-   ----------------
-   use_thread : bool, optional, default=False
-       If ``True``, use threads; if ``False``, use processes (recommended for CPU-bound work).
-   ncores : int, optional
-       Number of worker threads/processes. Defaults to ~50% of available CPU cores.
-   verbose : bool, optional, default=True
-       Whether to display a progress indicator.
-   progress_message : str, optional
-       Message shown alongside the progress indicator.
-       Defaults to ``f"Processing multiple jobs via {func.__name__}, please wait!"``.
-   void : bool, optional, default=False
-       If ``True``, consume results internally (do not yield). Useful for
-       side-effect–only functions.
-   unit : str, optional, default="iteration"
-       Label for the progress indicator (cosmetic only).
+   kwargs
+    ----------------
+    use_thread : bool, optional, default=False
+        If ``True``, use threads; if ``False``, use processes (recommended for CPU-bound work).
+    ncores : int, optional
+        Number of worker threads/processes. Defaults to ~50% of available CPU cores.
+    verbose : bool, optional, default=True
+        Whether to display a progress indicator.
+    progress_message : str, optional
+        Message shown alongside the progress indicator.
+        Defaults to ``f"Processing multiple jobs via {func.__name__}, please wait!"``.
+    void : bool, optional, default=False
+        If ``True``, consume results internally (do not yield). Useful for
+        side-effect–only functions.
+    unit : str, optional, default="iteration"
+        Label for the progress indicator (cosmetic only).
 
-   Examples
-   --------
-   Run with processes (CPU-bound):
+    Examples
+    --------
+    Run with processes (CPU-bound):
 
-   >>> list(run_parallel(work, range(5), use_thread=False, ncores=4))
+    >>> list(run_parallel(work, range(5), use_thread=False, ncores=4))
 
-   Run with threads (I/O-bound):
+    Run with threads (I/O-bound):
 
-   >>> for _ in run_parallel(download, urls, use_thread=True, verbose=True):
-   ...     pass
+    >>> for _ in run_parallel(download, urls, use_thread=True, verbose=True):
+    ...     pass
+    .. seealso::
+
+           :func:`~apsimNGpy.parallel.process.custom_parallel_chunks`
 
 .. py:function:: apsimNGpy.parallel.process.custom_parallel_chunks(func: 'Callable[..., Any]', jobs: 'Iterable[Iterable[Any]]', *args, **kwargs)
 
@@ -7420,6 +7427,10 @@ Functions
 
    >>> for _ in run_parallel(download, urls, use_thread=True, verbose=True):
    ...     pass
+
+   .. seealso::
+
+          :func:`~apsimNGpy.parallel.process.custom_parallel`
 
 apsimNGpy.validation.evaluator
 ------------------------------
