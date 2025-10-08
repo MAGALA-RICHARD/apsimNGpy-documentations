@@ -1566,58 +1566,59 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path(self, path, *, parameters: 'Union[list, set, tuple, str]' = None) (inherited)
 
-     Inspect and extract parameters from a model component specified by its path.
+    Inspect and extract parameters from a model component specified by its path.
 
-     Parameters:
-     -------------
-     path: str required
-        The path relative to the Models.Core.Simulations Node
+    Parameters:
+    -------------
+    path: str required
+       The path relative to the Models.Core.Simulations Node
 
-     parameters: Union[str, set, list, tuple], optional
-         A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
-         For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
+    parameters: Union[str, set, list, tuple], optional
+        A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
+        For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
 
-     kwargs:
-         Reserved for future compatibility; currently unused.
+    kwargs:
+        Reserved for future compatibility; currently unused.
 
-     Returns
-     ----------
-         Union[dict, list, pd.DataFrame, Any]
-         The format depends on the model type as shown below:
-     Weather:
-            file path(s) as string(s)
+    Returns
+    ----------
+        Union[dict, list, pd.DataFrame, Any]
+        The format depends on the model type as shown below:
+    Weather:
+           file path(s) as string(s)
 
-     Clock:
-        dictionary with start and end datetime objects (or a single datetime if only one is requested).
+    Clock:
+       dictionary with start and end datetime objects (or a single datetime if only one is requested).
 
-     Manager:
-        dictionary of script parameters.
+    Manager:
+       dictionary of script parameters.
 
-     Soil-related:
-         pandas DataFrame of layered values.
+    Soil-related:
+        pandas DataFrame of layered values.
 
-     Report:
-      A dictionary with `VariableNames` and `EventNames`.
+    Report:
+     A dictionary with `VariableNames` and `EventNames`.
 
-     Cultivar:
-     dictionary of parameter strings.
+    Cultivar:
+    dictionary of parameter strings.
 
-     Raises
-     ------
-     ``ValueError``
-         If the specified model or simulation is not found or arguments are invalid.
+    Raises
+    ------
+    ``ValueError``
+        If the specified model or simulation is not found or arguments are invalid.
 
-     ``NotImplementedError``
-         If the model type is unsupported by the current interface.
+    ``NotImplementedError``
+        If the model type is unsupported by the current interface.
 
-     Requirements
-     --------------
-     - APSIM Next Generation Python bindings (`apsimNGpy`)
-     - Python 3.10+
+    Requirements
+    --------------
+    - APSIM Next Generation Python bindings (`apsimNGpy`)
+    - Python 3.10+
 
    .. seealso::
 
-         Related API: :meth:`inspect_model_parameters`
+        Related API: :meth:`inspect_model_parameters`
+        Others: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model`, :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.edit_cultivar(self, *, CultivarName: 'str', commands: 'str', values: 'Any', **kwargs) (inherited)
 
@@ -2322,6 +2323,8 @@ Classes
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.create_experiment(self, permutation: 'bool' = True, base_name: 'str' = None, **kwargs) (inherited)
 
+    @deprecated and will be removed in future versions for this class.
+
    Initialize an ``ExperimentManager`` instance, adding the necessary models and factors.
 
    Args:
@@ -2355,13 +2358,17 @@ Classes
    Parameters:
    ----------
 
-   ``specification``: *(str), required*
-   A specification can be:
-           - 1. multiple values or categories e.g., "[Sow using a variable rule].Script.Population =4, 66, 9, 10"
-           - 2. Range of values e.g, "[Fertilise at sowing].Script.Amount = 0 to 200 step 20",
+   specification``: (str), required*
+       A specification can be:
+               - 1. multiple values or categories e.g., "[Sow using a variable rule].Script.Population =4, 66, 9, 10"
+               - 2. Range of values e.g, "[Fertilise at sowing].Script.Amount = 0 to 200 step 20",
 
-   ``factor_name``: *(str), required*
-   - expected to be the user-desired name of the factor being specified e.g., population
+   factor_name: (str), required
+       expected to be the user-desired name of the factor being specified e.g., population
+
+   This method is overwritten in :class:`~apsimNGpy.experimentmanager.ExperimentManager` class.
+
+   @deprecated and will be removed in future versions for this class.
 
    Example::
 
@@ -4730,58 +4737,59 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model_parameters_by_path(self, path, *, parameters: 'Union[list, set, tuple, str]' = None) (inherited)
 
-     Inspect and extract parameters from a model component specified by its path.
+    Inspect and extract parameters from a model component specified by its path.
 
-     Parameters:
-     -------------
-     path: str required
-        The path relative to the Models.Core.Simulations Node
+    Parameters:
+    -------------
+    path: str required
+       The path relative to the Models.Core.Simulations Node
 
-     parameters: Union[str, set, list, tuple], optional
-         A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
-         For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
+    parameters: Union[str, set, list, tuple], optional
+        A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
+        For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
 
-     kwargs:
-         Reserved for future compatibility; currently unused.
+    kwargs:
+        Reserved for future compatibility; currently unused.
 
-     Returns
-     ----------
-         Union[dict, list, pd.DataFrame, Any]
-         The format depends on the model type as shown below:
-     Weather:
-            file path(s) as string(s)
+    Returns
+    ----------
+        Union[dict, list, pd.DataFrame, Any]
+        The format depends on the model type as shown below:
+    Weather:
+           file path(s) as string(s)
 
-     Clock:
-        dictionary with start and end datetime objects (or a single datetime if only one is requested).
+    Clock:
+       dictionary with start and end datetime objects (or a single datetime if only one is requested).
 
-     Manager:
-        dictionary of script parameters.
+    Manager:
+       dictionary of script parameters.
 
-     Soil-related:
-         pandas DataFrame of layered values.
+    Soil-related:
+        pandas DataFrame of layered values.
 
-     Report:
-      A dictionary with `VariableNames` and `EventNames`.
+    Report:
+     A dictionary with `VariableNames` and `EventNames`.
 
-     Cultivar:
-     dictionary of parameter strings.
+    Cultivar:
+    dictionary of parameter strings.
 
-     Raises
-     ------
-     ``ValueError``
-         If the specified model or simulation is not found or arguments are invalid.
+    Raises
+    ------
+    ``ValueError``
+        If the specified model or simulation is not found or arguments are invalid.
 
-     ``NotImplementedError``
-         If the model type is unsupported by the current interface.
+    ``NotImplementedError``
+        If the model type is unsupported by the current interface.
 
-     Requirements
-     --------------
-     - APSIM Next Generation Python bindings (`apsimNGpy`)
-     - Python 3.10+
+    Requirements
+    --------------
+    - APSIM Next Generation Python bindings (`apsimNGpy`)
+    - Python 3.10+
 
    .. seealso::
 
-         Related API: :meth:`inspect_model_parameters`
+        Related API: :meth:`inspect_model_parameters`
+        Others: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model`, :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.edit_cultivar(self, *, CultivarName: 'str', commands: 'str', values: 'Any', **kwargs) (inherited)
 
@@ -5485,6 +5493,8 @@ Classes
       but by making copy compulsory, then, we are clearing the edited files
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.create_experiment(self, permutation: 'bool' = True, base_name: 'str' = None, **kwargs) (inherited)
+
+    @deprecated and will be removed in future versions for this class.
 
    Initialize an ``ExperimentManager`` instance, adding the necessary models and factors.
 
