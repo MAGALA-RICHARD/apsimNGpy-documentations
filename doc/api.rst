@@ -2964,12 +2964,14 @@ Classes
    permutation: (bool)
      If True, enables permutation mode; otherwise, uses standard factor crossing.
    base_simulation: (str)
-   The base simulation name to use for the experiment, if None the base simulation is selected from available simulations
+      The base simulation name to use for the experiment. If None, the base simulation is selected
+      from the available simulations
 
    Side Effects:
    ____________
        Replaces any existing ExperimentManager node with a new configuration.
        Clones the base simulation and adds it under the experiment.
+       Never mind, though all this edits are made on a cloned model.
 
    Examples::
 
@@ -2982,6 +2984,41 @@ Classes
       experiment.init_experiment(permutation=True)
       # initialize experiment with a preferred base simulation name
       experiment.init_experiment(permutation=False, base_simulation='Simulation')
+      # view the simulation tree
+      experiment.inspect_file()
+      └── Simulations: .Simulations
+       ├── DataStore: .Simulations.DataStore
+       └── Experiment: .Simulations.Experiment
+           ├── Factors: .Simulations.Experiment.Factors
+           └── Simulation: .Simulations.Experiment.Simulation
+               ├── Clock: .Simulations.Experiment.Simulation.Clock
+               ├── Field: .Simulations.Experiment.Simulation.Field
+               │   ├── Fertilise at sowing: .Simulations.Experiment.Simulation.Field.Fertilise at sowing
+               │   ├── Fertiliser: .Simulations.Experiment.Simulation.Field.Fertiliser
+               │   ├── Harvest: .Simulations.Experiment.Simulation.Field.Harvest
+               │   ├── Maize: .Simulations.Experiment.Simulation.Field.Maize
+               │   ├── Report: .Simulations.Experiment.Simulation.Field.Report
+               │   ├── Soil: .Simulations.Experiment.Simulation.Field.Soil
+               │   │   ├── Chemical: .Simulations.Experiment.Simulation.Field.Soil.Chemical
+               │   │   ├── NH4: .Simulations.Experiment.Simulation.Field.Soil.NH4
+               │   │   ├── NO3: .Simulations.Experiment.Simulation.Field.Soil.NO3
+               │   │   ├── Organic: .Simulations.Experiment.Simulation.Field.Soil.Organic
+               │   │   ├── Physical: .Simulations.Experiment.Simulation.Field.Soil.Physical
+               │   │   │   └── MaizeSoil: .Simulations.Experiment.Simulation.Field.Soil.Physical.MaizeSoil
+               │   │   ├── Urea: .Simulations.Experiment.Simulation.Field.Soil.Urea
+               │   │   └── Water: .Simulations.Experiment.Simulation.Field.Soil.Water
+               │   ├── Sow using a variable rule: .Simulations.Experiment.Simulation.Field.Sow using a variable rule
+               │   └── SurfaceOrganicMatter: .Simulations.Experiment.Simulation.Field.SurfaceOrganicMatter
+               ├── Graph: .Simulations.Experiment.Simulation.Graph
+               │   └── Series: .Simulations.Experiment.Simulation.Graph.Series
+               ├── MicroClimate: .Simulations.Experiment.Simulation.MicroClimate
+               ├── SoilArbitrator: .Simulations.Experiment.Simulation.SoilArbitrator
+               ├── Summary: .Simulations.Experiment.Simulation.Summary
+               └── Weather: .Simulations.Experiment.Simulation.Weather
+
+   .. seealso::
+
+      :meth:`~ExperimentManager.add_factor`
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
