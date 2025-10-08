@@ -3189,6 +3189,34 @@ Classes
    See more details in:
    :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
 
+   common pitfalls associated with adding factors
+   ==============================================
+   1. adding the same specification with only changes in the ``factor_name``
+   -------------------------------------------------------------------------
+
+   .. code-block:: python
+
+       from apsimNGpy.core.experimentmanager import ExperimentManager
+       # initialize the model
+       experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
+       # initialize experiment without permutation crossing of the factors
+       experiment.init_experiment(permutation=True)
+       experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
+       experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='carbon')
+    By default specification are evaluated based on all the factor arguments, therefore, the above
+    example will produce two identical factors that are not ideal. the code below proves this argument.
+
+    .. code-block:: python
+
+        experiment.save()
+        experiment.inspect_model('Models.Factorial.Factor')
+
+    .. code-block:: None
+        ['.Simulations.Experiment.Factors.Permutation.initial_carbon',
+        '.Simulations.Experiment.Factors.Permutation.carbon']
+
+    Tt is showing two factors, but as shown above, they have the same arguments
+
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
    Returns:
