@@ -3002,10 +3002,11 @@ Classes
       # view the simulation tree
       experiment.inspect_file()
 
-   The results of :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file` is inherited from the
-   :class: `~apsimNGpy.core.apsim.ApsimModel` class , but it is still useful here, for example, you can see that we added an experiment Model under Simulations as shown below.
+   The method :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file` is inherited from the
+   :class:`~apsimNGpy.core.apsim.ApsimModel` class , but it is still useful here, for example, you can see
+   that we added an experiment Model under Simulations as shown below.
 
-   .. code-block:: bash
+   .. code-block:: None
 
       └── Simulations: .Simulations
        ├── DataStore: .Simulations.DataStore
@@ -3043,42 +3044,56 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
-    Adds a new factor to the experiment based on an APSIM script specification.
+      Adds a new factor to the experiment based on an APSIM script specification.
 
-   Parameters
-   ----------
-    specification: (str)
-        A script-like APSIM expression that defines the parameter variation.
+     Parameters
+     ----------
+      specification: (str)
+          A script-like APSIM expression that defines the parameter variation.
 
-    factor_name: (str, optional)
-        A unique name for the factor. If not provided, factor_name auto-generated as the variable parameter name,
-        usually the last string before real variables in specification string.
+      factor_name: (str, optional)
+          A unique name for the factor. If not provided, factor_name auto-generated as the variable parameter name,
+          usually the last string before real variables in specification string.
 
-    **kwargs: Optional metadata or configuration (not yet used internally).
+      **kwargs: Optional metadata or configuration (not yet used internally).
 
-    Raises
-    _______
-        ValueError: If a Script-based specification references a non-existent or unlinked manager script.
+      Raises
+      _______
+          ValueError: If a Script-based specification references a non-existent or unlinked manager script.
 
-    Side Effects:
-        Inserts the factor into the appropriate parent node (Permutation or Factors).
-        If a factor at the same index already exists, it is safely deleted before inserting the new one.
+      Side Effects:
+          Inserts the factor into the appropriate parent node (Permutation or Factors).
+          If a factor at the same index already exists, it is safely deleted before inserting the new one.
 
-   Examples::
+     Examples::
 
-        from apsimNGpy.core.experimentmanager import ExperimentManager
-        # initialize the model
-        experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
-        # initialize experiment without permutation crossing of the factors
-        experiment.init_experiment(permutation=True)
+          from apsimNGpy.core.experimentmanager import ExperimentManager
+          # initialize the model
+          experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
+          # initialize experiment without permutation crossing of the factors
+          experiment.init_experiment(permutation=True)
 
-    All methods from :class:`~apsimNGpy.core.ApsimModel` are available on this class, and they are not altered in
-    any way, for example, we can still inspect, run, and visualize the results::
+   All methods from :class:`~apsimNGpy.core.apsim.ApsimModel` are available in this
+   class and are not altered in any way. For example, we can still inspect, run,
+   and visualize the results:
 
-        experiment.inspect_model('Models.Manager')
-        ['.Simulations.Experiment.Simulation.Field.Sow using a variable rule',
-          '.Simulations.Experiment.Simulation.Field.Fertilise at sowing',
-          '.Simulations.Experiment.Simulation.Field.Harvest']
+   .. code-block:: python
+
+      experiment.inspect_model('Models.Manager')
+
+   .. code-block:: none
+
+      ['.Simulations.Experiment.Simulation.Field.Sow using a variable rule',
+       '.Simulations.Experiment.Simulation.Field.Fertilise at sowing',
+       '.Simulations.Experiment.Simulation.Field.Harvest']
+
+   .. code-block:: python
+
+      experiment.inspect_model('Models.Factorial.Experiment')
+
+   .. code-block:: none
+
+      ['.Simulations.Experiment']
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
