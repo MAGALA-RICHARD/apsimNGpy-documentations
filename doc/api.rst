@@ -3186,7 +3186,7 @@ Classes
 
        experiment.save()
 
-   See more details in :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.save`. or in:
+   See more details in:
    :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
