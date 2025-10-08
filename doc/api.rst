@@ -3105,6 +3105,7 @@ Classes
         experiment.add_factor(specification=f"[Sow using a variable rule].Script.Population = 6, 10", factor_name='Population')
 
    2. Add a factor associated with a soil sode e.g., soil organic like initial soil organic carbon
+   -----------------------------------------------------------------------------------------------
 
    .. code-block:: python
 
@@ -3135,6 +3136,24 @@ Classes
 
    .. code-block:: none
       ['Nitrogen', 'initial_carbon']
+
+   We are read to :meth: `~apsimNGpy.experimentmanager.ExperimentManager.run` the model
+
+   .. code-block:: python
+
+        experiment.run()
+        # get results
+        df = experiment.results
+        # compute the mean across each experiment
+        df.groupby(['Population', 'initial_carbon'])['Yield'].mean()
+   .. code-block:: none
+
+            Population  initial_carbon
+   10          1.2               6287.538183
+               1.8               6225.861601
+   6           1.2               5636.529504
+               1.8               5608.971306
+   Name: Yield, dtype: float64
 
    Saving the experiment is the same as in :class:`~apsimNGpy.core.ApsimModel
 
