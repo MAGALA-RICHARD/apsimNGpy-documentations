@@ -2955,16 +2955,33 @@ Classes
 
    Initialize self.  See help(type(self)) for accurate signature.
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment(self, permutation=True)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment(self, permutation: bool = True, base_simulation: str = None)
 
    Initializes the factorial experiment structure inside the APSIM file.
 
-   Args:
-       permutation (bool): If True, enables permutation mode; otherwise, uses standard factor crossing.
+   Parameters
+   _____________
+   permutation: (bool)
+     If True, enables permutation mode; otherwise, uses standard factor crossing.
+   base_simulation: (str)
+   The base simulation name to use for the experiment, if None the base simulation is selected from available simulations
 
    Side Effects:
+   ____________
        Replaces any existing ExperimentManager node with a new configuration.
        Clones the base simulation and adds it under the experiment.
+
+   Examples::
+
+      from apsimNGpy.core.experimentmanager import ExperimentManager
+      # initialize the model
+      experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
+      # initialize experiment without permutation crossing of the factors
+      experiment.init_experiment(permutation=False)
+      # initialize experiment with permutation =True
+      experiment.init_experiment(permutation=True)
+      # initialize experiment with a preferred base simulation name
+      experiment.init_experiment(permutation=False, base_simulation='Simulation')
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
