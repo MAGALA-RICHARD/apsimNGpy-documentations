@@ -1651,12 +1651,13 @@ Classes
 
     Parameters
     ----------
-   ``parameters`` (dict, required) dictionary of cultivar parameters to update.
+   parameters:  (dict, required)
+      dictionary of cultivar parameters to update.
 
-   ``simulations``, optional
+   simulations : str optional
         List or tuples of simulation names to update if `None` update all simulations.
 
-   ``clear`` (bool, optional)
+   clear (bool, optional)
         If `True` remove all existing parameters, by default `False`.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.recompile_edited_model(self, out_path: 'os.PathLike') (inherited)
@@ -4888,12 +4889,13 @@ Classes
 
     Parameters
     ----------
-   ``parameters`` (dict, required) dictionary of cultivar parameters to update.
+   parameters:  (dict, required)
+      dictionary of cultivar parameters to update.
 
-   ``simulations``, optional
+   simulations : str optional
         List or tuples of simulation names to update if `None` update all simulations.
 
-   ``clear`` (bool, optional)
+   clear (bool, optional)
         If `True` remove all existing parameters, by default `False`.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.recompile_edited_model(self, out_path: 'os.PathLike') (inherited)
@@ -6544,6 +6546,28 @@ Functions
    ``dir_path``: (str) path where to look for csv files
    ``recursive``: (bool) whether to recursively search through the directory defaults to false:
    ``pattern``:(str) pattern of the apsim files that produced the csv files through simulations
+
+   returns
+       a generator object with pandas data frames
+
+   Example::
+
+        mock_data = Path.home() / 'mock_data' # this a mock directory substitute accordingly
+        df1= list(collect_csv_from_dir(mock_data, '*.apsimx', recursive=True)) # collects all csf file produced by apsimx recursively
+        df2= list(collect_csv_from_dir(mock_data, '*.apsimx',  recursive=False)) # collects all csf file produced by apsimx only in the specified directory directory
+
+.. py:function:: apsimNGpy.core.runner.collect_db_from_dir(dir_path, pattern, recursive=False) -> 'pd.DataFrame'
+
+   Collects the data in a directory using a pattern, usually the pattern resembling the one of the simulations
+     used to generate those csv files
+   Parameters
+   ----------
+   dir_path : (str)
+      path where to look for csv files
+   recursive : (bool)
+      whether to recursively search through the directory defaults to false:
+   pattern :(str)
+       pattern of the apsim files that produced the csv files through simulations
 
    returns
        a generator object with pandas data frames
