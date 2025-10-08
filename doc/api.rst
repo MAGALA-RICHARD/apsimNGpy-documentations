@@ -3036,7 +3036,7 @@ Classes
 
    .. seealso::
 
-      :meth:`~ExperimentManager.add_factor`
+      :meth:`~apsimNgpy.core.experimentmanager.ExperimentManager.add_factor`
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
