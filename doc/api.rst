@@ -3002,8 +3002,8 @@ Classes
       # view the simulation tree
       experiment.inspect_file()
 
-   The results of :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file` is inherited from the ApsimModel class
-   , but it is still useful here, for example, you can see that we added an experiment Model under Simulations as shown below.
+   The results of :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file` is inherited from the
+   :class: `~apsimNGpy.core.apsim.ApsimModel` class , but it is still useful here, for example, you can see that we added an experiment Model under Simulations as shown below.
 
    .. code-block:: bash
 
