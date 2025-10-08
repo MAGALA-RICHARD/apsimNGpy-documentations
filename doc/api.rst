@@ -2450,11 +2450,19 @@ Classes
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.inspect_file(self, *, cultivar=False, console=True, **kwargs) (inherited)
 
    Inspect the file by calling ``inspect_model()`` through ``get_model_paths.``
-   This method is important in inspecting the ``whole file`` and also getting the ``scripts paths``
+   This method is important in inspecting the `whole file` and also getting the `scripts paths`.
 
-   cultivar: i (bool) includes cultivar paths
+   Parameters
+   ----------
+   cultivar: (bool)
+      To includes cultivar paths.
 
-   console: (bool) print to the console
+   console: (bool)
+      Prints to the console if True
+
+   .. seealso::
+
+       Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model`, :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.summarize_numeric(self, data_table: 'Union[str, tuple, list]' = None, columns: 'list' = None, percentiles=(0.25, 0.5, 0.75), round=2) -> 'pd.DataFrame' (inherited)
 
@@ -3137,7 +3145,7 @@ Classes
     .. code-block:: none
        ['Nitrogen', 'initial_carbon']
 
-    We are ready to :meth: `~apsimNGpy.experimentmanager.ExperimentManager.run` the model
+    We are ready to :meth:`~apsimNGpy.experimentmanager.ExperimentManager.run` the model
 
     .. code-block:: python
 
@@ -5578,11 +5586,19 @@ Classes
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file(self, *, cultivar=False, console=True, **kwargs) (inherited)
 
    Inspect the file by calling ``inspect_model()`` through ``get_model_paths.``
-   This method is important in inspecting the ``whole file`` and also getting the ``scripts paths``
+   This method is important in inspecting the `whole file` and also getting the `scripts paths`.
 
-   cultivar: i (bool) includes cultivar paths
+   Parameters
+   ----------
+   cultivar: (bool)
+      To includes cultivar paths.
 
-   console: (bool) print to the console
+   console: (bool)
+      Prints to the console if True
+
+   .. seealso::
+
+       Related APIs: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model`, :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters`
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.summarize_numeric(self, data_table: 'Union[str, tuple, list]' = None, columns: 'list' = None, percentiles=(0.25, 0.5, 0.75), round=2) -> 'pd.DataFrame' (inherited)
 
