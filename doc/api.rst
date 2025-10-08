@@ -318,13 +318,6 @@ Classes
    In the above case, both reload = `False` or `True`, will produce the same reference path for the live
    instance class.
 
-
-   See Also
-   --------
-   recompile : Rebuild internal/compiled artifacts for the model.
-   restart_model : Reload/refresh the model instance after recompilation.
-   save_model_to_file : Legacy writer for older APSIM NG versions.
-
    .. py:property:: apsimNGpy.core.apsim.ApsimModel.results (inherited)
 
    Legacy method for retrieving simulation results.
@@ -3298,13 +3291,6 @@ Classes
    In the above case, both reload = `False` or `True`, will produce the same reference path for the live
    instance class.
 
-
-   See Also
-   --------
-   recompile : Rebuild internal/compiled artifacts for the model.
-   restart_model : Reload/refresh the model instance after recompilation.
-   save_model_to_file : Legacy writer for older APSIM NG versions.
-
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.results (inherited)
 
    Legacy method for retrieving simulation results.
@@ -5857,13 +5843,13 @@ Classes
 
    .. py:method:: apsimNGpy.core.mult_cores.MultiCoreManager.save_tosql(self, db_name: Union[str, pathlib.Path], *, table_name: str = 'aggregated_tables', if_exists: Literal['fail', 'replace', 'append'] = 'fail') -> None
 
-   Persist simulation results to a SQLite database table.
+   Write simulation results to an SQLite database table.
 
    This method writes `self.results` (a pandas DataFrame) to the given SQLite
    database. It is designed to be robust in workflows where some simulations
    may fail: any successfully simulated rows present in `self.results` are
    still saved. This is useful when an ephemeral/temporary database was used
-   during simulation and you need a durable copy.
+   during simulation, and you need a durable copy.
 
    Parameters
    ----------
@@ -6069,18 +6055,27 @@ Classes
 
    runs all provided jobs using ``processes`` or ``threads`` specified
 
-   ``threads (bool)``: threads or processes
+   Parameters
+   -----------
 
-   ``jobs (iterable[simulations paths]``: jobs to run
+   threads: (bool) default is False
+       Threads or processes, recommended is to use processes
 
-   ``n_cores (int)``: number of cores to use
+   jobs: (iterable[simulations paths]
+        jobs to run
 
-   ``clear_db (bool)``: clear the database existing data if any. defaults to True
+   n_cores: (int)
+       number of cores to use
 
-   ``kwargs``:
-     retry_rate (int, optional): how many times to retry jobs before giving up
+   clear_db: (bool)
+      For clearing the database existing data if any. Defaults is True
 
-   :return: None
+   kwargs:
+     retry_rate: (int, optional)
+       how many times to retry jobs before giving up
+
+   :returns: None
+   :rtype: None
 
    .. py:attribute:: apsimNGpy.core.mult_cores.MultiCoreManager.agg_func
 
@@ -6139,7 +6134,7 @@ Functions
    Raises
    ------
    NotImplementedError
-       If ``method`` is not one of ``"string"`` or ``"file"``.
+       If `method` is not one of `"string"` or `"file"`.
    AttributeError
        If the underlying APSIM ``FileFormat`` type does not expose the
        expected reader method (environment/binaries misconfigured).
@@ -6214,10 +6209,15 @@ Functions
    --------
    load_pythonnet : Initialize pythonnet/CLR for APSIM binaries.
 
-.. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin')) -> bool
+.. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified(bin_path: Union[str, pathlib.Path, NoneType] = None) -> bool
 
    Checks if the APSIM.CORE.dll is present in the bin path. Normally, the new APSIM version has this dll file
-   @return: bool
+   paramters
+   ---------
+   bin_path: Union[str, Path, None], default is the current bin_path for apsimNGpy, used only when bin_path is None.
+
+   returns:
+     bool
 
 Classes
 ^^^^^^^
