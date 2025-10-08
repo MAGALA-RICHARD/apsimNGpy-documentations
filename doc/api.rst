@@ -3065,7 +3065,14 @@ Classes
         experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
         # initialize experiment without permutation crossing of the factors
         experiment.init_experiment(permutation=True)
-        experiment.add_factor('')
+
+    All methods from :class:`~apsimNGpy.core.ApsimModel` are available on this class, and they are not altered in
+    any way, for example, we can still inspect, run, and visualize the results::
+
+        experiment.inspect_model('Models.Manager')
+        ['.Simulations.Experiment.Simulation.Field.Sow using a variable rule',
+          '.Simulations.Experiment.Simulation.Field.Fertilise at sowing',
+          '.Simulations.Experiment.Simulation.Field.Harvest']
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
