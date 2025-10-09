@@ -61,6 +61,7 @@ default_role = "any"
 # Copybutton (strip prompts from copied code)
 copybutton_prompt_text = r">>> |\$ "
 copybutton_prompt_is_regexp = True
+copybutton_selector = "div.highlight pre, div.literal-block pre"
 
 # Optional: RST prolog (remove empty default-role directive)
 rst_prolog = """
