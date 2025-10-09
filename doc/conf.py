@@ -75,5 +75,6 @@ rst_prolog = """
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
+
 # -- EPUB --------------------------------------------------------------------
 epub_show_urls = "footnote"
