@@ -2980,6 +2980,10 @@ Classes
 
 .. py:class:: apsimNGpy.core.experimentmanager.ExperimentManager
 
+   This class runs APSIM Experiments with pure factors or permutations. You first need to initiate the instance of this
+       class and then initialize the experiment itself with: :meth:`~apsimNgpy.core.experimentmanager.ExperimentManager.init_experiment`,
+       which creates a new experiment from the suggested base simulation and ``permutation`` type
+
    Outline
    =======
 
