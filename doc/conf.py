@@ -1,5 +1,3 @@
-# Configuration file for the Sphinx documentation builder.
-
 # -- Project information -----------------------------------------------------
 project = "apsimNGpy"
 author = "richard magala"
@@ -7,7 +5,7 @@ copyright = "2025, richard magala"
 release = "0.39.3.4"
 
 # -- Path setup --------------------------------------------------------------
-import pathlib, sys
+import sys, pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
 sys.path.insert(0, str(ROOT))  # so autodoc can import your package
 
@@ -21,7 +19,8 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx_copybutton",
-    # "sphinx.ext.githubpages",  # only needed if not deploying via Actions
+    # "myst_parser",  # enable if you have Markdown
+    # "sphinx.ext.githubpages",  # not needed if deploying via Actions
 ]
 
 templates_path = ["_templates"]
@@ -34,7 +33,7 @@ exclude_patterns = [
     ".db",
 ]
 
-# Autosummary/Autodoc
+# Autodoc / Autosummary
 autosummary_generate = True
 autodoc_default_options = {
     "members": True,
@@ -44,7 +43,7 @@ autodoc_default_options = {
 # Mock heavy/non-Linux deps so CI builds don’t choke
 autodoc_mock_imports = ["pythonnet", "clr", "Models", "apsimNGpy.Models"]
 
-# Autosectionlabel
+# Section labels include document path to avoid collisions
 autosectionlabel_prefix_document = True
 
 # Intersphinx
@@ -55,15 +54,19 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ["std"]
 
-# Default role (so bare `name` links try smart resolution)
+# Default role: smart cross-ref resolution for bare names
 default_role = "any"
 
-# Copybutton (strip prompts from copied code)
+# -- Copybutton configuration -----------------------------------------------
+# Ensure the button appears for typical code renderings across themes:
 copybutton_prompt_text = r">>> |\$ "
 copybutton_prompt_is_regexp = True
-copybutton_selector = "div.highlight pre, div.literal-block pre"
+# Target .highlight (standard), literal-blocks, and table-based blocks (RTD theme)
+copybutton_selector = (
+    "div.highlight pre, div.literal-block pre, table.highlighttable pre"
+)
 
-# Optional: RST prolog (remove empty default-role directive)
+# -- RST prolog (optional) ---------------------------------------------------
 rst_prolog = """
 .. include:: <s5defs.txt>
 """
