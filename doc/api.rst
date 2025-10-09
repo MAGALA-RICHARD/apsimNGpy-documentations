@@ -3069,183 +3069,214 @@ Classes
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.add_factor(self, specification: str, factor_name: str = None, **kwargs)
 
-       Adds a new factor to the experiment based on an APSIM script specification.
+   Add a new factor to the experiment from an APSIM-style script specification.
 
-      Parameters
-      ----------
-       specification: (str)
-           A script-like APSIM expression that defines the parameter variation.
+   Parameters
+   ----------
+   specification : str
+       An APSIM script-like expression that defines the parameter variation,
+       e.g. ``"[Organic].Carbon[1] = 1.2, 1.8"`` or
+       ``"[Sow using a variable rule].Script.Population = 6, 10"``.
+   factor_name : str, optional
+       A unique name for the factor. If not provided, a name is auto-generated
+       from the target variable in ``specification`` (typically the last token).
+   **kwargs
+       Optional metadata or configuration (currently unused).
 
-       factor_name: (str, optional)
-           A unique name for the factor. If not provided, factor_name auto-generated as the variable parameter name,
-           usually the last string before real variables in specification string.
+   Raises
+   ------
+   ValueError
+       If a script-based specification references a non-existent or unlinked
+       manager script.
 
-       **kwargs: Optional metadata or configuration (not yet used internally).
+   Side Effects
+   ------------
+   - Inserts the factor into the appropriate parent node (``Permutation`` or ``Factors``).
+   - If a factor at the same index already exists, it is safely deleted before inserting
+     the new one.
 
-       Raises
-       _______
-           ValueError: If a Script-based specification references a non-existent or unlinked manager script.
+   Notes
+   -----
+   All methods from :class:`~apsimNGpy.core.apsim.ApsimModel` remain available on this
+   class. You can still inspect, run, and visualize results.
 
-       Side Effects:
-           Inserts the factor into the appropriate parent node (Permutation or Factors).
-           If a factor at the same index already exists, it is safely deleted before inserting the new one.
+   Examples
+   --------
+   Initialize an experiment:
 
-      Examples::
+   .. code-block:: python
 
-           from apsimNGpy.core.experimentmanager import ExperimentManager
-           # initialize the model
-           experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
-           # initialize experiment without permutation crossing of the factors
-           experiment.init_experiment(permutation=True)
+      from apsimNGpy.core.experimentmanager import ExperimentManager
 
-    All methods from :class:`~apsimNGpy.core.apsim.ApsimModel` are available in this
-    class and are not altered in any way. For example, we can still inspect, run,
-    and visualize the results:
+      # initialize the model
+      experiment = ExperimentManager('Maize', out_path='my_experiment.apsimx')
 
-    .. code-block:: python
+      # initialize experiment with permutation crossing of factors
+      experiment.init_experiment(permutation=True)
 
-       experiment.inspect_model('Models.Manager')
+   Inspect model components:
 
-    .. code-block:: none
+   .. code-block:: python
 
-       ['.Simulations.Experiment.Simulation.Field.Sow using a variable rule',
-        '.Simulations.Experiment.Simulation.Field.Fertilise at sowing',
-        '.Simulations.Experiment.Simulation.Field.Harvest']
+      experiment.inspect_model('Models.Manager')
 
-    .. code-block:: python
+   .. code-block:: none
 
-       experiment.inspect_model('Models.Factorial.Experiment')
+      ['.Simulations.Experiment.Simulation.Field.Sow using a variable rule',
+       '.Simulations.Experiment.Simulation.Field.Fertilise at sowing',
+       '.Simulations.Experiment.Simulation.Field.Harvest']
 
-    .. code-block:: none
+   .. code-block:: python
 
-       ['.Simulations.Experiment']
+      experiment.inspect_model('Models.Factorial.Experiment')
 
-    Now we are ready to add factors
+   .. code-block:: none
 
-    1. Add a factor associated with a manager script
-    ------------------------------------------------
+      ['.Simulations.Experiment']
 
-    .. code-block:: python
+   1) Add a factor associated with a manager script
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-         experiment.add_factor(specification=f"[Sow using a variable rule].Script.Population = 6, 10", factor_name='Population')
+   .. code-block:: python
 
-    2. Add a factor associated with a soil sode e.g., soil organic like initial soil organic carbon
-    -----------------------------------------------------------------------------------------------
+      experiment.add_factor(
+          specification='[Sow using a variable rule].Script.Population = 6, 10',
+          factor_name='Population'
+      )
 
-    .. code-block:: python
+   2) Add a factor associated with a soil node (e.g., initial soil organic carbon)
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
+   .. code-block:: python
 
-    Check how many factors have been added to the model
+      experiment.add_factor(
+          specification='[Organic].Carbon[1] = 1.2, 1.8',
+          factor_name='initial_carbon'
+      )
 
-    .. code-block:: python
+   Check how many factors have been added:
+
+   .. code-block:: python
 
       experiment.n_factors
-        2
-    it is possible to inspect the factors
+      # 2
 
-    .. code-block:: python
+   Inspect factors:
+
+   .. code-block:: python
 
       experiment.inspect_model('Models.Factorial.Factor')
 
-    .. code-block:: none
+   .. code-block:: none
 
-        ['.Simulations.Experiment.Factors.Permutation.Nitrogen',
-        '.Simulations.Experiment.Factors.Permutation.'initial_carbon']
+      ['.Simulations.Experiment.Factors.Permutation.Nitrogen',
+       '.Simulations.Experiment.Factors.Permutation.initial_carbon']
 
-    Checking the names of the factors as given
-
-    .. code-block:: python
-
-       experiment.inspect_model('Models.Factorial.Factor', fullpath=False)
-
-    .. code-block:: none
-       ['Nitrogen', 'initial_carbon']
-
-    We are ready to :meth:`~apsimNGpy.experimentmanager.ExperimentManager.run` the model
-
-    .. code-block:: python
-
-         experiment.run()
-         # get results
-         df = experiment.results
-         # compute the mean across each experiment
-         df.groupby(['Population', 'initial_carbon'])['Yield'].mean()
-
-    .. code-block:: none
-
-                 Population  initial_carbon
-        10          1.2               6287.538183
-                    1.8               6225.861601
-        6           1.2               5636.529504
-                    1.8               5608.971306
-        Name: Yield, dtype: float64
-
-    Saving the experiment is the same as in :class:`~apsimNGpy.core.apsim.ApsimModel`
+   Get factor names only:
 
    .. code-block:: python
 
-       experiment.save()
+      experiment.inspect_model('Models.Factorial.Factor', fullpath=False)
 
-   See more details in:
-   :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
+   .. code-block:: none
 
-   common pitfalls associated with adding factors
-   ==============================================
-   1. adding the same specification with only changes in the ``factor_name``
-   -------------------------------------------------------------------------
+      ['Nitrogen', 'initial_carbon']
+
+   Run the model and summarize results:
 
    .. code-block:: python
 
-       from apsimNGpy.core.experimentmanager import ExperimentManager
-       # initialize the model
-       experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
-       # initialize experiment without permutation crossing of the factors
-       experiment.init_experiment(permutation=True)
-       experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
-       experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='carbon')
+      experiment.run()
+      df = experiment.results
+      df.groupby(['Population', 'initial_carbon'])['Yield'].mean()
 
-    By default, specifications are evaluated based on all the factor arguments. Therefore, the above
-    example will produce two identical factors that are not ideal. the code below proves this argument.
+   .. code-block:: none
 
-    .. code-block:: python
+                  Population  initial_carbon
+      10          1.2         6287.538183
+                  1.8         6225.861601
+      6           1.2         5636.529504
+                  1.8         5608.971306
+      Name: Yield, dtype: float64
 
-        experiment.save()
-        experiment.inspect_model('Models.Factorial.Factor')
+   Save the experiment (same as :class:`~apsimNGpy.core.apsim.ApsimModel`):
 
-    .. code-block:: None
-        ['.Simulations.Experiment.Factors.Permutation.initial_carbon',
-        '.Simulations.Experiment.Factors.Permutation.carbon']
+   .. code-block:: python
 
-   The output from the code snippet above is showing two factors, but as shown above, they have the same arguments
+      experiment.save()
 
-    2.Invalid specification path to the target parameters
-    -------------------------------------------------------------------------
-    This can occur in several ways, but the most common case is referencing models not available in the script,
-     or adding quotes to variable descriptions
+   See also :meth:`~apsimNGpy.core.apsim.ApsimModel.save`.
 
-    .. code-block:: python
+   Common Pitfalls
+   ---------------
+   1) Adding the same specification with only a different ``factor_name``
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-       from apsimNGpy.core.experimentmanager import ExperimentManager
-       # initialize the model
-       experiment = ExperimentManager('Maize', out_path = 'my_experiment.apsimx')
-       # initialize experiment without permutation crossing of the factors
-       experiment.init_experiment(permutation=True)
+   .. code-block:: python
 
-    Invalid path because of extra quotes on the level set of the factors::
+      experiment.add_factor(
+          specification='[Organic].Carbon[1] = 1.2, 1.8',
+          factor_name='initial_carbon'
+      )
+      experiment.add_factor(
+          specification='[Organic].Carbon[1] = 1.2, 1.8',
+          factor_name='carbon'
+      )
 
-       experiment.add_factor(specification='[Organic].Carbon[1] = "1.2, 1.8"', factor_name='initial_carbon')
+   By default, specifications are evaluated on their arguments, so the example above
+   creates two identical factors—usually not desired.
 
-    correct alternative::
+   .. code-block:: python
 
-        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
+      experiment.save()
+      experiment.inspect_model('Models.Factorial.Factor')
 
-    Invalid path because of extra space::
+   .. code-block:: none
 
-       experiment.add_factor(specification='[Organic]. Carbon[1] = "1.2, 1.8"', factor_name='initial_carbon')
+      ['.Simulations.Experiment.Factors.Permutation.initial_carbon',
+       '.Simulations.Experiment.Factors.Permutation.carbon']
 
-    correct alternative::
-        experiment.add_factor(specification='[Organic].Carbon[1] = 1.2, 1.8', factor_name='initial_carbon')
+   2) Invalid specification path to target parameters
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Common causes include referencing models not present in the script, adding quotes
+   around numeric levels, or inserting stray spaces in paths.
+
+   Invalid (extra quotes):
+
+   .. code-block:: python
+
+      experiment.add_factor(
+          specification='[Organic].Carbon[1] = "1.2, 1.8"',
+          factor_name='initial_carbon'
+      )
+
+   Correct:
+
+   .. code-block:: python
+
+      experiment.add_factor(
+          specification='[Organic].Carbon[1] = 1.2, 1.8',
+          factor_name='initial_carbon'
+      )
+
+   Invalid (extra space in path):
+
+   .. code-block:: python
+
+      experiment.add_factor(
+          specification='[Organic]. Carbon[1] = 1.2, 1.8',
+          factor_name='initial_carbon'
+      )
+
+   Correct:
+
+   .. code-block:: python
+
+      experiment.add_factor(
+          specification='[Organic].Carbon[1] = 1.2, 1.8',
+          factor_name='initial_carbon'
+      )
 
    .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.n_factors
 
@@ -6602,40 +6633,6 @@ Functions
 
    Raises:
        ``ValueError: `` If no matching files are found.
-
-.. py:function:: apsimNGpy.core.runner.run(self, report_name=None, simulations=None, clean=False, multithread=True, verbose=False, get_dict=False, **kwargs)
-
-   Run APSIM model simulations.
-
-   Parameters
-   ----------
-   report_name : str or list of str, optional
-       Name(s) of report table(s) to retrieve. If not specified or missing in the database,
-       the model still runs and results can be accessed later.
-
-   simulations : list of str, optional
-       Names of simulations to run. If None, all simulations are executed.
-
-   clean : bool, default False
-       If True, deletes the existing database file before running.
-
-   multithread : bool, default True
-       If True, runs simulations using multiple threads.
-
-   verbose : bool, default False
-       If True, prints diagnostic messages (e.g., missing report names).
-
-   get_dict : bool, default False
-       If True, returns results as a dictionary {table_name: DataFrame}.
-
-   Returns
-   -------
-   results : DataFrame or list or dict of DataFrames
-       Simulation output(s) from the specified report table(s).
-
-   .. seealso::
-
-         Related API: :func:`~apsimNGpy.core.runner.run_model_externally`
 
 .. py:function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=True) -> '[pd.DataFrame]'
 
