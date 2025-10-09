@@ -13,8 +13,7 @@ Classes
 
 .. py:class:: apsimNGpy.core.apsim.ApsimModel
 
-   Main class for apsimNGpy modules.
-   It inherits from the CoreModel class and therefore has access to a repertoire of methods from it.
+   It inherits from the CoreModel classes.
 
    This implies that you can still run the model and modify parameters as needed.
    Example:
