@@ -7,7 +7,7 @@ release = "0.39.3.4"
 # -- Path setup --------------------------------------------------------------
 import sys, pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
-sys.path.insert(0, str(ROOT))  # so autodoc can import your package
+sys.path.insert(0, str(ROOT))
 
 # -- General configuration ---------------------------------------------------
 extensions = [
