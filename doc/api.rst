@@ -2738,7 +2738,7 @@ Classes
 
    Default: ``<member 'work_space' of 'CoreModel' objects>``
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.plot_mva(self, table: pandas.core.frame.DataFrame, time_col: Hashable, response: Hashable, *, window: int = 5, min_period: int = 1, grouping: Union[Hashable, collections.abc.Sequence[Hashable], NoneType] = None, preserve_start: bool = True, kind: str = 'line', estimator='mean', plot_raw: bool = False, raw_alpha: float = 0.35, raw_linewidth: float = 1.0, auto_datetime: bool = False, ylabel: Optional[str] = None, return_data: bool = False, **kwargs) -> seaborn.axisgrid.FacetGrid | tuple[seaborn.axisgrid.FacetGrid, pandas.core.frame.DataFrame] (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.plot_mva(self, table: pandas.core.frame.DataFrame, time_col: Hashable, response: Hashable, *, expression: str = None, window: int = 5, min_period: int = 1, grouping: Union[Hashable, collections.abc.Sequence[Hashable], NoneType] = None, preserve_start: bool = True, kind: str = 'line', estimator='mean', plot_raw: bool = False, raw_alpha: float = 0.35, raw_linewidth: float = 1.0, auto_datetime: bool = False, ylabel: Optional[str] = None, return_data: bool = False, **kwargs) -> seaborn.axisgrid.FacetGrid | tuple[seaborn.axisgrid.FacetGrid, pandas.core.frame.DataFrame] (inherited)
 
    Plot a centered moving-average (MVA) of a response using ``seaborn.relplot``.
 
@@ -2756,6 +2756,8 @@ Classes
        Time (x-axis) column.
    response : hashable
        Response (y) column to smooth.
+   expression: str default is None
+       simple mathematical expression to create new columns from existing columns
    window : int, default=5
        MVA window size.
    min_period : int, default=1
@@ -2793,7 +2795,7 @@ Classes
 
    https://seaborn.pydata.org/generated/seaborn/relplot.html
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.boxplot(self, column, *, table=None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.boxplot(self, column, *, table=None, expression: str = None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
 
    Plot a boxplot from simulation results using ``pandas.DataFrame.boxplot``.
 
@@ -2818,7 +2820,7 @@ Classes
 
           Related APIs: :meth:`cat_plot`.
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.distribution(self, x, *, table=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.distribution(self, x, *, table=None, expression: str = None, **kwargs) (inherited)
 
    Plot a uni-variate distribution/histogram using :func:`seaborn.histplot`.
 
@@ -2828,6 +2830,9 @@ Classes
        Numeric column to plot.
    table : str or pandas.DataFrame, optional
        Table name or DataFrame; if omitted, use :pyattr:`results`.
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
    **kwargs
        Forwarded to :func:`seaborn.histplot`.
 
@@ -2846,13 +2851,16 @@ Classes
 
    =================================================================
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.series_plot(self, table=None, *, x: str = None, y: Union[str, list] = None, hue=None, size=None, style=None, units=None, weights=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, dashes=True, markers=None, style_order=None, estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, orient='x', sort=True, err_style='band', err_kws=None, legend='auto', ci='deprecated', ax=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.series_plot(self, table=None, expression: str = None, *, x: str = None, y: Union[str, list] = None, hue=None, size=None, style=None, units=None, weights=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, dashes=True, markers=None, style_order=None, estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, orient='x', sort=True, err_style='band', err_kws=None, legend='auto', ci='deprecated', ax=None, **kwargs) (inherited)
 
    Just a wrapper for seaborn.lineplot that supports multiple y columns that could be provided as a list
 
     table : str | [str] |None | None| pandas.DataFrame, optional. Default is None
        If the table names are provided, results are collected from the simulated data, using that table names.
-       If None, results will be all the table names inside concatenated along the axis 0 (not recommended)
+       If None, results will be all the table names inside concatenated along the axis 0 (not recommended).
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
 
     If ``y`` is a list of columns, the data are melted into long form and
    the different series are colored by variable name.
@@ -2871,7 +2879,7 @@ Classes
    Examples:
    ------------
 
-      >>>from apsimNGpy.core.apsim import ApsimModel
+      >>> from apsimNGpy.core.apsim import ApsimModel
       >>> model = ApsimModel(model= 'Maize')
       # run the results
       >>> model.run(report_names='Report')
@@ -2895,7 +2903,7 @@ Classes
 
       Related APIs: :meth:`plot_mva`.
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.scatter_plot(self, table=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.scatter_plot(self, table=None, expression: str = None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
 
    Scatter plot using :func:`seaborn.scatterplot` with flexible aesthetic mappings.
 
@@ -2903,9 +2911,13 @@ Classes
    ----------
    table : str | [str] |None | None| pandas.DataFrame, optional. Default is None
        If the table names are provided, results are collected from the simulated data, using that table names.
-       If None, results will be all the table names inside concatenated along the axis 0 (not recommended)
+       If None, results will be all the table names inside concatenated along the axis 0 (not recommended).
+
    x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax
        Passed through to :func:`seaborn.scatterplot`.
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
    ** Kwargs
        Additional keyword args for Seaborn.
    See the reference below for all the kwargs.
@@ -2913,14 +2925,18 @@ Classes
 
    ================================================================================================================================
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.cat_plot(self, table=None, *, x=None, y=None, hue=None, row=None, col=None, kind='strip', estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, units=None, weights=None, order=None, hue_order=None, row_order=None, col_order=None, col_wrap=None, height=5, aspect=1, log_scale=None, native_scale=False, formatter=None, orient=None, color=None, palette=None, hue_norm=None, legend='auto', legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.cat_plot(self, table=None, exression=None, *, x=None, y=None, hue=None, row=None, col=None, kind='strip', estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, units=None, weights=None, order=None, hue_order=None, row_order=None, col_order=None, col_wrap=None, height=5, aspect=1, log_scale=None, native_scale=False, formatter=None, orient=None, color=None, palette=None, hue_norm=None, legend='auto', legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, **kwargs) (inherited)
 
     Categorical plot wrapper over :func:`seaborn.catplot`.
 
    Parameters
    ----------
    table : str or pandas.DataFrame, optional
-        x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
+
+   x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
    hue_order, row_order, col_order, col_wrap, height, aspect, log_scale, native_scale, formatter,
    orient, color, palette, hue_norm, legend, legend_out, sharex, sharey, margin_titles, facet_kws
        Passed through to :func:`seaborn.catplot`.
@@ -6077,7 +6093,7 @@ Classes
 
    Default: ``<member 'work_space' of 'CoreModel' objects>``
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.plot_mva(self, table: pandas.core.frame.DataFrame, time_col: Hashable, response: Hashable, *, window: int = 5, min_period: int = 1, grouping: Union[Hashable, collections.abc.Sequence[Hashable], NoneType] = None, preserve_start: bool = True, kind: str = 'line', estimator='mean', plot_raw: bool = False, raw_alpha: float = 0.35, raw_linewidth: float = 1.0, auto_datetime: bool = False, ylabel: Optional[str] = None, return_data: bool = False, **kwargs) -> seaborn.axisgrid.FacetGrid | tuple[seaborn.axisgrid.FacetGrid, pandas.core.frame.DataFrame] (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.plot_mva(self, table: pandas.core.frame.DataFrame, time_col: Hashable, response: Hashable, *, expression: str = None, window: int = 5, min_period: int = 1, grouping: Union[Hashable, collections.abc.Sequence[Hashable], NoneType] = None, preserve_start: bool = True, kind: str = 'line', estimator='mean', plot_raw: bool = False, raw_alpha: float = 0.35, raw_linewidth: float = 1.0, auto_datetime: bool = False, ylabel: Optional[str] = None, return_data: bool = False, **kwargs) -> seaborn.axisgrid.FacetGrid | tuple[seaborn.axisgrid.FacetGrid, pandas.core.frame.DataFrame] (inherited)
 
    Plot a centered moving-average (MVA) of a response using ``seaborn.relplot``.
 
@@ -6095,6 +6111,8 @@ Classes
        Time (x-axis) column.
    response : hashable
        Response (y) column to smooth.
+   expression: str default is None
+       simple mathematical expression to create new columns from existing columns
    window : int, default=5
        MVA window size.
    min_period : int, default=1
@@ -6132,7 +6150,7 @@ Classes
 
    https://seaborn.pydata.org/generated/seaborn/relplot.html
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.boxplot(self, column, *, table=None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.boxplot(self, column, *, table=None, expression: str = None, by=None, figsize=(10, 8), grid=False, **kwargs) (inherited)
 
    Plot a boxplot from simulation results using ``pandas.DataFrame.boxplot``.
 
@@ -6157,7 +6175,7 @@ Classes
 
           Related APIs: :meth:`cat_plot`.
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.distribution(self, x, *, table=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.distribution(self, x, *, table=None, expression: str = None, **kwargs) (inherited)
 
    Plot a uni-variate distribution/histogram using :func:`seaborn.histplot`.
 
@@ -6167,6 +6185,9 @@ Classes
        Numeric column to plot.
    table : str or pandas.DataFrame, optional
        Table name or DataFrame; if omitted, use :pyattr:`results`.
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
    **kwargs
        Forwarded to :func:`seaborn.histplot`.
 
@@ -6185,13 +6206,16 @@ Classes
 
    =================================================================
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.series_plot(self, table=None, *, x: str = None, y: Union[str, list] = None, hue=None, size=None, style=None, units=None, weights=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, dashes=True, markers=None, style_order=None, estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, orient='x', sort=True, err_style='band', err_kws=None, legend='auto', ci='deprecated', ax=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.series_plot(self, table=None, expression: str = None, *, x: str = None, y: Union[str, list] = None, hue=None, size=None, style=None, units=None, weights=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, dashes=True, markers=None, style_order=None, estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, orient='x', sort=True, err_style='band', err_kws=None, legend='auto', ci='deprecated', ax=None, **kwargs) (inherited)
 
    Just a wrapper for seaborn.lineplot that supports multiple y columns that could be provided as a list
 
     table : str | [str] |None | None| pandas.DataFrame, optional. Default is None
        If the table names are provided, results are collected from the simulated data, using that table names.
-       If None, results will be all the table names inside concatenated along the axis 0 (not recommended)
+       If None, results will be all the table names inside concatenated along the axis 0 (not recommended).
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
 
     If ``y`` is a list of columns, the data are melted into long form and
    the different series are colored by variable name.
@@ -6210,7 +6234,7 @@ Classes
    Examples:
    ------------
 
-      >>>from apsimNGpy.core.apsim import ApsimModel
+      >>> from apsimNGpy.core.apsim import ApsimModel
       >>> model = ApsimModel(model= 'Maize')
       # run the results
       >>> model.run(report_names='Report')
@@ -6234,7 +6258,7 @@ Classes
 
       Related APIs: :meth:`plot_mva`.
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.scatter_plot(self, table=None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.scatter_plot(self, table=None, expression: str = None, *, x=None, y=None, hue=None, size=None, style=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=True, style_order=None, legend='auto', ax=None, **kwargs) (inherited)
 
    Scatter plot using :func:`seaborn.scatterplot` with flexible aesthetic mappings.
 
@@ -6242,9 +6266,13 @@ Classes
    ----------
    table : str | [str] |None | None| pandas.DataFrame, optional. Default is None
        If the table names are provided, results are collected from the simulated data, using that table names.
-       If None, results will be all the table names inside concatenated along the axis 0 (not recommended)
+       If None, results will be all the table names inside concatenated along the axis 0 (not recommended).
+
    x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax
        Passed through to :func:`seaborn.scatterplot`.
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
    ** Kwargs
        Additional keyword args for Seaborn.
    See the reference below for all the kwargs.
@@ -6252,14 +6280,18 @@ Classes
 
    ================================================================================================================================
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.cat_plot(self, table=None, *, x=None, y=None, hue=None, row=None, col=None, kind='strip', estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, units=None, weights=None, order=None, hue_order=None, row_order=None, col_order=None, col_wrap=None, height=5, aspect=1, log_scale=None, native_scale=False, formatter=None, orient=None, color=None, palette=None, hue_norm=None, legend='auto', legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, **kwargs) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.cat_plot(self, table=None, exression=None, *, x=None, y=None, hue=None, row=None, col=None, kind='strip', estimator='mean', errorbar=('ci', 95), n_boot=1000, seed=None, units=None, weights=None, order=None, hue_order=None, row_order=None, col_order=None, col_wrap=None, height=5, aspect=1, log_scale=None, native_scale=False, formatter=None, orient=None, color=None, palette=None, hue_norm=None, legend='auto', legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, **kwargs) (inherited)
 
     Categorical plot wrapper over :func:`seaborn.catplot`.
 
    Parameters
    ----------
    table : str or pandas.DataFrame, optional
-        x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
+
+   expression: str default is None
+               simple mathematical expression to create new columns from existing columns
+
+   x, y, hue, row, col, kind, estimator, errorbar, n_boot, seed, units, weights, order,
    hue_order, row_order, col_order, col_wrap, height, aspect, log_scale, native_scale, formatter,
    orient, color, palette, hue_norm, legend, legend_out, sharex, sharey, margin_titles, facet_kws
        Passed through to :func:`seaborn.catplot`.
