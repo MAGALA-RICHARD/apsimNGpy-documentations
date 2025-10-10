@@ -1,80 +1,67 @@
-# -- Project information -----------------------------------------------------
-project = "apsimNGpy"
-author = "richard magala"
-copyright = "2025, richard magala"
-release = "0.39.3.4"
+# Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-# -- Path setup --------------------------------------------------------------
-import sys, pathlib
-ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
-sys.path.insert(0, str(ROOT))  # so autodoc can import your package
+# -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
+project = 'apsimNGpy'
+copyright = '2025, richard magala'
+author = 'richard magala'
+release = '0.39.3.4'
 
 # -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
 extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.autosectionlabel",
-    "sphinx.ext.intersphinx",
-    "sphinx.ext.mathjax",
-    "sphinx.ext.viewcode",
-    "sphinx_copybutton",
-    # "myst_parser",  # enable if you have Markdown
-    # "sphinx.ext.githubpages",  # not needed if deploying via Actions
+    'sphinx.ext.mathjax',
 ]
 
-templates_path = ["_templates"]
+templates_path = ['_templates']
+exclude_patterns = ['sphinx.ext.duration',
+                    'sphinx.ext.napoleon',
+                    "sphinx.ext.mathjax",  # required for :math: role to render in HTML
+                    'sphinx.ext.doctest',
+                    'sphinx.ext.autodoc',
+                    'sphinx.ext.autosectionlabel',
+                    'sphinx.ext.autosummary',
+                    'sphinx.ext.githubpages',
+                    "sphinx.ext.intersphinx",
+                    "sphinx_copybutton",
+                    ]
 
-exclude_patterns = [
-    "_build",
-    "Thumbs.db",
-    ".DS_Store",
-    ".apsimx",
-    ".db",
-]
-
-# Autodoc / Autosummary
-autosummary_generate = True
-autodoc_default_options = {
-    "members": True,
-    "inherited-members": True,
-    "show-inheritance": True,
-}
-# Mock heavy/non-Linux deps so CI builds don’t choke
-autodoc_mock_imports = ["pythonnet", "clr", "Models", "apsimNGpy.Models"]
-
-# Section labels include document path to avoid collisions
-autosectionlabel_prefix_document = True
-
-# Intersphinx
 intersphinx_mapping = {
+    "rtd": ("https://docs.readthedocs.io/en/stable/", None),
     "python": ("https://docs.python.org/3/", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
-    "rtd": ("https://docs.readthedocs.io/en/stable/", None),
 }
 intersphinx_disabled_domains = ["std"]
+autodoc_mock_imports = []  # Add external modules to mock if they are not installed
 
-# Default role: smart cross-ref resolution for bare names
-default_role = "any"
+autosummary_generate = True  # Automatically create stub pages for modules
+# -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+# -- Options for EPUB output
+epub_show_urls = "footnote"
 
-# -- Copybutton configuration -----------------------------------------------
-# Ensure the button appears for typical code renderings across themes:
-copybutton_prompt_text = r">>> |\$ "
-copybutton_prompt_is_regexp = True
-# Target .highlight (standard), literal-blocks, and table-based blocks (RTD theme)
-copybutton_selector = (
-    "div.highlight pre, div.literal-block pre, table.highlighttable pre"
-)
+html_theme = "sphinx_rtd_theme"
 
-# -- RST prolog (optional) ---------------------------------------------------
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", '.apsimx', '.db']
+
+html_static_path = ['_static']
+
+autosectionlabel_prefix_document = True
+
 rst_prolog = """
 .. include:: <s5defs.txt>
+.. default-role::
+
 """
 
-# -- Options for HTML output -------------------------------------------------
-html_theme = "sphinx_rtd_theme"
-html_static_path = ["_static"]
+copybutton_prompt_text = r">>> |\$ "
+copybutton_prompt_is_regexp = True
 
+import os, sys
 
-# -- EPUB --------------------------------------------------------------------
-epub_show_urls = "footnote"
+sys.path.insert(0, os.path.abspath('../'))
