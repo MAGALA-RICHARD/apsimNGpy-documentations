@@ -23,6 +23,8 @@ Classes
            >>> model.run(report_name='Report') # report is the default, please replace it as needed
 
    List of Documented Attributes:
+   __________________________________
+
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.Datastore`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.End`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.Models`
@@ -3083,6 +3085,8 @@ Classes
        which creates a new experiment from the suggested base simulation and ``permutation`` type
 
    List of Documented Attributes:
+   __________________________________
+
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Datastore`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.End`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Models`
@@ -6292,6 +6296,8 @@ Classes
    MultiCoreManager(db_path: Union[str, pathlib.Path, NoneType] = (None,), agg_func: Optional[str] = None, ran_ok: bool = False, incomplete_jobs: list = <factory>)
 
    List of Documented Attributes:
+   __________________________________
+
    - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.agg_func`
    - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.db_path`
    - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.default_db`
@@ -7476,6 +7482,8 @@ Classes
 .. py:class:: apsimNGpy.optimizer.moo.MultiObjectiveProblem
 
    List of Documented Attributes:
+   __________________________________
+
    - :attr:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.indicators`
    - :attr:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.labels`
    - :attr:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.outcomes`
@@ -7814,6 +7822,8 @@ Classes
 .. py:class:: apsimNGpy.optimizer.single.MixedVariable
 
    List of Documented Attributes:
+   __________________________________
+
    - :attr:`~apsimNGpy.optimizer.single.MixedVariableProblem.bounds`
    - :attr:`~apsimNGpy.optimizer.single.MixedVariableProblem.indicators`
    - :attr:`~apsimNGpy.optimizer.single.MixedVariableProblem.labels`

@@ -12,9 +12,7 @@ copyright = '2025, Richard Magala'
 author = 'Richard Magala'
 release = '0.39.9.16'
 
-
-
-# -- General configuration ---------------------------------------------------
+# -------------------- General configuration ---------------------------------------------------
 extensions = [
     # Core / common
     'sphinx.ext.autodoc',
@@ -74,6 +72,7 @@ epub_show_urls = "footnote"
 
 # -- Path setup --------------------------------------------------------------
 import sys, pathlib, os
+
 # ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
 # sys.path.insert(0, str(ROOT))
 
