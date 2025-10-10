@@ -13,63 +13,65 @@ author = 'richard magala'
 release = '0.39.3.4'
 
 # -- Path setup --------------------------------------------------------------
-import sys, pathlib
+import sys, pathlib, os
 ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
 sys.path.insert(0, str(ROOT))
 
-
+sys.path.insert(0, os.path.abspath('../'))
 # -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-
 extensions = [
+    # Core / common
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.autosectionlabel',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.doctest',
+    'sphinx.ext.duration',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
+    'sphinx.ext.githubpages',
+    # Utility
+    'sphinx_copybutton',
 ]
 
-templates_path = ['_templates']
-exclude_patterns = ['sphinx.ext.duration',
-                    'sphinx.ext.napoleon',
-                    "sphinx.ext.mathjax",  # required for :math: role to render in HTML
-                    'sphinx.ext.doctest',
-                    'sphinx.ext.autodoc',
-                    'sphinx.ext.autosectionlabel',
-                    'sphinx.ext.autosummary',
-                    'sphinx.ext.githubpages',
-                    "sphinx.ext.intersphinx",
-                    "sphinx_copybutton",
-                    ]
+# autosummary: generate stub pages automatically
+autosummary_generate = True
 
+# InterSphinx
 intersphinx_mapping = {
-    "rtd": ("https://docs.readthedocs.io/en/stable/", None),
     "python": ("https://docs.python.org/3/", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+    "rtd": ("https://docs.readthedocs.io/en/stable/", None),
 }
 intersphinx_disabled_domains = ["std"]
-autodoc_mock_imports = []  # Add external modules to mock if they are not installed
 
-autosummary_generate = True  # Automatically create stub pages for modules
-# -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-# -- Options for EPUB output
-epub_show_urls = "footnote"
+# Mock any heavy/optional deps here if needed during docs build
+autodoc_mock_imports = []
 
-html_theme = "sphinx_rtd_theme"
-
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", '.apsimx', '.db']
-
-html_static_path = ['_static']
-
-autosectionlabel_prefix_document = True
-
-rst_prolog = """
-.. include:: <s5defs.txt>
-.. default-role::
-
-"""
-
+# Copybutton options (show >>> and $ prompts, strip on copy)
 copybutton_prompt_text = r">>> |\$ "
 copybutton_prompt_is_regexp = True
 
+# Auto-section labels: prefix labels with the document path to avoid collisions
+autosectionlabel_prefix_document = True
 
-import os, sys
+# RST prolog (optional defaults)
+rst_prolog = """
+.. default-role:: literal
+"""
 
-sys.path.insert(0, os.path.abspath('../'))
+# What to ignore when looking for source files
+exclude_patterns = [
+    "_build",
+    "Thumbs.db",
+    ".DS_Store",
+    ".apsimx",
+    ".db",
+]
+
+# -- Options for HTML output -------------------------------------------------
+html_theme = "sphinx_rtd_theme"
+html_static_path = ['_static']
+
+# -- Options for EPUB output -------------------------------------------------
+epub_show_urls = "footnote"
