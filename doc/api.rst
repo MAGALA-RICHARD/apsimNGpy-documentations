@@ -2091,13 +2091,18 @@ Classes
    Examples
    --------
    Update all Weather nodes:
-   >>> from apsimNGpy.core.apsim import ApsimModel
-   >>> model = ApsimModel("Maize")
-   >>> model.get_weather_from_file("data/ames_2020.met")
+
+   .. code-block:: python
+
+       from apsimNGpy.core.apsim import ApsimModel
+       model = ApsimModel("Maize")
+       model.get_weather_from_file("data/ames_2020.met")
 
    Update only two simulations (suffix added automatically):
 
-   >>> model.get_weather_from_file("data/ames_2020", simulations=("SimA", "SimB"))# amke sure they exists
+   .. code-block:: python
+
+        model.get_weather_from_file("data/ames_2020", simulations=("Simulation",))
 
    .. seealso::
 
@@ -5457,13 +5462,18 @@ Classes
    Examples
    --------
    Update all Weather nodes:
-   >>> from apsimNGpy.core.apsim import ApsimModel
-   >>> model = ApsimModel("Maize")
-   >>> model.get_weather_from_file("data/ames_2020.met")
+
+   .. code-block:: python
+
+       from apsimNGpy.core.apsim import ApsimModel
+       model = ApsimModel("Maize")
+       model.get_weather_from_file("data/ames_2020.met")
 
    Update only two simulations (suffix added automatically):
 
-   >>> model.get_weather_from_file("data/ames_2020", simulations=("SimA", "SimB"))# amke sure they exists
+   .. code-block:: python
+
+        model.get_weather_from_file("data/ames_2020", simulations=("Simulation",))
 
    .. seealso::
 
@@ -7492,6 +7502,7 @@ Classes
    -----------------------------
    - :meth:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.add_control`
    - :meth:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.is_mixed_type_vars`
+   - :meth:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.minimize`
 
    .. py:method:: apsimNGpy.optimizer.moo.MultiObjectiveProblem.__init__(self, apsim_model: apsimNGpy.core.cal.OptimizationBase, objectives: list, *, decision_vars: list = None, cache_size=100)
 
@@ -7511,6 +7522,41 @@ Classes
    .. py:method:: apsimNGpy.optimizer.moo.MultiObjectiveProblem.is_mixed_type_vars(self)
 
    Detect if decision vars contain types other than float or int.
+
+   .. py:method:: apsimNGpy.optimizer.moo.MultiObjectiveProblem.minimize(self, **kwargs)
+
+   Minimization of function of one or more variables, objectives and constraints. wraps around Pymoo
+
+   Parameters
+   ----------
+
+   kwargs : dict
+    - problem: instance of ``pymoo.core.problem.Problem``
+        A problem object which is defined using pymoo.
+
+    - algorithm: instance of ``pymoo.core.algorithm.Algorithm``
+         The algorithm object that should be used for the optimization.
+
+    - termination: ``pymoo.core.termination.Termination`` or tuple default is None
+       Usually the termination criterion that is used to stop the algorithm.
+
+    - seed : integer
+       The random seed to be used.
+
+    - verbose : bool
+           Whether output should be printed or not.
+
+    - display : :class:`~pymoo.util.display.Display`
+           Each algorithm has a default display object for printouts. However, it can be overwritten if desired.
+
+    - callback : `pymoo.core.callback.Callback`
+           A callback object which is called each iteration of the algorithm.
+
+    - save_history : bool
+           Whether the history should be stored or not.
+
+   - copy_algorithm : bool
+           Whether the algorithm object should be copied before optimization.
 
    .. py:method:: apsimNGpy.optimizer.moo.MultiObjectiveProblem.add_control(self, path: str, *, bounds, v_type, q=None, start_value=None, categories=None, **kwargs) (inherited)
 
