@@ -2851,9 +2851,11 @@ Functions
 .. py:function:: apsimNGpy.core.config.get_apsim_bin_path()
 
    Returns the path to the apsim bin folder from either auto-detection or from the path already supplied by the user
-   through the apsimNgp config.ini file in the user home dir_path. the location folder is called
-   The function is silent does not raise any exception but return empty string in all cases
-   :return:
+   through the apsimNGpy config.ini file in the user home directory.
+
+   This function is silent does not raise any exception but return empty string in all
+   cases if bin_path is empty or was not found.
+
 
    Example::
 
@@ -6753,7 +6755,7 @@ Functions
    Raises:
        ``ValueError: `` If no matching files are found.
 
-.. py:function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=True) -> '[pd.DataFrame]'
+.. py:function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=True, run_only=False) -> '[pd.DataFrame]'
 
    This function acts as a wrapper around the ``APSIM`` command line recursive tool, automating
    the execution of APSIM simulations on all files matching a given pattern in a specified
@@ -6774,9 +6776,11 @@ Functions
    write_tocsv: (bool, optional)
      specify whether to write the simulation results to a csv. if true, the exported csv files bear the same name as the input apsimx file name
        with suffix reportname.csv. if it is ``False``. If ``verbose``, the progress is printed as the elapsed time and the successfully saved csv
+   run_only: (bool, optional)
+       If True no results are loaded in memory.
 
    :returns:
-       generator that yields data frames knitted by pandas
+       generator that yields data frames knitted by pandas if ran_only is False else None
 
 
    Example::
