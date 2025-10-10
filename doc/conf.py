@@ -18,6 +18,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
 sys.path.insert(0, str(ROOT))
 
 sys.path.insert(0, os.path.abspath('../'))
+
 # -- General configuration ---------------------------------------------------
 extensions = [
     # Core / common
