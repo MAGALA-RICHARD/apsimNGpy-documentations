@@ -8,16 +8,11 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'apsimNGpy'
-copyright = '2025, richard magala'
-author = 'richard magala'
+copyright = '2025, Richard Magala'
+author = 'Richard Magala'
 release = '0.39.9.16'
 
-# -- Path setup --------------------------------------------------------------
-import sys, pathlib, os
-# ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
-# sys.path.insert(0, str(ROOT))
 
-sys.path.insert(0, os.path.abspath('../'))
 
 # -- General configuration ---------------------------------------------------
 extensions = [
@@ -76,3 +71,10 @@ html_static_path = ['_static']
 
 # -- Options for EPUB output -------------------------------------------------
 epub_show_urls = "footnote"
+
+# -- Path setup --------------------------------------------------------------
+import sys, pathlib, os
+# ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
+# sys.path.insert(0, str(ROOT))
+
+sys.path.insert(0, os.path.abspath('../'))
