@@ -13,9 +13,10 @@ Classes
 
 .. py:class:: apsimNGpy.core.apsim.ApsimModel
 
-       It inherits from the CoreModel classes.
+       It inherits from the CoreModel classes, and extends its capabilities.
 
        This implies that you can still run the model and modify parameters as needed.
+
        Example:
            >>> from apsimNGpy.core.apsim import ApsimModel
            >>> from pathlib import Path
@@ -3080,9 +3081,9 @@ Classes
 
 .. py:class:: apsimNGpy.core.experimentmanager.ExperimentManager
 
-   This class runs APSIM Experiments with pure factors or permutations. You first need to initiate the instance of this
-       class and then initialize the experiment itself with: :meth:`init_experiment`,
-       which creates a new experiment from the suggested base simulation and ``permutation`` type
+       This class inherits methods and attributes from: :class:`~apsimNGpy.core.apsim.ApsimModel` to manage APSIM Experiments
+       with pure factors or permutations. You first need to initiate the instance of this class and then initialize the
+       experiment itself with: :meth:`init_experiment`, which creates a new experiment from the suggested base simulation and ``permutation`` type
 
    List of Documented Attributes:
    __________________________________
