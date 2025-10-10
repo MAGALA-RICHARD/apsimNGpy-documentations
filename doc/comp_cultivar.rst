@@ -83,8 +83,8 @@ Clearly Melkassa has the lowest yield, and laila performed better than all other
 
 .. image:: ../images/Cultivar_Maize.png
 
-Obviously, there is no doubt ``Melikassa`` performs poorly in this area in terms of maize yield quarterly percentiles and median are very different fom the rest of the cultivars.
-Meanwhile ``Laila`` and ``B_110`` are similar, but different from that of ``Dekalb_XL82``
+Obviously, there is no doubt `Melikassa` performs poorly in this area in terms of maize yield quarterly percentiles and median are very different fom the rest of the cultivars.
+Meanwhile `Laila` and ``B_110` are similar, but different from that of `Dekalb_XL82`
 
 Variability across the simulation years
 ----------------------------------------
