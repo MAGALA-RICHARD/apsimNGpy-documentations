@@ -10,7 +10,7 @@
 project = 'apsimNGpy'
 copyright = '2025, richard magala'
 author = 'richard magala'
-release = '0.39.3.4'
+release = '0.39.9.16'
 
 # -- Path setup --------------------------------------------------------------
 import sys, pathlib, os
