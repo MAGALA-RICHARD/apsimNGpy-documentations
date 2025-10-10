@@ -3,6 +3,7 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -10,6 +11,12 @@ project = 'apsimNGpy'
 copyright = '2025, richard magala'
 author = 'richard magala'
 release = '0.39.3.4'
+
+# -- Path setup --------------------------------------------------------------
+import sys, pathlib
+ROOT = pathlib.Path(__file__).resolve().parents[1]  # project root
+sys.path.insert(0, str(ROOT))
+
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -61,6 +68,7 @@ rst_prolog = """
 
 copybutton_prompt_text = r">>> |\$ "
 copybutton_prompt_is_regexp = True
+
 
 import os, sys
 
