@@ -22,6 +22,38 @@ Classes
            >>> model = ApsimModel('Maize', out_path=Path.home()/'apsim_model_example.apsimx')
            >>> model.run(report_name='Report') # report is the default, please replace it as needed
 
+   List of Documented Attributes:
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.Datastore`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.End`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.Models`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.Simulations`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.Start`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.base_name`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.configs`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.copy`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.datastore`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.experiment`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.experiment_created`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.extract_dates`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.factor_names`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.factors`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.model`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.model_info`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.others`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.out`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.out_path`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.path`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.permutation`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.ran_ok`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.report_names`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.results`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.run_method`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.set_wd`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.simulation_names`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.simulations`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.str_model`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.wk_info`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.work_space`
    List of Documented Methods
    -----------------------------
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.add_crop_replacements`
@@ -3050,72 +3082,39 @@ Classes
        class and then initialize the experiment itself with: :meth:`init_experiment`,
        which creates a new experiment from the suggested base simulation and ``permutation`` type
 
-   List of Documented Methods
-   -----------------------------
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_crop_replacements`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_db_table`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_fac`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_factor`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_report_variable`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.adjust_dul`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.boxplot`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.cat_plot`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.change_report`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.change_simulation_dates`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.clean_up`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.clone_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.create_experiment`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.detect_model_type`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.distribution`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.edit_cultivar`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.edit_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.edit_model_by_path`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.extract_any_soil_physical`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.extract_soil_physical`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.extract_start_end_years`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.finalize`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.find_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.get_crop_replacement`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.get_model_paths`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.get_simulated_output`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.get_soil_from_web`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.get_weather_from_file`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.get_weather_from_web`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model_parameters`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model_parameters_by_path`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.move_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.plot_mva`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.preview_simulation`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.read_apsimx_data`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.recompile_edited_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.refresh_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.remove_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.remove_report_variable`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.rename_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.replace_downloaded_soils`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.replace_met_file`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.replace_model_from`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.replace_soil_property_values`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.replace_soils_values_by_path`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.replicate_file`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.restart_model`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.run`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.save`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.scatter_plot`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.series_plot`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.set_categorical_factor`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.set_continuous_factor`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.show_met_file_in_simulation`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.spin_up`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.summarize_numeric`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.update_cultivar`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.update_mgt`
-   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.update_mgt_by_path`
-
+   List of Documented Attributes:
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Datastore`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.End`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Models`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Simulations`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Start`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.base_name`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.configs`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.copy`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.datastore`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.experiment`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.experiment_created`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.extract_dates`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.factor_names`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.factors`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.model`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.model_info`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.n_factors`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.others`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.out`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.out_path`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.path`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.permutation`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.ran_ok`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.report_names`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.results`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.run_method`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.set_wd`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.simulation_names`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.simulations`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.str_model`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.wk_info`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.work_space`
    List of Documented Methods
    -----------------------------
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_crop_replacements`
@@ -6292,6 +6291,27 @@ Classes
 
    MultiCoreManager(db_path: Union[str, pathlib.Path, NoneType] = (None,), agg_func: Optional[str] = None, ran_ok: bool = False, incomplete_jobs: list = <factory>)
 
+   List of Documented Attributes:
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.agg_func`
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.db_path`
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.default_db`
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.incomplete_jobs`
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.ran_ok`
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.results`
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.tables`
+   - :attr:`~apsimNGpy.core.mult_cores.MultiCoreManager.tag`
+   List of Documented Methods
+   -----------------------------
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.clean_up_data`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.clear_db`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.clear_scratch`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.get_simulated_output`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.insert_data`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.run_all_jobs`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.run_parallel`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.save_tocsv`
+   - :meth:`~apsimNGpy.core.mult_cores.MultiCoreManager.save_tosql`
+
    .. py:method:: apsimNGpy.core.mult_cores.MultiCoreManager.__init__(self, db_path: Union[str, pathlib.Path, NoneType] = (None,), agg_func: Optional[str] = None, ran_ok: bool = False, incomplete_jobs: list = <factory>) -> None
 
    Initialize self.  See help(type(self)) for accurate signature.
@@ -7455,6 +7475,10 @@ Classes
 
 .. py:class:: apsimNGpy.optimizer.moo.MultiObjectiveProblem
 
+   List of Documented Attributes:
+   - :attr:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.indicators`
+   - :attr:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.labels`
+   - :attr:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.outcomes`
    List of Documented Methods
    -----------------------------
    - :meth:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.add_control`
@@ -7789,6 +7813,11 @@ Classes
 
 .. py:class:: apsimNGpy.optimizer.single.MixedVariable
 
+   List of Documented Attributes:
+   - :attr:`~apsimNGpy.optimizer.single.MixedVariableProblem.bounds`
+   - :attr:`~apsimNGpy.optimizer.single.MixedVariableProblem.indicators`
+   - :attr:`~apsimNGpy.optimizer.single.MixedVariableProblem.labels`
+   - :attr:`~apsimNGpy.optimizer.single.MixedVariableProblem.outcomes`
    List of Documented Methods
    -----------------------------
    - :meth:`~apsimNGpy.optimizer.single.MixedVariableProblem.add_control`
