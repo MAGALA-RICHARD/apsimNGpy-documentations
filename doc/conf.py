@@ -10,7 +10,7 @@
 project = 'apsimNGpy'
 copyright = '2025, Richard Magala'
 author = 'Richard Magala'
-release = '0.39.9.16'
+release = '0.39.10.17'
 
 # -------------------- General configuration ---------------------------------------------------
 extensions = [
