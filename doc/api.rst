@@ -2991,39 +2991,6 @@ Classes
 
    Properties
    ----------
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Datastore`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.End`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Models`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Simulations`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.Start`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.base_name`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.configs`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.copy`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.datastore`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.experiment`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.experiment_created`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.extract_dates`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.factor_names`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.factors`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.model`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.model_info`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.n_factors`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.others`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.out`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.out_path`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.path`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.permutation`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.ran_ok`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.report_names`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.results`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.run_method`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.set_wd`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.simulation_names`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.simulations`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.str_model`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.wk_info`
-   >>> :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.work_space`
-
    Methods
    -------
    >>> :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_crop_replacements`
