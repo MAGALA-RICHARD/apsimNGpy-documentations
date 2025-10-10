@@ -7510,8 +7510,10 @@ Classes
    ----------
    apsim_runner : apsimNGpy.core.cal.OptimizationBase
        Instance to run APSIM simulations.
-   objectives : list of callable
+
+   objectives : list of callable.
        List of functions that take simulation output (DataFrame) and return scalar objective values.
+
    decision_vars : list of dict, optional
        Each dict must have: 'path', 'bounds', 'v_type', 'kwargs'.
 
