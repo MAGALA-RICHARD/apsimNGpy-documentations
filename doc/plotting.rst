@@ -220,7 +220,7 @@ Statistical results for each column
         75%       1705.820275  1998.000000
         max       2457.083319  2000.000000
 Moving average plots
---------------------
+====================
 
 .. code-block:: python
 
@@ -228,24 +228,24 @@ Moving average plots
       errorbar=None, estimator='mean', grouping=('Amount', 'Population'), hue='Nitrogen', col='Population')
 
 
-Multi-year moving average for each experiment.
-----------------------------------------------
+Multi-year moving average for each experiment (line plot).
+---------------------------------------------------------
 .. figure:: ../images/mva_hue_nitrogen_grp_n_p.png
    :alt: Nitrogen group N-P MVA plot
    :width: 70%
 
 
 Categorical Plots
------------------
+=================
 
 Box plots
-==========
+---------
 
 .. code-block:: python
 
   model.cat_plot(table = 'Report', y='Yield', x= 'Population', kind = 'box')
 
-Maize yield variability by population density.
+Maize yield variability by population density (mva plot).
 ----------------------------------------------
 .. figure:: ../images/cat_plot_no_hue.png
    :alt: cat plot no hue
@@ -259,14 +259,14 @@ Add Nitrogen fertilizer as hue for contrast across the nitrogen treatments
                kind = 'box', hue= 'Nitrogen', height=8, aspect=1.5)
 plt.savefig(dir_p/'hue_nitrogen.png', dpi=600)
 
-Maize yield variability by population density and nitrogen fertilizer.
-----------------------------------------------
+Maize yield variability by population density and nitrogen fertilizer (box plot).
+---------------------------------------------------------------------
 .. figure:: ../images/hue_nitrogen.png
    :alt: Nitrogen and population effect
    :width: 70%
 
 Bar Plots
-==========
+---------
 
 .. code-block:: python
 
@@ -289,7 +289,7 @@ The example below shows how to switch estimators, and after the change to sum, t
    model.cat_plot(table = 'Report', y='Yield', x= 'Population', kind = 'bar', estimator='sum')
 
 Maize yield variability by population density (bar plot, estimator =sum).
----------------------------------------------------------
+------------------------------------------------------------------------
 .. figure:: ../images/bar_plots_with_estimator.png
    :alt: bar plot population estimator sum
 
@@ -302,7 +302,7 @@ methods allow simple mathematical expressions to be passed, as shown below.
                y='Yield_in_Mg', x= 'Population', kind = 'bar', errorbar=None)
 
 Maize yield variability by population density in Mg (bar plot, estimator =sum).
----------------------------------------------------------
+------------------------------------------------------------------------------
 .. figure:: ../images/exp.png
    :alt: bar plot expression of kg to mg estimator sum
 
