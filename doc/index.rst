@@ -120,7 +120,13 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    cheat
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
+   :caption: SIMULATED DATA PLOTTING & VISUALIZATION
+
+   plotting
+
+.. toctree::
+   :maxdepth: 2
    :caption: API REFERENCE
 
    api
