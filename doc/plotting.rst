@@ -249,7 +249,7 @@ Maize yield variability by population density (mva plot).
 ----------------------------------------------
 .. figure:: ../images/cat_plot_no_hue.png
    :alt: cat plot no hue
-   :width: 70%
+   :width: 100%
 
 Add Nitrogen fertilizer as hue for contrast across the nitrogen treatments
 
