@@ -239,6 +239,7 @@ Categorical Plots
 
 Box plots
 ==========
+
 .. code-block:: python
 
   model.cat_plot(table = 'Report', y='Yield', x= 'Population', kind = 'box')
@@ -265,6 +266,7 @@ Maize yield variability by population density and nitrogen fertilizer.
 
 Bar Plots
 ==========
+
 .. code-block:: python
 
   model.cat_plot(table = 'Report', y='Yield',
@@ -305,7 +307,6 @@ Maize yield variability by population density in Mg (bar plot, estimator =sum).
 
 Tidy up the plots for reporting
 ===============================
-
 The heavy lifting is done; now polish the figure—adjust labels, titles, and size.
 All plotting methods on ApsimModel and ExperimentManager return a seaborn.axisgrid.FacetGrid, so you can keep customizing afterward. Because Seaborn sits on Matplotlib,
 any Matplotlib styling you pass (or apply later) still works.
@@ -324,7 +325,6 @@ Maize yield labeled plot (bar plot).
 
 Passing a custom dataset
 ==========================
-
 Because apsimNGpy plotting wraps Seaborn, you don’t need extra imports for most advanced visuals
 or after some advanced calculation on your dataset.
 
@@ -409,6 +409,7 @@ Binned Maize yield (bar plot).
 
 Meta info
 ==========
+
 .. code-block::python
 
     from apsimNGpy.core.config import apsim_version
