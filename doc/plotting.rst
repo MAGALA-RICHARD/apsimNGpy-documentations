@@ -229,7 +229,7 @@ Statistical results for each column
 
 Multi-year moving average for each experiment.
 ----------------------------------------------
-.. figure:: ./images/mva_hue_nitrogen_grp_n_p.png
+.. figure:: ../images/mva_hue_nitrogen_grp_n_p.png
    :alt: Nitrogen group N-P MVA plot
    :width: 70%
 
@@ -245,7 +245,7 @@ Box plots
 
 Maize yield variability by population density.
 ----------------------------------------------
-.. figure:: ./images/cat_plot_no_hue.png
+.. figure:: ../images/cat_plot_no_hue.png
    :alt: cat plot no hue
    :width: 70%
 
