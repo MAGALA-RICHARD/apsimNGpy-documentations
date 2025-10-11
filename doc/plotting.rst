@@ -259,7 +259,7 @@ plt.savefig(dir_p/'hue_nitrogen.png', dpi=600)
 
 Maize yield variability by population density and nitrogen fertilizer.
 ----------------------------------------------
-.. figure:: ./images/hue_nitrogen.png
+.. figure:: ../images/hue_nitrogen.png
    :alt: Nitrogen and population effect
    :width: 70%
 
@@ -273,7 +273,7 @@ Bar Plots
 
 Maize yield variability by population density (bar plot).
 ---------------------------------------------------------
-.. figure:: ./images/bar_plots_with_hue.png
+.. figure:: ../images/bar_plots_with_hue.png
    :alt: bar plot population and nitrogen  effect
    :width: 70%
 
@@ -287,7 +287,7 @@ The example below shows how to switch estimators, and after the change to sum, t
 
 Maize yield variability by population density (bar plot, estimator =sum).
 ---------------------------------------------------------
-.. figure:: ./images/bar_plots_with_estimator.png
+.. figure:: ../images/bar_plots_with_estimator.png
    :alt: bar plot population estimator sum
 
 If you want to plot in a different unit or apply on-the-fly calculations, all plotting
@@ -300,7 +300,7 @@ methods allow simple mathematical expressions to be passed, as shown below.
 
 Maize yield variability by population density in Mg (bar plot, estimator =sum).
 ---------------------------------------------------------
-.. figure:: ./images/exp.png
+.. figure:: ../images/exp.png
    :alt: bar plot expression of kg to mg estimator sum
 
 Tidy up the plots for reporting
@@ -318,7 +318,7 @@ any Matplotlib styling you pass (or apply later) still works.
 
 Maize yield labeled plot (bar plot).
 ---------------------------------------------------------
-.. figure:: ./images/styled.png
+.. figure:: ../images/styled.png
    :alt: bar plot expression of kg to mg estimator sum
 
 
@@ -387,7 +387,7 @@ The example below shows how to convert a numeric nitrogen Amount to an ordered c
 
 Maize yield ordered plot (Line plot)
 ---------------------------------------------------------
-.. figure:: ./images/series_ordered.png
+.. figure:: ../images/series_ordered.png
    :alt: series data after ordering
 
 .. code-block:: python
@@ -403,7 +403,7 @@ Maize yield ordered plot (Line plot)
 
 Binned Maize yield (bar plot).
 ---------------------------------------------------------
-.. figure:: ./images/binned_cat_plot.png
+.. figure:: ../images/binned_cat_plot.png
    :alt: binned plot
 
 
