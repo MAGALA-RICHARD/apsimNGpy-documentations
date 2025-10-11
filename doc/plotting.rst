@@ -219,7 +219,8 @@ Statistical results for each column
         50%       1104.093752  1995.500000
         75%       1705.820275  1998.000000
         max       2457.083319  2000.000000
-
+Moving average plots
+--------------------
 
 .. code-block:: python
 
