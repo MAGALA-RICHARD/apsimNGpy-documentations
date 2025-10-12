@@ -91,7 +91,7 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
     In this example, a custom optimization problem is defined by subclassing :class:`~apsimNGpy.optimizer.single.ContinuousVariable`.
     The class is tailored to work with a specific APSIM model and a corresponding set of observed data.
 
-    The observed values are passed to the constructor and stored as an attribute ``self.obs``. This enables the model’s predicted values
+    The observed values are passed to the constructor and stored as an attribute :attr:`obs`. This enables the model’s predicted values
     to be evaluated directly against real-world data.
 
     The core logic resides in the :meth:`evaluate_objectives` method, which runs the APSIM simulation and retrieves the predicted yield. It then computes the **Root Mean Square Error (RMSE)** between the predicted and observed values.
@@ -112,7 +112,8 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
 Adding control variables
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Control variables are variables that will control the outcomes of our objective values. You can use ``add_control`` to specify the path, type, and bounds as shown below.
+Control variables are variables that will control the outcomes of our objective values.
+You can use :meth:`~apsimNGpy.optimizer.single.ContinuousVariable.add_control` to specify the path, type, and bounds as shown below.
 
 .. code-block:: python
 
