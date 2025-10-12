@@ -300,9 +300,10 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         simulations='Simulation', model_name='SurfaceOrganicMatter')
 
-@output
+# output
 
-.. code-block:: none
+.. code-block:: python
+
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
          'StandingWt': 0.0,
