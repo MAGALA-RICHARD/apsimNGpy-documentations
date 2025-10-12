@@ -36,7 +36,7 @@ Step 1: Import required modules
     * :class:`~apsimNGpy.core.apsim.ApsimModel` handles model simulation and editing. It is an apsimNGpy class
     * :class:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem` wraps your problem into a multi-objective one
     * ``NSGA2``: a multi-objective genetic algorithm
-    * ``minimize``: will be used to minimize the objectives in the finals steps
+    * :meth:`~apsimNGpy.optimizer.moo.MultiObjectiveProblem.minimize` will be used to minimize the objectives in the finals steps
 
 Step 2: Initialize the APSIM model runner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
