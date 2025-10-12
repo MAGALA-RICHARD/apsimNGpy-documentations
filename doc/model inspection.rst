@@ -206,6 +206,9 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
     model.inspect_file(cultivar = True)
 
+.. seealso::
+
+  :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`
 
 .. Warning::
 
@@ -217,5 +220,5 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. seealso::
 
-   - :ref:`API Reference <api>`
+   - :ref:`api_ref`
    - :ref:`inspect_params`
