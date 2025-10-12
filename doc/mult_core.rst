@@ -191,4 +191,4 @@ The safest pattern is to place worker functions in a separate .py module and imp
 
 .. seealso::
 
-  API description
+  API description: :class:`~apsimNGpy.core.multi_core.MultiCoreManager`
