@@ -449,7 +449,7 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
 
 .. seealso::
 
-   - :ref:`API Reference <api>`
+   - :ref:`api_ref`
    - :ref:`editor`
    - :ref:`plain_inspect`
 
