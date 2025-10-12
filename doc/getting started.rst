@@ -65,6 +65,10 @@ Quick guides
    from apsimNGpy.core import config
       print(config.get_apsim_bin_path())
 
+.. seealso::
+
+     API description: :func:`~apsimNGpy.core.config.get_apsim_bin_path`
+
 .. tip::
 
     You can also try to check if automatic search will be successful as follows
@@ -131,6 +135,10 @@ Alternatively, you can use the code at the top of your script as follows
 
     # Set the path to the APSIM binaries:
     set_apsim_bin_path(path=r'path/to/your/apsim/binary/folder/bin')
+
+.. seealso::
+
+     API description: :func:`~apsimNGpy.core.config.set_apsim_bin_path`
 
 
 4. Use command line interface
