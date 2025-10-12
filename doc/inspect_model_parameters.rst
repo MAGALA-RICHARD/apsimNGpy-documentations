@@ -4,7 +4,7 @@ Inspect Model Parameters
 =============================
 
 Once we have reviewed the structure of our APSIM model—including the model paths and component names—we are in a good position to explore model internals more deeply.
-This tutorial introduces the ``inspect_model_parameters`` method, which provides a unified way to extract parameters from a variety of APSIM model components.
+This tutorial introduces the  :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters` method, which provides a unified way to extract parameters from a variety of APSIM model components.
 
 .. Note::
 
