@@ -6,8 +6,7 @@ Editing Model Parameters
 ===========================================
 
 Editing a model involves changing model parameter values. This task can be accomplished via
-a unified method called  :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model` or
- :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path` from ``ApsimModel`` Class
+a unified method called  :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model` or :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path` from ``ApsimModel`` Class
 by specifying the model type, name and simulation name, or path, respectively.
 
 edit_method function signature
