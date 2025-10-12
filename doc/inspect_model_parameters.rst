@@ -181,9 +181,15 @@ Inspect ``Report`` model attributes.
         '[Maize].Grain.N',
         '[Maize].Total.Wt']}
 
-        >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
+.. code-block:: python
 
-        # output
+        model_instance.inspect_model_parameters('Report', simulations='Simulation',
+           model_name='Report', parameters='EventNames')
+
+# output
+
+.. code-block:: python
+
         {'EventNames': ['[Maize].Harvesting']}
 
 Inspect  ``Weather`` path
@@ -203,12 +209,17 @@ Inspect ``Manager`` script parameters.
 .. tip::
 
     These scripts are from the Manager Module. You need to know the exact name of the script hence you may want to inspect the whole Manager Models in the simulations file.
-    Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection::
+    Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection:
+
+.. code-block:: python
 
         model_instance.inspect_model_parameters('Manager',
         simulations='Simulation', model_name='Sow using a variable rule')
 
-        # output
+# output
+
+.. code-block:: python
+
         {'Crop': 'Maize',
         'StartDate': '1-nov',
         'EndDate': '10-jan',
@@ -223,13 +234,17 @@ Inspect ``Manager`` script parameters.
 .. tip::
 
     Script Manager parameters can vary significantly between different scripts. To understand what parameters are available in a given context, it’s best to inspect them using the method above.
-    In the following example, we demonstrate how to inspect the value of a specific parameter—Population::
+    In the following example, we demonstrate how to inspect the value of a specific parameter—Population
+
+.. code-block:: python
 
         model_instance.inspect_model_parameters('Manager',
         simulations='Simulation', model_name='Sow using a variable rule',
         parameters='Population')
 
-        # output
+# Output
+.. code-block:: python
+
         {'Population': '10'}
 
 Inspect ``Cultivar`` parameters::
@@ -237,7 +252,10 @@ Inspect ``Cultivar`` parameters::
         model_instance.inspect_model_parameters('Cultivar',
         simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
 
-        # output
+# output
+
+.. code-block:: none
+
         {'[Phenology].Juvenile.Target.FixedValue': '210',
         '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
         '[Phenology].Photosensitive.Target.XYPairs.Y': '0, 0, 0',
@@ -248,6 +266,7 @@ Inspect ``Cultivar`` parameters::
         '[Phenology].MaturityToHarvestRipe.Target.FixedValue': '100',
         '[Rachis].DMDemands.Structural.DMDemandFunction.MaximumOrganWt.FixedValue': '36'}
 
+.. code-block:: python
         >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
 
@@ -265,6 +284,7 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
         simulations='Simulation', model_name='SurfaceOrganicMatter')
 
 @output
+
 .. code-block:: none
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
