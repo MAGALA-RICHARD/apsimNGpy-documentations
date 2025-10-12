@@ -242,7 +242,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. tip::
 
-    After editing the file or model, you can save the file using the ``save()`` method. This method takes a single argument: the desired file path or name.
+    After editing the file or model, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method. This method takes a single argument: the desired file path or name.
     Without specifying the full path to the desired storage location, the file will be saved in the current working directory.
 
 .. code-block:: python
@@ -251,5 +251,5 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. seealso::
 
-   - :ref:`API Reference <api>`
+   - :ref:`api_ref`
    - :ref:`apsimNGpy Cheat sheat <cheat>`
