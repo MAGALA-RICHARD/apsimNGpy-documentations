@@ -160,6 +160,7 @@ Inspect soil ``Chemical`` profile::
            model_name='Organic', parameters=['Carbon', 'CNR'])
 
 # output
+
 .. code-block:: python
 
            Carbon   CNR
