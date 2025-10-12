@@ -94,7 +94,8 @@ Add nitrogen and population density factors:
 
 .. code-block:: python
 
-    apsimC.add_factor(specification="[Fertilise at sowing].Script.Amount = 0 to 200 step 20", factor_name='Nitrogen')
+    apsimC.add_factor(specification="[Fertilise at sowing].Script.Amount = 0 to 200 step 20",
+    factor_name='Nitrogen')
     apsimC.add_factor(specification="[Sow using a variable rule].Script.Population = 4, 10, 2, 7, 6",
                       factor_name='Population')
 
@@ -108,7 +109,8 @@ Add a factor for radiation use efficiency (RUE):
 
 .. code-block:: python
 
-    apsimC.add_factor(specification='[Maize].Leaf.Photosynthesis.RUE.FixedValue = 1.0, 1.23, 4.3', factor_name='RUE')
+    apsimC.add_factor(specification='[Maize].Leaf.Photosynthesis.RUE.FixedValue = 1.0, 1.23, 4.3',
+     factor_name='RUE')
 
 Run the experiment and visualize the impact of ``RUE`` on yield:
 
