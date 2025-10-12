@@ -29,7 +29,12 @@ getting info about the simulated output
 
     import pandas as pd
     pd.set_option('display.max_columns', None)
-    df.info
+    df.info()
+
+# output
+
+.. code-block:: python
+
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 60 entries, 0 to 59
     Data columns (total 18 columns):
@@ -57,9 +62,14 @@ getting info about the simulated output
     memory usage: 8.6+ KB
     # most of the columns in the dataset are float
 
+
+other alternative:
+
+.. code-block:: python
+
     df.describe()
 
-Since our major covariate factor is CultivarName, we will next examine the corresponding mean yield for each cultivar
+Since our major factor is CultivarName, we will next examine the corresponding mean yield for each cultivar
 
 .. code-block:: python
 
