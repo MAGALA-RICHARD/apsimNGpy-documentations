@@ -79,7 +79,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    manage_env
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: EDITING & INSPECTION
 
    model inspection
@@ -108,7 +108,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    how_to_cite
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: TUTORIALS
 
    comp_cultivar

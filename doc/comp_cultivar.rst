@@ -21,6 +21,8 @@ Firstly, we are going to start by creating a none permutation experiment
    To see all the available cultivars and select from a list use::
 
        model.inspect_model('Cultivar', fullpath=False)
+
+
 getting info about the simulated output
 
 .. code-block:: python
