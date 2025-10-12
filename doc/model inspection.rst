@@ -159,10 +159,10 @@ Try finding path to the cultivar model::
 - :class:`Models.Core.Simulation`  or :class:`Simulation`– Returns information about the simulation.
 - :class:`Models.Climate.Weather` or :class:`Weather` – Returns a list of paths or names pertaining to weather models.
 - :class:`Models.Core.IPlant` – or :class:`IPlant` Returns a list of paths or names for all crop models available in the simulation.
-- :class:`'Models.Report'` or :class:`"Report"` returns the available report paths or names
+- :class:`'Models.Report'` or :class:`Report` returns the available report paths or names
 - :class:`Models.Surface.SurfaceOrganicMatter` or :class:`SurfaceOrganicMatter` returns path to the surface organic module
 - :class:`Models.PMF.Cultivar` or :class:`Cultivar` paths or names to all cultivars
-- :class:`Models.Clock` or :class:`Clock'` returns all path to the clock models available
+- :class:`Models.Clock` or :class:`Clock` returns all path to the clock models available
 - :class:`Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute` or :class:`'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'` path to soil models.
 - *(``Additional`` model types may be available based on APSIM simulation requirements.)*
 
