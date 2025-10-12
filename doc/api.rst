@@ -1,5 +1,4 @@
 .. _api_ref:
-
 apsimNGpy: API Reference
 ========================
 
@@ -6807,6 +6806,31 @@ Functions
 
    :returns:
      bool
+
+.. py:function:: apsimNGpy.core.pythonet_config.load_pythonnet(bin_path: Union[str, pathlib.Path] = None)
+
+   A method for loading Python for .NET (pythonnet) and APSIM models from the binary path. It is also cached to
+   avoid rerunning many times.
+
+   It initializes the Python for .NET (pythonnet) runtime and load APSIM models.
+
+   Loads the 'coreclr' runtime, and if not found, falls back to an alternate runtime.
+   It also sets the APSIM binary path, adds the necessary references, and returns a reference to the loaded APSIM models.
+
+   Returns:
+   -------
+   ConfigRuntimeInfo:
+        an instance of ConfigRuntimeInfo with reference to the loaded APSIM models
+
+   Raises:
+   ------
+   KeyError: If APSIM path is not found in the system environmental variable.
+   ValueError: If the provided APSIM path is invalid.
+
+   .. important::
+
+    This function is called internally by apsimNGpy modules, but it is dependent on correct configuration of the bin
+    path. Please edit the system environmental variable on your computer or set it using: :func:`~apsimNGpy.core.config.set_apsim_bin_path`
 
 Classes
 ^^^^^^^
