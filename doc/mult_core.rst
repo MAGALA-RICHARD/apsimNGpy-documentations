@@ -157,7 +157,9 @@ Without the guard, top-level code re-executes in each child and can recursively 
                 # get the results
                 data = read_db_table(DATABAse, report_name="Report")
 
-Processing please wait!:  ██████████ 100% (40/40) >> completed (elapsed=>0:30, eta=>00:00) , (0.76 s/iteration or 1.23 iteration/s)
+.. code-block:: python
+
+   Processing please wait!:  ██████████ 100% (40/40) >> completed (elapsed=>0:30, eta=>00:00) , (0.76 s/iteration or 1.23 iteration/s)
 
 .. code-block:: python
 
