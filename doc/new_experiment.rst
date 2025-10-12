@@ -90,5 +90,6 @@ For advanced usage (e.g., linked script validation, mixed designs), refer to the
 .. seealso::
 
    - :ref:`comp_cultivar`
+   - :ref:`api_ref`
 
 
