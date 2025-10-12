@@ -272,7 +272,7 @@ Mixed-Variable Optimization in apsimNGpy
     These challenges make optimization more complex, as standard solvers typically assume a continuous search space.
 
 
-To tackle this, APSIMNGpy provides the ``MixedVariable`` class, which allows users to define optimization problems involving a mixture of variable types:
+To tackle this, APSIMNGpy provides the :class:`~apsimNgpy.optimizer.single.MixedVariable` class, which allows users to define optimization problems involving a mixture of variable types:
 
     - Continuous (float-valued)
 
