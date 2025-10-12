@@ -338,7 +338,9 @@ Example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
 
+
 .. code-block:: none
+
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
         'Start': datetime.datetime(1990, 1, 1, 0, 0)}
 
@@ -348,6 +350,7 @@ Example::
         model_name='Clock', parameters='End')
 
 # Output
+
 .. code-block:: none
 
         datetime.datetime(2000, 12, 31, 0, 0)
@@ -373,6 +376,7 @@ Example::
         model_name='Clock', parameters='end_date')
 
 # output
+
 .. code-block:: none
 
         datetime.datetime(2000, 12, 31, 0, 0)
@@ -469,7 +473,6 @@ Inspect ``Sow using a variable rule`` manager module parameters
 
 .. code-block::python
 
-     # output
      {'Crop': 'Maize',
      'StartDate': '1-nov',
      'EndDate': '10-jan',

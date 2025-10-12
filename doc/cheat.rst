@@ -655,6 +655,6 @@ Plot the Pareto Front
 .. image:: ../images/yield_nleach.png
 
 
-   - :ref:`API Reference <api>`
+   - :ref:`api_ref`
    - :ref:`editor`
    - :ref:`plain_inspect`
