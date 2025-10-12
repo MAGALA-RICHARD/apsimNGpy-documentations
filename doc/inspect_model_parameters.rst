@@ -324,7 +324,7 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 .. code-block:: python
 
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation',
-        model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
+         model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
 
         # output
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
@@ -335,12 +335,15 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 
 Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
 
-Example::
+Example:
 
-        model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
+.. code-block:: python
+
+        model_instance.inspect_model_parameters('Clock', simulations='Simulation',
+          model_name='Clock')
 
 
-.. code-block:: none
+.. code-block:: python
 
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
         'Start': datetime.datetime(1990, 1, 1, 0, 0)}
@@ -383,7 +386,9 @@ Example::
         datetime.datetime(2000, 12, 31, 0, 0)
 
 
-# Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``::
+# Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``
+
+.. code-block:: python
 
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
 
@@ -405,10 +410,13 @@ Inspect NH4 ``InitialValues``For layered properties,
 
 .. Hint::
 
-  All are returned as pandas even if one parameter is specified::
+  All are returned as pandas even if one parameter is specified.
 
-        model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
-        parameters='InitialValues')
+.. code-block:: python
+
+        model_instance.inspect_model_parameters('Solute', simulations='Simulation',
+         model_name='NH4',
+         parameters='InitialValues')
 
 output
 
@@ -460,7 +468,8 @@ Inspect surface organic matter module parameters by selecting a few parameters
 
 .. code-block:: python
 
-    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter',
+     parameters = 'InitialCNR')
     # output
 .. code-block:: python
 
