@@ -28,8 +28,8 @@ Demonstration
 .. admonition:: Explanation
 
     * :class:`~apsimNgpy.core.apsim.ApsimModel` is used to initialise apsim model and handles model simulation and editing
-    * ``ContinuousVariable``: wraps your problem setup for continuous variables
-    * ``MixedVariable``: wraps your problem setup for mixed variables
+    * :class:`~apsimNGpy.optimizer.single.ContinuousVariable` wraps your problem setup for continuous variables
+    * :class:`~apsimNGpy.optimizer.single.MixedVariable` wraps your problem setup for mixed variables
 
 
 Load the APSIM model. This is typically a single simulation file you want to calibrate or optimize.
