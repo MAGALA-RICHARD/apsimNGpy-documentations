@@ -83,7 +83,6 @@ For advanced usage (e.g., linked script validation, mixed designs), refer to the
 
 .. seealso::
 
-   - :ref:`API Reference <api>`
    - :ref:`comp_cultivar`
 
 
