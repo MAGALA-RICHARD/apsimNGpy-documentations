@@ -77,9 +77,12 @@ Let's take a look at how it works.
     from apsimNGpy.core import ApsimModel
     model_instance = ApsimModel('Maize')
 
-Inspect full soil ``Organic`` profile::
+Inspect full soil ``Organic`` profile:
 
-        model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
+.. code-block:: python
+
+        model_instance.inspect_model_parameters('Organic', simulations='Simulation',
+         model_name='Organic')
 
 # output
 
@@ -99,9 +102,13 @@ Inspect full soil ``Organic`` profile::
 
 Inspect soil ``Physical`` profile::
 
-        model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
+        model_instance.inspect_model_parameters('Physical', simulations='Simulation',
+         model_name='Physical')
 
-        # output
+# output
+
+.. code-block:: python
+
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
         0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
         1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
@@ -112,9 +119,12 @@ Inspect soil ``Physical`` profile::
         6  0.280000  1.187495  0.452332  ...  135.699528     300.0               1800.0
         [7 rows x 17 columns]
 
-Inspect soil ``Chemical`` profile::
+Inspect soil ``Chemical`` profile:
 
-        model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
+.. code-block:: python
+
+        model_instance.inspect_model_parameters('Chemical', simulations='Simulation',
+         model_name='Chemical')
 
 # output
 
@@ -133,7 +143,9 @@ Inspect soil ``Chemical`` profile::
 .. tip::
 
     Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``.
-    This argument accepts both strings and ``lists`` or ``tuple``. Please see the preceding examples::
+    This argument accepts both strings and ``lists`` or ``tuple``. Please see the examples below.
+
+.. code-block:: python
 
         model_instance.inspect_model_parameters('Organic', simulations='Simulation',
            model_name='Organic', parameters='Carbon')
@@ -184,7 +196,8 @@ Inspect ``Report`` model attributes.
 
 .. code-block:: python
 
-        model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
+        model_instance.inspect_model_parameters('Report', simulations='Simulation',
+          model_name='Report')
 
         # output
         {'EventNames': ['[Maize].Harvesting'],
@@ -218,7 +231,8 @@ Inspect  ``Weather`` path
 
 .. code-block:: python
 
-        model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
+        model_instance.inspect_model_parameters('Weather', simulations='Simulation',
+          model_name='Weather')
 
         # output
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
