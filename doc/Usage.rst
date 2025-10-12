@@ -29,7 +29,7 @@ Another way to access the results is to use :meth:`~apsimNGpy.core.apsim.ApsimMo
 
 .. caution::
 
-     Please note that accessing results through any of the above method before calling ``run()`` may not be allowed, and will raise an ``error``.
+     Please note that accessing results through any of the above method before calling :meth:`~apsimNGpy.core.apsim.ApsimModel.run` may not be allowed, and will raise an ``error``.
 
 .. code-block:: python
 
