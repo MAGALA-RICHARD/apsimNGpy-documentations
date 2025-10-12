@@ -273,7 +273,7 @@ Inspect ``Cultivar`` parameters::
 
 # output
 
-.. code-block:: none
+.. code-block:: python
 
         {'[Phenology].Juvenile.Target.FixedValue': '210',
         '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
@@ -286,10 +286,14 @@ Inspect ``Cultivar`` parameters::
         '[Rachis].DMDemands.Structural.DMDemandFunction.MaximumOrganWt.FixedValue': '36'}
 
 .. code-block:: python
-        >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
-        ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
 
-        # output
+        model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
+         model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
+
+# output
+
+.. code-block:: python
+
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
 .. caution::
