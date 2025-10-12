@@ -169,7 +169,7 @@ Or
 .. admonition:: Final Note
 
     The above code is also applicable for running different versions of APSIM models.
-    The `~apsimNGpy.core.config.set_apsim_bin_path` function can be called once and retained unless you uninstall ``apsimNGpy``
+    The :func:`~apsimNGpy.core.config.set_apsim_bin_path` function can be called once and retained unless you uninstall ``apsimNGpy``
     or the APSIM application itself. This implies that you can switch between apsim versions easily if you have more than one versions installed on your computer
 
 
