@@ -199,10 +199,14 @@ Inspect ``Report`` model attributes.
 
 .. code-block:: python
 
-        model_instance.inspect_model_parameters('Report', simulations='Simulation',
+        model_instance.inspect_model_parameters('Report',
+         simulations='Simulation',
           model_name='Report')
 
-        # output
+ # output
+
+.. code-block:: python
+
         {'EventNames': ['[Maize].Harvesting'],
         'VariableNames': ['[Clock].Today',
         '[Maize].Phenology.CurrentStageName',
@@ -218,8 +222,10 @@ Inspect ``Report`` model attributes.
 
 .. code-block:: python
 
-        model_instance.inspect_model_parameters('Report', simulations='Simulation',
-           model_name='Report', parameters='EventNames')
+        model_instance.inspect_model_parameters('Report',
+         simulations='Simulation',
+         model_name='Report',
+         parameters='EventNames')
 
 # output
 
