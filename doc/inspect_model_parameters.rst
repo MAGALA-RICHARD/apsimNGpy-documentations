@@ -112,7 +112,10 @@ Inspect soil ``Chemical`` profile::
 
         model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
 
-        # output
+# output
+
+.. code-block:: python
+
                Depth   PH  Thickness
         0      0-150  8.0      150.0
         1    150-300  8.0      150.0
@@ -128,7 +131,13 @@ Inspect soil ``Chemical`` profile::
     Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``.
     This argument accepts both strings and ``lists`` or ``tuple``. Please see the preceding examples::
 
-        model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
+        model_instance.inspect_model_parameters('Organic', simulations='Simulation',
+           model_name='Organic', parameters='Carbon')
+
+#output
+
+.. code-block:: python
+
           Carbon
         0    1.20
         1    0.96
