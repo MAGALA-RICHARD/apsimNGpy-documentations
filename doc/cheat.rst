@@ -305,9 +305,13 @@ Inspect the surface organic matter module parameters by selecting a few paramete
 
 .. code-block:: python
 
-    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter',
+     parameters = 'InitialCNR')
 
-    # output
+ # output
+
+.. code-block:: python
+
     {'InitialCNR': 100.0}
 
 If all the above is not enough, view the file in the GUI
@@ -369,7 +373,8 @@ If you prefer little boilerplate code, you are covered with edit_model_by_path.
 
 .. code-block:: python
 
-    model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
+    model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule',
+      Population =12)
 
 Running Factorial Experiments
 Creating an Experiment
@@ -384,7 +389,8 @@ Add nitrogen levels as a continuous factor
 
 .. code-block:: python
 
-    model.add_factor(specification="[Fertilise at sowing].Script.Amount = 0 to 200 step 20", factor_name='Nitrogen')
+    model.add_factor(specification="[Fertilise at sowing].Script.Amount = 0 to 200 step 20",
+    factor_name='Nitrogen')
 
 2. Add population density as a categorical factor:
 
@@ -469,6 +475,7 @@ Create your own problem description class
 .. code-block:: python
 
     problem = Problem(maize_model, obs)
+
 2. Approach 2 is to define directly the objectives and supply the objectives while initializing any of ContinuousVariable or MixedVariable classes.
 
 .. code-block:: python
@@ -612,22 +619,22 @@ Each dictionary defines:
 
 2. Add the decision variables after problem initialization
 
-# Initialise the problem
+Initialise the problem
 
-.. code-block::
+.. code-block:: python
 
-    problem = MultiObjectiveProblem(runner, objectives=[maximize_yield, minimize_nitrate_leaching])
-
+    problem = MultiObjectiveProblem(runner, objectives=[maximize_yield,
+     minimize_nitrate_leaching])
     problem.add_control(
         path='.Simulations.Simulation.Field.Fertilise at sowing',
         Amount='?', bounds=[50, 300], v_type='float')
-
     problem.control(
         path='.Simulations.Simulation.Field.Sow using a variable rule',
         Population='?', bounds=[4, 14], v_type='float')
 
 
 Run the NSGA-II optimizer
+-------------------------
 
 .. code-block:: python
 
