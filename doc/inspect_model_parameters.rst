@@ -285,6 +285,7 @@ Inspect ``Manager`` script parameters.
         parameters='Population')
 
 # Output
+
 .. code-block:: python
 
         {'Population': '10'}
@@ -498,6 +499,7 @@ Inspect surface organic matter module parameters by selecting a few parameters
     model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter',
      parameters = 'InitialCNR')
     # output
+
 .. code-block:: python
 
     {'InitialCNR': 100.0}
