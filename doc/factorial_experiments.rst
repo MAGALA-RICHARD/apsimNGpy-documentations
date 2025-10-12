@@ -55,6 +55,10 @@ Add population density as a categorical factor:
     apsim.add_factor(specification="[Sow using a variable rule].Script.Population = 4, 10, 2, 7, 6",
                      factor_name='Population')
 
+.. seealso::
+
+   API description: :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_factor`
+
 Running the Experiment
 ----------------------
 
