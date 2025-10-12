@@ -71,8 +71,12 @@ load default ``maize`` module::
 Find the path to all the manager script in the simulation::
 
      model.inspect_model(Models.Manager, fullpath=True)
-     [.Simulations.Simulation.Field.Sow using a variable rule', '.Simulations.Simulation.Field.Fertilise at
-     sowing', '.Simulations.Simulation.Field.Harvest']
+
+.. code-block:: python
+
+     [.Simulations.Simulation.Field.Sow using a variable rule',
+     '.Simulations.Simulation.Field.Fertilise at sowing',
+     '.Simulations.Simulation.Field.Harvest']
 
 Inspect the full path of the Clock Model::
 
@@ -128,14 +132,20 @@ Alternative::
 Try finding path to the cultivar model::
 
      model.inspect_model('Cultivar', fullpath=False) # list all available cultivar names
-     ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',  'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
+
+.. code-block:: python
+
+     ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',
+     'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
 
 # we can get only the names of the cultivar models using the full string path::
 
      model.inspect_model('Models.PMF.Cultivar', fullpath = False)
-     ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',  'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
 
+.. code-block:: python
 
+     ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',
+      'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
 
 
 .. hint::
