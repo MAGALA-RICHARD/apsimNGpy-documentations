@@ -60,6 +60,7 @@ using the :meth:`~apsimNGpy.core.apsim.ApsimModel.replace_weather_from_file` met
 
 .. seealso::
 
-   Related APIs
+   Related APIs:
+
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.get_weather_from_file`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.get_soil_from_web`
