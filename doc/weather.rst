@@ -57,3 +57,9 @@ using the ``replace_met_file`` method. Here's how you can do it. In the same way
 .. code-block:: python
 
      maize_model.replace_met_file(weather_file = './pathtotheeatherfile')
+
+.. seealso::
+
+   Related APIs
+   - :meth:`~apsimNGpy.core.apsim.APsimModel.get_weather_from_file`
+   - :meth:`~apsimNGpy.core.apsim.APsimModel.get_soil_from_web`
