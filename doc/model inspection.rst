@@ -153,6 +153,10 @@ Try finding path to the cultivar model::
 - ``Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute`` or ``'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'`` path to soil models.
 - *(``Additional`` model types may be available based on APSIM simulation requirements.)*
 
+.. seealso::
+
+  API description: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model`
+
 .. tip::
 
     In some cases, determining the model type can be challenging. Fortunately, **apsimNGpy** provides a recursive function to simplify this process—the `find_model` method.
