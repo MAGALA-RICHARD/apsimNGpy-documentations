@@ -517,7 +517,7 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
 
 .. admonition:: GUI Simulation Preview.
 
-     If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the `preview_simulation` method as follows;.
+     If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation` method as follows;.
 
 .. code-block:: python
 
