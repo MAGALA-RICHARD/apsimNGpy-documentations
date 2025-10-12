@@ -8,7 +8,8 @@ This tutorial introduces the  :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_mo
 
 .. Note::
 
-    The inspect_model_parameters method simplifies parameter inspection by consolidating functionality that was previously spread across multiple methods such as:
+    The :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters` method simplifies parameter inspection
+    by consolidating functionality that was previously spread across multiple methods such as:
 
     - examine_management_info
 
