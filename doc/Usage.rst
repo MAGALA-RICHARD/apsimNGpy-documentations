@@ -3,7 +3,7 @@ Running and Retrieving Results
 
 Running loaded models
 ^^^^^^^^^^^^^^^^^^^^^^^
-Running loaded models implies executing the model to generate simulated outputs. This is implemented via ``ApsimModel.run()`` method as shown below.
+Running loaded models implies executing the model to generate simulated outputs. This is implemented via :meth:`~apsimNGpy.core.apsim.ApsimModel.run` method as shown below.
 Users can provide the ``report_name``, which specifies data table name from the simulation for retrieving the results.
 
 .. code-block:: python
@@ -58,6 +58,11 @@ Saving the Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When we load the model, it is usually assigned a random name. However, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method.
 This method takes a single argument: the desired file path or name.
+
+.. admonition:: see Save API details
+
+    :meth:`~apsimNGpy.core.apsim.ApsimModel.save
+
 
 .. Hint::
 
