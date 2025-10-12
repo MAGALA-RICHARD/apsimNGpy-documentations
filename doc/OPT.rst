@@ -88,13 +88,13 @@ These parameters—such as sowing density, nitrogen application rate, irrigation
 
 .. admonition:: Explanation
 
-    In this example, a custom optimization problem is defined by subclassing ``ContinuousVariable``.
+    In this example, a custom optimization problem is defined by subclassing :class:`~apsimNGpy.optimizer.single.ContinuousVariable`.
     The class is tailored to work with a specific APSIM model and a corresponding set of observed data.
 
     The observed values are passed to the constructor and stored as an attribute ``self.obs``. This enables the model’s predicted values
     to be evaluated directly against real-world data.
 
-    The core logic resides in the ``evaluate_objectives()`` method, which runs the APSIM simulation and retrieves the predicted yield. It then computes the **Root Mean Square Error (RMSE)** between the predicted and observed values.
+    The core logic resides in the :meth:`evaluate_objectives` method, which runs the APSIM simulation and retrieves the predicted yield. It then computes the **Root Mean Square Error (RMSE)** between the predicted and observed values.
 
     Since ``RMSE`` quantifies prediction error, and **lower values indicate better model performance**, this setup implicitly tells the optimizer to search for parameter values that minimize RMSE. In effect, this drives the optimization process toward solutions that better match the observed system behavior.
 
