@@ -74,7 +74,7 @@ Simulation outputs can be read using:
     from apsimNGpy.core.apsim import ApsimModel
     sim = ApsimModel("path/to/model.apsimx")
     sim.run()
-    outputs = sim.get_simulatated_output(report_name="Report")
+    outputs = sim.get_simulated_output(report_name="Report")
 
 This returns a ``pandas.DataFrame`` containing the simulation results.
 
