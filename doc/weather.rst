@@ -4,7 +4,7 @@ apsimNGpy provides both an object oriented structure and procedural structure to
 
 Get weather data from the web
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Replace instantly from the instantiated apsimNGpy model object. This is achieved with ``get_weather_from_web()`` with the following signature;
+Replace instantly from the instantiated apsimNGpy model object. This is achieved with :meth:`~apsimNGpy.core.apsim.APsimModel.get_weather_from_web` with the following signature;
 
 .. code-block:: python
 
