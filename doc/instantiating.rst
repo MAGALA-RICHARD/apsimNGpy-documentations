@@ -99,3 +99,7 @@ You can either load a built-in template or use your own APSIM file.
 .. admonition:: Next actions
 
     Once your model is instantiated, you're ready to run simulations, edit model components, or inspect simulation settings. See the following sections for editing examples and diagnostics tools.
+
+.. seealso::
+
+   :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
