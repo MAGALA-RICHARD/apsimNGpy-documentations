@@ -150,7 +150,10 @@ Try finding path to the cultivar model::
 
 .. hint::
 
-    ``model_type`` can be any of the following classes from the `Models` namespace, and can be passed as strings or as full path to Models namespace if Models is imported
+    ``model_type`` can be any of the following classes from the `Models` namespace, and
+    can be passed as strings or as full path to Models namespace if Models is imported. See the description below.
+    The links to each class or model type are not active because these objects are not exposed in apsimNGpy
+    API reference.
 
 - :class:`Models.Manager` or :class:`Manager` – Returns information about the manager scripts in simulations.
 - :class:`Models.Core.Simulation`  or :class:`Simulation`– Returns information about the simulation.
@@ -158,9 +161,9 @@ Try finding path to the cultivar model::
 - :class:`Models.Core.IPlant` – or :class:`IPlant` Returns a list of paths or names for all crop models available in the simulation.
 - :class:`'Models.Report'` or :class:`"Report"` returns the available report paths or names
 - :class:`Models.Surface.SurfaceOrganicMatter` or :class:`SurfaceOrganicMatter` returns path to the surface organic module
-- :class:`Models.PMF.Cultivar' or :class:`Cultivar` paths or names to all cultivars
+- :class:`Models.PMF.Cultivar` or :class:`Cultivar` paths or names to all cultivars
 - :class:`Models.Clock` or :class:`Clock'` returns all path to the clock models available
-- :class:`Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute` or :class:`'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'`` path to soil models.
+- :class:`Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute` or :class:`'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'` path to soil models.
 - *(``Additional`` model types may be available based on APSIM simulation requirements.)*
 
 .. seealso::
