@@ -79,5 +79,5 @@ This method takes a single argument: the desired file path or name.
 
 .. seealso::
 
-    - :ref: `api_ref`
+    - :ref:`api_ref`
 
