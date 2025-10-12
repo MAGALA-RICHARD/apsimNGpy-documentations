@@ -38,6 +38,8 @@ Another way to access the results is to use :meth:`~apsimNGpy.core.apsim.ApsimMo
     df.to_csv('apsim_df_res.csv')  # Save the results to a CSV file
     print(model.results)  # Print all DataFrames in the storage domain
 
+.. code-block:: python
+
       SimulationName  SimulationID  CheckpointID  ... Maize.Total.Wt      Yield   Zone
     0     Simulation             1             1  ...       1964.016   9367.414  Field
     1     Simulation             1             1  ...       1171.894   5645.455  Field
@@ -54,7 +56,7 @@ Another way to access the results is to use :meth:`~apsimNGpy.core.apsim.ApsimMo
 
 Saving the Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When we load the model, it is usually assigned a random name. However, you can save the file using the save() method.
+When we load the model, it is usually assigned a random name. However, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method.
 This method takes a single argument: the desired file path or name.
 
 .. Hint::
@@ -64,4 +66,8 @@ This method takes a single argument: the desired file path or name.
 .. code-block:: python
 
     model.save('./edited_maize_model.apsimx')
+
+.. seealso::
+
+    - :ref: `api_ref`
 
