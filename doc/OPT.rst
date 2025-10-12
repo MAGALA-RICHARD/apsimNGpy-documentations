@@ -272,7 +272,7 @@ Mixed-Variable Optimization in apsimNGpy
     These challenges make optimization more complex, as standard solvers typically assume a continuous search space.
 
 
-To tackle this, APSIMNGpy provides the :class:`~apsimNgpy.optimizer.single.MixedVariable` class, which allows users to define optimization problems involving a mixture of variable types:
+To tackle this, APSIMNGpy provides the :class:`~apsimNGpy.optimizer.single.MixedVariable` class, which allows users to define optimization problems involving a mixture of variable types:
 
     - Continuous (float-valued)
 
@@ -297,7 +297,7 @@ You can then optimize this setup using either local or global solvers, as shown 
 
 .. code-block:: python
 
-    from apsimNGpy.optimize import MixedVariable
+    from apsimNGpy.optimizer.single import MixedVariable
 
     # Define the optimization problem
     problem = MixedVariable(maize_model, objectives=maximize_yield)
