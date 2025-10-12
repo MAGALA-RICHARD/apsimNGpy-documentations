@@ -27,7 +27,7 @@ Demonstration
 
 .. admonition:: Explanation
 
-    * ``ApsimModel```: used to initialise apsim model and handles model simulation and editing
+    * :class:`~apsimNgpy.core.apsim.ApsimModel` is used to initialise apsim model and handles model simulation and editing
     * ``ContinuousVariable``: wraps your problem setup for continuous variables
     * ``MixedVariable``: wraps your problem setup for mixed variables
 
