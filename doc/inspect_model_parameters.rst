@@ -331,7 +331,7 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 
 .. caution::
 
-    If there are more than one simulation, using ``inspect_model_parameters`` without specifying the simulation name will return a nested dictionary.
+    If there are more than one simulation, using :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters` without specifying the simulation name will return a nested dictionary.
 
 Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
 
