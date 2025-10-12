@@ -73,6 +73,8 @@ Since our major covariate factor is CultivarName, we will next examine the corre
     B_110            6535.0578
     A_90             6286.9042
     Dekalb_XL82      5611.6749
+
+
     Melkassa         4831.0817
     Name: Yield, dtype: float64
 
@@ -80,7 +82,9 @@ Clearly Melkassa has the lowest yield, and laila performed better than all other
 
 .. code-block:: python
 
+    from matplotlib import pyplot as plt
     model.boxplot('Yield', by = 'CultivarName', figsize=(10,8), rotate_xticks=False, show=True)
+    plt.show()
 
 
 .. image:: ../images/Cultivar_Maize.png
@@ -90,7 +94,8 @@ Meanwhile `Laila` and ``B_110` are similar, but different from that of `Dekalb_X
 
 .. code-block:: python
 
-   model.series_plot(x= 'year', y= 'Yield', hue='Cultivar')
+   model.series_plot(x= 'Year', y= 'Yield', hue='Cultivar')
+   plt.show()
 
 
 Variability across the simulation years
