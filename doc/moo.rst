@@ -49,6 +49,10 @@ Here, I a using the default maize template. Because it does not have nitrate lea
     runner = Runner("Maize")
     runner.add_report_variable('[Soil].Nutrient.NO3.kgha[1] as nitrate', report_name='Report')
 
+.. admonition:: For more ``runner`` API details, check the link below
+
+   ApsimModel API: :class:`~apsimNGpy.core.apsim.ApsimModel`
+
 
 Step 3: Define Objective Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
