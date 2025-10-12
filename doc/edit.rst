@@ -245,6 +245,11 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
     After editing the file or model, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method. This method takes a single argument: the desired file path or name.
     Without specifying the full path to the desired storage location, the file will be saved in the current working directory.
 
+.. seealso::
+
+   - save: :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
+   - results retrieval:    save: :meth:`~apsimNGpy.core.apsim.ApsimModel.results`
+
 .. code-block:: python
 
     model.save('./edited_maize_model.apsimx')
