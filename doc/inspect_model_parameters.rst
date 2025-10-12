@@ -429,6 +429,11 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
     # output
     {'Population': '10'}
 
+.. seealso::
+
+  API: :meth:`~apsimNgpy.core.apsim.ApsimModel.inspect_model_parameters_by_path`
+
+
 .. tip::
 
    Getting model path can be done in three ways:
