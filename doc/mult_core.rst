@@ -70,7 +70,7 @@ If ``agg_func`` is specified, it can be one of: mean, median, sum, min, or max. 
 Customization
 ===================
 If you don’t want to use the higher-level API, you can build the pipeline from scratch.
-The simplest path is to decorate your worker with write_results_to_sql, which writes the worker’s return
+The simplest path is to decorate your worker with :func:`~apsimNGpy.core_utils.database_utils.write_results_to_sql`, which writes the worker’s return
 value to the database after each run. The worker must return either a pandas DataFrame or a dict—that way you control exactly which variables/columns are written.
 Alternatively, skip the decorator and call your own writer/aggregator inside the worker, as shown below.
 
