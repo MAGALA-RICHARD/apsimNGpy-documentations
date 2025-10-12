@@ -61,6 +61,8 @@ Finalizing the Experiment
 Once all factors are defined, finalize the setup and save the modified model. Please note this is entirely optional,
 ``add_factor`` is a stand alone method, once you have finished adding factors, you can call the ``run`` to retrieve the results, without calling finalize. finalize is wa built as safe guard for immutability
 
+@deprecated:
+
 .. code-block:: python
 
     exp.finalize()
