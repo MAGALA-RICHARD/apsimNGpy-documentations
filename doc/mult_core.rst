@@ -89,7 +89,7 @@ Alternatively, skip the decorator and call your own writer/aggregator inside the
 
 
 Minimal example 1: Writing your own worker and data storage function
-=====================================================================
+--------------------------------------------------------------------
 
 .. code-block:: python
 
@@ -127,7 +127,7 @@ Minimal example 1: Writing your own worker and data storage function
                 # no need to return results
 
 Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils (only latest version)
-==============================================================================================
+--------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: python
 
