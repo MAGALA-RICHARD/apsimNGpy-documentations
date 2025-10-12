@@ -95,5 +95,5 @@ All cultivar had the same annual yield trend but there is a year when a_90 had m
 
 .. seealso::
 
-   - :ref:`API Reference <api>`
+   - API Reference: :ref:`<api>`
    - :ref:`quick_factorial_experiments`
