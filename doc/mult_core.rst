@@ -11,7 +11,7 @@ Below, we’ll walk through a step-by-step example of using this API
 
 .. code-block:: python
 
-        from apsimNGpy.core.multi_core import MultiCoreManager
+        from apsimNGpy.core.multi_cores import MultiCoreManager
         from apsimNGpy.core.apsim import ApsimModel
         from pathlib import Path
 
