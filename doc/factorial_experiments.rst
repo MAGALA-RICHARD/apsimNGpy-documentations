@@ -55,9 +55,6 @@ Add population density as a categorical factor:
     apsim.add_factor(specification="[Sow using a variable rule].Script.Population = 4, 10, 2, 7, 6",
                      factor_name='Population')
 
-.. seealso::
-
-   API description: :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_factor`
 
 Running the Experiment
 ----------------------
@@ -83,7 +80,8 @@ Load the maize simulations again and initialize APSIM:
 
 .. code-block:: python
 
-    _apsim = load_default_simulations(crop='Maize', simulations_object=False)
+    from apsimNGpy.core.apsim import ApsimModel
+    _apsim = "Maize"
     apsimC = ApsimModel(_apsim)
 
 Create an experiment with permutation enabled:

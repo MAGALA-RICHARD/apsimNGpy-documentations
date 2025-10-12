@@ -51,6 +51,10 @@ factors like this:
    exp.add_factor("[Manager Script].Script.Amount = 0 to 200 step 50")
    exp.add_factor("[Sowing Rule].Script.RowSpacing = 100, 300, 600", factor_name="RowSpacing")
 
+.. seealso::
+
+   API description: :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.add_factor`
+
 Finalizing the Experiment
 =========================
 
