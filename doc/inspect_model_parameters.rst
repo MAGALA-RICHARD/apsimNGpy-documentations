@@ -545,10 +545,10 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
 
    Getting model path can be done in three ways:
 
-       1. Use ``model.inspect_file`` method. Prints a tree of the model structure to the console
+       1. Use: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file` method to print a tree of the model structure to the console
 
-       2. Use ``model.inspect_model(model_type =...)``. Returns the path to all the models in the specified class
-
+       2. Use:meth:`~apsimNGpy.core.apsim.inspect_model`. to return the path to all the models in the specified class
+to
        3. Use ``copy node path`` method in the graphical user interface
 
 .. admonition:: GUI Simulation Preview.
