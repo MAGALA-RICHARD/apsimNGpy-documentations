@@ -40,6 +40,10 @@ Then initialize the experiment block:
 
    exp.init_experiment(permutation=True)
 
+.. seealso::
+
+  :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment`:
+
 Adding Input Factors
 ====================
 
