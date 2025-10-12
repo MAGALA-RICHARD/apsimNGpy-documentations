@@ -259,4 +259,4 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
    - :ref:`api_ref`
    - :ref:`apsimNGpy Cheat sheat <cheat>`
-    - :ref:`single_opt`
+   - :ref:`inspect_params`
