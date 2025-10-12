@@ -4,7 +4,7 @@
 .. note::
 
     ⚠️ Note: The Experiment module, introduced in apsimNGpy v0.3.9.7, addresses recent structural changes in APSIM file structure changes. While the older ``create_experiment`` method in ApsimModel is retained for backward compatibility,
-    users working with newer APSIM models should use the ``ExperimentManager`` class for building factorial designs. It offers full support for modern model experiment editing
+    users working with newer APSIM models should use the :class:`~apsimNGpy.core.experimentmanager.ExperimentManager` class for building factorial designs. It offers full support for modern model experiment editing
 
 The :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`: API in ``apsimNGpy`` provides a high-level interface to build factorial experiments
 programmatically using APSIM. It is ideal for users who want to automate the creation of simulation treatments
