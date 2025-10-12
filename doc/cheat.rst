@@ -192,7 +192,10 @@ Inspect the full soil Organic profile:
 
         model.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
 
-        # output
+# output
+
+.. code-block:: python
+
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
         0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
         1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
@@ -209,7 +212,10 @@ Inspect soil Physical profile:
 
     model.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
 
-    # output
+# output
+
+.. code-block:: python
+
         AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
     0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
     1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
@@ -286,7 +292,10 @@ Inspect SurfaceOrganicMatter module parameters
     model = ApsimModel('Maize')
     model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
 
-    # output
+# output
+
+.. code-block:: python
+
     {'InitialCPR': 0.0,
       'InitialCNR': 100.0,
       'NH4': 0.0,
