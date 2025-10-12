@@ -93,3 +93,4 @@ Yes! We welcome contributions. You can fork the repository, submit issues or fea
 - Community forums and APSIM support groups
 - Microsoft Teams community: https://teams.live.com/l/community/FAAbNOQj7y9dPcoaAM
 - Email: rmagala640@gmail.com
+- :ref:`api_ref`
