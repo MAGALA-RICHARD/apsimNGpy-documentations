@@ -228,5 +228,5 @@ we ge the same pareto front and trade-offs we have seen in that graph? To answer
 
 .. seealso::
 
-   - :ref:`API Reference <api>`
+   - :ref:`api_ref`
    - :ref:`single_opt`
