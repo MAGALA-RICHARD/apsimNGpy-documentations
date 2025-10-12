@@ -1,3 +1,5 @@
+.. _Plots:
+
 Plotting and Visualizing Simulated Output
 =========================================
 Visualizing simulated results, is a critical step in understanding and communicating model behavior.
