@@ -264,7 +264,8 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         simulations='Simulation', model_name='SurfaceOrganicMatter')
 
-        # output
+@output
+.. code-block:: none
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
          'StandingWt': 0.0,
@@ -278,6 +279,9 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
          'C': 0.0,
          'N': 0.0,
          'NO3': 0.0}
+
+
+.. code-block:: python
 
         model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation',
         model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
@@ -294,13 +298,19 @@ Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``
 Example::
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
+
+.. code-block:: none
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
         'Start': datetime.datetime(1990, 1, 1, 0, 0)}
+
+.. code-block:: python
 
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='End')
 
-        # output
+# Output
+.. code-block:: none
+
         datetime.datetime(2000, 12, 31, 0, 0)
 
 Extract ``Start`` year only. let's see with ``start`` year as an example::
@@ -323,7 +333,9 @@ Example::
         model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         model_name='Clock', parameters='end_date')
 
-        # output
+# output
+.. code-block:: none
+
         datetime.datetime(2000, 12, 31, 0, 0)
 
 
@@ -331,7 +343,11 @@ Example::
 
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
 
-        # output
+
+output
+
+.. code-block:: python
+
                Depth  InitialValues  SoluteBD  Thickness
         0      0-150            0.0  1.010565      150.0
         1    150-300            0.0  1.071456      150.0
@@ -341,7 +357,7 @@ Example::
         5  1200-1500            0.0  1.162873      300.0
         6  1500-1800            0.0  1.187495      300.0
 
-# Inspect NH4 ``InitialValues``For layered properties,
+Inspect NH4 ``InitialValues``For layered properties,
 
 .. Hint::
 
@@ -350,7 +366,9 @@ Example::
         model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
         parameters='InitialValues')
 
-        # output
+output
+
+.. code-block:: none
 
             InitialValues
         0            0.1
@@ -360,7 +378,7 @@ Example::
         4            0.1
         5            0.1
         6            0.1
-        """
+
 
 .. tip::
 
