@@ -378,6 +378,8 @@ Inspect ``SurfaceOrganicMatter`` module parameters
    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
    # output
 
+.. code-block:: python
+
    {'InitialCPR': 0.0,
      'InitialCNR': 100.0,
      'NH4': 0.0,
@@ -398,6 +400,8 @@ Inspect surface organic matter module parameters by selecting a few parameters
 
     model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter', parameters = 'InitialCNR')
     # output
+.. code-block:: python
+
     {'InitialCNR': 100.0}
 
 Inspect ``Sow using a variable rule`` manager module parameters
@@ -405,6 +409,8 @@ Inspect ``Sow using a variable rule`` manager module parameters
 .. code-block:: python
 
      model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule')
+
+.. code-block::python
 
      # output
      {'Crop': 'Maize',
