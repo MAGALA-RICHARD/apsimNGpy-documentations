@@ -102,4 +102,5 @@ You can either load a built-in template or use your own APSIM file.
 
 .. seealso::
 
-   :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
+   - :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
+   - :ref:`api`
