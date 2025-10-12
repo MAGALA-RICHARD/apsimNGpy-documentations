@@ -452,6 +452,8 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
    - :ref:`api_ref`
    - :ref:`editor`
    - :ref:`plain_inspect`
+   - :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation`
+
 
 
 
