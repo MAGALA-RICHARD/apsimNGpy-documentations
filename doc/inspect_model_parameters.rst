@@ -425,13 +425,17 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
 
 .. code-block:: python
 
-    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule', parameters= 'Population')
+    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule',
+       parameters= 'Population')
+
+.. code-block:: python
+
     # output
     {'Population': '10'}
 
 .. seealso::
 
-  API: :meth:`~apsimNgpy.core.apsim.ApsimModel.inspect_model_parameters_by_path`
+  API: :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path`
 
 
 .. tip::
