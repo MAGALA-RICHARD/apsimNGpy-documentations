@@ -28,13 +28,14 @@ For demonstration purposes, we’ll generate some example jobs:
         )
 
 
-Here we use the ApsimModel class to clone from the template Maize model shipped with APSIM. If you do not specify the out_path argument, each file is assigned a random filename. This is critical in multi-processing—you must ensure that no two processes share the same filename, otherwise the run will fail.
+Here we use the :class:`~apsimNGpy.core.apsim.ApsimModel` class to clone from the template Maize model shipped with APSIM. If you do not specify the out_path argument, each file is assigned a random filename. This is critical in multi-processing—you must ensure that no two processes share the same filename, otherwise the run will fail.
 
 To explicitly set unique filenames for each simulation:
 
 .. code-block:: python
 
-       create_jobs = (ApsimModel('Maize', out_path = Path(f"_{i}.apsimx").resolve()).path for i in range(100))
+       create_jobs = (ApsimModel('Maize', out_path = Path(f"_{i}.apsimx").resolve()).path
+       for i in range(100))
 
 
 .. tip::
@@ -187,3 +188,7 @@ Our 40 simulations ran in 30 seconds only, almost 0.76 seconds per simulation.
 Working in notebooks (Jupyter/Colab)
 =====================================
 The safest pattern is to place worker functions in a separate .py module and import them:
+
+.. seealso::
+
+  API description
