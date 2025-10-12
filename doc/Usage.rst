@@ -27,6 +27,11 @@ After the simulation runs, results can be accessed  via :attr:`~apsimNGpy.core.a
 
 Another way to access the results is to use :meth:`~apsimNGpy.core.apsim.ApsimModel.get_simulated_output` on the instantiated class object. This method accepts only one argument ``report_names`` and under the same principle explained above.
 
+.. seealso::
+
+   :attr:`~apsimNGpy.core.apsim.ApsimModel.results`
+   :meth:`~apsimNGpy.core.apsim.ApsimModel.get_simulated_output`
+
 .. caution::
 
      Please note that accessing results through any of the above method before calling :meth:`~apsimNGpy.core.apsim.ApsimModel.run` may not be allowed, and will raise an ``error``.
@@ -59,9 +64,9 @@ Saving the Simulation
 When we load the model, it is usually assigned a random name. However, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method.
 This method takes a single argument: the desired file path or name.
 
-.. admonition:: see Save API details
+.. admonition:: see `Save` API details
 
-    :meth:`~apsimNGpy.core.apsim.ApsimModel.save
+    :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
 
 
 .. Hint::
