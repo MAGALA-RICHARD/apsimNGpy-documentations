@@ -143,7 +143,9 @@ Output
 
 .. code-block:: python
 
-   # [.Simulations.Simulation.Field.Sow using a variable rule', '.Simulations.Simulation.Field.Fertilise at sowing', '.Simulations.Simulation.Field.Harvest']
+   [.Simulations.Simulation.Field.Sow using a variable rule',
+   '.Simulations.Simulation.Field.Fertilise at sowing',
+    '.Simulations.Simulation.Field.Harvest']
 
 Names only
 
