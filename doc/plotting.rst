@@ -426,4 +426,7 @@ Meta info
       APSIM version: `APSIM 2025.8.7844.0`
       apsimNGpy version 0.39.10.17
 
+.. seealso::
+
+    - :ref:`api_ref`
 
