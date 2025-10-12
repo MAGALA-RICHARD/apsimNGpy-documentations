@@ -4,7 +4,7 @@ Inspect Model
 =============================
 
 Most of the time, when modifying model parameters and values, you need the full path to the specified APSIM model.  
-This is where the ``inspect_model`` method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI.
+This is where the :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model` method becomes useful—it allows you to inspect the model without opening the file in the APSIM GUI.
 
 .. hint::
     Models can be inspected either by importing the ``Models`` namespace or by using string paths. The most reliable approach is to provide the full model path—either as a string or as a ``Models`` attribute path.
