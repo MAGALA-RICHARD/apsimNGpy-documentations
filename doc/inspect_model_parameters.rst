@@ -144,7 +144,12 @@ Inspect soil ``Chemical`` profile::
 
 .. code-block:: python
 
-        model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters=['Carbon', 'CNR'])
+        model_instance.inspect_model_parameters('Organic', simulations='Simulation',
+           model_name='Organic', parameters=['Carbon', 'CNR'])
+
+# output
+.. code-block:: python
+
            Carbon   CNR
         0    1.20  12.0
         1    0.96  12.0
