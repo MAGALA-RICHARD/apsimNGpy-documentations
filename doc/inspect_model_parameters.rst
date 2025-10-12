@@ -147,7 +147,8 @@ Inspect soil ``Chemical`` profile:
 
 .. code-block:: python
 
-        model_instance.inspect_model_parameters('Organic', simulations='Simulation',
+        model_instance.inspect_model_parameters('Organic',
+           simulations='Simulation',
            model_name='Organic', parameters='Carbon')
 
 #output
@@ -169,8 +170,10 @@ Inspect soil ``Chemical`` profile:
 
 .. code-block:: python
 
-        model_instance.inspect_model_parameters('Organic', simulations='Simulation',
-           model_name='Organic', parameters=['Carbon', 'CNR'])
+        model_instance.inspect_model_parameters('Organic',
+         simulations='Simulation',
+          model_name='Organic',
+          parameters=['Carbon', 'CNR'])
 
 # output
 
