@@ -17,7 +17,7 @@ edit_method function signature
 
 
 ``model_type`` : str, required
-    Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.). see the description about model types here :ref:`model_List`
+    Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.). Please see more :ref:`details here <model_List>`
 
 ``simulations`` : Union[str, list], optional
     A simulation name or list of simulation names in which to search. Defaults to all simulations in the model.
