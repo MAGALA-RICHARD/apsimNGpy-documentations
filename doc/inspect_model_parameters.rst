@@ -561,12 +561,11 @@ to
 
 .. seealso::
 
-   - :ref:`api_ref`
-   - :ref:`editor`
-   - :ref:`plain_inspect`
-   - :ref:`editor`
+   - :ref:`API Reference: <api_ref>`
+   - :ref:`Editing Models: <editor>`
+   - :ref:`Plain Model Inspection: <plain_inspect>`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation`
-   - :ref:`model_List`
+   - :ref:`Models namespace <model_List>`
 
 
 
