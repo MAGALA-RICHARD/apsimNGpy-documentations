@@ -151,20 +151,8 @@ Try finding path to the cultivar model::
 .. hint::
 
     ``model_type`` can be any of the following classes from the `Models` namespace, and
-    can be passed as strings or as full path to Models namespace if Models is imported. See the description below.
-    Please note that the links to each class or model type are not active because these objects are not exposed in apsimNGpy
-    API reference.
+    can be passed as strings or as full path to Models namespace if Models is imported. See the description above.
 
-- :class:`Models.Manager` or :class:`Manager` – Returns information about the manager scripts in simulations.
-- :class:`Models.Core.Simulation`  or :class:`Simulation`– Returns information about the simulation.
-- :class:`Models.Climate.Weather` or :class:`Weather` – Returns a list of paths or names pertaining to weather models.
-- :class:`Models.Core.IPlant` – or :class:`IPlant` Returns a list of paths or names for all crop models available in the simulation.
-- :class:`'Models.Report'` or :class:`Report` returns the available report paths or names
-- :class:`Models.Surface.SurfaceOrganicMatter` or :class:`SurfaceOrganicMatter` returns path to the surface organic module
-- :class:`Models.PMF.Cultivar` or :class:`Cultivar` paths or names to all cultivars
-- :class:`Models.Clock` or :class:`Clock` returns all path to the clock models available
-- :class:`Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute` or :class:`'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'` path to soil models.
-- *(``Additional`` model types may be available based on APSIM simulation requirements.)*
 
 .. seealso::
 
@@ -172,7 +160,7 @@ Try finding path to the cultivar model::
 
 .. tip::
 
-    In some cases, determining the model type can be challenging. Fortunately, **apsimNGpy** provides a recursive function to simplify this process—the `find_model` method.
+    In some cases, determining the model type can be challenging. Fortunately, **apsimNGpy** provides a recursive function to simplify this process—the :meth:`~apsimNGpy.core.apsim.ApsimModel.find_model` method.
     This method helps identify the model type efficiently. However, you need to know the name of the model, such as **Clock** or **Weather**, to use it effectively.
 
 .. code-block:: python
@@ -194,7 +182,7 @@ Try finding path to the cultivar model::
 Whole Model inspection
 =====================================
 
-Use ``inspect_file`` method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other.
+Use :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file` method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other.
 ``Model Names`` are colored and are followed by their corresponding full paths relative to their parent node; ``Simulations``.
 
 For interactive consoles (e.g., Jupyter Notebook), this is a game changer, you’ll hardly ever need the GUI.
