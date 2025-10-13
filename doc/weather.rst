@@ -65,3 +65,7 @@ using the :meth:`~apsimNGpy.core.apsim.ApsimModel.get_weather_from_file` method.
 
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.get_weather_from_file`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.get_soil_from_web`
+
+.. seealso::
+
+    - :ref:`API Reference: <api_ref>`
