@@ -568,6 +568,7 @@ to
    - :ref:`plain_inspect`
    - :ref:`editor`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation`
+   - :ref:`model_List`
 
 
 
