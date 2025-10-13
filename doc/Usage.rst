@@ -79,5 +79,6 @@ This method takes a single argument: the desired file path or name.
 
 .. seealso::
 
-    - :ref:`api_ref`
+    - :ref:`API Reference: <api_ref>`
+    - :ref:`Download Stable APSIM Version here: <apsim_pin_version>`
 
