@@ -175,3 +175,4 @@ Or
 
 
    - :ref:`api_ref`
+   - :ref:`Download APSIM <apsim_pin_version>`
