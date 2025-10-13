@@ -30,7 +30,7 @@ This tutorial introduces the  :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_mo
             ) -> Union[dict, list, pd.DataFrame, Any]
 
 
-model_type : (``str``) see more details here :ref:`model_List`
+model_type : (``str``) see more :ref:`details here <model_List>`
     The type or class of the model to inspect.
 Examples:
     Shorthand:      ``'Clock'``, ``'Weather'``
