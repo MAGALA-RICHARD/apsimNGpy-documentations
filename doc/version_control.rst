@@ -10,7 +10,7 @@ The ``apsimNGpy`` package is designed to interface with any version of the APSIM
     1. **Downloads and installs** the latest APSIM NG development version.
     2. **Runs the complete ``apsimNGpy`` unit test suite** against the new APSIM version.
     3. **Sends a detailed report** of the test outcomes to the ``apsimNGpy`` administrators.
-    4. If all tests **pass successfully**, the new APSIM version is marked as the ``latestunit apsimNGpy::version`` and is published on the documentation homepage.
+    4. If all tests **pass successfully**, the new APSIM version is pinned on the documentation :ref:`homepage here <apsim_pin_version>`.
 
     A button on the homepage links directly to the download page for the tested APSIM version. Please register to access the download.
 
