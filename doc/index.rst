@@ -1,7 +1,5 @@
 .. _master:
 
-.. apsimNGpy documentation master file.
-
 apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 ================================================================
 
