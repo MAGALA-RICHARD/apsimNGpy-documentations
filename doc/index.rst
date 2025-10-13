@@ -33,6 +33,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 .. image:: https://img.shields.io/badge/Download--APSIM--NG-2025.08.7844-blue?style=flat&logo=apachespark
    :target: https://registration.apsim.info/?version=2025.08.7844.0&product=APSIM%20Next%20Generation
    :alt: APSIM Next Generation version
+   :name: apsim_pin_version
 
 
 .. admonition:: Introduction
