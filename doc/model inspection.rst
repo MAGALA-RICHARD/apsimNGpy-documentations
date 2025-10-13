@@ -153,7 +153,7 @@ Try finding path to the cultivar model::
 .. hint::
 
     ``model_type`` can be any of the following classes from the `Models` namespace, and
-    can be passed as strings or as full path to Models namespace if Models is imported. See the description above :ref:`model_List`.
+    can be passed as strings or as full path to Models namespace if Models is imported. See the description about :ref:`model_List`.
 
 
 .. seealso::
