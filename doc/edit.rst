@@ -261,4 +261,4 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
    - :ref:`api_ref`
    - :ref:`apsimNGpy Cheat sheat <cheat>`
    - :ref:`inspect_params`
-   - :ref:`model_List`
+   - :ref:`APSIM Model types <model_List>`
