@@ -50,7 +50,7 @@ Quick guides
         if you run the following code and returns None you need to do something as explained below.
 .. tip::
 
-    For APSIM NG installation please, use the pinned release shown on apsimNGpy’s home page here :ref:`apsim_pin_version` and any version below it to avoid forward-compatibility issues. That release features the latest APSIM NG version that has passed all unit tests against apsimNGpy’s programmatic API.
+    For APSIM NG installation please, use the pinned release shown on apsimNGpy’s home page here See :ref:`here <apsim_pin_version>` and any version below it to avoid forward-compatibility issues. That release features the latest APSIM NG version that has passed all unit tests against apsimNGpy’s programmatic API.
 
 - 1. Use command line interface
 
