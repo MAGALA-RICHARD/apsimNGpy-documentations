@@ -254,7 +254,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 .. seealso::
 
    - save: :meth:`~apsimNGpy.core.apsim.ApsimModel.save`
-   - results retrieval API: :meth:`~apsimNGpy.core.apsim.ApsimModel.results`
+   - results retrieval API: :attr:`~apsimNGpy.core.apsim.ApsimModel.results`
 
 .. seealso::
 
