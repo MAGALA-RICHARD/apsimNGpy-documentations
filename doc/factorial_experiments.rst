@@ -125,3 +125,7 @@ Run the experiment and visualize the impact of ``RUE`` on yield:
    This tutorial demonstrated how to set up and run factorial experiments using apsimNGpy. By systematically varying multiple factors (e.g., nitrogen levels, population density, and RUE), we can analyze their effects on the target variable effectively.
 
 .. include:: new_experiment.rst
+
+.. seealso::
+
+   - :ref:`API Reference: <api_ref>`
