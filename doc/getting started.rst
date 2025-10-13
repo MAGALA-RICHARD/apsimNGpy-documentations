@@ -174,5 +174,5 @@ Or
     or the APSIM application itself. This implies that you can switch between apsim versions easily if you have more than one versions installed on your computer
 
 
-   - :ref:`api_ref`
+   - :ref:`API Reference: <api_ref>`
    - :ref:`Download Stable APSIM Version <apsim_pin_version>`
