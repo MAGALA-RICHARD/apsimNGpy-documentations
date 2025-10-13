@@ -348,5 +348,5 @@ Summary
 
 .. seealso::
 
-   - :ref:`api_ref`
+   - :ref:`API Reference: <api_ref>`
    - :ref:`moo_opt`
