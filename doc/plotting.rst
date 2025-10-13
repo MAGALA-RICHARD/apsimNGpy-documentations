@@ -428,5 +428,5 @@ Meta info
 
 .. seealso::
 
-    - :ref:`api_ref`
+    - :ref:`API Reference: <api_ref>`
 

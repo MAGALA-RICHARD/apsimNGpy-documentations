@@ -223,5 +223,5 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. seealso::
 
-   - :ref:`api_ref`
+   - :ref:`API Reference <api_ref>`
    - :ref:`inspect_params`
