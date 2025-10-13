@@ -13,6 +13,8 @@ This is where the :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model` method 
 If you are stranded, check the list below, red color are the modules,
 and not allowed in this function and below each module are the model types
 
+.. _model_List:
+
 ``Models``:
   - Models.Clock
   - Models.Fertiliser
@@ -99,7 +101,7 @@ Get full path to the fertiliser model::
 
 .. Hint::
 
-    The models from APSIM Models namespace are abstracted to use strings. All you need is to specify the name or the full path to the model enclosed in a stirng as follows::
+    The models from APSIM Models namespace are abstracted to use strings. All you need is to specify the name or the full path to the model enclosed in a string as follows::
 
      model.inspect_model('Clock') # get the path to the clock model
      ['.Simulations.Simulation.Clock']
@@ -161,7 +163,7 @@ Try finding path to the cultivar model::
 .. tip::
 
     In some cases, determining the model type can be challenging. Fortunately, **apsimNGpy** provides a recursive function to simplify this process—the :meth:`~apsimNGpy.core.apsim.ApsimModel.find_model` method.
-    This method helps identify the model type efficiently. However, you need to know the name of the model, such as **Clock** or **Weather**, to use it effectively.
+    This method helps identify the model type efficiently. However, you need to know the name of the model, such as *Clock* or *Weather*, to use it effectively.
 
 .. code-block:: python
 
@@ -213,7 +215,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, you�
 
 .. Warning::
 
-    Only a few key model types are inspected using model.inspect_model under the hood. Inspecting the entire simulation file can produce a large volume of data, much of which may not be relevant or necessary in most use cases.
+    Only a few key model types are inspected using :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model` under the hood. Inspecting the entire simulation file can produce a large volume of data, much of which may not be relevant or necessary in most use cases.
 
     If certain models do not appear in the inspection output, this is intentional — the tool selectively inspects components to keep results concise and focused.
 
