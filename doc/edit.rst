@@ -76,7 +76,8 @@ The following additional kwargs are specific to each each model type.
 
 .. seealso::
 
-    API description: :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model`
+    - API description: :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model`
+    - :ref:`model_List`
 
 Quick Examples:
 
