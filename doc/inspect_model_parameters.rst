@@ -30,20 +30,20 @@ This tutorial introduces the  :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_mo
             ) -> Union[dict, list, pd.DataFrame, Any]
 
 
-model_type (``str``):
-The type or class of the model to inspect.
-Examples:
+model_type : (``str``) see more details here :ref:`model_List`
+    The type or class of the model to inspect.
+    Examples:
 
-Shorthand:      ``'Clock'``, ``'Weather'``
+    Shorthand:      ``'Clock'``, ``'Weather'``
 
-Fully qualified: ``'Models.Clock'``, ``'Models.Climate.Weather'``
+    Fully qualified: ``'Models.Clock'``, ``'Models.Climate.Weather'``
 
 simulations (``str`` or ``list``):
-One or more simulation names from your APSIM file to query. defaults to all
+    One or more simulation names from your APSIM file to query. defaults to all
 
-model_name (``str``):
-The instance name of the model within the simulation.
-Example: If model_type = ``Solute``,  this could be ``'NO3'``, ``'NH4'``, or ``'Urea'``. if the model was renamed, the new name is the model_name
+model_name: (``str``)
+    The instance name of the model within the simulation.
+    Example: If model_type = ``Solute``,  this could be ``'NO3'``, ``'NH4'``, or ``'Urea'``. if the model was renamed, the new name is the model_name
 
 parameters (``str, set, list, tuple``, optional):
 Specific parameter(s) to retrieve. Defaults to ``'all'``, which returns all available attributes.
