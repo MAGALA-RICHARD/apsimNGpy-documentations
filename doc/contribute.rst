@@ -113,4 +113,4 @@ Finally, run the test suite. It is recommended to use the ``run_suite`` method, 
 
 .. seealso::
 
-    - :ref:`faq`
+    - :ref:`Frequently Asked Questions <faq>`
