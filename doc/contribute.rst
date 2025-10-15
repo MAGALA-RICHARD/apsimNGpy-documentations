@@ -114,4 +114,4 @@ Finally, run the test suite. It is recommended to use the ``run_suite`` method, 
 .. seealso::
 
     - :ref:`Frequently Asked Questions <faq>`
-    - :ref:`API Reference <api_ref>'
+    - :ref:`API Reference <api_ref>`
