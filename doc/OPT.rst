@@ -350,3 +350,4 @@ Summary
 
    - :ref:`API Reference: <api_ref>`
    - :ref:`moo_opt`
+   - :ref:`Go back to the home page<master>`
