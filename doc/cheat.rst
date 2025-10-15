@@ -676,3 +676,4 @@ Plot the Pareto Front
    - :ref:`API Reference: <api_ref>`
    - :ref:`editor`
    - :ref:`plain_inspect`
+   - :ref:`Go back to the home page<master>`

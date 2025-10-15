@@ -69,3 +69,4 @@ using the :meth:`~apsimNGpy.core.apsim.ApsimModel.get_weather_from_file` method.
 .. seealso::
 
     - :ref:`API Reference: <api_ref>`
+    - :ref:`Go back to the home page<master>`

@@ -262,3 +262,4 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
    - :ref:`apsimNGpy Cheat sheat <cheat>`
    - :ref:`Inspecting Model Parameters <inspect_params>`
    - :ref:`APSIM Model types <model_List>`
+   - :ref:`Go back to the home page<master>`

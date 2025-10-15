@@ -115,3 +115,4 @@ Finally, run the test suite. It is recommended to use the ``run_suite`` method, 
 
     - :ref:`Frequently Asked Questions <faq>`
     - :ref:`API Reference <api_ref>`
+    - :ref:`Go back to the home page<master>`

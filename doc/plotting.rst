@@ -429,4 +429,5 @@ Meta info
 .. seealso::
 
     - :ref:`API Reference: <api_ref>`
+    - :ref:`Go back to the home page<master>`
 
