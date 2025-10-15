@@ -111,4 +111,6 @@ Finally, run the test suite. It is recommended to use the ``run_suite`` method, 
         run_suite(2)
 
 
-   - :ref:`faq`
+.. seealso::
+
+    - :ref:`faq`
