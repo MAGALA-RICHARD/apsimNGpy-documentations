@@ -565,7 +565,7 @@ When executed, a window similar to the image below will open on your computer. T
 .. image:: ../images/gui.png
     :alt: Tree structure of the APSIM model
     :align: center
-    :width: 80%
+    :width: 98%
     :name: gui_tree_structure_model
 
 .. seealso::
