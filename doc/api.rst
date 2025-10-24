@@ -1942,11 +1942,11 @@ Classes
 
     Check if the changes above were successfully propagated back to the model instance.
 
-    .. code-block:: python
+   .. code-block:: python
 
-       model.inspect_model_parameters('Models.Manager', 'Sow using a variable rule')
+          model.inspect_model_parameters('Models.Manager', 'Sow using a variable rule')
 
-    .. code-block:: bash
+   .. code-block:: bash
 
          {'Crop': '[Maize]',
         'StartDate': '1-nov',
@@ -5483,11 +5483,11 @@ Classes
 
     Check if the changes above were successfully propagated back to the model instance.
 
-    .. code-block:: python
+   .. code-block:: python
 
-       model.inspect_model_parameters('Models.Manager', 'Sow using a variable rule')
+          model.inspect_model_parameters('Models.Manager', 'Sow using a variable rule')
 
-    .. code-block:: bash
+   .. code-block:: bash
 
          {'Crop': '[Maize]',
         'StartDate': '1-nov',
