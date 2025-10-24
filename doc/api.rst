@@ -1890,7 +1890,7 @@ Classes
 
    Examples
    --------
-   Initializing an APSIM Next model
+   Initializing an apsimNGpy model
 
    .. code-block:: python
 
@@ -1912,8 +1912,8 @@ Classes
    2. Preview and edit at the same time.
    -------------------------------------
 
-   Here, After opening the apsimx file in the GUI, I changed the **planting population**,
-   **cultivar to be sown**, **row Spacing** in the **Sow using a variable rule** script.
+   Here, After opening the apsimx file in the GUI, I changed the **Plant population (/m2)**,
+   **Cultivar to be sown**, **Row spacing (mm)** in the **Sow using a variable rule** script.
    Finally, I checked the model to see whether the changes were successful by inspecting the model.
 
    .. code-block:: python
@@ -1926,7 +1926,7 @@ Classes
        :width: 98%
        :name: gui_tree_structure_model_watch
 
-   Example console output when watch=True:
+   Example console output when `watch=True`:
 
    .. code-block:: none
 
@@ -1946,7 +1946,7 @@ Classes
 
           model.inspect_model_parameters('Models.Manager', 'Sow using a variable rule')
 
-   .. code-block:: bash
+   .. code-block:: none
 
          {'Crop': '[Maize]',
         'StartDate': '1-nov',
@@ -5431,7 +5431,7 @@ Classes
 
    Examples
    --------
-   Initializing an APSIM Next model
+   Initializing an apsimNGpy model
 
    .. code-block:: python
 
@@ -5453,8 +5453,8 @@ Classes
    2. Preview and edit at the same time.
    -------------------------------------
 
-   Here, After opening the apsimx file in the GUI, I changed the **planting population**,
-   **cultivar to be sown**, **row Spacing** in the **Sow using a variable rule** script.
+   Here, After opening the apsimx file in the GUI, I changed the **Plant population (/m2)**,
+   **Cultivar to be sown**, **Row spacing (mm)** in the **Sow using a variable rule** script.
    Finally, I checked the model to see whether the changes were successful by inspecting the model.
 
    .. code-block:: python
@@ -5467,7 +5467,7 @@ Classes
        :width: 98%
        :name: gui_tree_structure_model_watch
 
-   Example console output when watch=True:
+   Example console output when `watch=True`:
 
    .. code-block:: none
 
@@ -5487,7 +5487,7 @@ Classes
 
           model.inspect_model_parameters('Models.Manager', 'Sow using a variable rule')
 
-   .. code-block:: bash
+   .. code-block:: none
 
          {'Crop': '[Maize]',
         'StartDate': '1-nov',
