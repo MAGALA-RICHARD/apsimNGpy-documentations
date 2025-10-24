@@ -559,6 +559,16 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
 
      model.preview_simulation()
 
+
+A window similar to the image shown below will open in your computer
+
+.. image:: ../images/gui.png
+    :alt: Tree structure of the APSIM model
+    :align: center
+    :width: 100%
+    :name: gui_tree_structure_model
+
+
 .. seealso::
 
    - :ref:`API Reference: <api_ref>`
