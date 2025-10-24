@@ -568,7 +568,6 @@ When executed, a window similar to the image below will open on your computer. T
     :width: 80%
     :name: gui_tree_structure_model
 
-
 .. seealso::
 
    - :ref:`API Reference: <api_ref>`
