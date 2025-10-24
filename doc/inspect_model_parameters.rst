@@ -568,6 +568,11 @@ When executed, a window similar to the image below will open on your computer. T
     :width: 98%
     :name: gui_tree_structure_model
 
+.. hint::
+
+If you edit the file opened in the GUI, the changes are not automatically reflected in your ApsimModel instance. This is because the GUI opens a cloned copy of the input file.
+To apply your edits to the model instance, you’ll need to reload the file or run preview_simulation(edit=True).
+
 .. seealso::
 
    - :ref:`API Reference: <api_ref>`
