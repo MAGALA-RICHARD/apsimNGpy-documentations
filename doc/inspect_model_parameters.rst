@@ -560,7 +560,7 @@ Inspect ``Sow using a variable rule`` manager module parameters by selecting a f
      model.preview_simulation()
 
 
-A window similar to the image shown below will open in your computer. Please note that corresponding APSIM GUI opened is the one currently set as the bin path in apsimNGpy
+When executed, a window similar to the image below will open on your computer. The APSIM GUI that appears is the one currently defined as the bin path in your apsimNGpy configuration.
 
 .. image:: ../images/gui.png
     :alt: Tree structure of the APSIM model
