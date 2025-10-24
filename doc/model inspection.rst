@@ -200,6 +200,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
     :alt: Tree structure of the APSIM model
     :align: center
     :width: 100%
+    :name: tree_structure_model
 
 .. tip::
 
