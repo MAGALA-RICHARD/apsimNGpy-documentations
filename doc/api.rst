@@ -3363,7 +3363,7 @@ Classes
        with pure factors or permutations. You first need to initiate the instance of this class and then initialize the
        experiment itself with: :meth:`init_experiment`, which creates a new experiment from the suggested base simulation and ``permutation`` type
 
-       The flow of method for :class:`ExperimentManager` class is shown the diagram below
+       The flow of method for :class:`ExperimentManager` class is shown in the diagram below:
 
 
        .. mermaid::
@@ -3374,8 +3374,8 @@ Classes
               ApsimModel["ApsimModel"]
               ExperimentManager["ExperimentManager"]
 
-              PlotManager --> CoreModel
-              CoreModel --> ApsimModel
+              PlotManager --> :class:`~apsimNgpy.core.core.CoreModel`
+              CoreModel --> :class:`~apsimNgpy.core.apsim.ApsimModel`
               ApsimModel --> ExperimentManager
 
    List of Public Attributes:
