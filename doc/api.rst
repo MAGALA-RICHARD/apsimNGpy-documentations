@@ -33,7 +33,7 @@ Classes
 
        Class Roles
        ---------------
-       - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results.
+       - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
        - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`` → Manages and creates a new experiment from the suggested base.
@@ -3396,7 +3396,7 @@ Classes
 
        Class Roles
        ---------------
-       - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results.
+       - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
        - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`` → Manages and creates a new experiment from the suggested base.
