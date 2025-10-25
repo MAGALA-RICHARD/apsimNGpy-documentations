@@ -3364,14 +3364,20 @@ Classes
        with pure factors or permutations. You first need to initiate the instance of this class and then initialize the
        experiment itself with: :meth:`init_experiment`, which creates a new experiment from the suggested base simulation and ``permutation`` type
 
-       The flow of method for :class:`ExperimentManager` is shownin the diagram below/
+       The flow of method for :class:`ExperimentManager` class is shown the diagram below
 
 
-       .. code-block:: text
+       .. mermaid::
 
-           +-------------+        +-----------+        +------------------+        +--------------------+
-           | PlotManager | -----> | CoreModel | -----> |    ApsimModel    | -----> | ExperimentManager  |
-           +-------------+        +-----------+        +------------------+        +--------------------+
+          flowchart LR
+              PlotManager["PlotManager"]
+              CoreModel["CoreModel"]
+              ApsimModel["ApsimModel"]
+              ExperimentManager["ExperimentManager"]
+
+              PlotManager --> CoreModel
+              CoreModel --> ApsimModel
+              ApsimModel --> ExperimentManager
 
    List of Public Attributes:
    __________________________________
