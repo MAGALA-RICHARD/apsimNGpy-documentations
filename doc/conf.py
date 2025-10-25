@@ -28,7 +28,9 @@ extensions = [
     'sphinx_copybutton',
     "sphinxcontrib.mermaid",
 ]
-
+mermaid_params = [
+    "--theme", "forest"
+]
 # autosummary: generate stub pages automatically
 autosummary_generate = True
 
