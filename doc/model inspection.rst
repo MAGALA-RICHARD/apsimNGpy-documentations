@@ -220,7 +220,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
     If certain models do not appear in the inspection output, this is intentional. The tool selectively inspects components to keep results concise and focused.
 
-    For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI using :meth:`apsimNGpy.core.apsim.ApsimModel` method
+    For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI using :meth:`apsimNGpy.core.apsim.ApsimModel.preview_simulation` method
 
 .. seealso::
 
