@@ -31,11 +31,18 @@ Classes
 
        This implies that you can still run the model and modify parameters as needed.
 
-       Example:
-           >>> from apsimNGpy.core.apsim import ApsimModel
-           >>> from pathlib import Path
-           >>> model = ApsimModel('Maize', out_path=Path.home()/'apsim_model_example.apsimx')
-           >>> model.run(report_name='Report') # report is the default, please replace it as needed
+       Example
+       ----------
+       ..code-block:: python
+
+           from apsimNGpy.core.apsim import ApsimModel
+           from pathlib import Path
+           model = ApsimModel('Maize', out_path=Path.home()/'apsim_model_example.apsimx')
+           model.run(report_name='Report') # report is the default, please replace it as needed
+           # get the results
+           res = model.results
+           # get results based on a specific database table
+           res =model.get_simulated_output('Report')
 
    List of Public Attributes:
    __________________________________
@@ -3374,9 +3381,17 @@ Classes
               ApsimModel["ApsimModel"]
               ExperimentManager["ExperimentManager"]
 
-              PlotManager --> :class:`~apsimNgpy.core.core.CoreModel`
-              CoreModel --> :class:`~apsimNgpy.core.apsim.ApsimModel`
+              PlotManager --> CoreModel
+              CoreModel --> ApsimModel
               ApsimModel --> ExperimentManager
+
+       Component Roles
+       ---------------
+
+       - ``PlotManager`` → produces visual outputs from model results.
+       - ``CoreModel`` → :class:`~apsimNgpy.core.core.CoreModel`
+       - ``ApsimModel`` → :class:`~apsimNgpy.core.apsim.ApsimModel`
+       - ``ExperimentManager`` → orchestrates experiment design / runs.
 
    List of Public Attributes:
    __________________________________
