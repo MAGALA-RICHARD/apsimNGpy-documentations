@@ -3349,6 +3349,14 @@ Classes
        This class inherits methods and attributes from: :class:`~apsimNGpy.core.apsim.ApsimModel` to manage APSIM Experiments
        with pure factors or permutations. You first need to initiate the instance of this class and then initialize the
        experiment itself with: :meth:`init_experiment`, which creates a new experiment from the suggested base simulation and ``permutation`` type
+       Box Diagram
+       ===========
+
+       .. code-block:: text
+
+           +-------------+        +-----------+        +------------------+        +--------------------+
+           | PlotManager | -----> | CoreModel | -----> |    ApsimModel    | -----> | ExperimentManager  |
+           +-------------+        +-----------+        +------------------+        +--------------------+
 
    List of Public Attributes:
    __________________________________
