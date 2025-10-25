@@ -16,17 +16,19 @@ Classes
 
        It inherits from the CoreModel classes, and extends its capabilities.
 
-       High-level data/methods and attribute flow between major ApsimModel and its parent class is as follow:
+       High-level data/methods and attribute flow between the **ApsimModel** class and its parent class is as follow:
 
-       .. code-block:: text
+       .. mermaid::
 
-           PlotManager
-                |
-                v
-           CoreModel
-                |
-                v
-           ApsimModel
+          flowchart LR
+              PlotManager["PlotManager"]
+              CoreModel["CoreModel"]
+              ApsimModel["ApsimModel"]
+              ExperimentManager["ExperimentManager"]
+
+              PlotManager --> CoreModel
+              CoreModel --> ApsimModel
+
 
        This implies that you can still run the model and modify parameters as needed.
 

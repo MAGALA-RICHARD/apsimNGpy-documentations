@@ -26,6 +26,7 @@ extensions = [
     'sphinx.ext.githubpages',
     # Utility
     'sphinx_copybutton',
+"sphinxcontrib.mermaid",
 ]
 
 # autosummary: generate stub pages automatically
