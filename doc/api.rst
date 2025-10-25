@@ -14,9 +14,9 @@ Classes
 
 .. py:class:: apsimNGpy.core.apsim.ApsimModel
 
-       It inherits from the CoreModel classes, and extends its capabilities.
+       This class inherits from :class:`~apsimNGpy.core.core.CoreModel` and extends its capabilities.
 
-       High-level data/methods and attribute flow between the **ApsimModel** class and its parent classes is as follow:
+       High-level data/method/attribute flow between the main components is illustrated below:
 
        .. mermaid::
 
@@ -32,26 +32,45 @@ Classes
 
 
        Class Roles
-       ---------------
-       - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results (Not exposed in the API reference)
-       - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models (Not exposed in the API reference)
-       - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
-       - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`` → Manages and creates a new experiment from the suggested base.
+       -----------
+
+       - :class:`~apsimNGpy.core.plotmanager.PlotManager`
+         Produces visual outputs from model results.
+         (Not exposed in the public API reference.)
+
+       - :class:`~apsimNGpy.core.core.CoreModel`
+         Provides core methods for running and manipulating APSIM models.
+         (Not exposed in the public API reference.)
+
+       - :class:`~apsimNGpy.core.apsim.ApsimModel`
+         Extends :class:`~apsimNGpy.core.core.CoreModel` with higher-level functionality.
+
+       - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`
+         Creates and manages multi-factor experiments from a base scenario.
 
 
        Examples
-       ----------
+       --------
 
-       ..code-block:: python
+       .. code-block:: python
 
-           from apsimNGpy.core.apsim import ApsimModel
            from pathlib import Path
-           model = ApsimModel('Maize', out_path=Path.home()/'apsim_model_example.apsimx')
-           model.run(report_name='Report') # report is the default, please replace it as needed
-           # get the results
+           from apsimNGpy.core.apsim import ApsimModel
+
+           # Initialize a model
+           model = ApsimModel(
+               'Maize',
+               out_path=Path.home() / 'apsim_model_example.apsimx'
+           )
+
+           # Run the model
+           model.run(report_name='Report')  # 'Report' is the default table name; adjust if needed
+
+           # Get all results
            res = model.results
-           # get results based on a specific database table
-           res = model.get_simulated_output('Report')
+
+           # Or fetch a specific report table from the APSIM database
+           report_df = model.get_simulated_output('Report')
 
    List of Public Attributes:
    __________________________________
@@ -3399,7 +3418,7 @@ Classes
        - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
-       - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`` → Manages and creates a new experiment from the suggested base.
+       - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager` → Manages and creates a new experiment from the suggested base.
 
    List of Public Attributes:
    __________________________________
