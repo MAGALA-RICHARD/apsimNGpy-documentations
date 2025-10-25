@@ -16,6 +16,18 @@ Classes
 
        It inherits from the CoreModel classes, and extends its capabilities.
 
+       High-level data/methods and attribute flow between major ApsimModel and its parent class is as follow:
+
+       .. code-block:: text
+
+           PlotManager
+                |
+                v
+           CoreModel
+                |
+                v
+           ApsimModel
+
        This implies that you can still run the model and modify parameters as needed.
 
        Example:
