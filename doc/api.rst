@@ -42,7 +42,7 @@ Classes
            # get the results
            res = model.results
            # get results based on a specific database table
-           res =model.get_simulated_output('Report')
+           res = model.get_simulated_output('Report')
 
    List of Public Attributes:
    __________________________________
@@ -3388,10 +3388,10 @@ Classes
        Component Roles
        ---------------
 
-       - ``PlotManager`` → produces visual outputs from model results.
-       - ``CoreModel`` → :class:`~apsimNgpy.core.core.CoreModel`
-       - ``ApsimModel`` → :class:`~apsimNgpy.core.apsim.ApsimModel`
-       - ``ExperimentManager`` → orchestrates experiment design / runs.
+       - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results.
+       - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models
+       - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
+       - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`` → Manages and creates a new experiment from the suggested base.
 
    List of Public Attributes:
    __________________________________
