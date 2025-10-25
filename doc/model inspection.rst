@@ -204,7 +204,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. tip::
 
-  To include cultivar paths to the above simulation tree, use ``cultivar =True`` as shown below. For developers who are testing the method using console = False
+  To include cultivar paths to the above simulation tree, use ``cultivar = True`` as shown below. For developers who are testing the method using console = False
 
 .. code-block:: python
 
@@ -218,7 +218,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
     Only a few key model types are inspected using :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model` under the hood. Inspecting the entire simulation file can produce a large volume of data, much of which may not be relevant or necessary in most use cases.
 
-    If certain models do not appear in the inspection output, this is intentional â€” the tool selectively inspects components to keep results concise and focused.
+    If certain models do not appear in the inspection output, this is intentional. The tool selectively inspects components to keep results concise and focused.
 
     For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI using :meth:`apsimNGpy.core.apsim.ApsimModel` method
 
