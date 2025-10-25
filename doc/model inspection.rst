@@ -133,7 +133,7 @@ Alternative::
 
 Try finding path to the cultivar model::
 
-     model.inspect_model('Models.PMF.Cultivar', fullpath=True) # list all available cultivar path relative to the Simulations
+     model.inspect_model('Models.PMF.Cultivar', fullpath=True) # list all available cultivar path relative to the **Simulations** parent node
 
 .. code-block:: none
 
