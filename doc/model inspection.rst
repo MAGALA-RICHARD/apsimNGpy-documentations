@@ -204,7 +204,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. tip::
 
-  To include cultivar paths to the above simulation tree, use ``cultivar = True`` as shown below. For developers who are testing the method using console = False
+  To include cultivar paths to the above simulation tree, use ``cultivar = True`` as shown below. For developers who are testing the method please use console = False
 
 .. code-block:: python
 
