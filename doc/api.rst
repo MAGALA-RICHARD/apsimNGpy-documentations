@@ -24,15 +24,24 @@ Classes
               PlotManager["PlotManager"]
               CoreModel["CoreModel"]
               ApsimModel["ApsimModel"]
+              ExperimentManager["ExperimentManager"]
 
               PlotManager --> CoreModel
               CoreModel --> ApsimModel
+              ApsimModel --> ExperimentManager
 
 
-       This implies that you can still run the model and modify parameters as needed.
+       Class Roles
+       ---------------
+       - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results.
+       - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models (Not exposed in the API reference)
+       - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
+       - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`` → Manages and creates a new experiment from the suggested base.
 
-       Example
+
+       Examples
        ----------
+
        ..code-block:: python
 
            from apsimNGpy.core.apsim import ApsimModel
@@ -3385,11 +3394,10 @@ Classes
               CoreModel --> ApsimModel
               ApsimModel --> ExperimentManager
 
-       Component Roles
+       Class Roles
        ---------------
-
        - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results.
-       - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models
+       - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
        - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager`` → Manages and creates a new experiment from the suggested base.
 
