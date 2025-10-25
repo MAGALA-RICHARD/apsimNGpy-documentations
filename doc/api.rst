@@ -96,6 +96,8 @@ Classes
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.read_apsimx_data`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.recompile_edited_model`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.refresh_model`
+   - :meth:`~apsimNGpy.core.apsim.ApsimModel.reg_plot`
+   - :meth:`~apsimNGpy.core.apsim.ApsimModel.relplot`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.remove_model`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.remove_report_variable`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.rename_model`
@@ -3091,6 +3093,102 @@ Classes
 
         Related APIs: :meth:`distribution`.
 
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.reg_plot(self, table=None, expression=None, **kwargs) (inherited)
+
+   Wrapper around seaborn.lmplot. V 0.39.10.19+
+
+   Kwargs passed to seaborn.lmplot
+   -------------------------------
+   x : str or None, optional
+       Name of column in `data` to plot on the x-axis.
+   y : str or None, optional
+       Name of column in `data` to plot on the y-axis.
+   hue : str or None, optional
+       Grouping variable that will produce elements with different colors.
+   col : str or None, optional
+       Variable that defines columns of the facet grid.
+   row : str or None, optional
+       Variable that defines rows of the facet grid.
+   palette : str, list, dict, or None, optional
+       Color palette for different `hue` levels.
+   col_wrap : int or None, optional
+       Wrap the column facets after this many columns.
+   height : float, default=5
+       Height (in inches) of each facet.
+   aspect : float, default=1
+       Aspect ratio of each facet, so width = aspect * height.
+   markers : str or list, default='o'
+       Marker(s) used for the scatter plot points.
+   sharex : bool or None, optional
+       If True, share x-axis limits across facets.
+   sharey : bool or None, optional
+       If True, share y-axis limits across facets.
+   hue_order : list or None, optional
+       Order to plot the levels of `hue`.
+   col_order : list or None, optional
+       Order to plot the levels of `col`.
+   row_order : list or None, optional
+       Order to plot the levels of `row`.
+   legend : bool, default=True
+       If True, add a legend for the `hue` variable.
+   legend_out : bool or None, optional
+       If True, place the legend outside the grid.
+   x_estimator : callable or None, optional
+       Function to compute a central tendency of `y` for each unique `x`
+       (e.g. `np.mean`). Plot points at that value instead of raw data.
+   x_bins : int or None, optional
+       Bin the `x` variable into discrete bins before plotting.
+   x_ci : 'ci', 'sd', float, or None, default='ci'
+       Size/definition of the confidence band around the estimator in `x_estimator`.
+   scatter : bool, default=True
+       If True, draw the scatter points.
+   fit_reg : bool, default=True
+       If True, fit and plot a regression line.
+   ci : int or None, default=95
+       Size of the bootstrap confidence interval for the regression estimate.
+   n_boot : int, default=1000
+       Number of bootstrap samples to compute `ci`.
+   units : str or None, optional
+       Column in `data` identifying sampling units. Used for clustered bootstrap.
+   seed : int, RandomState, or None, optional
+       Random seed for reproducible bootstrapping.
+   order : int, default=1
+       Polynomial order of the regression (1 = linear).
+   logistic : bool, default=False
+       If True, fit a logistic regression.
+   lowess : bool, default=False
+       If True, fit a locally weighted regression (LOWESS).
+   robust : bool, default=False
+       If True, use a robust regression estimator.
+   logx : bool, default=False
+       If True, estimate the model in log10(x) space.
+   x_partial : str, list of str, or None, optional
+       Columns in `data` to regress out of `x` before plotting.
+   y_partial : str, list of str, or None, optional
+       Columns in `data` to regress out of `y` before plotting.
+   truncate : bool, default=True
+       If True, limit the regression line to the data range.
+   x_jitter : float or None, optional
+       Amount of horizontal jitter to add to scatter points.
+   y_jitter : float or None, optional
+       Amount of vertical jitter to add to scatter points.
+   scatter_kws : dict or None, optional
+       Additional keyword args passed to the scatter plot (e.g. alpha, s).
+   line_kws : dict or None, optional
+       Additional keyword args passed to the regression line plot.
+   facet_kws : dict or None, optional
+       Additional keyword args passed to seaborn.FacetGrid.
+
+   See Also
+   --------
+   seaborn.lmplot : High-level interface for plotting linear models with faceting.
+                    https://seaborn.pydata.org/generated/seaborn.lmplot.html
+   Tutorial: https://seaborn.pydata.org/tutorial/regression.html#regression-tutorial
+
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.relplot(self, table=None, **kwargs) (inherited)
+
+   Plots a relation plot
+
 apsimNGpy.core.config
 ---------------------
 
@@ -3327,6 +3425,8 @@ Classes
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.read_apsimx_data`
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.recompile_edited_model`
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.refresh_model`
+   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.reg_plot`
+   - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.relplot`
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.remove_model`
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.remove_report_variable`
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.rename_model`
@@ -6592,6 +6692,102 @@ Classes
    .. seealso::
 
         Related APIs: :meth:`distribution`.
+
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.reg_plot(self, table=None, expression=None, **kwargs) (inherited)
+
+   Wrapper around seaborn.lmplot. V 0.39.10.19+
+
+   Kwargs passed to seaborn.lmplot
+   -------------------------------
+   x : str or None, optional
+       Name of column in `data` to plot on the x-axis.
+   y : str or None, optional
+       Name of column in `data` to plot on the y-axis.
+   hue : str or None, optional
+       Grouping variable that will produce elements with different colors.
+   col : str or None, optional
+       Variable that defines columns of the facet grid.
+   row : str or None, optional
+       Variable that defines rows of the facet grid.
+   palette : str, list, dict, or None, optional
+       Color palette for different `hue` levels.
+   col_wrap : int or None, optional
+       Wrap the column facets after this many columns.
+   height : float, default=5
+       Height (in inches) of each facet.
+   aspect : float, default=1
+       Aspect ratio of each facet, so width = aspect * height.
+   markers : str or list, default='o'
+       Marker(s) used for the scatter plot points.
+   sharex : bool or None, optional
+       If True, share x-axis limits across facets.
+   sharey : bool or None, optional
+       If True, share y-axis limits across facets.
+   hue_order : list or None, optional
+       Order to plot the levels of `hue`.
+   col_order : list or None, optional
+       Order to plot the levels of `col`.
+   row_order : list or None, optional
+       Order to plot the levels of `row`.
+   legend : bool, default=True
+       If True, add a legend for the `hue` variable.
+   legend_out : bool or None, optional
+       If True, place the legend outside the grid.
+   x_estimator : callable or None, optional
+       Function to compute a central tendency of `y` for each unique `x`
+       (e.g. `np.mean`). Plot points at that value instead of raw data.
+   x_bins : int or None, optional
+       Bin the `x` variable into discrete bins before plotting.
+   x_ci : 'ci', 'sd', float, or None, default='ci'
+       Size/definition of the confidence band around the estimator in `x_estimator`.
+   scatter : bool, default=True
+       If True, draw the scatter points.
+   fit_reg : bool, default=True
+       If True, fit and plot a regression line.
+   ci : int or None, default=95
+       Size of the bootstrap confidence interval for the regression estimate.
+   n_boot : int, default=1000
+       Number of bootstrap samples to compute `ci`.
+   units : str or None, optional
+       Column in `data` identifying sampling units. Used for clustered bootstrap.
+   seed : int, RandomState, or None, optional
+       Random seed for reproducible bootstrapping.
+   order : int, default=1
+       Polynomial order of the regression (1 = linear).
+   logistic : bool, default=False
+       If True, fit a logistic regression.
+   lowess : bool, default=False
+       If True, fit a locally weighted regression (LOWESS).
+   robust : bool, default=False
+       If True, use a robust regression estimator.
+   logx : bool, default=False
+       If True, estimate the model in log10(x) space.
+   x_partial : str, list of str, or None, optional
+       Columns in `data` to regress out of `x` before plotting.
+   y_partial : str, list of str, or None, optional
+       Columns in `data` to regress out of `y` before plotting.
+   truncate : bool, default=True
+       If True, limit the regression line to the data range.
+   x_jitter : float or None, optional
+       Amount of horizontal jitter to add to scatter points.
+   y_jitter : float or None, optional
+       Amount of vertical jitter to add to scatter points.
+   scatter_kws : dict or None, optional
+       Additional keyword args passed to the scatter plot (e.g. alpha, s).
+   line_kws : dict or None, optional
+       Additional keyword args passed to the regression line plot.
+   facet_kws : dict or None, optional
+       Additional keyword args passed to seaborn.FacetGrid.
+
+   See Also
+   --------
+   seaborn.lmplot : High-level interface for plotting linear models with faceting.
+                    https://seaborn.pydata.org/generated/seaborn.lmplot.html
+   Tutorial: https://seaborn.pydata.org/tutorial/regression.html#regression-tutorial
+
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.relplot(self, table=None, **kwargs) (inherited)
+
+   Plots a relation plot
 
 apsimNGpy.core.mult_cores
 -------------------------
