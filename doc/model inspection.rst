@@ -212,7 +212,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. seealso::
 
-  :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`
+  :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file` in the :ref:`API Reference <api_ref>`
 
 .. Warning::
 
