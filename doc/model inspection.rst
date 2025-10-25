@@ -133,14 +133,72 @@ Alternative::
 
 Try finding path to the cultivar model::
 
-     model.inspect_model('Cultivar', fullpath=False) # list all available cultivar names
+     model.inspect_model('Models.PMF.Cultivar', fullpath=True) # list all available cultivar path relative to the Simulations
 
-.. code-block:: python
+.. code-block:: none
 
-     ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',
-     'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
+    ['.Simulations.Simulation.Field.Maize.CultivarFolder.Hycorn_53',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_33M54',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_38H20',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_34K77',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_39V43',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Atrium',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Laila',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.GH_5019WX',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Hycorn_40',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.GH_5009',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.malawi_local',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.mh19',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.mh17',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.mh16',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.mh12',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.sc623',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.sc625',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.sc601',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.CG4141',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.mh18',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.r215',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Melkassa',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.sr52',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.sc501',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.r201',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.sc401',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.NSCM_41',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Makueni',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Katumani',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_3153',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_39G12',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_80',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_90',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_95',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_100',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_103',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_105',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_108',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_110',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_112',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_115',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_120',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_130',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_80',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_90',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_95',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_100',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_103',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_105',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_108',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_110',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_112',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_115',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_120',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_130',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.HY_110',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.LY_110',
+     '.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.P1197']
 
-# we can get only the names of the cultivar models using the full string path::
+
+We can get only the names of the cultivar models using the full string path::
 
      model.inspect_model('Models.PMF.Cultivar', fullpath = False)
 
