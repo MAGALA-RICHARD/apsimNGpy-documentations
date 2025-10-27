@@ -16,7 +16,7 @@ Classes
 
        This class inherits from :class:`~apsimNGpy.core.core.CoreModel` and extends its capabilities.
 
-       High-level data/method/attribute flow between the main components is illustrated below:
+       High-level methods/attributes flow between the :class:`~apsimNGpy.core.apsim.ApsimModel` class and its parents, and child class is illustrated below:
 
        .. mermaid::
 
