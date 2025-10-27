@@ -1956,10 +1956,9 @@ Classes
 
    **2. Preview and edit simultaneously**
 
-   After opening the APSIMX file in the GUI, you can modify parameters such as
+   After opening the APSIMX file in the GUI in the watching model (``watch=True``), you can modify any parameters while in The GUI interface. The Example given below involved changing parameters such as
    **Plant population (/m²)**, **Cultivar to be sown**, and **Row spacing (mm)**
-   in the *Sow using a variable rule* script.
-   Finally, check whether the change was successful by inspecting the model.
+   in the *Sow using a variable rule* script and finally, checked whether the changes were successful by inspecting the model.
 
    .. code-block:: python
 
@@ -5610,10 +5609,9 @@ Classes
 
    **2. Preview and edit simultaneously**
 
-   After opening the APSIMX file in the GUI, you can modify parameters such as
+   After opening the APSIMX file in the GUI in the watching model (``watch=True``), you can modify any parameters while in The GUI interface. The Example given below involved changing parameters such as
    **Plant population (/m²)**, **Cultivar to be sown**, and **Row spacing (mm)**
-   in the *Sow using a variable rule* script.
-   Finally, check whether the change was successful by inspecting the model.
+   in the *Sow using a variable rule* script and finally, checked whether the changes were successful by inspecting the model.
 
    .. code-block:: python
 
