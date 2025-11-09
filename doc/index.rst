@@ -135,3 +135,6 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
 
 
+.. include:: releases.rst
+   :start-after: .. intro-start
+   :end-before: .. intro-end
