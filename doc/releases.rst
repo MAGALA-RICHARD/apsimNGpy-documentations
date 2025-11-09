@@ -36,13 +36,6 @@ Immediately after exiting the with block, the path is restored back to the globa
 APSIM versions change frequently, and a future run of your current project might fail or give different results if a newer APSIM version is picked up without you realizing it. By scoping a local APSIM bin path for this project, you ensure that reruns in the future use exactly the same APSIM version that generated the original results.
 This makes the workflow both reproducible and stable.
 
-.. note::
-
-    Since the model assemblies are already loaded into memory inside the `apsim_bin_context`, you do not need to remain inside the
-    `with` block to keep using them. Once loaded, those modules (and their namespaces) are global within the process, and they retain
-    their reference to the APSIM bin path that was supplied during loading.
-
-
 
 The bin path can also be substituted with just the project `.env` path as follows
 
@@ -51,4 +44,11 @@ The bin path can also be substituted with just the project `.env` path as follow
    with apsim_bin_context( dotenv_path = './config/.env', bin_key ='APSIM_BIN_PATH'):
         from Models.Core import Simulations   # uses this bin path for loading
         from apsimNGpy.core.apsim import ApsimModel # uses this bin path for loading
+
+
+.. note::
+
+    Since the model assemblies are already loaded into memory inside the `apsim_bin_context`, you do not need to remain inside the
+    `with` block to keep using them. Once loaded, those modules (and their namespaces) are global within the process, and they retain
+    their reference to the APSIM bin path that was supplied during loading.
 
