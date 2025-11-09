@@ -58,6 +58,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
 
     **Diverse model evaluation metrics**. Built-in model prediction evaluation metrics: RMSE, RRMSE, Willmott’s Index of Agreement (WIA), Bias, MAE, Lin's CCC, and R\ :sup:`2`
 
+.. include:: releases.rst
 
 .. toctree::
    :maxdepth: 2
@@ -134,7 +135,3 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    api
 
 
-
-.. include:: releases.rst
-   :start-after: .. intro-start
-   :end-before: .. intro-end
