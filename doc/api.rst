@@ -3410,15 +3410,24 @@ Classes
 
 .. py:class:: apsimNGpy.core.config.Configuration
 
-   Configuration(bin_path: 'Union[Path, str]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin'))
+   In the future, this module will contain all the constants required by the package.
+    Users will be able to override these values if needed by importing this module before running any simulations.
 
-   .. py:method:: apsimNGpy.core.config.Configuration.__init__(self, bin_path: 'Union[Path, str]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin')) -> None
+   .. py:method:: apsimNGpy.core.config.Configuration.__init__(self, bin_path: 'Union[Path, str]' = None) -> None
 
    Initialize self.  See help(type(self)) for accurate signature.
 
    .. py:attribute:: apsimNGpy.core.config.Configuration.bin_path
 
-   Default: ``WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM…``
+   Default: ``None``
+
+   .. py:method:: apsimNGpy.core.config.Configuration.set_temporal_bin_path(self, temporal_bin_path)
+
+   Set the temporal bin path for the package module.
+   Parameters
+   ----------------
+   temporal_bin_path: str | Path
+       path to the temporal bin path
 
    .. py:method:: apsimNGpy.core.config.Configuration.release_temporal_bin_path(self)
 
