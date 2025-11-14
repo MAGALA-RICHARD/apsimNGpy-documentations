@@ -197,7 +197,8 @@ Our 40 simulations ran in 30 seconds only, almost 0.76 seconds per simulation.
 
 Working in notebooks (Jupyter/Colab)
 =====================================
-The safest pattern is to place worker functions in a separate .py module and import them:
+When using Jupyter notebooks, the workflow follows the same structure as described above. For stability and reproducibility,
+it is recommended to define worker functions in a standalone Python module (.py file) and import them into the notebook.
 
 .. seealso::
 
