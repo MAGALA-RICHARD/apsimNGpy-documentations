@@ -680,7 +680,7 @@ Classes
 
       Related API: :attr:`results`.
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, timeout: 'int' = 800, **kwargs) -> "'CoreModel'" (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, timeout: 'int' = 800, cpu_count: 'int' = -1, **kwargs) -> "'CoreModel'" (inherited)
 
     Run APSIM model simulations to write the results either to SQLite database or csv file. Does not collect the
      simulated output into memory. Please see related APIs: :attr:`results` and :meth:`get_simulated_output`.
@@ -700,8 +700,11 @@ Classes
     verbose: bool, optional
         If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-    timeout: int, defualt is 800 seconds
+    timeout: int, default is 800 seconds
           Enforces a timeout and returns a CompletedProcess-like object.
+    cpu_count: int, Optional default is -1, referring to all threads
+        This parameter is useful when the number of simulations are more than 1, below that performance differences are minimal
+        added in 0.39.11.21+
 
     kwargs: **dict
         Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
@@ -3257,7 +3260,7 @@ Module attributes
 
 .. py:attribute:: apsimNGpy.core.config.configuration
 
-   Default value: ``Configuration(bin_path=WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morr…``
+   Default value: ``Configuration(bin_path=WindowsPath('D:/reproducible/bin_dist/APSIM2025.8.7844.0…``
 
 Functions
 ^^^^^^^^^
@@ -4504,7 +4507,7 @@ Classes
 
       Related API: :attr:`results`.
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, timeout: 'int' = 800, **kwargs) -> "'CoreModel'" (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.run(self, report_name: 'Union[tuple, list, str]' = None, simulations: 'Union[tuple, list]' = None, clean_up: 'bool' = True, verbose: 'bool' = False, timeout: 'int' = 800, cpu_count: 'int' = -1, **kwargs) -> "'CoreModel'" (inherited)
 
     Run APSIM model simulations to write the results either to SQLite database or csv file. Does not collect the
      simulated output into memory. Please see related APIs: :attr:`results` and :meth:`get_simulated_output`.
@@ -4524,8 +4527,11 @@ Classes
     verbose: bool, optional
         If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-    timeout: int, defualt is 800 seconds
+    timeout: int, default is 800 seconds
           Enforces a timeout and returns a CompletedProcess-like object.
+    cpu_count: int, Optional default is -1, referring to all threads
+        This parameter is useful when the number of simulations are more than 1, below that performance differences are minimal
+        added in 0.39.11.21+
 
     kwargs: **dict
         Additional keyword arguments, e.g., to_csv=True, use this flag to correct results from
@@ -7418,7 +7424,7 @@ Module attributes
 
 .. py:attribute:: apsimNGpy.core.pythonet_config.CI
 
-   Default value: ``ConfigRuntimeInfo(clr_loaded=True, bin_path=WindowsPath('D:/My_BOX/Box/PhD thes…``
+   Default value: ``ConfigRuntimeInfo(clr_loaded=True, bin_path=WindowsPath('D:/reproducible/bin_di…``
 
 Functions
 ^^^^^^^^^
@@ -7477,7 +7483,7 @@ Functions
    >>> reader = get_apsim_file_reader("string")    # doctest: +SKIP
    >>> sims = reader(text)                         # doctest: +SKIP
 
-.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin'), release_number: bool = False) -> Optional[str]
+.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/reproducible/bin_dist/APSIM2025.8.7844.0/bin'), release_number: bool = False) -> Optional[str]
 
    Return the APSIM version string detected from the installed binaries.
 
@@ -7584,6 +7590,11 @@ apsimNGpy.core.runner
 Functions
 ^^^^^^^^^
 
+.. py:function:: apsimNGpy.core.runner.build_apsim_command(dir_path: 'str', pattern: 'str', *, cpu_count: 'int' = -1, recursive: 'bool' = False, verbose: 'bool' = False, write_tocsv: 'bool' = False) -> 'List[str]'
+
+   Build the APSIM command-line invocation for all files in a directory
+   matching a given pattern.
+
 .. py:function:: apsimNGpy.core.runner.collect_csv_by_model_path(model_path) -> 'dict[Any, Any]'
 
    Collects the data from the simulated model after run
@@ -7604,7 +7615,7 @@ Functions
         df1= list(collect_csv_from_dir(mock_data, '*.apsimx', recursive=True)) # collects all csf file produced by apsimx recursively
         df2= list(collect_csv_from_dir(mock_data, '*.apsimx',  recursive=False)) # collects all csf file produced by apsimx only in the specified directory directory
 
-.. py:function:: apsimNGpy.core.runner.collect_db_from_dir(dir_path, pattern, recursive=False) -> 'pd.DataFrame'
+.. py:function:: apsimNGpy.core.runner.collect_db_from_dir(dir_path, pattern, recursive=False, tables=None, con=None) -> 'pd.DataFrame'
 
    Collects the data in a directory using a pattern, usually the pattern resembling the one of the simulations
      used to generate those csv files
@@ -7616,15 +7627,141 @@ Functions
       whether to recursively search through the directory defaults to false:
    pattern :(str)
        pattern of the apsim files that produced the csv files through simulations
+   con: database connection
+      database connection object to aggregate the date to from all the simulation
 
    returns
-       a generator object with pandas data frames
+       a dict generator object with pandas data frames as the values as the schemas as the keys, note the schemas are grouped according to their similarities on
+       of data types
 
    Example::
 
         mock_data = Path.home() / 'mock_data' # this a mock directory substitute accordingly
         df1= list(collect_csv_from_dir(mock_data, '*.apsimx', recursive=True)) # collects all csf file produced by apsimx recursively
         df2= list(collect_csv_from_dir(mock_data, '*.apsimx',  recursive=False)) # collects all csf file produced by apsimx only in the specified directory directory
+
+.. py:function:: apsimNGpy.core.runner.dir_simulations_to_csv(dir_path: 'str | Path', pattern: 'str', *, verbose: 'bool' = False, recursive: 'bool' = False, cpu_count: 'int' = -1) -> 'Iterable[pd.DataFrame]'
+
+   Run APSIM for all files matching a pattern in a directory and load
+   outputs from CSV files into memory.
+
+   APSIM is invoked with the ``--csv`` flag, so reports are written to CSV
+   files in the same directories as the input *.apsimx files. This function
+   then calls :func:`collect_csv_from_dir` to return the results.
+
+   Parameters
+   ----------
+   dir_path : str or Path
+       Path to the directory containing the simulation files.
+   pattern : str
+       File pattern to match simulation files (e.g., ``"*.apsimx"``).
+   verbose : bool, optional
+       If True, log APSIM console output.
+   recursive : bool, optional
+       If True, search recursively through subdirectories.
+   cpu_count : int, optional
+       Number of threads to use for APSIM's internal parallel processing.
+
+   Returns
+   -------
+   Iterable[pd.DataFrame]
+       (commonly a generator or list of DataFrames, one per report file).
+
+   Raises
+   ------
+   RuntimeError
+       If the APSIM process fails.
+
+.. py:function:: apsimNGpy.core.runner.dir_simulations_to_dfs(dir_path: 'str | Path', pattern: 'str', *, verbose: 'bool' = False, recursive: 'bool' = False, cpu_count: 'int' = -1, tables: 'Optional[List[str], str]' = None, axis: 'int' = 0, order_sensitive: 'bool' = False, add_keys: 'bool' = False, keys_prefix: 'str' = 'g') -> 'Dict[SchemaKey, pd.DataFrame]'
+
+   Run APSIM for all files matching a pattern in a directory, collect results
+   from APSIM databases, and return grouped DataFrames based on schema.
+
+   Parameters
+   ----------
+   dir_path : str or Path
+       Path to the directory containing the simulation files.
+   pattern : str
+       File pattern to match simulation files (e.g., ``"*.apsimx"``).
+   verbose : bool, optional
+       If True, log APSIM console output.
+   recursive : bool, optional
+       If True, search recursively through subdirectories.
+   cpu_count : int, optional
+       Number of threads to use for APSIM's internal parallel processing.
+   tables : list of str, optional
+       Subset of table names to collect from each APSIM database. If None,
+       all tables are collected.
+   axis : {0, 1}, optional
+       Axis along which to concatenate grouped DataFrames.
+   order_sensitive : bool, optional
+       If True, column order is part of the schema definition when grouping.
+   add_keys : bool, optional
+       If True, add keys when concatenating grouped DataFrames.
+   keys_prefix : str, optional
+       Prefix for keys used when concatenating grouped DataFrames.
+
+   Returns
+   -------
+   dict
+       Mapping from schema signatures to concatenated DataFrames. Each key is
+       a tuple of (column_name, dtype_str) pairs describing the schema. if all simulations are the same, the key
+        is going to be one, as keys and values are filtered according to data types similarities among data frames
+
+   Raises
+   ------
+   RuntimeError
+       If the APSIM process fails.
+
+   .. seealso::
+
+      :func:`~apsimNGpy.core.runner.dir_simulations_to_dfs`
+      :func:`~apsimNGpy.core.runner.dir_simulations_to_sql`
+      :func:`~apsimNGpy.core.runner.dir_simulations_to_csv`
+
+.. py:function:: apsimNGpy.core.runner.dir_simulations_to_sql(dir_path: 'str | Path', pattern: 'str', connection: 'Engine', *, verbose: 'bool' = False, recursive: 'bool' = False, cpu_count: 'int' = -1, tables: 'Optional[List[str], str]' = None, axis: 'int' = 0, order_sensitive: 'bool' = False, add_keys: 'bool' = False, keys_prefix: 'str' = 'g', base_table_prefix: 'str' = 'T', schema_table_name: 'str' = '_schemas') -> 'None'
+
+   Run APSIM, collect grouped results from databases, and write the grouped
+   tables plus a schema metadata table into a SQL database via the provided database connection.
+
+   Parameters
+   ----------
+   dir_path : str or Path
+       Path to the directory containing the simulation files.
+   pattern : str
+       File pattern to match simulation files (e.g., ``"*.apsimx"``).
+   connection : sqlalchemy.engine.Engine
+       SQLAlchemy engine (or compatible) to write tables into.
+   verbose : bool, optional
+       If True, log APSIM console output.
+   recursive : bool, optional
+       If True, search recursively through subdirectories.
+   cpu_count : int, optional
+       Number of threads to use for APSIM's internal parallel processing.
+   tables : list of str, optional
+       Subset of table names to collect from each APSIM database. If None,
+       all tables are collected.
+   axis : {0, 1}, optional
+       Axis along which to concatenate grouped DataFrames.
+   order_sensitive : bool, optional
+       If True, column order is part of the schema definition when grouping.
+   add_keys : bool, optional
+       If True, add keys when concatenating grouped DataFrames.
+   keys_prefix : str, optional
+       Prefix for keys used when concatenating grouped DataFrames.
+   base_table_prefix : str, optional
+       Prefix for the generated data table names in SQL.
+   schema_table_name : str, optional
+       Name of the schema metadata table in SQL.
+
+   Returns
+   -------
+   None
+
+   Raises
+   ------
+   RuntimeError
+       If the APSIM process fails.
 
 .. py:function:: apsimNGpy.core.runner.get_apsim_version(verbose: 'bool' = False)
 
@@ -7651,7 +7788,30 @@ Functions
    Raises:
        ``ValueError: `` If no matching files are found.
 
-.. py:function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=True, run_only=False) -> '[pd.DataFrame]'
+.. py:function:: apsimNGpy.core.runner.is_connection(obj)
+
+   Return True if obj looks like a DB connection.
+
+.. py:function:: apsimNGpy.core.runner.run_dir_simulations(dir_path: 'str', pattern: 'str', *, cpu_count: 'int' = -1, recursive: 'bool' = False, verbose: 'bool' = False, write_tocsv: 'bool' = False) -> 'Popen[str]'
+
+   Execute APSIM simulations for all matching files in a directory and wait
+   for completion.
+
+   This helper is responsible only for building the command, running it,
+   logging output, and ensuring resources are cleaned up. It either completes
+   successfully or raises an exception.
+
+   Returns
+   -------
+   process : subprocess.Popen
+       The completed APSIM process object.
+
+   Raises
+   ------
+   RuntimeError
+       If APSIM returns a non-zero exit code.
+
+.. py:function:: apsimNGpy.core.runner.run_from_dir(dir_path, pattern, verbose=False, recursive=False, write_tocsv=False, run_only=False, cpu_count=-1, tables=None, axis=0, order_sensitive=False, add_keys=False, keys_prefix: 'str' = 'g', connection: 'Engine' = None) -> '[pd.DataFrame]'
 
    This function acts as a wrapper around the ``APSIM`` command line recursive tool, automating
    the execution of APSIM simulations on all files matching a given pattern in a specified
@@ -7660,6 +7820,11 @@ Functions
 
    What this function does is that it makes it easy to retrieve the simulated files, returning a generator that
    yields data frames
+
+   .. warning::
+
+     This function doesn’t clone the input files (unlike: class:`~apsimNGpy.core.apsim.ApsimModel`), so runs started with it cannot be reopened in older APSIM versions
+
 
    Parameters
    ____________
@@ -7674,6 +7839,9 @@ Functions
        with suffix reportname.csv. if it is ``False``. If ``verbose``, the progress is printed as the elapsed time and the successfully saved csv
    run_only: (bool, optional)
        If True no results are loaded in memory.
+   cpu_count: (int, optional)
+       No of threads to use for parallel processing of simulations
+
 
    :returns:
        generator that yields data frames knitted by pandas if ran_only is False else None
@@ -7695,7 +7863,7 @@ Functions
 
       Related API: :func:`~apsimNGpy.core.runner.run_model_externally`
 
-.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
+.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/reproducible/bin_dist/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cpu_count=-1, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
 
    Run APSIM externally (cross-platform) with safe defaults.
 
@@ -8102,6 +8270,24 @@ Functions
          Related API:
          :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.save_tosql`,
          :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.insert_data`
+
+.. py:function:: apsimNGpy.core_utils.database_utils.write_schema_grouped_tables(schema_to_df: 'Dict[SchemaKey, pd.DataFrame]', engine: 'Engine', *, base_table_prefix: 'str' = 'T', schema_table_name: 'str' = 'T', chunksize=None, dtype=None, if_exists='append', index=False, schema=None) -> 'None'
+
+   For each (schema, DataFrame) pair:
+     - create a dedicated SQL table and insert the DataFrame,
+     - record its schema and table name in a separate schema table.
+
+   Parameters
+   ----------
+   schema_to_df : dict
+       Mapping from schema signature to concatenated DataFrame.
+       Schema signature format: ((column_name, dtype_str), ...).
+   engine : sqlalchemy.engine.Engine or DB-API connection
+       Database connection/engine to write to.
+   base_table_prefix : str, optional
+       Prefix for generated table names (e.g., 'apsim_group_1', 'apsim_group_2', ...).
+   schema_table_name : str, optional
+       Name of the schema metadata table.
 
 apsimNGpy.exceptions
 --------------------
