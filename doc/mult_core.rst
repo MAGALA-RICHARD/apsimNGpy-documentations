@@ -224,9 +224,20 @@ To use this option, we need to submit all files to a folder. So this example mim
                                        cpu_count=10, connection=engine)
        # tables are stored based on dataframe schema similarities
        tables = inspect(engine).get_table_names()
-       print(tables)# according to this examples, they should be two tables, one for all dataframe aggregated along axis 0, and one describing the schema in the dataframe
+       print(tables)
+        # In this example, you should see two tables:
+       #   1) one data table containing all Report rows aggregated by
+       #      schema along axis 0, and
+       #   2) one schema table that describes the columns and dtypes
+       #      of the grouped DataFrames.
    finally:
       engine.dispose(close=True)
+
+In this example, the simulations are executed for all APSIMX files matching the given pattern,
+and the resulting Report tables are first grouped in memory by schema. The function then writes
+each grouped DataFrame into the SQL database, along with a separate schema table that records the
+column names and dtypes for each group. Using sqlalchemy.inspect(engine).get_table_names() allows you
+to verify which tables were created and to confirm that both the aggregated data table and the corresponding schema table are available in the database.
 
 3b). Run all simulation in the folder and load data to memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
