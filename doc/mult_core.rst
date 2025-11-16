@@ -200,59 +200,94 @@ Working in notebooks (Jupyter/Colab)
 When using Jupyter notebooks, the workflow follows the same structure as described above. For stability and reproducibility,
 it is recommended to define worker functions in a standalone Python module (.py file) and import them into the notebook.
 
-Minimal example 3: run purely all simulation using C# under the hood
---------------------------------------------------------------------
-To use this option, we need to submit all files to a folder. So this example mimics that process
+Minimal Example 3: Run All Simulations Using the C# Backend
+----------------------------------------------------------
+
+This example shows how to execute a folder of APSIM simulations using the C\# engine
+(`Models.exe`) and either:
+
+1. store the results directly into a SQL database, or
+2. load the grouped outputs into memory as pandas DataFrames.
+
+We begin by creating a directory containing multiple APSIMX files.
 
 .. code-block:: python
 
    from apsimNGpy.tests.unittests.test_factory import mimic_multiple_files
-   from apsimNGpy.core.runner import   dir_simulations_to_sql, dir_simulations_to_dfs
-   file_dir = mimic_multiple_files(out_file=f'test_dir' size=100, suffix ="__", mix =False)
+   from apsimNGpy.core.runner import dir_simulations_to_sql, dir_simulations_to_dfs
 
-3a). Run all simulation in the folder and store them to an sql database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   file_dir = mimic_multiple_files(
+       out_file="test_dir",
+       size=100,
+       suffix="__",
+       mix=False
+   )
+
+3a) Running All Simulations and Storing Results in a SQL Database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
-   from sqlalchemy import engine
-   engine = create_engine("sqlite:///:memory:")# replace with your own database path, this one is temporally
-   import inspect
+   from sqlalchemy import create_engine, inspect
+
+   # Use an in-memory SQLite database; replace with a file path for persistence
+   engine = create_engine("sqlite:///:memory:")
+
    try:
-       dir_simulations_to_sql(dir_path=file_dir, pattern="*__.apsimx", recursive=False,
-                                       tables='Report',
-                                       cpu_count=10, connection=engine)
-       # tables are stored based on dataframe schema similarities
-       tables = inspect(engine).get_table_names()
+       dir_simulations_to_sql(
+           dir_path=file_dir,
+           pattern="*__.apsimx",
+           recursive=False,
+           tables="Report",
+           cpu_count=10,
+           connection=engine,
+       )
+
+       # Inspect which tables were created
+       inspector = inspect(engine)
+       tables = inspector.get_table_names()
        print(tables)
-        # In this example, you should see two tables:
-       #   1) one data table containing all Report rows aggregated by
-       #      schema along axis 0, and
-       #   2) one schema table that describes the columns and dtypes
-       #      of the grouped DataFrames.
+
+       # Expected tables:
+       #   1) a data table containing all Report rows aggregated by schema
+       #   2) a schema table documenting column names and dtypes
    finally:
-      engine.dispose(close=True)
+       engine.dispose(close=True)
 
-In this example, the simulations were executed for all APSIMX files matching the given pattern ``*__.apsimx``,
-and the resulting Report tables are first grouped in memory by schema. The function then writes
-each grouped DataFrame into the SQL database, along with a separate schema table that records the
-column names and dtypes for each group.
+In this workflow, all APSIMX files matching ``*__.apsimx`` are executed using the
+C\# simulation engine. The resulting ``Report`` tables are collected from the APSIM
+databases, grouped in memory by schema, and written into the SQL database specified
+by ``connection``.
 
-Using sqlalchemy.inspect(engine).get_table_names() allows you
-to verify which tables were created and to confirm that both the aggregated data table and the corresponding schema table are available in the database.
+The grouped data are stored in one table, and a separate schema table
+(``_schemas`` by default) records the column names and dtypes associated with each
+group. Calling ``inspect(engine).get_table_names()`` allows you to verify that both
+tables were created.
 
-3b). Run all simulation in the folder and load data to memory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3b) Running All Simulations and Loading Grouped Results Into Memory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: python
 
-    groups = dir_simulations_to_sql(dir_path=file_dir, pattern="*__.apsimx", recursive=False,
-                                       tables='Report',
-                                       cpu_count=10, connection=engine)
+    groups = dir_simulations_to_dfs(
+        dir_path=file_dir,
+        pattern="*__.apsimx",
+        recursive=False,
+        tables="Report",
+        cpu_count=10,
+    )
 
-In the code above, groups is a dictionary where each key represents a schema signature and each value is
-the corresponding DataFrame. The DataFrames are grouped based on similarities in their schema. Therefore,
-if two sets of simulations produce different report table structures, you will obtain two distinct schema
-groups—resulting in two keys and two values in the groups dictionary.
+In this mode, the results are not written to disk. Instead, ``groups`` is returned as
+a dictionary where:
+
+* **keys** are schema signatures (tuples describing each column and its dtype), and
+* **values** are DataFrames containing all rows that share that schema.
+
+If different simulations generate different ``Report`` table structures, multiple
+schema groups will be produced. For example, if two distinct report schemas are
+encountered, ``groups`` will contain two keys, each mapping to a DataFrame with its
+corresponding structure.
+
 
 .. seealso::
 
