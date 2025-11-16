@@ -210,7 +210,7 @@ To use this option, we need to submit all files to a folder. So this example mim
    from apsimNGpy.core.runner import   dir_simulations_to_sql, dir_simulations_to_dfs
    file_dir = mimic_multiple_files(out_file=f'test_dir' size=100, suffix ="__", mix =False)
 
-1. Run all simulation in the folder and store them to an sql database
+3a). Run all simulation in the folder and store them to an sql database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
@@ -228,7 +228,7 @@ To use this option, we need to submit all files to a folder. So this example mim
    finally:
       engine.dispose(close=True)
 
-1. Run all simulation in the folder and load data to memory
+3b). Run all simulation in the folder and load data to memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: python
 
