@@ -7672,6 +7672,11 @@ Functions
    RuntimeError
        If the APSIM process fails.
 
+   .. seealso::
+
+      :func:`~apsimNGpy.core.runner.dir_simulations_to_dfs`
+      :func:`~apsimNGpy.core.runner.dir_simulations_to_sql`
+
 .. py:function:: apsimNGpy.core.runner.dir_simulations_to_dfs(dir_path: 'str | Path', pattern: 'str', *, verbose: 'bool' = False, recursive: 'bool' = False, cpu_count: 'int' = -1, tables: 'Optional[List[str], str]' = None, axis: 'int' = 0, order_sensitive: 'bool' = False, add_keys: 'bool' = False, keys_prefix: 'str' = 'g') -> 'Dict[SchemaKey, pd.DataFrame]'
 
    Run APSIM for all files matching a pattern in a directory, collect results
@@ -7715,7 +7720,6 @@ Functions
 
    .. seealso::
 
-      :func:`~apsimNGpy.core.runner.dir_simulations_to_dfs`
       :func:`~apsimNGpy.core.runner.dir_simulations_to_sql`
       :func:`~apsimNGpy.core.runner.dir_simulations_to_csv`
 
@@ -7762,6 +7766,11 @@ Functions
    ------
    RuntimeError
        If the APSIM process fails.
+
+   .. seealso::
+
+      :func:`~apsimNGpy.core.runner.dir_simulations_to_dfs`
+      :func:`~apsimNGpy.core.runner.dir_simulations_to_csv`
 
 .. py:function:: apsimNGpy.core.runner.get_apsim_version(verbose: 'bool' = False)
 
