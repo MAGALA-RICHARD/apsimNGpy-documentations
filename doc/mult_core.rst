@@ -233,10 +233,12 @@ To use this option, we need to submit all files to a folder. So this example mim
    finally:
       engine.dispose(close=True)
 
-In this example, the simulations are executed for all APSIMX files matching the given pattern,
+In this example, the simulations were executed for all APSIMX files matching the given pattern "__.apsimx",
 and the resulting Report tables are first grouped in memory by schema. The function then writes
 each grouped DataFrame into the SQL database, along with a separate schema table that records the
-column names and dtypes for each group. Using sqlalchemy.inspect(engine).get_table_names() allows you
+column names and dtypes for each group.
+
+Using sqlalchemy.inspect(engine).get_table_names() allows you
 to verify which tables were created and to confirm that both the aggregated data table and the corresponding schema table are available in the database.
 
 3b). Run all simulation in the folder and load data to memory
