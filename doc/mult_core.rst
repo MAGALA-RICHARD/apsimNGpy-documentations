@@ -238,7 +238,7 @@ We begin by creating a directory containing multiple APSIMX files.
            dir_path=file_dir,
            pattern="*__.apsimx",
            recursive=False,
-           tables="Report",
+           tables="Report",# could be a list of table names if more than one tables are anticipated or needed
            cpu_count=10,
            connection=engine,
        )
@@ -273,7 +273,7 @@ tables were created.
         dir_path=file_dir,
         pattern="*__.apsimx",
         recursive=False,
-        tables="Report",
+        tables="Report",# could be a list of table names if more than one tables are anticipated or needed
         cpu_count=10,
     )
 
