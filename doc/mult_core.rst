@@ -200,6 +200,47 @@ Working in notebooks (Jupyter/Colab)
 When using Jupyter notebooks, the workflow follows the same structure as described above. For stability and reproducibility,
 it is recommended to define worker functions in a standalone Python module (.py file) and import them into the notebook.
 
+Minimal example 3: run purely all simulation using C# under the hood
+--------------------------------------------------------------------
+To use this option, we need to submit all files to a folder. So this example mimics that process
+
+.. code-block:: python
+
+   from apsimNGpy.tests.unittests.test_factory import mimic_multiple_files
+   from apsimNGpy.core.runner import   dir_simulations_to_sql, dir_simulations_to_dfs
+   file_dir = mimic_multiple_files(out_file=f'test_dir' size=100, suffix ="__", mix =False)
+
+1. Run all simulation in the folder and store them to an sql database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   from sqlalchemy import engine
+   engine = create_engine("sqlite:///:memory:")# replace with your own database path
+   import inspect
+   try:
+       dir_simulations_to_sql(dir_path=file_dir, pattern="*__.apsimx", recursive=False,
+                                       tables='Report',
+                                       cpu_count=10, connection=engine)
+       # tables are stored based on dataframe schema similarities
+       tables = inspect(engine).get_table_names()
+       print(tables)# according to this examples, they should be two tables, one for all dataframe aggregated along axis 0, and one describing the schema in the dataframe
+   finally:
+      engine.dispose(close=True)
+
+1. Run all simulation in the folder and load data to memory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: python
+
+    groups = dir_simulations_to_sql(dir_path=file_dir, pattern="*__.apsimx", recursive=False,
+                                       tables='Report',
+                                       cpu_count=10, connection=engine)
+
+In the code above, groups is a dictionary where each key represents a schema signature and each value is
+the corresponding DataFrame. The DataFrames are grouped based on similarities in their schema. Therefore,
+if two sets of simulations produce different report table structures, you will obtain two distinct schema
+groups—resulting in two keys and two values in the groups dictionary.
+
 .. seealso::
 
   - API description: :class:`~apsimNGpy.core.mult_cores.MultiCoreManager`
