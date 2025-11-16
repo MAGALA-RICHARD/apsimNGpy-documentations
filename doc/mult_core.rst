@@ -216,7 +216,7 @@ To use this option, we need to submit all files to a folder. So this example mim
 .. code-block:: python
 
    from sqlalchemy import engine
-   engine = create_engine("sqlite:///:memory:")# replace with your own database path
+   engine = create_engine("sqlite:///:memory:")# replace with your own database path, this one is temporally
    import inspect
    try:
        dir_simulations_to_sql(dir_path=file_dir, pattern="*__.apsimx", recursive=False,
@@ -233,7 +233,7 @@ To use this option, we need to submit all files to a folder. So this example mim
    finally:
       engine.dispose(close=True)
 
-In this example, the simulations were executed for all APSIMX files matching the given pattern "*__.apsimx",
+In this example, the simulations were executed for all APSIMX files matching the given pattern ``*__.apsimx``,
 and the resulting Report tables are first grouped in memory by schema. The function then writes
 each grouped DataFrame into the SQL database, along with a separate schema table that records the
 column names and dtypes for each group.
