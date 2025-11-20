@@ -8752,6 +8752,88 @@ Classes
                **{'path': '.Simulations.Simulation.Field.Sow using a variable rule', 'Population': "?", 'v_type': 'float',
                   'bounds': [4, 14]})
 
+apsimNGpy.optimizer.problems.back_end
+-------------------------------------
+
+Functions
+^^^^^^^^^
+
+.. py:function:: apsimNGpy.optimizer.problems.back_end.eval_observed(obs: pandas.core.frame.DataFrame, pred: pandas.core.frame.DataFrame, index: str, pred_col: str, obs_col: str, method: str = 'rmse', exp: Optional[str] = None) -> float
+
+   Evaluate observed and predicted values using a selected performance metric.
+
+   Supported metrics include:
+
+   | Metric    | Description                          | Preferred Direction | Sign |
+   | :-------- | :----------------------------------- | :------------------ | :--- |
+   | **RMSE**  | Root Mean Square Error               | Smaller             | `-1` |
+   | **MAE**   | Mean Absolute Error                  | Smaller             | `-1` |
+   | **MSE**   | Mean Square Error                    | Smaller             | `-1` |
+   | **RRMSE** | Relative RMSE                        | Smaller             | `-1` |
+   | **bias**  | Mean Bias                            | Closer to 0         | `-1` |
+   | **ME**    | Modeling Efficiency (Nash–Sutcliffe) | Larger              | `+1` |
+   | **WIA**   | Willmott’s Index of Agreement        | Larger              | `+1` |
+   | **R2**    | Coefficient of Determination         | Larger              | `+1` |
+   | **CCC**   | Concordance Correlation Coefficient  | Larger              | `+1` |
+   | **slope** | Regression slope                     | Closer to 1         | `+1` |
+
+   Parameters
+   ----------
+   obs : pandas.DataFrame
+       DataFrame containing observed values. Must include the `index` and `obs_col` columns.
+
+   pred : pandas.DataFrame
+       DataFrame containing predicted values. Must include the `index` and `pred_col` columns.
+
+   index : str
+       Column name used for aligning observed and predicted datasets (e.g., `"year"`, `"site"`).
+
+   pred_col : str
+       Column name for predicted variable (e.g., `"Yield_pred"`).
+
+   obs_col : str
+       Column name for observed variable (e.g., `"Yield_obs"`).
+
+   method : str, default="rmse"
+       Performance metric to evaluate. Case-insensitive; see the supported list above.
+
+   exp : str, optional
+       Optional label for the experiment or simulation context, for logging or tracing.
+
+   Returns
+   -------
+   float
+       The evaluated metric value multiplied by its optimization direction
+       (`-1` for minimization metrics, `+1` for maximization metrics).
+
+   Raises
+   ------
+   ValueError
+       If required columns are missing or the metric method is unsupported.
+
+   Notes
+   -----
+   This function aligns observed and predicted datasets by the specified index,
+   enforces float type consistency, and delegates the metric computation to the:
+     class:`Validate` class. The result is automatically signed according to
+   the optimization convention defined in :data:`metric_direction`.
+
+   Examples
+   --------
+   .. code-block:: python
+
+       from apsimNGpy.optimizer.evaluation import eval_observed
+
+       out = eval_observed(
+           obs=df_obs,
+           pred=df_pred,
+           index="year",
+           pred_col="Yield_pred",
+           obs_col="Yield_obs",
+           method="CCC"
+       )
+       print(out)
+
 apsimNGpy.optimizer.problems.smp
 --------------------------------
 
@@ -9168,6 +9250,389 @@ Classes
    -------
    Objective
        A callable objective that accepts encoded variable vectors.
+
+apsimNGpy.optimizer.problems.variables
+--------------------------------------
+
+Parameter Definition and Validation Utilities for APSIM Optimization
+====================================================================
+
+This module provides robust validation, normalization, and merging utilities
+for APSIM optimization problems defined through Python.
+
+It uses Pydantic models to ensure consistent parameter structures
+and supports multiple variable types from the ``wrapdisc`` library,
+enabling flexible mixed-variable optimization (continuous, discrete, categorical).
+
+--------------------------------------------------------------------
+Supported Variable Types
+--------------------------------------------------------------------
+| Class         | Type               | Example Input                 | Typical Use                  |
+| --------------| ------------------ | ----------------------------- | ---------------------------- |
+| `ChoiceVar`   | Categorical        | `["A", "B", "C"]`             | Select from discrete options |
+| `GridVar`     | Deterministic grid | `[0, 10]`                     | Grid-based search            |
+| `QrandintVar` | Quantized int      | `lower=0, upper=200, q=25`    | Integer steps                |
+| `QuniformVar` | Quantized float    | `lower=0, upper=100, q=5`     | Continuous with quantization |
+| `RandintVar`  | Random int         | `lower=1, upper=10`           | Random integer sampling      |
+| `UniformVar`  | Random float       | `lower=0.0, upper=1.0`        | Continuous random sampling   |
+
+--------------------------------------------------------------------
+Functions Provided
+--------------------------------------------------------------------
+- ``validate_user_params`` : Validate and normalize parameter inputs.
+- ``filter_apsim_params`` : Flatten parameters for APSIM simulation input.
+- ``merge_params_by_path`` : Combine multiple parameter dictionaries with shared paths.
+--------------------------------------------------------------------
+
+Functions
+^^^^^^^^^
+
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001FF728D5900>) -> Dict
+
+   Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
+
+   - Merges 'other_params' into the main structure
+   - Replaces candidate parameters with placeholders
+   - Preserves the APSIM node 'path'
+
+   Parameters
+   ----------
+   params : BaseParams
+       Validated parameter model.
+   place_holder : object, optional
+       A sentinel object to represent unassigned optimization variables.
+
+   Returns
+   -------
+   dict
+       Flattened dictionary containing APSIM parameter mappings.
+
+.. py:function:: apsimNGpy.optimizer.problems.variables.merge_params_by_path(param_list: List[Dict]) -> List[Dict]
+
+   Merge parameter dictionaries that share the same APSIM node path.
+
+   Useful for grouping multiple variable definitions targeting the same node.
+
+   Parameters
+   ----------
+   param_list : list of dict
+       List of parameter dictionaries to merge.
+
+   Returns
+   -------
+   list of dict
+       A list of merged parameter dictionaries, one per unique path.
+
+.. py:function:: apsimNGpy.optimizer.problems.variables.validate_user_params(params: Dict) -> apsimNGpy.optimizer.problems.variables.BaseParams
+
+   Validate user-supplied parameters using the BaseParams schema.
+
+   This function checks structure, length consistency, and conflicts between
+   candidate and other parameters. It does not validate the *existence* of APSIM nodes.
+
+   Parameters
+   ----------
+   params : dict
+       Dictionary with user-defined parameters, e.g.:
+       {
+           "path": ".Simulations.Simulation.Field.Soil.Organic",
+           "vtype": (UniformVar(1, 2),),
+           "start_value": ("1",),
+           "candidate_param": ("Carbon",),
+           "other_params": {"FBiom": 2.3}
+       }
+
+   Returns
+   -------
+   BaseParams
+       A validated BaseParams instance.
+
+   Raises
+   ------
+   ValidationError
+       If schema or data type validation fails.
+   ValueError
+       If start_value, candidate_param, and vtype lengths are inconsistent.
+
+Classes
+^^^^^^^
+
+.. py:class:: apsimNGpy.optimizer.problems.variables.BaseParams
+
+   Base model for defining APSIM optimization parameters.
+
+   Attributes
+   ----------
+   path : str
+       APSIM node path where the parameter resides (e.g., '.Simulations.Simulation.Field.Soil.Organic').
+   vtype : tuple
+       A tuple of variable type instances (from wrapdisc.var), one per candidate parameter.
+
+       Supported Variable Types
+       --------------------------------------------------------------------
+       | Class         | Type               | Example Input                 | Typical Use                  |
+       | --------------| ------------------ | ----------------------------- | ---------------------------- |
+       | `ChoiceVar`   | Categorical        | `["A", "B", "C"]`             | Select from discrete options |
+       | `GridVar`     | Deterministic grid | `[0, 10]`                     | Grid-based search            |
+       | `QrandintVar` | Quantized int      | `lower=0, upper=200, q=25`    | Integer steps                |
+       | `QuniformVar` | Quantized float    | `lower=0, upper=100, q=5`     | Continuous with quantization |
+       | `RandintVar`  | Random int         | `lower=1, upper=10`           | Random integer sampling      |
+       | `UniformVar`  | Random float       | `lower=0.0, upper=1.0`        | Continuous random sampling   |
+
+   start_value : tuple[str | int | float]
+       Initial starting values for each parameter in candidate_param.
+   candidate_param : str | tuple[str]
+       APSIM variable names corresponding to the optimization factors.
+   bounds : tuple[float, float], optional
+       Lower and upper bounds for continuous parameters.
+   other_params : dict, optional
+       Static parameters that should remain fixed during optimization.
+
+   .. py:attribute:: apsimNGpy.optimizer.problems.variables.BaseParams.model_config
+
+   Default: ``{'arbitrary_types_allowed': True}``
+
+   .. py:property:: apsimNGpy.optimizer.problems.variables.BaseParams.model_fields (inherited)
+
+   Get metadata about the fields defined on the model.
+
+   Deprecation warning: you should be getting this information from the model class, not from an instance.
+   In V3, this property will be removed from the `BaseModel` class.
+
+   Returns:
+       A mapping of field names to [`FieldInfo`][pydantic.fields.FieldInfo] objects.
+
+   .. py:property:: apsimNGpy.optimizer.problems.variables.BaseParams.model_computed_fields (inherited)
+
+   Get metadata about the computed fields defined on the model.
+
+   Deprecation warning: you should be getting this information from the model class, not from an instance.
+   In V3, this property will be removed from the `BaseModel` class.
+
+   Returns:
+       A mapping of computed field names to [`ComputedFieldInfo`][pydantic.fields.ComputedFieldInfo] objects.
+
+   .. py:property:: apsimNGpy.optimizer.problems.variables.BaseParams.model_extra (inherited)
+
+   Get extra fields set during validation.
+
+   Returns:
+       A dictionary of extra fields, or `None` if `config.extra` is not set to `"allow"`.
+
+   .. py:property:: apsimNGpy.optimizer.problems.variables.BaseParams.model_fields_set (inherited)
+
+   Returns the set of fields that have been explicitly set on this model instance.
+
+   Returns:
+       A set of strings representing the fields that have been set,
+           i.e. that were not filled from defaults.
+
+   .. py:classmethod:: apsimNGpy.optimizer.problems.variables.BaseParams.model_construct(cls, _fields_set: 'set[str] | None' = None, **values: 'Any') -> 'Self' (inherited)
+
+   Creates a new instance of the `Model` class with validated data.
+
+   Creates a new model setting `__dict__` and `__pydantic_fields_set__` from trusted or pre-validated data.
+   Default values are respected, but no other validation is performed.
+
+   !!! note
+       `model_construct()` generally respects the `model_config.extra` setting on the provided model.
+       That is, if `model_config.extra == 'allow'`, then all extra passed values are added to the model instance's `__dict__`
+       and `__pydantic_extra__` fields. If `model_config.extra == 'ignore'` (the default), then all extra passed values are ignored.
+       Because no validation is performed with a call to `model_construct()`, having `model_config.extra == 'forbid'` does not result in
+       an error if extra values are passed, but they will be ignored.
+
+   Args:
+       _fields_set: A set of field names that were originally explicitly set during instantiation. If provided,
+           this is directly used for the [`model_fields_set`][pydantic.BaseModel.model_fields_set] attribute.
+           Otherwise, the field names from the `values` argument will be used.
+       values: Trusted or pre-validated data dictionary.
+
+   Returns:
+       A new instance of the `Model` class with validated data.
+
+   .. py:method:: apsimNGpy.optimizer.problems.variables.BaseParams.model_copy(self, *, update: 'Mapping[str, Any] | None' = None, deep: 'bool' = False) -> 'Self' (inherited)
+
+   Usage docs: https://docs.pydantic.dev/2.10/concepts/serialization/#model_copy
+
+   Returns a copy of the model.
+
+   Args:
+       update: Values to change/add in the new model. Note: the data is not validated
+           before creating the new model. You should trust this data.
+       deep: Set to `True` to make a deep copy of the model.
+
+   Returns:
+       New model instance.
+
+   .. py:method:: apsimNGpy.optimizer.problems.variables.BaseParams.model_dump(self, *, mode: "Literal['json', 'python'] | str" = 'python', include: 'IncEx | None' = None, exclude: 'IncEx | None' = None, context: 'Any | None' = None, by_alias: 'bool' = False, exclude_unset: 'bool' = False, exclude_defaults: 'bool' = False, exclude_none: 'bool' = False, round_trip: 'bool' = False, warnings: "bool | Literal['none', 'warn', 'error']" = True, serialize_as_any: 'bool' = False) -> 'dict[str, Any]' (inherited)
+
+   Usage docs: https://docs.pydantic.dev/2.10/concepts/serialization/#modelmodel_dump
+
+   Generate a dictionary representation of the model, optionally specifying which fields to include or exclude.
+
+   Args:
+       mode: The mode in which `to_python` should run.
+           If mode is 'json', the output will only contain JSON serializable types.
+           If mode is 'python', the output may contain non-JSON-serializable Python objects.
+       include: A set of fields to include in the output.
+       exclude: A set of fields to exclude from the output.
+       context: Additional context to pass to the serializer.
+       by_alias: Whether to use the field's alias in the dictionary key if defined.
+       exclude_unset: Whether to exclude fields that have not been explicitly set.
+       exclude_defaults: Whether to exclude fields that are set to their default value.
+       exclude_none: Whether to exclude fields that have a value of `None`.
+       round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].
+       warnings: How to handle serialization errors. False/"none" ignores them, True/"warn" logs errors,
+           "error" raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].
+       serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.
+
+   Returns:
+       A dictionary representation of the model.
+
+   .. py:method:: apsimNGpy.optimizer.problems.variables.BaseParams.model_dump_json(self, *, indent: 'int | None' = None, include: 'IncEx | None' = None, exclude: 'IncEx | None' = None, context: 'Any | None' = None, by_alias: 'bool' = False, exclude_unset: 'bool' = False, exclude_defaults: 'bool' = False, exclude_none: 'bool' = False, round_trip: 'bool' = False, warnings: "bool | Literal['none', 'warn', 'error']" = True, serialize_as_any: 'bool' = False) -> 'str' (inherited)
+
+   Usage docs: https://docs.pydantic.dev/2.10/concepts/serialization/#modelmodel_dump_json
+
+   Generates a JSON representation of the model using Pydantic's `to_json` method.
+
+   Args:
+       indent: Indentation to use in the JSON output. If None is passed, the output will be compact.
+       include: Field(s) to include in the JSON output.
+       exclude: Field(s) to exclude from the JSON output.
+       context: Additional context to pass to the serializer.
+       by_alias: Whether to serialize using field aliases.
+       exclude_unset: Whether to exclude fields that have not been explicitly set.
+       exclude_defaults: Whether to exclude fields that are set to their default value.
+       exclude_none: Whether to exclude fields that have a value of `None`.
+       round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].
+       warnings: How to handle serialization errors. False/"none" ignores them, True/"warn" logs errors,
+           "error" raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].
+       serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.
+
+   Returns:
+       A JSON string representation of the model.
+
+   .. py:classmethod:: apsimNGpy.optimizer.problems.variables.BaseParams.model_json_schema(cls, by_alias: 'bool' = True, ref_template: 'str' = '#/$defs/{model}', schema_generator: 'type[GenerateJsonSchema]' = <class 'pydantic.json_schema.GenerateJsonSchema'>, mode: 'JsonSchemaMode' = 'validation') -> 'dict[str, Any]' (inherited)
+
+   Generates a JSON schema for a model class.
+
+   Args:
+       by_alias: Whether to use attribute aliases or not.
+       ref_template: The reference template.
+       schema_generator: To override the logic used to generate the JSON schema, as a subclass of
+           `GenerateJsonSchema` with your desired modifications
+       mode: The mode in which to generate the schema.
+
+   Returns:
+       The JSON schema for the given model class.
+
+   .. py:classmethod:: apsimNGpy.optimizer.problems.variables.BaseParams.model_parametrized_name(cls, params: 'tuple[type[Any], ...]') -> 'str' (inherited)
+
+   Compute the class name for parametrizations of generic classes.
+
+   This method can be overridden to achieve a custom naming scheme for generic BaseModels.
+
+   Args:
+       params: Tuple of types of the class. Given a generic class
+           `Model` with 2 type variables and a concrete model `Model[str, int]`,
+           the value `(str, int)` would be passed to `params`.
+
+   Returns:
+       String representing the new class where `params` are passed to `cls` as type variables.
+
+   Raises:
+       TypeError: Raised when trying to generate concrete names for non-generic models.
+
+   .. py:method:: apsimNGpy.optimizer.problems.variables.BaseParams.model_post_init(self, _BaseModel__context: 'Any') -> 'None' (inherited)
+
+   Override this method to perform additional initialization after `__init__` and `model_construct`.
+   This is useful if you want to do some validation that requires the entire model to be initialized.
+
+   .. py:classmethod:: apsimNGpy.optimizer.problems.variables.BaseParams.model_rebuild(cls, *, force: 'bool' = False, raise_errors: 'bool' = True, _parent_namespace_depth: 'int' = 2, _types_namespace: 'MappingNamespace | None' = None) -> 'bool | None' (inherited)
+
+   Try to rebuild the pydantic-core schema for the model.
+
+   This may be necessary when one of the annotations is a ForwardRef which could not be resolved during
+   the initial attempt to build the schema, and automatic rebuilding fails.
+
+   Args:
+       force: Whether to force the rebuilding of the model schema, defaults to `False`.
+       raise_errors: Whether to raise errors, defaults to `True`.
+       _parent_namespace_depth: The depth level of the parent namespace, defaults to 2.
+       _types_namespace: The types namespace, defaults to `None`.
+
+   Returns:
+       Returns `None` if the schema is already "complete" and rebuilding was not required.
+       If rebuilding _was_ required, returns `True` if rebuilding was successful, otherwise `False`.
+
+   .. py:classmethod:: apsimNGpy.optimizer.problems.variables.BaseParams.model_validate(cls, obj: 'Any', *, strict: 'bool | None' = None, from_attributes: 'bool | None' = None, context: 'Any | None' = None) -> 'Self' (inherited)
+
+   Validate a pydantic model instance.
+
+   Args:
+       obj: The object to validate.
+       strict: Whether to enforce types strictly.
+       from_attributes: Whether to extract data from object attributes.
+       context: Additional context to pass to the validator.
+
+   Raises:
+       ValidationError: If the object could not be validated.
+
+   Returns:
+       The validated model instance.
+
+   .. py:classmethod:: apsimNGpy.optimizer.problems.variables.BaseParams.model_validate_json(cls, json_data: 'str | bytes | bytearray', *, strict: 'bool | None' = None, context: 'Any | None' = None) -> 'Self' (inherited)
+
+   Usage docs: https://docs.pydantic.dev/2.10/concepts/json/#json-parsing
+
+   Validate the given JSON data against the Pydantic model.
+
+   Args:
+       json_data: The JSON data to validate.
+       strict: Whether to enforce types strictly.
+       context: Extra variables to pass to the validator.
+
+   Returns:
+       The validated Pydantic model.
+
+   Raises:
+       ValidationError: If `json_data` is not a JSON string or the object could not be validated.
+
+   .. py:classmethod:: apsimNGpy.optimizer.problems.variables.BaseParams.model_validate_strings(cls, obj: 'Any', *, strict: 'bool | None' = None, context: 'Any | None' = None) -> 'Self' (inherited)
+
+   Validate the given object with string data against the Pydantic model.
+
+   Args:
+       obj: The object containing string data to validate.
+       strict: Whether to enforce types strictly.
+       context: Extra variables to pass to the validator.
+
+   Returns:
+       The validated Pydantic model.
+
+   .. py:method:: apsimNGpy.optimizer.problems.variables.BaseParams.copy(self, *, include: 'AbstractSetIntStr | MappingIntStrAny | None' = None, exclude: 'AbstractSetIntStr | MappingIntStrAny | None' = None, update: 'Dict[str, Any] | None' = None, deep: 'bool' = False) -> 'Self' (inherited)
+
+   Returns a copy of the model.
+
+   !!! warning "Deprecated"
+       This method is now deprecated; use `model_copy` instead.
+
+   If you need `include` or `exclude`, use:
+
+   ```python {test="skip" lint="skip"}
+   data = self.model_dump(include=include, exclude=exclude, round_trip=True)
+   data = {**data, **(update or {})}
+   copied = self.model_validate(data)
+   ```
+
+   Args:
+       include: Optional set or mapping specifying which fields to include in the copied model.
+       exclude: Optional set or mapping specifying which fields to exclude in the copied model.
+       update: Optional dictionary of field-value pairs to override field values in the copied model.
+       deep: If True, the values of fields that are Pydantic models will be deep-copied.
+
+   Returns:
+       A copy of the model with included, excluded and updated fields as specified.
 
 apsimNGpy.parallel.process
 --------------------------
