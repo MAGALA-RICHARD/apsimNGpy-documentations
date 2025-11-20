@@ -9301,14 +9301,62 @@ apsimNGpy.validation.evaluator
 ------------------------------
 
 Evaluate predicted vs. observed data using statistical and mathematical metrics.
-For detailed metric definitions, see Archontoulis et al. (2015).
+
+Implements standard model evaluation metrics used in crop modeling and other
+environmental simulation contexts. For detailed metric definitions, see:
+
+    Archontoulis, S. V., & Miguez, F. E. (2015).
+    Nonlinear regression models and applications in agricultural research.
+    *Agronomy Journal*, 107(2), 786–798.
 
 Classes
 ^^^^^^^
 
 .. py:class:: apsimNGpy.validation.evaluator.Validate
 
-   Compares predicted and observed values using various statistical metrics.
+   Compare predicted and observed values using statistical performance metrics.
+
+   Parameters
+   ----------
+   actual : ArrayLike
+       Observed (measured) values.
+   predicted : ArrayLike
+       Model-predicted values of the same length as `actual`.
+
+   Notes
+   -----
+   This class provides a consistent interface for evaluating model performance
+   using commonly used metrics such as RMSE, MAE, R², Willmott’s Index of Agreement,
+   and the Concordance Correlation Coefficient (CCC).
+
+   Available metrics
+   -----------------
+   | Metric  | Description                          | Goal / Direction | Sign |
+   | :------- | :----------------------------------- | :---------------- | :---- |
+   | **RMSE** | Root Mean Square Error               | Smaller is better | `-1` |
+   | **MAE**  | Mean Absolute Error                  | Smaller is better | `-1` |
+   | **MSE**  | Mean Square Error                    | Smaller is better | `-1` |
+   | **RRMSE**| Relative RMSE                        | Smaller is better | `-1` |
+   | **bias** | Mean Bias                            | Close to 0        | `-1` |
+   | **ME**   | Modeling Efficiency (NSE)            | Larger is better  | `+1` |
+   | **WIA**  | Willmott’s Index of Agreement        | Larger is better  | `+1` |
+   | **R2**   | Coefficient of Determination         | Larger is better  | `+1` |
+   | **CCC**  | Concordance Correlation Coefficient  | Larger is better  | `+1` |
+   | **slope**| Regression slope                     | Close to 1        | `+1` |
+
+   Examples
+   --------
+   .. code-block:: python
+
+       from apsimNGpy.optimizer.problems.validation import Validate
+       import numpy as np
+
+       obs = np.array([1.2, 2.4, 3.6, 4.8, 5.0])
+       pred = np.array([2.0, 3.5, 4.2, 5.7, 6.0])
+
+       val = Validate(obs, pred)
+       print(val.RMSE())
+       print(val.evaluate_all(verbose=True))
 
    .. py:method:: apsimNGpy.validation.evaluator.Validate.__init__(self, actual: Union[numpy.ndarray, List[float], pandas.core.series.Series], predicted: Union[numpy.ndarray, List[float], pandas.core.series.Series]) -> None
 
@@ -9317,4 +9365,77 @@ Classes
    .. py:attribute:: apsimNGpy.validation.evaluator.Validate.METRICS
 
    Default: ``['RMSE', 'MAE', 'MSE', 'RRMSE', 'bias', 'ME', 'WIA', 'R2', 'CCC', 'slope']``
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.MSE(self) -> float
+
+   Mean Square Error.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.RMSE(self) -> float
+
+   Root Mean Square Error.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.MAE(self) -> float
+
+   Mean Absolute Error.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.RRMSE(self) -> float
+
+   Relative Root Mean Square Error (normalized by mean of observed).
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.bias(self) -> float
+
+   Mean Bias (positive = overestimation, negative = underestimation).
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.ME(self) -> float
+
+   Modeling Efficiency (Nash–Sutcliffe Efficiency).
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.WIA(self) -> float
+
+   Willmott’s Index of Agreement.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.R2(self) -> float
+
+   Coefficient of Determination.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.SLOPE(self) -> float
+
+   Regression slope between observed and predicted.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.CCC(self) -> float
+
+   Concordance Correlation Coefficient.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.evaluate(self, metric: str = 'RMSE') -> float
+
+   Compute a single metric value.
+
+   Parameters
+   ----------
+   metric : str, default="RMSE"
+       Name of the metric to compute (case-insensitive).
+
+   Returns
+   -------
+   float
+       Metric value.
+
+   Raises
+   ------
+   ValueError
+       If the metric name is not recognized.
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.evaluate_all(self, verbose: bool = False) -> Dict[str, float]
+
+   Compute all available metrics at once.
+
+   Parameters
+   ----------
+   verbose : bool, default=False
+       If True, print metrics to console.
+
+   Returns
+   -------
+   dict
+       Dictionary mapping metric names to their computed values.
 
