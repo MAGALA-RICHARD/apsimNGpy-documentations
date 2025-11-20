@@ -8944,6 +8944,8 @@ Classes
        into a single factor by providing them as lists. Submitting parameters from
        the same node as separate factors will raise a validation error.
 
+       Values must be provided with key word argument style to support json data structures across platforms
+
     .. note::
 
        All input factors are first validated using **Pydantic** to ensure conformity
@@ -9121,17 +9123,19 @@ Classes
        A list (or tuple) of dictionaries, where each dictionary defines a single
        optimization factor with the following required keys:
 
-       - ``path`` : str
+       path: str
          The APSIM node path where the variable resides.
-       - ``vtype`` : list or tuple of wrapdisc.var
+       vtype: list or tuple of wrapdisc.var
          The variable type(s) defining the sampling space (e.g., `UniformVar`, `ChoiceVar`).
-       - ``start_value`` : list or tuple of str, int, or float
+       start_value: list or tuple of str, int, or float
          The starting value(s) corresponding to each candidate parameter.
-       - ``candidate_param`` : list or tuple of str
+       candidate_param : list or tuple of str
          The APSIM variable names to optimize.
-       - ``other_params`` : dict, optional
+       other_params: dict, optional
          Any additional parameters belonging to the same APSIM node that
          should remain constant during optimization.
+       cultivar: bool, default=False
+         Whether the factor being submitted is cultivar specific or resides on the cultivar node
 
    Notes
    -----
@@ -9287,7 +9291,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001FF728D5900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001DFF3205900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
