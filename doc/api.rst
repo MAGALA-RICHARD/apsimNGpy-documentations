@@ -8883,7 +8883,7 @@ Classes
       designed to remain flexible for both stochastic (randomized) and
       deterministic search methods.
 
-   .. hint::
+
 
       The variable types follow the ``wrapdisc`` library conventions.
       Each type defines how sampling and decoding are handled during optimization.
