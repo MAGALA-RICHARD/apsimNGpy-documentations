@@ -9125,9 +9125,8 @@ Classes
 
     Submitting more one than one parameter on a single node
     ---------------------------------------------------------
-
-   This requires specifying complete lists for vtype, start_value, and candidate_params. Each list must be aligned
-    so that the element at a given index refers to the same variable in all three lists.
+    This requires specifying complete lists for vtype, start_value, and candidate_params. Each list must be aligned
+      so that the element at a given index refers to the same variable in all three lists.
 
     .. code-block:: python
 
@@ -9326,7 +9325,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000021053655910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000026FAF095910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
