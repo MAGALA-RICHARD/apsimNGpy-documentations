@@ -8869,7 +8869,7 @@ Classes
            Column in observed dataset corresponding to observed values.
        index : str
            Column used for aligning predicted and observed values (e.g., 'year').
-       method : str, default='RMSE'
+       metric : str, default='RMSE'
            Evaluation metric to use (e.g., 'RMSE', 'R2', 'WIA').
        table : str or None, optional
            APSIM output table name (if applicable).
@@ -8886,6 +8886,7 @@ Classes
    List of Public Attributes:
    __________________________________
 
+   - :attr:`~apsimNGpy.optimizer.problems.smp.MixedProblem.n_apsim_nodes`
    - :attr:`~apsimNGpy.optimizer.problems.smp.MixedProblem.n_factors`
    List of Public Methods
    -----------------------------
@@ -8894,9 +8895,13 @@ Classes
    - :meth:`~apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor`
    - :meth:`~apsimNGpy.optimizer.problems.smp.MixedProblem.wrap_objectives`
 
-   .. py:method:: apsimNGpy.optimizer.problems.smp.MixedProblem.__init__(self, model: str, trainer_dataset: Optional[pandas.core.frame.DataFrame] = None, pred_col: str = None, trainer_col: str = None, index: str = None, method: str = 'RMSE', table: Optional[str] = None, func: Optional[Any] = None)
+   .. py:method:: apsimNGpy.optimizer.problems.smp.MixedProblem.__init__(self, model: str, trainer_dataset: Optional[pandas.core.frame.DataFrame] = None, pred_col: str = None, trainer_col: str = None, index: str = None, metric: str = 'RMSE', table: Optional[str] = None, func: Optional[Any] = None)
 
    Initialize self.  See help(type(self)) for accurate signature.
+
+   .. py:property:: apsimNGpy.optimizer.problems.smp.MixedProblem.n_apsim_nodes
+
+   Number of submitted optimization APSIM factors nodes.
 
    .. py:property:: apsimNGpy.optimizer.problems.smp.MixedProblem.n_factors
 
@@ -8994,6 +8999,17 @@ Classes
 
     Examples
     --------
+    Initialise mixed variable problem class
+
+    .. code-block:: python
+
+        from apsimNGpy.optimizer.problems.variables import QrandintVar
+        from apsimNGpy.tests.unittests.test_factory import obs
+        from optimizer.problems.smp import MixedProblem
+
+        mp = MixedProblem(model='Maize', trainer_dataset=obs, pred_col='Yield', metric='RRMSE',
+                          index='year', trainer_col='observed')
+
     Example 1 — Continuous variable (``UniformVar``)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     .. code-block:: python
@@ -9107,6 +9123,21 @@ Classes
 
         mp.submit_factor(**cultivar_param)
 
+    Submitting more one than one parameter on a single node
+    ---------------------------------------------------------
+    .. code-block:: python
+
+         cultivar_params = {
+                "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
+                "vtype": [QrandintVar(400, 600, q=5), QrandintVar(400, 900, q=5)],  # Discrete step size of 5
+                "start_value": [500, 550],
+                "candidate_param": ["[Grain].MaximumGrainsPerCob.FixedValue",
+                                    '[Phenology].GrainFilling.Target.FixedValue'],
+                "other_params": {"sowed": True},
+                "cultivar": True,  # Signals to apsimNGpy to treat it as a cultivar parameter
+            }
+         mp.submit(cultivar_params)
+
    .. py:method:: apsimNGpy.optimizer.problems.smp.MixedProblem.submit_all(self, all_factors: List[Dict[str, Any]])
 
    Batch-add multiple factors for optimization.
@@ -9218,7 +9249,7 @@ Classes
    - ``ME`` : Modeling Efficiency
    - ``WIA`` : Willmott’s Index of Agreement
    - ``CCC`` : Concordance Correlation Coefficient
-   - ``bias`` : Mean Bias Error
+   - ``BIAS`` : Mean Bias Error
 
    These metrics are implemented in the :class:`apsimNGpy.validation.evaluator.Validate`
    module and are used to assess how well the simulated values replicate observed data.
@@ -9291,7 +9322,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000023435415910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000002F3F1E35910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
@@ -9833,7 +9864,7 @@ Classes
 
    .. py:attribute:: apsimNGpy.validation.evaluator.Validate.METRICS
 
-   Default: ``['RMSE', 'MAE', 'MSE', 'RRMSE', 'bias', 'ME', 'WIA', 'R2', 'CCC', 'slope']``
+   Default: ``['RMSE', 'MAE', 'MSE', 'RRMSE', 'bias', 'ME', 'WIA', 'R2', 'CCC', 'SLOPE']``
 
    .. py:method:: apsimNGpy.validation.evaluator.Validate.MSE(self) -> float
 
