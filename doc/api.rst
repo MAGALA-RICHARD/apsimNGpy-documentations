@@ -8989,6 +8989,7 @@ Classes
    -------------------------
    Each variable type below defines how sampling and decoding occur during
    optimization.
+
    +-------------+--------------------------------------+--------------------------------------------------------+---------------------------+-----------------------------------------------+
    | **Space**   | **Variable Type**                    | **Usage / Description**                                | **Decoder**               | **Examples**                                   |
    +=============+======================================+========================================================+===========================+===============================================+
@@ -9004,7 +9005,6 @@ Classes
    +-------------+--------------------------------------+--------------------------------------------------------+---------------------------+-----------------------------------------------+
    | Continuous  | ``QuniformVar(lower, upper, q)``     | Quantized float with step size ``q``                   | round to nearest multiple | ``QuniformVar(0.0, 5.1, 0.3)``                 |
    +-------------+--------------------------------------+--------------------------------------------------------+---------------------------+-----------------------------------------------+
-
 
    Reference
    ---------
@@ -9367,7 +9367,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000029A2D395910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000029BF18B5910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
