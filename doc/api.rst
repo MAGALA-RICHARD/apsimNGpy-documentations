@@ -8788,112 +8788,45 @@ Functions
 
 .. py:function:: apsimNGpy.optimizer.problems.back_end.eval_observed(obs: pandas.core.frame.DataFrame, pred: pandas.core.frame.DataFrame, index: Union[str, list, tuple, set], pred_col: str, obs_col: str, method: str = 'rmse', exp: Optional[str] = None) -> float
 
-    Evaluate observed and predicted values using a selected performance metric.
+     Evaluate observed and predicted values using a selected performance metric.
 
-    This function:
-      • validates and aligns the datasets,
-      • computes the selected metric through :class:`Validate`,
-      • applies the metric's optimization direction (min/max),
-      • returns a single scalar performance value.
+     This function:
+       • validates and aligns the datasets,
+       • computes the selected metric through :class:`Validate`,
+       • applies the metric's optimization direction (min/max),
+       • returns a single scalar performance value.
 
    Supported Metrics
+   -----------------
 
-    .. list-table:: Supported performance metrics
-    :header-rows: 1
-    :widths: 20 40 20 10
+     +---------+-----------------------------------------------+---------------------+------+
+     | Metric  | Description                                   | Preferred Direction | Sign |
+     +=========+===============================================+=====================+======+
+     | RMSE    | Root Mean Square Error                        | Smaller             | -1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | MAE     | Mean Absolute Error                           | Smaller             | -1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | MSE     | Mean Square Error                             | Smaller             | -1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | RRMSE   | Relative RMSE                                 | Smaller             | -1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | bias    | Mean Bias                                     | Closer to 0         | -1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | ME      | Modeling Efficiency                           | Larger              | +1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | WIA     | Willmott’s Index of Agreement                 | Larger              | +1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | R2      | Coefficient of Determination                  | Larger              | +1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | CCC     | Concordance Correlation Coefficient           | Larger              | +1   |
+     +---------+-----------------------------------------------+---------------------+------+
+     | slope   | Regression Slope                              | Closer to 1         | +1   |
+     +---------+-----------------------------------------------+---------------------+------+
 
-        Metric
-
-        Description
-
-        Preferred Direction
-
-        Sign
-
-        RMSE
-
-        Root Mean Square Error
-
-        Smaller
-
-        -1
-
-        MAE
-
-        Mean Absolute Error
-
-        Smaller
-
-        -1
-
-        MSE
-
-        Mean Square Error
-
-        Smaller
-
-        -1
-
-        RRMSE
-
-        Relative RMSE
-
-        Smaller
-
-        -1
-
-        bias
-
-        Mean Bias
-
-        Closer to 0
-
-        -1
-
-        ME
-
-        Modeling Efficiency
-
-        Larger
-
-        +1
-
-        WIA
-
-        Willmott’s Index of Agreement
-
-        Larger
-
-        +1
-
-        R2
-
-        Coefficient of Determination
-
-        Larger
-
-        +1
-
-        CCC
-
-        Concordance Correlation Coefficient
-
-        Larger
-
-        +1
-
-        slope
-
-        Regression Slope
-
-        Closer to 1
-
-        +1
-
-    Returns
-    -------
-    float
-        Metric value multiplied by the optimization direction.
+     Returns
+     -------
+     float
+         Metric value multiplied by the optimization direction.
 
 .. py:function:: apsimNGpy.optimizer.problems.back_end.final_eval(obs: pandas.core.frame.DataFrame, pred: pandas.core.frame.DataFrame, index: str, pred_col: str, obs_col: str, method: str = 'rmse', exp: Optional[str] = None) -> dict
 
@@ -9434,7 +9367,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000025F51DE5910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001C272FC5910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
