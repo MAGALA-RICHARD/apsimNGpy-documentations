@@ -2665,33 +2665,35 @@ Classes
 
    .. code-block:: none
 
-       ── Simulations: .Simulations
-       ├── DataStore: .Simulations.DataStore
-       └── Simulation: .Simulations.Simulation
-           ├── Clock: .Simulations.Simulation.Clock
-           ├── Field: .Simulations.Simulation.Field
-           │   ├── Fertilise at sowing: .Simulations.Simulation.Field.Fertilise at sowing
-           │   ├── Fertiliser: .Simulations.Simulation.Field.Fertiliser
-           │   ├── Harvest: .Simulations.Simulation.Field.Harvest
-           │   ├── Maize: .Simulations.Simulation.Field.Maize
-           │   ├── Report: .Simulations.Simulation.Field.Report
-           │   ├── Soil: .Simulations.Simulation.Field.Soil
-           │   │   ├── Chemical: .Simulations.Simulation.Field.Soil.Chemical
-           │   │   ├── NH4: .Simulations.Simulation.Field.Soil.NH4
-           │   │   ├── NO3: .Simulations.Simulation.Field.Soil.NO3
-           │   │   ├── Organic: .Simulations.Simulation.Field.Soil.Organic
-           │   │   ├── Physical: .Simulations.Simulation.Field.Soil.Physical
-           │   │   │   └── MaizeSoil: .Simulations.Simulation.Field.Soil.Physical.MaizeSoil
-           │   │   ├── Urea: .Simulations.Simulation.Field.Soil.Urea
-           │   │   └── Water: .Simulations.Simulation.Field.Soil.Water
-           │   ├── Sow using a variable rule: .Simulations.Simulation.Field.Sow using a variable rule
-           │   └── SurfaceOrganicMatter: .Simulations.Simulation.Field.SurfaceOrganicMatter
-           ├── Graph: .Simulations.Simulation.Graph
-           │   └── Series: .Simulations.Simulation.Graph.Series
-           ├── MicroClimate: .Simulations.Simulation.MicroClimate
-           ├── SoilArbitrator: .Simulations.Simulation.SoilArbitrator
-           ├── Summary: .Simulations.Simulation.Summary
-           └── Weather: .Simulations.Simulation.Weather
+       └── Models.Core.Simulations: .Simulations
+           ├── Models.Storage.DataStore: .Simulations.DataStore
+           ├── Models.Core.Folder: .Simulations.Replacements
+           │   └── Models.PMF.Plant: .Simulations.Replacements.Maize
+           └── Models.Core.Simulation: .Simulations.Simulation
+               ├── Models.Clock: .Simulations.Simulation.Clock
+               ├── Models.Core.Zone: .Simulations.Simulation.Field
+               │   ├── Models.Manager: .Simulations.Simulation.Field.Fertilise at sowing
+               │   ├── Models.Fertiliser: .Simulations.Simulation.Field.Fertiliser
+               │   ├── Models.Manager: .Simulations.Simulation.Field.Harvest
+               │   ├── Models.PMF.Plant: .Simulations.Simulation.Field.Maize
+               │   ├── Models.Report: .Simulations.Simulation.Field.Report
+               │   ├── Models.Soils.Soil: .Simulations.Simulation.Field.Soil
+               │   │   ├── Models.Soils.Chemical: .Simulations.Simulation.Field.Soil.Chemical
+               │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NH4
+               │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NO3
+               │   │   ├── Models.Soils.Organic: .Simulations.Simulation.Field.Soil.Organic
+               │   │   ├── Models.Soils.Physical: .Simulations.Simulation.Field.Soil.Physical
+               │   │   │   └── Models.Soils.SoilCrop: .Simulations.Simulation.Field.Soil.Physical.MaizeSoil
+               │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.Urea
+               │   │   └── Models.Soils.Water: .Simulations.Simulation.Field.Soil.Water
+               │   ├── Models.Manager: .Simulations.Simulation.Field.Sow using a variable rule
+               │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Simulation.Field.SurfaceOrganicMatter
+               ├── Models.Graph: .Simulations.Simulation.Graph
+               │   └── Models.Series: .Simulations.Simulation.Graph.Series
+               ├── Models.MicroClimate: .Simulations.Simulation.MicroClimate
+               ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Simulation.SoilArbitrator
+               ├── Models.Summary: .Simulations.Simulation.Summary
+               └── Models.Climate.Weather: .Simulations.Simulation.Weather
 
    Turn cultivar paths on as follows:
 
@@ -3273,7 +3275,7 @@ Module attributes
 
 .. py:attribute:: apsimNGpy.core.config.configuration
 
-   Default value: ``Configuration(bin_path=WindowsPath('D:/reproducible/bin_dist/APSIM2025.8.7844.0…``
+   Default value: ``Configuration(bin_path=WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morr…``
 
 Functions
 ^^^^^^^^^
@@ -6473,33 +6475,35 @@ Classes
 
    .. code-block:: none
 
-       ── Simulations: .Simulations
-       ├── DataStore: .Simulations.DataStore
-       └── Simulation: .Simulations.Simulation
-           ├── Clock: .Simulations.Simulation.Clock
-           ├── Field: .Simulations.Simulation.Field
-           │   ├── Fertilise at sowing: .Simulations.Simulation.Field.Fertilise at sowing
-           │   ├── Fertiliser: .Simulations.Simulation.Field.Fertiliser
-           │   ├── Harvest: .Simulations.Simulation.Field.Harvest
-           │   ├── Maize: .Simulations.Simulation.Field.Maize
-           │   ├── Report: .Simulations.Simulation.Field.Report
-           │   ├── Soil: .Simulations.Simulation.Field.Soil
-           │   │   ├── Chemical: .Simulations.Simulation.Field.Soil.Chemical
-           │   │   ├── NH4: .Simulations.Simulation.Field.Soil.NH4
-           │   │   ├── NO3: .Simulations.Simulation.Field.Soil.NO3
-           │   │   ├── Organic: .Simulations.Simulation.Field.Soil.Organic
-           │   │   ├── Physical: .Simulations.Simulation.Field.Soil.Physical
-           │   │   │   └── MaizeSoil: .Simulations.Simulation.Field.Soil.Physical.MaizeSoil
-           │   │   ├── Urea: .Simulations.Simulation.Field.Soil.Urea
-           │   │   └── Water: .Simulations.Simulation.Field.Soil.Water
-           │   ├── Sow using a variable rule: .Simulations.Simulation.Field.Sow using a variable rule
-           │   └── SurfaceOrganicMatter: .Simulations.Simulation.Field.SurfaceOrganicMatter
-           ├── Graph: .Simulations.Simulation.Graph
-           │   └── Series: .Simulations.Simulation.Graph.Series
-           ├── MicroClimate: .Simulations.Simulation.MicroClimate
-           ├── SoilArbitrator: .Simulations.Simulation.SoilArbitrator
-           ├── Summary: .Simulations.Simulation.Summary
-           └── Weather: .Simulations.Simulation.Weather
+       └── Models.Core.Simulations: .Simulations
+           ├── Models.Storage.DataStore: .Simulations.DataStore
+           ├── Models.Core.Folder: .Simulations.Replacements
+           │   └── Models.PMF.Plant: .Simulations.Replacements.Maize
+           └── Models.Core.Simulation: .Simulations.Simulation
+               ├── Models.Clock: .Simulations.Simulation.Clock
+               ├── Models.Core.Zone: .Simulations.Simulation.Field
+               │   ├── Models.Manager: .Simulations.Simulation.Field.Fertilise at sowing
+               │   ├── Models.Fertiliser: .Simulations.Simulation.Field.Fertiliser
+               │   ├── Models.Manager: .Simulations.Simulation.Field.Harvest
+               │   ├── Models.PMF.Plant: .Simulations.Simulation.Field.Maize
+               │   ├── Models.Report: .Simulations.Simulation.Field.Report
+               │   ├── Models.Soils.Soil: .Simulations.Simulation.Field.Soil
+               │   │   ├── Models.Soils.Chemical: .Simulations.Simulation.Field.Soil.Chemical
+               │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NH4
+               │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NO3
+               │   │   ├── Models.Soils.Organic: .Simulations.Simulation.Field.Soil.Organic
+               │   │   ├── Models.Soils.Physical: .Simulations.Simulation.Field.Soil.Physical
+               │   │   │   └── Models.Soils.SoilCrop: .Simulations.Simulation.Field.Soil.Physical.MaizeSoil
+               │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.Urea
+               │   │   └── Models.Soils.Water: .Simulations.Simulation.Field.Soil.Water
+               │   ├── Models.Manager: .Simulations.Simulation.Field.Sow using a variable rule
+               │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Simulation.Field.SurfaceOrganicMatter
+               ├── Models.Graph: .Simulations.Simulation.Graph
+               │   └── Models.Series: .Simulations.Simulation.Graph.Series
+               ├── Models.MicroClimate: .Simulations.Simulation.MicroClimate
+               ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Simulation.SoilArbitrator
+               ├── Models.Summary: .Simulations.Simulation.Summary
+               └── Models.Climate.Weather: .Simulations.Simulation.Weather
 
    Turn cultivar paths on as follows:
 
@@ -7450,7 +7454,7 @@ Module attributes
 
 .. py:attribute:: apsimNGpy.core.pythonet_config.CI
 
-   Default value: ``ConfigRuntimeInfo(clr_loaded=True, bin_path=WindowsPath('D:/reproducible/bin_di…``
+   Default value: ``ConfigRuntimeInfo(clr_loaded=True, bin_path=WindowsPath('D:/My_BOX/Box/PhD thes…``
 
 Functions
 ^^^^^^^^^
@@ -7509,7 +7513,7 @@ Functions
    >>> reader = get_apsim_file_reader("string")    # doctest: +SKIP
    >>> sims = reader(text)                         # doctest: +SKIP
 
-.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/reproducible/bin_dist/APSIM2025.8.7844.0/bin'), release_number: bool = False) -> Optional[str]
+.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin'), release_number: bool = False) -> Optional[str]
 
    Return the APSIM version string detected from the installed binaries.
 
@@ -7854,7 +7858,7 @@ Functions
    RuntimeError
        If APSIM returns a non-zero exit code.
 
-.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/reproducible/bin_dist/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cpu_count=-1, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
+.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cpu_count=-1, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
 
    Run APSIM externally (cross-platform) with safe defaults.
 
@@ -8603,7 +8607,7 @@ Classes
                start_value=5
            )
 
-   .. py:method:: apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_de(self, use_threads=False, args=(), strategy='rand1bin', maxiter=1000, popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.9, rng=None, callback=None, disp=True, polish=True, init='latinhypercube', atol=0, updating='deffered', workers=1, constraints=(), x0=None, seed=1, *, integrality=None, vectorized=False)
+   .. py:method:: apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_de(self, use_threads=False, args=(), strategy='rand1bin', maxiter=1000, popsize=None, tol=0.01, mutation=(0.5, 1), recombination=0.9, rng=None, callback=None, disp=True, polish=True, init='latinhypercube', atol=0, updating='deffered', workers=1, constraints=(), x0=None, seed=1, *, integrality=None, vectorized=False)
 
    Run differential evolution on the wrapped APSIM objective function.
 
@@ -8758,81 +8762,156 @@ apsimNGpy.optimizer.problems.back_end
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.back_end.eval_observed(obs: pandas.core.frame.DataFrame, pred: pandas.core.frame.DataFrame, index: str, pred_col: str, obs_col: str, method: str = 'rmse', exp: Optional[str] = None) -> float
+.. py:function:: apsimNGpy.optimizer.problems.back_end.detect_range(metric: str, bounds: tuple)
 
-   Evaluate observed and predicted values using a selected performance metric.
-
-   Supported metrics include:
-
-   | Metric    | Description                          | Preferred Direction | Sign |
-   | :-------- | :----------------------------------- | :------------------ | :--- |
-   | **RMSE**  | Root Mean Square Error               | Smaller             | `-1` |
-   | **MAE**   | Mean Absolute Error                  | Smaller             | `-1` |
-   | **MSE**   | Mean Square Error                    | Smaller             | `-1` |
-   | **RRMSE** | Relative RMSE                        | Smaller             | `-1` |
-   | **bias**  | Mean Bias                            | Closer to 0         | `-1` |
-   | **ME**    | Modeling Efficiency (Nash–Sutcliffe) | Larger              | `+1` |
-   | **WIA**   | Willmott’s Index of Agreement        | Larger              | `+1` |
-   | **R2**    | Coefficient of Determination         | Larger              | `+1` |
-   | **CCC**   | Concordance Correlation Coefficient  | Larger              | `+1` |
-   | **slope** | Regression slope                     | Closer to 1         | `+1` |
+   Check whether user-defined bounds fall within the allowed metric range.
 
    Parameters
    ----------
-   obs : pandas.DataFrame
-       DataFrame containing observed values. Must include the `index` and `obs_col` columns.
-
-   pred : pandas.DataFrame
-       DataFrame containing predicted values. Must include the `index` and `pred_col` columns.
-
-   index : str
-       Column name used for aligning observed and predicted datasets (e.g., `"year"`, `"site"`).
-
-   pred_col : str
-       Column name for predicted variable (e.g., `"Yield_pred"`).
-
-   obs_col : str
-       Column name for observed variable (e.g., `"Yield_obs"`).
-
-   method : str, default="rmse"
-       Performance metric to evaluate. Case-insensitive; see the supported list above.
-
-   exp : str, optional
-       Optional label for the experiment or simulation context, for logging or tracing.
+   metric : str
+       Name of the metric (e.g., "rmse", "wia", "r2").
+   bounds : tuple
+       User-specified (lower, upper) bounds.
 
    Returns
    -------
-   float
-       The evaluated metric value multiplied by its optimization direction
-       (`-1` for minimization metrics, `+1` for maximization metrics).
+   bool
+       True if the user-specified bounds are valid and within the global metric range.
+       False otherwise.
 
    Raises
    ------
+   KeyError
+       If the metric is unknown.
    ValueError
-       If required columns are missing or the metric method is unsupported.
+       If bounds is not a valid 2-tuple.
 
-   Notes
-   -----
-   This function aligns observed and predicted datasets by the specified index,
-   enforces float type consistency, and delegates the metric computation to the:
-     class:`Validate` class. The result is automatically signed according to
-   the optimization convention defined in :data:`metric_direction`.
+.. py:function:: apsimNGpy.optimizer.problems.back_end.eval_observed(obs: pandas.core.frame.DataFrame, pred: pandas.core.frame.DataFrame, index: Union[str, list, tuple, set], pred_col: str, obs_col: str, method: str = 'rmse', exp: Optional[str] = None) -> float
 
-   Examples
-   --------
-   .. code-block:: python
+    Evaluate observed and predicted values using a selected performance metric.
 
-       from apsimNGpy.optimizer.evaluation import eval_observed
+    This function:
+      • validates and aligns the datasets,
+      • computes the selected metric through :class:`Validate`,
+      • applies the metric's optimization direction (min/max),
+      • returns a single scalar performance value.
 
-       out = eval_observed(
-           obs=df_obs,
-           pred=df_pred,
-           index="year",
-           pred_col="Yield_pred",
-           obs_col="Yield_obs",
-           method="CCC"
-       )
-       print(out)
+   Supported Metrics
+
+    .. list-table:: Supported performance metrics
+    :header-rows: 1
+    :widths: 20 40 20 10
+
+        Metric
+
+        Description
+
+        Preferred Direction
+
+        Sign
+
+        RMSE
+
+        Root Mean Square Error
+
+        Smaller
+
+        -1
+
+        MAE
+
+        Mean Absolute Error
+
+        Smaller
+
+        -1
+
+        MSE
+
+        Mean Square Error
+
+        Smaller
+
+        -1
+
+        RRMSE
+
+        Relative RMSE
+
+        Smaller
+
+        -1
+
+        bias
+
+        Mean Bias
+
+        Closer to 0
+
+        -1
+
+        ME
+
+        Modeling Efficiency
+
+        Larger
+
+        +1
+
+        WIA
+
+        Willmott’s Index of Agreement
+
+        Larger
+
+        +1
+
+        R2
+
+        Coefficient of Determination
+
+        Larger
+
+        +1
+
+        CCC
+
+        Concordance Correlation Coefficient
+
+        Larger
+
+        +1
+
+        slope
+
+        Regression Slope
+
+        Closer to 1
+
+        +1
+
+    Returns
+    -------
+    float
+        Metric value multiplied by the optimization direction.
+
+.. py:function:: apsimNGpy.optimizer.problems.back_end.final_eval(obs: pandas.core.frame.DataFrame, pred: pandas.core.frame.DataFrame, index: str, pred_col: str, obs_col: str, method: str = 'rmse', exp: Optional[str] = None) -> dict
+
+   Evaluate observed and predicted values and return the full suite of
+   performance metrics supported by the: class:`Validate` class.
+
+   This function:
+     • prepares and validates the input data (shared utility),
+     • runs all metrics, not just one,
+     • returns both the metric dictionary and the aligned dataset.
+
+   Returns
+   -------
+   dict
+       {
+           "metrics": {metric_name: value, ...},
+           "data": pd.DataFrame (aligned observed/predicted pairs)
+       }
 
 apsimNGpy.optimizer.problems.smp
 --------------------------------
@@ -8895,7 +8974,7 @@ Classes
    - :meth:`~apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor`
    - :meth:`~apsimNGpy.optimizer.problems.smp.MixedProblem.wrap_objectives`
 
-   .. py:method:: apsimNGpy.optimizer.problems.smp.MixedProblem.__init__(self, model: str, trainer_dataset: Optional[pandas.core.frame.DataFrame] = None, pred_col: str = None, trainer_col: str = None, index: str = None, metric: str = 'RMSE', table: Optional[str] = None, func: Optional[Any] = None)
+   .. py:method:: apsimNGpy.optimizer.problems.smp.MixedProblem.__init__(self, model: str, trainer_dataset: Optional[pandas.core.frame.DataFrame] = None, pred_col: str = None, trainer_col: str = None, index: Union[str, tuple, set, list] = None, metric: str = 'RMSE', table: Optional[str] = None, func: Optional[Any] = None)
 
    Initialize self.  See help(type(self)) for accurate signature.
 
@@ -9126,6 +9205,51 @@ Classes
 
        mp.submit_factor(**cultivar_params)
 
+   It is possible to describe your data type using string characters uisng any of the description below, implying no variable descriptor namespace import needed
+
+   Variable Type Classification
+   ----------------------------
+
+   **Continuous (UniformVar)**
+     - ``UniformVar``
+     - ``uniform``
+     - ``continuous``
+     Represents real-valued continuous parameters.
+
+   **Quantized Continuous (QuniformVar)**
+     - ``QuniformVar``
+     - ``quniform``
+     - ``quantized_continuous``
+     - ``step_uniform_float``
+     Continuous parameters restricted to fixed step sizes.
+
+   **Quantized Integer (QrandintVar)**
+     - ``QrandintVar``
+     - ``qrandint``
+     - ``quantized_int``
+     - ``step_random_int``
+     Integer parameters with fixed quantization.
+
+   **Ordinal / Grid (GridVar)**
+     - ``GridVar``
+     - ``grid``
+     - ``ordinal``
+     - ``ordered_var``
+     Ordered categorical variables with ranked classes.
+
+   **Categorical / Nominal (ChoiceVar)**
+     - ``ChoiceVar``
+     - ``choice``
+     - ``categorical``
+     - ``choice_var``
+     Unordered categorical classes.
+
+   **Integer (RandintVar)**
+     - ``RandintVar``
+     - ``randint``
+     - ``integer``
+     Integer-valued variables.
+
    .. py:method:: apsimNGpy.optimizer.problems.smp.MixedProblem.submit_all(self, all_factors: List[Dict[str, Any]])
 
    Batch-add multiple factors for optimization.
@@ -9251,7 +9375,7 @@ Classes
        For metrics such as RMSE or MAE, **lower values indicate better performance**,
        whereas for R², WIA, or CCC, **higher values indicate better model fit**.
 
-   The magnitude of the minimization is determined automatically in the back_end.py, thus if you are
+   The size of the minimization is determined automatically in the back_end.py, thus if you are
    using eval_observed method, no need to worry about multiplying with -1 for loss function indices such as CCC
 
    Examples
@@ -9310,7 +9434,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000017A43B85910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000025F51DE5910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
@@ -9345,6 +9469,26 @@ Functions
    -------
    list of dict
        A list of merged parameter dictionaries, one per unique path.
+
+.. py:function:: apsimNGpy.optimizer.problems.variables.string_eval(obj)
+
+   Evaluate a string expression using a restricted namespace.
+   Only names defined in ALLOWED_NAMES are permitted.
+
+   Parameters
+   ----------
+   obj : Any
+       A string to be evaluated or any other object that will be returned unchanged.
+
+   Returns
+   -------
+   Any
+       The evaluated object.
+
+   Raises
+   ------
+   ValueError
+       If evaluation fails or expression contains unsupported names or syntax.
 
 .. py:function:: apsimNGpy.optimizer.problems.variables.validate_user_params(params: Dict) -> apsimNGpy.optimizer.problems.variables.BaseParams
 
