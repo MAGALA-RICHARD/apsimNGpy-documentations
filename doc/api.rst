@@ -2494,7 +2494,7 @@ Classes
 
    ``crop`` (str, optional): string for soil water replacement. Default is None
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.clean_up(self, db=True, verbose=False, coerce=True, csv=True) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.clean_up(self, db=True, verbose=False, csv=True) (inherited)
 
    Clears the file cloned the datastore and associated csv files are not deleted if db is set to False defaults to True.
 
@@ -6336,7 +6336,7 @@ Classes
 
    ``crop`` (str, optional): string for soil water replacement. Default is None
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.clean_up(self, db=True, verbose=False, coerce=True, csv=True) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.clean_up(self, db=True, verbose=False, csv=True) (inherited)
 
    Clears the file cloned the datastore and associated csv files are not deleted if db is set to False defaults to True.
 
@@ -9413,7 +9413,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001654BAA5910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000294F1839910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
@@ -9940,29 +9940,29 @@ Classes
    using commonly used metrics such as RMSE, MAE, R², Willmott’s Index of Agreement,
    and the Concordance Correlation Coefficient (CCC).
 
-    +---------+-----------------------------------------------+---------------------+------+
-   | Metric  | Description                                   | Preferred Direction | Sign |
-   +=========+===============================================+=====================+======+
-   | RMSE    | Root Mean Square Error                        | Smaller             | +1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | MAE     | Mean Absolute Error                           | Smaller             | +1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | MSE     | Mean Square Error                             | Smaller             | +1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | RRMSE   | Relative RMSE                                 | Smaller             | +1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | BIAS    | Mean Bias                                     | Closer to 0         | +1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | ME      | Modeling Efficiency                           | Larger              | -1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | WIA     | Willmott’s Index of Agreement                 | Larger              | -1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | R2      | Coefficient of Determination                  | Larger              | -1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | CCC     | Concordance Correlation Coefficient           | Larger              | -1   |
-   +---------+-----------------------------------------------+---------------------+------+
-   | SLOPE   | Regression Slope                              | Closer to 1         | -1   |
-   +---------+-----------------------------------------------+---------------------+------+
+   +---------+-----------------------------------------------+---------------------+
+   | Metric  | Description                                   | Preferred Direction |
+   +=========+===============================================+=====================+
+   | RMSE    | Root Mean Square Error                        | Smaller             |
+   +---------+-----------------------------------------------+---------------------+
+   | MAE     | Mean Absolute Error                           | Smaller             |
+   +---------+-----------------------------------------------+---------------------+
+   | MSE     | Mean Square Error                             | Smaller             |
+   +---------+-----------------------------------------------+---------------------+
+   | RRMSE   | Relative RMSE                                 | Smaller             |
+   +---------+-----------------------------------------------+---------------------+
+   | BIAS    | Mean Bias                                     | Closer to 0         |
+   +---------+-----------------------------------------------+---------------------+
+   | ME      | Modeling Efficiency                           | Larger              |
+   +---------+-----------------------------------------------+---------------------+
+   | WIA     | Willmott’s Index of Agreement                 | Larger              |
+   +---------+-----------------------------------------------+---------------------+
+   | R2      | Coefficient of Determination                  | Larger              |
+   +---------+-----------------------------------------------+---------------------+
+   | CCC     | Concordance Correlation Coefficient           | Larger              |
+   +---------+-----------------------------------------------+---------------------+
+   | SLOPE   | Regression Slope                              | Closer to 1         |
+   +---------+-----------------------------------------------+---------------------+
 
    Examples
    --------
