@@ -88,6 +88,7 @@ Classes
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.experiment_created`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.factor_names`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.factors`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.managers`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.model`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.model_info`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.others`
@@ -103,6 +104,7 @@ Classes
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.simulation_names`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.simulations`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.str_model`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.tables`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.wk_info`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.work_space`
    List of Public Methods
@@ -371,21 +373,39 @@ Classes
    retrieves the name of the simulations in the APSIMx file
    @return: list of simulation names
 
+   .. py:property:: apsimNGpy.core.apsim.ApsimModel.tables (inherited)
+
+   quick property returns available database report tables name
+
+   .. py:property:: apsimNGpy.core.apsim.ApsimModel.managers (inherited)
+
+   quick property returns available database manager script names
+
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.restart_model(self, model_info=None) (inherited)
 
-   Parameters:
+   Reinitialize the APSIM model instance after edits or management updates.
+
+   Parameters
    ----------
-   model_info: collections.NamedTuple.
-      A named tuple object returned by `load_apsim_model` from the `model_loader` module.
+   model_info : collections.NamedTuple, optional
+       A named tuple returned by ``load_apsim_model`` from the ``model_loader``
+       module. Contains references to the APSIM model, datastore, and file path.
+       If not provided, the method reinitializes the model using the existing
+       ``self.model_info`` object.
 
-   Notes:
-   - This parameter is crucial whenever we need to ``reinitialize`` the model, especially after updating management practices or editing the file.
-   - In some cases, this method is executed automatically.
-   - If ``model_info`` is not specified, the simulation will be reinitialized from `self`.
+   Notes
+   -----
+   - This method is essential when the model needs to be **reloaded** after
+     modifying management scripts or saving an edited APSIM file.
+   - It may be invoked automatically by internal methods such as
+     ``save_edited_file``, ``save``, and ``update_mgt``.
+   - Reinitializing ensures that all APSIM NG components and datastore
+     references are refreshed and consistent with the modified file.
 
-   This function is called by ``save_edited_file``, `save' and ``update_mgt``.
-
-   :return: self
+   Returns
+   -------
+   self : object
+       Returns the updated ApsimModel instance.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.save(self, file_name: 'Union[str, Path, None]' = None, reload=True) (inherited)
 
@@ -792,33 +812,160 @@ Classes
           ['my_simulation']
          # The alternative is to use model.inspect_file to see your changes
          >>> model.inspect_file()
-         └── Simulations: .Simulations
-          ├── DataStore: .Simulations.DataStore
-          └── my_simulation: .Simulations.my_simulation
-              ├── Clock: .Simulations.my_simulation.Clock
-              ├── Field: .Simulations.my_simulation.Field
-              │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
-              │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
-              │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
-              │   ├── Maize: .Simulations.my_simulation.Field.Maize
-              │   ├── Report: .Simulations.my_simulation.Field.Report
-              │   ├── Soil: .Simulations.my_simulation.Field.Soil
-              │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
-              │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
-              │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
-              │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
-              │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
-              │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
-              │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
-              │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
-              │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
-              │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
-              ├── Graph: .Simulations.my_simulation.Graph
-              │   └── Series: .Simulations.my_simulation.Graph.Series
-              ├── MicroClimate: .Simulations.my_simulation.MicroClimate
-              ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
-              ├── Summary: .Simulations.my_simulation.Summary
-              └── Weather: .Simulations.my_simulation.Weather
+
+   .. code-block:: none
+
+     └── Models.Core.Simulations: .Simulations
+          ├── Models.Storage.DataStore: .Simulations.DataStore
+          ├── Models.Core.Folder: .Simulations.Replacements
+          │   └── Models.PMF.Plant: .Simulations.Replacements.Maize
+          │       └── Models.Core.Folder: .Simulations.Replacements.Maize.CultivarFolder
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Atrium
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.CG4141
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Dekalb_XL82
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.GH_5009
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.GH_5019WX
+          │           ├── Models.Core.Folder: .Simulations.Replacements.Maize.CultivarFolder.Generic
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_100
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_103
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_105
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_108
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_110
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_112
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_115
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_120
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_130
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_80
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_90
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_95
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_100
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_103
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_105
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_108
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_110
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_112
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_115
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_120
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_130
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_80
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_90
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_95
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.HY_110
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.LY_110
+          │           │   └── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.P1197
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Hycorn_40
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Hycorn_53
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Katumani
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Laila
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Makueni
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Melkassa
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.NSCM_41
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_3153
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_33M54
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_34K77
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_38H20
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_39G12
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_39V43
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.malawi_local
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh12
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh16
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh17
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh18
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh19
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.r201
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.r215
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc401
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc501
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc601
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc623
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc625
+          │           └── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sr52
+          └── Models.Core.Simulation: .Simulations.Simulation
+              ├── Models.Clock: .Simulations.Simulation.Clock
+              ├── Models.Core.Zone: .Simulations.Simulation.Field
+              │   ├── Models.Manager: .Simulations.Simulation.Field.Fertilise at sowing
+              │   ├── Models.Fertiliser: .Simulations.Simulation.Field.Fertiliser
+              │   ├── Models.Manager: .Simulations.Simulation.Field.Harvest
+              │   ├── Models.PMF.Plant: .Simulations.Simulation.Field.Maize
+              │   │   └── Models.Core.Folder: .Simulations.Simulation.Field.Maize.CultivarFolder
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Atrium
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.CG4141
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.GH_5009
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.GH_5019WX
+              │   │       ├── Models.Core.Folder: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_100
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_103
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_105
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_108
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_110
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_112
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_115
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_120
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_130
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_80
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_90
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_95
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_100
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_103
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_105
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_108
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_110
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_112
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_115
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_120
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_130
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_80
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_90
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_95
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.HY_110
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.LY_110
+              │   │       │   └── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.P1197
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Hycorn_40
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Hycorn_53
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Katumani
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Laila
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Makueni
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Melkassa
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.NSCM_41
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_3153
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_33M54
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_34K77
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_38H20
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_39G12
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_39V43
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.malawi_local
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh12
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh16
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh17
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh18
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh19
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.r201
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.r215
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc401
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc501
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc601
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc623
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc625
+              │   │       └── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sr52
+              │   ├── Models.Report: .Simulations.Simulation.Field.Report
+              │   ├── Models.Soils.Soil: .Simulations.Simulation.Field.Soil
+              │   │   ├── Models.Soils.Chemical: .Simulations.Simulation.Field.Soil.Chemical
+              │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NH4
+              │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NO3
+              │   │   ├── Models.Soils.Organic: .Simulations.Simulation.Field.Soil.Organic
+              │   │   ├── Models.Soils.Physical: .Simulations.Simulation.Field.Soil.Physical
+              │   │   │   └── Models.Soils.SoilCrop: .Simulations.Simulation.Field.Soil.Physical.MaizeSoil
+              │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.Urea
+              │   │   └── Models.Soils.Water: .Simulations.Simulation.Field.Soil.Water
+              │   ├── Models.Manager: .Simulations.Simulation.Field.Sow using a variable rule
+              │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Simulation.Field.SurfaceOrganicMatter
+              ├── Models.Graph: .Simulations.Simulation.Graph
+              │   └── Models.Series: .Simulations.Simulation.Graph.Series
+              ├── Models.MicroClimate: .Simulations.Simulation.MicroClimate
+              ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Simulation.SoilArbitrator
+              ├── Models.Summary: .Simulations.Simulation.Summary
+              └── Models.Climate.Weather: .Simulations.Simulation.Weather
 
    .. seealso::
 
@@ -3624,6 +3771,7 @@ Classes
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.experiment_created`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.factor_names`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.factors`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.managers`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.model`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.model_info`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.n_factors`
@@ -3640,6 +3788,7 @@ Classes
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.simulation_names`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.simulations`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.str_model`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.tables`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.wk_info`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.work_space`
    List of Public Methods
@@ -4213,21 +4362,39 @@ Classes
    retrieves the name of the simulations in the APSIMx file
    @return: list of simulation names
 
+   .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.tables (inherited)
+
+   quick property returns available database report tables name
+
+   .. py:property:: apsimNGpy.core.experimentmanager.ExperimentManager.managers (inherited)
+
+   quick property returns available database manager script names
+
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.restart_model(self, model_info=None) (inherited)
 
-   Parameters:
+   Reinitialize the APSIM model instance after edits or management updates.
+
+   Parameters
    ----------
-   model_info: collections.NamedTuple.
-      A named tuple object returned by `load_apsim_model` from the `model_loader` module.
+   model_info : collections.NamedTuple, optional
+       A named tuple returned by ``load_apsim_model`` from the ``model_loader``
+       module. Contains references to the APSIM model, datastore, and file path.
+       If not provided, the method reinitializes the model using the existing
+       ``self.model_info`` object.
 
-   Notes:
-   - This parameter is crucial whenever we need to ``reinitialize`` the model, especially after updating management practices or editing the file.
-   - In some cases, this method is executed automatically.
-   - If ``model_info`` is not specified, the simulation will be reinitialized from `self`.
+   Notes
+   -----
+   - This method is essential when the model needs to be **reloaded** after
+     modifying management scripts or saving an edited APSIM file.
+   - It may be invoked automatically by internal methods such as
+     ``save_edited_file``, ``save``, and ``update_mgt``.
+   - Reinitializing ensures that all APSIM NG components and datastore
+     references are refreshed and consistent with the modified file.
 
-   This function is called by ``save_edited_file``, `save' and ``update_mgt``.
-
-   :return: self
+   Returns
+   -------
+   self : object
+       Returns the updated ApsimModel instance.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.save(self, file_name: 'Union[str, Path, None]' = None, reload=True) (inherited)
 
@@ -4634,33 +4801,160 @@ Classes
           ['my_simulation']
          # The alternative is to use model.inspect_file to see your changes
          >>> model.inspect_file()
-         └── Simulations: .Simulations
-          ├── DataStore: .Simulations.DataStore
-          └── my_simulation: .Simulations.my_simulation
-              ├── Clock: .Simulations.my_simulation.Clock
-              ├── Field: .Simulations.my_simulation.Field
-              │   ├── Fertilise at sowing: .Simulations.my_simulation.Field.Fertilise at sowing
-              │   ├── Fertiliser: .Simulations.my_simulation.Field.Fertiliser
-              │   ├── Harvest: .Simulations.my_simulation.Field.Harvest
-              │   ├── Maize: .Simulations.my_simulation.Field.Maize
-              │   ├── Report: .Simulations.my_simulation.Field.Report
-              │   ├── Soil: .Simulations.my_simulation.Field.Soil
-              │   │   ├── Chemical: .Simulations.my_simulation.Field.Soil.Chemical
-              │   │   ├── NH4: .Simulations.my_simulation.Field.Soil.NH4
-              │   │   ├── NO3: .Simulations.my_simulation.Field.Soil.NO3
-              │   │   ├── Organic: .Simulations.my_simulation.Field.Soil.Organic
-              │   │   ├── Physical: .Simulations.my_simulation.Field.Soil.Physical
-              │   │   │   └── MaizeSoil: .Simulations.my_simulation.Field.Soil.Physical.MaizeSoil
-              │   │   ├── Urea: .Simulations.my_simulation.Field.Soil.Urea
-              │   │   └── Water: .Simulations.my_simulation.Field.Soil.Water
-              │   ├── Sow using a variable rule: .Simulations.my_simulation.Field.Sow using a variable rule
-              │   └── SurfaceOrganicMatter: .Simulations.my_simulation.Field.SurfaceOrganicMatter
-              ├── Graph: .Simulations.my_simulation.Graph
-              │   └── Series: .Simulations.my_simulation.Graph.Series
-              ├── MicroClimate: .Simulations.my_simulation.MicroClimate
-              ├── SoilArbitrator: .Simulations.my_simulation.SoilArbitrator
-              ├── Summary: .Simulations.my_simulation.Summary
-              └── Weather: .Simulations.my_simulation.Weather
+
+   .. code-block:: none
+
+     └── Models.Core.Simulations: .Simulations
+          ├── Models.Storage.DataStore: .Simulations.DataStore
+          ├── Models.Core.Folder: .Simulations.Replacements
+          │   └── Models.PMF.Plant: .Simulations.Replacements.Maize
+          │       └── Models.Core.Folder: .Simulations.Replacements.Maize.CultivarFolder
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Atrium
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.CG4141
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Dekalb_XL82
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.GH_5009
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.GH_5019WX
+          │           ├── Models.Core.Folder: .Simulations.Replacements.Maize.CultivarFolder.Generic
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_100
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_103
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_105
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_108
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_110
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_112
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_115
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_120
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_130
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_80
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_90
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.A_95
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_100
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_103
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_105
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_108
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_110
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_112
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_115
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_120
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_130
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_80
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_90
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.B_95
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.HY_110
+          │           │   ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.LY_110
+          │           │   └── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Generic.P1197
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Hycorn_40
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Hycorn_53
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Katumani
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Laila
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Makueni
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Melkassa
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.NSCM_41
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_3153
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_33M54
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_34K77
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_38H20
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_39G12
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.Pioneer_39V43
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.malawi_local
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh12
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh16
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh17
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh18
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.mh19
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.r201
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.r215
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc401
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc501
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc601
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc623
+          │           ├── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sc625
+          │           └── Models.PMF.Cultivar: .Simulations.Replacements.Maize.CultivarFolder.sr52
+          └── Models.Core.Simulation: .Simulations.Simulation
+              ├── Models.Clock: .Simulations.Simulation.Clock
+              ├── Models.Core.Zone: .Simulations.Simulation.Field
+              │   ├── Models.Manager: .Simulations.Simulation.Field.Fertilise at sowing
+              │   ├── Models.Fertiliser: .Simulations.Simulation.Field.Fertiliser
+              │   ├── Models.Manager: .Simulations.Simulation.Field.Harvest
+              │   ├── Models.PMF.Plant: .Simulations.Simulation.Field.Maize
+              │   │   └── Models.Core.Folder: .Simulations.Simulation.Field.Maize.CultivarFolder
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Atrium
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.CG4141
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.GH_5009
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.GH_5019WX
+              │   │       ├── Models.Core.Folder: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_100
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_103
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_105
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_108
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_110
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_112
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_115
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_120
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_130
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_80
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_90
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.A_95
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_100
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_103
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_105
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_108
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_110
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_112
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_115
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_120
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_130
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_80
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_90
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_95
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.HY_110
+              │   │       │   ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.LY_110
+              │   │       │   └── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Generic.P1197
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Hycorn_40
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Hycorn_53
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Katumani
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Laila
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Makueni
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Melkassa
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.NSCM_41
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_3153
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_33M54
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_34K77
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_38H20
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_39G12
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.Pioneer_39V43
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.malawi_local
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh12
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh16
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh17
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh18
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.mh19
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.r201
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.r215
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc401
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc501
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc601
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc623
+              │   │       ├── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sc625
+              │   │       └── Models.PMF.Cultivar: .Simulations.Simulation.Field.Maize.CultivarFolder.sr52
+              │   ├── Models.Report: .Simulations.Simulation.Field.Report
+              │   ├── Models.Soils.Soil: .Simulations.Simulation.Field.Soil
+              │   │   ├── Models.Soils.Chemical: .Simulations.Simulation.Field.Soil.Chemical
+              │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NH4
+              │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.NO3
+              │   │   ├── Models.Soils.Organic: .Simulations.Simulation.Field.Soil.Organic
+              │   │   ├── Models.Soils.Physical: .Simulations.Simulation.Field.Soil.Physical
+              │   │   │   └── Models.Soils.SoilCrop: .Simulations.Simulation.Field.Soil.Physical.MaizeSoil
+              │   │   ├── Models.Soils.Solute: .Simulations.Simulation.Field.Soil.Urea
+              │   │   └── Models.Soils.Water: .Simulations.Simulation.Field.Soil.Water
+              │   ├── Models.Manager: .Simulations.Simulation.Field.Sow using a variable rule
+              │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Simulation.Field.SurfaceOrganicMatter
+              ├── Models.Graph: .Simulations.Simulation.Graph
+              │   └── Models.Series: .Simulations.Simulation.Graph.Series
+              ├── Models.MicroClimate: .Simulations.Simulation.MicroClimate
+              ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Simulation.SoilArbitrator
+              ├── Models.Summary: .Simulations.Simulation.Summary
+              └── Models.Climate.Weather: .Simulations.Simulation.Weather
 
    .. seealso::
 
@@ -9413,7 +9707,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000294F1839910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001F0F1E89910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
