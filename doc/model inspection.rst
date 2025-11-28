@@ -271,7 +271,7 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 
 .. code-block:: none
 
-    results of the above code not displayed because it is too long
+    Results of the above code not displayed because it is too long
 
 .. seealso::
 
