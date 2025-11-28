@@ -203,7 +203,7 @@ Inspect ``Report`` model attributes.
 
  # output
 
-.. code-block:: python
+.. code-block:: none
 
         {'EventNames': ['[Maize].Harvesting'],
         'VariableNames': ['[Clock].Today',
@@ -258,7 +258,7 @@ Inspect ``Manager`` script parameters.
 
 # output
 
-.. code-block:: python
+.. code-block:: none
 
         {'Crop': 'Maize',
         'StartDate': '1-nov',
@@ -295,7 +295,7 @@ Inspect ``Cultivar`` parameters::
 
 # output
 
-.. code-block:: python
+.. code-block:: none
 
         {'[Phenology].Juvenile.Target.FixedValue': '210',
         '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
@@ -314,7 +314,7 @@ Inspect ``Cultivar`` parameters::
 
 # output
 
-.. code-block:: python
+.. code-block:: none
 
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
@@ -330,7 +330,7 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
 
 # output
 
-.. code-block:: python
+.. code-block:: none
 
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
@@ -474,7 +474,7 @@ Inspect ``SurfaceOrganicMatter`` module parameters
    model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.SurfaceOrganicMatter')
    # output
 
-.. code-block:: python
+.. code-block:: none
 
    {'InitialCPR': 0.0,
      'InitialCNR': 100.0,
@@ -508,7 +508,7 @@ Inspect ``Sow using a variable rule`` manager module parameters
 
      model.inspect_model_parameters_by_path('.Simulations.Simulation.Field.Sow using a variable rule')
 
-.. code-block::python
+.. code-block:: none
 
      {'Crop': 'Maize',
      'StartDate': '1-nov',
