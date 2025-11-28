@@ -233,7 +233,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
     Therefore, if you supply an argument that is not valid for that model type, a ``ValueError`` will be raised.
 
 .. tip::
-   if in doubt, use ``detect_model_type`` followed by the corresponding full model path.
+   if in doubt, use ``detect_model_type`` followed by the corresponding full model path or use :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file`
 
 .. code-block:: python
 
@@ -263,3 +263,5 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
    - :ref:`Inspecting Model Parameters <inspect_params>`
    - :ref:`APSIM Model types <model_List>`
    - :ref:`Go back to the home page<master>`
+
+.. include::edit_by_path.rst
