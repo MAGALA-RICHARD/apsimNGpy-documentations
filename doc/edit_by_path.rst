@@ -144,5 +144,7 @@ Edit cultivar paramters, when it is not sowed
             params = model.inspect_model_parameters('Models.PMF.Cultivar', 'edit-added')
 
 
+.. seealso::
 
+     - :ref:`API Reference <api_ref>`
 
