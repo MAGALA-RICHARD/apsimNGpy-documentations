@@ -84,7 +84,7 @@ Inspect full soil ``Organic`` profile:
 
 # output
 
-.. code-block:: python
+.. code-block:: none
 
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
         0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
@@ -105,7 +105,7 @@ Inspect soil ``Physical`` profile::
 
 # output
 
-.. code-block:: python
+.. code-block:: none
 
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
         0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
@@ -126,7 +126,7 @@ Inspect soil ``Chemical`` profile:
 
 # output
 
-.. code-block:: python
+.. code-block:: none
 
                Depth   PH  Thickness
         0      0-150  8.0      150.0
@@ -151,7 +151,7 @@ Inspect soil ``Chemical`` profile:
 
 #output
 
-.. code-block:: python
+.. code-block:: none
 
           Carbon
         0    1.20
