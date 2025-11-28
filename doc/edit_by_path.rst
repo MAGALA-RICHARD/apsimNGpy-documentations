@@ -90,7 +90,7 @@ Mixed code examples
 
 
 
-edit cultivar when already sowed
+edit cultivar when not yet sowed. this is accomplished by providing the fullpath to the manager script sowing the cultivar
 
 .. code-block:: python
     def test_edited_cultivar_added_to_replacements(self):
