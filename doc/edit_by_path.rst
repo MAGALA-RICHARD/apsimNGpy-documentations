@@ -18,9 +18,7 @@ can modify parameters reliably even in complex, deeply nested APSIM structures.
 The variable constants listed below are required for the subsequent demonstration example
 
 .. code-block:: python
-    # -----------------------------
-    # Constants and APSIM node paths
-    # -----------------------------
+
     Fertilise_at_sowing = '.Simulations.Simulation.Field.Fertilise at sowing'
     SurfaceOrganicMatter = '.Simulations.Simulation.Field.SurfaceOrganicMatter'
     Clock = ".Simulations.Simulation.Clock"
