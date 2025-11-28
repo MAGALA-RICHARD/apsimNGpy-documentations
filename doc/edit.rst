@@ -246,12 +246,16 @@ can modify parameters reliably even in complex, deeply nested APSIM structures. 
        model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
    # outputs: Models.Manager
 
+.. include:: edit_by_path.rst
+
 .. tip::
 
     After editing the file or model, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method. This method takes a single argument: the desired file path or name.
     Without specifying the full path to the desired storage location, the file will be saved in the current working directory.
 
+.. code-block:: python
 
+    model.save('./edited_maize_model.apsimx')
 
 
 .. seealso::
@@ -267,8 +271,4 @@ can modify parameters reliably even in complex, deeply nested APSIM structures. 
    - :ref:`APSIM Model types <model_List>`
    - :ref:`Go back to the home page<master>`
 
-.. include:: edit_by_path.rst
 
-.. code-block:: python
-
-    model.save('./edited_maize_model.apsimx')
