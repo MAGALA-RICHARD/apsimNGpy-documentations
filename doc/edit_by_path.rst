@@ -1,5 +1,5 @@
-More examples about edit_model_by_path
-======================================
+More examples about `edit_model_by_path`
+=======================================
 
 .. code-block:: python
 
@@ -117,7 +117,7 @@ edit cultivar when not yet sowed. this is accomplished by providing the fullpath
             params = model.inspect_model_parameters('Models.PMF.Cultivar', 'edit-added')
 
 
-Edit cultivar paramters, when it is not sowed
+Edit cultivar parameters, when it is not sowed
 
 .. code-block:: Python
 
