@@ -273,6 +273,179 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, you�
 
     Results of the above code not displayed because it is too long
 
+The advantages of apsimNGpy is its ability to work with very nested apsimx json model. One of the examples is the  `Report.apsimx` shipped within the `Example` folder
+
+.. code-block:: python
+
+
+.. code-block:: none
+
+   ── Models.Core.Simulations: .Simulations
+        ├── Models.Storage.DataStore: .Simulations.DataStore
+        ├── Models.Core.Folder: .Simulations.Grouping
+        │   └── Models.Core.Simulation: .Simulations.Grouping.Seasonal
+        │       ├── Models.Manager: .Simulations.Grouping.Seasonal.ClimateController
+        │       ├── Models.Clock: .Simulations.Grouping.Seasonal.Clock
+        │       ├── Models.Core.Zone: .Simulations.Grouping.Seasonal.Field
+        │       │   ├── Models.Manager: .Simulations.Grouping.Seasonal.Field.AutomaticIrrigation
+        │       │   ├── Models.Fertiliser: .Simulations.Grouping.Seasonal.Field.Fertiliser
+        │       │   ├── Models.Irrigation: .Simulations.Grouping.Seasonal.Field.Irrigation
+        │       │   ├── Models.Operations: .Simulations.Grouping.Seasonal.Field.IrrigationSchedule
+        │       │   ├── Models.Report: .Simulations.Grouping.Seasonal.Field.SeasonalByYear
+        │       │   ├── Models.Report: .Simulations.Grouping.Seasonal.Field.SeasonalByYearWithOnKeyword
+        │       │   ├── Models.Report: .Simulations.Grouping.Seasonal.Field.SeasonalOverall
+        │       │   ├── Models.Soils.Soil: .Simulations.Grouping.Seasonal.Field.Soil
+        │       │   │   ├── Models.Soils.Chemical: .Simulations.Grouping.Seasonal.Field.Soil.Chemical
+        │       │   │   ├── Models.Soils.Solute: .Simulations.Grouping.Seasonal.Field.Soil.NH4
+        │       │   │   ├── Models.Soils.Solute: .Simulations.Grouping.Seasonal.Field.Soil.NO3
+        │       │   │   ├── Models.Soils.Organic: .Simulations.Grouping.Seasonal.Field.Soil.Organic
+        │       │   │   ├── Models.Soils.Physical: .Simulations.Grouping.Seasonal.Field.Soil.Physical
+        │       │   │   │   ├── Models.Soils.SoilCrop: .Simulations.Grouping.Seasonal.Field.Soil.Physical.AGPRyegrassSoil
+        │       │   │   │   └── Models.Soils.SoilCrop: .Simulations.Grouping.Seasonal.Field.Soil.Physical.AGPWhiteCloverSoil
+        │       │   │   ├── Models.Soils.Solute: .Simulations.Grouping.Seasonal.Field.Soil.Urea
+        │       │   │   └── Models.Soils.Water: .Simulations.Grouping.Seasonal.Field.Soil.Water
+        │       │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Grouping.Seasonal.Field.SurfaceOrganicMatter
+        │       ├── Models.MicroClimate: .Simulations.Grouping.Seasonal.MicroClimate
+        │       ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Grouping.Seasonal.SoilArbitrator
+        │       ├── Models.Summary: .Simulations.Grouping.Seasonal.Summary
+        │       └── Models.Climate.Weather: .Simulations.Grouping.Seasonal.Weather
+        ├── Models.Core.Folder: .Simulations.More Reporting Examples
+        │   ├── Models.Core.Folder: .Simulations.More Reporting Examples.Annual Crop Example
+        │   │   ├── Models.Core.Folder: .Simulations.More Reporting Examples.Annual Crop Example.Comparing Rainfall during the Crop and All Year
+        │   │   │   └── Models.Graph: .Simulations.More Reporting Examples.Annual Crop Example.Comparing Rainfall during the Crop and All Year.Rainfall during Crop and All Year
+        │   │   │       ├── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Comparing Rainfall during the Crop and All Year.Rainfall during Crop and All Year.Rainfall all year
+        │   │   │       └── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Comparing Rainfall during the Crop and All Year.Rainfall during Crop and All Year.Rainfall from sowing to harvest
+        │   │   ├── Models.Core.Simulation: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample
+        │   │   │   ├── Models.Clock: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Clock
+        │   │   │   ├── Models.Core.Zone: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field
+        │   │   │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Fertilise at sowing
+        │   │   │   │   ├── Models.Fertiliser: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Fertiliser
+        │   │   │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Harvest
+        │   │   │   │   ├── Models.Irrigation: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Irrigation
+        │   │   │   │   ├── Models.MicroClimate: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.MicroClimate
+        │   │   │   │   ├── Models.Report: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.ReportGrainDaily
+        │   │   │   │   ├── Models.Report: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.ReportGrainOnHarvesting
+        │   │   │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.ReportHelper
+        │   │   │   │   ├── Models.Report: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.ReportInCropAnnually
+        │   │   │   │   ├── Models.Report: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.ReportSpecificDates
+        │   │   │   │   ├── Models.Soils.Soil: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil
+        │   │   │   │   │   ├── Models.Soils.Chemical: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.Chemical
+        │   │   │   │   │   ├── Models.Soils.Solute: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.NH4
+        │   │   │   │   │   ├── Models.Soils.Solute: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.NO3
+        │   │   │   │   │   ├── Models.Soils.Organic: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.Organic
+        │   │   │   │   │   ├── Models.Soils.Physical: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.Physical
+        │   │   │   │   │   │   └── Models.Soils.SoilCrop: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.Physical.WheatSoil
+        │   │   │   │   │   ├── Models.Soils.Solute: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.Urea
+        │   │   │   │   │   └── Models.Soils.Water: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Soil.Water
+        │   │   │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Sowing
+        │   │   │   │   ├── Models.Surface.SurfaceOrganicMatter: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.SurfaceOrganicMatter
+        │   │   │   │   └── Models.PMF.Plant: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Wheat
+        │   │   │   ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.SoilArbitrator
+        │   │   │   ├── Models.Summary: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.SummaryFile
+        │   │   │   └── Models.Climate.Weather: .Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Weather
+        │   │   ├── Models.Core.Folder: .Simulations.More Reporting Examples.Annual Crop Example.Reporting Yield and When Things Can Seem to Go Wrong
+        │   │   │   └── Models.Graph: .Simulations.More Reporting Examples.Annual Crop Example.Reporting Yield and When Things Can Seem to Go Wrong.Final and Harvested Yield
+        │   │   │       ├── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Reporting Yield and When Things Can Seem to Go Wrong.Final and Harvested Yield.Final Yield Corrected
+        │   │   │       ├── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Reporting Yield and When Things Can Seem to Go Wrong.Final and Harvested Yield.Final Yield with Error
+        │   │   │       ├── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Reporting Yield and When Things Can Seem to Go Wrong.Final and Harvested Yield.Grain Daily Report
+        │   │   │       └── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Reporting Yield and When Things Can Seem to Go Wrong.Final and Harvested Yield.Harvested Yield
+        │   │   └── Models.Core.Folder: .Simulations.More Reporting Examples.Annual Crop Example.Soil Water storage during the Cropping Phase
+        │   │       └── Models.Graph: .Simulations.More Reporting Examples.Annual Crop Example.Soil Water storage during the Cropping Phase.Soil water stroage
+        │   │           ├── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Soil Water storage during the Cropping Phase.Soil water stroage.Full soil profile
+        │   │           ├── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Soil Water storage during the Cropping Phase.Soil water stroage.Top three layers all crop
+        │   │           ├── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Soil Water storage during the Cropping Phase.Soil water stroage.Top three layers reproductive
+        │   │           └── Models.Series: .Simulations.More Reporting Examples.Annual Crop Example.Soil Water storage during the Cropping Phase.Soil water stroage.Top three layers vegetative
+        │   └── Models.Core.Folder: .Simulations.More Reporting Examples.Perennial Crop Example
+        │       ├── Models.Core.Simulation: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June
+        │       │   ├── Models.Clock: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Clock
+        │       │   ├── Models.Core.Zone: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field
+        │       │   │   ├── Models.Report: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.AnnualReporting
+        │       │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.AutomaticFertiliser
+        │       │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.AutomaticIrrigation
+        │       │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.CutRotation
+        │       │   │   ├── Models.Report: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.DailyReporting
+        │       │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.FertiliseOnFixedDates
+        │       │   │   ├── Models.Fertiliser: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Fertiliser
+        │       │   │   ├── Models.Irrigation: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Irrigation
+        │       │   │   ├── Models.MicroClimate: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.MicroClimate
+        │       │   │   ├── Models.Report: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.MonthlyReporting
+        │       │   │   ├── Models.Manager: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.ReportHelper
+        │       │   │   ├── Models.Soils.Soil: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil
+        │       │   │   │   ├── Models.Soils.Chemical: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.Chemical
+        │       │   │   │   ├── Models.Soils.Solute: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.NH4
+        │       │   │   │   ├── Models.Soils.Solute: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.NO3
+        │       │   │   │   ├── Models.Soils.Organic: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.Organic
+        │       │   │   │   ├── Models.Soils.Physical: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.Physical
+        │       │   │   │   │   ├── Models.Soils.SoilCrop: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.Physical.AGPRyegrassSoil
+        │       │   │   │   │   └── Models.Soils.SoilCrop: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.Physical.AGPWhiteCloverSoil
+        │       │   │   │   ├── Models.Soils.Solute: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.Urea
+        │       │   │   │   └── Models.Soils.Water: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.Soil.Water
+        │       │   │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.SurfaceOrganicMatter
+        │       │   ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.SoilArbitrator
+        │       │   ├── Models.Summary: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Summary
+        │       │   └── Models.Climate.Weather: .Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Weather
+        │       ├── Models.Core.Folder: .Simulations.More Reporting Examples.Perennial Crop Example.Daily and Monthly Leaching
+        │       │   └── Models.Graph: .Simulations.More Reporting Examples.Perennial Crop Example.Daily and Monthly Leaching.Daily and Monthly Leaching
+        │       │       ├── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Daily and Monthly Leaching.Daily and Monthly Leaching.Cumulative Annual Leaching
+        │       │       ├── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Daily and Monthly Leaching.Daily and Monthly Leaching.DailyLeaching
+        │       │       └── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Daily and Monthly Leaching.Daily and Monthly Leaching.MonthlyLeaching
+        │       ├── Models.Core.Folder: .Simulations.More Reporting Examples.Perennial Crop Example.Getting Annual Patterns of Herbage Accumulation
+        │       │   └── Models.Graph: .Simulations.More Reporting Examples.Perennial Crop Example.Getting Annual Patterns of Herbage Accumulation.Annual Accumulation of Pasture Growth Reported in June
+        │       │       ├── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Getting Annual Patterns of Herbage Accumulation.Annual Accumulation of Pasture Growth Reported in June.ReportedAnnually
+        │       │       └── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Getting Annual Patterns of Herbage Accumulation.Annual Accumulation of Pasture Growth Reported in June.ReportedMonthly
+        │       └── Models.Core.Folder: .Simulations.More Reporting Examples.Perennial Crop Example.Working with Soil Carbon
+        │           └── Models.Graph: .Simulations.More Reporting Examples.Perennial Crop Example.Working with Soil Carbon.Change In Soil Carbon
+        │               ├── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Working with Soil Carbon.Change In Soil Carbon.AnnualChangeInTotalC
+        │               ├── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Working with Soil Carbon.Change In Soil Carbon.CumulativeChangeInTotalC
+        │               └── Models.Series: .Simulations.More Reporting Examples.Perennial Crop Example.Working with Soil Carbon.Change In Soil Carbon.TotalC_tonnes
+        ├── Models.Core.Folder: .Simulations.Reporting at Intervals Beyond Every Day
+        │   ├── Models.Graph: .Simulations.Reporting at Intervals Beyond Every Day.Maximum Temperatures with Varying Aggregation
+        │   │   ├── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Maximum Temperatures with Varying Aggregation.Daily MaxT
+        │   │   ├── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Maximum Temperatures with Varying Aggregation.Monthly Maximum MaxT
+        │   │   ├── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Maximum Temperatures with Varying Aggregation.Weekly Maximum MaxT
+        │   │   └── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Maximum Temperatures with Varying Aggregation.Yearly Maximum MaxT
+        │   └── Models.Graph: .Simulations.Reporting at Intervals Beyond Every Day.Minimum Temperatures with Varying Aggregation
+        │       ├── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Minimum Temperatures with Varying Aggregation.Daily MaxT
+        │       ├── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Minimum Temperatures with Varying Aggregation.Monthly Minimum MaxT
+        │       ├── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Minimum Temperatures with Varying Aggregation.Weekly Minimum MaxT
+        │       └── Models.Series: .Simulations.Reporting at Intervals Beyond Every Day.Minimum Temperatures with Varying Aggregation.Yearly Minimum MaxT
+        └── Models.Core.Simulation: .Simulations.SimpleReportingSim
+            ├── Models.Clock: .Simulations.SimpleReportingSim.Clock
+            ├── Models.Core.Zone: .Simulations.SimpleReportingSim.Field
+            │   ├── Models.Manager: .Simulations.SimpleReportingSim.Field.AutoIrrig
+            │   ├── Models.Manager: .Simulations.SimpleReportingSim.Field.Fertilise at sowing
+            │   ├── Models.Fertiliser: .Simulations.SimpleReportingSim.Field.Fertiliser
+            │   ├── Models.Manager: .Simulations.SimpleReportingSim.Field.Harvest
+            │   ├── Models.Irrigation: .Simulations.SimpleReportingSim.Field.Irrigation
+            │   ├── Models.MicroClimate: .Simulations.SimpleReportingSim.Field.MicroClimate
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportArrays
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportDaily
+            │   ├── Models.Manager: .Simulations.SimpleReportingSim.Field.ReportHelper
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportMonthly
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportOnEvents
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportOnSpecificDates
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportOnSpecificDaysEveryYear
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportSimple
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportSimulation
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportWeekly
+            │   ├── Models.Report: .Simulations.SimpleReportingSim.Field.ReportYearly
+            │   ├── Models.Soils.Soil: .Simulations.SimpleReportingSim.Field.Soil
+            │   │   ├── Models.Soils.Chemical: .Simulations.SimpleReportingSim.Field.Soil.Chemical
+            │   │   ├── Models.Soils.Solute: .Simulations.SimpleReportingSim.Field.Soil.NH4
+            │   │   ├── Models.Soils.Solute: .Simulations.SimpleReportingSim.Field.Soil.NO3
+            │   │   ├── Models.Soils.Organic: .Simulations.SimpleReportingSim.Field.Soil.Organic
+            │   │   ├── Models.Soils.Physical: .Simulations.SimpleReportingSim.Field.Soil.Physical
+            │   │   │   └── Models.Soils.SoilCrop: .Simulations.SimpleReportingSim.Field.Soil.Physical.WheatSoil
+            │   │   ├── Models.Soils.Solute: .Simulations.SimpleReportingSim.Field.Soil.Urea
+            │   │   └── Models.Soils.Water: .Simulations.SimpleReportingSim.Field.Soil.Water
+            │   ├── Models.Manager: .Simulations.SimpleReportingSim.Field.Sowing
+            │   ├── Models.Surface.SurfaceOrganicMatter: .Simulations.SimpleReportingSim.Field.SurfaceOrganicMatter
+            │   └── Models.PMF.Plant: .Simulations.SimpleReportingSim.Field.Wheat
+            ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.SimpleReportingSim.SoilArbitrator
+            ├── Models.Summary: .Simulations.SimpleReportingSim.SummaryFile
+            └── Models.Climate.Weather: .Simulations.SimpleReportingSim.Weather
+
+
 .. seealso::
 
   :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file` in the :ref:`API Reference <api_ref>`
