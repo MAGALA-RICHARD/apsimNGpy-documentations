@@ -1,5 +1,13 @@
+Editing model by their full path relative to the simulation root
+================================================================
+This is achieved by the `edit_model_by_path`. The `edit_model_by_path` method enables surgical model editing by using the full
+APSIM component path to identify the exact target node. This direct addressing
+avoids the need for recursive tree traversal, name-matching, or guessing which
+simulation contains the intended model. As a result, users
+can modify parameters reliably even in complex, deeply nested APSIM structures.
 
 .. code-block:: python
+
     from pathlib import Path
     from os.path import realpath
 
