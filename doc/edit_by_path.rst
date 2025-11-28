@@ -10,10 +10,9 @@ can modify parameters reliably even in complex, deeply nested APSIM structures.
 
     from pathlib import Path
     from os.path import realpath
-
     from apsimNGpy.core.apsim import ApsimModel
     from apsimNGpy.core.config import load_crop_from_disk
-    from apsimNGpy.exceptions import NodeNotFoundError
+
 
 The variable constants listed below are required for the subsequent demonstration example
 
