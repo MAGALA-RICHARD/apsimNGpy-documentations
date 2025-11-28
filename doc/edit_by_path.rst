@@ -76,8 +76,6 @@ Mixed code examples
             # Inspect updated values
             #_________________________
             organic_params = apsim.inspect_model_parameters_by_path(Organic)
-            self.assertIn('Carbon', organic_params)
-
             #_________________________
             # use dict unpacking
             #_________________________
