@@ -308,7 +308,7 @@ The advantages of apsimNGpy is its ability to work with very nested apsimx json 
      '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Clock',
      '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Clock',
      '.Simulations.Grouping.Seasonal.Clock']
-     # inspect the whole file, check how nested it
+     # inspect the whole file, check how nested
      model.inspect_file()
 
 
