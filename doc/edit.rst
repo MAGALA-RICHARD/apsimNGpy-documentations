@@ -34,7 +34,8 @@ targeted editing through two mechanisms:
    You can explicitly *specify* which simulations should have their
    models edited or replaced with new parameters.
 
-edit_method function signature
+`edit_method` function signature
+---------------------------------
 
 .. code-block:: python
 
