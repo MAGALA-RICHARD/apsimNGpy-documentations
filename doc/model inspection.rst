@@ -202,7 +202,7 @@ We can get only the names of the cultivar models using the full string path::
 
      model.inspect_model('Models.PMF.Cultivar', fullpath = False)
 
-.. code-block:: python
+.. code-block:: none
 
      ['Hycorn_53',  'Pioneer_33M54', 'Pioneer_38H20',  'Pioneer_34K77',
       'Pioneer_39V43',  'Atrium', 'Laila', 'GH_5019WX']
@@ -242,8 +242,9 @@ We can get only the names of the cultivar models using the full string path::
 Whole Model inspection
 =====================================
 
-Use :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file` method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other.
-``Model Names`` are colored and are followed by their corresponding full paths relative to their parent node; ``Simulations``.
+Use :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_file` method to inspects all simulations in the file.
+This method displays a tree showing how each model is connected with each other.
+``Model types or classes`` are colored and are followed by their corresponding full paths relative to their parent node; ``Simulations``.
 
 For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€™ll hardly ever need the GUI.
 
@@ -267,6 +268,10 @@ For interactive consoles (e.g., Jupyter Notebook), this is a game changer, youâ€
 .. code-block:: python
 
     model.inspect_file(cultivar = True)
+
+.. code-block:: none
+
+    results of the above code not displayed because it is too long
 
 .. seealso::
 
