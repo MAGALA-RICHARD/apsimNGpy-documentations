@@ -264,4 +264,4 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
    - :ref:`APSIM Model types <model_List>`
    - :ref:`Go back to the home page<master>`
 
-.. include::edit_by_path.rst
+.. include:: edit_by_path.rst
