@@ -210,12 +210,17 @@ Multiple report variables:
         ])
 
 
-If you prefer little boiler plate code, we got you covered with ``edit_model_by_path`` the function signature of this method is shown below.
+If you prefer little boiler plate code, we got you covered with ``edit_model_by_path``
+The `edit_model_by_path` method enables surgical model editing by using the full
+APSIM component path to identify the exact target node. This direct addressing
+avoids the need for recursive tree traversal, name-matching, or guessing which
+simulation contains the intended model. As a result, users
+can modify parameters reliably even in complex, deeply nested APSIM structures. Please refer to functional signature and examples
 
 .. code-block:: python
 
-   model = ApsimModel(model='Maize')
-   model.edit_model_by_path(path, **kwargs)
+   with ApsimModel(model='Maize') as model:
+        model.edit_model_by_path(path, **kwargs)
 
 .. hint::
 
@@ -224,8 +229,8 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
-    model = ApsimModel(model='Maize')
-    model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
+    with ApsimModel(model='Maize') as model
+         model.edit_model_by_path(path = '.Simulations.Simulation.Field.Sow using a variable rule', Population =12)
 
 .. warning::
 
@@ -237,8 +242,8 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
 
 .. code-block:: python
 
-   model = ApsimModel(model='Maize')
-   model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
+   with ApsimModel(model='Maize')
+       model_type = model.detect_model_type('.Simulations.Simulation.Field.Sow using a variable rule')
    # outputs: Models.Manager
 
 .. tip::
@@ -247,9 +252,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
     Without specifying the full path to the desired storage location, the file will be saved in the current working directory.
 
 
-.. code-block:: python
 
-    model.save('./edited_maize_model.apsimx')
 
 .. seealso::
 
@@ -265,3 +268,7 @@ If you prefer little boiler plate code, we got you covered with ``edit_model_by_
    - :ref:`Go back to the home page<master>`
 
 .. include:: edit_by_path.rst
+
+.. code-block:: python
+
+    model.save('./edited_maize_model.apsimx')
