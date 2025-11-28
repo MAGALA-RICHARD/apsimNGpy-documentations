@@ -2,7 +2,7 @@
 
 .. caption:: Model Parameter Editing
 
-Editing Model Parameters
+Editing model parameters
 ===========================================
 
 Editing a model involves changing model parameter values. This task can be accomplished via
@@ -17,7 +17,7 @@ by specifying the model type, name and simulation name, or path, respectively.
    Replacements folder containing the relevant plant definition hosting
    that cultivar. In many cases, apsimNGpy will handle this automatically.
 
-Selective Editing
+Selective editing
 -----------------
 Selective editing allows you to apply modifications only to certain
 simulations. This is *not* possible when the same model instance is shared
