@@ -1261,9 +1261,29 @@ Classes
 
    .. tip::
 
-     editing APSIM models in apsimNGpy does not require having the target model in the replacements folder or node,
-     but if you are editing cultivar parameters, it may be useful to have a replacements folder with the relevant plant hosting that cultivar; in most cases,
-     this might be done for you automatically.
+      Editing APSIM models in **apsimNGpy** does *not* require placing the
+      target model inside a *Replacements* folder or node. However, when
+      modifying **cultivar parameters**, it can be helpful to include a
+      Replacements folder containing the relevant plant definition hosting
+      that cultivar. In many cases, apsimNGpy will handle this automatically.
+
+   Selective Editing
+   -----------------
+   Selective editing allows you to apply modifications only to certain
+   simulations. This is *not* possible when the same model instance is shared
+   through a common Replacements folder. For reliable selective editing,
+   each simulation should ideally reference a uniquely named model.
+   However, even when model names are not unique, apsimNGpy still enables
+   targeted editing through two mechanisms:
+
+   1. **Exclusion strategy**
+      You can explicitly *exclude* simulations to which the edits should
+      **not** be applied.
+
+   2. **Specification strategy**
+      You can explicitly *specify* which simulations should have their
+      models edited or replaced with new parameters.
+
 
    Parameters
    ----------
@@ -5199,9 +5219,29 @@ Classes
 
    .. tip::
 
-     editing APSIM models in apsimNGpy does not require having the target model in the replacements folder or node,
-     but if you are editing cultivar parameters, it may be useful to have a replacements folder with the relevant plant hosting that cultivar; in most cases,
-     this might be done for you automatically.
+      Editing APSIM models in **apsimNGpy** does *not* require placing the
+      target model inside a *Replacements* folder or node. However, when
+      modifying **cultivar parameters**, it can be helpful to include a
+      Replacements folder containing the relevant plant definition hosting
+      that cultivar. In many cases, apsimNGpy will handle this automatically.
+
+   Selective Editing
+   -----------------
+   Selective editing allows you to apply modifications only to certain
+   simulations. This is *not* possible when the same model instance is shared
+   through a common Replacements folder. For reliable selective editing,
+   each simulation should ideally reference a uniquely named model.
+   However, even when model names are not unique, apsimNGpy still enables
+   targeted editing through two mechanisms:
+
+   1. **Exclusion strategy**
+      You can explicitly *exclude* simulations to which the edits should
+      **not** be applied.
+
+   2. **Specification strategy**
+      You can explicitly *specify* which simulations should have their
+      models edited or replaced with new parameters.
+
 
    Parameters
    ----------
@@ -9605,7 +9645,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001593D549910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000023DAD3E9910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
