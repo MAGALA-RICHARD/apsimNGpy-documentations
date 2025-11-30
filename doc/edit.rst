@@ -302,7 +302,10 @@ How many simulations are this file? let's find out.
 
 .. code-block:: none
 
-        ['SimpleReportingSim', 'Annual Reporting In June', 'ContinuousWheatExample', 'Seasonal']
+        ['SimpleReportingSim',
+         'Annual Reporting In June',
+        'ContinuousWheatExample',
+        'Seasonal']
 
 What about reports or database tables?
 
@@ -312,10 +315,14 @@ What about reports or database tables?
 
 .. code-block:: none
 
-        ['ReportSimple', 'ReportOnEvents', 'ReportOnSpecificDaysEveryYear', 'ReportOnSpecificDates', 'ReportArrays',
-         'ReportDaily', 'ReportWeekly', 'ReportMonthly', 'ReportYearly', 'ReportSimulation', 'AnnualReporting',
-         'MonthlyReporting', 'DailyReporting', 'ReportInCropAnnually', 'ReportGrainOnHarvesting', 'ReportGrainDaily',
-         'ReportSpecificDates', 'SeasonalOverall', 'SeasonalByYear', 'SeasonalByYearWithOnKeyword']
+        ['ReportSimple', 'ReportOnEvents', 'ReportOnSpecificDaysEveryYear',
+         'ReportOnSpecificDates', 'ReportArrays',
+         'ReportDaily', 'ReportWeekly', 'ReportMonthly',
+         'ReportYearly', 'ReportSimulation', 'AnnualReporting',
+         'MonthlyReporting', 'DailyReporting', 'ReportInCropAnnually',
+         'ReportGrainOnHarvesting', 'ReportGrainDaily',
+         'ReportSpecificDates', 'SeasonalOverall', 'SeasonalByYear',
+         'SeasonalByYearWithOnKeyword']
 
 What about Manager scripts?
 
