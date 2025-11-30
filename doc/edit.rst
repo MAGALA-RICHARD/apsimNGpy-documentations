@@ -386,6 +386,10 @@ Now edit it by path, change `returndays` to 3, and `maximumAmount` to 20
 
 Lastly, check to confirm
 
+.. code-block:: python
+
+    model.edit_model_by_path('.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation', returndays=3, maximumAmount=20)
+
 .. code-block:: none
 
       {'allowIrrigation': 'False',
