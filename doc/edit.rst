@@ -364,7 +364,7 @@ By the above code, it has the following parameters:
      'maximumAmount': '30',
      'depthPAWC': '300'}
 
-Now edit it by path, change returndays=3, and maximumAmount to 20
+Now edit it by path, change `returndays` to 3, and `maximumAmount` to 20
 
 .. code-block:: python
 
