@@ -343,7 +343,26 @@ How many clock models are there?
          '.Simulations.Grouping.Seasonal.Clock']
 
 
+if you look at the simulation; Seasonal, has a manager script named `AutomaticIrrigation` nad takes on
+this path: '.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation'. we can edit it in one of the following ways
+1. by path
 
+.. code-block:: python
+   model.inspect_model_parameters_by_path('.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation')
+
+By the above code, it has the following parameters:
+
+.. code-block:: none
+
+      {'allowIrrigation': 'False',
+     'seasonStart': '15-Aug',
+     'seasonEnd': '30-May',
+     'seasonsAllocation': '10000',
+     'triggerDeficit': '50',
+     'targetDeficit': '99',
+     'returndays': '1',
+     'maximumAmount': '30',
+     'depthPAWC': '300'}
 
 .. tip::
 
