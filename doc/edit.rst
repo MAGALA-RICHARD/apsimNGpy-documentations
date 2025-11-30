@@ -337,6 +337,9 @@ How many clock models are there?
 .. code-block:: python
 
         model.inspect_model('Models.Clock')
+
+.. code-block:: none
+
         ['.Simulations.SimpleReportingSim.Clock',
          '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Clock',
          '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Clock',
