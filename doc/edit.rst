@@ -299,12 +299,19 @@ How many simulations are this file? let's find out.
     with ApsimModel('Report') as model:
         sims = model.inspect_model('Models.Core.Simulation' fullpath= False)
         print(sims)
+
+.. code-block:: none
+
         ['SimpleReportingSim', 'Annual Reporting In June', 'ContinuousWheatExample', 'Seasonal']
+
 What about reports or database tables?
 
 .. code-block:: python
 
         print(model.inspect_model("Models.Report", fullpath=False)
+
+.. code-block:: none
+
         ['ReportSimple', 'ReportOnEvents', 'ReportOnSpecificDaysEveryYear', 'ReportOnSpecificDates', 'ReportArrays',
          'ReportDaily', 'ReportWeekly', 'ReportMonthly', 'ReportYearly', 'ReportSimulation', 'AnnualReporting',
          'MonthlyReporting', 'DailyReporting', 'ReportInCropAnnually', 'ReportGrainOnHarvesting', 'ReportGrainDaily',
@@ -315,6 +322,9 @@ What about Manager scripts?
 .. code-block:: python
 
         model.inspect_model('Models.Manager')
+
+.. code-block:: none
+
         ['.Simulations.SimpleReportingSim.Field.Sowing',
          '.Simulations.SimpleReportingSim.Field.Fertilise at sowing',
          '.Simulations.SimpleReportingSim.Field.Harvest',
