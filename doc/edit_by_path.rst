@@ -89,7 +89,7 @@ Mixed code examples
 edit cultivar when not yet sowed. this is accomplished by providing the fullpath to the manager script sowing the cultivar
 
 .. code-block:: python
-    def test_edited_cultivar_added_to_replacements(self):
+
         with ApsimModel('Maize') as model:
             model.inspect_file(cultivar=True)
             model.edit_model_by_path(
@@ -103,7 +103,6 @@ edit cultivar when not yet sowed. this is accomplished by providing the fullpath
 
 .. code-block:: python
 
-    def test_edited_updated_to_manager_values_are_updated(self):
         with ApsimModel('Maize') as model:
             model.edit_model_by_path(
                 path=cultivar_path,
@@ -121,7 +120,6 @@ Edit cultivar parameters, when it is not sowed
 
 .. code-block:: Python
 
-    def test_edited_updated_to_manager_values_are_updated_soybean(self):
         with ApsimModel('Soybean') as model:
             model.edit_model_by_path(
                 path=cultivar_path_soybean,
