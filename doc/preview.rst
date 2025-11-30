@@ -4,8 +4,8 @@ Previewing your apsimx file in APSIM GUI
 The :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation` method provides the
 primary mechanism for opening the current in-memory APSIM model in the APSIM Next
 Generation GUI. When invoked, the method first serializes the active simulation to
-the specified out_path, then launches the APSIM NG GUI using the binary resolved
-through :func:get_apsim_bin_path. This allows users to inspect the model tree,
+the specified out_path, then launches the APSIM NG GUI using the current APSIM binary resolved
+through :func:~`apsimNGpy.core.config.get_apsim_bin_path`. This allows users to inspect the model tree,
 verify component structures, and perform quick manual edits alongside their
 Python workflow. Importantly, the model is opened using the exact APSIM NG version
 configured for the current apsimNGpy session, ensuring version consistency between the GUI and the Python environment.
