@@ -11,8 +11,7 @@ Python workflow. Importantly, the model is opened using the exact APSIM NG versi
 configured for the current apsimNGpy session, ensuring version consistency between the GUI and the Python environment.
 
 The :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation` takes in one parameter
-`watch : bool`, which defaults False. If True, Python will listen for GUI edits and sync them back into the
-   model instance in (near) real time.
+`watch : bool`, which defaults to False. If True, Python will listen for GUI edits and sync them back into the model instance in (near) real time.
 
 .. tip::
 
