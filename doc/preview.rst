@@ -1,5 +1,5 @@
-Previewing your apsimx file in APSIM GUI
-==========================================
+Model Preview in GUI
+=====================
 
 The :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation` method provides the
 primary mechanism for opening the current in-memory APSIM model in the APSIM Next
