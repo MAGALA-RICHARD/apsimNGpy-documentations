@@ -364,6 +364,11 @@ By the above code, it has the following parameters:
      'maximumAmount': '30',
      'depthPAWC': '300'}
 
+Now edit it by path, change returndays=3, maximumAmount=20
+
+.. code-block:: python
+
+
 .. tip::
 
     After editing the file or model, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method. This method takes a single argument: the desired file path or name.
