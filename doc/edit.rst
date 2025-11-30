@@ -374,6 +374,19 @@ Now edit it by path, change returndays=3, and maximumAmount to 20
 
 .. code-block:: python
 
+Lastly, check to confirm
+
+.. code-block:: none
+
+      {'allowIrrigation': 'False',
+     'seasonStart': '15-Aug',
+     'seasonEnd': '30-May',
+     'seasonsAllocation': '10000',
+     'triggerDeficit': '50',
+     'targetDeficit': '99',
+     'returndays': '3',
+     'maximumAmount': '20',
+     'depthPAWC': '300'}
 
 .. tip::
 
