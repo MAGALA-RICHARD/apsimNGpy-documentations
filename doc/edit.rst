@@ -370,6 +370,10 @@ Now edit it by path, change returndays=3, and maximumAmount to 20
 
    model.edit_model_by_path('.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation', returndays=3, maximumAmount=20)
 
+2. by specifying the simulation name where this script as follows
+
+.. code-block:: python
+
 
 .. tip::
 
