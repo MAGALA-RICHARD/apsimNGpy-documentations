@@ -348,6 +348,7 @@ this path: '.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation'. we can ed
 1. by path
 
 .. code-block:: python
+
    model.inspect_model_parameters_by_path('.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation')
 
 By the above code, it has the following parameters:
@@ -388,7 +389,7 @@ Lastly, check to confirm
 
 .. code-block:: python
 
-    model.edit_model_by_path('.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation', returndays=3, maximumAmount=20)
+    model.inspect_model_parameters_by_path('.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation')
 
 .. code-block:: none
 
