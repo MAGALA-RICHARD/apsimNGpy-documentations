@@ -281,7 +281,7 @@ including models containing multiple simulations that users may wish to run in c
 inputs. The example below demonstrates the two complementary strategies for targeted modification—exclusion
 and specification. Some of these ideas have already been introduced implicitly; for instance, edit_model_by_path
 is an exclusion-based, surgical editing method that applies changes only to the model component identified by its full path.
-More generally, the broader edit_model function offers two useful arguments—simulations and exclude—that
+More generally, the broader edit_model function offers two useful arguments—`simulations` and `exclude`—that
 allow users to explicitly select which simulations should receive an edit and which should be omitted, as illustrated in the example that follows.
 
 .. tip::
