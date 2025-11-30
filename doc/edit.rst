@@ -284,10 +284,59 @@ is an exclusion-based, surgical editing method that applies changes only to the 
 More generally, the broader edit_model function offers two useful arguments—`simulations` and `exclude`— that
 allow users to explicitly select which simulations should receive an edit and which should be omitted, as illustrated in the example that follows.
 
-For this demonstration, we are going to use the 'Report' example under the folder `Examples`, luckily apsimNgpy can help us
+For this demonstration, we are going to use the 'Report' example under the folder `Examples`. Luckily, apsimNgpy can help us
 retrieve this example just specifying its name as follows
 
-.. code-block::
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    from apsimNGpy.core.config import load_crop_from_disk
+
+How many simulations are this file? let's find out.
+
+.. code-block:: python
+
+    with ApsimModel('Report') as model:
+        sims = model.inspect_model('Models.Core.Simulation' fullpath= False)
+        print(sims)
+        ['SimpleReportingSim', 'Annual Reporting In June', 'ContinuousWheatExample', 'Seasonal']
+What about reports or database tables?
+
+.. code-block:: python
+
+        print(model.inspect_model("Models.Report", fullpath=False)
+        ['ReportSimple', 'ReportOnEvents', 'ReportOnSpecificDaysEveryYear', 'ReportOnSpecificDates', 'ReportArrays',
+         'ReportDaily', 'ReportWeekly', 'ReportMonthly', 'ReportYearly', 'ReportSimulation', 'AnnualReporting',
+         'MonthlyReporting', 'DailyReporting', 'ReportInCropAnnually', 'ReportGrainOnHarvesting', 'ReportGrainDaily',
+         'ReportSpecificDates', 'SeasonalOverall', 'SeasonalByYear', 'SeasonalByYearWithOnKeyword']
+What about Manager scripts
+
+.. code-block:: python
+
+        model.inspect_model('Models.Manager')
+        ['.Simulations.SimpleReportingSim.Field.Sowing',
+         '.Simulations.SimpleReportingSim.Field.Fertilise at sowing',
+         '.Simulations.SimpleReportingSim.Field.Harvest',
+         '.Simulations.SimpleReportingSim.Field.AutoIrrig',
+         '.Simulations.SimpleReportingSim.Field.ReportHelper',
+         '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.CutRotation',
+         '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.AutomaticFertiliser',
+         '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.FertiliseOnFixedDates',
+         '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.AutomaticIrrigation',
+         '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Field.ReportHelper',
+         '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Sowing',
+         '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Fertilise at sowing',
+         '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.Harvest',
+         '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.ReportHelper',
+         '.Simulations.Grouping.Seasonal.ClimateController',
+         '.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation']
+        model.inspect_model('Models.Clock')
+        ['.Simulations.SimpleReportingSim.Clock',
+         '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Clock',
+         '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Clock',
+         '.Simulations.Grouping.Seasonal.Clock']
+
+
 
 
 .. tip::
