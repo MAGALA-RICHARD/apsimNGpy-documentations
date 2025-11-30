@@ -10,24 +10,9 @@ verify component structures, and perform quick manual edits alongside their
 Python workflow. Importantly, the model is opened using the exact APSIM NG version
 configured for the current apsimNGpy session, ensuring version consistency between the GUI and the Python environment.
 
-Parameters
-----------
-watch : bool, default False
-   If True, Python will listen for GUI edits and sync them back into the
-   model instance in (near) real time. This feature is experimental.
-
-Returns
--------
-None
-   This function performs a side effect (opening the GUI) and does not
-   return a value.
-
-Raises
-------
-FileNotFoundError
-   If the file does not exist after ``save()``.
-RuntimeError
-   If the APSIM Next Gen executable cannot be located or the GUI fails to start.
+The :meth:`~apsimNGpy.core.apsim.ApsimModel.preview_simulation` takes in one parameter
+`watch : bool`, which defaults False. If True, Python will listen for GUI edits and sync them back into the
+   model instance in (near) real time.
 
 .. tip::
 
