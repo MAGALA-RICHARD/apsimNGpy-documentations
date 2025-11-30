@@ -493,7 +493,8 @@ In the next tutorial, I will teach you how to use exclusion and specification st
 
     If certain models do not appear in the inspection output, this is intentional. The tool selectively inspects components to keep results concise and focused.
 
-    For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI using :meth:`apsimNGpy.core.apsim.ApsimModel.preview_simulation` method
+    For a complete view of the entire model structure, we recommend opening the simulation file in the APSIM GUI using :meth:`apsimNGpy.core.apsim.ApsimModel.preview_simulation`.
+Please see the next tutorial
 
 .. seealso::
 

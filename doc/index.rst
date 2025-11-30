@@ -92,6 +92,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :caption: EDITING & INSPECTION
 
    model inspection
+   preview
    inspect_model_parameters
    edit
    factorial_experiments
