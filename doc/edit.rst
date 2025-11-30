@@ -401,9 +401,9 @@ Now edit it by path, change `returndays` to 3, and `maximumAmount` to 20
 
     exclude_sims =  ['SimpleReportingSim', 'Annual Reporting In June', 'ContinuousWheatExample']
     model.edit_model(model_type='Models.Manager',
-             model_name='AutomaticIrrigation',
-             exclude = exclude_sims,
-             returndays=3, maximumAmount=21)
+                     model_name='AutomaticIrrigation',
+                     exclude = exclude_sims,
+                     returndays=3, maximumAmount=21)
 
 
 Lastly, check to confirm
