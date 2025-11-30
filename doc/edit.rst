@@ -390,8 +390,9 @@ Now edit it by path, change `returndays` to 3, and `maximumAmount` to 20
 .. code-block:: python
 
    model.edit_model(model_type='Models.Manager',
-    model_name='AutomaticIrrigation', simulations='Seasonal',
-     returndays=3, maximumAmount=21)
+        model_name='AutomaticIrrigation',
+        simulations='Seasonal',
+        returndays=3, maximumAmount=21)
 
 3. Next is the exclusion strategy, where we exclude all other simulations that do not have this script or we simply don't want them edited
 
