@@ -58,7 +58,6 @@ Mixed code examples
 
 .. code-block:: python
 
-    def test_edit_model_by_path(self):
         with ApsimModel('Maize') as apsim:
             #_________________________
             # Apply edits
