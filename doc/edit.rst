@@ -274,6 +274,9 @@ can modify parameters reliably even in complex, deeply nested APSIM structures. 
 
 .. include:: edit_by_path.rst
 
+Editing nested simulation models
+================================
+
 .. tip::
 
     After editing the file or model, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method. This method takes a single argument: the desired file path or name.

@@ -2159,8 +2159,10 @@ Classes
        APSIM GUI saved. Syncing model...
        2025-10-24 13:05:24,112 - INFO - Watching terminated successfully.
 
-   When ``watch=True``, follow the console instructions.
-   One critical step is that you **must press** ``Ctrl+C`` to stop watching.
+   .. note::
+
+       When ``watch=True``, follow the console instructions.
+       One critical step is that you **must press** ``Ctrl+C`` to stop watching.
 
    **Checking if changes were successfully propagated back**
 
@@ -6118,8 +6120,10 @@ Classes
        APSIM GUI saved. Syncing model...
        2025-10-24 13:05:24,112 - INFO - Watching terminated successfully.
 
-   When ``watch=True``, follow the console instructions.
-   One critical step is that you **must press** ``Ctrl+C`` to stop watching.
+   .. note::
+
+       When ``watch=True``, follow the console instructions.
+       One critical step is that you **must press** ``Ctrl+C`` to stop watching.
 
    **Checking if changes were successfully propagated back**
 
@@ -9647,7 +9651,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000002A92DE29910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000206F18FD910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
