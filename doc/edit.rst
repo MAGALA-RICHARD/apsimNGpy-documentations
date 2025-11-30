@@ -356,8 +356,8 @@ How many clock models are there?
          '.Simulations.Grouping.Seasonal.Clock']
 
 
-If you look at the simulation: Seasonal, has a manager script named `AutomaticIrrigation` nad takes on
-this path: '.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation'. we can edit it in one of the following ways
+If you look at the simulation: `Seasonal`, it has a manager script named `AutomaticIrrigation` and it takes on
+this path: **.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation**. we can edit it in one of the following ways
 
 1.  edit by path
 
