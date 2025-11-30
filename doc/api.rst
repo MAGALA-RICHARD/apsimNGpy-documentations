@@ -1238,13 +1238,12 @@ Classes
            ".Simulations.Simulation.Field.Soil.Physical",
            LL15="[0.26, 0.18, 0.10, 0.12]")
 
-   Apply cultivar edits across selected simulations::
+   Apply cultivar edits::
 
        model.edit_model_by_path(
            ".Simulations.Simulation.Field.Maize.CultivarFolder.mh18",
-           simulations=("Sim_A", "Sim_B"),
-           verbose=True,
-           **{"Phenology.EmergencePhase.Photoperiod": "Short"} )
+           sowed=True,
+           **{"Phenology.EmergencePhase.Photo-period": "Short"} )
 
    .. seealso::
 
@@ -2182,8 +2181,10 @@ Classes
         'RowSpacing': '700',
         'Population': '4'}
 
-   Depending on your environment, you may need to close the GUI window to continue
-   or follow the prompts shown after termination.
+   .. tip::
+
+       Depending on your environment, you may need to close the GUI window to continue
+       or follow the prompts shown after termination.
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.replace_met_file(self, *, weather_file: 'Union[Path, str]', simulations=<UserOptionMissing>, exclude: 'set | str | tuple | list' = None, **kwargs) (inherited)
 
@@ -5196,13 +5197,12 @@ Classes
            ".Simulations.Simulation.Field.Soil.Physical",
            LL15="[0.26, 0.18, 0.10, 0.12]")
 
-   Apply cultivar edits across selected simulations::
+   Apply cultivar edits::
 
        model.edit_model_by_path(
            ".Simulations.Simulation.Field.Maize.CultivarFolder.mh18",
-           simulations=("Sim_A", "Sim_B"),
-           verbose=True,
-           **{"Phenology.EmergencePhase.Photoperiod": "Short"} )
+           sowed=True,
+           **{"Phenology.EmergencePhase.Photo-period": "Short"} )
 
    .. seealso::
 
@@ -6140,8 +6140,10 @@ Classes
         'RowSpacing': '700',
         'Population': '4'}
 
-   Depending on your environment, you may need to close the GUI window to continue
-   or follow the prompts shown after termination.
+   .. tip::
+
+       Depending on your environment, you may need to close the GUI window to continue
+       or follow the prompts shown after termination.
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.replace_met_file(self, *, weather_file: 'Union[Path, str]', simulations=<UserOptionMissing>, exclude: 'set | str | tuple | list' = None, **kwargs) (inherited)
 
@@ -9645,7 +9647,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000023DAD3E9910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000002A92DE29910>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
