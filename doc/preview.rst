@@ -101,5 +101,5 @@ in the *Sow using a variable rule* script and finally, checked whether the chang
 
     The inspection methods demonstrated in these tutorials are intended to support users during the initial
     setup phase—particularly when creating or validating a base APSIM file before running experiments or simulations.
-    These tools help users understand the model structure, verify parameter locations, and confirm that intended edits are correctly targeted. They are not meant to be used inside repeated or large-scale simulation loops; rather,
+    These tools help users understand the model structure, verify parameter values, and confirm that intended edits are correctly targeted. They are not meant to be used inside repeated or large-scale simulation loops; rather,
     they serve as a prerequisite step for ensuring confidence in model configuration prior to automated workflows.
