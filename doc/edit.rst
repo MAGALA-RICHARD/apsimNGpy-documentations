@@ -309,7 +309,8 @@ What about reports or database tables?
          'ReportDaily', 'ReportWeekly', 'ReportMonthly', 'ReportYearly', 'ReportSimulation', 'AnnualReporting',
          'MonthlyReporting', 'DailyReporting', 'ReportInCropAnnually', 'ReportGrainOnHarvesting', 'ReportGrainDaily',
          'ReportSpecificDates', 'SeasonalOverall', 'SeasonalByYear', 'SeasonalByYearWithOnKeyword']
-What about Manager scripts
+
+What about Manager scripts?
 
 .. code-block:: python
 
@@ -330,6 +331,11 @@ What about Manager scripts
          '.Simulations.More Reporting Examples.Annual Crop Example.ContinuousWheatExample.Field.ReportHelper',
          '.Simulations.Grouping.Seasonal.ClimateController',
          '.Simulations.Grouping.Seasonal.Field.AutomaticIrrigation']
+
+How many clock models are there?
+
+.. code-block:: python
+
         model.inspect_model('Models.Clock')
         ['.Simulations.SimpleReportingSim.Clock',
          '.Simulations.More Reporting Examples.Perennial Crop Example.Annual Reporting In June.Clock',
