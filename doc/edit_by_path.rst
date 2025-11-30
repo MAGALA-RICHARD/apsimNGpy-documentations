@@ -29,14 +29,10 @@ The variable constants listed below are required for the subsequent demonstratio
 
 .. code-block:: python
 
-edit cultivar and provide a custom new name
+Edit cultivar and provide a custom new name
 
 .. code-block:: python
 
-    # ---------------------------------------------------
-    # Test editing a cultivar and verifying rename + update
-    # ---------------------------------------------------
-    def test_edit_cultivar_path_sowed_true(self):
         with ApsimModel('Maize') as model:
 
             model.edit_model_by_path(
@@ -51,10 +47,8 @@ edit cultivar and provide a custom new name
             edited = model.inspect_model_parameters_by_path(cultivar_path)
 
 
-    # ---------------------------------------------------
-    # Test multiple parameter edits on the main model
-    # ---------------------------------------------------
-Mixed code examples
+
+Mixed code examples for editing weather, organic, clock and manger nodes
 
 .. code-block:: python
 
