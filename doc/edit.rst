@@ -277,10 +277,10 @@ can modify parameters reliably even in complex, deeply nested APSIM structures. 
 Editing nested simulation models
 ================================
 **apsimNGpy** provides robust capabilities for **editing** and **inspecting** deeply nested APSIM NG models,
-including models containing multiple simulations that users may wish to run in combination with different
+including models containing multiple **simulations** that users may wish to run in combination with different
 inputs. The example below demonstrates the two complementary strategies for targeted modification—exclusion
-and specification. Some of these ideas have already been introduced implicitly; for instance, edit_model_by_path
-is an exclusion-based, surgical editing method that applies changes only to the model component identified by its full path.
+and specification. Some of these ideas have already been introduced implicitly; for instance, :meth:`apsimNGpy.core.apsim.ApsimModel.edit_model_by_path`
+is an exclusion-based, surgical editing method that applies changes only to the model component identified by its **full path**.
 More generally, the broader edit_model function offers two useful arguments—`simulations` and `exclude`— that
 allow users to explicitly select which simulations should receive an edit and which should be omitted, as illustrated in the example that follows.
 
