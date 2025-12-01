@@ -433,13 +433,14 @@ Lastly, check to confirm
 
 .. tip::
 
-    After editing the file or model, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method. This method takes a single argument: the desired file path or name.
+    After editing the file or model, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method.
     Without specifying the full path to the desired storage location, the file will be saved in the current working directory.
+    In addition, the file will be saved to the current temporally or provided out_path during instantiation if filename is not provided
 
 .. code-block:: python
 
-    model.save('./edited_maize_model.apsimx')
-
+     model.save('./edited_maize_model.apsimx', reload=False)# not reloaded back into memory
+     model.save('./edited_maize_model.apsimx', reload=True)# reloaded back into memory, this is the default
 
 .. seealso::
 
