@@ -108,7 +108,7 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :maxdepth: 2
    :caption: OPTIMIZATION & TRADE-OFF ANALYSIS
 
-   OPT
+   calibrate
    moo
 
 .. toctree::
