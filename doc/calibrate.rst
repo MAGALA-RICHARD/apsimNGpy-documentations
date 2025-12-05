@@ -47,7 +47,7 @@ Defining the factors
 Once the optimization problem is instantiated, the remaining task is to submit the factors, the parameters that will be sampled during the search process.
 These factors finalize the problem specification and determine the parameter space over which the optimization algorithm will operate.
 
-Each factor requires a set of python parameters that define how it will be sampled and handled by APSIM execution engine.
+Each factor requires a set of python parameters that define how it will be sampled and handled by apsimNGpy execution engine.
 For example, the dictionary below specifies the target model path, the variable type and sampling range,
 the starting value, the candidate parameter to modify, and any additional parameters needed by the APSIM model component.
 
