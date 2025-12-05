@@ -47,12 +47,12 @@ Defining the factors
 Once the optimization problem is instantiated, the remaining task is to submit the factors, the parameters that will be sampled during the search process.
 These factors finalize the problem specification and determine the parameter space over which the optimization algorithm will operate.
 
-.. code-block:: python
-        # -------------------------------------------------------------
-        # 2. Define continuous and cultivar-specific optimization factors
-        # -------------------------------------------------------------
+Each factor requires a set of python parameters that define how it will be sampled and handled by APSIM execution engine.
+For example, the dictionary below specifies the target model path, the variable type and sampling range,
+the starting value, the candidate parameter to modify, and any additional parameters needed by the APSIM model component.
 
-        # (a) Continuous initial fresh soil organic matter factor
+.. code-block:: python
+
         soil_param = {
             "path": ".Simulations.Simulation.Field.Soil.Organic",
             "vtype": [UniformVar(1, 200)],
@@ -61,6 +61,7 @@ These factors finalize the problem specification and determine the parameter spa
             "other_params": {"FBiom": 0.04, "Carbon": 1.89},
         }
 
+.. code-block:: python
         # (b) Cultivar-specific physiological factor
         cultivar_param = {
             "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
