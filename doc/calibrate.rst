@@ -42,6 +42,12 @@ An example usage is shown below.
             trainer_col="observed"
         )
 
+Defining the factors
+---------------------
+Once the optimization problem is instantiated, the remaining task is to submit the factors, the parameters that will be sampled during the search process.
+These factors finalize the problem specification and determine the parameter space over which the optimization algorithm will operate.
+
+.. code-block:: python
         # -------------------------------------------------------------
         # 2. Define continuous and cultivar-specific optimization factors
         # -------------------------------------------------------------
