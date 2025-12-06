@@ -162,8 +162,11 @@ For the example above, if multiple parameters at the same model path need to be 
             "other_params": {"FBiom": 0.04, },
         }
 
+Cultivar-specific parameters can be defined as shown below. Note that if you do not explicitly set cultivar=True, the factor may still pass Pydantic validation,
+but it will not be recognized correctly by apsimNGpy. As a result, an error will be raised when the optimizer starts.
+
 .. code-block:: python
-        # (b) Cultivar-specific physiological factor
+
         cultivar_param = {
             "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
             "vtype": [ QrandintVar(400, 900, q=10)],  # Discrete step size of 2
