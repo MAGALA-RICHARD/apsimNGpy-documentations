@@ -336,6 +336,45 @@ Local optimization examples
         })
 
         print(sqlp)
+.. code-block:: none
+
+     SQLP
+      message: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+     success: True
+      status: 0
+         fun: -0.9988328727487307
+           x: (600, 1.9146364126155142)
+         nit: 5
+         jac: [ 0.000e+00  1.443e-06]
+        nfev: 51
+        njev: 17
+    hess_inv: <2x2 LbfgsInvHessProduct with dtype=float64>
+      x_vars: [Phenology].GrainFilling.Target.FixedValue: 600
+                    [Leaf].Photosynthesis.RUE.FixedValue: 1.9146364126155142
+ all_metrics:  RMSE: 186.2985473377376
+                MAE: 138.99280660263236
+                MSE: 34707.14874015126
+              RRMSE: 0.03305140788967166
+               bias: -12.88563869699999
+                 ME: 0.9954016411567299
+                WIA: 0.9988328727487307
+                 R2: 0.9955620314856154
+                CCC: 0.9976695795042819
+              SLOPE: 0.9838241649224034
+        data:    year  observed        Yield
+              0  1991  8469.616  8627.900365
+              1  1992  4674.820  4618.992002
+              2  1993   555.017   525.631735
+              3  1994  3504.282  3465.150544
+              4  1995  7820.120  7726.613326
+              5  1996  8823.516  8629.615403
+              6  1997  3802.295  4274.546474
+              7  1998  2943.070  2827.247588
+              8  1999  8379.928  8205.456985
+              9  2000  7393.633  7336.286190
+
+.. code-block:: python
+
         bfgs = minim.minimize_with_local(method="BFGS")
         print(bfgs)
 
@@ -473,6 +512,7 @@ Full tutorial code:
               9  2000  7393.633  7386.395996
 
 .. code-block:: python
+
         sqlp = minim.minimize_with_local(method="L-BFGS-B", options={
             "gtol": 1e-12,
             "ftol": 1e-12,
@@ -481,6 +521,7 @@ Full tutorial code:
         })
 
         print('SQLP\n', sqlp)
+
 .. code-block:: none
 
    SQLP
