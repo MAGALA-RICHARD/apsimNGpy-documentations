@@ -515,40 +515,6 @@ Full tutorial code:
         powell = minim.minimize_with_local(method="Powell")
         print('Powell', powell)
 
-.. code-block:: none
-
-    Powell      message: Optimization terminated successfully.
-     success: True
-      status: 0
-         fun: -0.9999978063480863
-           x: (810, 1.9956853031734851)
-         nit: 3
-       direc: [[ 1.778e-04  8.225e-06]
-               [ 1.256e+02  5.083e-02]]
-        nfev: 156
-      x_vars: [Phenology].GrainFilling.Target.FixedValue: 810
-                    [Leaf].Photosynthesis.RUE.FixedValue: 1.9956853031734851
- all_metrics:  RMSE: 8.142918248897413
-                MAE: 6.181338616665698
-                MSE: 66.3071176082265
-              RRMSE: 0.0014446431080788248
-               bias: 0.20602073354134517
-                 ME: 0.9999912149533542
-                WIA: 0.9999978063480863
-                 R2: 0.9999926482235774
-                CCC: 0.9999956129866351
-              SLOPE: 1.0011874855510992
-        data:    year  observed        Yield
-              0  1991  8469.616  8466.882313
-              1  1992  4674.820  4668.923545
-              2  1993   555.017   552.965793
-              3  1994  3504.282  3500.531051
-              4  1995  7820.120  7814.050446
-              5  1996  8823.516  8839.943474
-              6  1997  3802.295  3800.654636
-              7  1998  2943.070  2942.572631
-              8  1999  8379.928  8395.437323
-              9  2000  7393.633  7386.395996
 
 .. code-block:: python
 
@@ -561,42 +527,6 @@ Full tutorial code:
 
         print('SQLP\n', sqlp)
 
-.. code-block:: none
-
-   SQLP
-      message: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
-     success: True
-      status: 0
-         fun: -0.9988328727487307
-           x: (600, 1.9146364126155142)
-         nit: 5
-         jac: [ 0.000e+00  1.443e-06]
-        nfev: 51
-        njev: 17
-    hess_inv: <2x2 LbfgsInvHessProduct with dtype=float64>
-      x_vars: [Phenology].GrainFilling.Target.FixedValue: 600
-                    [Leaf].Photosynthesis.RUE.FixedValue: 1.9146364126155142
- all_metrics:  RMSE: 186.2985473377376
-                MAE: 138.99280660263236
-                MSE: 34707.14874015126
-              RRMSE: 0.03305140788967166
-               bias: -12.88563869699999
-                 ME: 0.9954016411567299
-                WIA: 0.9988328727487307
-                 R2: 0.9955620314856154
-                CCC: 0.9976695795042819
-              SLOPE: 0.9838241649224034
-        data:    year  observed        Yield
-              0  1991  8469.616  8627.900365
-              1  1992  4674.820  4618.992002
-              2  1993   555.017   525.631735
-              3  1994  3504.282  3465.150544
-              4  1995  7820.120  7726.613326
-              5  1996  8823.516  8629.615403
-              6  1997  3802.295  4274.546474
-              7  1998  2943.070  2827.247588
-              8  1999  8379.928  8205.456985
-              9  2000  7393.633  7336.286190
 
 .. code-block:: python
         bfgs = minim.minimize_with_local(method="BFGS")
