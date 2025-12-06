@@ -183,7 +183,8 @@ cultivar specific paramters are still tricky, as there is need to specify whethe
 .. note::
   if you are Operations, it is not currently supported
 
-
+submitting the define factor
+---------------------------
 .. code-block:: python
 
         # Submit optimization factors
