@@ -217,7 +217,7 @@ There is still a chance to submit all defined factors at once
        Each candidate parameter must have a matching variable type and initial
        value.
 
-       In cases where `other_params` has identical names as `candidate_param`  , the `candidate_param`
+       In cases where `other_params` has identical names as `candidate_param`, the `candidate_param`
        takes priority and the parameter is deleted in other_params
 
        Optimization methods that do not require bounded or initialized start
