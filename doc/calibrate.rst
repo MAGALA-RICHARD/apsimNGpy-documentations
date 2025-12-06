@@ -320,6 +320,10 @@ please note the illustration did not include the soil params, because of time co
 
 Local optimization examples
 ---------------------------
+Below are the results from one of the several local optimization algorithms included
+in ``apsimNGpy``. These methods generally
+require **far fewer APSIM evaluations**.
+
 .. code-block:: python
 
         nelda = minim.minimize_with_local(method="Nelder-Mead")
