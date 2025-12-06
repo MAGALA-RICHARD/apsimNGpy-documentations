@@ -322,10 +322,47 @@ Local optimization examples
 ---------------------------
 .. code-block:: python
 
-        import gc
-        gc.collect()
         nelda = minim.minimize_with_local(method="Nelder-Mead")
         print(nelda)
+
+.. code-block:: none
+
+    nelda-mead
+            message: Optimization terminated successfully.
+           success: True
+            status: 0
+               fun: -0.9999978063483224
+                 x: (810, 1.9956845806066088)
+               nit: 74
+              nfev: 157
+     final_simplex: (array([[ 8.086e+02,  1.996e+00],
+                           [ 8.086e+02,  1.996e+00],
+                           [ 8.086e+02,  1.996e+00]]), array([-1.000e+00, -1.000e+00, -1.000e+00]))
+            x_vars: [Phenology].GrainFilling.Target.FixedValue: 810
+                          [Leaf].Photosynthesis.RUE.FixedValue: 1.9956845806066088
+       all_metrics:  RMSE: 8.142916753128027
+                      MAE: 6.182601974125896
+                      MSE: 66.30709324837308
+                    RRMSE: 0.001444642842712912
+                     bias: 0.2038095028286307
+                       ME: 0.9999912149565816
+                      WIA: 0.9999978063483224
+                       R2: 0.9999926474869694
+                      CCC: 0.9999956129811112
+                    SLOPE: 1.0011872254349912
+              data:    year  observed        Yield
+                    0  1991  8469.616  8466.879175
+                    1  1992  4674.820  4668.921189
+                    2  1993   555.017   552.965145
+                    3  1994  3504.282  3500.529818
+                    4  1995  7820.120  7814.047377
+                    5  1996  8823.516  8839.941004
+                    6  1997  3802.295  3800.652670
+                    7  1998  2943.070  2942.571063
+                    8  1999  8379.928  8395.435053
+                    9  2000  7393.633  7386.392601
+
+.. code-block:: python
         powell = minim.minimize_with_local(method="Powell")
         print(powell)
 
@@ -366,18 +403,18 @@ Local optimization examples
 
 .. code-block:: python
 
-        sqlp = minim.minimize_with_local(method="L-BFGS-B", options={
+        lbfgs = minim.minimize_with_local(method="L-BFGS-B", options={
             "gtol": 1e-12,
             "ftol": 1e-12,
             "maxfun": 50000,
             "maxiter": 30000
         })
 
-        print(sqlp)
+        print(lbfgs)
 
 .. code-block:: none
 
-     SQLP
+     "L-BFGS-B
       message: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
      success: True
       status: 0
@@ -512,42 +549,6 @@ Full tutorial code:
         nelda = minim.minimize_with_local(method="Nelder-Mead")
         print('nelda\n', nelda)
 
-.. code-block:: none
-
-    nelda-mead
-            message: Optimization terminated successfully.
-           success: True
-            status: 0
-               fun: -0.9999978063483224
-                 x: (810, 1.9956845806066088)
-               nit: 74
-              nfev: 157
-     final_simplex: (array([[ 8.086e+02,  1.996e+00],
-                           [ 8.086e+02,  1.996e+00],
-                           [ 8.086e+02,  1.996e+00]]), array([-1.000e+00, -1.000e+00, -1.000e+00]))
-            x_vars: [Phenology].GrainFilling.Target.FixedValue: 810
-                          [Leaf].Photosynthesis.RUE.FixedValue: 1.9956845806066088
-       all_metrics:  RMSE: 8.142916753128027
-                      MAE: 6.182601974125896
-                      MSE: 66.30709324837308
-                    RRMSE: 0.001444642842712912
-                     bias: 0.2038095028286307
-                       ME: 0.9999912149565816
-                      WIA: 0.9999978063483224
-                       R2: 0.9999926474869694
-                      CCC: 0.9999956129811112
-                    SLOPE: 1.0011872254349912
-              data:    year  observed        Yield
-                    0  1991  8469.616  8466.879175
-                    1  1992  4674.820  4668.921189
-                    2  1993   555.017   552.965145
-                    3  1994  3504.282  3500.529818
-                    4  1995  7820.120  7814.047377
-                    5  1996  8823.516  8839.941004
-                    6  1997  3802.295  3800.652670
-                    7  1998  2943.070  2942.571063
-                    8  1999  8379.928  8395.435053
-                    9  2000  7393.633  7386.392601
 
 .. code-block:: python
         # if you wish to switch algorithm
