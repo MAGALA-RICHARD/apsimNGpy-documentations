@@ -293,3 +293,110 @@ using the newly optimized parameters. The data attribute contains both the obser
         os.startfile("figures.png")
         plt.close()
 
+Full tutorial code:
+-------------------
+.. code-block:: python
+
+    import numpy as np
+    from apsimNGpy.core.config import apsim_bin_context
+    with apsim_bin_context(apsim_bin_path=r'bin_dist/APSIM2025.8.7844.0/bin'):
+        from apsimNGpy.optimizer.minimize.single_mixed import MixedVariableOptimizer
+        from apsimNGpy.optimizer.problems.smp import MixedProblem
+        from apsimNGpy.optimizer.problems.variables import UniformVar, QrandintVar
+        from apsimNGpy.tests.unittests.test_factory import obs
+    if __name__ == "__main__":
+        # -------------------------------------------------------------
+        # 1. Define the mixed-variable optimization problem
+        # -------------------------------------------------------------
+        mp = MixedProblem(
+            model="Maize",
+            trainer_dataset=obs,
+            pred_col="Yield",
+            metric="wia",
+            index="year",
+            trainer_col="observed"
+        )
+
+        # -------------------------------------------------------------
+        # 2. Define continuous and cultivar-specific optimization factors
+        # -------------------------------------------------------------
+
+        # (a) Continuous initial fresh soil organic matter factor
+        soil_param = {
+            "path": ".Simulations.Simulation.Field.Soil.Organic",
+            "vtype": [UniformVar(1, 200)],
+            "start_value": [1],
+            "candidate_param": ["FOM"],
+            "other_params": {"FBiom": 0.04, "Carbon": 1.89},
+        }
+
+        # (b) Cultivar-specific
+        cultivar_param = {
+            "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
+            "vtype": [QrandintVar(400, 900, q=10), UniformVar(0.8, 2.2)],  # Discrete step size of 2
+            "start_value": [600, 1],
+            "candidate_param": [
+                '[Phenology].GrainFilling.Target.FixedValue',
+                '[Leaf].Photosynthesis.RUE.FixedValue'],
+            "other_params": {"sowed": True},
+            "cultivar": True,  # Signals to apsimNGpy to treat it as a cultivar parameter
+        }
+        # Submit optimization factors
+        mp.submit_factor(**soil_param)
+        mp.submit_factor(**cultivar_param)
+
+        print(f" {mp.n_factors} optimization factors registered.")
+
+        # -------------------------------------------------------------
+        # 3. Configure and execute the optimizer
+        # -------------------------------------------------------------
+        minim = MixedVariableOptimizer(problem=mp)
+        #_______________________________________________
+        # use differential evolution
+        de = minim.minimize_with_de(
+            use_threads=True,
+            updating="deferred",
+            workers=14,  # Number of parallel workers
+            popsize=30,  # Population size per generation
+            constraints=(-1.1, -0.8),     # if metric indicator is one of wia, ccc , r2, slope the constraints must be negative
+        )
+        print("Differential evolution\n", de)
+        # (a) Local optimization examples
+        nelda = minim.minimize_with_local(method="Nelder-Mead")
+        print('nelda\n', nelda)
+        # if you wish to switch algorithm
+        powell = minim.minimize_with_local(method="Powell")
+        print('Powell', powell)
+        sqlp = minim.minimize_with_local(method="L-BFGS-B", options={
+            "gtol": 1e-12,
+            "ftol": 1e-12,
+            "maxfun": 50000,
+            "maxiter": 30000
+        })
+
+        print('SQLP\n', sqlp)
+        bfgs = minim.minimize_with_local(method="BFGS")
+        print('bfgs\n', bfgs)
+
+        print("\nOptimization completed:")
+        # now plot the results
+        import matplotlib.pyplot as plt
+        import os
+        plt.figure(figsize=(8, 6))
+        df= de.data
+        df.eval('ayield =Yield/1000', inplace=True)
+        df.eval('oyield =observed/1000', inplace=True)
+        # observed → scatter points
+        plt.scatter(df["year"], df["ayield"], label="APSIM", s=60, color='red')
+        # predicted → line
+        plt.plot(df["year"], df["oyield"], label="Training data", linewidth=2)
+        plt.xlabel("Time (Year)", fontsize=18)
+        plt.ylabel("Maize grain yield (Mg ha⁻¹)", fontsize=18)
+        plt.title("") #Observed vs Predicted Yield Over Time
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig("figures.png")
+        os.startfile("figures.png")
+        plt.close()
+
