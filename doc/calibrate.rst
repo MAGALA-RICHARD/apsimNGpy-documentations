@@ -233,6 +233,18 @@ Configure the optimizer
 
 Use differential evolution
 ---------------------------
+apsimNGpy provides a high-level interface to Differential Evolution (DE), allowing robust calibration of APSIM NG models without requiring the user to tune low-level evolutionary mechanics. DE is especially effective when searching irregular parameter landscapes, such as soil hydraulic properties or cultivar-specific coefficients. By evolving a population of candidate parameter sets via mutation, crossover, and selection, DE balances global exploration with local refinement. Optimal performance is generally achieved using moderate population sizes (20–40), a mutation factor
+𝐹
+≈
+0.6
+–
+0.9
+F≈0.6–0.9, and crossover rates around 0.7–0.9. For performance metrics where higher values indicate better model fit (e.g., WIA, CCC,
+𝑅
+2
+R
+2
+, slope), apsimNGpy internally converts the objective to a minimization problem, so constraints must be negative (e.g., –1.1 to –0.8). Parallel execution using workers ensures faster evaluation across APSIM simulations.
 .. code-block:: python
 
         de = minim.minimize_with_de(
