@@ -205,7 +205,7 @@ There is still a chance to submit all defined factors at once
 
   mp.submit_all([soil_param,cultivar_param ])
 
-.. note::
+.. tip::
 
        All submitted factors are validated using **Pydantic** to ensure adherence to
        expected data structures and variable types — for example checking that
