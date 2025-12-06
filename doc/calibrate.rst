@@ -61,16 +61,17 @@ the starting value, the candidate parameter to modify, and any additional parame
             "other_params": {"FBiom": 0.04, "Carbon": 1.89},
         }
 
-- pat: a fully qualified model path pointing to the APSIM component to be edited. For extracting this path, please see :ref:`inspect model section <plain_inspect>`
+- **path**: a fully qualified model path pointing to the APSIM component to be edited. For extracting this path, please see :ref:`inspect model section <plain_inspect>`
 
-- vtype: a list of defined the variable types, which defines how values are sampled (e.g., UniformVar, GridVar, CategoricalVar). The can also be defined as strings
+- **vtype**: a list of defined the variable types, which defines how values are sampled (e.g., UniformVar, GridVar, CategoricalVar).
+  The can also be defined as strings
 
-- start_value: type determined by the type — the initial parameter value used to seed the optimizer or establish a baseline.
+- **start_value**: type determined by the type — the initial parameter value used to seed the optimizer or establish a baseline.
 
-- candidate_param: str — the specific model parameter(s) to be calibrated.
+- **candidate_param**: str — the specific model parameter(s) to be calibrated.
 
-- other_params: dict — any additional fixed parameters required by the APSIM component to compute or update the variable of interest.
-  for details see :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path`
+- **other_params**: dict — any additional fixed parameters required by the APSIM component to compute or update the variable of interest.
+  For details see :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path`
 
 
 .. tip::
