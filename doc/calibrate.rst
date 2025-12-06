@@ -205,6 +205,24 @@ There is still a chance to submit all defined factors at once
 
   mp.submit_all([soil_param,cultivar_param ])
 
+.. note::
+
+       All submitted factors are validated using **Pydantic** to ensure adherence to
+       expected data structures and variable types — for example checking that
+       ``vtype`` includes valid variable types (``UniformVar``, ``GridVar``),
+       ensuring ``path`` is a valid string, and that numeric constraints follow
+       their expected conventions.
+
+       After Pydantic validation, an additional structural check ensures that the
+       lengths of ``vtype``, ``start_value``, and ``candidate_param`` are identical.
+       Each candidate parameter must have a matching variable type and initial
+       value.
+
+       Optimization methods that do not require bounded or initialized start
+       values allow for dummy entries in ``start_value``. These placeholders are
+       accepted without affecting the optimization process. The system remains
+       flexible across both stochastic and deterministic search methods.
+
 Configure the optimizer
 --------------------------
 .. code-block:: python
