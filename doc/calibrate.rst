@@ -414,7 +414,7 @@ Local optimization examples
 
 .. code-block:: none
 
-     "L-BFGS-B
+      L-BFGS-B
       message: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
      success: True
       status: 0
@@ -557,14 +557,14 @@ Full tutorial code:
 
 .. code-block:: python
 
-        sqlp = minim.minimize_with_local(method="L-BFGS-B", options={
+        lbfgs = minim.minimize_with_local(method="L-BFGS-B", options={
             "gtol": 1e-12,
             "ftol": 1e-12,
             "maxfun": 50000,
             "maxiter": 30000
         })
 
-        print('SQLP\n', sqlp)
+       print(lbfgs)
 
 
 .. code-block:: python
