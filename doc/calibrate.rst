@@ -18,7 +18,7 @@ refer to the API documentation for :meth:`~apsimNGpy.optimizer.problems.smp.Mixe
 Some algorithms like Differential Evolution can be set to run in parallel, therefore everything needs to be executed below the module guard
 
 Defining the Optimization Problem
-=================================
+----------------------------------
 
 To define an optimization problem that identifies the optimum APSIM parameters, use the class :class:`~apsimNGpy.optimizer.minimize.single_mixed.MixedProblem`.
 This class accepts an APSIM template file, a training (observed) dataset, and the corresponding index variables linking observed and simulated data.
