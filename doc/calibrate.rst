@@ -73,7 +73,7 @@ the starting value, the candidate parameter to modify, and any additional parame
 
   1. **ChoiceVar(items)**
      Nominal (unordered categorical)
-     Example: ``ChoiceVar(["USA", "Panama", "Cayman"])``
+     Example: ``ChoiceVar(["A", "B", "C"])``
 
   2. **GridVar(values)**
      Ordinal (ordered categorical)
