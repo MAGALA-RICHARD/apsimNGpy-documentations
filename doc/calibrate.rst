@@ -498,6 +498,23 @@ using the newly optimized parameters. The data attribute contains both the obser
         os.startfile("figures.png")
         plt.close()
 
+Differential Evolution Performance and Comparison with Local Optimizers
+-------------------------------------------------------------------------
+
+In this example, Differential Evolution (DE) was used to calibrate two
+APSIM parameters: ``[Phenology].GrainFilling.Target.FixedValue`` and
+``[Leaf].Photosynthesis.RUE.FixedValue``. Although DE is robust for
+non-convex and multi-modal landscapes, the results in this case show that
+DE performed **relatively poorly compared to simpler local optimization
+methods**, both in terms of computation time and final calibration
+accuracy. These results were obtained using the **default DE settings** in
+``apsimNGpy``. With additional parameter tuning—such as adjusting the
+mutation factor (``F``), crossover rate (``CR``), population size, or
+evolution strategy—DE performance may improve and potentially match the
+accuracy achieved by Nelder–Mead or Powell. However, such tuning increases
+computational cost and may require multiple exploratory runs to identify
+effective settings.
+
 Full tutorial code:
 -------------------
 .. code-block:: python
