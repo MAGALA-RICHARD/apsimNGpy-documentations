@@ -304,8 +304,10 @@ please note the illustration did not include the soil params, because of time co
                       8  1999  8379.928  8361.239740
                       9  2000  7393.633  7378.696671
 
-Under the default parameter settings, result from DE algorithms was acceptable but at a very higher cost  of **604 function
-evaluations**
+.. admonition:: Highlight
+
+    Under the default parameter settings, result from DE algorithms was acceptable but at a very higher cost  of **604 function
+    evaluations**
 
 .. admonition:: Highlight
 
