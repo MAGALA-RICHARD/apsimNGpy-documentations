@@ -64,7 +64,69 @@ the starting value, the candidate parameter to modify, and any additional parame
 - **path**: a fully qualified model path pointing to the APSIM component to be edited. For extracting this path, please see :ref:`inspect model section <plain_inspect>`
 
 - **vtype**: a list of defined the variable types, which defines how values are sampled (e.g., UniformVar, GridVar, CategoricalVar).
-  The can also be defined as strings
+  The can also be defined as strings.
+   Supported Variable Types
+   ------------------------
+
+        1. **ChoiceVar(items)**
+           Nominal (unordered categorical)
+           Example: ``ChoiceVar(["USA", "Panama", "Cayman"])``
+
+        2. **GridVar(values)**
+           Ordinal (ordered categorical)
+           Example: ``GridVar([2, 4, 8, 16])``
+
+        3. **RandintVar(lower, upper)**
+           Integer in ``[lower, upper]``
+           Example: ``RandintVar(0, 6)``
+
+        4. **QrandintVar(lower, upper, q)**
+           Quantized integer with step ``q``
+           Example: ``QrandintVar(0, 12, 3)``
+
+        5. **UniformVar(lower, upper)**
+           Continuous float range
+           Example: ``UniformVar(0.0, 5.11)``
+
+        6. **QuniformVar(lower, upper, q)**
+           Quantized float with step ``q``
+           Example: ``QuniformVar(0.0, 5.1, 0.3)``
+
+        Below is a list of available string for each variable
+
+        .. code-block:: python
+
+               ALLOWED_VARIABLES = {
+                    # Original canonical names
+                    "UniformVar": UniformVar,
+                    "QrandintVar": QrandintVar,
+                    "QuniformVar": QuniformVar,
+                    "GridVar": GridVar,
+                    "ChoiceVar": ChoiceVar,
+                    "RandintVar": RandintVar,
+
+                    # Short aliases
+                    "uniform": UniformVar,
+                    "quniform": QuniformVar,
+                    "qrandint": QrandintVar,
+                    "grid": GridVar,
+                    "choice": ChoiceVar,
+                    "randint": RandintVar,
+
+                    # Descriptive aliases (readable English)
+                    "continuous": UniformVar,
+                    "quantized_continuous": QuniformVar,
+                    "quantized_int": QrandintVar,
+                    "ordinal": GridVar,
+                    "categorical": ChoiceVar,
+                    "integer": RandintVar,
+
+                    # Alternative descriptive (for domain users)
+                    "step_uniform_float": QuniformVar,
+                    "step_random_int": QrandintVar,
+                    "ordered_var": GridVar,
+                    "choice_var": ChoiceVar}
+
 
 - **start_value**: type determined by the type — the initial parameter value used to seed the optimizer or establish a baseline.
 
