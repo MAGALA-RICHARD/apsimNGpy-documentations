@@ -239,7 +239,7 @@ manage low-level evolutionary mechanics. DE is well suited to the
 irregular, nonlinear parameter landscapes common in crop and soil
 model calibration. Its population-based search balances broad
 exploration with fine-scale refinement. Effective performance is
-typically achieved using moderate population sizes (20–40), mutation
+typically achieved using moderate population sizes (20–40), but you may consider making the population as 10 * number of parameters, mutation
 factors between 0.6 and 0.9, and crossover rates between 0.7 and
 0.9. For metrics where larger values indicate improved model
 performance (such as WIA, CCC, R², and slope), apsimNGpy internally
@@ -255,7 +255,7 @@ simulations.
             updating="deferred",
             workers=14,
             popsize=30,
-            constraints=nlc)
+            constraints=(-1.1, -0.8))
         print(de)
 
 
