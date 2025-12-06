@@ -13,6 +13,7 @@ refer to the API documentation for :meth:`~apsimNGpy.optimizer.problems.smp.Mixe
             from apsimNGpy.optimizer.minimize.single_mixed import MixedVariableOptimizer
             from apsimNGpy.optimizer.problems.smp import MixedProblem
             from apsimNGpy.tests.unittests.test_factory import obs# mimics observed data
+            from apsimNGpy.optimizer.problems.variables import UniformVar, QrandintVar
 
 Some algorithms like Differential Evolution can be set to run in parallel, therefore everything needs to be executed below the module guard
 
