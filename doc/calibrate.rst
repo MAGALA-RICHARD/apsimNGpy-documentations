@@ -149,6 +149,17 @@ the starting value, the candidate parameter to modify, and any additional parame
     - Each distinct node on APSIM should appear in one single entry or submission, hence if they are multiple paramters on a single node, they should all be defined by a single entry
     - When a factor contains multiple parameters, the fields ``vtype``, ``start_value``, and ``candidate_param`` provided as a list must be the same size as the number of parameters to optimize on that node and should be the same length
 
+For the example above, if more than one parameters are need at that path to be optimized, they can be defined as follows;
+
+.. code-block:: python
+
+        soil_param = {
+            "path": ".Simulations.Simulation.Field.Soil.Organic",
+            "vtype": [UniformVar(1, 200)],
+            "start_value": [1],
+            "candidate_param": ["FOM"],
+            "other_params": {"FBiom": 0.04, "Carbon": 1.89},
+        }
 
 .. code-block:: python
         # (b) Cultivar-specific physiological factor
