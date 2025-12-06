@@ -61,6 +61,15 @@ the starting value, the candidate parameter to modify, and any additional parame
             "other_params": {"FBiom": 0.04, "Carbon": 1.89},
         }
 
+- path — the fully qualified model path pointing to the APSIM component to be edited. For extracting this path, please see :ref:`inspect model section <plain_inspect>`
+
+- vtype — the variable type, which defines how values are sampled (e.g., UniformVar, GridVar, CategoricalVar).
+
+start_value — the initial parameter value used to seed the optimizer or establish a baseline.
+
+candidate_param — the specific model parameter(s) to be calibrated.
+
+other_params — any additional fixed parameters required by the APSIM component to compute or update the variable of interest.
 .. code-block:: python
         # (b) Cultivar-specific physiological factor
         cultivar_param = {
