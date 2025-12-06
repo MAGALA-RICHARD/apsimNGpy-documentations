@@ -401,6 +401,9 @@ Local optimization examples
               8  1999  8379.928  8395.437323
               9  2000  7393.633  7386.395996
 
+Powell achieved the **same objective value** as Nelder–Mead and also used
+about **four times fewer evaluations than DE**.
+
 .. code-block:: python
 
         lbfgs = minim.minimize_with_local(method="L-BFGS-B", options={
