@@ -169,21 +169,15 @@ but it will not be recognized correctly by apsimNGpy. As a result, an error will
 
         cultivar_param = {
             "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
-            "vtype": [ QrandintVar(400, 900, q=10)],  # Discrete step size of 2
-            "start_value": [ 600],
+            "vtype": [ QrandintVar(400, 900, q=10), UniformVar(0.8,2.2)],  # Discrete step size of 2
+            "start_value": [ 600, 1],
             "candidate_param": [
-                                '[Phenology].GrainFilling.Target.FixedValue'],
+                                '[Phenology].GrainFilling.Target.FixedValue',
+                                '[Leaf].Photosynthesis.RUE.FixedValue'],
             "other_params": {"sowed": True},
             "cultivar": True,  # Signals to apsimNGpy to treat it as a cultivar parameter
         }
-        rue = {
-            "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
-            'vtype': [ UniformVar(0.8,2.2),],
-            'start_value': [1,],
-            'candidate_param': ['[Leaf].Photosynthesis.RUE.FixedValue',],
-            'other_params':{'sowed': True},
-            "cultivar": True,
-        }
+
 
         # Submit optimization factors
         #mp.submit_factor(**soil_param)
