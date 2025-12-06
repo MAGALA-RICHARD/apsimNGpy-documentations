@@ -181,7 +181,7 @@ but it will not be recognized correctly by apsimNGpy. As a result, an error will
 cultivar specific paramters are still tricky, as there is need to specify whether the cultivar to be edited is the one specified in the manager script managing the sowing operations
 
 .. note::
-  if you are Operations, it is not currently supported
+  if you are using Operations, it is not currently supported
 
 Submitting the define factor
 ------------------------------
