@@ -183,7 +183,7 @@ cultivar specific paramters are still tricky, as there is need to specify whethe
 .. note::
   If you are using Operations, it is not currently supported
 
-# Submit optimization factors
+Submit optimization factors
 ------------------------------
 
 .. code-block:: python
@@ -193,8 +193,10 @@ cultivar specific paramters are still tricky, as there is need to specify whethe
         mp.submit_factor(**cultivar_param)
 
         print(f" {mp.n_factors} optimization factors registered.")
-         #3
+         #4
 
+Configure the optimizer
+--------------------------
 .. code-block:: python
         # -------------------------------------------------------------
         # 3. Configure and execute the optimizer
