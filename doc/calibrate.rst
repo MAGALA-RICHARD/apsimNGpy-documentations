@@ -410,3 +410,15 @@ Full tutorial code:
         os.startfile("figures.png")
         plt.close()
 
+.. tip::
+
+   Differential Evolution (DE) is computationally intensive, especially
+   when the number of parameters (decision variables) is large. Each
+   generation evaluates the full population of candidate solutions, which
+   can significantly increase compute time for APSIM-based calibration.
+   In many cases, simpler local optimization algorithms (e.g.,
+   Nelder–Mead, Powell, or L-BFGS-B) may achieve comparable performance
+   with far fewer evaluations. Users are encouraged to try these
+   lower-cost local methods first, and adopt DE only when local
+   algorithms consistently fail to identify satisfactory solutions or
+   when the objective landscape is highly irregular or multi-modal.
