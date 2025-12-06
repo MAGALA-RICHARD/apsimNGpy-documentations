@@ -462,8 +462,10 @@ about **four times fewer evaluations than DE**.
               8  1999  8379.928  8205.456985
               9  2000  7393.633  7336.286190
 
-Although extremely fast (only 51 evaluations), L-BFGS-B performed worse
-than Powell and Nelder–Mead due to the non-smooth nature of the parameters used in this tutorial.
+.. admonition:: highlight
+
+    Although extremely fast (only 51 evaluations), L-BFGS-B performed worse
+    than Powell and Nelder–Mead due to the non-smooth nature of the parameters used in this tutorial.
 
 .. code-block:: python
 
@@ -471,6 +473,7 @@ than Powell and Nelder–Mead due to the non-smooth nature of the parameters use
         print(bfgs)
 
         print("\nOptimization completed:")
+
 
 After the optimization is completed, compare the simulated results with the training dataset
 using the newly optimized parameters. The data attribute contains both the observed and simulated datasets, enabling direct comparison and evaluation of model performance.
