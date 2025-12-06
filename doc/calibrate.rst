@@ -363,6 +363,7 @@ Local optimization examples
               7  1998  2943.070  2942.572631
               8  1999  8379.928  8395.437323
               9  2000  7393.633  7386.395996
+
 .. code-block:: python
 
         sqlp = minim.minimize_with_local(method="L-BFGS-B", options={
