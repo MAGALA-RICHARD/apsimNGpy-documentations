@@ -362,6 +362,9 @@ Local optimization examples
                     8  1999  8379.928  8395.435053
                     9  2000  7393.633  7386.392601
 
+The Nelder–Mead solution provides a **nearly perfect** fit
+(WIA ≈ 0.999998) with **only 157 evaluations**, far fewer than DE (604).
+
 .. code-block:: python
         powell = minim.minimize_with_local(method="Powell")
         print(powell)
