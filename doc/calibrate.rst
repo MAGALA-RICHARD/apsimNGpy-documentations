@@ -436,6 +436,43 @@ Full tutorial code:
         # if you wish to switch algorithm
         powell = minim.minimize_with_local(method="Powell")
         print('Powell', powell)
+
+.. code-block:: none
+
+    Powell      message: Optimization terminated successfully.
+     success: True
+      status: 0
+         fun: -0.9999978063480863
+           x: (810, 1.9956853031734851)
+         nit: 3
+       direc: [[ 1.778e-04  8.225e-06]
+               [ 1.256e+02  5.083e-02]]
+        nfev: 156
+      x_vars: [Phenology].GrainFilling.Target.FixedValue: 810
+                    [Leaf].Photosynthesis.RUE.FixedValue: 1.9956853031734851
+ all_metrics:  RMSE: 8.142918248897413
+                MAE: 6.181338616665698
+                MSE: 66.3071176082265
+              RRMSE: 0.0014446431080788248
+               bias: 0.20602073354134517
+                 ME: 0.9999912149533542
+                WIA: 0.9999978063480863
+                 R2: 0.9999926482235774
+                CCC: 0.9999956129866351
+              SLOPE: 1.0011874855510992
+        data:    year  observed        Yield
+              0  1991  8469.616  8466.882313
+              1  1992  4674.820  4668.923545
+              2  1993   555.017   552.965793
+              3  1994  3504.282  3500.531051
+              4  1995  7820.120  7814.050446
+              5  1996  8823.516  8839.943474
+              6  1997  3802.295  3800.654636
+              7  1998  2943.070  2942.572631
+              8  1999  8379.928  8395.437323
+              9  2000  7393.633  7386.395996
+
+.. code-block:: python
         sqlp = minim.minimize_with_local(method="L-BFGS-B", options={
             "gtol": 1e-12,
             "ftol": 1e-12,
