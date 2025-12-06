@@ -72,6 +72,13 @@ the starting value, the candidate parameter to modify, and any additional parame
 - other_params: dict — any additional fixed parameters required by the APSIM component to compute or update the variable of interest.
   for details see `~apsimNGpy.core.apsim.apsimModel.edit_model_by_path`
 
+
+.. tip::
+
+    - Each distinct node on APSIM should appear in one single entry or submission, hence if they are multiple paramters on a single node, they should all be defined by a single entry
+    - When a factor contains multiple parameters, the fields ``vtype``, ``start_value``, and ``candidate_param`` provided as a list must be the same size as the number of parameters to optimize on that node and should be the same length
+
+
 .. code-block:: python
         # (b) Cultivar-specific physiological factor
         cultivar_param = {
