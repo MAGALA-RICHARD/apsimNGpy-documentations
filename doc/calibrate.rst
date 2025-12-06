@@ -198,28 +198,26 @@ Submit optimization factors
 Configure the optimizer
 --------------------------
 .. code-block:: python
-        # -------------------------------------------------------------
-        # 3. Configure and execute the optimizer
-        # -------------------------------------------------------------
-        from scipy.optimize import NonlinearConstraint
 
-
-        def hess(x):
-            return np.zeros((len(x), len(x)))
         minim = MixedVariableOptimizer(problem=mp)
-        nlc = NonlinearConstraint(mp.evaluate_objectives, lb=-1.1, ub=-0.98)
-        #tc=minim.minimize_with_local(method="trust-constr", constraints=[nlc],  # or empty list if you don't want nonlinear constraints
-        #options={"verbose": 3}, hess=hess )
-        #print(tc)
+
+Use differential evolution
+---------------------------
+.. code-block:: python
+
         de = minim.minimize_with_de(
             use_threads=True,
             updating="deferred",
-            workers=14,  # Number of parallel workers
-            popsize=30,  # Population size per generation
-            constraints=nlc,
-        )
+            workers=14,
+            popsize=30,
+            constraints=nlc)
         print(de)
-        # (a) Local optimization examples
+
+
+Local optimization examples
+---------------------------
+.. code-block:: python
+
         import gc
         gc.collect()
         nelda = minim.minimize_with_local(method="Nelder-Mead")
@@ -238,9 +236,12 @@ Configure the optimizer
         print(bfgs)
 
         print("\nOptimization completed:")
+
+.. code-block:: python
+
         import matplotlib.pyplot as plt
         import os
-       # sns.relplot(x="year", y="y")
+        # sns.relplot(x="year", y="y")
         plt.figure(figsize=(8, 6))
         df= de.data
         df.eval('ayield =Yield/1000', inplace=True)
