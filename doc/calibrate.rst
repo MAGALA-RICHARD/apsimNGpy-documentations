@@ -150,7 +150,7 @@ the starting value, the candidate parameter to modify, and any additional parame
     - Each distinct node on APSIM should appear in one single entry or submission, hence if they are multiple paramters on a single node, they should all be defined by a single entry
     - When a factor contains multiple parameters, the fields ``vtype``, ``start_value``, and ``candidate_param`` provided as a list must be the same size as the number of parameters to optimize on that node and should be the same length
 
-For the example above, if more than one parameters are need at that path to be optimized, they can be defined as follows;
+For the example above, if multiple parameters at the same model path need to be optimized, they can be defined as follows:
 
 .. code-block:: python
 
