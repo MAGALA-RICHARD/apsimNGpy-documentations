@@ -2,7 +2,7 @@ Parameter calibration
 ======================
 This tutorial demonstrates how to automatically calibrate APSIM parameters using the optimization algorithms
 available in apsimNGpy. For detailed information on defining and submitting optimization factors,
-refer to the API documentation for :meth:`~apsimNGpy.optimizer.problem.smp.MixedProblem.submit_factor`.
+refer to the API documentation for :meth:`~apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor`.
 
 
 .. code-block:: python
@@ -92,7 +92,7 @@ the starting value, the candidate parameter to modify, and any additional parame
            Quantized float with step ``q``
            Example: ``QuniformVar(0.0, 5.1, 0.3)``
 
-        Below is a list of available string for each variable
+        Below is a list of available string for each variable. For details see `~apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor`.
 
         .. code-block:: python
 
