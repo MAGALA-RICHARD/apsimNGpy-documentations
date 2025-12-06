@@ -155,10 +155,10 @@ For the example above, if more than one parameters are need at that path to be o
 
         soil_param = {
             "path": ".Simulations.Simulation.Field.Soil.Organic",
-            "vtype": [UniformVar(1, 200)],
-            "start_value": [1],
-            "candidate_param": ["FOM"],
-            "other_params": {"FBiom": 0.04, "Carbon": 1.89},
+            "vtype": [UniformVar(1, 200), UniformVar(1, 3)],
+            "start_value": [1, 2],
+            "candidate_param": ["FOM", 'Carbon'],
+            "other_params": {"FBiom": 0.04, },
         }
 
 .. code-block:: python
