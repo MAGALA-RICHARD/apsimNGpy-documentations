@@ -138,9 +138,10 @@ the starting value, the candidate parameter to modify, and any additional parame
   and is used to seed the optimizer or establish a baseline.
 
 
-- **candidate_param**: str — the specific model parameter(s) to be calibrated.
+- **candidate_param**: list or tuple of str Names of APSIM variables (e.g., ``"FOM"``, ``"FBiom"``) to be optimized.
+            These must exist within the APSIM node path.
 
-- **other_params**: dict — any additional fixed parameters required by the APSIM component to compute or update the variable of interest.
+- **other_params**: dict — Additional APSIM constants to fix during optimization (non-optimized). These must belong to the same APSIM node. For example, when optimizing ``FBiom`` but also modifying ``Carbon``, supply ``Carbon`` under ``other_params``
   For details see :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path`
 
 - **cultivar**: bool  Indicates whether the parameter belongs to a cultivar node. Set to
