@@ -307,7 +307,7 @@ please note the illustration did not include the soil params, because of time co
 Under the default parameter settings, result from DE algorithms was acceptable but at a very higher cost  of **604 function
 evaluations**
 
-.. tip::
+.. admonition:: Highlight
 
    Differential Evolution (DE) is computationally intensive, especially
    when the number of parameters (decision variables) is large. Each
@@ -369,8 +369,10 @@ require **far fewer APSIM evaluations**.
                     8  1999  8379.928  8395.435053
                     9  2000  7393.633  7386.392601
 
-The Nelder–Mead solution provides a **nearly perfect** fit
-(WIA ≈ 0.999998) with **only 157 evaluations**, far fewer than DE (604).
+.. admonition:: Highlight
+
+    The Nelder–Mead solution provides a **nearly perfect** fit
+    (WIA ≈ 0.999998) with **only 157 evaluations**, far fewer than DE (604).
 
 .. code-block:: python
         powell = minim.minimize_with_local(method="Powell")
@@ -411,8 +413,10 @@ The Nelder–Mead solution provides a **nearly perfect** fit
               8  1999  8379.928  8395.437323
               9  2000  7393.633  7386.395996
 
-Powell achieved the **same objective value** as Nelder–Mead and also used
-about **four times fewer evaluations than DE**.
+.. admonition:: Highlight
+
+    Powell achieved the **same objective value** as Nelder–Mead and also used
+    about **four times fewer evaluations than DE**.
 
 .. code-block:: python
 
