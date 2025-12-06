@@ -267,6 +267,9 @@ Local optimization examples
 
         print("\nOptimization completed:")
 
+After the optimization is completed, compare the simulated results with the training dataset
+using the newly optimized parameters. The data attribute contains both the observed and simulated datasets, enabling direct comparison and evaluation of model performance.
+
 .. code-block:: python
 
         import matplotlib.pyplot as plt
