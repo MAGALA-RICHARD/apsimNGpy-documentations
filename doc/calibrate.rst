@@ -258,6 +258,52 @@ simulations.
             constraints=(-1.1, -0.8))
         print(de)
 
+After optimization is completed, we can print the instance of the minimization and for the above code see example below,
+please note the illustration did not include the soil params, because of time constraints.
+
+.. code-block:: none
+
+     message: Optimization terminated successfully.
+             success: True
+                 fun: -0.9999574183647046
+                   x: (780, 1.9847370688789152)
+                 nit: 5
+                nfev: 604
+          population: [[ 7.788e+02  1.983e+00]
+                       [ 8.787e+02  2.092e+00]
+                       ...
+                       [ 7.743e+02  1.998e+00]
+                       [ 7.054e+02  1.980e+00]]
+ population_energies: [-1.000e+00 -9.978e-01 ... -9.998e-01 -9.995e-01]
+              constr: [array([ 0.000e+00])]
+    constr_violation: 0.0
+               maxcv: 0.0
+                 jac: [array([[-3.952e-06,  1.323e-03]]), array([[ 1.000e+00,  0.000e+00],
+                             [ 0.000e+00,  1.000e+00]])]
+              x_vars: [Phenology].GrainFilling.Target.FixedValue: 780
+                            [Leaf].Photosynthesis.RUE.FixedValue: 1.9847370688789152
+         all_metrics:  RMSE: 35.8565186378257
+                        MAE: 27.500786187035384
+                        MSE: 1285.689928824742
+                      RRMSE: 0.006361340117450984
+                       bias: 0.791396068637448
+                         ME: 0.9998296586187999
+                        WIA: 0.9999574183647046
+                         R2: 0.9998297877255155
+                        CCC: 0.9999148445037384
+                      SLOPE: 1.000044541525716
+                data:    year  observed        Yield
+                      0  1991  8469.616  8525.106322
+                      1  1992  4674.820  4666.814543
+                      2  1993   555.017   550.891724
+                      3  1994  3504.282  3505.616103
+                      4  1995  7820.120  7748.800048
+                      5  1996  8823.516  8856.269351
+                      6  1997  3802.295  3854.178136
+                      7  1998  2943.070  2926.598323
+                      8  1999  8379.928  8361.239740
+                      9  2000  7393.633  7378.696671
+
 .. tip::
 
    Differential Evolution (DE) is computationally intensive, especially
