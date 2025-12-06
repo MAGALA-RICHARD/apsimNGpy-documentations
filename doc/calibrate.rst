@@ -197,7 +197,13 @@ Submit optimization factors
         mp.submit_factor(**cultivar_param)
 
         print(f" {mp.n_factors} optimization factors registered.")
-         #4
+         #4 optimization factors registered.")
+
+There is still a chance to submit all defined factors at once
+
+.. code-block:: python
+
+  mp.submit_all([soil_param,cultivar_param ])
 
 Configure the optimizer
 --------------------------
@@ -252,10 +258,8 @@ Local optimization examples
         df.eval('oyield =observed/1000', inplace=True)
         # observed → scatter points
         plt.scatter(df["year"], df["ayield"], label="APSIM", s=60, color='red')
-
         # predicted → line
         plt.plot(df["year"], df["oyield"], label="Training data", linewidth=2)
-
         plt.xlabel("Time (Year)", fontsize=18)
         plt.ylabel("Maize grain yield (Mg ha⁻¹)", fontsize=18)
         plt.title("") #Observed vs Predicted Yield Over Time
