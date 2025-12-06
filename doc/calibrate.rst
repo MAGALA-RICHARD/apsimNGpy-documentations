@@ -185,6 +185,7 @@ but it will not be recognized correctly by apsimNGpy. As a result, an error will
 cultivar specific paramters are still tricky, as there is need to specify whether the cultivar to be edited is the one specified in the manager script managing the sowing operations
 
 .. note::
+
   If you are using Operations, it is not currently supported
 
 Submit optimization factors
@@ -258,8 +259,10 @@ simulations.
             constraints=(-1.1, -0.8))
         print(de)
 
-After optimization is completed, we can print the instance of the minimization and for the above code see example below,
-please note the illustration did not include the soil params, because of time constraints.
+.. tip::
+
+    After optimization is completed, we can print the instance of the minimization and for the above code see example below,
+    please note the illustration did not include the soil params, because of time constraints.
 
 .. code-block:: none
 
