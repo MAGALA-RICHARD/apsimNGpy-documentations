@@ -178,6 +178,12 @@ but it will not be recognized correctly by apsimNGpy. As a result, an error will
             "cultivar": True,  # Signals to apsimNGpy to treat it as a cultivar parameter
         }
 
+cultivar specific paramters are still tricky, as there is need to specify whether the cultivar to be edited is the one specified in the manager script managing the sowing operations
+
+.. note::
+  if you are Operations, it is not currently supported
+
+
 .. code-block:: python
 
         # Submit optimization factors
