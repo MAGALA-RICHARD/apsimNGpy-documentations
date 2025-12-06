@@ -143,6 +143,7 @@ the starting value, the candidate parameter to modify, and any additional parame
 - **other_params**: dict — any additional fixed parameters required by the APSIM component to compute or update the variable of interest.
   For details see :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path`
 
+- **cultivar**: bool to signal to apsimNGpy that the parameters on this node are cultivar specific call the relevant editor
 
 .. tip::
 
