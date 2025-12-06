@@ -218,7 +218,7 @@ There is still a chance to submit all defined factors at once
        value.
 
        In cases where `other_params` has identical names as `candidate_param`, the `candidate_param`
-       takes priority and the parameter is deleted in other_params
+       takes priority and the identical parameter is decoupled from the other_params
 
        Optimization methods that do not require bounded or initialized start
        values allow for dummy entries in ``start_value``. These placeholders are
