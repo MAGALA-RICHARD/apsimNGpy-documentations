@@ -263,7 +263,7 @@ simulations.
    Differential Evolution (DE) is computationally intensive, especially
    when the number of parameters (decision variables) is large. Each
    generation evaluates the full population of candidate solutions, which
-   can significantly increase compute time for APSIM-based calibration.
+   can significantly increase computation time for APSIM-based calibration.
    In many cases, simpler local optimization algorithms (e.g.,
    Nelder–Mead, Powell, or L-BFGS-B) may achieve comparable performance
    with far fewer evaluations. Users are encouraged to try these
