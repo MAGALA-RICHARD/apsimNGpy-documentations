@@ -70,7 +70,7 @@ the starting value, the candidate parameter to modify, and any additional parame
 - candidate_param: str — the specific model parameter(s) to be calibrated.
 
 - other_params: dict — any additional fixed parameters required by the APSIM component to compute or update the variable of interest.
-  for details see :meth:`~apsimNGpy.core.apsim.apsimModel.edit_model_by_path`
+  for details see :meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path`
 
 
 .. tip::
