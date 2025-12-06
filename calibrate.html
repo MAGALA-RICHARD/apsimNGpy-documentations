@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parameter calibration &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multi-Objective Optimization with apsimNGpy" href="moo.html" />
+    <link rel="prev" title="Distributed Computing" href="mult_core.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RELEASE NOTES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releases.html">apsimNGpy 0.39.11.20 – Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#quick-guides">Quick guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#locating-the-apsim-binaries">Locating the APSIM Binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html#changing-setting-the-apsim-installation-binaries-path">Changing/setting the APSIM installation binaries path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parameter calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#defining-the-optimization-problem">Defining the Optimization Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-the-factors">Defining the factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submit-optimization-factors">Submit optimization factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-the-optimizer">Configure the optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-differential-evolution">Use differential evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-optimization-examples">Local optimization examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#full-tutorial-code">Full tutorial code:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#parameter-definition-and-validation-utilities-for-apsim-optimization">Parameter Definition and Validation Utilities for APSIM Optimization</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Parameter calibration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/calibrate.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="parameter-calibration">
+<h1>Parameter calibration<a class="headerlink" href="#parameter-calibration" title="Link to this heading"></a></h1>
+<p>This tutorial demonstrates how to automatically calibrate APSIM parameters using the optimization algorithms
+available in apsimNGpy. For detailed information on defining and submitting optimization factors,
+refer to the API documentation for <a class="reference internal" href="api.html#apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor" title="apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">submit_factor()</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">apsim_bin_context</span>
+<span class="k">with</span> <span class="n">apsim_bin_context</span><span class="p">(</span><span class="n">apsim_bin_path</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;bin_dist/APSIM2025.8.7844.0/bin&#39;</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.minimize.single_mixed</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedVariableOptimizer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.problems.smp</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedProblem</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.tests.unittests.test_factory</span><span class="w"> </span><span class="kn">import</span> <span class="n">obs</span><span class="c1"># mimics observed data</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.problems.variables</span><span class="w"> </span><span class="kn">import</span> <span class="n">UniformVar</span><span class="p">,</span> <span class="n">QrandintVar</span>
+</pre></div>
+</div>
+<p>Some algorithms like Differential Evolution can be set to run in parallel, therefore everything needs to be executed below the module guard</p>
+<section id="defining-the-optimization-problem">
+<h2>Defining the Optimization Problem<a class="headerlink" href="#defining-the-optimization-problem" title="Link to this heading"></a></h2>
+<p>To define an optimization problem that identifies the optimum APSIM parameters, use the class <code class="xref py py-class docutils literal notranslate"><span class="pre">MixedProblem</span></code>.
+This class accepts an APSIM template file, a training (observed) dataset, and the corresponding index variables linking observed and simulated data.</p>
+<p>A key requirement is to specify a performance metric that serves as the optimization target. This metric guides the algorithm in assessing model performance and convergence quality.
+Commonly used metrics include WIA, RMSE, RRMSE, Bias, CCC, R², Slope, ME, and MAE.</p>
+<p>An example usage is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># -------------------------------------------------------------</span>
+    <span class="c1"># 1. Define the mixed-variable optimization problem</span>
+    <span class="c1"># -------------------------------------------------------------</span>
+    <span class="n">mp</span> <span class="o">=</span> <span class="n">MixedProblem</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Maize&quot;</span><span class="p">,</span>
+        <span class="n">trainer_dataset</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span>
+        <span class="n">pred_col</span><span class="o">=</span><span class="s2">&quot;Yield&quot;</span><span class="p">,</span>
+        <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;wia&quot;</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
+        <span class="n">trainer_col</span><span class="o">=</span><span class="s2">&quot;observed&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="defining-the-factors">
+<h2>Defining the factors<a class="headerlink" href="#defining-the-factors" title="Link to this heading"></a></h2>
+<p>Once the optimization problem is instantiated, the remaining task is to submit the factors, the parameters that will be sampled during the search process.
+These factors finalize the problem specification and determine the parameter space over which the optimization algorithm will operate.</p>
+<p>Each factor requires a set of python parameters that define how it will be sampled and handled by apsimNGpy execution engine.
+For example, the dictionary below specifies the target model path, the variable type and sampling range,
+the starting value, the candidate parameter to modify, and any additional parameters needed by the APSIM model component.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">soil_param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.Simulations.Simulation.Field.Soil.Organic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vtype&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">UniformVar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)],</span>
+    <span class="s2">&quot;start_value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;candidate_param&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;FOM&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;other_params&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;FBiom&quot;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s2">&quot;Carbon&quot;</span><span class="p">:</span> <span class="mf">1.89</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In general as seen in the example above, the keys in the dictionary above can be broken down as follows;</p>
+<ul>
+<li><p><strong>path</strong>: a fully qualified model path pointing to the APSIM component to be edited. For extracting this path, please see <a class="reference internal" href="model%20inspection.html#plain-inspect"><span class="std std-ref">inspect model section</span></a></p></li>
+<li><p><strong>vtype</strong>: A list defining the variable types used for sampling parameter values
+(e.g., <code class="docutils literal notranslate"><span class="pre">UniformVar</span></code>, <code class="docutils literal notranslate"><span class="pre">GridVar</span></code>, <code class="docutils literal notranslate"><span class="pre">CategoricalVar</span></code>). Variable types may also
+be provided as strings.</p>
+<ol class="arabic simple">
+<li><p><strong>ChoiceVar(items)</strong>
+Nominal (unordered categorical)
+Example: <code class="docutils literal notranslate"><span class="pre">ChoiceVar([&quot;A&quot;,</span> <span class="pre">&quot;B&quot;,</span> <span class="pre">&quot;C&quot;])</span></code></p></li>
+<li><p><strong>GridVar(values)</strong>
+Ordinal (ordered categorical)
+Example: <code class="docutils literal notranslate"><span class="pre">GridVar([2,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">16])</span></code></p></li>
+<li><p><strong>RandintVar(lower, upper)</strong>
+Integer in <code class="docutils literal notranslate"><span class="pre">[lower,</span> <span class="pre">upper]</span></code>
+Example: <code class="docutils literal notranslate"><span class="pre">RandintVar(0,</span> <span class="pre">6)</span></code></p></li>
+<li><p><strong>QrandintVar(lower, upper, q)</strong>
+Quantized integer with step <code class="docutils literal notranslate"><span class="pre">q</span></code>
+Example: <code class="docutils literal notranslate"><span class="pre">QrandintVar(0,</span> <span class="pre">12,</span> <span class="pre">3)</span></code></p></li>
+<li><p><strong>UniformVar(lower, upper)</strong>
+Continuous float range
+Example: <code class="docutils literal notranslate"><span class="pre">UniformVar(0.0,</span> <span class="pre">5.11)</span></code></p></li>
+<li><p><strong>QuniformVar(lower, upper, q)</strong>
+Quantized float with step <code class="docutils literal notranslate"><span class="pre">q</span></code>
+Example: <code class="docutils literal notranslate"><span class="pre">QuniformVar(0.0,</span> <span class="pre">5.1,</span> <span class="pre">0.3)</span></code></p></li>
+</ol>
+<p>Below is a list of allowable string names for each variable type.
+For further details, see <a class="reference internal" href="api.html#apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor" title="apsimNGpy.optimizer.problems.smp.MixedProblem.submit_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">submit_factor()</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ALLOWED_VARIABLES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Original canonical names</span>
+    <span class="s2">&quot;UniformVar&quot;</span><span class="p">:</span> <span class="n">UniformVar</span><span class="p">,</span>
+    <span class="s2">&quot;QrandintVar&quot;</span><span class="p">:</span> <span class="n">QrandintVar</span><span class="p">,</span>
+    <span class="s2">&quot;QuniformVar&quot;</span><span class="p">:</span> <span class="n">QuniformVar</span><span class="p">,</span>
+    <span class="s2">&quot;GridVar&quot;</span><span class="p">:</span> <span class="n">GridVar</span><span class="p">,</span>
+    <span class="s2">&quot;ChoiceVar&quot;</span><span class="p">:</span> <span class="n">ChoiceVar</span><span class="p">,</span>
+    <span class="s2">&quot;RandintVar&quot;</span><span class="p">:</span> <span class="n">RandintVar</span><span class="p">,</span>
+
+    <span class="c1"># Short aliases</span>
+    <span class="s2">&quot;uniform&quot;</span><span class="p">:</span> <span class="n">UniformVar</span><span class="p">,</span>
+    <span class="s2">&quot;quniform&quot;</span><span class="p">:</span> <span class="n">QuniformVar</span><span class="p">,</span>
+    <span class="s2">&quot;qrandint&quot;</span><span class="p">:</span> <span class="n">QrandintVar</span><span class="p">,</span>
+    <span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="n">GridVar</span><span class="p">,</span>
+    <span class="s2">&quot;choice&quot;</span><span class="p">:</span> <span class="n">ChoiceVar</span><span class="p">,</span>
+    <span class="s2">&quot;randint&quot;</span><span class="p">:</span> <span class="n">RandintVar</span><span class="p">,</span>
+
+    <span class="c1"># Descriptive aliases (readable English)</span>
+    <span class="s2">&quot;continuous&quot;</span><span class="p">:</span> <span class="n">UniformVar</span><span class="p">,</span>
+    <span class="s2">&quot;quantized_continuous&quot;</span><span class="p">:</span> <span class="n">QuniformVar</span><span class="p">,</span>
+    <span class="s2">&quot;quantized_int&quot;</span><span class="p">:</span> <span class="n">QrandintVar</span><span class="p">,</span>
+    <span class="s2">&quot;ordinal&quot;</span><span class="p">:</span> <span class="n">GridVar</span><span class="p">,</span>
+    <span class="s2">&quot;categorical&quot;</span><span class="p">:</span> <span class="n">ChoiceVar</span><span class="p">,</span>
+    <span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="n">RandintVar</span><span class="p">,</span>
+
+    <span class="c1"># Alternative descriptive (for domain users)</span>
+    <span class="s2">&quot;step_uniform_float&quot;</span><span class="p">:</span> <span class="n">QuniformVar</span><span class="p">,</span>
+    <span class="s2">&quot;step_random_int&quot;</span><span class="p">:</span> <span class="n">QrandintVar</span><span class="p">,</span>
+    <span class="s2">&quot;ordered_var&quot;</span><span class="p">:</span> <span class="n">GridVar</span><span class="p">,</span>
+    <span class="s2">&quot;choice_var&quot;</span><span class="p">:</span> <span class="n">ChoiceVar</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>start_value</strong>: A list of initial parameter values.
+Each entry corresponds to one parameter within the factor definition
+and is used to seed the optimizer or establish a baseline.</p></li>
+<li><dl class="simple">
+<dt><strong>candidate_param</strong>: list or tuple of str Names of APSIM variables (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;FOM&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;FBiom&quot;</span></code>) to be optimized.</dt><dd><p>These must exist within the APSIM node path.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>other_params</strong>: dict — Additional APSIM constants to fix during optimization (non-optimized). These must belong to the same APSIM node. For example, when optimizing <code class="docutils literal notranslate"><span class="pre">FBiom</span></code> but also modifying <code class="docutils literal notranslate"><span class="pre">Carbon</span></code>, supply <code class="docutils literal notranslate"><span class="pre">Carbon</span></code> under <code class="docutils literal notranslate"><span class="pre">other_params</span></code>
+For details see <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.edit_model_by_path" title="apsimNGpy.core.apsim.ApsimModel.edit_model_by_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">edit_model_by_path()</span></code></a></p></li>
+<li><dl class="simple">
+<dt><strong>cultivar</strong>: bool  Indicates whether the parameter belongs to a cultivar node. Set to</dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when defining cultivar-related optimization factors.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>Each distinct node on APSIM should appear in one single entry or submission, hence if they are multiple paramters on a single node, they should all be defined by a single entry</p></li>
+<li><p>When a factor contains multiple parameters, the fields <code class="docutils literal notranslate"><span class="pre">vtype</span></code>, <code class="docutils literal notranslate"><span class="pre">start_value</span></code>, and <code class="docutils literal notranslate"><span class="pre">candidate_param</span></code> provided as a list must be the same size as the number of parameters to optimize on that node and should be the same length</p></li>
+</ul>
+</div>
+<p>For the example above, if multiple parameters at the same model path need to be optimized, they can be defined as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">soil_param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.Simulations.Simulation.Field.Soil.Organic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vtype&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">UniformVar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">UniformVar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span>
+    <span class="s2">&quot;start_value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="s2">&quot;candidate_param&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;FOM&quot;</span><span class="p">,</span> <span class="s1">&#39;Carbon&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;other_params&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;FBiom&quot;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">,</span> <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Cultivar-specific parameters can be defined as shown below. Note that if you do not explicitly set cultivar=True, the factor may still pass Pydantic validation,
+but it will not be recognized correctly by apsimNGpy. As a result, an error will be raised when the optimizer starts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cultivar_param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vtype&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="n">QrandintVar</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">UniformVar</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">2.2</span><span class="p">)],</span>  <span class="c1"># Discrete step size of 2</span>
+    <span class="s2">&quot;start_value&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;candidate_param&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s1">&#39;[Phenology].GrainFilling.Target.FixedValue&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;[Leaf].Photosynthesis.RUE.FixedValue&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;other_params&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sowed&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="s2">&quot;cultivar&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Signals to apsimNGpy to treat it as a cultivar parameter</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>cultivar specific paramters are still tricky, as there is need to specify whether the cultivar to be edited is the one specified in the manager script managing the sowing operations</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using Operations, it is not currently supported</p>
+</div>
+</section>
+<section id="submit-optimization-factors">
+<h2>Submit optimization factors<a class="headerlink" href="#submit-optimization-factors" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">submit_factor</span><span class="p">(</span><span class="o">**</span><span class="n">soil_param</span><span class="p">)</span>
+<span class="c1"># submit the cultivar one</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">submit_factor</span><span class="p">(</span><span class="o">**</span><span class="n">cultivar_param</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">mp</span><span class="o">.</span><span class="n">n_factors</span><span class="si">}</span><span class="s2"> optimization factors registered.&quot;</span><span class="p">)</span>
+ <span class="c1">#4 optimization factors registered.&quot;)</span>
+</pre></div>
+</div>
+<p>There is still a chance to submit all defined factors at once</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">submit_all</span><span class="p">([</span><span class="n">soil_param</span><span class="p">,</span><span class="n">cultivar_param</span> <span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All submitted factors are validated using <strong>Pydantic</strong> to ensure adherence to
+expected data structures and variable types — for example checking that
+<code class="docutils literal notranslate"><span class="pre">vtype</span></code> includes valid variable types (<code class="docutils literal notranslate"><span class="pre">UniformVar</span></code>, <code class="docutils literal notranslate"><span class="pre">GridVar</span></code>),
+ensuring <code class="docutils literal notranslate"><span class="pre">path</span></code> is a valid string, and that start_values is a string.</p>
+<p>After Pydantic validation, an additional structural check ensures that the
+lengths of <code class="docutils literal notranslate"><span class="pre">vtype</span></code>, <code class="docutils literal notranslate"><span class="pre">start_value</span></code>, and <code class="docutils literal notranslate"><span class="pre">candidate_param</span></code> are identical.
+Each candidate parameter must have a matching variable type and initial
+value.</p>
+<p>In cases where <code class="docutils literal notranslate"><span class="pre">other_params</span></code> has identical names as <code class="docutils literal notranslate"><span class="pre">candidate_param</span></code>, the <code class="docutils literal notranslate"><span class="pre">candidate_param</span></code>
+takes priority and the identical parameter is decoupled from the other_params</p>
+<p>Optimization methods that do not require bounded or initialized start
+values allow for dummy entries in <code class="docutils literal notranslate"><span class="pre">start_value</span></code>. These placeholders are
+accepted without affecting the optimization process. The system remains
+flexible across both stochastic and deterministic search methods.</p>
+</div>
+</section>
+<section id="configure-the-optimizer">
+<h2>Configure the optimizer<a class="headerlink" href="#configure-the-optimizer" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">minim</span> <span class="o">=</span> <span class="n">MixedVariableOptimizer</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">mp</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="use-differential-evolution">
+<h2>Use differential evolution<a class="headerlink" href="#use-differential-evolution" title="Link to this heading"></a></h2>
+<p>apsimNGpy provides a high-level wrapper for Differential Evolution
+(DE), enabling robust APSIM calibration without requiring users to
+manage low-level evolutionary mechanics. DE is well suited to the
+irregular, nonlinear parameter landscapes common in crop and soil
+model calibration. Its population-based search balances broad
+exploration with fine-scale refinement. Effective performance is
+typically achieved using moderate population sizes (20–40), but you may consider making the population as 10 * number of parameters, mutation
+factors between 0.6 and 0.9, and crossover rates between 0.7 and
+0.9. For metrics where larger values indicate improved model
+performance (such as WIA, CCC, R², and slope), apsimNGpy internally
+transforms the problem into a minimization task, which requires
+negative constraint bounds. Parallel execution via the <code class="docutils literal notranslate"><span class="pre">workers</span></code>
+argument is essential for reducing computation time during APSIM
+simulations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">de</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_de</span><span class="p">(</span>
+    <span class="n">use_threads</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">updating</span><span class="o">=</span><span class="s2">&quot;deferred&quot;</span><span class="p">,</span>
+    <span class="n">workers</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">popsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">constraints</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Differential Evolution (DE) is computationally intensive, especially
+when the number of parameters (decision variables) is large. Each
+generation evaluates the full population of candidate solutions, which
+can significantly increase computation time for APSIM-based calibration.
+In many cases, simpler local optimization algorithms (e.g.,
+Nelder–Mead, Powell, or L-BFGS-B) may achieve comparable performance
+with far fewer evaluations. Users are encouraged to try these
+lower-cost local methods first, and adopt DE only when local
+algorithms consistently fail to identify satisfactory solutions or
+when the objective landscape is highly irregular or multi-modal.</p>
+</div>
+</section>
+<section id="local-optimization-examples">
+<h2>Local optimization examples<a class="headerlink" href="#local-optimization-examples" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="n">nelda</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;Nelder-Mead&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nelda</span><span class="p">)</span>
+<span class="n">powell</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;Powell&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">powell</span><span class="p">)</span>
+<span class="n">sqlp</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;L-BFGS-B&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;gtol&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span>
+    <span class="s2">&quot;ftol&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span>
+    <span class="s2">&quot;maxfun&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+    <span class="s2">&quot;maxiter&quot;</span><span class="p">:</span> <span class="mi">30000</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqlp</span><span class="p">)</span>
+<span class="n">bfgs</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;BFGS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bfgs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Optimization completed:&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After the optimization is completed, compare the simulated results with the training dataset
+using the newly optimized parameters. The data attribute contains both the observed and simulated datasets, enabling direct comparison and evaluation of model performance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="c1"># sns.relplot(x=&quot;year&quot;, y=&quot;y&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">df</span><span class="o">=</span> <span class="n">de</span><span class="o">.</span><span class="n">data</span>
+<span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;ayield =Yield/1000&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;oyield =observed/1000&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># observed → scatter points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ayield&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;APSIM&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="c1"># predicted → line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;oyield&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training data&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (Year)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Maize grain yield (Mg ha⁻¹)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="c1">#Observed vs Predicted Yield Over Time</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figures.png&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="s2">&quot;figures.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="full-tutorial-code">
+<h2>Full tutorial code:<a class="headerlink" href="#full-tutorial-code" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.minimize.single_mixed</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedVariableOptimizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.problems.smp</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.problems.variables</span><span class="w"> </span><span class="kn">import</span> <span class="n">UniformVar</span><span class="p">,</span> <span class="n">QrandintVar</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.tests.unittests.test_factory</span><span class="w"> </span><span class="kn">import</span> <span class="n">obs</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># -------------------------------------------------------------</span>
+    <span class="c1"># 1. Define the mixed-variable optimization problem</span>
+    <span class="c1"># -------------------------------------------------------------</span>
+    <span class="n">mp</span> <span class="o">=</span> <span class="n">MixedProblem</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Maize&quot;</span><span class="p">,</span>
+        <span class="n">trainer_dataset</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span>
+        <span class="n">pred_col</span><span class="o">=</span><span class="s2">&quot;Yield&quot;</span><span class="p">,</span>
+        <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;wia&quot;</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
+        <span class="n">trainer_col</span><span class="o">=</span><span class="s2">&quot;observed&quot;</span>
+    <span class="p">)</span>
+
+
+    <span class="c1"># (a) Continuous initial fresh soil organic matter factor</span>
+    <span class="n">soil_param</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.Simulations.Simulation.Field.Soil.Organic&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vtype&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">UniformVar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)],</span>
+        <span class="s2">&quot;start_value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;candidate_param&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;FOM&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;other_params&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;FBiom&quot;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s2">&quot;Carbon&quot;</span><span class="p">:</span> <span class="mf">1.89</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="c1"># (b) Cultivar-specific</span>
+    <span class="n">cultivar_param</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vtype&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">QrandintVar</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">UniformVar</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">)],</span>  <span class="c1"># Discrete step size of 2</span>
+        <span class="s2">&quot;start_value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;candidate_param&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;[Phenology].GrainFilling.Target.FixedValue&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;[Leaf].Photosynthesis.RUE.FixedValue&#39;</span><span class="p">],</span>
+        <span class="s2">&quot;other_params&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sowed&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+        <span class="s2">&quot;cultivar&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Signals to apsimNGpy to treat it as a cultivar parameter</span>
+    <span class="p">}</span>
+    <span class="c1"># Submit optimization factors</span>
+    <span class="n">mp</span><span class="o">.</span><span class="n">submit_factor</span><span class="p">(</span><span class="o">**</span><span class="n">soil_param</span><span class="p">)</span>
+    <span class="n">mp</span><span class="o">.</span><span class="n">submit_factor</span><span class="p">(</span><span class="o">**</span><span class="n">cultivar_param</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">mp</span><span class="o">.</span><span class="n">n_factors</span><span class="si">}</span><span class="s2"> optimization factors registered.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------</span>
+    <span class="c1"># 3. Configure and execute the optimizer</span>
+    <span class="c1"># -------------------------------------------------------------</span>
+    <span class="n">minim</span> <span class="o">=</span> <span class="n">MixedVariableOptimizer</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">mp</span><span class="p">)</span>
+    <span class="c1">#_______________________________________________</span>
+    <span class="c1"># use differential evolution</span>
+    <span class="n">de</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_de</span><span class="p">(</span>
+        <span class="n">use_threads</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">updating</span><span class="o">=</span><span class="s2">&quot;deferred&quot;</span><span class="p">,</span>
+        <span class="n">workers</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>  <span class="c1"># Number of parallel workers</span>
+        <span class="n">popsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>  <span class="c1"># Population size per generation</span>
+        <span class="n">constraints</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">),</span>     <span class="c1"># if metric indicator is one of wia, ccc , r2, slope the constraints must be negative</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Differential evolution</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">de</span><span class="p">)</span>
+    <span class="c1"># (a) Local optimization examples</span>
+    <span class="n">nelda</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;Nelder-Mead&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nelda</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">nelda</span><span class="p">)</span>
+    <span class="c1"># if you wish to switch algorithm</span>
+    <span class="n">powell</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;Powell&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Powell&#39;</span><span class="p">,</span> <span class="n">powell</span><span class="p">)</span>
+    <span class="n">sqlp</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;L-BFGS-B&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;gtol&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span>
+        <span class="s2">&quot;ftol&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span>
+        <span class="s2">&quot;maxfun&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+        <span class="s2">&quot;maxiter&quot;</span><span class="p">:</span> <span class="mi">30000</span>
+    <span class="p">})</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SQLP</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sqlp</span><span class="p">)</span>
+    <span class="n">bfgs</span> <span class="o">=</span> <span class="n">minim</span><span class="o">.</span><span class="n">minimize_with_local</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;BFGS&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;bfgs</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">bfgs</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Optimization completed:&quot;</span><span class="p">)</span>
+    <span class="c1"># now plot the results</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">df</span><span class="o">=</span> <span class="n">de</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;ayield =Yield/1000&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;oyield =observed/1000&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># observed → scatter points</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ayield&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;APSIM&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="c1"># predicted → line</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;oyield&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training data&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (Year)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Maize grain yield (Mg ha⁻¹)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="c1">#Observed vs Predicted Yield Over Time</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figures.png&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="s2">&quot;figures.png&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mult_core.html" class="btn btn-neutral float-left" title="Distributed Computing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="moo.html" class="btn btn-neutral float-right" title="Multi-Objective Optimization with apsimNGpy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
