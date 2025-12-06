@@ -62,6 +62,8 @@ the starting value, the candidate parameter to modify, and any additional parame
             "other_params": {"FBiom": 0.04, "Carbon": 1.89},
         }
 
+In general as seen in the example above, the keys in the dictionary above can be broken down as follows;
+
 - **path**: a fully qualified model path pointing to the APSIM component to be edited. For extracting this path, please see :ref:`inspect model section <plain_inspect>`
 
 - **vtype**: A list defining the variable types used for sampling parameter values
