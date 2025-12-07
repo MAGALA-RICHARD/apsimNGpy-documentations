@@ -182,7 +182,49 @@ but it will not be recognized correctly by apsimNGpy. As a result, an error will
             "cultivar": True,  # Signals to apsimNGpy to treat it as a cultivar parameter
         }
 
-cultivar specific paramters are still tricky, as there is need to specify whether the cultivar to be edited is the one specified in the manager script managing the sowing operations
+cultivar specific paramters are still tricky, as there is need to specify whether the cultivar to be
+edited is the one specified in the manager script managing the sowing operations. There are also situations where you may want to
+optimize the parameters of a cultivar **that is not the one currently
+specified in the manager script**. In such cases, you have two options.
+The first option is to explicitly indicate that the cultivar is **not yet
+sown** in the simulation, while also providing the path to the manager
+script responsible for sowing it. This ensures that
+**apsimNGpy** updates the cultivar name dynamically during optimization.
+
+An example configuration is shown below:
+
+.. code-block:: python
+
+    cultivar_param = {
+        "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
+        "vtype": [
+            QrandintVar(400, 900, q=10),
+            UniformVar(0.8, 2.2)
+        ],
+        "start_value": [600, 1],
+        "candidate_param": [
+            "[Phenology].GrainFilling.Target.FixedValue",
+            "[Leaf].Photosynthesis.RUE.FixedValue"
+        ],
+        "other_params": {
+            "sowed": False,
+            "manager_path": ".Simulations.Simulation.Field.Sow using a variable rule",
+            "manager_param": "CultivarName",
+        },
+        "cultivar": True,  # Informs apsimNGpy that this is a cultivar-based parameter set
+    }
+
+A more recomended aproach is to change the cultivar_name selected to the one you are targeting and continue as in the first example.
+
+.. code-block:: python
+
+     from apsimNGpy.core.apsim import ApsimModel
+     model = ApsimModel('Maize") # please replace with your template path
+     model.edit_model_by_path(
+                path=".Simulations.Simulation.Field.Sow using a variable rule", CultivarName='Dekalb_XL82')
+     # edited path can be extracted as:
+     edited_path  =model.path
+Use the edited path in the problem definition above
 
 .. note::
 
