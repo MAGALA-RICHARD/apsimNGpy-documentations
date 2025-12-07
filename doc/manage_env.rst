@@ -85,6 +85,10 @@ Make sure you import it in your app, such that the rules are enforced and everyt
    from config import APSIM_BIN
    print("APSIM bin:", APSIM_BIN)
 
+.. admonition:: Highlight
+
+    apsimNGpy version **0.39.10.20** introduces a context manager for managing APSIM version efficiently, the examples below
+
 .. tip::
 
    Each project keeps its own .env, so paths/versions don’t clash.
