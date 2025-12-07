@@ -618,18 +618,7 @@ Full tutorial code:
             index="year",
             trainer_col="observed"
         )
-
-
-        # (a) Continuous initial fresh soil organic matter factor
-        soil_param = {
-            "path": ".Simulations.Simulation.Field.Soil.Organic",
-            "vtype": [UniformVar(1, 200)],
-            "start_value": [1],
-            "candidate_param": ["FOM"],
-            "other_params": {"FBiom": 0.04, "Carbon": 1.89},
-        }
-
-        # (b) Cultivar-specific
+        # A cultivar specific parameter
         cultivar_param = {
             "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
             "vtype": [QrandintVar(400, 900, q=10), UniformVar(0.8, 2.2)],  # Discrete step size of 2
