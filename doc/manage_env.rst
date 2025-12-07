@@ -87,7 +87,14 @@ Make sure you import it in your app, such that the rules are enforced and everyt
 
 .. admonition:: Highlight
 
-    apsimNGpy version **0.39.10.20** introduces a context manager for managing APSIM version efficiently, the examples below
+    apsimNGpy version **0.39.10.20** introduces a context manager for managing APSIM version efficiently.
+    It allows users to specify a local APSIM-NG installation path for a given script/module while preserving
+    the global default in memory — enabling cleaner multi-version testing or workflow portability without rewriting environment variables. from the above workflow
+    we can manage our APSIM path in two ways:
+
+1 use the bin path in the context manager as follows
+
+.. code-block:: python
 
 .. tip::
 
