@@ -679,6 +679,7 @@ Local optimization examples
 
 
 .. code-block:: python
+
         bfgs = minim.minimize_with_local(method="BFGS")
         print('bfgs\n', bfgs)
 
