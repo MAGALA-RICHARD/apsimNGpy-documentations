@@ -206,6 +206,10 @@ There is still a chance to submit all defined factors at once
 
   mp.submit_all([soil_param,cultivar_param ])
 
+.. note::
+
+  The above code is for demonstrating how to submit factors, for the this tutorial, only cultivar params were submitted to the optimizer for parameter calibration
+
 .. tip::
 
        All submitted factors are validated using **Pydantic** to ensure adherence to
