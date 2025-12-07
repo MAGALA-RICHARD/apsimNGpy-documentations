@@ -660,13 +660,18 @@ Full tutorial code:
             constraints=(-1.1, -0.8),     # if metric indicator is one of wia, ccc , r2, slope the constraints must be negative
         )
         print("Differential evolution\n", de)
-        # (a) Local optimization examples
+
+Local optimization examples
+---------------------------
+
+.. code-block:: python
+
         nelda = minim.minimize_with_local(method="Nelder-Mead")
         print('nelda\n', nelda)
 
 
 .. code-block:: python
-        # if you wish to switch algorithm
+
         powell = minim.minimize_with_local(method="Powell")
         print('Powell', powell)
 
