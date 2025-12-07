@@ -213,14 +213,14 @@ An example configuration is shown below:
         },
         "cultivar": True,  # Informs apsimNGpy that this is a cultivar-based parameter set
     }
+
 A more recommended and straightforward approach is to **update the
 ``CultivarName`` in the manager script to the cultivar you intend to
 calibrate**, and then proceed exactly as in the first example. This avoids
-the need to specify ``sowed=False`` or dynamically override manager
-parameters during optimization.
+the need to specify ``sowed=False`` and providing extra information such as the manager script path, and the associated param name.
 
 The following example demonstrates how to modify the cultivar name
-programmatically before defining the optimization problem:
+programmatically before defining the optimization problem, but you can also do this in the GUI
 
 .. code-block:: python
 
@@ -236,7 +236,9 @@ programmatically before defining the optimization problem:
     )
 
     # After editing, extract the updated model path for use in the optimization setup
-    edited_path = model.path
+    edited_path = 'edited_path.apsimx'
+    model.save(edited_path, reload =False) # no need to reload it back in memory
+
 
 Use ``edited_path`` in the problem definition above when specifying the
 template for calibration. This ensures that when defining the associated factors, we just signal that cultivar is sowed and no extra arguments are needed.
