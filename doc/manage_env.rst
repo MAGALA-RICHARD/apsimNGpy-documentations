@@ -92,9 +92,22 @@ Make sure you import it in your app, such that the rules are enforced and everyt
     the global default in memory — enabling cleaner multi-version testing or workflow portability without rewriting environment variables. from the above workflow
     we can manage our APSIM path in two ways:
 
-1 use the bin path in the context manager as follows
+1. Use the bin path in the context manager as follows
 
 .. code-block:: python
+
+      from apsimNGpy.core.config import apsim_bin_context
+      with apsim_bin_context("C:/APSIM/2025.05.1234/bin"):
+          from Models.Core import Simulations   # uses this bin path for loading
+          from apsimNGpy.core.apsim import ApsimModel
+
+2. Use the env file in the context manager as follows
+
+.. code-block:: python
+
+    with apsim_bin_context(dotenv_path = './config/.env', bin_key ='APSIM_BIN_PATH'):
+     from Models.Core import Simulations   # uses this bin path for loading
+     from apsimNGpy.core.apsim import ApsimModel # uses this bin path for loading
 
 .. tip::
 
