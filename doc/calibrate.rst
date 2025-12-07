@@ -663,27 +663,18 @@ Full tutorial code:
 
 Local optimization examples
 ---------------------------
-
 .. code-block:: python
 
         nelda = minim.minimize_with_local(method="Nelder-Mead")
         print('nelda\n', nelda)
-
-
-.. code-block:: python
-
         powell = minim.minimize_with_local(method="Powell")
         print('Powell', powell)
-
-.. code-block:: python
-
         lbfgs = minim.minimize_with_local(method="L-BFGS-B", options={
             "gtol": 1e-12,
             "ftol": 1e-12,
             "maxfun": 50000,
             "maxiter": 30000
         })
-
        print(lbfgs)
 
 
