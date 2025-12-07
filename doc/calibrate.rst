@@ -213,18 +213,34 @@ An example configuration is shown below:
         },
         "cultivar": True,  # Informs apsimNGpy that this is a cultivar-based parameter set
     }
+A more recommended and straightforward approach is to **update the
+``CultivarName`` in the manager script to the cultivar you intend to
+calibrate**, and then proceed exactly as in the first example. This avoids
+the need to specify ``sowed=False`` or dynamically override manager
+parameters during optimization.
 
-A more recomended aproach is to change the cultivar_name selected to the one you are targeting and continue as in the first example.
+The following example demonstrates how to modify the cultivar name
+programmatically before defining the optimization problem:
 
 .. code-block:: python
 
-     from apsimNGpy.core.apsim import ApsimModel
-     model = ApsimModel('Maize") # please replace with your template path
-     model.edit_model_by_path(
-                path=".Simulations.Simulation.Field.Sow using a variable rule", CultivarName='Dekalb_XL82')
-     # edited path can be extracted as:
-     edited_path  =model.path
-Use the edited path in the problem definition above
+    from apsimNGpy.core.apsim import ApsimModel
+
+    # Load your APSIM template (replace with your actual template path)
+    model = ApsimModel("Maize")
+
+    # Update the cultivar used in the sowing manager rule
+    model.edit_model_by_path(
+        path=".Simulations.Simulation.Field.Sow using a variable rule",
+        CultivarName="Dekalb_XL82"
+    )
+
+    # After editing, extract the updated model path for use in the optimization setup
+    edited_path = model.path
+
+Use ``edited_path`` in the problem definition above when specifying the
+template for calibration. This ensures that when defining the associated factors, we just signal that cultivar is sowed and no extra arguments are needed.
+
 
 .. note::
 
