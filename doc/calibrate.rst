@@ -213,7 +213,7 @@ There is still a chance to submit all defined factors at once
    **only cultivar parameters were actually passed to the optimizer** for
    calibration. All other factors shown in the examples are for
    illustration purposes and were not included in the optimization
-   procedure.
+   example below.
 
 .. tip::
 
