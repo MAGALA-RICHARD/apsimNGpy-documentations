@@ -446,10 +446,16 @@ require **far fewer APSIM evaluations**.
 
 .. admonition:: Highlight
 
-    The Nelder–Mead solution provides a **nearly perfect** fit
-    (WIA ≈ 0.999998) with **only 157 evaluations**, far fewer than DE (604).
+    The Nelder–Mead solution provides a **near-perfect** fit (WIA ≈ 0.999998)
+    using **only 157 evaluations**, compared to 604 for DE. The resulting RMSE
+    of approximately 8 kg ha⁻¹ is effectively negligible, and the estimated
+    slope is essentially 1.0. Together, these indicators demonstrate that the
+    Nelder–Mead algorithm solved this calibration problem with exceptional
+    precision.
+
 
 .. code-block:: python
+
         powell = minim.minimize_with_local(method="Powell")
         print(powell)
 
