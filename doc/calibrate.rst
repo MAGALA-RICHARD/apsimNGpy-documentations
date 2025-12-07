@@ -208,7 +208,12 @@ There is still a chance to submit all defined factors at once
 
 .. note::
 
-  The above code is for demonstrating how to submit factors, for the this tutorial, only cultivar params were submitted to the optimizer for parameter calibration
+   The code examples above are intended only to demonstrate how factors
+   *can* be submitted to the optimizer. In this tutorial, however,
+   **only cultivar parameters were actually passed to the optimizer** for
+   calibration. All other factors shown in the examples are for
+   illustration purposes and were not included in the optimization
+   procedure.
 
 .. tip::
 
