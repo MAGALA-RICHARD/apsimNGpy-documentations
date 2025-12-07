@@ -313,7 +313,7 @@ simulations.
     Under the default parameter settings, result from DE algorithms was acceptable but at a very higher cost  of **604 function
     evaluations**
 
-.. admonition:: Highlight
+.. tip::
 
    Differential Evolution (DE) is computationally intensive, especially
    when the number of parameters (decision variables) is large. Each
