@@ -9,11 +9,11 @@ refer to the API documentation for :meth:`~apsimNGpy.optimizer.problems.smp.Mixe
 
         import numpy as np
         from apsimNGpy.core.config import apsim_bin_context
-        with apsim_bin_context(apsim_bin_path=r'bin_dist/APSIM2025.8.7844.0/bin'):
-            from apsimNGpy.optimizer.minimize.single_mixed import MixedVariableOptimizer
-            from apsimNGpy.optimizer.problems.smp import MixedProblem
-            from apsimNGpy.tests.unittests.test_factory import obs# mimics observed data
-            from apsimNGpy.optimizer.problems.variables import UniformVar, QrandintVar
+        # The modules below may require proper APSIM binary path specification install
+        from apsimNGpy.optimizer.minimize.single_mixed import MixedVariableOptimizer
+        from apsimNGpy.optimizer.problems.smp import MixedProblem
+        from apsimNGpy.tests.unittests.test_factory import obs# mimics observed data
+        from apsimNGpy.optimizer.problems.variables import UniformVar, QrandintVar
 
 Some algorithms like Differential Evolution can be set to run in parallel, therefore everything needs to be executed below the module guard
 
