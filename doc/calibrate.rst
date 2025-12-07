@@ -259,7 +259,8 @@ simulations.
             constraints=(-1.1, -0.8))
         print(de)
 
-.. tip::
+.. admonition:: result retrieval
+   :class: highlight
 
     After optimization is completed, we can print the instance of the minimization and for the above code see example below,
     please note the illustration did not include the soil params, because of time constraints.
