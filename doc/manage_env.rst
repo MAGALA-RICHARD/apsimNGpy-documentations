@@ -105,9 +105,15 @@ Make sure you import it in your app, such that the rules are enforced and everyt
 
 .. code-block:: python
 
-    with apsim_bin_context(dotenv_path = './config/.env', bin_key ='APSIM_BIN_PATH'):
-     from Models.Core import Simulations   # uses this bin path for loading
-     from apsimNGpy.core.apsim import ApsimModel # uses this bin path for loading
+    with apsim_bin_context(dotenv_path = './config/.env', bin_key ='APSIM_BIN'): # assumes that .env is in the config directory
+        from Models.Core import Simulations   # uses this bin path for loading
+        from apsimNGpy.core.apsim import ApsimModel # uses this bin path for loading
+
+.. admonition:: Highlight
+
+    Since the model assemblies are already loaded into memory inside the apsim_bin_context,
+    you do not need to remain inside the with block to keep using them. Once loaded, those modules (and their namespaces)
+    are global within the process, and they retain their reference to the APSIM bin path that was supplied during loading.
 
 .. tip::
 
