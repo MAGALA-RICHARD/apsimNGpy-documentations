@@ -42,6 +42,7 @@ An example usage is shown below.
             trainer_col="observed"
         )
 
+
 Defining the factors
 ---------------------
 Once the optimization problem is instantiated, the remaining task is to submit the factors, the parameters that will be sampled during the search process.
@@ -317,6 +318,17 @@ negative constraint bounds. Parallel execution via the ``workers``
 argument is essential for reducing computation time during APSIM
 simulations.
 
+.. note::
+
+   The observed dataset (``obs``) was generated using the maize cultivar
+   **Dekalb_XL82**, with the following true parameter values:
+   ``[Phenology].GrainFilling.Target.FixedValue = 813`` and
+   ``[Leaf].Photosynthesis.RUE.FixedValue = 2.0``.
+   Therefore, an effective optimization algorithm should be able to
+   recover parameter values that closely match these targets when
+   calibrating against the observed data.
+
+
 .. code-block:: python
 
         de = minim.minimize_with_de(
@@ -344,7 +356,7 @@ simulations.
      message: Optimization terminated successfully.
              success: True
                  fun: -0.9999574183647046
-                   x: (780, 1.9847370688789152)
+                   x: (800, 1.9847370688789152)
                  nit: 5
                 nfev: 604
           population: [[ 7.788e+02  1.983e+00]
