@@ -7,7 +7,6 @@ refer to the API documentation for :meth:`~apsimNGpy.optimizer.problems.smp.Mixe
 
 .. code-block:: python
 
-        import numpy as np
         from apsimNGpy.core.config import apsim_bin_context
         # The modules below may require proper APSIM binary path specification install
         from apsimNGpy.optimizer.minimize.single_mixed import MixedVariableOptimizer
@@ -614,7 +613,6 @@ Full tutorial code:
 -------------------
 .. code-block:: python
 
-    import numpy as np
     from apsimNGpy.optimizer.minimize.single_mixed import MixedVariableOptimizer
     from apsimNGpy.optimizer.problems.smp import MixedProblem
     from apsimNGpy.optimizer.problems.variables import UniformVar, QrandintVar
