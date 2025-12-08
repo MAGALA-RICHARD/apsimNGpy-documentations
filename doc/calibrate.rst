@@ -597,7 +597,7 @@ Differential Evolution Performance and Comparison with Local Optimizers
 -------------------------------------------------------------------------
 
 In this example, Differential Evolution (DE) was used to calibrate two
-APSIM parameters: ``[Phenology].GrainFilling.Target.FixedValue`` and
+APSIM parameters: ``**[Phenology].GrainFilling.Target.FixedValue**`` and
 ``[Leaf].Photosynthesis.RUE.FixedValue``. Although DE is robust for
 non-convex and multi-modal landscapes, the results in this case show that
 DE performed **relatively poorly compared to simpler local optimization
