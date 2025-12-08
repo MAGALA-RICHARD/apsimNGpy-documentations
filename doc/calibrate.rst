@@ -586,6 +586,13 @@ using the newly optimized parameters. The data attribute contains both the obser
         os.startfile("figures.png")
         plt.close()
 
+.. image:: ../images/calibrated_figure.png
+    :alt: calibrated_and_observed
+    :align: center
+    :width: 100%
+    :name: calibration_demo
+
+
 Differential Evolution Performance and Comparison with Local Optimizers
 -------------------------------------------------------------------------
 
