@@ -321,7 +321,7 @@ simulations.
 
         de = minim.minimize_with_de(
             use_threads=True,
-            updating="deferred",
+            updating="deferred", # recommended if workers > 1, otherwise use 'immediate'
             workers=14,
             popsize=30,
             maxiter=15,  # ~generations
