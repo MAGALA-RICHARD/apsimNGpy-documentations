@@ -76,6 +76,7 @@ Classes
    __________________________________
 
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.configs`
+   - :attr:`~apsimNGpy.core.apsim.ApsimModel.is_recent_version`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.managers_scripts_list`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.results`
    - :attr:`~apsimNGpy.core.apsim.ApsimModel.simulation_names`
@@ -3394,7 +3395,7 @@ Module attributes
 
 .. py:attribute:: apsimNGpy.core.config.configuration
 
-   Default value: ``Configuration(bin_path=WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morr…``
+   Default value: ``Configuration(bin_path='C:\\Users\\rmagala\\AppData\\Local\\Programs\\APSIM2025…``
 
 Functions
 ^^^^^^^^^
@@ -3731,6 +3732,7 @@ Classes
    __________________________________
 
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.configs`
+   - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.is_recent_version`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.managers_scripts_list`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.n_factors`
    - :attr:`~apsimNGpy.core.experimentmanager.ExperimentManager.results`
@@ -7692,7 +7694,7 @@ Module attributes
 
 .. py:attribute:: apsimNGpy.core.pythonet_config.CI
 
-   Default value: ``ConfigRuntimeInfo(clr_loaded=True, bin_path=WindowsPath('D:/My_BOX/Box/PhD thes…``
+   Default value: ``ConfigRuntimeInfo(clr_loaded=True, bin_path=WindowsPath('C:/Users/rmagala/AppDa…``
 
 Functions
 ^^^^^^^^^
@@ -7751,7 +7753,7 @@ Functions
    >>> reader = get_apsim_file_reader("string")    # doctest: +SKIP
    >>> sims = reader(text)                         # doctest: +SKIP
 
-.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin'), release_number: bool = False) -> Optional[str]
+.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = 'C:\\Users\\rmagala\\AppData\\Local\\Programs\\APSIM2025.12.7939.0\\bin', release_number: bool = False) -> Optional[str]
 
    Return the APSIM version string detected from the installed binaries.
 
@@ -8096,7 +8098,7 @@ Functions
    RuntimeError
        If APSIM returns a non-zero exit code.
 
-.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cpu_count=-1, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
+.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('C:/Users/rmagala/AppData/Local/Programs/APSIM2025.12.7939.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cpu_count=-1, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
 
    Run APSIM externally (cross-platform) with safe defaults.
 
@@ -8742,8 +8744,8 @@ Classes
    - *(none)*
    List of Public Methods
    -----------------------------
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_de`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_local`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.minimize_with_de`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.minimize_with_local`
 
    .. py:method:: apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.__init__(self, problem)
 
@@ -9651,7 +9653,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000002044E0CD910>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000020430151900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
