@@ -643,11 +643,8 @@ Full tutorial code:
             "cultivar": True,  # Signals to apsimNGpy to treat it as a cultivar parameter
         }
         # Submit optimization factors
-        mp.submit_factor(**soil_param)
         mp.submit_factor(**cultivar_param)
-
         print(f" {mp.n_factors} optimization factors registered.")
-
         # -------------------------------------------------------------
         # 3. Configure and execute the optimizer
         # -------------------------------------------------------------
@@ -675,18 +672,15 @@ Local optimization examples
             "gtol": 1e-12,
             "ftol": 1e-12,
             "maxfun": 50000,
-            "maxiter": 30000
-        })
-       print(lbfgs)
-
-
-.. code-block:: python
-
+            "maxiter": 30000})
+        print(lbfgs)
         bfgs = minim.minimize_with_local(method="BFGS")
         print('bfgs\n', bfgs)
 
         print("\nOptimization completed:")
+        # ----------------------------------
         # now plot the results
+        # ---------------------------------
         import matplotlib.pyplot as plt
         import os
         plt.figure(figsize=(8, 6))
@@ -704,6 +698,7 @@ Local optimization examples
         plt.grid(True)
         plt.tight_layout()
         plt.savefig("figures.png")
-        os.startfile("figures.png")
+        if hasattr('startfile'):
+           os.startfile("figures.png")
         plt.close()
 
