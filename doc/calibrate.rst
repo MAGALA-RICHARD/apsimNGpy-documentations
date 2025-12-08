@@ -172,7 +172,7 @@ but it will not be recognized correctly by apsimNGpy. As a result, an error will
 
         cultivar_param = {
             "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
-            "vtype": [ QrandintVar(400, 900, q=10), UniformVar(0.8,2.2)],  # Discrete step size of 2
+            "vtype": [ QrandintVar(400, 900, q=10), UniformVar(0.8,2.2)],  # Discrete step size of 10 for the first factor
             "start_value": [ 600, 1],
             "candidate_param": [
                                 '[Phenology].GrainFilling.Target.FixedValue',
@@ -324,6 +324,12 @@ simulations.
             updating="deferred",
             workers=14,
             popsize=30,
+            maxiter=15,  # ~generations
+            tol=1e-6,
+            mutation=(0.5, 1.0),  # differential weight (can be tuple for dithering)
+            recombination=0.7,  # crossover prob
+            seed=42,  # reproducibility
+            polish=True,  # local search at the end (uses L-BFGS-B) or trust-constr if the problem ahs constraint
             constraints=(-1.1, -0.8))
         print(de)
 
@@ -696,7 +702,7 @@ Local optimization examples
         plt.grid(True)
         plt.tight_layout()
         plt.savefig("figures.png")
-        if hasattr('startfile'):
+        if hasattr(os, 'startfile'):
            os.startfile("figures.png")
         plt.close()
 
