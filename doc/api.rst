@@ -8453,53 +8453,53 @@ Classes
    int
        Recommended number of Morris paths.
 
-   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model(self, method: str, aggregation_column_name, base_simulation: str = None, num_path: int = None, jumps: int = 10, intervals: int = 20)
+   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model(self, method: str, aggregation_column_name, base_simulation: str = None, num_path: int = None, jumps: int = None, intervals: int = 20)
 
-       To be released in V0.39.12.21
+   To be released in V0.39.12.21
 
-       Finalize and build the sensitivity analysis experiment inside the APSIM file.
+   Finalize and build the sensitivity analysis experiment inside the APSIM file.
 
-       This method is a convenience wrapper around :meth:`setup`, providing a
-       simplified interface for creating the sensitivity experiment. It configures
-       the sensitivity method (Morris or Sobol), assigns the aggregation column,
-       selects or infers the base simulation, and applies the number of paths for
-       Morris analyses. After configuration, the APSIM file is updated and a
-       garbage collection call is issued to ensure clean C# object handling.
+   This method is a convenience wrapper around :meth:`setup`, providing a
+   simplified interface for creating the sensitivity experiment. It configures
+   the sensitivity method (Morris or Sobol), assigns the aggregation column,
+   selects or infers the base simulation, and applies the number of paths for
+   Morris analyses. After configuration, the APSIM file is updated and a
+   garbage collection call is issued to ensure clean C# object handling.
 
-       Parameters
-       ----------
-       method : str
-           Sensitivity analysis method to apply. Supported values are
-           ``'morris'`` and ``'sobol'``.
-       aggregation_column_name : str
-           Name of the column in the data table used to aggregate values during
-           sensitivity analysis.
-       base_simulation : str, optional
-           Name of the base simulation for constructing the experiment. If
-           ``None``, the first simulation in the file is used.
-       num_path : int, optional
-           Number of parameter paths for the Morris method. If ``None``, a default
-           is computed based on the number of decision variables.
-       jumps : int, optional
-           Morris method only. Specifies the number of discrete step movements
-           ("jumps") allowed along each parameter dimension during the construction
-           of a trajectory. Each Morris trajectory starts at a randomly selected
-           point in the parameter space and perturbs one parameter at a time by a
-           fixed step size ``Δ``. The ``jumps`` value determines how many such
-           perturbations can occur within each trajectory. Increasing ``jumps`` can
-           improve the diversity of sampled elementary effects, particularly in
-           complex models where parameters interact non-linearly. However, larger
-           values increase the computational burden because the total simulation
-           demand scales approximately with:
+   Parameters
+   ----------
+   method : str
+       Sensitivity analysis method to apply. Supported values are
+       ``'morris'`` and ``'sobol'``.
+   aggregation_column_name : str
+       Name of the column in the data table used to aggregate values during
+       sensitivity analysis.
+   base_simulation : str, optional
+       Name of the base simulation for constructing the experiment. If
+       ``None``, the first simulation in the file is used.
+   num_path : int, optional
+       Number of parameter paths for the Morris method. If ``None``, a default
+       is computed based on the number of decision variables.
+   jumps : int, optional
+       Morris method only. Specifies the number of discrete step movements
+       ("jumps") allowed along each parameter dimension during the construction
+       of a trajectory. Each Morris trajectory starts at a randomly selected
+       point in the parameter space and perturbs one parameter at a time by a
+       fixed step size ``Δ``. The ``jumps`` value determines how many such
+       perturbations can occur within each trajectory. Increasing ``jumps`` can
+       improve the diversity of sampled elementary effects, particularly in
+       complex models where parameters interact non-linearly. However, larger
+       values increase the computational burden because the total simulation
+       demand scales approximately with:
 
-           .. math::
+       .. math::
 
-               ext{Total Sims} = r (k + 1)
+           ext{Total Sims} = r (k + 1)
 
-           where ``r`` is the number of paths and ``k`` is the number of parameters.
-           If ``jumps`` is not provided, a recommended default is chosen based on
-           the number of decision variables to balance computational cost and
-           exploration quality.
+       where ``r`` is the number of paths and ``k`` is the number of parameters.
+       If ``jumps`` is not provided, a recommended default is chosen based on
+       the number of decision variables to balance computational cost and
+       exploration quality.
 
 
    intervals : int, optional
@@ -8518,11 +8518,11 @@ Classes
        efficiency.
 
 
-       Side Effects
-       ------------
-       - Modifies the APSIM file by adding a sensitivity analysis experiment.
-       - Ensures proper .NET resource cleanup via an explicit garbage collection
-         call.
+   Side Effects
+   ------------
+   - Modifies the APSIM file by adding a sensitivity analysis experiment.
+   - Ensures proper .NET resource cleanup via an explicit garbage collection
+     call.
 
    .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.set_params(self, params: dict[str, typing.Any] | None = None, **kwargs) -> 'ApsimModel' (inherited)
 
@@ -13224,7 +13224,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000291AE0CD900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001D689ADD900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
