@@ -193,6 +193,14 @@ We can get a list of available variables as follows
 
 In order to use Sobol, use `method =sobol' as follows
 
+simulated results can be accessed as follows:
+
+.. code-block:: python
+
+   morris.results
+   #same as
+   morris.get_simulated_output('Report')
+
 .. code-block:: python
 
     sobol = SensitivityManager("Maize", out_path='sob.apsimx')
