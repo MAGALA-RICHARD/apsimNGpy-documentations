@@ -61,7 +61,6 @@ Python. The key stages are:
      - sets the number of jumps,
      - defines the number of intervals,
      - and optionally customizes the step size ``Δ``.
-
    For **all** sensitivity methods, this step also sets the number of
    parameter paths, which controls the total number of simulations executed.
 
