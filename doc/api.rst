@@ -8224,6 +8224,8 @@ Classes
    __________________________________
 
    - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.configs`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.default_intervals`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.default_jumps`
    - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.is_recent_version`
    - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.managers_scripts_list`
    - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.n_factors`
@@ -8459,12 +8461,12 @@ Classes
 
    Finalize and build the sensitivity analysis experiment inside the APSIM file.
 
-   This method is a convenience wrapper around :meth:`setup`, providing a
-   simplified interface for creating the sensitivity experiment. It configures
+   This method acts as a convenience wrapper around :meth:`setup`, providing a
+   simplified interface for constructing the sensitivity experiment. It configures
    the sensitivity method (Morris or Sobol), assigns the aggregation column,
    selects or infers the base simulation, and applies the number of paths for
-   Morris analyses. After configuration, the APSIM file is updated and a
-   garbage collection call is issued to ensure clean C# object handling.
+   Morris analyses. After configuration, the APSIM file is updated and a garbage
+   collection call is issued to ensure clean C# object management.
 
    Parameters
    ----------
@@ -8475,54 +8477,49 @@ Classes
        Name of the column in the data table used to aggregate values during
        sensitivity analysis.
    base_simulation : str, optional
-       Name of the base simulation for constructing the experiment. If
-       ``None``, the first simulation in the file is used.
+       Name of the base simulation for constructing the experiment. If ``None``,
+       the first available simulation in the APSIM file is used.
    num_path : int, optional
-       Number of parameter paths for the Morris method. If ``None``, a default
-       is computed based on the number of decision variables.
+       Number of parameter paths for the Morris method. If ``None``, a default is
+       computed automatically based on the number of decision variables.
    jumps : int, optional
        Morris method only. Specifies the number of discrete step movements
-       ("jumps") allowed along each parameter dimension during the construction
-       of a trajectory. Each Morris trajectory starts at a randomly selected
-       point in the parameter space and perturbs one parameter at a time by a
-       fixed step size ``Δ``. The ``jumps`` value determines how many such
-       perturbations can occur within each trajectory. Increasing ``jumps`` can
-       improve the diversity of sampled elementary effects, particularly in
-       complex models where parameters interact non-linearly. However, larger
-       values increase the computational burden because the total simulation
-       demand scales approximately with:
+       (``"jumps"``) allowed along each parameter dimension during the construction
+       of a trajectory. Each Morris trajectory begins at a randomly selected point
+       in the parameter space and perturbs one parameter at a time by a fixed step
+       size ``Δ``. The ``jumps`` value determines how many such perturbations can
+       occur within each trajectory.
+
+       Increasing ``jumps`` improves the diversity of sampled elementary effects,
+       especially in complex models with non-linear interactions. However, higher
+       values also increase computational cost because the total number of model
+       evaluations scales approximately as:
 
        .. math::
 
-          \{Total Sims} = r (k + 1)
+           N_{\mathrm{sims}} = r \, (k + 1)
 
        where ``r`` is the number of paths and ``k`` is the number of parameters.
-       If ``jumps`` is not provided, a recommended default is chosen based on
-       the number of decision variables to balance computational cost and
-       exploration quality.
-
-
+       If ``jumps`` is not provided, a recommended default is chosen to balance
+       computational efficiency with adequate exploration of the parameter space.
    intervals : int, optional
-       Morris method only. Defines the number of discrete levels into which the
-       parameter range is partitioned. The Morris method samples parameter
-       values from a ``p``-level grid, where ``p = intervals``. Each parameter
-       range is divided into ``intervals`` equally spaced subranges, and
-       trajectories move across these grid points to compute elementary
-       effects. A higher number of intervals increases the resolution of the
-       sampling grid, enabling finer sensitivity distinctions and reducing
-       discretization error in the estimated elementary effects. However, larger
-       values of ``intervals`` also require more computational effort and may
-       lead to denser sampling without substantial improvement in screening
-       quality. When omitted, a reasonable default is chosen according to
-       standard Morris design guidelines, balancing resolution and computational
-       efficiency.
+       Morris method only. Defines the number of discrete levels into which each
+       parameter range is partitioned. The Morris method samples parameters on a
+       ``p``-level grid, where ``p = intervals``. Each parameter range is divided
+       into ``intervals`` equally spaced points, and trajectories move across these
+       grid points to compute elementary effects.
 
+       A larger number of intervals increases the resolution of the sampling grid,
+       enabling more detailed sensitivity insights and reducing discretization
+       error. However, high values also increase computational overhead and may not
+       necessarily improve screening quality. When omitted, a reasonable default is
+       selected according to standard Morris design guidelines.
 
    Side Effects
    ------------
-   - Modifies the APSIM file by adding a sensitivity analysis experiment.
-   - Ensures proper .NET resource cleanup via an explicit garbage collection
-     call.
+   - Modifies the APSIM file by inserting a sensitivity analysis experiment under
+     the ``Simulations`` node.
+   - Ensures proper .NET resource cleanup via an explicit garbage collection call.
 
    .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.set_params(self, params: dict[str, typing.Any] | None = None, **kwargs) -> 'ApsimModel' (inherited)
 
@@ -13224,7 +13221,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000201D8369900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000021C858B9900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
