@@ -67,7 +67,7 @@ Python. The key stages are:
 
 4. **Run the sensitivity simulations**
    Execute the sensitivity experiment. ``apsimNGpy`` automatically handles
-   model expansion, path construction, execution, and data storage.
+   model execution, path construction, execution, and data storage.
 
 
 Workflow Diagram
