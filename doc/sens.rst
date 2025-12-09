@@ -76,12 +76,12 @@ Workflow Diagram
 ::
 
         +-----------------+       +----------------------+
-        |instantiate class |----> |  define parameters      |
+        |instantiate class |----> |  define parameters   |
         +-----------------+       +----------------------+
                    |                       |
                    v                       v
         +-----------------+       +----------------------+
-        |  Build Node     |-----> |  Run Simulations     |
+        |  Build Nodes    |-----> |  Run Simulations     |
         +-----------------+       +----------------------+
 
 Step 1.
