@@ -198,6 +198,11 @@ In order to use Sobol use `method =sobol' as follows
     sobol = SensitivityManager("Maize", out_path='sob.apsimx')
     sobol.build_sense_model(method='Sobol', aggregation_column_name='Clock.Today')
     sobol.inspect_file()
+    sobol.run()
+    sobol.statistics
+    sobol.results
+    # same as
+    sobol.get_simulated_output('Report')
 
 .. code-block:: none
 
