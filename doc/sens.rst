@@ -147,6 +147,26 @@ Step 4
 
    exp.run()
 
+.. code-block:: python
+
+    exp.statistics
+
+.. code-block:: none
+
+             CheckpointID Clock.Today  ...            ColumnName     Indices
+    0               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
+    1               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
+    2               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
+    3               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
+    4               1  1991-05-28  ...   Maize.AboveGround.N  FirstOrder
+    ..            ...         ...  ...                   ...         ...
+    355             1  2000-04-05  ...         Maize.Grain.N       Total
+    356             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
+    357             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
+    358             1  2000-04-05  ...        Maize.Total.Wt       Total
+    359             1  2000-04-05  ...        Maize.Total.Wt       Total
+    [360 rows x 10 columns]
+
 In order to use Sobol use `method =sobol' as follows
 
 .. code-block:: python
