@@ -278,10 +278,9 @@ Same as:
 
 .. code-block:: python
 
-    sobol.edit_model('Models.Manager', model_name='Fertilise at sowing', Amount=150)
+    sobol.edit_model(model_type='Models.Manager', model_name='Fertilise at sowing', Amount=150)
 
-
-Then you can run the model as usual
+Then, you can run the model
 
 .. code-block:: python
 
