@@ -169,7 +169,6 @@ You can access the statics as follows
             359             1  2000-04-05  ...        Maize.Total.Wt       Total
             [360 rows x 10 columns]
 
-In order to use Sobol use `method =sobol' as follows
 
 We can get a list of available paramters as follows
 
@@ -193,6 +192,7 @@ We can get a list of available paramters as follows
        'Maize.Total.Wt.MuStar', 'Maize.Total.Wt.Sigma'],
       dtype='object')
 
+In order to use Sobol use `method =sobol' as follows
 
 .. code-block:: python
 
