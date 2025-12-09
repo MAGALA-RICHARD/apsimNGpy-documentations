@@ -8218,90 +8218,18 @@ Classes
        - :class:`~apsimNGpy.core.plotmanager.PlotManager` → Produces visual outputs from model results (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.core.CoreModel`  → contains methods for running and manipulating models (Not exposed in the API reference)
        - :class:`~apsimNGpy.core.apsim.ApsimModel` → Extends :class:`~apsimNGpy.core.core.Coremodel` capabilities with more functionalities
-       - :class:`~apsimNGpy.core.experimentmanager.ExperimentManager` → Manages and creates a new experiment from the suggested base.
+       - :class:`~apsimNGpy.core.senstivitymanager.SensitivityManager` → Manages and creates a new sensitivity experiment model from the suggested base.
 
    List of Public Attributes:
    __________________________________
 
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.configs`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.is_recent_version`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.managers_scripts_list`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.n_factors`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.results`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.simulation_names`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.simulations`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.simulations_list`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.str_model`
-   - :attr:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.tables_list`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.n_factors`
    List of Public Methods
    -----------------------------
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_base_replacements`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_crop_replacements`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_db_table`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_fac`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_factor`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_report_variable`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.add_sens_factor`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.adjust_dul`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.boxplot`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.build_sense_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.cat_plot`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.change_report`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.clean_up`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.clone_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.create_experiment`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.default_num_paths`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.detect_model_type`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.distribution`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.edit_cultivar`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.edit_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.edit_model_by_path`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.extract_any_soil_physical`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.extract_soil_physical`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.find_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.find_model_in_replacements`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.get_crop_replacement`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.get_model_paths`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.get_simulated_output`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.get_soil_from_web`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.get_weather_from_file`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.get_weather_from_web`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.inspect_file`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.inspect_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.inspect_model_parameters`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.inspect_model_parameters_by_path`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.move_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.plot_mva`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.preview_simulation`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.read_apsimx_data`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.recompile_edited_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.refresh_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.reg_plot`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.relplot`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.remove_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.remove_report_variable`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.rename_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.replace_downloaded_soils`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.replace_met_file`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.replace_model_from`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.replace_soil_property_values`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.replace_soils_values_by_path`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.replicate_file`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.restart_model`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.run`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.save`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.scatter_plot`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.series_plot`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.set_categorical_factor`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.set_continuous_factor`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.set_params`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.setup`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.show_met_file_in_simulation`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.summarize_numeric`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.update_cultivar`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.update_mgt`
-   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.update_mgt_by_path`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.default_num_paths`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.setup`
 
    .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.__init__(self, model, out_path=None)
 
@@ -12315,8 +12243,8 @@ Classes
    - *(none)*
    List of Public Methods
    -----------------------------
-   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.minimize_with_de`
-   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.minimize_with_local`
+   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_de`
+   - :meth:`~apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_local`
 
    .. py:method:: apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.__init__(self, problem)
 
@@ -13224,7 +13152,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001BE1718D900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000025F34F5D900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
