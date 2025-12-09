@@ -392,7 +392,8 @@ Creating an Experiment
 
 .. code-block:: python
 
-   model.create_experiment(permutation=True, verbose=False)  # Default is a permutation experiment
+   from apsimNGpy.core.experimentmanager import ExperimentManager
+   model = ExperimentManager(permutation=True, verbose=False)  # Default is a permutation experiment
 
 Adding Factors
 
