@@ -312,7 +312,6 @@ Inspect ``Cultivar`` parameters::
         model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
          model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
 
-# output
 
 .. code-block:: none
 
@@ -355,11 +354,62 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
         # output
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
-.. caution::
+.. code-block:: python
+
+    model.inspect_model_parameters('Models.WaterModel.WaterBalance', 'SoilWater')
+
+.. code-block:: none
+
+   {'Water': None,
+     'SWCON': [4.0, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3],
+     'CNCov': 0.8,
+     'KLAT': None,
+     'SummerDate': '1-Nov',
+     'PotentialInfiltration': 0.0,
+     'WinterCona': 5.0,
+     'DiffusSlope': 16.0,
+     'DiffusConst': 40.0,
+     'SummerU': 5.0,
+     'PSIDul': -100.0,
+     'PrecipitationInterception': 0.0,
+     'Depth': ['0-150',
+      '150-300',
+      '300-600',
+      '600-900',
+      '900-1200',
+      '1200-1500',
+      '1500-1800'],
+     'PoreInteractionIndex': None,
+     'CN2Bare': 73.0,
+     'CatchmentArea': nan,
+     'WinterDate': '1-Apr',
+     'SWmm': None,
+     'WinterU': 5.0,
+     'Salb': 0.12,
+     'SummerCona': 5.0,
+     'DischargeWidth': nan,
+     'dictionary': {'Salib': 'Fraction of incoming solar radiation',
+      'WinterU': 'Cumulative soil water evaporation to reach end of stage 1 soil water evaporation in winter',
+      'SummerU': 'Cumulative soil water evaporation to reach end of stage 1 soil water evaporation in winter',
+      'PSIDul': 'Matric Pontential at DUL (cm)',
+      'CNCov': 'Cover for maximum curve number reduction',
+      'DiffusSlope': 'effect of soil water storage above the lower limit on on soil water diffusivity (mm)',
+      'DischargeWidth': '',
+      'SummerCona': 'Drying coefficient for stage 2 soil water evaporation in summer',
+      'DiffusConst': 'Constant in soil water diffusivity calculations',
+      'CN2Bare': 'Run off curve number ofr bare soil with average moisture',
+      'CatchmentArea': 'Catchment area flow calculations (m2)',
+      'WinterDate': 'Start date to switch to winter parameters',
+      'WinterCona': 'Drying coefficient for stage 2 soil water evaporation in winter',
+      'SummerDate': 'Start date to switch to summer parameters'}}
+
+Description of parameter short names is given by the dictionary key as shown above in the output
+
+.. tip::
 
     If there are more than one simulation, using :meth:`~apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters` without specifying the simulation name will return a nested dictionary.
 
-Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
+    Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
 
 Example:
 
