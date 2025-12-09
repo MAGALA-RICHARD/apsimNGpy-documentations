@@ -191,7 +191,6 @@ We can get a list of available variables as follows
        'Maize.Total.Wt.MuStar', 'Maize.Total.Wt.Sigma'],
       dtype='object')
 
-In order to use Sobol, use `method =sobol' as follows
 
 Simulated results can be accessed as follows:
 
@@ -200,6 +199,8 @@ Simulated results can be accessed as follows:
    morris.results
    #same as
    morris.get_simulated_output('Report')
+
+In order to use Sobol, use `method =sobol' as follows
 
 .. code-block:: python
 
