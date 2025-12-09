@@ -8453,7 +8453,7 @@ Classes
    int
        Recommended number of Morris paths.
 
-   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model(self, method: str, aggregation_column_name, base_simulation: str = None, num_path: int = None, jumps: int = None, intervals: int = 20)
+   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model(self, method: str, aggregation_column_name, base_simulation: str = None, num_path: int = None, jumps: int = None, intervals: int = None)
 
    To be released in V0.39.12.21
 
@@ -8494,7 +8494,7 @@ Classes
 
        .. math::
 
-           ext{Total Sims} = r (k + 1)
+          \{Total Sims} = r (k + 1)
 
        where ``r`` is the number of paths and ``k`` is the number of parameters.
        If ``jumps`` is not provided, a recommended default is chosen based on
@@ -13224,7 +13224,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001D689ADD900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000201D8369900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
