@@ -169,7 +169,7 @@ You can access the statics as follows
             [360 rows x 10 columns]
 
 
-We can get a list of available paramters as follows
+We can get a list of available variables as follows
 
 .. code-block:: python
 
