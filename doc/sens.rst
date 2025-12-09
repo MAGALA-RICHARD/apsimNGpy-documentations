@@ -191,7 +191,7 @@ We can get a list of available paramters as follows
        'Maize.Total.Wt.MuStar', 'Maize.Total.Wt.Sigma'],
       dtype='object')
 
-In order to use Sobol use `method =sobol' as follows
+In order to use Sobol, use `method =sobol' as follows
 
 .. code-block:: python
 
