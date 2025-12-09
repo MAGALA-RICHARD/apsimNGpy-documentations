@@ -171,6 +171,8 @@ You can access the statics as follows
 
 In order to use Sobol use `method =sobol' as follows
 
+We can get a list of available paramters as follows
+
 .. code-block:: python
 
    exp.statistics.columns
