@@ -354,6 +354,8 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters a
         # output
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
+The code below inspects the soil water balance node
+
 .. code-block:: python
 
     model.inspect_model_parameters('Models.WaterModel.WaterBalance', 'SoilWater')
