@@ -258,9 +258,15 @@ The API interface is still the same because all methods and attributes are inher
      '.Simulations.Sobol.Simulation.Field.Harvest']
 
 .. code-block:: python
+
     exp.inspect_model_parameters_by_path('.Simulations.Sobol.Simulation.Field.Fertilise at sowing')
 
 .. code-block:: none
     {'Crop': 'Maize', 'FertiliserType': 'NO3N', 'Amount': '160.0'}
+
+We can still edit the base simulation models as follows
+
+.. code-block:: python
+
     exp.edit_model_by_path('.Simulations.Sobol.Simulation.Field.Fertilise at sowing', Amount=150)
 
