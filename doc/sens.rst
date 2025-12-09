@@ -284,6 +284,9 @@ You can check out the following API definition relevant to this  tutorial
 
 `~apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor`.
 `~apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model`.
+`~apsimNGpy.core.senstivitymanager.SensitivityManager.statistics`.
+
+
  .. seealso::
 
     - :ref:`API Reference <api_ref>`
