@@ -193,7 +193,7 @@ We can get a list of available variables as follows
 
 In order to use Sobol, use `method =sobol' as follows
 
-simulated results can be accessed as follows:
+Simulated results can be accessed as follows:
 
 .. code-block:: python
 
