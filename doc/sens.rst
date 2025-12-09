@@ -205,6 +205,8 @@ In order to use Sobol, use `method =sobol' as follows
 .. code-block:: python
 
     sobol = SensitivityManager("Maize", out_path='sob.apsimx')
+    morris.add_sens_factor(name='cnr', path='Field.SurfaceOrganicMatter.InitialCNR', lower_bound=10, upper_bound=120)
+    morris.add_sens_factor(name='cn2bare', path='Field.Soil.SoilWater.CN2Bare', lower_bound=70, upper_bound=100)
     sobol.build_sense_model(method='Sobol', aggregation_column_name='Clock.Today')
     sobol.inspect_file()
     sobol.run()
@@ -277,4 +279,15 @@ Then you can run the model as usual
 .. code-block:: python
 
    sobol.run(verbose = True)
+
+You can check out the following API definition relevant to this  tutorial
+
+`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor`.
+`~apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model`.
+ .. seealso::
+
+    - :ref:`API Reference <api_ref>`
+    - :ref:`Download Stable APSIM Version here <apsim_pin_version>`
+    - :ref:`Go back to the home page<master>`
+
 

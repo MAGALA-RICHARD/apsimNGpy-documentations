@@ -719,3 +719,8 @@ Local optimization examples
            os.startfile("figures.png")
         plt.close()
 
+.. seealso::
+
+    - :ref:`API Reference <api_ref>`
+    - :ref:`Download Stable APSIM Version here <apsim_pin_version>`
+    - :ref:`Go back to the home page<master>`
