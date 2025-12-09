@@ -187,4 +187,3 @@ to use Sobol use `method =sobol' as follows
 
 The rest of the workflow is the same as above
 
-To be continued...
