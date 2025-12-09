@@ -124,6 +124,12 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    comp_cultivar
 
 .. toctree::
+   :maxdepth: 3
+   :caption: Sensitivity Analysis
+
+   sens
+
+.. toctree::
    :maxdepth: 1
    :caption: CHEATSHEET
 
