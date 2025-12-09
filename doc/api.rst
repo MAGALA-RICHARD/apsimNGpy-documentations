@@ -8307,7 +8307,7 @@ Classes
 
    Initialize self.  See help(type(self)) for accurate signature.
 
-   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.setup(self, agg_col_name: str, method: str = 'Morris', table_name: str = 'Report', base_simulation: str = None, num_paths=None)
+   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.setup(self, agg_col_name: str, method: str = 'Morris', table_name: str = 'Report', base_simulation: str = None, num_paths=None, jumps=10, intervals=20)
 
        Initialize the sensitivity analysis experiment structure within the APSIM file.
 
@@ -8329,6 +8329,25 @@ Classes
            The number of paths should be sufficiently large to adequately explore the
            parameter space and capture variability in model responses. If ``None``, a
            default value is computed based on the number of decision variables.
+      jumps : int, optional
+           Applicable only to the Morris method. Determines the number of discrete
+           steps (also called “jumps”) each parameter is allowed to move within the
+           defined sampling grid. A higher number of jumps increases the number of
+           possible perturbation positions for a parameter and therefore results in
+           a more detailed exploration of the input space. However, increasing the
+           number of jumps also leads to more computational demand because the total
+           number of model evaluations scales with jumps × paths × (k + 1), where k
+           is the number of parameters. If omitted, a reasonable default based on
+           the number of decision variables is used.
+       intervals : int, optional
+           Applicable only to the Morris method. Specifies the number of levels into
+           which the range of each parameter is discretized. The parameter space is
+           divided into `intervals` equally spaced points, and the Morris trajectories
+           (paths) move across these points to compute elementary effects. A larger
+           number of intervals increases the resolution of the sensitivity analysis,
+           allowing finer distinction between parameter influences, but also expands
+           the computational cost. When not provided, a default value is chosen
+           according to recommended Morris design practices.
 
        Side Effects
        ------------
@@ -8434,7 +8453,7 @@ Classes
    int
        Recommended number of Morris paths.
 
-   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model(self, method: str, aggregation_column_name, base_simulation: str = None, num_path: int = None)
+   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model(self, method: str, aggregation_column_name, base_simulation: str = None, num_path: int = None, jumps: int = 10, intervals: int = 20)
 
    To be released in V0.39.12.21
 
@@ -8461,6 +8480,26 @@ Classes
    num_path : int, optional
        Number of parameter paths for the Morris method. If ``None``, a default
        is computed based on the number of decision variables.
+   jumps : int, optional
+       Applicable only to the Morris method. Determines the number of discrete
+       steps (also called “jumps”) each parameter is allowed to move within the
+       defined sampling grid. A higher number of jumps increases the number of
+       possible perturbation positions for a parameter and therefore results in
+       a more detailed exploration of the input space. However, increasing the
+       number of jumps also leads to more computational demand because the total
+       number of model evaluations scales with jumps × paths × (k + 1), where k
+       is the number of parameters. If omitted, a reasonable default based on
+       the number of decision variables is used.
+   intervals : int, optional
+       Applicable only to the Morris method. Specifies the number of levels into
+       which the range of each parameter is discretized. The parameter space is
+       divided into `intervals` equally spaced points, and the Morris trajectories
+       (paths) move across these points to compute elementary effects. A larger
+       number of intervals increases the resolution of the sensitivity analysis,
+       allowing finer distinction between parameter influences, but also expands
+       the computational cost. When not provided, a default value is chosen
+       according to recommended Morris design practices.
+
 
    Side Effects
    ------------
@@ -13168,7 +13207,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000002610C439900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000025837291900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
