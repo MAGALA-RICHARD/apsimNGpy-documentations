@@ -59,3 +59,17 @@ The sensitivity analysis process in ``apsimNGpy`` consists of four stages:
         +-----------------+       +----------------------+
         |  Build Node     |-----> |  Run Simulations     |
         +-----------------+       +----------------------+
+
+Step 1.
+
+.. code-block:: python
+
+     from apsimNGpy.core import senstivitymanager import SensitivityManager
+     exp = SensitivityManager("Maize", out_path='sob.apsimx')
+
+Step 2.
+
+.. code-block:: python
+
+     exp.add_sens_factor(name='cnr', path='Field.SurfaceOrganicMatter.InitialCNR', lower_bound=10, upper_bound=120)
+     exp.add_sens_factor(name='cn2bare', path='Field.Soil.SoilWater.CN2Bare', lower_bound=70, upper_bound=100)
