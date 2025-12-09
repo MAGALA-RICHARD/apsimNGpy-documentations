@@ -8223,13 +8223,85 @@ Classes
    List of Public Attributes:
    __________________________________
 
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.configs`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.is_recent_version`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.managers_scripts_list`
    - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.n_factors`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.results`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.simulation_names`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.simulations`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.simulations_list`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.str_model`
+   - :attr:`~apsimNGpy.core.senstivitymanager.SensitivityManager.tables_list`
    List of Public Methods
    -----------------------------
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_base_replacements`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_crop_replacements`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_db_table`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_fac`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_factor`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_report_variable`
    - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.adjust_dul`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.boxplot`
    - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.cat_plot`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.change_report`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.clean_up`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.clone_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.create_experiment`
    - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.default_num_paths`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.detect_model_type`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.distribution`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.edit_cultivar`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.edit_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.edit_model_by_path`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.extract_any_soil_physical`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.extract_soil_physical`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.find_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.find_model_in_replacements`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.get_crop_replacement`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.get_model_paths`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.get_simulated_output`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.get_soil_from_web`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.get_weather_from_file`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.get_weather_from_web`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.inspect_file`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.inspect_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.inspect_model_parameters`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.inspect_model_parameters_by_path`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.move_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.plot_mva`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.preview_simulation`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.read_apsimx_data`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.recompile_edited_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.refresh_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.reg_plot`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.relplot`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.remove_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.remove_report_variable`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.rename_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.replace_downloaded_soils`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.replace_met_file`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.replace_model_from`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.replace_soil_property_values`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.replace_soils_values_by_path`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.replicate_file`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.restart_model`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.run`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.save`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.scatter_plot`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.series_plot`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.set_categorical_factor`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.set_continuous_factor`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.set_params`
    - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.setup`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.show_met_file_in_simulation`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.summarize_numeric`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.update_cultivar`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.update_mgt`
+   - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.update_mgt_by_path`
 
    .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.__init__(self, model, out_path=None)
 
@@ -8422,7 +8494,7 @@ Classes
 
            .. math::
 
-                       ext{Total Sims} = r     imes (k + 1)
+               ext{Total Sims} = r (k + 1)
 
            where ``r`` is the number of paths and ``k`` is the number of parameters.
            If ``jumps`` is not provided, a recommended default is chosen based on
@@ -13152,7 +13224,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000025F34F5D900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000291AE0CD900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
