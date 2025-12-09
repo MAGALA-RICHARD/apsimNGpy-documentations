@@ -428,11 +428,6 @@ If the factors are associated with cultivar, then you need to add a crop replace
 
     model.add_crop_replacements(_crop='Maize')
 
-Create experiment as above
-
-.. code-block:: python
-
-    model.create_experiment(permutation=True, verbose=False)
 
 Replacing the weather data
 # replace the weather with lonlat specification as follows:
@@ -446,7 +441,8 @@ Using local weather data on the computer disk
 
 .. code-block:: python
 
-    maize_model.replace_met_file(weather_file = './pathtotheeatherfile')
+    maize_model.edit_model('Models.Climate.Weather' model_name='Weather', weather_file = './pathtotheeatherfile')
+    # weather_file  or met_file or FileName are accepted
 
 Single-Objective Optimization with apsimNGpy
 from apsimNGpy.optimizer.single import ContinuousVariable, MixedVariable
