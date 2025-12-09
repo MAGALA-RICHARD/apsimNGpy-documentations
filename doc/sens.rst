@@ -147,6 +147,8 @@ Step 4
 
    exp.run()
 
+You can access the statics as follows
+
 .. code-block:: python
 
     exp.statistics
