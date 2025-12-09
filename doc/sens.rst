@@ -154,6 +154,37 @@ to use Sobol use `method =sobol' as follows
     exp.build_sense_model(method='Sobol', aggregation_column_name='Clock.Today')
     exp.inspect_file()
 
+.. code-block:: none
+
+   └── Models.Core.Simulations: .Simulations
+    ├── Models.Storage.DataStore: .Simulations.DataStore
+    └── Models.Sobol: .Simulations.Sobol
+        └── Models.Core.Simulation: .Simulations.Sobol.Simulation
+            ├── Models.Clock: .Simulations.Sobol.Simulation.Clock
+            ├── Models.Core.Zone: .Simulations.Sobol.Simulation.Field
+            │   ├── Models.Manager: .Simulations.Sobol.Simulation.Field.Fertilise at sowing
+            │   ├── Models.Fertiliser: .Simulations.Sobol.Simulation.Field.Fertiliser
+            │   ├── Models.Manager: .Simulations.Sobol.Simulation.Field.Harvest
+            │   ├── Models.PMF.Plant: .Simulations.Sobol.Simulation.Field.Maize
+            │   ├── Models.Report: .Simulations.Sobol.Simulation.Field.Report
+            │   ├── Models.Soils.Soil: .Simulations.Sobol.Simulation.Field.Soil
+            │   │   ├── Models.Soils.Chemical: .Simulations.Sobol.Simulation.Field.Soil.Chemical
+            │   │   ├── Models.Soils.Solute: .Simulations.Sobol.Simulation.Field.Soil.NH4
+            │   │   ├── Models.Soils.Solute: .Simulations.Sobol.Simulation.Field.Soil.NO3
+            │   │   ├── Models.Soils.Organic: .Simulations.Sobol.Simulation.Field.Soil.Organic
+            │   │   ├── Models.Soils.Physical: .Simulations.Sobol.Simulation.Field.Soil.Physical
+            │   │   │   └── Models.Soils.SoilCrop: .Simulations.Sobol.Simulation.Field.Soil.Physical.MaizeSoil
+            │   │   ├── Models.Soils.Solute: .Simulations.Sobol.Simulation.Field.Soil.Urea
+            │   │   └── Models.Soils.Water: .Simulations.Sobol.Simulation.Field.Soil.Water
+            │   ├── Models.Manager: .Simulations.Sobol.Simulation.Field.Sow using a variable rule
+            │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Sobol.Simulation.Field.SurfaceOrganicMatter
+            ├── Models.Graph: .Simulations.Sobol.Simulation.Graph
+            │   └── Models.Series: .Simulations.Sobol.Simulation.Graph.Series
+            ├── Models.MicroClimate: .Simulations.Sobol.Simulation.MicroClimate
+            ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Sobol.Simulation.SoilArbitrator
+            ├── Models.Summary: .Simulations.Sobol.Simulation.Summary
+            └── Models.Climate.Weather: .Simulations.Sobol.Simulation.Weather
+
 The rest of the workflow is the same as above
 
 To be continued...
