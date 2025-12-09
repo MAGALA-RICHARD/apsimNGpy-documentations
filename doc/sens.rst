@@ -288,9 +288,9 @@ Then, you can run the model
 
 You can check out the documentation of following methods, which have been used in this  tutorial
 
-`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor`.
-`~apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model`.
-`~apsimNGpy.core.senstivitymanager.SensitivityManager.statistics`.
+:meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor`.
+:meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model`.
+:meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.statistics`.
 
 
  .. seealso::
