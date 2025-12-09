@@ -274,6 +274,13 @@ We can still edit the base simulation models as follows
 
     sobol.edit_model_by_path('.Simulations.Sobol.Simulation.Field.Fertilise at sowing', Amount=150)
 
+Same as:
+
+.. code-block:: python
+
+    sobol.edit_model('Models.Manager', model_name='Fertilise at sowing', Amount=150)
+
+
 Then you can run the model as usual
 
 .. code-block:: python
