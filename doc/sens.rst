@@ -286,7 +286,7 @@ Then, you can run the model
 
    sobol.run(verbose = True)
 
-You can check out the documentation of following methods, which have been used in this  tutorial
+You can check out the documentation of following methods, which have been used in this tutorial
 
 :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor`.
 :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model`.
