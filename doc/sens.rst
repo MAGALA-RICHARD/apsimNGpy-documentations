@@ -149,4 +149,11 @@ Step 4
 
 to use Sobol use `method =sobol' as follows
 
-..
+.. code-block:: python
+
+    exp.build_sense_model(method='Sobol', aggregation_column_name='Clock.Today')
+    exp.inspect_file()
+
+The rest of the workflow is the same as above
+
+To be continued...
