@@ -89,26 +89,26 @@ Step 1.
 .. code-block:: python
 
      from apsimNGpy.core import senstivitymanager import SensitivityManager
-     exp = SensitivityManager("Maize", out_path='sob.apsimx')
+     morris = SensitivityManager("Maize", out_path='sob.apsimx')
 
 Step 2.
 
 .. code-block:: python
 
-     exp.add_sens_factor(name='cnr', path='Field.SurfaceOrganicMatter.InitialCNR', lower_bound=10, upper_bound=120)
-     exp.add_sens_factor(name='cn2bare', path='Field.Soil.SoilWater.CN2Bare', lower_bound=70, upper_bound=100)
+     morris.add_sens_factor(name='cnr', path='Field.SurfaceOrganicMatter.InitialCNR', lower_bound=10, upper_bound=120)
+     morris.add_sens_factor(name='cn2bare', path='Field.Soil.SoilWater.CN2Bare', lower_bound=70, upper_bound=100)
 
 Step 3.
 
 .. code-block:: python
 
-    exp.build_sense_model(method='Morris', aggregation_column_name='Clock.Today', jumps=10)
+    morris.build_sense_model(method='Morris', aggregation_column_name='Clock.Today', jumps=10)
 
 We can still use any other methods inherited from :class:`~apsimNGpy.core.apsim.ApsimModel` as follows
 
 .. code-block:: python
 
-   exp.inspect_file()
+   morris.inspect_file()
 
 .. code-block:: none
 
@@ -145,13 +145,13 @@ Step 4
 
 .. code-block:: python
 
-   exp.run()
+   morris.run()
 
 You can access the statics as follows
 
 .. code-block:: python
 
-    exp.statistics
+    morris.statistics
 
 .. code-block:: none
 
@@ -175,7 +175,7 @@ We can get a list of available paramters as follows
 
 .. code-block:: python
 
-   exp.statistics.columns
+   morris.statistics.columns
 
 .. code-block:: none
 
