@@ -250,7 +250,7 @@ The API interface is still the same because all methods and attributes are inher
 
 .. code-block:: python
 
-  exp.inspect_model('Models.Manager')
+    sobol.inspect_model('Models.Manager')
 
 .. code-block:: none
 
@@ -260,7 +260,7 @@ The API interface is still the same because all methods and attributes are inher
 
 .. code-block:: python
 
-    exp.inspect_model_parameters_by_path('.Simulations.Sobol.Simulation.Field.Fertilise at sowing')
+    sobol.inspect_model_parameters_by_path('.Simulations.Sobol.Simulation.Field.Fertilise at sowing')
 
 .. code-block:: none
 
@@ -270,5 +270,11 @@ We can still edit the base simulation models as follows
 
 .. code-block:: python
 
-    exp.edit_model_by_path('.Simulations.Sobol.Simulation.Field.Fertilise at sowing', Amount=150)
+    sobol.edit_model_by_path('.Simulations.Sobol.Simulation.Field.Fertilise at sowing', Amount=150)
+
+Then you can run the model as usual
+
+.. code-block:: python
+
+   sobol.run(verbose = True)
 
