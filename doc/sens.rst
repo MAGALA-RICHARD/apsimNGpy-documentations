@@ -147,7 +147,7 @@ Step 4
 
    exp.run()
 
-to use Sobol use `method =sobol' as follows
+In order to use Sobol use `method =sobol' as follows
 
 .. code-block:: python
 
