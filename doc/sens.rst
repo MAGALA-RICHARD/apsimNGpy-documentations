@@ -155,26 +155,48 @@ You can access the statics as follows
 
 .. code-block:: none
 
-             CheckpointID Clock.Today  ...            ColumnName     Indices
-    0               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
-    1               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
-    2               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
-    3               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
-    4               1  1991-05-28  ...   Maize.AboveGround.N  FirstOrder
-    ..            ...         ...  ...                   ...         ...
-    355             1  2000-04-05  ...         Maize.Grain.N       Total
-    356             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
-    357             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
-    358             1  2000-04-05  ...        Maize.Total.Wt       Total
-    359             1  2000-04-05  ...        Maize.Total.Wt       Total
-    [360 rows x 10 columns]
+                CheckpointID Clock.Today  ...            ColumnName     Indices
+            0               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
+            1               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
+            2               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
+            3               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
+            4               1  1991-05-28  ...   Maize.AboveGround.N  FirstOrder
+            ..            ...         ...  ...                   ...         ...
+            355             1  2000-04-05  ...         Maize.Grain.N       Total
+            356             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
+            357             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
+            358             1  2000-04-05  ...        Maize.Total.Wt       Total
+            359             1  2000-04-05  ...        Maize.Total.Wt       Total
+            [360 rows x 10 columns]
 
 In order to use Sobol use `method =sobol' as follows
 
 .. code-block:: python
 
-    exp.build_sense_model(method='Sobol', aggregation_column_name='Clock.Today')
-    exp.inspect_file()
+   exp.statistics.columns
+
+.. code-block:: none
+
+   Index(['CheckpointID', 'Parameter', 'Clock.Today', 'Maize.AboveGround.Wt.Mu',
+       'Maize.AboveGround.Wt.MuStar', 'Maize.AboveGround.Wt.Sigma',
+       'Maize.AboveGround.N.Mu', 'Maize.AboveGround.N.MuStar',
+       'Maize.AboveGround.N.Sigma', 'Yield.Mu', 'Yield.MuStar', 'Yield.Sigma',
+       'Maize.Grain.Wt.Mu', 'Maize.Grain.Wt.MuStar', 'Maize.Grain.Wt.Sigma',
+       'Maize.Grain.Size.Mu', 'Maize.Grain.Size.MuStar',
+       'Maize.Grain.Size.Sigma', 'Maize.Grain.NumberFunction.Mu',
+       'Maize.Grain.NumberFunction.MuStar', 'Maize.Grain.NumberFunction.Sigma',
+       'Maize.Grain.Total.Wt.Mu', 'Maize.Grain.Total.Wt.MuStar',
+       'Maize.Grain.Total.Wt.Sigma', 'Maize.Grain.N.Mu',
+       'Maize.Grain.N.MuStar', 'Maize.Grain.N.Sigma', 'Maize.Total.Wt.Mu',
+       'Maize.Total.Wt.MuStar', 'Maize.Total.Wt.Sigma'],
+      dtype='object')
+
+
+.. code-block:: python
+
+    sobol = SensitivityManager("Maize", out_path='sob.apsimx')
+    sobol.build_sense_model(method='Sobol', aggregation_column_name='Clock.Today')
+    sobol.inspect_file()
 
 .. code-block:: none
 
