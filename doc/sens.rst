@@ -246,7 +246,7 @@ In order to use Sobol, use `method =sobol' as follows
 
 The rest of the workflow is the same as above
 
-The API interface is still the same because all methods and attributes are inherited from the :class:`~apsimNgpy.core.apsimApsimModel`. Some examples are given below:
+The API interface is still the same because all methods and attributes are inherited from the :class:`~apsimNGpy.core.apsim.ApsimModel`. Some examples are given below:
 
 .. code-block:: python
 
