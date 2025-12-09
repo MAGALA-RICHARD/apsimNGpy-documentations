@@ -8194,9 +8194,9 @@ Classes
 
 .. py:class:: apsimNGpy.core.senstivitymanager.SensitivityManager
 
-       This class inherits methods and attributes from: :class:`~apsimNGpy.core.apsim.ApsimModel` to manage APSIM Experiments
-       with pure factors or permutations. You first need to initiate the instance of this class and then initialize the
-       experiment itself with: :meth:`init_experiment`, which creates a new experiment from the suggested base simulation and ``permutation`` type
+       This class inherits methods and attributes from: :class:`~apsimNGpy.core.apsim.ApsimModel` to manage APSIM Sensitivity Analysis in apsimNGpy
+       You first need to initialize the class, define parameters and build the sensitivity analysis model
+
 
        The flow of method for :class:`ExperimentManager` class is shown in the diagram below:
 
@@ -8207,11 +8207,11 @@ Classes
               PlotManager["PlotManager"]
               CoreModel["CoreModel"]
               ApsimModel["ApsimModel"]
-              ExperimentManager["ExperimentManager"]
+              SensitivityManager["SensitivityManager"]
 
               PlotManager --> CoreModel
               CoreModel --> ApsimModel
-              ApsimModel --> ExperimentManager
+              ApsimModel --> SensitivityManager
 
        Class Roles
        ---------------
@@ -8497,7 +8497,7 @@ Classes
 
        .. math::
 
-           N_{\mathrm{sims}} = r \, (k + 1)
+           N_{\mathrm{sims}} = r , (k + 1)
 
        where ``r`` is the number of paths and ``k`` is the number of parameters.
        If ``jumps`` is not provided, a recommended default is chosen to balance
@@ -13221,7 +13221,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000021C858B9900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x00000131108AD900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 

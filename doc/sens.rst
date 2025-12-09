@@ -101,3 +101,52 @@ Step 2.
 Step 3.
 
 .. code-block:: python
+
+    exp.build_sense_model(method='Morris', aggregation_column_name='Clock.Today', jumps=10)
+
+We can still use any other methods inherited from :class:`~apsimNGpy.core.apsim.ApsimModel` as follows
+
+.. code-block:: python
+
+   exp.inspect_file()
+
+.. code-block:: none
+
+  └── Models.Core.Simulations: .Simulations
+    ├── Models.Storage.DataStore: .Simulations.DataStore
+    └── Models.Morris: .Simulations.Morris
+        └── Models.Core.Simulation: .Simulations.Morris.Simulation
+            ├── Models.Clock: .Simulations.Morris.Simulation.Clock
+            ├── Models.Core.Zone: .Simulations.Morris.Simulation.Field
+            │   ├── Models.Manager: .Simulations.Morris.Simulation.Field.Fertilise at sowing
+            │   ├── Models.Fertiliser: .Simulations.Morris.Simulation.Field.Fertiliser
+            │   ├── Models.Manager: .Simulations.Morris.Simulation.Field.Harvest
+            │   ├── Models.PMF.Plant: .Simulations.Morris.Simulation.Field.Maize
+            │   ├── Models.Report: .Simulations.Morris.Simulation.Field.Report
+            │   ├── Models.Soils.Soil: .Simulations.Morris.Simulation.Field.Soil
+            │   │   ├── Models.Soils.Chemical: .Simulations.Morris.Simulation.Field.Soil.Chemical
+            │   │   ├── Models.Soils.Solute: .Simulations.Morris.Simulation.Field.Soil.NH4
+            │   │   ├── Models.Soils.Solute: .Simulations.Morris.Simulation.Field.Soil.NO3
+            │   │   ├── Models.Soils.Organic: .Simulations.Morris.Simulation.Field.Soil.Organic
+            │   │   ├── Models.Soils.Physical: .Simulations.Morris.Simulation.Field.Soil.Physical
+            │   │   │   └── Models.Soils.SoilCrop: .Simulations.Morris.Simulation.Field.Soil.Physical.MaizeSoil
+            │   │   ├── Models.Soils.Solute: .Simulations.Morris.Simulation.Field.Soil.Urea
+            │   │   └── Models.Soils.Water: .Simulations.Morris.Simulation.Field.Soil.Water
+            │   ├── Models.Manager: .Simulations.Morris.Simulation.Field.Sow using a variable rule
+            │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Morris.Simulation.Field.SurfaceOrganicMatter
+            ├── Models.Graph: .Simulations.Morris.Simulation.Graph
+            │   └── Models.Series: .Simulations.Morris.Simulation.Graph.Series
+            ├── Models.MicroClimate: .Simulations.Morris.Simulation.MicroClimate
+            ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Morris.Simulation.SoilArbitrator
+            ├── Models.Summary: .Simulations.Morris.Simulation.Summary
+            └── Models.Climate.Weather: .Simulations.Morris.Simulation.Weather
+
+Step 4
+
+.. code-block:: python
+
+   exp.run()
+
+to use Sobol use `method =sobol' as follows
+
+..
