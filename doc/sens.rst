@@ -24,6 +24,8 @@ build the sensitivity experiment node, and run the simulations. The example
 below shows a minimal, practical workflow for constructing a sensitivity
 analysis directly from Python.
 
+SensitivityManager was added in V0.39.12.21+
+
 .. tip::
 
    ``apsimNGpy`` is designed to integrate sensitivity analysis seamlessly
