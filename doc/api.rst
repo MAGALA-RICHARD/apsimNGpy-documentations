@@ -1559,14 +1559,25 @@ Classes
 
    Examples
    --------
-   from apsimNGpy.core.apsim import ApsimModel
-   >>> sm = ApsimModel('Maize')
-   >>> sm.inspect_settable_attributes(model_type='Models.Surface.SurfaceOrganicMatter')
-   ['Canopies', 'Children', 'Enabled', 'InitialCNR', 'InitialCPR', 'InitialResidueMass', 'InitialResidueName', 'InitialResidueType',
-    'InitialStandingFraction', 'IsHidden', 'Name', 'Node', 'Parent', 'ReadOnly', 'ResourceName', 'Structure']
-   >>> sm.inspect_settable_attributes(Models.WaterModel.WaterBalance)
-   ['CN2Bare', 'CNCov', 'CNRed', 'CatchmentArea', 'Children', 'Depth', 'DiffusConst', 'DiffusSlope', 'DischargeWidth',
-   'Enabled', 'Eo', 'IsHidden', 'KLAT', 'Name', 'Node', 'PSIDul', 'Parent', 'PoreInteractionIndex', 'PotentialInfiltration', 'PrecipitationInterception', 'ReadOnly', 'ResourceName', 'Runon', 'SW', 'SWCON', 'Salb', 'Structure', 'SummerCona', 'SummerDate', 'SummerU', 'Thickness', 'Water', 'WaterTable', 'WinterCona', 'WinterDate', 'WinterU']
+   .. code-block:: python
+
+       from apsimNGpy.core.apsim import ApsimModel
+       sm = ApsimModel('Maize')
+       sm.inspect_settable_attributes(model_type='Models.Surface.SurfaceOrganicMatter')
+
+   .. code-block:: none
+
+       ['Canopies', 'Children', 'Enabled', 'InitialCNR', 'InitialCPR', 'InitialResidueMass', 'InitialResidueName', 'InitialResidueType',
+        'InitialStandingFraction', 'IsHidden', 'Name', 'Node', 'Parent', 'ReadOnly', 'ResourceName', 'Structure']
+
+   .. code-block:: python
+
+         sm.inspect_settable_attributes(Models.WaterModel.WaterBalance)
+
+   .. code-block:: none
+
+       ['CN2Bare', 'CNCov', 'CNRed', 'CatchmentArea', 'Children', 'Depth', 'DiffusConst', 'DiffusSlope', 'DischargeWidth',
+       'Enabled', 'Eo', 'IsHidden', 'KLAT', 'Name', 'Node', 'PSIDul', 'Parent', 'PoreInteractionIndex', 'PotentialInfiltration', 'PrecipitationInterception', 'ReadOnly', 'ResourceName', 'Runon', 'SW', 'SWCON', 'Salb', 'Structure', 'SummerCona', 'SummerDate', 'SummerU', 'Thickness', 'Water', 'WaterTable', 'WinterCona', 'WinterDate', 'WinterU']
 
    .. py:method:: apsimNGpy.core.apsim.ApsimModel.find_model_in_replacements(self, model_type, model_name) (inherited)
 
@@ -5647,14 +5658,25 @@ Classes
 
    Examples
    --------
-   from apsimNGpy.core.apsim import ApsimModel
-   >>> sm = ApsimModel('Maize')
-   >>> sm.inspect_settable_attributes(model_type='Models.Surface.SurfaceOrganicMatter')
-   ['Canopies', 'Children', 'Enabled', 'InitialCNR', 'InitialCPR', 'InitialResidueMass', 'InitialResidueName', 'InitialResidueType',
-    'InitialStandingFraction', 'IsHidden', 'Name', 'Node', 'Parent', 'ReadOnly', 'ResourceName', 'Structure']
-   >>> sm.inspect_settable_attributes(Models.WaterModel.WaterBalance)
-   ['CN2Bare', 'CNCov', 'CNRed', 'CatchmentArea', 'Children', 'Depth', 'DiffusConst', 'DiffusSlope', 'DischargeWidth',
-   'Enabled', 'Eo', 'IsHidden', 'KLAT', 'Name', 'Node', 'PSIDul', 'Parent', 'PoreInteractionIndex', 'PotentialInfiltration', 'PrecipitationInterception', 'ReadOnly', 'ResourceName', 'Runon', 'SW', 'SWCON', 'Salb', 'Structure', 'SummerCona', 'SummerDate', 'SummerU', 'Thickness', 'Water', 'WaterTable', 'WinterCona', 'WinterDate', 'WinterU']
+   .. code-block:: python
+
+       from apsimNGpy.core.apsim import ApsimModel
+       sm = ApsimModel('Maize')
+       sm.inspect_settable_attributes(model_type='Models.Surface.SurfaceOrganicMatter')
+
+   .. code-block:: none
+
+       ['Canopies', 'Children', 'Enabled', 'InitialCNR', 'InitialCPR', 'InitialResidueMass', 'InitialResidueName', 'InitialResidueType',
+        'InitialStandingFraction', 'IsHidden', 'Name', 'Node', 'Parent', 'ReadOnly', 'ResourceName', 'Structure']
+
+   .. code-block:: python
+
+         sm.inspect_settable_attributes(Models.WaterModel.WaterBalance)
+
+   .. code-block:: none
+
+       ['CN2Bare', 'CNCov', 'CNRed', 'CatchmentArea', 'Children', 'Depth', 'DiffusConst', 'DiffusSlope', 'DischargeWidth',
+       'Enabled', 'Eo', 'IsHidden', 'KLAT', 'Name', 'Node', 'PSIDul', 'Parent', 'PoreInteractionIndex', 'PotentialInfiltration', 'PrecipitationInterception', 'ReadOnly', 'ResourceName', 'Runon', 'SW', 'SWCON', 'Salb', 'Structure', 'SummerCona', 'SummerDate', 'SummerU', 'Thickness', 'Water', 'WaterTable', 'WinterCona', 'WinterDate', 'WinterU']
 
    .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.find_model_in_replacements(self, model_type, model_name) (inherited)
 
@@ -10207,14 +10229,25 @@ Classes
 
    Examples
    --------
-   from apsimNGpy.core.apsim import ApsimModel
-   >>> sm = ApsimModel('Maize')
-   >>> sm.inspect_settable_attributes(model_type='Models.Surface.SurfaceOrganicMatter')
-   ['Canopies', 'Children', 'Enabled', 'InitialCNR', 'InitialCPR', 'InitialResidueMass', 'InitialResidueName', 'InitialResidueType',
-    'InitialStandingFraction', 'IsHidden', 'Name', 'Node', 'Parent', 'ReadOnly', 'ResourceName', 'Structure']
-   >>> sm.inspect_settable_attributes(Models.WaterModel.WaterBalance)
-   ['CN2Bare', 'CNCov', 'CNRed', 'CatchmentArea', 'Children', 'Depth', 'DiffusConst', 'DiffusSlope', 'DischargeWidth',
-   'Enabled', 'Eo', 'IsHidden', 'KLAT', 'Name', 'Node', 'PSIDul', 'Parent', 'PoreInteractionIndex', 'PotentialInfiltration', 'PrecipitationInterception', 'ReadOnly', 'ResourceName', 'Runon', 'SW', 'SWCON', 'Salb', 'Structure', 'SummerCona', 'SummerDate', 'SummerU', 'Thickness', 'Water', 'WaterTable', 'WinterCona', 'WinterDate', 'WinterU']
+   .. code-block:: python
+
+       from apsimNGpy.core.apsim import ApsimModel
+       sm = ApsimModel('Maize')
+       sm.inspect_settable_attributes(model_type='Models.Surface.SurfaceOrganicMatter')
+
+   .. code-block:: none
+
+       ['Canopies', 'Children', 'Enabled', 'InitialCNR', 'InitialCPR', 'InitialResidueMass', 'InitialResidueName', 'InitialResidueType',
+        'InitialStandingFraction', 'IsHidden', 'Name', 'Node', 'Parent', 'ReadOnly', 'ResourceName', 'Structure']
+
+   .. code-block:: python
+
+         sm.inspect_settable_attributes(Models.WaterModel.WaterBalance)
+
+   .. code-block:: none
+
+       ['CN2Bare', 'CNCov', 'CNRed', 'CatchmentArea', 'Children', 'Depth', 'DiffusConst', 'DiffusSlope', 'DischargeWidth',
+       'Enabled', 'Eo', 'IsHidden', 'KLAT', 'Name', 'Node', 'PSIDul', 'Parent', 'PoreInteractionIndex', 'PotentialInfiltration', 'PrecipitationInterception', 'ReadOnly', 'ResourceName', 'Runon', 'SW', 'SWCON', 'Salb', 'Structure', 'SummerCona', 'SummerDate', 'SummerU', 'Thickness', 'Water', 'WaterTable', 'WinterCona', 'WinterDate', 'WinterU']
 
    .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.find_model_in_replacements(self, model_type, model_name) (inherited)
 
@@ -13620,7 +13653,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001F18571D900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000027A2B4E9900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
