@@ -106,8 +106,7 @@ Make sure you import it in your app, such that the rules are enforced and everyt
 .. code-block:: python
 
     with apsim_bin_context(dotenv_path = './config/.env', bin_key ='APSIM_BIN'): # assumes that .env is in the config directory
-        from Models.Core import Simulations   # uses this bin path for loading
-        from apsimNGpy.core.apsim import ApsimModel # uses this bin path for loading
+        from apsimNGpy.core.apsim import ApsimModel # uses the above bin path for loading
 
 .. admonition:: Highlight
 
