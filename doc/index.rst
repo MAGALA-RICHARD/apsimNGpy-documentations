@@ -59,6 +59,35 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
     **Diverse model evaluation metrics**. Built-in model prediction evaluation metrics: RMSE, RRMSE, Willmott’s Index of Agreement (WIA), Bias, MAE, Lin's CCC, and R\ :sup:`2`
 
 
+Discussion and Community Support
+================================
+
+Users who wish to ask questions, report issues, request new features,
+or engage in general discussion about **apsimNGpy** are encouraged to
+visit the project’s official GitHub Discussions page.
+
+You can access it here:
+
+    **https://github.com/MAGALA-RICHARD/apsimNGpy/discussions**
+
+This forum serves as the preferred place for:
+
+- Troubleshooting and “how-to” questions
+- Sharing workflows or examples
+- Feature proposals and use-case discussions
+- Community-driven enhancements
+- Clarification of model editing, optimization, and calibration steps
+- Contributions and collaboration with other APSIM users
+
+We welcome participation from APSIM modelers, researchers, farmers,
+and developers at all skill levels. If your question is not answered in
+the documentation, please open a discussion thread and tag it
+appropriately.
+
+For more detailed developer communication or to report reproducible bugs,
+please use the GitHub Issues tracker:
+
+    **https://github.com/MAGALA-RICHARD/apsimNGpy/issues**
 
 .. toctree::
    :maxdepth: 2
