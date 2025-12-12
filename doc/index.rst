@@ -64,30 +64,27 @@ Discussion and Community Support
 
 Users who wish to ask questions, report issues, request new features,
 or engage in general discussion about **apsimNGpy** are encouraged to
-visit the project’s official GitHub Discussions page.
-
-You can access it here:
-
-    **https://github.com/MAGALA-RICHARD/apsimNGpy/discussions**
+visit the project’s official `GitHub Discussions`_ page.
 
 This forum serves as the preferred place for:
 
 - Troubleshooting and “how-to” questions
 - Sharing workflows or examples
 - Feature proposals and use-case discussions
+- Clarification on model editing, optimization, and calibration
 - Community-driven enhancements
-- Clarification of model editing, optimization, and calibration steps
-- Contributions and collaboration with other APSIM users
+- Collaboration with other APSIM users
 
-We welcome participation from APSIM modelers, researchers, farmers,
-and developers at all skill levels. If your question is not answered in
-the documentation, please open a discussion thread and tag it
-appropriately.
+If your question is not answered in the documentation, feel free to
+start a new discussion thread and tag it appropriately.
 
-For more detailed developer communication or to report reproducible bugs,
-please use the GitHub Issues tracker:
+For reporting reproducible bugs or contributing code, please use the
+`GitHub Issues`_ tracker.
 
-    **https://github.com/MAGALA-RICHARD/apsimNGpy/issues**
+
+.. _GitHub Discussions: https://github.com/MAGALA-RICHARD/apsimNGpy/discussions
+.. _GitHub Issues: https://github.com/MAGALA-RICHARD/apsimNGpy/issues
+
 
 .. toctree::
    :maxdepth: 2
