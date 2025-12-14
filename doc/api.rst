@@ -13856,7 +13856,35 @@ Classes
 
        mp.submit_factor(**cultivar_params)
 
-   It is possible to describe your data type using string characters uisng any of the description below, implying no variable descriptor namespace import needed
+   It is possible to describe your data type using string characters uisng any of the description below,
+    implying no variable descriptor namespace import needed.
+
+   Skip variable typing
+   -----------------------
+   You can skip typing variables, implying that only continuous variables will be allowed.
+
+   .. code-block:: python
+
+      cultivar_params = {
+           "path": ".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
+           "bounds": [
+               (400, 600),
+               (400, 900)
+           ],
+           "start_value": [500, 550],
+           "candidate_param": [
+               "[Grain].MaximumGrainsPerCob.FixedValue",
+               "[Phenology].GrainFilling.Target.FixedValue"
+           ],
+           "other_params": {"sowed": True},
+           "cultivar": True}
+       mp.submit_factor(**cultivar_params)
+
+   .. versionadded:: 0.39.12.21
+
+   .. warning::
+
+     The use of both vtype-specified variables and unrestricted continuous variables within the same configuration is unsupported and will not satisfy Pydantic validation requirements.
 
    Variable Type Classification
    ----------------------------
@@ -14085,7 +14113,7 @@ Functions Provided
 Functions
 ^^^^^^^^^
 
-.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x0000020E5A945900>) -> Dict
+.. py:function:: apsimNGpy.optimizer.problems.variables.filter_apsim_params(params: apsimNGpy.optimizer.problems.variables.BaseParams, place_holder=<object object at 0x000001C7B2E11900>) -> Dict
 
    Flatten a validated BaseParams object into a dictionary suitable for APSIM execution.
 
