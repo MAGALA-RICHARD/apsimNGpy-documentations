@@ -267,6 +267,26 @@ There is still a chance to submit all defined factors at once
 
   mp.submit_all([soil_param,cultivar_param ])
 
+Submitting  Non typed factors
+-----------------------------
+Factors may be submitted without explicitly specifying a variable type (e.g., UniformVar or ChoiceVar). In this case, all
+submitted factors are treated as continuous (float) variables by default. This approach is appropriate when the decision variables are purely numeric and bounded,
+and it avoids the additional overhead of defining explicit variable-type wrappers. An example of this usage is shown below:
+
+.. code-block:: python
+
+    mp.submit_factor(path='.Simulations.Replacements.Maize.OPVPH4edited',
+                             candidate_param=[
+                                 '[Leaf].Photosynthesis.RUE.FixedValue',
+                                 '[Phenology].GrainFilling.Target.FixedValue',
+                                 '[Phenology].Juvenile.Target.FixedValue',
+                                 '[Phenology].FloweringToGrainFilling.Target.FixedValue'
+                             ],
+                             bounds=[[1, 2.4], [600, 850], [200, 260], [100,200]],
+                             start_value=[ 1.8, 800,200, 100],
+                             other_params={'sowed':True},
+                             cultivar=True)
+
 .. note::
 
    The code examples above are intended only to demonstrate how factors
