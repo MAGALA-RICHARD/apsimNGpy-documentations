@@ -260,6 +260,30 @@ Submit optimization factors
 
         print(f" {mp.n_factors} optimization factors registered.")
          #4 optimization factors registered.")
+.. tip::
+
+without value unpacking, we can submit variables directly as follows:
+
+.. code-block:: python
+
+   mp.mp.submit_factor(
+       path=".Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82",
+       vtype=[
+           QrandintVar(400, 900, q=10),
+           UniformVar(0.8, 2.2),
+       ],
+       start_value=[600, 1],
+       candidate_param=[
+           "[Phenology].GrainFilling.Target.FixedValue",
+           "[Leaf].Photosynthesis.RUE.FixedValue",
+       ],
+       other_params={
+           "sowed": False,
+           "manager_path": ".Simulations.Simulation.Field.Sow using a variable rule",
+           "manager_param": "CultivarName",
+       },
+       cultivar=True,  # Informs apsimNGpy that this is a cultivar-based parameter set
+   )
 
 There is still a chance to submit all defined factors at once
 
