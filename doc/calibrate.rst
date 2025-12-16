@@ -298,7 +298,7 @@ and it avoids the additional overhead of defining explicit variable-type wrapper
 
 .. tip::
 
-       All submitted factors are validated using .. _Pydantic: https://docs.pydantic.dev/latest/
+       All submitted factors are validated using `Pydantic <https://docs.pydantic.dev/latest/>`__.
  to ensure adherence to expected data structures and variable types — for example checking that
        ``vtype`` includes valid variable types (``UniformVar``, ``GridVar``),
        ensuring ``path`` is a valid string, and that start_values is a string.
