@@ -1,4 +1,4 @@
-Parameter calibration
+Automatic Parameter calibration
 ======================
 This tutorial demonstrates how to automatically calibrate APSIM parameters using the optimization algorithms
 available in apsimNGpy. For detailed information on defining and submitting optimization factors,
