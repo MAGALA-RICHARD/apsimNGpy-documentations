@@ -267,7 +267,7 @@ There is still a chance to submit all defined factors at once
 
   mp.submit_all([soil_param,cultivar_param ])
 
-Submitting  Non typed factors
+Submitting  untyped factors
 -----------------------------
 Factors may be submitted without explicitly specifying a variable type (e.g., UniformVar or ChoiceVar). In this case, all
 submitted factors are treated as continuous (float) variables by default. This approach is appropriate when the decision variables are purely numeric and bounded,
