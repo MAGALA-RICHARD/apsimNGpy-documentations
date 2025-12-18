@@ -5,13 +5,13 @@ Installation
 
 All versions are currently in development, phase and they can be installed as follows:
 
-- Method 1. install from PyPI
+- Method 1. Install from PyPI
 
 .. code:: console
 
     pip install apsimNGpy
 
-- Method 2. clone the current development repository
+- Method 2. Clone the current development repository
 
 .. code:: console
 
