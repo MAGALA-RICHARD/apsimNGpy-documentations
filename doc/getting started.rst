@@ -36,6 +36,10 @@ All versions are currently in development, phase and they can be installed as fo
      cd apsimNGpy
      pip install -e .
 
+.. tip::
+
+  Installing directly from GitHub is strongly recommended, as the repository is actively maintained and receives continuous bug fixes as soon as issues are reported by users.
+
 Quick guides
 -----------------------------------------
 
