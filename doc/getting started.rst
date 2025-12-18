@@ -57,6 +57,8 @@ Quick guides
 
     For APSIM NG installation please, use the pinned release shown on apsimNGpy’s home page :ref:`here <apsim_pin_version>` and any version below it to avoid forward-compatibility issues. That release features the latest APSIM NG version that has passed all unit tests against apsimNGpy’s programmatic API.
 
+The following code snippet illustrates how to inspect the APSIM binary path available for use by apsimNGpy.
+
 - 1. Use command line interface
 
 .. code-block:: console
