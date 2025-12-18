@@ -91,6 +91,7 @@ The following code snippet illustrates how to inspect the APSIM binary path avai
 
     apsim_bin_path -a
 
+If any of the above code, did not return  a **valid APSIM binary path** you have to proceed as follows.
 
 Locating the APSIM Binaries
 -------------------------------------
@@ -182,3 +183,4 @@ Or
 
    - :ref:`API Reference: <api_ref>`
    - :ref:`Download Stable APSIM Version <apsim_pin_version>`
+
