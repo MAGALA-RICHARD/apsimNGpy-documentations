@@ -59,6 +59,8 @@ Introduction
 
     **Diverse model evaluation metrics**. Built-in model prediction evaluation metrics: RMSE, RRMSE, Willmott’s Index of Agreement (WIA), Bias, MAE, Lin's CCC, and R\ :sup:`2`
 
+    Lastly but not least, it is worth noting that apsimNGpy simplifies **containerization**, allowing entire projects to be ported to another machine without reinstalling APSIM,
+     provided the required binaries are correctly referenced.
 
 Discussion and Community Support
 ================================

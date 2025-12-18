@@ -184,3 +184,5 @@ Or
    - :ref:`API Reference: <api_ref>`
    - :ref:`Download Stable APSIM Version <apsim_pin_version>`
 
+Before signing off, it is worth noting that apsimNGpy simplifies containerization, allowing entire projects to be ported to another machine without reinstalling APSIM,
+provided the required binaries are correctly referenced.
