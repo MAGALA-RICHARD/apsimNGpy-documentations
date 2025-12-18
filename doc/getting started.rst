@@ -66,7 +66,7 @@ Prerequisites
 .. tip::
 
    Use the **pinned APSIM release** shown on the apsimNGpy home page
-   (:ref:`apsim_pin_version`) to avoid forward-compatibility issues.
+   (:ref:`Download it here <apsim_pin_version>`) to avoid forward-compatibility issues.
 
 Verifying the APSIM Binary Path
 -------------------------------
