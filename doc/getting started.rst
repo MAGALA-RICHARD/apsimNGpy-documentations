@@ -11,7 +11,7 @@ All versions are currently in development, phase and they can be installed as fo
 
     pip install apsimNGpy
 
-- Method 1. clone the current development repository
+- Method 2. clone the current development repository
 
 .. code:: console
 
@@ -19,7 +19,7 @@ All versions are currently in development, phase and they can be installed as fo
     cd apsimNGpy
     pip install .
 
-- Method 2. Use pip straight away and install from github
+- Method 3. Use pip straight away and install from github
 
 .. code:: console
 
