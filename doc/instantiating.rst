@@ -105,8 +105,24 @@ instantiate and discard the edited model afterwards
     with ApsimModel('Maize') as model:
         model.run()
         df =model.results
-        df.mean(numeric_only=True)
+        summary= df.mean(numeric_only=True)
+        print(summary)
         # beyond this point, the cloned files from the model are automatically deleted
+
+.. code-block:: none
+
+    CheckpointID                     1.000000
+    SimulationID                     1.000000
+    Maize.AboveGround.Wt          1225.099950
+    Maize.AboveGround.N             12.381196
+    Yield                         5636.529504
+    Maize.Grain.Wt                 563.652950
+    Maize.Grain.Size                 0.284941
+    Maize.Grain.NumberFunction    1986.770519
+    Maize.Grain.Total.Wt           563.652950
+    Maize.Grain.N                    7.459296
+    Maize.Total.Wt                1340.837427
+    dtype: float64
 
 .. versionadded:: v0.39.10.20
 
