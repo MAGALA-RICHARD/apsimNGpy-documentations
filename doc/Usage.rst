@@ -90,10 +90,8 @@ Instantiate, use model and discard the edited model afterwards
 
 .. versionadded:: v0.39.10.20
 
-
-
 Saving the Simulation
-=====================
+^^^^^^^^^^^^^^^^^^^^^^^^
 When we load the model, it is usually assigned a random name. However, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method.
 This method takes a single argument: the desired file path or name.
 
