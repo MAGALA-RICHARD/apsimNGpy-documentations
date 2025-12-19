@@ -133,8 +133,9 @@ current model object using the ``reload`` flag.
 
 Example: Reload Enabled (Default Behavior)
 ------------------------------------------
-With ``reload=False``, the model is written to disk, but the in-memory
-model object continues to reference the original path.
+When ``reload=True`` (the default), the saved file becomes the new active
+model and the internal ``model.path`` is updated accordingly, as shown in the code below.
+
 .. code-block:: python
 
     from apsimNGpy.core.apsim import ApsimModel
@@ -152,12 +153,12 @@ model object continues to reference the original path.
     print(Path(model.path).name)
     # 'edited_maize_model.apsimx'
 
-When ``reload=True`` (the default), the saved file becomes the new active
-model and the internal ``model.path`` is updated accordingly.
+
 
 Example: Reload Disabled
 ------------------------
-
+With ``reload=False``, the model is written to disk, but the in-memory
+model object continues to reference the original path as shown in the code below.
 .. code-block:: python
 
     from apsimNGpy.core.apsim import ApsimModel
