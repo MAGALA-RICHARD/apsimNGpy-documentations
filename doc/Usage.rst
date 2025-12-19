@@ -181,8 +181,8 @@ to reference the original file.
 
 Using ``save`` Inside a Context Manager
 ---------------------------------------
-When using :class:`ApsimModel` as a context manager, special care is
-required.
+When using :class:`ApsimModel` as a context manager, special care is required. The saved file path must be different
+from the current ``model.path`` and ``reload`` must be set to ``False`` as shown below.
 
 .. code-block:: python
 
@@ -201,11 +201,7 @@ required.
 In this case, the saved file remains on disk, and the in-memory model
 continues to reference the original path.
 
-.. attention::
-
-   When using a context manager, the saved file path must be different
-   from the current ``model.path`` and ``reload`` must be set to
-   ``False``.
+.. warning::
 
    If the saved path matches the active model path and ``reload=True``,
    the saved model file may be deleted when exiting the context.
