@@ -124,7 +124,7 @@ instantiate and discard the edited model afterwards
     Maize.Total.Wt                1340.837427
     dtype: float64
 
-.. versionadded:: v0.39.10.20
+.. versionadded:: context manager was added in v0.39.10.20
 
 
 
