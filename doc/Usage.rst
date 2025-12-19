@@ -111,14 +111,12 @@ This method takes a single argument: the desired file path or name.
     model.save('./edited_maize_model.apsimx')
 
 Reloading Saved Models
-======================
-
+-----------------------------
 By default, when a model is saved, the saved file path is automatically
-reloaded into memory and becomes the new reference for the active
-:class:`~apsimNGpy.core.apsim.ApsimModel` object.
+reloaded into memory and becomes the new reference for the active :class:`~apsimNGpy.core.apsim.ApsimModel` object.
 
 Recent versions of **apsimNGpy** allow users to explicitly control this
-behavior using the ``reload`` argument in :meth:`ApsimModel.save`.
+behavior using the ``reload`` argument in :meth:`~apsimNGpy.core.apsim.ApsimModel.save`.
 
 Controlling Reload Behavior
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
