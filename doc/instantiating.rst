@@ -96,6 +96,24 @@ You can either load a built-in template or use your own APSIM file.
     # Load a local APSIM file
     model = ApsimModel(model='path/to/your/apsim/file.apsimx', out_path = './maize.apsimx')
 
+
+instantiate and discard the edited model afterwards
+
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    with ApsimModel('Maize') as model:
+        model.run()
+        df =model.results
+        df.mean(numeric_only=True)
+        # beyond this point, the cloned files from the model are automatically deleted
+
+.. versionadded:: v0.39.10.20
+
+
+
+
+
 .. admonition:: Next actions
 
     Once your model is instantiated, you're ready to run simulations, edit model components, or inspect simulation settings. See the following sections for editing examples and diagnostics tools.
