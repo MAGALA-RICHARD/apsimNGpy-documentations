@@ -159,6 +159,7 @@ Example: Reload Disabled
 ------------------------
 With ``reload=False``, the model is written to disk, but the in-memory
 model object continues to reference the original path as shown in the code below.
+
 .. code-block:: python
 
     from apsimNGpy.core.apsim import ApsimModel
@@ -180,7 +181,6 @@ to reference the original file.
 
 Using ``save`` Inside a Context Manager
 ---------------------------------------
-
 When using :class:`ApsimModel` as a context manager, special care is
 required.
 
