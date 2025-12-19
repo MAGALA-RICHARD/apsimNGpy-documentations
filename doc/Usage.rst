@@ -59,6 +59,38 @@ Another way to access the results is to use :meth:`~apsimNGpy.core.apsim.ApsimMo
     [10 rows x 16 columns]
 
 
+
+Instantiate, use model and discard the edited model afterwards
+
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    with ApsimModel('Maize') as model:
+        model.run()
+        df =model.results
+        summary= df.mean(numeric_only=True)
+        print(summary)
+        # beyond this point, the cloned files from the model are automatically deleted
+
+.. code-block:: none
+
+    CheckpointID                     1.000000
+    SimulationID                     1.000000
+    Maize.AboveGround.Wt          1225.099950
+    Maize.AboveGround.N             12.381196
+    Yield                         5636.529504
+    Maize.Grain.Wt                 563.652950
+    Maize.Grain.Size                 0.284941
+    Maize.Grain.NumberFunction    1986.770519
+    Maize.Grain.Total.Wt           563.652950
+    Maize.Grain.N                    7.459296
+    Maize.Total.Wt                1340.837427
+    dtype: float64
+
+.. versionadded:: v0.39.10.20
+
+
+
 Saving the Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When we load the model, it is usually assigned a random name. However, you can save the file using the :meth:`~apsimNGpy.core.apsim.ApsimModel.save` method.
@@ -76,6 +108,109 @@ This method takes a single argument: the desired file path or name.
 .. code-block:: python
 
     model.save('./edited_maize_model.apsimx')
+
+Reloading Saved Models
+======================
+
+By default, when a model is saved, the saved file path is automatically
+reloaded into memory and becomes the new reference for the active
+:class:`~apsimNGpy.core.apsim.ApsimModel` object.
+
+Recent versions of **apsimNGpy** allow users to explicitly control this
+behavior using the ``reload`` argument in :meth:`ApsimModel.save`.
+
+Controlling Reload Behavior
+---------------------------
+
+You can indicate whether the saved model should be reloaded into the
+current model object using the ``reload`` flag.
+
+.. code-block:: python
+
+    model.save("./edited_maize_model.apsimx", reload=False)
+
+With ``reload=False``, the model is written to disk, but the in-memory
+model object continues to reference the original path.
+
+Example: Reload Enabled (Default Behavior)
+------------------------------------------
+
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    from pathlib import Path
+
+    model = ApsimModel("Maize", out_path=Path("my_model.apsimx").resolve())
+
+    # Current model path
+    print(Path(model.path).name)
+    # 'my_model.apsimx'
+
+    model.save("./edited_maize_model.apsimx", reload=True)
+
+    # Model path is updated in memory
+    print(Path(model.path).name)
+    # 'edited_maize_model.apsimx'
+
+When ``reload=True`` (the default), the saved file becomes the new active
+model and the internal ``model.path`` is updated accordingly.
+
+Example: Reload Disabled
+------------------------
+
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    from pathlib import Path
+
+    model = ApsimModel("Maize", out_path=Path("my_model.apsimx").resolve())
+
+    print(Path(model.path).name)
+    # 'my_model.apsimx'
+
+    model.save("./edited_maize_model.apsimx", reload=False)
+
+    # Path remains unchanged in memory
+    print(Path(model.path).name)
+    # 'my_model.apsimx'
+
+Here, the new file exists on disk, but the active model object continues
+to reference the original file.
+
+Using ``save`` Inside a Context Manager
+---------------------------------------
+
+When using :class:`ApsimModel` as a context manager, special care is
+required.
+
+.. code-block:: python
+
+    from apsimNGpy.core.apsim import ApsimModel
+    from pathlib import Path
+
+    with ApsimModel("Maize", out_path=Path("my_model.apsimx").resolve()) as model:
+        print(Path(model.path).name)
+        # 'my_model.apsimx'
+
+        model.save("./edited_maize_model.apsimx", reload=False)
+
+        print(Path(model.path).name)
+        # 'my_model.apsimx'
+
+In this case, the saved file remains on disk, and the in-memory model
+continues to reference the original path.
+
+.. attention::
+
+   When using a context manager, the saved file path must be different
+   from the current ``model.path`` and ``reload`` must be set to
+   ``False``.
+
+   If the saved path matches the active model path and ``reload=True``,
+   the saved model file may be deleted when exiting the context.
+
+   When ``reload=False``, only associated APSIM database files are
+   cleaned up, and the newly saved model file is preserved.
 
 .. seealso::
 

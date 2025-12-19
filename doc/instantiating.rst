@@ -97,38 +97,6 @@ You can either load a built-in template or use your own APSIM file.
     model = ApsimModel(model='path/to/your/apsim/file.apsimx', out_path = './maize.apsimx')
 
 
-instantiate and discard the edited model afterwards
-
-.. code-block:: python
-
-    from apsimNGpy.core.apsim import ApsimModel
-    with ApsimModel('Maize') as model:
-        model.run()
-        df =model.results
-        summary= df.mean(numeric_only=True)
-        print(summary)
-        # beyond this point, the cloned files from the model are automatically deleted
-
-.. code-block:: none
-
-    CheckpointID                     1.000000
-    SimulationID                     1.000000
-    Maize.AboveGround.Wt          1225.099950
-    Maize.AboveGround.N             12.381196
-    Yield                         5636.529504
-    Maize.Grain.Wt                 563.652950
-    Maize.Grain.Size                 0.284941
-    Maize.Grain.NumberFunction    1986.770519
-    Maize.Grain.Total.Wt           563.652950
-    Maize.Grain.N                    7.459296
-    Maize.Total.Wt                1340.837427
-    dtype: float64
-
-.. versionadded:: context manager was added in v0.39.10.20
-
-
-
-
 
 .. admonition:: Next actions
 
