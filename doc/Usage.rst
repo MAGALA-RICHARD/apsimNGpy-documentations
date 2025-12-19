@@ -58,7 +58,8 @@ Another way to access the results is to use :meth:`~apsimNGpy.core.apsim.ApsimMo
     9     Simulation             1             1  ...       2006.421   8577.954  Field
     [10 rows x 16 columns]
 
-
+Using a context manager for class ApsimModel
+--------------------------------------------
 
 Instantiate, use model and discard the edited model afterwards
 
