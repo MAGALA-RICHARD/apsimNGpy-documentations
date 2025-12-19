@@ -121,8 +121,7 @@ Recent versions of **apsimNGpy** allow users to explicitly control this
 behavior using the ``reload`` argument in :meth:`ApsimModel.save`.
 
 Controlling Reload Behavior
----------------------------
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can indicate whether the saved model should be reloaded into the
 current model object using the ``reload`` flag.
 
@@ -132,7 +131,7 @@ current model object using the ``reload`` flag.
 
 
 Example: Reload Enabled (Default Behavior)
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When ``reload=True`` (the default), the saved file becomes the new active
 model and the internal ``model.path`` is updated accordingly, as shown in the code below.
 
@@ -156,7 +155,7 @@ model and the internal ``model.path`` is updated accordingly, as shown in the co
 
 
 Example: Reload Disabled
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 With ``reload=False``, the model is written to disk, but the in-memory
 model object continues to reference the original path as shown in the code below.
 
@@ -180,7 +179,7 @@ Here, the new file exists on disk, but the active model object continues
 to reference the original file.
 
 Using ``save`` Inside a Context Manager
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When using :class:`ApsimModel` as a context manager, special care is required. The saved file path must be different
 from the current ``model.path`` and ``reload`` must be set to ``False`` as shown below.
 
