@@ -111,10 +111,21 @@ Make sure you import it in your app, such that the rules are enforced and everyt
    Once a CLR assembly is loaded, it is cached for the lifetime of the Python
    process. If APSIM-related modules are imported *before* entering
    ``apsim_bin_context``, those cached assemblies will continue to be used,
-   and changing the bin path afterward will have **no effect**. Tt is advisable that you don't mixed direct imports with context depended imports in one script
+   and changing the bin path afterward will have **no effect**.
 
    To avoid this issue, always enter ``apsim_bin_context`` at the **very
    beginning** of your script or interactive session, before importing:
+
+
+   Define your APSIM workflows inside **functions** rather than at the
+   module or global scope.  Encapsulating logic within functions helps to clearly separate **local**
+   state from **global** state, reducing unintended side effects caused by
+   module-level imports, cached objects, or persistent runtime state
+   (e.g., ``pythonnet`` and CLR assemblies).
+
+   OR
+
+   It is advisable that you don't mixed direct imports with context depended imports in one script.
 
    - ``Models.*`` namespaces
    - ``apsimNGpy.core.apsim``
