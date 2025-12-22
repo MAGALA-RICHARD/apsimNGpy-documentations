@@ -92,17 +92,34 @@ Make sure you import it in your app, such that the rules are enforced and everyt
     the global default in memory — enabling cleaner multi-version testing or workflow portability without rewriting environment variables. from the above workflow
     we can manage our APSIM path in two ways:
 
-1. Use the bin path in the context manager as follows
+1. Use the bin path in the context manager as follows.
 
 .. code-block:: python
 
-      from apsimNGpy.core.config import apsim_bin_context
-      with apsim_bin_context("C:/APSIM/2025.05.1234/bin"):
-          from Models.Core import Simulations   # uses this bin path for loading
-          from apsimNGpy.core.apsim import ApsimModel
+   from apsimNGpy.core.config import apsim_bin_context
+
+   with apsim_bin_context("C:/APSIM/2025.05.1234/bin"):
+       # All CLR and APSIM assemblies are resolved from this bin path
+       from Models.Core import Simulations
+       from apsimNGpy.core.apsim import ApsimModel
 
 .. attention::
-   When using apsim_context_manager, make sure nothing from apsimNGpy modules associated with pythonnet or c# is not imported as caches will still follow your environment and the loading will remain
+
+   The APSIM bin context **must be activated before** importing any modules
+   that rely on ``pythonnet`` or APSIM C# assemblies.
+
+   Once a CLR assembly is loaded, it is cached for the lifetime of the Python
+   process. If APSIM-related modules are imported *before* entering
+   ``apsim_bin_context``, those cached assemblies will continue to be used,
+   and changing the bin path afterward will have **no effect**. Tt is advisable that you don't mixed direct imports with context depended imports in one script
+
+   To avoid this issue, always enter ``apsim_bin_context`` at the **very
+   beginning** of your script or interactive session, before importing:
+
+   - ``Models.*`` namespaces
+   - ``apsimNGpy.core.apsim``
+   - any module that indirectly initializes ``pythonnet``
+
 
 2. Use the env file in the context manager as follows
 
