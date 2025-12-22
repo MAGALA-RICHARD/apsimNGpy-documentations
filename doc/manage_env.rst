@@ -101,6 +101,9 @@ Make sure you import it in your app, such that the rules are enforced and everyt
           from Models.Core import Simulations   # uses this bin path for loading
           from apsimNGpy.core.apsim import ApsimModel
 
+.. attention::
+   When using apsim_context_manager, make sure nothing from apsimNGpy modules associated with pythonnet or c# is not imported as caches will still follow your environment and the loading will remain
+
 2. Use the env file in the context manager as follows
 
 .. code-block:: python
