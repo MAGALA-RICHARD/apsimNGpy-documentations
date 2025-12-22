@@ -116,7 +116,6 @@ Make sure you import it in your app, such that the rules are enforced and everyt
    To avoid this issue, always enter ``apsim_bin_context`` at the **very
    beginning** of your script or interactive session, before importing:
 
-
    Define your APSIM workflows inside **functions** rather than at the
    module or global scope.  Encapsulating logic within functions helps to clearly separate **local**
    state from **global** state, reducing unintended side effects caused by
@@ -126,10 +125,6 @@ Make sure you import it in your app, such that the rules are enforced and everyt
    OR
 
    It is advisable that you don't mixed direct imports with context depended imports in one script.
-
-   - ``Models.*`` namespaces
-   - ``apsimNGpy.core.apsim``
-   - any module that indirectly initializes ``pythonnet``
 
 
 2. Use the env file in the context manager as follows
