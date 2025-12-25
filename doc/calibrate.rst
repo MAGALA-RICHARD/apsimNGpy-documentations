@@ -39,7 +39,7 @@ An example usage is shown below.
             pred_col="Yield",
             metric="wia",
             index="year",
-            table = 'Report,
+            table = 'Report',
             trainer_col="observed"
         )
 
