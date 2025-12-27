@@ -134,7 +134,7 @@ Classes
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.update_mgt`
    - :meth:`~apsimNGpy.core.apsim.ApsimModel.update_mgt_by_path`
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.__init__(self, model: Union[os.PathLike, dict, str], out_path: Union[str, pathlib.Path] = <object object at 0x000001D683A3A340>, set_wd=None, **kwargs)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.__init__(self, model: Union[os.PathLike, dict, str], out_path: Union[str, pathlib.Path] = <object object at 0x0000018B3ACFE340>, set_wd=None, **kwargs)
 
    Initialize self.  See help(type(self)) for accurate signature.
 
@@ -481,7 +481,7 @@ Classes
    self : object
        Returns the updated ApsimModel instance.
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.save(self, file_name: 'Union[str, Path]' = <object object at 0x000001D6B2F38B40>, reload=True) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.save(self, file_name: 'Union[str, Path]' = <object object at 0x000001CBF2318B40>, reload=True) (inherited)
 
    Saves the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
 
@@ -2591,7 +2591,7 @@ Classes
    ---------------------------------------------------------------------------
    returns an array of the parameter values
 
-   .. py:method:: apsimNGpy.core.apsim.ApsimModel.inspect_model(self, model_type: 'Union[str, Models]', fullpath=True, scope=<object object at 0x000001D6B2F38B40>) (inherited)
+   .. py:method:: apsimNGpy.core.apsim.ApsimModel.inspect_model(self, model_type: 'Union[str, Models]', fullpath=True, scope=<object object at 0x000001CBF2318B40>) (inherited)
 
    Inspect the model types and returns the model paths or names.
 
@@ -3560,7 +3560,7 @@ Module attributes
 
 .. py:attribute:: apsimNGpy.core.config.configuration
 
-   Default value: ``Configuration(bin_path='D:\\My_BOX\\Box\\PhD thesis\\Objective two\\morrow plot…``
+   Default value: ``Configuration(bin_path='C:\\Users\\rmagala\\AppData\\Local\\Programs\\APSIM2025…``
 
 Functions
 ^^^^^^^^^
@@ -3966,7 +3966,7 @@ Classes
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.update_mgt`
    - :meth:`~apsimNGpy.core.experimentmanager.ExperimentManager.update_mgt_by_path`
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.__init__(self, model, out_path=<object object at 0x000001D683A3A340>)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.__init__(self, model, out_path=<object object at 0x0000018B3ACFE340>)
 
    Initialize self.  See help(type(self)) for accurate signature.
 
@@ -4616,7 +4616,7 @@ Classes
    self : object
        Returns the updated ApsimModel instance.
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.save(self, file_name: 'Union[str, Path]' = <object object at 0x000001D6B2F38B40>, reload=True) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.save(self, file_name: 'Union[str, Path]' = <object object at 0x000001CBF2318B40>, reload=True) (inherited)
 
    Saves the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
 
@@ -6726,7 +6726,7 @@ Classes
    ---------------------------------------------------------------------------
    returns an array of the parameter values
 
-   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model(self, model_type: 'Union[str, Models]', fullpath=True, scope=<object object at 0x000001D6B2F38B40>) (inherited)
+   .. py:method:: apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model(self, model_type: 'Union[str, Models]', fullpath=True, scope=<object object at 0x000001CBF2318B40>) (inherited)
 
    Inspect the model types and returns the model paths or names.
 
@@ -8027,13 +8027,6 @@ Classes
 apsimNGpy.core.pythonet_config
 ------------------------------
 
-Module attributes
-^^^^^^^^^^^^^^^^^^
-
-.. py:attribute:: apsimNGpy.core.pythonet_config.CI
-
-   Default value: ``ConfigRuntimeInfo(clr_loaded=True, bin_path='D:\\My_BOX\\Box\\PhD thesis\\Objec…``
-
 Functions
 ^^^^^^^^^
 
@@ -8091,7 +8084,7 @@ Functions
    >>> reader = get_apsim_file_reader("string")    # doctest: +SKIP
    >>> sims = reader(text)                         # doctest: +SKIP
 
-.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = <object object at 0x000001D683A3A320>, release_number: bool = False) -> Optional[str]
+.. py:function:: apsimNGpy.core.pythonet_config.get_apsim_version(bin_path: Union[str, pathlib.Path] = <object object at 0x0000018B3ACFE320>, release_number: bool = False) -> Optional[str]
 
    Return the APSIM version string detected from the installed binaries.
 
@@ -8140,7 +8133,7 @@ Functions
    --------
    load_pythonnet : Initialize pythonnet/CLR for APSIM binaries.
 
-.. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified(bin_path: Union[str, pathlib.Path] = <object object at 0x000001D683A3A320>) -> bool
+.. py:function:: apsimNGpy.core.pythonet_config.is_file_format_modified(bin_path: Union[str, pathlib.Path] = <object object at 0x0000018B3ACFE320>) -> bool
 
    Checks if the APSIM.CORE.dll is present in the bin path. Normally, the new APSIM version has this dll file.
 
@@ -8152,7 +8145,7 @@ Functions
    :returns:
      bool
 
-.. py:function:: apsimNGpy.core.pythonet_config.load_pythonnet(bin_path: Union[str, pathlib.Path] = <object object at 0x000001D683A3A320>)
+.. py:function:: apsimNGpy.core.pythonet_config.load_pythonnet(bin_path: Union[str, pathlib.Path] = <object object at 0x0000018B3ACFE320>)
 
    A method for loading Python for .NET (pythonnet) and APSIM models from the binary path. It is also cached to
    avoid rerunning many times.
@@ -8444,7 +8437,7 @@ Functions
    RuntimeError
        If APSIM returns a non-zero exit code.
 
-.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('D:/My_BOX/Box/PhD thesis/Objective two/morrow plots 20250821/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cpu_count=-1, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
+.. py:function:: apsimNGpy.core.runner.run_model_externally(model: 'Union[Path, str]', *, apsim_exec: 'Optional[Union[Path, str]]' = WindowsPath('C:/Users/rmagala/AppData/Local/Programs/APSIM2025.8.7844.0/bin/Models.exe'), verbose: 'bool' = False, to_csv: 'bool' = False, timeout: 'int' = 600, cpu_count=-1, cwd: 'Optional[Union[Path, str]]' = None, env: 'Optional[Mapping[str, str]]' = None) -> 'subprocess.CompletedProcess[str]'
 
    Run APSIM externally (cross-platform) with safe defaults.
 
@@ -8645,7 +8638,7 @@ Classes
    - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.update_mgt`
    - :meth:`~apsimNGpy.core.senstivitymanager.SensitivityManager.update_mgt_by_path`
 
-   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.__init__(self, model, out_path=<object object at 0x000001D683A3A340>)
+   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.__init__(self, model, out_path=<object object at 0x0000018B3ACFE340>)
 
    Initialize self.  See help(type(self)) for accurate signature.
 
@@ -9231,7 +9224,7 @@ Classes
    self : object
        Returns the updated ApsimModel instance.
 
-   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.save(self, file_name: 'Union[str, Path]' = <object object at 0x000001D6B2F38B40>, reload=True) (inherited)
+   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.save(self, file_name: 'Union[str, Path]' = <object object at 0x000001CBF2318B40>, reload=True) (inherited)
 
    Saves the current APSIM NG model (``Simulations``) to disk and refresh runtime state.
 
@@ -11341,7 +11334,7 @@ Classes
    ---------------------------------------------------------------------------
    returns an array of the parameter values
 
-   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.inspect_model(self, model_type: 'Union[str, Models]', fullpath=True, scope=<object object at 0x000001D6B2F38B40>) (inherited)
+   .. py:method:: apsimNGpy.core.senstivitymanager.SensitivityManager.inspect_model(self, model_type: 'Union[str, Models]', fullpath=True, scope=<object object at 0x000001CBF2318B40>) (inherited)
 
    Inspect the model types and returns the model paths or names.
 
@@ -12999,7 +12992,7 @@ Classes
        subclass of dict with attribute accessors, one can see which
        attributes are available using the `OptimizeResult.keys` method.
 
-   .. py:method:: apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_de(self, use_threads=False, args=(), strategy='rand1bin', maxiter=1000, popsize=None, tol=0.01, mutation=(0.5, 1), recombination=0.9, rng=None, callback=None, disp=True, polish=True, init='latinhypercube', atol=0, updating='deffered', workers=1, constraints=(), x0=None, seed=44, *, integrality=None, vectorized=False)
+   .. py:method:: apsimNGpy.optimizer.minimize.single_mixed.MixedVariableOptimizer.minimize_with_de(self, use_threads=False, args=(), strategy='rand1bin', maxiter=1000, popsize=None, tol=0.01, mutation=(0.5, 1), recombination=0.9, rng=None, callback=None, disp=False, polish=True, init='latinhypercube', atol=0, updating='deffered', workers=1, constraints=(), x0=None, seed=44, *, integrality=None, vectorized=False)
 
        Run differential evolution on the wrapped APSIM objective function.
        Finds the global minimum of a multivariate function.
@@ -13342,7 +13335,12 @@ Classes
    iteration, rather than multiple times for all the population members; the
    interpreter overhead is reduced.
 
-   .. versionadded:: 0.15.0
+   When minimizing with this function and display=False, a progress bar is shown in the console.
+   The progress bar reflects the number of algorithm iterations, not the number of APSIM simulations
+   executed by apsimNGpy. The total number of iterations displayed is therefore an estimate and depends
+   on the optimization algorithm, the nature of the problem, and the objective function (metric) being minimized
+   . In some cases, the algorithm may converge and terminate before the displayed total number of iterations is
+   reached.
 
 
        Reference:
@@ -13579,6 +13577,42 @@ Functions
            "metrics": {metric_name: value, ...},
            "data": pd.DataFrame (aligned observed/predicted pairs)
        }
+
+.. py:function:: apsimNGpy.optimizer.problems.back_end.test_inputs(model, x, insert_x_vars, runner, table=None, verbose: bool = False) -> bool
+
+   Validate an optimization input vector before running the objective function.
+
+   This function performs a pre-execution (dry-run) test of the APSIM model
+   using the provided parameter vector ``x``. It ensures that all parameters
+   can be successfully inserted into the model and that the model executes
+   without runtime errors.
+
+   The test prevents invalid configurations from entering the optimization
+   loop, thereby isolating APSIM simulation errors from optimizer logic.
+   Typical failures include incorrect APSIM node paths, missing required
+   models, or incompatible parameter definitions.
+
+   Parameters
+   ----------
+   model : ApsimModel
+       An initialized APSIM model instance.
+   x : array-like
+       Parameter vector (sample) to validate.
+   insert_x_vars : callable
+       A function that maps ``x`` into APSIM-compatible parameter updates.
+       Signature: ``insert_x_vars(x) -> dict | object``.
+   runner : callable
+       Function responsible for executing the APSIM model.
+       Signature: ``runner(model, params, table=None)``.
+   table : str or pandas.DataFrame, optional
+       APSIM output table or preloaded dataframe used during the test run.
+   verbose : bool, optional
+       If True, prints a success message upon passing validation.
+
+   Raises
+   ------
+   FailedInputTestError
+       If the APSIM model fails to execute with the provided parameters.
 
 apsimNGpy.optimizer.problems.smp
 --------------------------------
@@ -14343,7 +14377,7 @@ Classes
 
    .. py:attribute:: apsimNGpy.validation.evaluator.Validate.METRICS
 
-   Default: ``['RMSE', 'MAE', 'MSE', 'RRMSE', 'bias', 'ME', 'WIA', 'R2', 'CCC', 'SLOPE']``
+   Default: ``['BIAS', 'CCC', 'MAE', 'ME', 'MSE', 'R2', 'RMSE', 'RRMSE', 'SLOPE', 'WIA']``
 
    .. py:method:: apsimNGpy.validation.evaluator.Validate.MSE(self) -> float
 
@@ -14362,6 +14396,10 @@ Classes
    Relative Root Mean Square Error (normalized by mean of observed).
 
    .. py:method:: apsimNGpy.validation.evaluator.Validate.bias(self) -> float
+
+   Mean Bias (positive = overestimation, negative = underestimation).
+
+   .. py:method:: apsimNGpy.validation.evaluator.Validate.BIAS(self) -> float
 
    Mean Bias (positive = overestimation, negative = underestimation).
 
