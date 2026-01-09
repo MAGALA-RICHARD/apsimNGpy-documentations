@@ -360,12 +360,6 @@ Basic plotting functionality is also provided
 
     Si_sobol.plot()
 
-Added is apsim_results, representing the results from the evaluation of each sampled parameter inputs
-
-.. code-block::
-
-   Si_sobol.apsim_results
-
 We can try another method known as Morris.   The Morris method is typically used as a *screening tool* to identify influential
 parameters with relatively low computational cost. It is well suited for high-dimensional
 problems where the goal is to rank parameters rather than quantify precise sensitivities.
