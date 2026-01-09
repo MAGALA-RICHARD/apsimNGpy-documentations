@@ -345,7 +345,18 @@ If we use `to_df` a list of Pandas Dataframes is returned
                                  S2   S2_conf
       [Population, Amount] -0.06778  0.422351]]
 
-We can try another method known as morris.   The Morris method is typically used as a *screening tool* to identify influential
+Key important attributes for  samples, model results and analyses can be extracting on the returned instance is shown below.
+
+.. code-block:: python
+
+    print( Si_sobol.samples)
+    print( Si_sobol.results)
+    print( Si_sobol.analysis)
+
+# Basic plotting functionality is also provided
+sp.plot()
+
+We can try another method known as Morris.   The Morris method is typically used as a *screening tool* to identify influential
 parameters with relatively low computational cost. It is well suited for high-dimensional
 problems where the goal is to rank parameters rather than quantify precise sensitivities.
 
