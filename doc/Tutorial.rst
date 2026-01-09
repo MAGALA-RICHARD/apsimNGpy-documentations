@@ -353,7 +353,9 @@ Key important attributes for  samples, model results and analyses can be extract
     print( Si_sobol.results)
     print( Si_sobol.analysis)
 
-# Basic plotting functionality is also provided
+Basic plotting functionality is also provided
+
+.. code-block:: python
 sp.plot()
 
 We can try another method known as Morris.   The Morris method is typically used as a *screening tool* to identify influential
