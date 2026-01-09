@@ -156,6 +156,7 @@ For reporting reproducible bugs or contributing code, please use the
    :caption: Sensitivity Analysis
 
    sens
+   Tutorial
 
 .. toctree::
    :maxdepth: 1
