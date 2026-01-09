@@ -356,7 +356,8 @@ Key important attributes for  samples, model results and analyses can be extract
 Basic plotting functionality is also provided
 
 .. code-block:: python
-sp.plot()
+
+   Si_sobol.plot()
 
 We can try another method known as Morris.   The Morris method is typically used as a *screening tool* to identify influential
 parameters with relatively low computational cost. It is well suited for high-dimensional
