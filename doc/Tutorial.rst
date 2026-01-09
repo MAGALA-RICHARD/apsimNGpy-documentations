@@ -345,7 +345,7 @@ If we use `to_df` a list of Pandas Dataframes is returned
                                  S2   S2_conf
       [Population, Amount] -0.06778  0.422351]]
 
-Key important attributes for  samples, model results and analyses can be extracting on the returned instance is shown below.
+Key important attributes for  samples, model results and analyses extraction available on the returned instance are shown below.
 
 .. code-block:: python
 
@@ -353,11 +353,18 @@ Key important attributes for  samples, model results and analyses can be extract
     print( Si_sobol.results)
     print( Si_sobol.analysis)
 
+
 Basic plotting functionality is also provided
 
 .. code-block:: python
 
-   Si_sobol.plot()
+    Si_sobol.plot()
+
+Added is apsim_results, representing the results from the evaluation of each sampled parameter inputs
+
+.. code-block::
+
+   Si_sobol.apsim_results
 
 We can try another method known as Morris.   The Morris method is typically used as a *screening tool* to identify influential
 parameters with relatively low computational cost. It is well suited for high-dimensional
