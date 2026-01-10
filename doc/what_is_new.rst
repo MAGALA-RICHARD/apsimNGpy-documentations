@@ -51,6 +51,7 @@ What’s New in **apsimNGpy 1.0.0**
 Summary
 ============
 **apsimNGpy 1.0.0** delivers:
+
 * A stable, reproducible foundation for agri-environmental modeling workflows
 * Scalability for large batch and multi-objective experiments
 * Better integration of APSIM with decision support, sensitivity, and spatial optimization routines
