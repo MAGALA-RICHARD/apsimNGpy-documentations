@@ -98,7 +98,7 @@ For reporting reproducible bugs or contributing code, please use the
    :maxdepth: 2
    :caption: RELEASE NOTES
 
-   releases
+   what_is_new
 
 .. toctree::
    :maxdepth: 2
