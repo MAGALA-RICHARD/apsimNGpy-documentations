@@ -26,7 +26,6 @@ extensions = [
     'sphinx.ext.githubpages',
     # Utility
     'sphinx_copybutton',
-    "sphinxcontrib.mermaid",
 ]
 mermaid_params = [
     "--theme", "forest"
