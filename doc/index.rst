@@ -96,7 +96,7 @@ For reporting reproducible bugs or contributing code, please use the
 
 .. toctree::
    :maxdepth: 2
-   :caption: RELEASE NOTES
+   :caption: WHAT IS NEW IN apsimNGpy
 
    what_is_new
 
