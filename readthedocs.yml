@@ -10,9 +10,4 @@ sphinx:
 
 python:
   install:
-    - pip
-    - sphinx
-    - sphinx_rtd_theme
-    - myst_parser
-    - sphinx-copybutton
-    - sphinxcontrib-mermaid
+    - requirements: doc/requirements.txt
