@@ -33,7 +33,7 @@ _______________________________________________
 5. Workflow & Developer Quality-of-Life
 ___________________________________________
 * First modules test using .bat scripts
-* Support for locked Python versions via `uv python list` and `.python-version` files.
+* Support for locking APSIM versions to a specific project.
 
 6. Fixes & Stability Enhancements
 __________________________________
