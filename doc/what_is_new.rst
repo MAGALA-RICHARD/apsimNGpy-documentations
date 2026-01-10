@@ -18,7 +18,8 @@ What is New in **apsimNGpy 1.0.0**
 ===================================================
 * Updated **Sobol sampling** with configurable skip values for improved space-filling design.
 * Clean handling of **calc_second_order** options with consistent propagation between sampling and analysis layers.
-* Support for additional SALib methods with stable default parameterizations.
+* Support for additional SALib methods with stable default parameterization.
+* Sensitivity analysis workflows fully compatible across all os platforms.
 
 4. Improved Database & Output Management
 ===============================================
@@ -26,7 +27,7 @@ What is New in **apsimNGpy 1.0.0**
 * Stable persistence layer with:
   * deterministic table identifiers
   * execution and process metadata
-  * large result handling with chunked writes and WAL support
+  * large result handling with chunked writes.
 * Cleaner error handling for results writes under heavy parallel loads.
 
 5. Workflow & Developer Quality-of-Life
