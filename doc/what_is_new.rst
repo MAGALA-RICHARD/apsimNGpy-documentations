@@ -31,8 +31,7 @@ What is New in **apsimNGpy 1.0.0**
 
 5. Workflow & Developer Quality-of-Life
 ===========================================
-* Modular, environment-aware `.bat` and `uv` workflows for consistent environment management across Windows and cross-platform environments.
-* Cleaned and **modularized dependency structure**, enabling smaller core installs and optional GIS/plotting/optimization profiles.
+* First modules test using .bat scripts
 * Support for locked Python versions via `uv python list` and `.python-version` files.
 
 6. Fixes & Stability Enhancements
