@@ -12,7 +12,7 @@ What is New in **apsimNGpy 1.0.0**
 =================================
 * **Refactored multiprocessing engine** for robust, scalable execution across multiple CPU cores, including safer handling of parallel APSIM runs on Windows.
 * **Improved failure reporting** and retry mechanisms with configurable policies (e.g., `tenacity`-based retries), reducing silent errors in large batch jobs.
-* **Improve job submissions** allowing edits to be submitted simulataneusly.
+* **Improve job submissions** allowing edits to be submitted simultaneously.
 
 3. Expanded Sensitivity & Uncertainty Analysis
 ===================================================
