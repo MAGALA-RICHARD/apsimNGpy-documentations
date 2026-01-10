@@ -47,7 +47,7 @@ Summary
 **apsimNGpy 1.0.0** delivers:
 
 * A stable, reproducible foundation for agri-environmental modeling workflows
-* Scalability for large batch and multi-objective experiments
+* Scalability, reliability for large batch, single and multi-objective experiments
 * Better integration of APSIM with decision support, sensitivity, and spatial optimization routines
 * An enduring API that is resilient and robust under a wide range of uncertainties
 
