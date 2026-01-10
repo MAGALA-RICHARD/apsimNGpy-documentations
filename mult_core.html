@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distributed Computing &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Automatic Parameter calibration" href="calibrate.html" />
+    <link rel="prev" title="Weather Data Replacement." href="weather.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#customization">Customization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#minimal-example-1-writing-your-own-worker-and-data-storage-function">Minimal example 1: Writing your own worker and data storage function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minimal-example-2-writing-your-own-worker-and-use-data-storage-decorator-from-data-base-utils-only-latest-version">Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils (only latest version)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#minimal-example-3-run-all-simulations-using-the-c-backend">Minimal Example 3: Run All Simulations Using the C# Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-running-all-simulations-and-storing-results-in-a-sql-database">3a) Running All Simulations and Storing Results in a SQL Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#b-running-all-simulations-and-loading-grouped-results-into-memory">3b) Running All Simulations and Loading Grouped Results Into Memory</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Distributed Computing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mult_core.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="distributed-computing">
+<h1>Distributed Computing<a class="headerlink" href="#distributed-computing" title="Link to this heading"></a></h1>
+<p>Distributed computing (or parallelism) is the practice of dividing computing tasks among multiple processing resources to speed up computations.
+See Li, Z., Qi, Z., Liu, Y., Zheng, Y., &amp; Yang, Y. (2023). A modularized parallel distributed High–Performance computing framework for simulating seasonal frost dynamics in Canadian croplands. Computers and Electronics in Agriculture, 212, 108057.</p>
+<p>In apsimNGpy, this is achieved through the <a class="reference internal" href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager" title="apsimNGpy.core.mult_cores.MultiCoreManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCoreManager</span></code></a> API, which abstracts away most of the setup required for distributing tasks.</p>
+<p>Below, we’ll walk through a step-by-step example of using this API</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.multi_cores</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiCoreManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</pre></div>
+</div>
+<p>In this example (v0.39.03.11+), we assume your APSIM files are already prepared (or available in various locations) and you simply want a speed boost when running them and processing results.
+For demonstration purposes, we’ll generate some example jobs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Best to supply a generator so jobs are created on the fly</span>
+<span class="n">create_jobs</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">path</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Here we use the <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a> class to clone from the template Maize model shipped with APSIM. If you do not specify the out_path argument, each file is assigned a random filename. This is critical in multi-processing—you must ensure that no two processes share the same filename, otherwise the run will fail.</p>
+<p>To explicitly set unique filenames for each simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_jobs</span> <span class="o">=</span> <span class="p">(</span><span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">,</span> <span class="n">out_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.apsimx&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span><span class="o">.</span><span class="n">path</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The key idea: every file must have a unique identifier to avoid race conditions during parallel execution.</p>
+</div>
+</section>
+<section id="instantiating-and-running-the-simulations">
+<h1>Instantiating and Running the Simulations<a class="headerlink" href="#instantiating-and-running-the-simulations" title="Link to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> <span class="c1"># a guard is required</span>
+    <span class="c1"># initialize</span>
+    <span class="n">task_manager</span> <span class="o">=</span> <span class="n">MultiCoreManager</span><span class="p">(</span><span class="n">db_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">(),</span> <span class="n">agg_func</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="c1"># Run all the jobs</span>
+    <span class="n">task_manager</span><span class="o">.</span><span class="n">run_all_jobs</span><span class="p">(</span><span class="n">create_jobs</span><span class="p">,</span> <span class="n">n_cores</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">threads</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clear_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># this is the progress info</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Processing</span> <span class="nb">all</span> <span class="n">jobs</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="err">!</span><span class="p">:</span> <span class="p">:</span>  <span class="o">|</span><span class="err">██████████</span><span class="o">|</span> <span class="mf">100.0</span><span class="o">%|</span> <span class="p">[</span><span class="mi">100</span><span class="o">/</span><span class="mi">100</span><span class="p">]</span><span class="o">|</span> <span class="n">Complete</span> <span class="o">|</span> <span class="mf">1.07</span><span class="n">s</span><span class="o">/</span><span class="n">iteration</span> <span class="o">|</span> <span class="n">Elapsed</span> <span class="n">time</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">46.850</span>
+</pre></div>
+</div>
+<p># get the results</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">task_manager</span><span class="o">.</span><span class="n">get_simulated_output</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># same as</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">task_manager</span><span class="o">.</span><span class="n">results</span>  <span class="c1"># defaults is axis =0</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">agg_func</span></code> is specified, it can be one of: mean, median, sum, min, or max. Each results table will then be summarized using the selected aggregation function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">clear_db</span></code> is used to clear the database tables before all new entries are added</p>
+<p><code class="docutils literal notranslate"><span class="pre">threads</span> <span class="pre">(bool)</span></code>: If True, use threads; if False, use processes. For <code class="docutils literal notranslate"><span class="pre">CPU-bound</span></code> tasks like this one, processes are preferred as they prevent resource contention and blocking inherent to threads.</p>
+<p><code class="docutils literal notranslate"><span class="pre">n_cores</span> <span class="pre">(int)</span></code>: Specifies the number of worker cores to use for the task. The workload will be divided among these workers. If the number of cores is large but the number of tasks is small, some scheduling overhead will occur, and workers may remain idle while waiting for available tasks.</p>
+</section>
+<section id="customization">
+<h1>Customization<a class="headerlink" href="#customization" title="Link to this heading"></a></h1>
+<p>If you don’t want to use the higher-level API, you can build the pipeline from scratch.
+The simplest path is to decorate your worker with <a class="reference internal" href="api.html#apsimNGpy.core_utils.database_utils.write_results_to_sql" title="apsimNGpy.core_utils.database_utils.write_results_to_sql"><code class="xref py py-func docutils literal notranslate"><span class="pre">write_results_to_sql()</span></code></a>, which writes the worker’s return
+value to the database after each run. The worker must return either a pandas DataFrame or a dict—that way you control exactly which variables/columns are written.
+Alternatively, skip the decorator and call your own writer/aggregator inside the worker, as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core_utils.database_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_db_table</span><span class="p">,</span> <span class="n">write_results_to_sql</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.parallel.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">custom_parallel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+
+
+<span class="n">DATABAse</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test_custom.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
+</pre></div>
+</div>
+<section id="minimal-example-1-writing-your-own-worker-and-data-storage-function">
+<h2>Minimal example 1: Writing your own worker and data storage function<a class="headerlink" href="#minimal-example-1-writing-your-own-worker-and-data-storage-function" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define function to insert insert results</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insert_results</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Insert a pandas DataFrame into a SQLite table.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    db_path : str or Path</span>
+<span class="sd">        Path to the SQLite database file.</span>
+<span class="sd">    results : pandas.DataFrame</span>
+<span class="sd">        DataFrame to insert into the database.</span>
+<span class="sd">    table_name : str</span>
+<span class="sd">        Name of the table to insert the data into.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;`results` must be a pandas DataFrame&quot;</span><span class="p">)</span>
+
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sqlite:///</span><span class="si">{</span><span class="n">db_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># ____________worker___________________________-</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">nitrogen_rate</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="n">out_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">nitrogen_rate</span><span class="si">}</span><span class="s2">.apsimx&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">out_path</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">edit_model</span><span class="p">(</span><span class="s2">&quot;Models.Manager&quot;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Fertilise at sowing&#39;</span><span class="p">,</span> <span class="n">Amount</span><span class="o">=</span><span class="n">nitrogen_rate</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">report_name</span><span class="o">=</span><span class="s2">&quot;Report&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span>
+    <span class="c1"># we can even create column for each simulation</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nitrogen rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nitrogen_rate</span>
+
+    <span class="n">insert_results</span><span class="p">(</span><span class="n">db_path</span> <span class="o">=</span> <span class="n">DATABAse</span><span class="p">,</span> <span class="n">results</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">table_name</span><span class="o">=</span><span class="s1">&#39;Report&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">clean_up</span><span class="p">()</span>
+    <span class="c1"># no need to return results</span>
+</pre></div>
+</div>
+</section>
+<section id="minimal-example-2-writing-your-own-worker-and-use-data-storage-decorator-from-data-base-utils-only-latest-version">
+<h2>Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils (only latest version)<a class="headerlink" href="#minimal-example-2-writing-your-own-worker-and-use-data-storage-decorator-from-data-base-utils-only-latest-version" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@write_results_to_sql</span><span class="p">(</span><span class="n">DATABAse</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">nitrogen_rate</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="n">out_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">nitrogen_rate</span><span class="si">}</span><span class="s2">.apsimx&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">out_path</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">edit_model</span><span class="p">(</span><span class="s2">&quot;Models.Manager&quot;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Fertilise at sowing&#39;</span><span class="p">,</span> <span class="n">Amount</span><span class="o">=</span><span class="n">nitrogen_rate</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">report_name</span><span class="o">=</span><span class="s2">&quot;Report&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span>
+    <span class="c1"># we can even create column for each simulation</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nitrogen rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nitrogen_rate</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">clean_up</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-all-jobs">
+<h1>Running all jobs<a class="headerlink" href="#running-all-jobs" title="Link to this heading"></a></h1>
+<p>Always run parallel code under the standard Python entry-point guard: <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>
+Without the guard, top-level code re-executes in each child and can recursively spawn processes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">custom_parallel</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;Maize&#39;</span><span class="p">,</span> <span class="n">n_cores</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">use_threads</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="c1"># get the results</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">read_db_table</span><span class="p">(</span><span class="n">DATABAse</span><span class="p">,</span> <span class="n">report_name</span><span class="o">=</span><span class="s2">&quot;Report&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Processing</span> <span class="n">please</span> <span class="n">wait</span><span class="err">!</span><span class="p">:</span>  <span class="err">██████████</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">40</span><span class="o">/</span><span class="mi">40</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">completed</span> <span class="p">(</span><span class="n">elapsed</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="n">eta</span><span class="o">=&gt;</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="mf">0.76</span> <span class="n">s</span><span class="o">/</span><span class="n">iteration</span> <span class="ow">or</span> <span class="mf">1.23</span> <span class="n">iteration</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">SimulationName</span>  <span class="n">SimulationID</span>  <span class="o">...</span>  <span class="n">source_table</span> <span class="n">nitrogen</span> <span class="n">rate</span>
+<span class="mi">0</span>       <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>            <span class="mi">20</span>
+<span class="mi">1</span>       <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>            <span class="mi">20</span>
+<span class="mi">2</span>       <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>            <span class="mi">20</span>
+<span class="mi">3</span>       <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>            <span class="mi">20</span>
+<span class="mi">4</span>       <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>            <span class="mi">20</span>
+<span class="o">..</span>             <span class="o">...</span>           <span class="o">...</span>  <span class="o">...</span>           <span class="o">...</span>           <span class="o">...</span>
+<span class="mi">395</span>     <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>           <span class="mi">380</span>
+<span class="mi">396</span>     <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>           <span class="mi">380</span>
+<span class="mi">397</span>     <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>           <span class="mi">380</span>
+<span class="mi">398</span>     <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>           <span class="mi">380</span>
+<span class="mi">399</span>     <span class="n">Simulation</span>             <span class="mi">1</span>  <span class="o">...</span>        <span class="n">Report</span>           <span class="mi">380</span>
+<span class="p">[</span><span class="mi">400</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">18</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Our 40 simulations ran in 30 seconds only, almost 0.76 seconds per simulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performance can vary between systems depending on hardware specifications,
+such as RAM, processor clock speed, and the number of CPU cores.</p>
+</div>
+</section>
+<section id="working-in-notebooks-jupyter-colab">
+<h1>Working in notebooks (Jupyter/Colab)<a class="headerlink" href="#working-in-notebooks-jupyter-colab" title="Link to this heading"></a></h1>
+<p>When using Jupyter notebooks, the workflow follows the same structure as described above. For stability and reproducibility,
+it is recommended to define worker functions in a standalone Python module (.py file) and import them into the notebook.</p>
+<section id="minimal-example-3-run-all-simulations-using-the-c-backend">
+<h2>Minimal Example 3: Run All Simulations Using the C# Backend<a class="headerlink" href="#minimal-example-3-run-all-simulations-using-the-c-backend" title="Link to this heading"></a></h2>
+<p>This example shows how to execute a folder of APSIM simulations using the C# engine
+(<code class="docutils literal notranslate"><span class="pre">Models.exe</span></code>) and either:</p>
+<ol class="arabic simple">
+<li><p>store the results directly into a SQL database, or</p></li>
+<li><p>load the grouped outputs into memory as pandas DataFrames.</p></li>
+</ol>
+<p>We begin by creating a directory containing multiple APSIMX files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.tests.unittests.test_factory</span><span class="w"> </span><span class="kn">import</span> <span class="n">mimic_multiple_files</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.runner</span><span class="w"> </span><span class="kn">import</span> <span class="n">dir_simulations_to_sql</span><span class="p">,</span> <span class="n">dir_simulations_to_dfs</span>
+
+<span class="n">file_dir</span> <span class="o">=</span> <span class="n">mimic_multiple_files</span><span class="p">(</span>
+    <span class="n">out_file</span><span class="o">=</span><span class="s2">&quot;test_dir&quot;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;__&quot;</span><span class="p">,</span>
+    <span class="n">mix</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<section id="a-running-all-simulations-and-storing-results-in-a-sql-database">
+<h3>3a) Running All Simulations and Storing Results in a SQL Database<a class="headerlink" href="#a-running-all-simulations-and-storing-results-in-a-sql-database" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">inspect</span>
+
+<span class="c1"># Use an in-memory SQLite database; replace with a file path for persistence</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;sqlite:///:memory:&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">dir_simulations_to_sql</span><span class="p">(</span>
+        <span class="n">dir_path</span><span class="o">=</span><span class="n">file_dir</span><span class="p">,</span>
+        <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*__.apsimx&quot;</span><span class="p">,</span>
+        <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">tables</span><span class="o">=</span><span class="s2">&quot;Report&quot;</span><span class="p">,</span><span class="c1"># could be a list of table names if more than one tables are anticipated or needed</span>
+        <span class="n">cpu_count</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">connection</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Inspect which tables were created</span>
+    <span class="n">inspector</span> <span class="o">=</span> <span class="n">inspect</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="n">inspector</span><span class="o">.</span><span class="n">get_table_names</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tables</span><span class="p">)</span>
+
+    <span class="c1"># Expected tables:</span>
+    <span class="c1">#   1) a data table containing all Report rows aggregated by schema</span>
+    <span class="c1">#   2) a schema table documenting column names and dtypes</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">dispose</span><span class="p">(</span><span class="n">close</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this workflow, all APSIMX files matching <code class="docutils literal notranslate"><span class="pre">*__.apsimx</span></code> are executed using the
+C# simulation engine. The resulting <code class="docutils literal notranslate"><span class="pre">Report</span></code> tables are collected from the APSIM
+databases, grouped in memory by schema, and written into the SQL database specified
+by <code class="docutils literal notranslate"><span class="pre">connection</span></code>.</p>
+<p>The grouped data are stored in one table, and a separate schema table
+(<code class="docutils literal notranslate"><span class="pre">_schemas</span></code> by default) records the column names and dtypes associated with each
+group. Calling <code class="docutils literal notranslate"><span class="pre">inspect(engine).get_table_names()</span></code> allows you to verify that both
+tables were created.</p>
+</section>
+<section id="b-running-all-simulations-and-loading-grouped-results-into-memory">
+<h3>3b) Running All Simulations and Loading Grouped Results Into Memory<a class="headerlink" href="#b-running-all-simulations-and-loading-grouped-results-into-memory" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">dir_simulations_to_dfs</span><span class="p">(</span>
+    <span class="n">dir_path</span><span class="o">=</span><span class="n">file_dir</span><span class="p">,</span>
+    <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*__.apsimx&quot;</span><span class="p">,</span>
+    <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">tables</span><span class="o">=</span><span class="s2">&quot;Report&quot;</span><span class="p">,</span><span class="c1"># could be a list of table names if more than one tables are anticipated or needed</span>
+    <span class="n">cpu_count</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In this mode, the results are not written to disk. Instead, <code class="docutils literal notranslate"><span class="pre">groups</span></code> is returned as
+a dictionary where:</p>
+<ul class="simple">
+<li><p><strong>keys</strong> are schema signatures (tuples describing each column and its dtype), and</p></li>
+<li><p><strong>values</strong> are DataFrames containing all rows that share that schema.</p></li>
+</ul>
+<p>If different simulations generate different <code class="docutils literal notranslate"><span class="pre">Report</span></code> table structures, multiple
+schema groups will be produced. For example, if two distinct report schemas are
+encountered, <code class="docutils literal notranslate"><span class="pre">groups</span></code> will contain two keys, each mapping to a DataFrame with its
+corresponding structure.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>API description: <a class="reference internal" href="api.html#apsimNGpy.core.mult_cores.MultiCoreManager" title="apsimNGpy.core.mult_cores.MultiCoreManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCoreManager</span></code></a></p></li>
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference:</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="weather.html" class="btn btn-neutral float-left" title="Weather Data Replacement." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="calibrate.html" class="btn btn-neutral float-right" title="Automatic Parameter calibration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

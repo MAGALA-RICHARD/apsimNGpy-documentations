@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sensitivity Analysis in apsimNGpy Part 1 &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sensitivity analysis workflow Part 2 (SALib driven workflow)" href="Tutorial.html" />
+    <link rel="prev" title="Comparing cultivars yield" href="comp_cultivar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensitivity Analysis in apsimNGpy Part 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-overview">Workflow Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-diagram">Workflow Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sensitivity Analysis in apsimNGpy Part 1</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sens.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sensitivity-analysis-in-apsimngpy-part-1">
+<h1>Sensitivity Analysis in apsimNGpy Part 1<a class="headerlink" href="#sensitivity-analysis-in-apsimngpy-part-1" title="Link to this heading"></a></h1>
+<p>Sensitivity analysis in <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> implements the same established
+methods used in APSIM—namely the <strong>Morris Elementary Effects</strong> method and
+the <strong>Sobol variance–based method</strong>. The key difference is flexibility:
+<code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> allows you to <strong>construct a sensitivity analysis directly from
+any APSIM template file</strong>, including the model you are actively developing.
+With only a few lines of Python code, you can specify the sensitivity
+method, configure the factors, build the sensitivity model, and execute it.</p>
+<p>In contrast to the APSIM GUI, which provides graphical representations and
+interactive controls, the Python interface expects the user to understand
+the fundamentals of the analysis being performed. <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> does not
+generate graphical summaries automatically. However, interpretation is not
+lost—APSIM’s native sensitivity outputs remain accessible, and the
+<code class="docutils literal notranslate"><span class="pre">SensitivityManager</span></code> class provides convenient access points for
+visualization and custom analysis, enabling you to create your own plots
+using Matplotlib, Seaborn, or other Python libraries.</p>
+<p>The workflow for creating a sensitivity analysis is conceptually similar to
+setting up factorial experiments: define the method, specify the factors,
+build the sensitivity experiment node, and run the simulations. The example
+below shows a minimal, practical workflow for constructing a sensitivity
+analysis directly from Python.</p>
+<p>Class: <a class="reference internal" href="api.html#apsimNGpy.core.senstivitymanager.SensitivityManager" title="apsimNGpy.core.senstivitymanager.SensitivityManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">SensitivityManager</span></code></a> was added in <strong>V0.39.12.21+</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> is designed to integrate sensitivity analysis seamlessly
+into reproducible pipelines. Because everything is defined in Python,
+you can version-control the full sensitivity experiment, regenerate it
+consistently, and run it across multiple APSIM templates or scenarios.</p>
+</div>
+<section id="workflow-overview">
+<h2>Workflow Overview<a class="headerlink" href="#workflow-overview" title="Link to this heading"></a></h2>
+<p>The sensitivity analysis workflow in <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> follows a structured,
+reproducible sequence of steps. The process is designed to mirror APSIM’s
+internal sensitivity framework while providing full programmatic control in
+Python. The key stages are:</p>
+<ol class="arabic">
+<li><p><strong>Initialize the manager instance</strong>
+Create a <code class="docutils literal notranslate"><span class="pre">SensitivityManager</span></code> object using your APSIM template file.
+This instance will hold the experiment configuration and manage all
+subsequent steps.</p></li>
+<li><p><strong>Define sensitivity factors</strong>
+Add one or more factors (parameters) to the manager instance. Each factor
+corresponds to an APSIM model path and a numerical range to be explored.
+Factors are defined using methods on the instantiated <code class="docutils literal notranslate"><span class="pre">SensitivityManager</span></code>
+object.</p></li>
+<li><p><strong>Build the sensitivity simulation model</strong>
+Construct the sensitivity experiment node within the APSIM file.
+During this step the user:</p>
+<ul class="simple">
+<li><p>selects the sensitivity method (Morris or Sobol),</p></li>
+<li><p>specifies the database table name for storing results,</p></li>
+<li><p>determines the aggregation column used to summarize outputs,</p></li>
+<li><p>and, when using the Morris method:
+- sets the number of jumps,
+- defines the number of intervals,
+- and optionally customizes the step size <code class="docutils literal notranslate"><span class="pre">Δ</span></code>.</p></li>
+</ul>
+<p>For <strong>all</strong> sensitivity methods, this step also sets the number of
+parameter paths, which controls the total number of simulations executed.</p>
+</li>
+<li><p><strong>Run the sensitivity simulations</strong>
+Execute the sensitivity experiment. <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> automatically handles
+model execution, path construction, execution, and data storage.</p></li>
+</ol>
+</section>
+<section id="workflow-diagram">
+<h2>Workflow Diagram<a class="headerlink" href="#workflow-diagram" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+-----------------+       +----------------------+
+|instantiate class |----&gt; |  define parameters   |
++-----------------+       +----------------------+
+                                 |
+                                 v
++-----------------+       +----------------------+
+|  run model      |&lt;----- |  Build nodes         |
++-----------------+       +----------------------+
+</pre></div>
+</div>
+<p>Step 1.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">senstivitymanager</span> <span class="kn">import</span><span class="w"> </span><span class="nn">SensitivityManager</span>
+<span class="n">morris</span> <span class="o">=</span> <span class="n">SensitivityManager</span><span class="p">(</span><span class="s2">&quot;Maize&quot;</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="s1">&#39;sob.apsimx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Step 2.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="o">.</span><span class="n">add_sens_factor</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cnr&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;Field.SurfaceOrganicMatter.InitialCNR&#39;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">upper_bound</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">morris</span><span class="o">.</span><span class="n">add_sens_factor</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cn2bare&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;Field.Soil.SoilWater.CN2Bare&#39;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">upper_bound</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Step 3.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="o">.</span><span class="n">build_sense_model</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;Morris&#39;</span><span class="p">,</span> <span class="n">aggregation_column_name</span><span class="o">=</span><span class="s1">&#39;Clock.Today&#39;</span><span class="p">,</span> <span class="n">jumps</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can still use any other methods inherited from <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a> as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="o">.</span><span class="n">inspect_file</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>└── Models.Core.Simulations: .Simulations
+  ├── Models.Storage.DataStore: .Simulations.DataStore
+  └── Models.Morris: .Simulations.Morris
+      └── Models.Core.Simulation: .Simulations.Morris.Simulation
+          ├── Models.Clock: .Simulations.Morris.Simulation.Clock
+          ├── Models.Core.Zone: .Simulations.Morris.Simulation.Field
+          │   ├── Models.Manager: .Simulations.Morris.Simulation.Field.Fertilise at sowing
+          │   ├── Models.Fertiliser: .Simulations.Morris.Simulation.Field.Fertiliser
+          │   ├── Models.Manager: .Simulations.Morris.Simulation.Field.Harvest
+          │   ├── Models.PMF.Plant: .Simulations.Morris.Simulation.Field.Maize
+          │   ├── Models.Report: .Simulations.Morris.Simulation.Field.Report
+          │   ├── Models.Soils.Soil: .Simulations.Morris.Simulation.Field.Soil
+          │   │   ├── Models.Soils.Chemical: .Simulations.Morris.Simulation.Field.Soil.Chemical
+          │   │   ├── Models.Soils.Solute: .Simulations.Morris.Simulation.Field.Soil.NH4
+          │   │   ├── Models.Soils.Solute: .Simulations.Morris.Simulation.Field.Soil.NO3
+          │   │   ├── Models.Soils.Organic: .Simulations.Morris.Simulation.Field.Soil.Organic
+          │   │   ├── Models.Soils.Physical: .Simulations.Morris.Simulation.Field.Soil.Physical
+          │   │   │   └── Models.Soils.SoilCrop: .Simulations.Morris.Simulation.Field.Soil.Physical.MaizeSoil
+          │   │   ├── Models.Soils.Solute: .Simulations.Morris.Simulation.Field.Soil.Urea
+          │   │   └── Models.Soils.Water: .Simulations.Morris.Simulation.Field.Soil.Water
+          │   ├── Models.Manager: .Simulations.Morris.Simulation.Field.Sow using a variable rule
+          │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Morris.Simulation.Field.SurfaceOrganicMatter
+          ├── Models.Graph: .Simulations.Morris.Simulation.Graph
+          │   └── Models.Series: .Simulations.Morris.Simulation.Graph.Series
+          ├── Models.MicroClimate: .Simulations.Morris.Simulation.MicroClimate
+          ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Morris.Simulation.SoilArbitrator
+          ├── Models.Summary: .Simulations.Morris.Simulation.Summary
+          └── Models.Climate.Weather: .Simulations.Morris.Simulation.Weather
+</pre></div>
+</div>
+<p>Step 4</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can access the statics as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="o">.</span><span class="n">statistics</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    CheckpointID Clock.Today  ...            ColumnName     Indices
+0               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
+1               1  1991-05-28  ...  Maize.AboveGround.Wt  FirstOrder
+2               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
+3               1  1991-05-28  ...  Maize.AboveGround.Wt       Total
+4               1  1991-05-28  ...   Maize.AboveGround.N  FirstOrder
+..            ...         ...  ...                   ...         ...
+355             1  2000-04-05  ...         Maize.Grain.N       Total
+356             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
+357             1  2000-04-05  ...        Maize.Total.Wt  FirstOrder
+358             1  2000-04-05  ...        Maize.Total.Wt       Total
+359             1  2000-04-05  ...        Maize.Total.Wt       Total
+[360 rows x 10 columns]
+</pre></div>
+</div>
+<p>We can get a list of available variables as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;CheckpointID&#39;, &#39;Parameter&#39;, &#39;Clock.Today&#39;, &#39;Maize.AboveGround.Wt.Mu&#39;,
+    &#39;Maize.AboveGround.Wt.MuStar&#39;, &#39;Maize.AboveGround.Wt.Sigma&#39;,
+    &#39;Maize.AboveGround.N.Mu&#39;, &#39;Maize.AboveGround.N.MuStar&#39;,
+    &#39;Maize.AboveGround.N.Sigma&#39;, &#39;Yield.Mu&#39;, &#39;Yield.MuStar&#39;, &#39;Yield.Sigma&#39;,
+    &#39;Maize.Grain.Wt.Mu&#39;, &#39;Maize.Grain.Wt.MuStar&#39;, &#39;Maize.Grain.Wt.Sigma&#39;,
+    &#39;Maize.Grain.Size.Mu&#39;, &#39;Maize.Grain.Size.MuStar&#39;,
+    &#39;Maize.Grain.Size.Sigma&#39;, &#39;Maize.Grain.NumberFunction.Mu&#39;,
+    &#39;Maize.Grain.NumberFunction.MuStar&#39;, &#39;Maize.Grain.NumberFunction.Sigma&#39;,
+    &#39;Maize.Grain.Total.Wt.Mu&#39;, &#39;Maize.Grain.Total.Wt.MuStar&#39;,
+    &#39;Maize.Grain.Total.Wt.Sigma&#39;, &#39;Maize.Grain.N.Mu&#39;,
+    &#39;Maize.Grain.N.MuStar&#39;, &#39;Maize.Grain.N.Sigma&#39;, &#39;Maize.Total.Wt.Mu&#39;,
+    &#39;Maize.Total.Wt.MuStar&#39;, &#39;Maize.Total.Wt.Sigma&#39;],
+   dtype=&#39;object&#39;)
+</pre></div>
+</div>
+<p>Simulated results can be accessed as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="o">.</span><span class="n">results</span>
+<span class="c1">#same as</span>
+<span class="n">morris</span><span class="o">.</span><span class="n">get_simulated_output</span><span class="p">(</span><span class="s1">&#39;Report&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to use Sobol, use <a href="#id1"><span class="problematic" id="id2">`</span></a>method =sobol’ as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span> <span class="o">=</span> <span class="n">SensitivityManager</span><span class="p">(</span><span class="s2">&quot;Maize&quot;</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="s1">&#39;sob.apsimx&#39;</span><span class="p">)</span>
+<span class="n">morris</span><span class="o">.</span><span class="n">add_sens_factor</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cnr&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;Field.SurfaceOrganicMatter.InitialCNR&#39;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">upper_bound</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">morris</span><span class="o">.</span><span class="n">add_sens_factor</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cn2bare&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;Field.Soil.SoilWater.CN2Bare&#39;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">upper_bound</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">sobol</span><span class="o">.</span><span class="n">build_sense_model</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;Sobol&#39;</span><span class="p">,</span> <span class="n">aggregation_column_name</span><span class="o">=</span><span class="s1">&#39;Clock.Today&#39;</span><span class="p">)</span>
+<span class="n">sobol</span><span class="o">.</span><span class="n">inspect_file</span><span class="p">()</span>
+<span class="n">sobol</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">sobol</span><span class="o">.</span><span class="n">statistics</span>
+<span class="n">sobol</span><span class="o">.</span><span class="n">results</span>
+<span class="c1"># same as</span>
+<span class="n">sobol</span><span class="o">.</span><span class="n">get_simulated_output</span><span class="p">(</span><span class="s1">&#39;Report&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>└── Models.Core.Simulations: .Simulations
+ ├── Models.Storage.DataStore: .Simulations.DataStore
+ └── Models.Sobol: .Simulations.Sobol
+     └── Models.Core.Simulation: .Simulations.Sobol.Simulation
+         ├── Models.Clock: .Simulations.Sobol.Simulation.Clock
+         ├── Models.Core.Zone: .Simulations.Sobol.Simulation.Field
+         │   ├── Models.Manager: .Simulations.Sobol.Simulation.Field.Fertilise at sowing
+         │   ├── Models.Fertiliser: .Simulations.Sobol.Simulation.Field.Fertiliser
+         │   ├── Models.Manager: .Simulations.Sobol.Simulation.Field.Harvest
+         │   ├── Models.PMF.Plant: .Simulations.Sobol.Simulation.Field.Maize
+         │   ├── Models.Report: .Simulations.Sobol.Simulation.Field.Report
+         │   ├── Models.Soils.Soil: .Simulations.Sobol.Simulation.Field.Soil
+         │   │   ├── Models.Soils.Chemical: .Simulations.Sobol.Simulation.Field.Soil.Chemical
+         │   │   ├── Models.Soils.Solute: .Simulations.Sobol.Simulation.Field.Soil.NH4
+         │   │   ├── Models.Soils.Solute: .Simulations.Sobol.Simulation.Field.Soil.NO3
+         │   │   ├── Models.Soils.Organic: .Simulations.Sobol.Simulation.Field.Soil.Organic
+         │   │   ├── Models.Soils.Physical: .Simulations.Sobol.Simulation.Field.Soil.Physical
+         │   │   │   └── Models.Soils.SoilCrop: .Simulations.Sobol.Simulation.Field.Soil.Physical.MaizeSoil
+         │   │   ├── Models.Soils.Solute: .Simulations.Sobol.Simulation.Field.Soil.Urea
+         │   │   └── Models.Soils.Water: .Simulations.Sobol.Simulation.Field.Soil.Water
+         │   ├── Models.Manager: .Simulations.Sobol.Simulation.Field.Sow using a variable rule
+         │   └── Models.Surface.SurfaceOrganicMatter: .Simulations.Sobol.Simulation.Field.SurfaceOrganicMatter
+         ├── Models.Graph: .Simulations.Sobol.Simulation.Graph
+         │   └── Models.Series: .Simulations.Sobol.Simulation.Graph.Series
+         ├── Models.MicroClimate: .Simulations.Sobol.Simulation.MicroClimate
+         ├── Models.Soils.Arbitrator.SoilArbitrator: .Simulations.Sobol.Simulation.SoilArbitrator
+         ├── Models.Summary: .Simulations.Sobol.Simulation.Summary
+         └── Models.Climate.Weather: .Simulations.Sobol.Simulation.Weather
+</pre></div>
+</div>
+<p>The rest of the workflow is the same as above</p>
+<p>The API interface is still the same because all methods and attributes are inherited from the <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a>. Some examples are given below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Models.Manager&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;.Simulations.Sobol.Simulation.Field.Sow using a variable rule&#39;,
+ &#39;.Simulations.Sobol.Simulation.Field.Fertilise at sowing&#39;,
+ &#39;.Simulations.Sobol.Simulation.Field.Harvest&#39;]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Sobol.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;Crop&#39;: &#39;Maize&#39;, &#39;FertiliserType&#39;: &#39;NO3N&#39;, &#39;Amount&#39;: &#39;160.0&#39;}
+</pre></div>
+</div>
+<p>We can still edit the base simulation models as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Sobol.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">,</span> <span class="n">Amount</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Same as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span><span class="o">.</span><span class="n">edit_model</span><span class="p">(</span><span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;Models.Manager&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Fertilise at sowing&#39;</span><span class="p">,</span> <span class="n">Amount</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, you can run the model</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Before I log off, you can check out the documentation of following methods, which have been used in this tutorial</p>
+<p><a class="reference internal" href="api.html#apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor" title="apsimNGpy.core.senstivitymanager.SensitivityManager.add_sens_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_sens_factor()</span></code></a>,
+<a class="reference internal" href="api.html#apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model" title="apsimNGpy.core.senstivitymanager.SensitivityManager.build_sense_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_sense_model()</span></code></a>,
+<a class="reference internal" href="api.html#apsimNGpy.core.senstivitymanager.SensitivityManager.statistics" title="apsimNGpy.core.senstivitymanager.SensitivityManager.statistics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">statistics()</span></code></a>.</p>
+<blockquote>
+<div><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#apsim-pin-version"><span class="std std-ref">Download Stable APSIM Version here</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#master"><span class="std std-ref">Go back to the home page</span></a></p></li>
+</ul>
+</div>
+</div></blockquote>
+<p>XXXX Thank you XXXX</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="comp_cultivar.html" class="btn btn-neutral float-left" title="Comparing cultivars yield" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Tutorial.html" class="btn btn-neutral float-right" title="Sensitivity analysis workflow Part 2 (SALib driven workflow)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

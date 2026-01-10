@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instantiating apsimNGpy Model Objects &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Running and Retrieving Results" href="Usage.html" />
+    <link rel="prev" title="Installation" href="getting%20started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/instantiating.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instantiating-apsimngpy-model-objects">
+<h1>Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects<a class="headerlink" href="#instantiating-apsimngpy-model-objects" title="Link to this heading"></a></h1>
+<p>You can either load a built-in template or use your own APSIM file.</p>
+<div class="admonition-loading-default-apsim-templates admonition">
+<p class="admonition-title">Loading default APSIM templates</p>
+<p>You can quickly get started by loading a default simulation model (e.g., maize) in one of two ways:</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Supported by versions 0.35 +</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;Maize&#39;</span><span class="p">,</span> <span class="n">out_path</span> <span class="o">=</span> <span class="s1">&#39;maize.apsimx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>loading default simulations while using <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a> requires only the name of the default template model without the suffix: <code class="docutils literal notranslate"><span class="pre">.apsimx</span></code> these templates are stored in ‘../Examples’ folder.
+Available models at the time of this writing are shown in the list below. The highlighted names are those that can be passed to <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a> to load the corresponding default model.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘UnderReview/SoilTemperature/<code class="docutils literal notranslate"><span class="pre">SoilTemperature</span></code>.apsimx’,</p></li>
+<li><p>‘UnderReview/SoilTemperature/<code class="docutils literal notranslate"><span class="pre">SoilTemperatureExample</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">RedClover</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Chickpea</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Canola</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Pinus</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Mungbean</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">FodderBeet</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">ControlledEnvironment</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Potato</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Peanut</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Soybean</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Stock</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">SCRUM</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Rotation</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">SWIM</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Eucalyptus</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Barley</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">AgPasture</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">SimpleGrazing</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">PlantainForage</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Sorghum</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">WhiteClover</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">BiomassRemovalFromPlant</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Chicory</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Sugarcane</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Maize</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">EucalyptusRotation</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">CsvWeather</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Oats</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">CanolaGrazing</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Wheat</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Grapevine</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Slurp</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Factorial</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">OilPalm</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/<code class="docutils literal notranslate"><span class="pre">Graph</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/ManagerExamples/<code class="docutils literal notranslate"><span class="pre">RegressionExample</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Sensitivity/<code class="docutils literal notranslate"><span class="pre">Morris</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Sensitivity/<code class="docutils literal notranslate"><span class="pre">Sobol</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Agroforestry/<code class="docutils literal notranslate"><span class="pre">Gliricidia</span> <span class="pre">Stripcrop</span> <span class="pre">Example</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Agroforestry/<code class="docutils literal notranslate"><span class="pre">Tree</span> <span class="pre">Belt</span> <span class="pre">Example</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Agroforestry/<code class="docutils literal notranslate"><span class="pre">Single</span> <span class="pre">Tree</span> <span class="pre">Example</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">Memo</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">ClimateController</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">ExcelDataExample</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">EventPublishSubscribe</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">PredictedObserved</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">Sensitivity_SobolMethod</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">SWIM</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">Report</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">PropertyUI</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">Sensitivity_FactorialANOVA</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">Sensitivity_MorrisMethod</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/<code class="docutils literal notranslate"><span class="pre">Manager</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Tutorials/Lifecycle/<code class="docutils literal notranslate"><span class="pre">lifecycle</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/CLEM/<code class="docutils literal notranslate"><span class="pre">CLEM_Sensibility_HerdManagement</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/CLEM/<code class="docutils literal notranslate"><span class="pre">CLEM_Example_Grazing</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/CLEM/<code class="docutils literal notranslate"><span class="pre">CLEM_Example_Cropping</span></code>.apsimx’,</p></li>
+<li><p>‘Examples/Optimisation/<code class="docutils literal notranslate"><span class="pre">CroptimizRExample</span></code>.apsimx’</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">out_path</span></code> is not specified, the model will be saved to a randomly generated file path on your computer.
+The <code class="docutils literal notranslate"><span class="pre">out_path</span></code> parameter accepts both absolute and relative paths. If a relative path is provided, the file will be saved in the current working directory.</p>
+</div>
+<div class="admonition-using-a-local-apsim-file admonition">
+<p class="admonition-title">Using a local APSIM file</p>
+<p>If you have an <code class="docutils literal notranslate"><span class="pre">.apsimx</span></code> file saved on your machine — whether from a previous session or as a custom template—you can easily load it as shown below.
+By default, a random file path is generated as the output path. However, you can specify a custom path to control where the edited file is saved.
+This approach helps preserve the original file in case something goes wrong during the loading or editing process.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+
+<span class="c1"># Load a local APSIM file</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;path/to/your/apsim/file.apsimx&#39;</span><span class="p">,</span> <span class="n">out_path</span> <span class="o">=</span> <span class="s1">&#39;./maize.apsimx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-next-actions admonition">
+<p class="admonition-title">Next actions</p>
+<p>Once your model is instantiated, you’re ready to run simulations, edit model components, or inspect simulation settings. See the following sections for editing examples and diagnostics tools.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.save" title="apsimNGpy.core.apsim.ApsimModel.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference:</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#apsim-pin-version"><span class="std std-ref">Download Stable APSIM Version</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#master"><span class="std std-ref">Go back to the home page</span></a></p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting%20started.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Usage.html" class="btn btn-neutral float-right" title="Running and Retrieving Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

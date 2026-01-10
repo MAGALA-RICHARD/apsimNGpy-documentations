@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More examples about edit_model_by_path &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/edit_by_path.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="more-examples-about-edit-model-by-path">
+<h1>More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code><a class="headerlink" href="#more-examples-about-edit-model-by-path" title="Link to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">realpath</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+</pre></div>
+</div>
+<p>The variable constants listed below are required for the subsequent demonstration example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_crop_from_disk</span>
+<span class="n">Fertilise_at_sowing</span> <span class="o">=</span> <span class="s1">&#39;.Simulations.Simulation.Field.Fertilise at sowing&#39;</span>
+<span class="n">SurfaceOrganicMatter</span> <span class="o">=</span> <span class="s1">&#39;.Simulations.Simulation.Field.SurfaceOrganicMatter&#39;</span>
+<span class="n">Clock</span> <span class="o">=</span> <span class="s2">&quot;.Simulations.Simulation.Clock&quot;</span>
+<span class="n">Weather</span> <span class="o">=</span> <span class="s1">&#39;.Simulations.Simulation.Weather&#39;</span>
+<span class="n">Organic</span> <span class="o">=</span> <span class="s1">&#39;.Simulations.Simulation.Field.Soil.Organic&#39;</span>
+<span class="n">cultivar_path</span> <span class="o">=</span> <span class="s1">&#39;.Simulations.Simulation.Field.Maize.CultivarFolder.Generic.B_100&#39;</span>
+<span class="n">cultivar_path_soybean</span> <span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Soybean.Cultivars.Generic.Generic_MG2&#39;</span>
+<span class="n">cultivar_path_for_sowed_soybean</span> <span class="o">=</span> <span class="s1">&#39;.Simulations.Simulation.Field.Soybean.Cultivars.Australia.Davis&#39;</span>
+<span class="n">cultivar_path_for_sowed_maize</span> <span class="o">=</span> <span class="s1">&#39;.Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82&#39;</span>
+<span class="c1"># Create weather file on disk</span>
+<span class="n">met_file</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;wf.met&#39;</span><span class="p">))</span>
+<span class="n">met_file</span> <span class="o">=</span> <span class="n">load_crop_from_disk</span><span class="p">(</span><span class="s1">&#39;AU_Goondiwindi&#39;</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">met_file</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.met&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>Edit cultivar and provide a custom new name</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span>
+        <span class="n">path</span><span class="o">=</span><span class="n">cultivar_path_for_sowed_maize</span><span class="p">,</span>
+        <span class="n">commands</span><span class="o">=</span><span class="s1">&#39;[Grain].MaximumGrainsPerCob.FixedValue&#39;</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">sowed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">rename</span><span class="o">=</span><span class="s1">&#39;edm&#39;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Verify rename</span>
+    <span class="n">edited</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="n">cultivar_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Mixed code examples for editing weather, organic, clock and manger nodes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">apsim</span><span class="p">:</span>
+    <span class="c1">#_________________________</span>
+    <span class="c1"># Apply edits</span>
+    <span class="c1">#_________________________</span>
+    <span class="n">apsim</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span><span class="n">Fertilise_at_sowing</span><span class="p">,</span> <span class="n">Amount</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">apsim</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span><span class="n">Clock</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;01/01/2020&#39;</span><span class="p">)</span>
+    <span class="n">apsim</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span><span class="n">SurfaceOrganicMatter</span><span class="p">,</span> <span class="n">InitialCNR</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">apsim</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span><span class="n">Weather</span><span class="p">,</span> <span class="n">weather_file</span><span class="o">=</span><span class="n">realpath</span><span class="p">(</span><span class="n">met_file</span><span class="p">))</span>
+    <span class="n">apsim</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span><span class="n">Organic</span><span class="p">,</span> <span class="n">Carbon</span><span class="o">=</span><span class="mf">1.23</span><span class="p">)</span>
+    <span class="c1">#_________________________</span>
+    <span class="c1"># Inspect updated values</span>
+    <span class="c1">#_________________________</span>
+    <span class="n">organic_params</span> <span class="o">=</span> <span class="n">apsim</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="n">Organic</span><span class="p">)</span>
+    <span class="c1">#_________________________</span>
+    <span class="c1"># use dict unpacking</span>
+    <span class="c1">#_________________________</span>
+    <span class="n">apsim</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">Organic</span><span class="p">,</span> <span class="n">Carbon</span><span class="o">=</span><span class="mf">1.20</span><span class="p">))</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">apsim</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="n">Organic</span><span class="p">)</span>
+    <span class="c1">#_________________________</span>
+    <span class="c1"># use set_param method</span>
+    <span class="c1">#_________________________</span>
+    <span class="n">apsim</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">Organic</span><span class="p">,</span> <span class="n">Carbon</span><span class="o">=</span><span class="mf">1.58</span><span class="p">))</span>
+    <span class="n">updated</span> <span class="o">=</span> <span class="n">apsim</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="n">Organic</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>edit cultivar when not yet sowed. this is accomplished by providing the fullpath to the manager script sowing the cultivar</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">inspect_file</span><span class="p">(</span><span class="n">cultivar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span>
+        <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82&#39;</span><span class="p">,</span>
+        <span class="n">commands</span><span class="o">=</span><span class="s1">&#39;[Grain].MaximumGrainsPerCob.FixedValue&#39;</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">sowed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">rename</span><span class="o">=</span><span class="s1">&#39;edit-added&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span>
+        <span class="n">path</span><span class="o">=</span><span class="n">cultivar_path</span><span class="p">,</span>
+        <span class="n">commands</span><span class="o">=</span><span class="s1">&#39;[Grain].MaximumGrainsPerCob.FixedValue&#39;</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="mi">505</span><span class="p">,</span>
+        <span class="n">update_manager</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">manager_path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">,</span>
+        <span class="n">manager_param</span><span class="o">=</span><span class="s1">&#39;CultivarName&#39;</span><span class="p">,</span>
+        <span class="n">rename</span><span class="o">=</span><span class="s1">&#39;edit-added&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Models.PMF.Cultivar&#39;</span><span class="p">,</span> <span class="s1">&#39;edit-added&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Edit cultivar parameters, when it is not sowed</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Soybean&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">edit_model_by_path</span><span class="p">(</span>
+        <span class="n">path</span><span class="o">=</span><span class="n">cultivar_path_soybean</span><span class="p">,</span>
+        <span class="n">commands</span><span class="o">=</span><span class="s1">&#39;[Grain].MaximumGrainsPerCob.FixedValue&#39;</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">sowed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">manager_path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">,</span>
+        <span class="n">manager_param</span><span class="o">=</span><span class="s1">&#39;CultivarName&#39;</span><span class="p">,</span>
+        <span class="n">rename</span><span class="o">=</span><span class="s1">&#39;edit-added&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Models.PMF.Cultivar&#39;</span><span class="p">,</span> <span class="s1">&#39;edit-added&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Single-Objective Optimization with apsimNGpy &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Single-Objective Optimization with apsimNGpy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/OPT.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="single-objective-optimization-with-apsimngpy">
+<span id="single-opt"></span><h1>Single-Objective Optimization with apsimNGpy<a class="headerlink" href="#single-objective-optimization-with-apsimngpy" title="Link to this heading"></a></h1>
+<p>Optimization is the science of selecting the best input values (decision variables) to achieve a desired output (objective). In the context of crop modeling, this might mean finding the optimal fertilizer rate or planting density to maximize yield or minimize nutrient leaching. Optimization problems can be:</p>
+<ul class="simple">
+<li><p>Single-objective (e.g., maximize yield)</p></li>
+<li><p>Multi-objective (e.g., maximize yield while minimizing nitrate leaching, covered in the next tutorial)</p></li>
+<li><p>Continuous (variables take any value within bounds)</p></li>
+<li><p>Discrete or categorical (variables take on fixed options)</p></li>
+<li><p>Mixed (a combination of variable types)</p></li>
+</ul>
+<p>The apsimNGpy package provides a comprehensive framework for optimizing both single- and multi-objective problems through the <code class="xref py py-mod docutils literal notranslate"><span class="pre">optimizer</span></code> module. Users can define decision variables (also known as control variables) associated with various APSIM components such as cultivars, manager scripts, and soil properties—for example, fertilization rate or sowing density.</p>
+<p>The module supports a wide range of built-in performance metrics including <code class="docutils literal notranslate"><span class="pre">mse,</span> <span class="pre">rmse,</span> <span class="pre">rrmse,</span> <span class="pre">ccc,</span> <span class="pre">and</span> <span class="pre">wia</span></code> etc, which are available as attributes of the optimization classes. These metrics allow users to define appropriate loss functions that compare predicted values against observations.</p>
+<p>Once the objective function (e.g., minimizing <code class="docutils literal notranslate"><span class="pre">RMSE</span></code> or maximizing mean yield) is specified, users can run supported solvers to find optimal configurations of the decision variables.</p>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.single</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContinuousVariable</span><span class="p">,</span> <span class="n">MixedVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+</pre></div>
+</div>
+<div class="admonition-explanation admonition">
+<p class="admonition-title">Explanation</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code> is used to initialise apsim model and handles model simulation and editing</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousVariable</span></code> wraps your problem setup for continuous variables</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">MixedVariable</span></code> wraps your problem setup for mixed variables</p></li>
+</ul>
+</div>
+<p>Load the APSIM model. This is typically a single simulation file you want to calibrate or optimize.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">maize_model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s2">&quot;Maize&quot;</span><span class="p">)</span> <span class="c1"># replace with the template path</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should be familiar with the structure of the model, including available report tables, as we will be calling the results method on this model object. It is assumed that the model is correctly configured and ready for use.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use the inspection or edit methods available in apsimNGpy to customize your model, or use the graphical user interface</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Sometimes we want to train our model using observed data (e.g., yield, soil carbon, etc.), so we need to load it as well. Please note that this is just a made-up example and not real data</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mf">7000.0</span><span class="p">,</span> <span class="mf">5000.505</span><span class="p">,</span> <span class="mf">1000.047</span><span class="p">,</span> <span class="mf">3504.000</span><span class="p">,</span> <span class="mf">7820.075</span><span class="p">,</span>
+    <span class="mf">7000.517</span><span class="p">,</span> <span class="mf">3587.101</span><span class="p">,</span> <span class="mf">4000.152</span><span class="p">,</span> <span class="mf">8379.435</span><span class="p">,</span> <span class="mf">4000.301</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Observed data should always match the predicted data.</p>
+</div>
+</section>
+<section id="minimizing-continuous-variables">
+<h2>Minimizing continuous variables<a class="headerlink" href="#minimizing-continuous-variables" title="Link to this heading"></a></h2>
+<p>These parameters—such as sowing density, nitrogen application rate, irrigation thresholds, or cultivar-specific coefficients—are often continuous in nature. here, I describe two ways of how to deal with them in apsimNGpy</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>A common and effective approach is to define a custom optimization problem class inheriting from <code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousVariable</span></code> class.</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>defining a custom class requires defining the <code class="docutils literal notranslate"><span class="pre">evaluate_objectives()</span></code> to implement your specific objective function, which override the  internal <code class="docutils literal notranslate"><span class="pre">evaluate_objectives()</span></code> method.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Problem</span><span class="p">(</span><span class="n">ContinuousVariable</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">apsim_model</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">apsim_model</span><span class="o">=</span><span class="n">apsim_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_objectives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># This function runs APSIM and compares the predicted maize yield results with observed data.</span>
+        <span class="n">predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apsim_model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">Yield</span>
+        <span class="c1"># Use root mean square error or another metric.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rmse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">Problem</span><span class="p">(</span><span class="n">maize_model</span><span class="p">,</span> <span class="n">obs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-explanation admonition">
+<p class="admonition-title">Explanation</p>
+<p>In this example, a custom optimization problem is defined by subclassing <code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousVariable</span></code>.
+The class is tailored to work with a specific APSIM model and a corresponding set of observed data.</p>
+<p>The observed values are passed to the constructor and stored as an attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">obs</span></code>. This enables the model’s predicted values
+to be evaluated directly against real-world data.</p>
+<p>The core logic resides in the <code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_objectives()</span></code> method, which runs the APSIM simulation and retrieves the predicted yield. It then computes the <strong>Root Mean Square Error (RMSE)</strong> between the predicted and observed values.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">RMSE</span></code> quantifies prediction error, and <strong>lower values indicate better model performance</strong>, this setup implicitly tells the optimizer to search for parameter values that minimize RMSE. In effect, this drives the optimization process toward solutions that better match the observed system behavior.</p>
+</div>
+<p>-2.  Alternatively, you can define the objective directly. This is useful for simpler problems where you only need to extract something from the APSIM report table.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">maximize_yield</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># Negate yield to convert to a minimization problem</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">Yield</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">ContinuousVariable</span><span class="p">(</span><span class="n">maize_model</span><span class="p">,</span> <span class="n">objectives</span> <span class="o">=</span> <span class="n">maximize_yield</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-control-variables">
+<h2>Adding control variables<a class="headerlink" href="#adding-control-variables" title="Link to this heading"></a></h2>
+<p>Control variables are variables that will control the outcomes of our objective values.
+You can use <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_control()</span></code> to specify the path, type, and bounds as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">,</span>
+    <span class="n">Amount</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> <span class="n">v_type</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="n">start_value</span><span class="o">=</span><span class="mi">150</span>
+<span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">,</span>
+    <span class="n">Population</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">v_type</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="n">start_value</span><span class="o">=</span><span class="mi">8</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">Amount</span></code> will be filled in by the optimizer because it is marked with ‘?’. It is also possible to supply extra parameters associated with any of the model path, which comes in handy if you want to change them on the fly, but you don’t want to optimize them. An example is shown below.</p>
+</div>
+<p>The manager script <code class="docutils literal notranslate"><span class="pre">Simulations.Simulation.Field.Sow</span> <span class="pre">using</span> <span class="pre">a</span> <span class="pre">variable</span> <span class="pre">rule</span></code> includes another parameter called <code class="docutils literal notranslate"><span class="pre">CultivarName</span></code>. Let’s change its value to ‘B_110’</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span>
+   <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">,</span> <span class="n">CultivarName</span><span class="o">=</span> <span class="s1">&#39;B_110&#39;</span><span class="p">,</span>
+   <span class="n">Amount</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> <span class="n">v_type</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="n">start_value</span><span class="o">=</span><span class="mi">150</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Run a local optimization solver. This is suitable for smooth problems and quick feedback.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res_local</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">minimize_with_a_local_solver</span><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Powell&#39;</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;maxiter&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also change to another method;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res_local</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">minimize_with_a_local_solver</span><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;maxiter&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>✅ A wide range of supported optimization algorithms are shown in the table below;</p>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Gradient Required</p></th>
+<th class="head"><p>Handles Bounds</p></th>
+<th class="head"><p>Handles Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Nelder-Mead</p></td>
+<td><p>Local (Derivative-free)</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Simplex algorithm</p></td>
+</tr>
+<tr class="row-odd"><td><p>Powell</p></td>
+<td><p>Local (Derivative-free)</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Direction set method</p></td>
+</tr>
+<tr class="row-even"><td><p>CG</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Conjugate Gradient</p></td>
+</tr>
+<tr class="row-odd"><td><p>BFGS</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Quasi-Newton</p></td>
+</tr>
+<tr class="row-even"><td><p>Newton-CG</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Newton’s method</p></td>
+</tr>
+<tr class="row-odd"><td><p>L-BFGS-B</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Limited memory BFGS</p></td>
+</tr>
+<tr class="row-even"><td><p>TNC</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Truncated Newton</p></td>
+</tr>
+<tr class="row-odd"><td><p>COBYLA</p></td>
+<td><p>Local (Derivative-free)</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Constrained optimization by linear approx.</p></td>
+</tr>
+<tr class="row-even"><td><p>SLSQP</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Sequential Least Squares Programming</p></td>
+</tr>
+<tr class="row-odd"><td><p>trust-constr</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Trust-region constrained</p></td>
+</tr>
+<tr class="row-even"><td><p>dogleg</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Requires Hessian</p></td>
+</tr>
+<tr class="row-odd"><td><p>trust-ncg</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Newton-CG trust region</p></td>
+</tr>
+<tr class="row-even"><td><p>trust-exact</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Trust-region, exact Hessian</p></td>
+</tr>
+<tr class="row-odd"><td><p>trust-krylov</p></td>
+<td><p>Local (Gradient-based)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Trust-region, Hessian-free</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>For details about these algorithms, see the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">minimize documentation</a>.</p>
+<div class="admonition-explanation admonition">
+<p class="admonition-title">Explanation</p>
+<p>In this example, we use a <strong>local optimization algorithm</strong> to minimize the objective function defined in our custom <code class="docutils literal notranslate"><span class="pre">Problem</span></code> class. most local optimizers are generally efficient and fast, making them suitable for problems where:</p>
+<ul class="simple">
+<li><p>The objective function do not have underlying mathematical definition.</p></li>
+<li><p>The problem is likely <strong>unimodal</strong>, meaning it has a single global minimum.</p></li>
+<li><p>You need <strong>quick feedback</strong> for parameter tuning or iterative experimentation.</p></li>
+</ul>
+<p>Here, the method used is <code class="docutils literal notranslate"><span class="pre">'Powell'</span></code>, a <strong>derivative-free</strong> optimization algorithm that performs a directional search in successive, conjugate directions. It is robust for many types of problems, especially when gradient information is unavailable.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">minimize_with_a_local_solver()</span></code> method is a wrapper around <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code>, making it easy to plug in a solver of your choice while passing solver-specific options.</p>
+<p>When optimizing complex models such as APSIM simulations, the shape of the objective function surface can significantly impact the choice of optimization strategy.</p>
+<p>Local optimizers (e.g., ‘Powell’, ‘Nelder-Mead’, ‘L-BFGS-B’) are designed to find a minimum near the starting point. They work well when the objective function is smooth, differentiable, and unimodal (i.e., has a single minimum). However, in problems where the surface is noisy, non-convex, or contains multiple local minima, these methods often get “trapped” in suboptimal solutions.</p>
+<p>In contrast, global optimizers like differential evolution (DE) are designed to explore the entire search space. DE is a stochastic population-based algorithm that samples multiple candidate solutions and evolves them over generations. This makes it well-suited for:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Noisy objective functions</p></li>
+<li><p>Highly non-linear problems</p></li>
+<li><p>Multi-modal landscapes (i.e., many local minima)</p></li>
+<li><p>Black-box functions where gradients are unavailable or unreliable</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although global optimizers may require more function evaluations and run time, they provide a more robust search and are less likely to miss the global minimum—especially in complex systems like agroecosystem models.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run a global optimizer using differential evolution</span>
+<span class="c1"># This is useful when the surface is noisy or has many local minima.</span>
+<span class="n">res_de</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">minimize_with_de</span><span class="p">(</span>
+    <span class="n">popsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">maxiter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">polish</span><span class="o">=</span><span class="kc">False</span>  <span class="c1"># Set to True if you want to refine with a local solver at the end</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Optimization performance heavily depends on how well the objective function is designed. A poorly constructed objective function may lead to misleading results or failed convergence, regardless of the optimization algorithm used.</p>
+<p>Be especially cautious when using gradient-based methods (e.g., <code class="docutils literal notranslate"><span class="pre">BFGS</span></code>, <code class="docutils literal notranslate"><span class="pre">L-BFGS-B</span></code>, <code class="docutils literal notranslate"><span class="pre">SLSQP</span></code>), as they typically assume a smooth and differentiable objective surface. If your objective function is noisy, discontinuous, or based on simulations (such as APSIM), derivative-free methods like <code class="docutils literal notranslate"><span class="pre">Powell</span></code>, <code class="docutils literal notranslate"><span class="pre">Nelder-Mead</span></code>, or evolutionary algorithms (e.g., <code class="docutils literal notranslate"><span class="pre">NSGA-II</span></code>) are often more appropriate.</p>
+<p>Additionally, ensure that:</p>
+<ul class="simple">
+<li><p>The objective function returns <strong>consistent numeric values</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">float</span></code>) without side effects.</p></li>
+<li><p>Constraints (if any) are correctly defined and numerically stable.</p></li>
+<li><p>Bounds on variables are appropriate and not overly restrictive.</p></li>
+</ul>
+<p>Choosing the right algorithm is <strong>not a guarantee</strong> of good results—objective formulation, variable scaling, and domain understanding are equally critical to successful optimization.</p>
+</div>
+</section>
+</section>
+<section id="mixed-variable-optimization-in-apsimngpy">
+<h1>Mixed-Variable Optimization in apsimNGpy<a class="headerlink" href="#mixed-variable-optimization-in-apsimngpy" title="Link to this heading"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>While continuous-variable optimization is often considered straightforward—where parameters can smoothly vary within defined bounds—real-world agroecosystem modeling problems are rarely that simple. Many decision variables are not continuous but instead:</p>
+<ul class="simple">
+<li><p>Take on categorical values (e.g., cultivar type or fertilizer formulation),</p></li>
+<li><p>Follow discrete steps (e.g., plant density in fixed intervals),</p></li>
+<li><p>Or must be selected from a fixed grid of management practices (e.g., irrigation schedules, sowing dates).</p></li>
+</ul>
+<p>These challenges make optimization more complex, as standard solvers typically assume a continuous search space.</p>
+</div>
+<p>To tackle this, APSIMNGpy provides the <code class="xref py py-class docutils literal notranslate"><span class="pre">MixedVariable</span></code> class, which allows users to define optimization problems involving a mixture of variable types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Continuous (float-valued)</p></li>
+<li><p>Quantized integers (step-wise discrete values)</p></li>
+<li><p>Categorical (unordered choices)</p></li>
+</ul>
+</div></blockquote>
+<p>This abstraction allows you to work seamlessly with APSIM models by recasting all variables internally into a continuous representation, while still respecting their original type during evaluation.</p>
+<section id="using-mixedvariable-in-practice">
+<h2>Using MixedVariable in Practice<a class="headerlink" href="#using-mixedvariable-in-practice" title="Link to this heading"></a></h2>
+<p>The example below demonstrates how to define and solve a mixed-variable optimization problem using APSIMNGpy. We’ll configure a maize model to maximize yield by tuning both:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A categorical fertilizer rate, and</p></li>
+<li><p>A quantized sowing density.</p></li>
+</ul>
+</div></blockquote>
+<p>print(‘Testing mixed variable optimization…’)</p>
+<p>You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.single</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedVariable</span>
+
+<span class="c1"># Define the optimization problem</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">MixedVariable</span><span class="p">(</span><span class="n">maize_model</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="n">maximize_yield</span><span class="p">)</span>
+
+<span class="c1"># Add a categorical (choice-based) variable</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">,</span>
+    <span class="n">Amount</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span>
+    <span class="n">v_type</span><span class="o">=</span><span class="s1">&#39;choice&#39;</span><span class="p">,</span>
+    <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
+    <span class="n">start_value</span><span class="o">=</span><span class="mi">150</span>
+<span class="p">)</span>
+
+<span class="c1"># Add a quantized integer variable with fixed step size</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">,</span>
+    <span class="n">Population</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span>
+    <span class="n">v_type</span><span class="o">=</span><span class="s1">&#39;qrandint&#39;</span><span class="p">,</span>
+    <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+    <span class="n">start_value</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">q</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can then optimize this setup using either local or global solvers, as shown in the rest of the tutorial. The inheritance from the MixedVariable is still the same as above</p>
+</div>
+</section>
+<section id="review-optimization-results">
+<h2>Review optimization results<a class="headerlink" href="#review-optimization-results" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Local Solver (e.g, Powell)</p></th>
+<th class="head"><p>Global Solver (DE)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Speed</p></td>
+<td><p>Fast</p></td>
+<td><p>Slower</p></td>
+</tr>
+<tr class="row-odd"><td><p>Risk of local traps</p></td>
+<td><p>High</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr class="row-even"><td><p>Use case</p></td>
+<td><p>Smooth, simple surfaces</p></td>
+<td><p>Rugged, multi-modal surfaces</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference:</span></a></p></li>
+<li><p><a class="reference internal" href="moo.html#moo-opt"><span class="std std-ref">Multi-Objective Optimization with apsimNGpy</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#master"><span class="std std-ref">Go back to the home page</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

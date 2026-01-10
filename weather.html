@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Data Replacement. &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Distributed Computing" href="mult_core.html" />
+    <link rel="prev" title="Quick and Simple Way to Run Factorial Experiments" href="factorial_experiments.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Weather Data Replacement.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#get-weather-data-from-the-web">Get weather data from the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-local-weather-data">Using local weather data</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Weather Data Replacement.</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/weather.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="weather-data-replacement">
+<h1>Weather Data Replacement.<a class="headerlink" href="#weather-data-replacement" title="Link to this heading"></a></h1>
+<p>apsimNGpy provides both an object oriented structure and procedural structure to replace the weather data. Here, I only demonstrate the object oriented one.</p>
+<section id="get-weather-data-from-the-web">
+<h2>Get weather data from the web<a class="headerlink" href="#get-weather-data-from-the-web" title="Link to this heading"></a></h2>
+<p>Replace instantly from the instantiated apsimNGpy model object. This is achieved with <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.get_weather_from_web" title="apsimNGpy.core.apsim.ApsimModel.get_weather_from_web"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_weather_from_web()</span></code></a> with the following signature;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_weather_from_web</span><span class="p">(</span><span class="n">lonlat</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="n">MissingOption</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;nasa&#39;</span><span class="p">,</span>
+                            <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">lonlat</span></code>: <code class="docutils literal notranslate"><span class="pre">tuple</span></code>  containing the longitude and latitude coordinates in that order.</p>
+<p><code class="docutils literal notranslate"><span class="pre">start</span></code>: Start date for the weather data retrieval.</p>
+<p><code class="docutils literal notranslate"><span class="pre">end</span></code>: End date for the weather data retrieval.</p>
+<p><code class="docutils literal notranslate"><span class="pre">simulations</span></code>: str, list of simulations to place the weather data, defaults to all simulation if user specification is missing.</p>
+<p><code class="docutils literal notranslate"><span class="pre">source</span></code>: Source of the weather data. Defaults to ‘nasa’ because its world wide coverage, but other sources includes the <code class="docutils literal notranslate"><span class="pre">daymet</span></code> (Contiguous U.S. Only)</p>
+<p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: Name of the file to save the retrieved data. If None, a default name is generated.</p>
+<p>To use <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.get_weather_from_web" title="apsimNGpy.core.apsim.ApsimModel.get_weather_from_web"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_weather_from_web()</span></code></a>, it requires instantiation of the model as follows;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+<span class="n">maize_model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span> <span class="c1"># replace maize with your apsim template file</span>
+
+<span class="c1"># replace the weather with lonlat specification as follows;</span>
+<span class="n">maize_model</span><span class="o">.</span><span class="n">get_weather_from_web</span><span class="p">(</span><span class="n">lonlat</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">93.885490</span><span class="p">,</span> <span class="mf">42.060650</span><span class="p">),</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">1990</span><span class="p">,</span> <span class="n">end</span>  <span class="o">=</span><span class="mi">2001</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing weather data with non matching start and end dates in the simulation will lead to <code class="docutils literal notranslate"><span class="pre">RuntimeErrors</span></code>.
+To avoid this first check the start and end date before proceeding as follows.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">maize_model</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">)</span>
+<span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">dt</span><span class="p">[</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">dt</span><span class="p">[</span><span class="s1">&#39;End&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">year</span>
+<span class="c1"># out put:  1990, 2000</span>
+</pre></div>
+</div>
+</section>
+<section id="using-local-weather-data">
+<h2>Using local weather data<a class="headerlink" href="#using-local-weather-data" title="Link to this heading"></a></h2>
+<p>Got weather data stored on your computer? No problem! With <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code>, you can easily swap in your own weather file
+using the <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.get_weather_from_file" title="apsimNGpy.core.apsim.ApsimModel.get_weather_from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_weather_from_file()</span></code></a> method. Here’s how you can do it. In the same way as - <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.get_soil_from_web" title="apsimNGpy.core.apsim.ApsimModel.get_soil_from_web"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_soil_from_web()</span></code></a>,</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If no simulation  is specified, all available simulations will get the suggested weather file</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">maize_model</span><span class="o">.</span><span class="n">get_weather_from_file</span><span class="p">(</span><span class="n">weather_file</span> <span class="o">=</span> <span class="s1">&#39;./pathtotheeatherfile&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Related APIs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.get_weather_from_file" title="apsimNGpy.core.apsim.ApsimModel.get_weather_from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_weather_from_file()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.get_soil_from_web" title="apsimNGpy.core.apsim.ApsimModel.get_soil_from_web"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_soil_from_web()</span></code></a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference:</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#master"><span class="std std-ref">Go back to the home page</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="factorial_experiments.html" class="btn btn-neutral float-left" title="Quick and Simple Way to Run Factorial Experiments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mult_core.html" class="btn btn-neutral float-right" title="Distributed Computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model Preview in GUI &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Inspect Model Parameters" href="inspect_model_parameters.html" />
+    <link rel="prev" title="Inspect Model" href="model%20inspection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Preview in GUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Model Preview in GUI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/preview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="model-preview-in-gui">
+<h1>Model Preview in GUI<a class="headerlink" href="#model-preview-in-gui" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.preview_simulation" title="apsimNGpy.core.apsim.ApsimModel.preview_simulation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preview_simulation()</span></code></a> method provides the
+primary mechanism for opening the current in-memory APSIM model in the APSIM Next
+Generation GUI. When invoked, the method first serializes the active simulation to
+the specified out_path, then launches the APSIM NG GUI using the current APSIM binary resolved
+through :func:~`apsimNGpy.core.config.get_apsim_bin_path`. This allows users to inspect the model tree,
+verify component structures, and perform quick manual edits alongside their
+Python workflow. Importantly, the model is opened using the exact APSIM NG version
+configured for the current apsimNGpy session, ensuring version consistency between the GUI and the Python environment.</p>
+<p>The <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.preview_simulation" title="apsimNGpy.core.apsim.ApsimModel.preview_simulation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preview_simulation()</span></code></a> takes in one parameter
+<code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">:</span> <span class="pre">bool</span></code>, which defaults to False. If True, Python will listen for GUI edits and sync them back into the model instance in (near) real time.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The file opened in the GUI is a <em>saved copy</em> of this Python object.
+Changes made in the GUI are <strong>not</strong> propagated back to the
+<a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a> instance unless you set
+<code class="docutils literal notranslate"><span class="pre">watch=True</span></code>.
+Otherwise, to continue working in Python with GUI edits, save the file in APSIM
+and re-load it, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ApsimModel</span><span class="p">(</span><span class="s2">&quot;gui_edited_file_path.apsimx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p><strong>1. Preview only</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s2">&quot;Maize&quot;</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="s2">&quot;test_.apsimx&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">preview_simulation</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/gui.png" id="gui-tree-structure-model"><img alt="Tree structure of the APSIM model" class="align-center" id="gui-tree-structure-model" src="_images/gui.png" style="width: 98%;" />
+</a>
+<p><strong>2. Preview and edit simultaneously</strong></p>
+<p>After opening the APSIMX file in the GUI via the watching mode (<code class="docutils literal notranslate"><span class="pre">watch=True</span></code>), you can modify any parameters using GUI interface. The Example given below involved changing parameters such as
+<strong>Plant population (/m²)</strong>, <strong>Cultivar to be sown</strong>, and <strong>Row spacing (mm)</strong>
+in the <em>Sow using a variable rule</em> script and finally, checked whether the changes were successful by inspecting the model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">preview_simulation</span><span class="p">(</span><span class="n">watch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/gui_watch_changes.png" id="gui-tree-structure-model-watch"><img alt="Tree structure of the APSIM model (watch mode)" class="align-center" id="gui-tree-structure-model-watch" src="_images/gui_watch_changes.png" style="width: 98%;" />
+</a>
+<p><strong>Example console output when</strong> <code class="docutils literal notranslate"><span class="pre">watch=True</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-24 13:05:08,480 - INFO - Watching for GUI edits...
+Save in APSIM to sync back.
+2025-10-24 13:05:08,490 - INFO - Press Ctrl+C in this cell to stop.
+APSIM GUI saved. Syncing model...
+2025-10-24 13:05:24,112 - INFO - Watching terminated successfully.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">watch=True</span></code>, follow the console instructions.
+One critical step is that you <strong>must press</strong> <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> to stop watching.</p>
+</div>
+<p><strong>Checking if changes were successfully propagated back</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s2">&quot;Models.Manager&quot;</span><span class="p">,</span> <span class="s2">&quot;Sow using a variable rule&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;Crop&#39;: &#39;[Maize]&#39;,
+ &#39;StartDate&#39;: &#39;1-nov&#39;,
+ &#39;EndDate&#39;: &#39;10-jan&#39;,
+ &#39;MinESW&#39;: &#39;100&#39;,
+ &#39;MinRain&#39;: &#39;25&#39;,
+ &#39;RainDays&#39;: &#39;7&#39;,
+ &#39;CultivarName&#39;: &#39;B_95&#39;,
+ &#39;SowingDepth&#39;: &#39;25&#39;,
+ &#39;RowSpacing&#39;: &#39;700&#39;,
+ &#39;Population&#39;: &#39;4&#39;}
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Depending on your environment, you may need to close the GUI window to continue
+or follow the prompts shown after termination.</p>
+</div>
+<div class="admonition-final-note-on-model-inspections admonition">
+<p class="admonition-title">Final note on Model inspections</p>
+<p>The inspection methods demonstrated in these tutorials are intended to support users during the initial
+setup phase—particularly when creating or validating a base APSIM file before running experiments or simulations.
+These tools help users understand the model structure, verify parameter values, and confirm that intended edits are correctly specified. They are not meant to be used inside repeated or large-scale simulation loops; rather,
+they serve as a prerequisite step for ensuring confidence in model configuration prior to automated workflows.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="model%20inspection.html" class="btn btn-neutral float-left" title="Inspect Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="inspect_model_parameters.html" class="btn btn-neutral float-right" title="Inspect Model Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command-Line Usage Guide &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Command-Line Usage Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cli.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="command-line-usage-guide">
+<span id="cli-usage"></span><h1>Command-Line Usage Guide<a class="headerlink" href="#command-line-usage-guide" title="Link to this heading"></a></h1>
+<p>This module provides a command-line interface (CLI) for running APSIM simulations with various options. Below is a guide on how to use it.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>setting apsim bin path is implemented via apsim_bin_path cli module as follows</p>
+<p>After installing apsimNGpy, navigate to your terminal and run the following to update the bin path apsim version</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim_bin_path<span class="w"> </span>-u<span class="w"> </span><span class="s1">&#39;path/to/your/apsim/binary/folder/bin&#39;</span>
+</pre></div>
+</div>
+<p>Or
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apsim_bin_path</span> <span class="o">--</span><span class="n">update</span> <span class="s1">&#39;path/to/your/apsim/binary/folder/bin&#39;</span>
+</pre></div>
+</div>
+<p>To run the apsim via apsimNGpy from the command line, use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p>In addition, make sure that the APSIM installation binaries folder is added to the system path. if you run the following code and returns None you need to do something as explained below.</p>
+<p>The code below displays the bin path that is currently being used by apsimNGpy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apsim_bin_path</span> <span class="o">-</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>You can also try to check if automatic search will be successful as follows
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apsim_bin_path</span> <span class="o">--</span><span class="n">auto_search</span>
+</pre></div>
+</div>
+<p>The short cut</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apsim_bin_path</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>The following options are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--model</span></code> (str, optional): Path to the APSIM model file. Defaults to “Maize”. If path, it should end with .apsimx and should be absolute is not in the current directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--out</span></code> (str, optional): Output directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-i,</span> <span class="pre">--inspect</span></code> (str, optional): inspect file or specific model type within the file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t,</span> <span class="pre">--table</span></code> (str, optional): Report table name. Defaults to “Report”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-w,</span> <span class="pre">--met_file</span></code> (str, optional): Path to the weather data file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-sim,</span> <span class="pre">--simulation</span></code> (str, optional): Name of the APSIM simulation to run.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-ws,</span> <span class="pre">--wd</span></code> (str, optional): Working directory for the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-l,</span> <span class="pre">--lonlat</span></code> (str, optional): Latitude and longitude (comma-separated) for fetching weather data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-sf,</span> <span class="pre">--save</span></code> (str, optional): File name for saving output data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s,</span> <span class="pre">--aggfunc</span></code> (str, optional): Statistical summary function (e.g., mean, median). Defaults to “mean”.</p></li>
+</ul>
+</section>
+<section id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Link to this heading"></a></h2>
+<p>Run a simulation with a specific APSIM model:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim<span class="w"> </span>-m<span class="w"> </span>maize<span class="w">  </span>--aggfunc<span class="w"> </span>median
+</pre></div>
+</div>
+<p>Fetch weather data for a specific location and run the simulation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim<span class="w"> </span>-m<span class="w">  </span>maize<span class="w">  </span>--aggfunc<span class="w"> </span>median<span class="w"> </span>--lonlat<span class="w"> </span><span class="s1">&#39;-92.5123, 41.045&#39;</span>
+</pre></div>
+</div>
+<p>Specify an alternative aggregation function:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Maize&quot;</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;max&quot;</span>
+</pre></div>
+</div>
+<p>inspect a model:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Maize&quot;</span><span class="w"> </span>--inspect<span class="w"> </span>Models.Manager
+</pre></div>
+</div>
+<p>inspect the whole file in the APSIM simulation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Maize&quot;</span><span class="w"> </span>--inspect<span class="w"> </span>file
+</pre></div>
+</div>
+<p>other arguments can not be passed successfuly when inspecting, because the execution ends on model inspection.</p>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
+<p>The script logs key actions and summaries to help with debugging. Logged messages include:</p>
+<ul class="simple">
+<li><p>Command summary with parsed arguments.</p></li>
+<li><p>Weather file updates.</p></li>
+<li><p>Model execution status.</p></li>
+<li><p>Data aggregation results.</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Ensure APSIM is installed and accessible.</p></li>
+<li><p>Verify input file paths are correct.</p></li>
+<li><p>If weather data is not downloading, check the API source and internet connectivity, the start and end dates in the model.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">--help</span></code> to see available options:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apsim<span class="w"> </span>--help
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

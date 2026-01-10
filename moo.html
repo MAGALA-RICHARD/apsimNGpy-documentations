@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Objective Optimization with apsimNGpy &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Support apsimNGpy development" href="how_to_cite.html" />
+    <link rel="prev" title="Automatic Parameter calibration" href="calibrate.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-Objective Optimization with apsimNGpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-import-required-modules">Step 1: Import required modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-initialize-the-apsim-model-runner">Step 2: Initialize the APSIM model runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-define-objective-functions">Step 3: Define Objective Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4a-define-decision-variables-approach-1-direct-list">Step 4a: Define decision variables (Approach 1 - direct List)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3b-define-decision-variables-approach-2-using-add-control">Step 3b: Define decision variables (Approach 2 - using <code class="docutils literal notranslate"><span class="pre">add_control()</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-run-the-nsga-ii-optimizer">Step 5: Run the NSGA-II optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-plot-the-pareto-front">Step 6: Plot the Pareto Front</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparing-objectives-without-mult-objective-optimization">Comparing objectives without mult-objective optimization</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Multi-Objective Optimization with apsimNGpy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/moo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multi-objective-optimization-with-apsimngpy">
+<span id="moo-opt"></span><h1>Multi-Objective Optimization with apsimNGpy<a class="headerlink" href="#multi-objective-optimization-with-apsimngpy" title="Link to this heading"></a></h1>
+<p>In real-world agricultural systems, most objectives—such as maximizing crop yield while minimizing environmental impact—are inherently conflicting. These trade-offs cannot be effectively addressed using single-objective optimization algorithms, which are limited to optimizing one goal at a time. Fortunately, multi-objective optimization algorithms inspired by evolutionary principles are well-suited to handle such complexity by exploring a range of trade-offs between competing objectives.</p>
+<p>This tutorial demonstrates how to perform multi-objective optimization on an APSIM Next Generation model using the apsimNGpy.optimizer.moo module. You will learn two ways to define decision variables and how to apply evolutionary algorithms via the pymoo library. This approach allows you to explore and analyze trade-offs among competing objectives, such as productivity and sustainability, in a robust and flexible way.</p>
+<div class="admonition-prerequisites admonition">
+<p class="admonition-title">Prerequisites</p>
+<p>Make sure you have the following installed and configured:</p>
+<ul class="simple">
+<li><p><strong>APSIM Next Generation installed</strong></p></li>
+<li><p><strong>Python 3.10+</strong></p></li>
+<li><p><strong>apsimNGpy</strong> package (latest version)</p></li>
+<li><p>Python packages: <code class="docutils literal notranslate"><span class="pre">pymoo</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+</ul>
+</div>
+<section id="step-1-import-required-modules">
+<h2>Step 1: Import required modules<a class="headerlink" href="#step-1-import-required-modules" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate" id="moo"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.optimizer.moo</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiObjectiveProblem</span><span class="p">,</span> <span class="n">compute_hyper_volume</span><span class="p">,</span> <span class="n">NSGA2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymoo.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span> <span class="k">as</span> <span class="n">Runner</span>
+</pre></div>
+</div>
+<div class="admonition-interpretation admonition">
+<p class="admonition-title">Interpretation</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a> handles model simulation and editing. It is an apsimNGpy class</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiObjectiveProblem</span></code> wraps your problem into a multi-objective one</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NSGA2</span></code>: a multi-objective genetic algorithm</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">minimize()</span></code> will be used to minimize the objectives in the finals steps</p></li>
+</ul>
+</div>
+</section>
+<section id="step-2-initialize-the-apsim-model-runner">
+<h2>Step 2: Initialize the APSIM model runner<a class="headerlink" href="#step-2-initialize-the-apsim-model-runner" title="Link to this heading"></a></h2>
+<p>You create a runner tied to a specific <code class="docutils literal notranslate"><span class="pre">.apsimx</span></code> model file. This runner manages simulation and parameter editing.
+Here, I a using the default maize template. Because it does not have nitrate leaching in its Report table, I have also added it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span><span class="s2">&quot;Maize&quot;</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">add_report_variable</span><span class="p">(</span><span class="s1">&#39;[Soil].Nutrient.NO3.kgha[1] as nitrate&#39;</span><span class="p">,</span> <span class="n">report_name</span><span class="o">=</span><span class="s1">&#39;Report&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-for-more-runner-api-details-check-the-link-below admonition">
+<p class="admonition-title">For more <code class="docutils literal notranslate"><span class="pre">runner</span></code> API details, check the link below</p>
+<p>ApsimModel API: <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel" title="apsimNGpy.core.apsim.ApsimModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApsimModel</span></code></a></p>
+</div>
+</section>
+<section id="step-3-define-objective-functions">
+<h2>Step 3: Define Objective Functions<a class="headerlink" href="#step-3-define-objective-functions" title="Link to this heading"></a></h2>
+<p>Objective functions take APSIM output (as a DataFrame) and return scalar values. You can define any number of such functions depending on the goals.
+If you have 3 objectives, then we expect 3 functions.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Maximization objectives must be converted into minimization form by negating them (e.g., <code class="docutils literal notranslate"><span class="pre">-f(x)</span></code>), since the underlying optimization algorithms are designed to minimize objective functions.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">maximize_yield</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Yield&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">minimize_nitrate_leaching</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nitrate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4a-define-decision-variables-approach-1-direct-list">
+<h2>Step 4a: Define decision variables (Approach 1 - direct List)<a class="headerlink" href="#step-4a-define-decision-variables-approach-1-direct-list" title="Link to this heading"></a></h2>
+<p>You can directly supply a list of variables to optimize as follows:.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">decision_vars</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;.Simulations.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Amount&#39;</span><span class="p">:</span> <span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="s1">&#39;bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> <span class="s1">&#39;v_type&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">},</span>
+
+    <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="s1">&#39;bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="s1">&#39;v_type&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="c1"># initialise the problem</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">MultiObjectiveProblem</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="p">[</span><span class="n">maximize_yield</span><span class="p">,</span> <span class="n">minimize_nitrate_leaching</span><span class="p">],</span> <span class="n">decision_vars</span><span class="o">=</span><span class="n">decision_vars</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each dictionary defines:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the APSIM model path to the component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Amount</span></code> / <code class="docutils literal notranslate"><span class="pre">Population</span></code>: the parameter to be optimized (denoted by ‘?’).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code>: lower and upper bounds for the optimizer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v_type</span></code>: variable type.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each decision variable specification must contain exactly one parameter marked with <code class="docutils literal notranslate"><span class="pre">'?'</span></code>. This signifies the target parameter to be optimized during the calibration or search process.</p>
+</div>
+</section>
+<section id="step-3b-define-decision-variables-approach-2-using-add-control">
+<h2>Step 3b: Define decision variables (Approach 2 - using <code class="docutils literal notranslate"><span class="pre">add_control()</span></code>)<a class="headerlink" href="#step-3b-define-decision-variables-approach-2-using-add-control" title="Link to this heading"></a></h2>
+<p>Instead of a list, you can add each parameter one at a time.
+There is a need to initiate our problem with objectives only, then add control variables on the fly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialise the problem</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">MultiObjectiveProblem</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="p">[</span><span class="n">maximize_yield</span><span class="p">,</span> <span class="n">minimize_nitrate_leaching</span><span class="p">])</span>
+
+<span class="n">problem</span><span class="o">.</span><span class="n">add_parameters</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">,</span>
+    <span class="n">Amount</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> <span class="n">v_type</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+<span class="n">problem</span><span class="o">.</span><span class="n">add_parameters</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">,</span>
+    <span class="n">Population</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="n">v_type</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The best approach depends on the user’s preference, but the last approach helps the user to focus on one control variables required details at a time.</p>
+</div>
+</section>
+<section id="step-5-run-the-nsga-ii-optimizer">
+<h2>Step 5: Run the NSGA-II optimizer<a class="headerlink" href="#step-5-run-the-nsga-ii-optimizer" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NSGA-II</span></code> is a commonly used algorithm for multi-objective problems. There are other genetic multi-objective algorithms, but for trade-off analysis with APSIM,
+<code class="docutils literal notranslate"><span class="pre">NSGA-II</span></code> is more than adequate. You can now run  it as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">NSGA2</span><span class="p">(</span><span class="n">pop_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span>
+    <span class="n">problem</span><span class="o">.</span><span class="n">get_problem</span><span class="p">(),</span>
+    <span class="n">algorithm</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;n_gen&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pop_size</span></code>: number of candidate solutions per generation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_gen</span></code>: number of generations to run.</p></li>
+</ul>
+</section>
+<section id="step-6-plot-the-pareto-front">
+<h2>Step 6: Plot the Pareto Front<a class="headerlink" href="#step-6-plot-the-pareto-front" title="Link to this heading"></a></h2>
+<p>The results show trade-offs between competing objectives. You can visualize them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">F</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">F</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">F</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yield&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N Leaching&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Pareto Front&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/yield_nleach.png" src="_images/yield_nleach.png" />
+<div class="admonition-comment admonition">
+<p class="admonition-title">comment</p>
+<p>From the graph above, it is clear that achieving high corn yield while simultaneously reducing nitrate leaching is quite challenging.
+This is because high yields typically require the application of large amounts of nitrogen fertilizer, which is often associated with increased nitrate leaching.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Compute Hyper volume (Optional)</p>
+<p>The hyper volume gives a scalar metric of solution quality, and can be useful if you want to explore the best inputs such as pop_size, max_gen.</p>
+<blockquote>
+<div><p>A high value indicates better solution quality than a lower one. Therefore, it can also be used to compare the performance of multiple minimization algorithms.</p>
+</div></blockquote>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hv</span> <span class="o">=</span> <span class="n">compute_hyper_volume</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hyper volume:&quot;</span><span class="p">,</span> <span class="n">hv</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Objectives are typically expressed in different units, and some—such as yield—may have much larger amplitudes.
+This makes determining a suitable reference point challenging. In such cases, normalization can help automatically detect the reference point by applying specific thresholds.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>While multi-objective algorithms like NSGA-II can technically handle single-objective problems,
+doing so is like using an axe to slice an orange or shooting a mosquito with an m16 —it’s overkill. Simpler and more efficient algorithms are better suited for single-objective optimization tasks.</p>
+</div>
+</section>
+<section id="comparing-objectives-without-mult-objective-optimization">
+<h2>Comparing objectives without mult-objective optimization<a class="headerlink" href="#comparing-objectives-without-mult-objective-optimization" title="Link to this heading"></a></h2>
+<p>What if we just run out the different combinations of the decision variables: population density and the nitrogen application rate can
+we ge the same pareto front and trade-offs we have seen in that graph? To answer this question we are going to run a factorial experiment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">population</span>  <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">nitrogen</span>  <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">create_experiment</span><span class="p">(</span><span class="n">permutation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">base_name</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">add_factor</span><span class="p">(</span><span class="n">specification</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;[Fertilise at sowing].Script.Amount = </span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nitrogen</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">factor_name</span><span class="o">=</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">add_factor</span><span class="p">(</span><span class="n">specification</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;[Sow using a variable rule].Script.Population =</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                 <span class="n">factor_name</span><span class="o">=</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">df</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SimulationID&#39;</span><span class="p">)[[</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="s1">&#39;nitrate&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">yi</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Yield</span>
+<span class="n">nitrate</span>  <span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">nitrate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">yi</span> <span class="p">,</span> <span class="n">nitrate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yield&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N Leaching&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Trade-offs between yield and nitrate leaching&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/no_nsg2.png" src="_images/no_nsg2.png" />
+<div class="admonition-comment admonition">
+<p class="admonition-title">comment</p>
+<p>From the graph above, it is clear that the pattern is no where close to what we could call a clear pareto front that can demonstrate the trade-offs between different objectives.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">apsimNGpy: API Reference</span></a></p></li>
+<li><p><a class="reference internal" href="OPT.html#single-opt"><span class="std std-ref">Single-Objective Optimization with apsimNGpy</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calibrate.html" class="btn btn-neutral float-left" title="Automatic Parameter calibration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="how_to_cite.html" class="btn btn-neutral float-right" title="Support apsimNGpy development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

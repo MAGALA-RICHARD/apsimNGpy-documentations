@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="What is New in apsimNGpy 1.0.0" href="what_is_new.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apsimngpy-the-next-generation-agro-ecosystem-simulation-library">
+<span id="master"></span><h1>apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library<a class="headerlink" href="#apsimngpy-the-next-generation-agro-ecosystem-simulation-library" title="Link to this heading"></a></h1>
+<a class="reference external image-reference" href="https://opensource.org/licenses/Apache-2.0"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://magala-richard.github.io/apsimNGpy-documentations/index.html"><img alt="Documentation" src="https://img.shields.io/badge/docs-online-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://pypi.org/project/apsimNGpy/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/apsimNGpy?logo=pypi" />
+</a>
+<a class="reference external image-reference" href="https://pepy.tech/project/apsimNGpy"><img alt="Total PyPI downloads" src="https://static.pepy.tech/badge/apsimNGpy" />
+</a>
+<a class="reference external image-reference" href="https://discord.gg/SU9A6nNv"><img alt="Join Discussions" src="https://img.shields.io/badge/Join%20Discussions-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://teams.live.com/l/community/FBAbNOQj7y9dPcoaAI"><img alt="Ask Teams" src="https://img.shields.io/badge/Ask%20Through%20Teams-purple.svg" />
+</a>
+<a class="reference external image-reference" href="https://registration.apsim.info/?version=2025.12.7939.0&amp;product=APSIM%20Next%20Generation" id="apsim-pinned-version"><img alt="APSIM Next Generation version" id="apsim-pin-version" src="https://img.shields.io/badge/Download--APSIM--NG-2025.12.7939.0-blue?style=flat&amp;logo=apachespark" />
+</a>
+</section>
+<section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>apsimNGpy is a cutting-edge, open-source Python framework designed for advanced modeling with APSIM process-based model.
+Built on object-oriented principles. apsimNGpy extends and augments APSIM Next Generation functionalities within the Python scientific ecosystem,
+turning GUI-centric workflows into scriptable, reproducible, and scalable pipelines. apsimNGpy functionalities include, but not limited to the following:</p>
+<blockquote>
+<div><p><strong>Scalable performance.</strong> Run large experiment sets efficiently via <code class="docutils literal notranslate"><span class="pre">multiprocessing/multithreading</span></code> (e.g., factorials, ensembles, calibrations) using a clean, high-level API.</p>
+<p><strong>Spatial &amp; data integration</strong>. Leverage Python’s geospatial stack and built-in helpers to fetch and manage soil/weather inputs, enabling landscape-scale analyses.</p>
+<p><strong>Optimization &amp; calibration</strong>. Access multi-objective optimization and sensitivity analysis to quantify trade-offs (e.g., yield vs. nitrate loss/GHG) and calibrate parameters.</p>
+<p><strong>Reproducible automation</strong>. Run <code class="docutils literal notranslate"><span class="pre">APSIM</span></code> using Jupyter/CLI/scripts; outputs land in <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrames</span></code> for downstream analysis, plotting, and reporting.</p>
+<p><strong>Full model manipulation</strong>. A modular, <code class="docutils literal notranslate"><span class="pre">object-oriented</span></code> design supports inspection, editing, experiments, and custom reports without manual GUI interface.</p>
+<p><strong>Version resilience</strong>. rather than tying <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> to a fixed APSIM version, <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> is developed with forward- and backward-compatibility in mind and is actively synchronized with upstream APSIM.</p>
+<p><strong>Open and extensible</strong>. <code class="docutils literal notranslate"><span class="pre">Apache-2.0</span></code> licensing, clear abstractions, and a plug-friendly architecture make it easy to extend and integrate into existing research pipelines.</p>
+<p><strong>Diverse model evaluation metrics</strong>. Built-in model prediction evaluation metrics: RMSE, RRMSE, Willmott’s Index of Agreement (WIA), Bias, MAE, Lin’s CCC, and R<sup>2</sup></p>
+<p><strong>Containerization and Portability</strong>. Lastly but not least, it is worth noting that apsimNGpy simplifies <strong>containerization</strong>, allowing entire projects to be ported to another machine without reinstalling APSIM, provided the required binaries are correctly referenced.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="discussion-and-community-support">
+<h1>Discussion and Community Support<a class="headerlink" href="#discussion-and-community-support" title="Link to this heading"></a></h1>
+<p>Users who wish to ask questions, report issues, request new features,
+or engage in general discussion about <strong>apsimNGpy</strong> are encouraged to
+visit the project’s official <a class="reference external" href="https://github.com/MAGALA-RICHARD/apsimNGpy/discussions">GitHub Discussions</a> page.</p>
+<p>This forum serves as the preferred place for:</p>
+<ul class="simple">
+<li><p>Troubleshooting and “how-to” questions</p></li>
+<li><p>Sharing workflows or examples</p></li>
+<li><p>Feature proposals and use-case discussions</p></li>
+<li><p>Clarification on model editing, optimization, and calibration</p></li>
+<li><p>Community-driven enhancements</p></li>
+<li><p>Collaboration with other APSIM users</p></li>
+</ul>
+<p>If your question is not answered in the documentation, feel free to
+start a new discussion thread and tag it appropriately.</p>
+<p>For reporting reproducible bugs or contributing code, please use the
+<a class="reference external" href="https://github.com/MAGALA-RICHARD/apsimNGpy/issues">GitHub Issues</a> tracker.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="what_is_new.html#stable-reproducible-release"><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Stable,</span> <span class="pre">Reproducible</span> <span class="pre">Release</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#installing-apsimngpy">Installing apsimNGpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#verifying-the-apsim-binary-path">Verifying the APSIM Binary Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#how-apsimngpy-locates-apsim-binaries">How apsimNGpy Locates APSIM Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#setting-or-updating-the-apsim-binary-path">Setting or Updating the APSIM Binary Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#verifying-successful-configuration">Verifying Successful Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting%20started.html#containerization-and-portability">Containerization and Portability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage.html#running-loaded-models">Running loaded models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage.html#accessing-simulated-results">Accessing Simulated Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage.html#saving-the-simulation">Saving the Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage.html#controlling-reload-behavior">Controlling Reload Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage.html#example-reload-enabled-default-behavior">Example: Reload Enabled (Default Behavior)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage.html#example-reload-disabled">Example: Reload Disabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage.html#using-save-inside-a-context-manager">Using <code class="docutils literal notranslate"><span class="pre">save</span></code> Inside a Context Manager</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preview.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edit.html#selective-editing">Selective editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edit.html#edit-method-function-signature"><code class="docutils literal notranslate"><span class="pre">edit_method</span></code> function signature</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#creating-an-experiment">Creating an Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#adding-factors">Adding Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#running-the-experiment">Running the Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factorial_experiments.html#factorial-experiment-with-cultivar-replacements">Factorial Experiment with Cultivar Replacements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="weather.html#get-weather-data-from-the-web">Get weather data from the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="weather.html#using-local-weather-data">Using local weather data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mult_core.html#minimal-example-1-writing-your-own-worker-and-data-storage-function">Minimal example 1: Writing your own worker and data storage function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mult_core.html#minimal-example-2-writing-your-own-worker-and-use-data-storage-decorator-from-data-base-utils-only-latest-version">Minimal example 2: Writing your own worker and use data storage decorator from data_base_utils (only latest version)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mult_core.html#minimal-example-3-run-all-simulations-using-the-c-backend">Minimal Example 3: Run All Simulations Using the C# Backend</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#defining-the-optimization-problem">Defining the Optimization Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#defining-the-factors">Defining the factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#submit-optimization-factors">Submit optimization factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#submitting-untyped-factors">Submitting  untyped factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#configure-the-optimizer">Configure the optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#use-differential-evolution">Use differential evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#local-optimization-examples">Local optimization examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#differential-evolution-performance-and-comparison-with-local-optimizers">Differential Evolution Performance and Comparison with Local Optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#full-tutorial-code">Full tutorial code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrate.html#id1">Local optimization examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#step-1-import-required-modules">Step 1: Import required modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#step-2-initialize-the-apsim-model-runner">Step 2: Initialize the APSIM model runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#step-3-define-objective-functions">Step 3: Define Objective Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#step-4a-define-decision-variables-approach-1-direct-list">Step 4a: Define decision variables (Approach 1 - direct List)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#step-3b-define-decision-variables-approach-2-using-add-control">Step 3b: Define decision variables (Approach 2 - using <code class="docutils literal notranslate"><span class="pre">add_control()</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#step-5-run-the-nsga-ii-optimizer">Step 5: Run the NSGA-II optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#step-6-plot-the-pareto-front">Step 6: Plot the Pareto Front</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html#comparing-objectives-without-mult-objective-optimization">Comparing objectives without mult-objective optimization</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how_to_cite.html#how-you-can-support">How You Can Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_cite.html#contact">Contact</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_cite.html#how-to-contribute-to-apsimngpy">How to Contribute to apsimNGpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_cite.html#reporting-issues">Reporting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_cite.html#contributing-code">Contributing Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_cite.html#updating-documentation">Updating Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_cite.html#testing-your-pull-request-or-your-contribution">Testing your pull request or your contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comp_cultivar.html#variability-across-the-simulation-years">Variability across the simulation years</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sens.html#workflow-overview">Workflow Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sens.html#workflow-diagram">Workflow Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#conceptual-overview">Conceptual overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#computational-considerations">Computational considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#define-apsim-model-inputs">Define APSIM model inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#initialize-the-problem">Initialize the problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#generate-samples">Generate samples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#saltelli-sampling-behavior">Saltelli sampling behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#running-the-apsim-model">Running the APSIM model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#evaluation-output">Evaluation output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#perform-analysis">Perform Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial.html#converting-outputs-to-pandas">Converting outputs to pandas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#create-the-experiment">Create the experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#adding-factors-to-the-experiment">Adding factors to the experiment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#multi-year-moving-average-for-each-experiment-line-plot">Multi-year moving average for each experiment (line plot).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#box-plots">Box plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#maize-yield-variability-by-population-density-mva-plot">Maize yield variability by population density (mva plot).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#maize-yield-variability-by-population-density-and-nitrogen-fertilizer-box-plot">Maize yield variability by population density and nitrogen fertilizer (box plot).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#bar-plots">Bar Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#maize-yield-variability-by-population-density-bar-plot">Maize yield variability by population density (bar plot).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#maize-yield-variability-by-population-density-bar-plot-estimator-sum">Maize yield variability by population density (bar plot, estimator =sum).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#maize-yield-variability-by-population-density-in-mg-bar-plot-estimator-sum">Maize yield variability by population density in Mg (bar plot, estimator =sum).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#maize-yield-labeled-plot-bar-plot">Maize yield labeled plot (bar plot).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#maize-yield-ordered-plot-line-plot">Maize yield ordered plot (Line plot)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#binned-maize-yield-bar-plot">Binned Maize yield (bar plot).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-apsim">apsimNGpy.core.apsim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-config">apsimNGpy.core.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-experimentmanager">apsimNGpy.core.experimentmanager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-mult-cores">apsimNGpy.core.mult_cores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-pythonet-config">apsimNGpy.core.pythonet_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-runner">apsimNGpy.core.runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-senstivitymanager">apsimNGpy.core.senstivitymanager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-core-utils-database-utils">apsimNGpy.core_utils.database_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-exceptions">apsimNGpy.exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-optimizer-minimize-single-mixed">apsimNGpy.optimizer.minimize.single_mixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-optimizer-problems-back-end">apsimNGpy.optimizer.problems.back_end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-optimizer-problems-smp">apsimNGpy.optimizer.problems.smp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-parallel-process">apsimNGpy.parallel.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-senstivity-sensitivity">apsimNGpy.senstivity.sensitivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#apsimngpy-validation-evaluator">apsimNGpy.validation.evaluator</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="what_is_new.html" class="btn btn-neutral float-right" title="What is New in apsimNGpy 1.0.0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

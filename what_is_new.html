@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is New in apsimNGpy 1.0.0 &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="getting%20started.html" />
+    <link rel="prev" title="apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What is New in <strong>apsimNGpy 1.0.0</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stable-reproducible-release"><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Stable,</span> <span class="pre">Reproducible</span> <span class="pre">Release</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#core-engine-improvements"><code class="docutils literal notranslate"><span class="pre">2.</span> <span class="pre">Core</span> <span class="pre">Engine</span> <span class="pre">Improvements</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expanded-sensitivity-uncertainty-analysis"><code class="docutils literal notranslate"><span class="pre">3.</span> <span class="pre">Expanded</span> <span class="pre">Sensitivity</span> <span class="pre">&amp;</span> <span class="pre">Uncertainty</span> <span class="pre">Analysis</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#improved-database-output-management"><code class="docutils literal notranslate"><span class="pre">4.</span> <span class="pre">Improved</span> <span class="pre">Database</span> <span class="pre">&amp;</span> <span class="pre">Output</span> <span class="pre">Management</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-developer-quality-of-life"><code class="docutils literal notranslate"><span class="pre">5.</span> <span class="pre">Workflow</span> <span class="pre">&amp;</span> <span class="pre">Developer</span> <span class="pre">Quality-of-Life</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixes-stability-enhancements"><code class="docutils literal notranslate"><span class="pre">6.</span> <span class="pre">Fixes</span> <span class="pre">&amp;</span> <span class="pre">Stability</span> <span class="pre">Enhancements</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary"><code class="docutils literal notranslate"><span class="pre">Summary</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">What is New in <strong>apsimNGpy 1.0.0</strong></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/what_is_new.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="what-is-new-in-apsimngpy-1-0-0">
+<h1>What is New in <strong>apsimNGpy 1.0.0</strong><a class="headerlink" href="#what-is-new-in-apsimngpy-1-0-0" title="Link to this heading"></a></h1>
+<p><strong>apsimNGpy 1.0.0</strong> represents a major milestone in the development of the framework, transitioning from an experimental research tool to a stable, production-ready release. This version consolidates years of development and introduces several key improvements in performance, usability, reproducibility, and analytical capability.</p>
+<section id="stable-reproducible-release">
+<h2><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Stable,</span> <span class="pre">Reproducible</span> <span class="pre">Release</span></code><a class="headerlink" href="#stable-reproducible-release" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>First <strong>official 1.0.0</strong> version, signifying a <strong>stable API</strong> and backward compatibility guarantee for future minor releases.</p></li>
+</ul>
+<section id="core-engine-improvements">
+<h3><code class="docutils literal notranslate"><span class="pre">2.</span> <span class="pre">Core</span> <span class="pre">Engine</span> <span class="pre">Improvements</span></code><a class="headerlink" href="#core-engine-improvements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Refactored multiprocessing engine</strong> for robust, scalable execution across multiple CPU cores, including safer handling of parallel APSIM runs on Windows.</p></li>
+<li><p><strong>Improved failure reporting</strong> and retry mechanisms with configurable policies (e.g., <code class="docutils literal notranslate"><span class="pre">tenacity</span></code>-based retries), reducing silent errors in large batch jobs.</p></li>
+<li><p><strong>Improve job submissions</strong> allowing edits to be submitted simultaneously.</p></li>
+</ul>
+</section>
+<section id="expanded-sensitivity-uncertainty-analysis">
+<h3><code class="docutils literal notranslate"><span class="pre">3.</span> <span class="pre">Expanded</span> <span class="pre">Sensitivity</span> <span class="pre">&amp;</span> <span class="pre">Uncertainty</span> <span class="pre">Analysis</span></code><a class="headerlink" href="#expanded-sensitivity-uncertainty-analysis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Updated <strong>Sobol sampling</strong> with configurable skip values for improved space-filling design.</p></li>
+<li><p>Clean handling of <strong>calc_second_order</strong> options with consistent propagation between sampling and analysis layers.</p></li>
+<li><p>Support for additional SALib methods with stable default parameterization.</p></li>
+<li><p>Sensitivity analysis workflows fully compatible across all os platforms.</p></li>
+</ul>
+</section>
+<section id="improved-database-output-management">
+<h3><code class="docutils literal notranslate"><span class="pre">4.</span> <span class="pre">Improved</span> <span class="pre">Database</span> <span class="pre">&amp;</span> <span class="pre">Output</span> <span class="pre">Management</span></code><a class="headerlink" href="#improved-database-output-management" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Schema-hash table naming</strong> to avoid SQLite collisions in parallel executions.</p></li>
+<li><p>Stable persistence layer with:
+* deterministic table identifiers
+* execution and process metadata
+* large result handling with chunked writes.</p></li>
+<li><p>Cleaner error handling for results writes under heavy parallel loads.</p></li>
+</ul>
+</section>
+<section id="workflow-developer-quality-of-life">
+<h3><code class="docutils literal notranslate"><span class="pre">5.</span> <span class="pre">Workflow</span> <span class="pre">&amp;</span> <span class="pre">Developer</span> <span class="pre">Quality-of-Life</span></code><a class="headerlink" href="#workflow-developer-quality-of-life" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>First modules test using .bat scripts</p></li>
+<li><p>Support for locking APSIM versions to a specific project.</p></li>
+</ul>
+</section>
+<section id="fixes-stability-enhancements">
+<h3><code class="docutils literal notranslate"><span class="pre">6.</span> <span class="pre">Fixes</span> <span class="pre">&amp;</span> <span class="pre">Stability</span> <span class="pre">Enhancements</span></code><a class="headerlink" href="#fixes-stability-enhancements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Resolution of common parallel SQLite locking issues under heavy batch throughput.</p></li>
+<li><p>Deterministic hashing for table identifiers even in multiprocessing contexts.</p></li>
+<li><p>Guidance and preflight validation for schema drift, unsupported data types, and mixed index/column structures.</p></li>
+<li><p>Better error reporting for model editing callbacks and APSIM parameter sets.</p></li>
+</ul>
+</section>
+<section id="summary">
+<h3><code class="docutils literal notranslate"><span class="pre">Summary</span></code><a class="headerlink" href="#summary" title="Link to this heading"></a></h3>
+<p><strong>apsimNGpy 1.0.0</strong> delivers:</p>
+<ul class="simple">
+<li><p>A stable, reproducible foundation for agri-environmental modeling workflows</p></li>
+<li><p>Scalability, reliability for large batch, single and multi-objective experiments</p></li>
+<li><p>Better integration of APSIM with decision support, sensitivity, and spatial optimization routines</p></li>
+<li><p>An enduring API that is resilient and robust under a wide range of uncertainties</p></li>
+</ul>
+<p>This release establishes a platform for future enhancements while remaining reliable for academic and applied research in productivity, environmental impacts, and landscape planning.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getting%20started.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

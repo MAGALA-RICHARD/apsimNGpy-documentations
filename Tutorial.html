@@ -1,0 +1,578 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sensitivity analysis workflow Part 2 (SALib driven workflow) &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="apsimNGpy cheatsheet" href="cheat.html" />
+    <link rel="prev" title="Sensitivity Analysis in apsimNGpy Part 1" href="sens.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conceptual-overview">Conceptual overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computational-considerations">Computational considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-apsim-model-inputs">Define APSIM model inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initialize-the-problem">Initialize the problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-samples">Generate samples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#sample-matrix-and-evaluation">Sample matrix and evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#saltelli-sampling-behavior">Saltelli sampling behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-apsim-model">Running the APSIM model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-output">Evaluation output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perform-analysis">Perform Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-outputs-to-pandas">Converting outputs to pandas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sensitivity analysis workflow Part 2 (SALib driven workflow)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sensitivity-analysis-workflow-part-2-salib-driven-workflow">
+<h1>Sensitivity analysis workflow Part 2 (SALib driven workflow)<a class="headerlink" href="#sensitivity-analysis-workflow-part-2-salib-driven-workflow" title="Link to this heading"></a></h1>
+<p>In response to requests for a cross-platform sensitivity analysis
+workflow, apsimNGpy has been integrated with SALib. As explained below</p>
+<p>Sensitivity analysis follows a three-stage workflow triad:</p>
+<ol class="arabic simple">
+<li><p><strong>Sampling</strong></p></li>
+<li><p><strong>Model evaluation</strong></p></li>
+<li><p><strong>Analysis</strong></p></li>
+</ol>
+<p>In this framework, <strong>sampling</strong> and <strong>analysis</strong> are handled by
+<code class="docutils literal notranslate"><span class="pre">SALib</span></code> <a class="reference external" href="https://salib.readthedocs.io/en/latest/api.html">https://salib.readthedocs.io/en/latest/api.html</a>, while <strong>model evaluation</strong> is performed by <strong>APSIM</strong>.</p>
+<section id="conceptual-overview">
+<h2>Conceptual overview<a class="headerlink" href="#conceptual-overview" title="Link to this heading"></a></h2>
+<p>The logical process begins by <strong>defining the problem</strong>, which includes
+identifying the input parameters to be varied, their ranges, and the
+model outputs of interest. This problem definition is then passed to
+SALib, which generates a structured set of parameter samples according
+to the selected sensitivity analysis method.</p>
+<p>These sampled parameter sets are subsequently <strong>evaluated by APSIM</strong>.
+For each sample, APSIM executes a full simulation and produces the
+corresponding model outputs. Once all simulations have completed, the
+evaluated results are returned to SALib, where sensitivity indices are
+computed and summarized.</p>
+<p>In simplified terms, the data flow is:</p>
+<ul class="simple">
+<li><p>define the sensitivity problem and model inputs,</p></li>
+<li><p>generate parameter samples using SALib,</p></li>
+<li><p>evaluate each sample by running APSIM,</p></li>
+<li><p>analyze the results using SALib.</p></li>
+</ul>
+</section>
+<section id="computational-considerations">
+<h2>Computational considerations<a class="headerlink" href="#computational-considerations" title="Link to this heading"></a></h2>
+<p>The <strong>model evaluation stage</strong> is by far the most computationally
+expensive component of the workflow. Each APSIM simulation may take
+several seconds or more to complete, and sensitivity analyses typically
+require hundreds to thousands of model evaluations.</p>
+<p>To mitigate this computational cost, APSIM simulations are executed
+<strong>in parallel</strong>, allowing multiple parameter sets to be evaluated
+simultaneously. Parallel execution substantially reduces total runtime
+and makes large-scale sensitivity analysis feasible in practice.</p>
+<p>The first step is to import the necessary libraries</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">SALib.sample</span><span class="w"> </span><span class="kn">import</span> <span class="n">saltelli</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">SALib.analyze</span><span class="w"> </span><span class="kn">import</span> <span class="n">sobol</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.sensitivity.sensitivity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigProblem</span><span class="p">,</span> <span class="n">run_sensitivity</span>
+</pre></div>
+</div>
+</section>
+<section id="define-apsim-model-inputs">
+<h2>Define APSIM model inputs<a class="headerlink" href="#define-apsim-model-inputs" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+       <span class="s2">&quot;.Simulations.Simulation.Field.Sow using a variable rule?Population&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+       <span class="s2">&quot;.Simulations.Simulation.Field.Fertilise at sowing?Amount&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+       <span class="c1"># &quot;.Simulations.Simulation.Field.Maize.CultivarFolder.Dekalb_XL82?[Leaf].Photosynthesis.RUE.FixedValue&quot;: (</span>
+       <span class="c1">#     1.2, 2.2),</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <strong>base parameter path</strong> and the <strong>specific parameter name or sub-path</strong>
+are separated using one of the following delimiters: <code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">::</span></code>, or <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>.</p>
+<p>The values associated with each parameter define the <strong>lower and upper
+bounds</strong> of the sampling space used during sensitivity analysis.</p>
+</div>
+</section>
+<section id="initialize-the-problem">
+<h2>Initialize the problem<a class="headerlink" href="#initialize-the-problem" title="Link to this heading"></a></h2>
+<p>use the <code class="docutils literal notranslate"><span class="pre">ConfigProblem</span></code> problem configuration class to set the scene for the senstivity triad</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">runner</span> <span class="o">=</span> <span class="n">ConfigProblem</span><span class="p">(</span>
+    <span class="n">base_model</span><span class="o">=</span><span class="s2">&quot;Maize&quot;</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yield&quot;</span><span class="p">,</span> <span class="s2">&quot;Maize.AboveGround.N&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-samples">
+<h2>Generate samples<a class="headerlink" href="#generate-samples" title="Link to this heading"></a></h2>
+<p>Since we are performing a Sobol’ sensitivity analysis, we need to generate samples using the Saltelli sampler from SAlib, as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_values</span> <span class="o">=</span> <span class="n">saltelli</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">problem</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sample-matrix-and-evaluation">
+<h1>Sample matrix and evaluation<a class="headerlink" href="#sample-matrix-and-evaluation" title="Link to this heading"></a></h1>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">param_values</span></code> is a two-dimensional NumPy array.
+Inspecting its shape using <code class="docutils literal notranslate"><span class="pre">param_values.shape</span></code> shows that the array
+has dimensions <strong>96 by 2</strong>.</p>
+<p>This means that <strong>96 parameter samples</strong> were generated, and each sample
+contains values for <strong>2 model parameters</strong>.</p>
+<p>—</p>
+<section id="saltelli-sampling-behavior">
+<h2>Saltelli sampling behavior<a class="headerlink" href="#saltelli-sampling-behavior" title="Link to this heading"></a></h2>
+<p>The Saltelli sampler generates a fixed number of samples based on the
+number of input parameters and the base sample size. In this example:</p>
+<ul class="simple">
+<li><p>the base sample size <code class="docutils literal notranslate"><span class="pre">N</span></code> is <code class="docutils literal notranslate"><span class="pre">2**4</span></code> (16),</p></li>
+<li><p>the number of model inputs <code class="docutils literal notranslate"><span class="pre">D</span></code> is 2.</p></li>
+</ul>
+<p>By default, the Saltelli sampler generates <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">(2D</span> <span class="pre">+</span> <span class="pre">2)</span></code> samples.
+With the values above, this results in <strong>96 samples</strong>.</p>
+<p>If the option <code class="docutils literal notranslate"><span class="pre">calc_second_order=False</span></code> is used, the number of samples
+is reduced. In that case, the sampler generates <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">(D</span> <span class="pre">+</span> <span class="pre">2)</span></code> samples,
+which significantly lowers the computational cost.</p>
+<p>—</p>
+</section>
+<section id="running-the-apsim-model">
+<h2>Running the APSIM model<a class="headerlink" href="#running-the-apsim-model" title="Link to this heading"></a></h2>
+<p>The model evaluation step is performed using the <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> method of
+the <code class="docutils literal notranslate"><span class="pre">ConfigProblem</span></code> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param_values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method runs the APSIM model once for <strong>each row</strong> in
+<code class="docutils literal notranslate"><span class="pre">param_values</span></code> and collects the corresponding outputs.</p>
+<p>—</p>
+</section>
+<section id="evaluation-output">
+<h2>Evaluation output<a class="headerlink" href="#evaluation-output" title="Link to this heading"></a></h2>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">Y</span></code> is returned as a NumPy array. Its dimensionality
+depends on the number of outputs specified in <code class="docutils literal notranslate"><span class="pre">ConfigProblem</span></code>.</p>
+<ul class="simple">
+<li><p>If a single output is selected, <code class="docutils literal notranslate"><span class="pre">Y</span></code> is a one-dimensional array.</p></li>
+<li><p>If multiple outputs are selected, <code class="docutils literal notranslate"><span class="pre">Y</span></code> is a two-dimensional array.</p></li>
+</ul>
+<p>In this example, two outputs were specified, so <code class="docutils literal notranslate"><span class="pre">Y</span></code> has shape
+<code class="docutils literal notranslate"><span class="pre">(96,</span> <span class="pre">2)</span></code>. Each row corresponds to one parameter sample, and each
+column corresponds to one model output.</p>
+<p>In other words, the evaluation step applies APSIM to every sampled
+parameter set and returns the simulated results in a structured array
+that can be passed directly to SALib for analysis.</p>
+</section>
+<section id="perform-analysis">
+<h2>Perform Analysis<a class="headerlink" href="#perform-analysis" title="Link to this heading"></a></h2>
+<p>With the model outputs loaded into Python memory, the final step is to
+compute the sensitivity indices. In this example, we use
+<code class="docutils literal notranslate"><span class="pre">sobol.analyze</span></code>, which computes first-order, second-order, and
+total-order sensitivity indices.</p>
+<p>Additional details on the Sobol analysis workflow are available
+<a class="reference external" href="https://salib.readthedocs.io/en/latest/user_guide/basics.html#an-example">here</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si</span> <span class="o">=</span> <span class="p">[</span><span class="n">sobol</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">problem</span><span class="p">,</span> <span class="n">Y</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">print_to_console</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">ndim</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Each element in the result is returned as a Python dictionary containing
+the keys <code class="docutils literal notranslate"><span class="pre">S1</span></code>, <code class="docutils literal notranslate"><span class="pre">S2</span></code>, <code class="docutils literal notranslate"><span class="pre">ST</span></code>, <code class="docutils literal notranslate"><span class="pre">S1_conf</span></code>, <code class="docutils literal notranslate"><span class="pre">S2_conf</span></code>, and <code class="docutils literal notranslate"><span class="pre">ST_conf</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">*_conf</span></code> entries represent the confidence intervals associated with
+each sensitivity index, typically computed at a 95 percent confidence
+level.</p>
+<p>To display all sensitivity indices at once, set the keyword argument
+<code class="docutils literal notranslate"><span class="pre">print_to_console=True</span></code>. Alternatively, individual indices can be
+accessed directly from the results object, as shown below. Using grain yield as example hence index 0</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;S1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.43932783, 0.84502346])
+</pre></div>
+</div>
+<p>Amount which is Nitrogen fertilizer quantity have a higher first order effect than the planting population density.</p>
+<p>we can also retrieve the total effect</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;S1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mf">0.44579877</span><span class="p">,</span> <span class="mf">0.91875446</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The larger total-order effects relative to the first-order effects
+suggest potential interactions between the two factors</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;S2&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>np.float64(0.025099857475360032)
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si</span> <span class="o">=</span> <span class="p">[</span><span class="n">sobol</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">problem</span><span class="p">,</span> <span class="n">Y</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">print_to_console</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">ndim</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>     ST   ST_conf
+Population  0.445799  0.447337
+Amount      0.918754  0.492323
+                  S1   S1_conf
+Population  0.439328  0.471019
+Amount      0.845023  0.589469
+                          S2   S2_conf
+[Population, Amount]  0.0251  0.338638
+                  ST   ST_conf
+Population  0.342162  0.386487
+Amount      0.948013  0.527931
+                  S1   S1_conf
+Population  0.334605  0.493981
+Amount      0.898494  0.579069
+                           S2   S2_conf
+[Population, Amount]  0.04358  0.397149
+</pre></div>
+</div>
+<p>SALib provides utilities that allow each sensitivity index to be
+converted into a pandas DataFrame, which can then be used for further
+analysis or visualization.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">total_y</span><span class="p">,</span> <span class="n">s1_y</span><span class="p">,</span> <span class="n">s2_y</span>  <span class="o">=</span> <span class="n">Si</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+<span class="n">total_gn</span><span class="p">,</span> <span class="n">s1_gn</span><span class="p">,</span> <span class="n">s2_n</span>  <span class="o">=</span> <span class="n">Si</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">total_y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>SALib provides an object-oriented interface that simplifies the
+sensitivity analysis triad of sampling, evaluation, and analysis.
+In apsimNGpy, this workflow is further streamlined by wrapping all
+three steps into a single method,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">run_sensitivity()</span></code>.</p>
+<p>By keeping the initialized runner or problem definition constant,
+the complete sensitivity analysis demonstrated above can be executed
+in a concise and reproducible manner, as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si_sobol</span> <span class="o">=</span> <span class="n">run_sensitivity</span><span class="p">(</span>
+    <span class="n">runner</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
+    <span class="n">N</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1"># ← base sample size should be power of 2</span>
+    <span class="n">sample_options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;calc_second_order&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;skip_values&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+         <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">analyze_options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;conf_level&quot;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+        <span class="s2">&quot;num_resamples&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">&quot;print_to_console&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;calc_second_order&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The returned object is an instance of the
+<code class="docutils literal notranslate"><span class="pre">SALib.util.problem.ProblemSpec</span></code> class. When evaluated in the Python
+console, this object displays a summary of the problem definition and
+the computed sensitivity indices, as shown below.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Out[4]:
+Samples:
+    2 parameters: [&#39;Population&#39;, &#39;Amount&#39;]
+    96 samples
+Outputs:
+    2 outputs: [&#39;Y1&#39;, &#39;Y2&#39;]
+    96 evaluations
+Analysis:
+Y1:
+                  ST   ST_conf
+Population  0.308278  0.291488
+Amount      1.089438  0.522208:
+                  S1   S1_conf
+Population  0.394278  0.374126
+Amount      0.780433  0.644199:
+                            S2   S2_conf
+[Population, Amount] -0.024841  0.561135:
+Y2:
+                  ST   ST_conf
+Population  0.230316  0.245983
+Amount      1.073707  0.475261:
+                  S1   S1_conf
+Population  0.307134  0.290722
+Amount      0.772897  0.628444:
+                           S2   S2_conf
+[Population, Amount] -0.06778  0.422351:
+</pre></div>
+</div>
+<p>The presence of negative sensitivity indices usually indicates an
+insufficient sample size. Increasing the base sample size can help
+mitigate this issue.</p>
+</section>
+<section id="converting-outputs-to-pandas">
+<h2>Converting outputs to pandas<a class="headerlink" href="#converting-outputs-to-pandas" title="Link to this heading"></a></h2>
+<p>If we use <code class="docutils literal notranslate"><span class="pre">to_df</span></code> a list of Pandas Dataframes is returned</p>
+<p>Key important attributes for  samples, model results and analyses extraction available on the returned instance are shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">Si_sobol</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Si_sobol</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Si_sobol</span><span class="o">.</span><span class="n">analysis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Basic plotting functionality is also provided</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si_sobol</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can try another method known as Morris.   The Morris method is typically used as a <em>screening tool</em> to identify influential
+parameters with relatively low computational cost. It is well suited for high-dimensional
+problems where the goal is to rank parameters rather than quantify precise sensitivities.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Si_morris</span> <span class="o">=</span> <span class="n">run_sensitivity</span><span class="p">(</span>
+      <span class="n">runner</span><span class="p">,</span>
+      <span class="n">method</span><span class="o">=</span><span class="s2">&quot;morris&quot;</span><span class="p">,</span> <span class="n">n_cores</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+      <span class="n">sample_options</span><span class="o">=</span><span class="p">{</span>
+          <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+          <span class="s2">&quot;num_levels&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+          <span class="s2">&quot;optimal_trajectories&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="n">analyze_options</span><span class="o">=</span><span class="p">{</span>
+          <span class="s1">&#39;conf_level&#39;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+          <span class="s2">&quot;num_resamples&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+          <span class="s2">&quot;print_to_console&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">42</span>
+      <span class="p">},</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Out[7]:
+ Samples:
+     2 parameters: [&#39;Population&#39;, &#39;Amount&#39;]
+     18 samples
+ Outputs:
+     2 outputs: [&#39;Y1&#39;, &#39;Y2&#39;]
+     18 evaluations
+ Analysis:
+ Y1:
+                       mu       mu_star         sigma  mu_star_conf
+ Population  11394.831001  14289.237399  17359.167016  10309.394014
+ Amount      28441.782977  29864.030018  31160.051327  22045.514695:
+ Y2:
+                    mu    mu_star      sigma  mu_star_conf
+ Population  33.702220  35.548789  35.455297     23.199723
+ Amount      78.486127  78.486127  73.559727     55.214639:
+</pre></div>
+</div>
+<p>The final sensitivity analysis method demonstrated in this tutorial is
+the FAST method. FAST is a variance-based approach that estimates the
+influence of each input parameter by systematically varying inputs
+across the parameter space and analyzing the resulting model response.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">si_fast</span> <span class="o">=</span> <span class="n">run_sensitivity</span><span class="p">(</span>
+    <span class="n">runner</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span>
+    <span class="n">sample_options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
+    <span class="p">},</span>
+    <span class="n">analyze_options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;conf_level&#39;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+        <span class="s2">&quot;num_resamples&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">&quot;print_to_console&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Out[9]:
+Samples:
+    2 parameters: [&#39;Population&#39;, &#39;Amount&#39;]
+    130 samples
+Outputs:
+    2 outputs: [&#39;Y1&#39;, &#39;Y2&#39;]
+    130 evaluations
+Analysis:
+Y1:
+                  S1        ST   S1_conf   ST_conf
+Population  0.211503  0.332158  0.206649  0.165346
+Amount      0.585945  0.742978  0.206981  0.163964:
+Y2:
+                  S1        ST   S1_conf   ST_conf
+Population  0.151057  0.243790  0.208318  0.158650
+Amount      0.708005  0.819993  0.200030  0.162489:
+</pre></div>
+</div>
+<p>Ideally, the analysis could begin with the Morris method to screen out
+less influential factors, particularly when a large number of inputs
+are under consideration. However, even without this initial screening,
+the results are consistent across methods.</p>
+<p>In this case, both FAST and Sobol analyses indicate that yield is more
+sensitive to nitrogen fertilizer rate than to population density.</p>
+<p>To extend the analysis beyond the Sobol, Morris, and FAST methods, follow
+the same workflow demonstrated in the first example and consult the
+SALib documentation for additional sensitivity analysis techniques and
+their usage.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.0.0.</span></p>
+</div>
+<p>References</p>
+<p>Iwanaga, T., Usher, W., &amp; Herman, J. (2022). Toward SALib 2.0: Advancing the accessibility and interpretability of global sensitivity analyses. Socio-Environmental Systems Modelling, 4, 18155. doi:10.18174/sesmo.18155</p>
+<p>Herman, J. and Usher, W. (2017) SALib: An open-source Python library for sensitivity analysis. Journal of Open Source Software, 2(9). doi:10.21105/joss.00097</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sens.html" class="btn btn-neutral float-left" title="Sensitivity Analysis in apsimNGpy Part 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cheat.html" class="btn btn-neutral float-right" title="apsimNGpy cheatsheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

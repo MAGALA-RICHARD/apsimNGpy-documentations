@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plotting and Visualizing Simulated Output &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="apsimNGpy: API Reference" href="api.html" />
+    <link rel="prev" title="apsimNGpy cheatsheet" href="cheat.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting and Visualizing Simulated Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-experiment">Create the experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-factors-to-the-experiment">Adding factors to the experiment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#moving-average-plots">Moving average plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#multi-year-moving-average-for-each-experiment-line-plot">Multi-year moving average for each experiment (line plot).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#categorical-plots">Categorical Plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#box-plots">Box plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maize-yield-variability-by-population-density-mva-plot">Maize yield variability by population density (mva plot).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maize-yield-variability-by-population-density-and-nitrogen-fertilizer-box-plot">Maize yield variability by population density and nitrogen fertilizer (box plot).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bar-plots">Bar Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maize-yield-variability-by-population-density-bar-plot">Maize yield variability by population density (bar plot).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maize-yield-variability-by-population-density-bar-plot-estimator-sum">Maize yield variability by population density (bar plot, estimator =sum).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maize-yield-variability-by-population-density-in-mg-bar-plot-estimator-sum">Maize yield variability by population density in Mg (bar plot, estimator =sum).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#maize-yield-labeled-plot-bar-plot">Maize yield labeled plot (bar plot).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#passing-a-custom-dataset">Passing a custom dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#maize-yield-ordered-plot-line-plot">Maize yield ordered plot (Line plot)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binned-maize-yield-bar-plot">Binned Maize yield (bar plot).</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Plotting and Visualizing Simulated Output</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/plotting.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plotting-and-visualizing-simulated-output">
+<span id="plots"></span><h1>Plotting and Visualizing Simulated Output<a class="headerlink" href="#plotting-and-visualizing-simulated-output" title="Link to this heading"></a></h1>
+<p>Visualizing simulated results, is a critical step in understanding and communicating model behavior.
+Visualization serves as the blueprint of any experiment as it generates scientific insight underlying the data.
+The goal of this tutorial, therefore, is to help you quickly set up, diagnose, and report your simulation outcomes effectively,
+enabling clear interpretation and compelling presentation of your results.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.experimentmanager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+<section id="create-the-experiment">
+<h2>Create the experiment<a class="headerlink" href="#create-the-experiment" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ExperimentManager</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">,</span> <span class="n">out_path</span> <span class="o">=</span> <span class="s1">&#39;my_experiment.apsimx&#39;</span><span class="p">)</span>
+<span class="c1"># init the experiment</span>
+<span class="n">model</span><span class="o">.</span><span class="n">init_experiment</span><span class="p">(</span><span class="n">permutation</span> <span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-factors-to-the-experiment">
+<h2>Adding factors to the experiment<a class="headerlink" href="#adding-factors-to-the-experiment" title="Link to this heading"></a></h2>
+<p>Adding factors to the experiment requires that we understand the model structure. This can be accomplished
+by: <a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model" title="apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model()</span></code></a>, <a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file" title="apsimNGpy.core.experimentmanager.ExperimentManager.inspect_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_file()</span></code></a>,
+<a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model_parameters_by_path" title="apsimNGpy.core.experimentmanager.ExperimentManager.inspect_model_parameters_by_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model_parameters_by_path()</span></code></a></p>
+<p>Inspect the whole simulation tree</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_file</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>└── Simulations: .Simulations
+  ├── DataStore: .Simulations.DataStore
+  └── Experiment: .Simulations.Experiment
+      ├── Factors: .Simulations.Experiment.Factors
+      │   └── Permutation: .Simulations.Experiment.Factors.Permutation
+      └── Simulation: .Simulations.Experiment.Simulation
+          ├── Clock: .Simulations.Experiment.Simulation.Clock
+          ├── Field: .Simulations.Experiment.Simulation.Field
+          │   ├── Fertilise at sowing: .Simulations.Experiment.Simulation.Field.Fertilise at sowing
+          │   ├── Fertiliser: .Simulations.Experiment.Simulation.Field.Fertiliser
+          │   ├── Harvest: .Simulations.Experiment.Simulation.Field.Harvest
+          │   ├── Maize: .Simulations.Experiment.Simulation.Field.Maize
+          │   ├── Report: .Simulations.Experiment.Simulation.Field.Report
+          │   ├── Soil: .Simulations.Experiment.Simulation.Field.Soil
+          │   │   ├── Chemical: .Simulations.Experiment.Simulation.Field.Soil.Chemical
+          │   │   ├── NH4: .Simulations.Experiment.Simulation.Field.Soil.NH4
+          │   │   ├── NO3: .Simulations.Experiment.Simulation.Field.Soil.NO3
+          │   │   ├── Organic: .Simulations.Experiment.Simulation.Field.Soil.Organic
+          │   │   ├── Physical: .Simulations.Experiment.Simulation.Field.Soil.Physical
+          │   │   │   └── MaizeSoil: .Simulations.Experiment.Simulation.Field.Soil.Physical.MaizeSoil
+          │   │   ├── Urea: .Simulations.Experiment.Simulation.Field.Soil.Urea
+          │   │   └── Water: .Simulations.Experiment.Simulation.Field.Soil.Water
+          │   ├── Sow using a variable rule: .Simulations.Experiment.Simulation.Field.Sow using a variable rule
+          │   └── SurfaceOrganicMatter: .Simulations.Experiment.Simulation.Field.SurfaceOrganicMatter
+          ├── Graph: .Simulations.Experiment.Simulation.Graph
+          │   └── Series: .Simulations.Experiment.Simulation.Graph.Series
+          ├── MicroClimate: .Simulations.Experiment.Simulation.MicroClimate
+          ├── SoilArbitrator: .Simulations.Experiment.Simulation.SoilArbitrator
+          ├── Summary: .Simulations.Experiment.Simulation.Summary
+          └── Weather: .Simulations.Experiment.Simulation.Weather
+</pre></div>
+</div>
+<p>Inspect the full paths to the manager scripts in the model</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Models.Manager&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;.Simulations.Experiment.Simulation.Field.Sow using a variable rule&#39;,
+ &#39;.Simulations.Experiment.Simulation.Field.Fertilise at sowing&#39;,
+ &#39;.Simulations.Experiment.Simulation.Field.Harvest&#39;]
+</pre></div>
+</div>
+<p>Inspect the names to the manager scripts in the model</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Models.Manager&#39;</span><span class="p">,</span> <span class="n">fullpath</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;Sow using a variable rule&#39;, &#39;Fertilise at sowing&#39;, &#39;Harvest&#39;]
+</pre></div>
+</div>
+<p>If we want to edit any of the above script in the experiment, there is need to inspect the associated underlying parameters</p>
+<ol class="arabic simple">
+<li><p>‘.Simulations.Experiment.Simulation.Field.Sow using a variable rule’</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Experiment.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span><span class="s1">&#39;Crop&#39;</span><span class="p">:</span> <span class="s1">&#39;Maize&#39;</span><span class="p">,</span>
+<span class="s1">&#39;StartDate&#39;</span><span class="p">:</span> <span class="s1">&#39;1-nov&#39;</span><span class="p">,</span>
+<span class="s1">&#39;EndDate&#39;</span><span class="p">:</span> <span class="s1">&#39;10-jan&#39;</span><span class="p">,</span>
+<span class="s1">&#39;MinESW&#39;</span><span class="p">:</span> <span class="s1">&#39;100.0&#39;</span><span class="p">,</span>
+<span class="s1">&#39;MinRain&#39;</span><span class="p">:</span> <span class="s1">&#39;25.0&#39;</span><span class="p">,</span>
+<span class="s1">&#39;RainDays&#39;</span><span class="p">:</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span>
+<span class="s1">&#39;CultivarName&#39;</span><span class="p">:</span> <span class="s1">&#39;Dekalb_XL82&#39;</span><span class="p">,</span>
+<span class="s1">&#39;SowingDepth&#39;</span><span class="p">:</span> <span class="s1">&#39;30.0&#39;</span><span class="p">,</span>
+<span class="s1">&#39;RowSpacing&#39;</span><span class="p">:</span> <span class="s1">&#39;750.0&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;6.0&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>‘.Simulations.Experiment.Simulation.Field.Fertilise at sowing’</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Experiment.Simulation.Field.Fertilise at sowing&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;Crop&#39;</span><span class="p">:</span> <span class="s1">&#39;Maize&#39;</span><span class="p">,</span> <span class="s1">&#39;FertiliserType&#39;</span><span class="p">:</span> <span class="s1">&#39;NO3N&#39;</span><span class="p">,</span> <span class="s1">&#39;Amount&#39;</span><span class="p">:</span> <span class="s1">&#39;160.0&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Add factors along the the paramters; <code class="docutils literal notranslate"><span class="pre">Amount</span></code> and <code class="docutils literal notranslate"><span class="pre">Population</span></code> from the last and first scripts, respectively.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Population</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_factor</span><span class="p">(</span><span class="n">specification</span><span class="o">=</span><span class="s1">&#39;[Sow using a variable rule].Script.Population = 4, 6, 8, 10&#39;</span><span class="p">,</span> <span class="n">factor_name</span><span class="o">=</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+<span class="c1"># Nitrogen fertilizers</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_factor</span><span class="p">(</span><span class="n">specification</span><span class="o">=</span><span class="s1">&#39;[Fertilise at sowing].Script.Amount= 0, 100,150, 200, 250&#39;</span><span class="p">,</span> <span class="n">factor_name</span><span class="o">=</span> <span class="s1">&#39;Nitrogen&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Before we run,let’s add one report variable for an easy demonstration</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add_report_variable</span><span class="p">(</span><span class="n">variable_spec</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;[Clock].Today.Year as year&#39;</span><span class="p">],</span> <span class="n">report_name</span><span class="o">=</span><span class="s1">&#39;Report&#39;</span><span class="p">)</span>
+<span class="c1"># run the model to generate output</span>
+<span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Inspect the simulated results</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
+ <span class="n">RangeIndex</span><span class="p">:</span> <span class="mi">200</span> <span class="n">entries</span><span class="p">,</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">199</span>
+ <span class="n">Data</span> <span class="n">columns</span> <span class="p">(</span><span class="n">total</span> <span class="mi">19</span> <span class="n">columns</span><span class="p">):</span>
+  <span class="c1">#   Column                            Non-Null Count  Dtype</span>
+ <span class="o">---</span>  <span class="o">------</span>                            <span class="o">--------------</span>  <span class="o">-----</span>
+  <span class="mi">0</span>   <span class="n">CheckpointID</span>                      <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">int64</span>
+  <span class="mi">1</span>   <span class="n">SimulationID</span>                      <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">int64</span>
+  <span class="mi">2</span>   <span class="n">Experiment</span>                        <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="nb">object</span>
+  <span class="mi">3</span>   <span class="n">Population</span>                        <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="nb">object</span>
+  <span class="mi">4</span>   <span class="n">Nitrogen</span>                          <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="nb">object</span>
+  <span class="mi">5</span>   <span class="n">Zone</span>                              <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="nb">object</span>
+  <span class="mi">6</span>   <span class="n">Clock</span><span class="o">.</span><span class="n">Today</span>                       <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="nb">object</span>
+  <span class="mi">7</span>   <span class="n">Maize</span><span class="o">.</span><span class="n">Phenology</span><span class="o">.</span><span class="n">CurrentStageName</span>  <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="nb">object</span>
+  <span class="mi">8</span>   <span class="n">Maize</span><span class="o">.</span><span class="n">AboveGround</span><span class="o">.</span><span class="n">Wt</span>              <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">9</span>   <span class="n">Maize</span><span class="o">.</span><span class="n">AboveGround</span><span class="o">.</span><span class="n">N</span>               <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">10</span>  <span class="n">Yield</span>                             <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">11</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Wt</span>                    <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">12</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Size</span>                  <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">13</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">NumberFunction</span>        <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">14</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">Wt</span>              <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">15</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">N</span>                     <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">16</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">Wt</span>                    <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">float64</span>
+  <span class="mi">17</span>  <span class="n">year</span>                              <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="n">int64</span>
+  <span class="mi">18</span>  <span class="n">source_table</span>                      <span class="mi">200</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>    <span class="nb">object</span>
+ <span class="n">dtypes</span><span class="p">:</span> <span class="n">float64</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">int64</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">object</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+ <span class="n">memory</span> <span class="n">usage</span><span class="p">:</span> <span class="mf">29.8</span><span class="o">+</span> <span class="n">KB</span>
+</pre></div>
+</div>
+<p># By default, the parameter name of each factor is also populated in the data frame.</p>
+<p>Statistical results for each column</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="n">CheckpointID</span>  <span class="n">SimulationID</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">AboveGround</span><span class="o">.</span><span class="n">Wt</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">AboveGround</span><span class="o">.</span><span class="n">N</span>  \
+<span class="n">count</span>         <span class="mf">200.0</span>    <span class="mf">200.000000</span>            <span class="mf">200.000000</span>           <span class="mf">200.000000</span>
+<span class="n">mean</span>            <span class="mf">1.0</span>     <span class="mf">10.500000</span>           <span class="mf">1067.600206</span>            <span class="mf">10.239469</span>
+<span class="n">std</span>             <span class="mf">0.0</span>      <span class="mf">5.780751</span>            <span class="mf">607.686584</span>             <span class="mf">6.299485</span>
+<span class="nb">min</span>             <span class="mf">1.0</span>      <span class="mf">1.000000</span>             <span class="mf">51.423456</span>             <span class="mf">0.320986</span>
+<span class="mi">25</span><span class="o">%</span>             <span class="mf">1.0</span>      <span class="mf">5.750000</span>            <span class="mf">708.023479</span>             <span class="mf">5.095767</span>
+<span class="mi">50</span><span class="o">%</span>             <span class="mf">1.0</span>     <span class="mf">10.500000</span>            <span class="mf">987.749088</span>             <span class="mf">9.423852</span>
+<span class="mi">75</span><span class="o">%</span>             <span class="mf">1.0</span>     <span class="mf">15.250000</span>           <span class="mf">1579.116949</span>            <span class="mf">15.402366</span>
+<span class="nb">max</span>             <span class="mf">1.0</span>     <span class="mf">20.000000</span>           <span class="mf">2277.481374</span>            <span class="mf">22.475693</span>
+
+              <span class="n">Yield</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Wt</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Size</span>  \
+<span class="n">count</span>    <span class="mf">200.000000</span>      <span class="mf">200.000000</span>        <span class="mf">200.000000</span>
+<span class="n">mean</span>    <span class="mf">4765.995363</span>      <span class="mf">476.599536</span>          <span class="mf">0.245769</span>
+<span class="n">std</span>     <span class="mf">3093.295392</span>      <span class="mf">309.329539</span>          <span class="mf">0.073753</span>
+<span class="nb">min</span>        <span class="mf">0.000000</span>        <span class="mf">0.000000</span>          <span class="mf">0.000000</span>
+<span class="mi">25</span><span class="o">%</span>     <span class="mf">2535.993006</span>      <span class="mf">253.599301</span>          <span class="mf">0.223099</span>
+<span class="mi">50</span><span class="o">%</span>     <span class="mf">3894.863108</span>      <span class="mf">389.486311</span>          <span class="mf">0.274101</span>
+<span class="mi">75</span><span class="o">%</span>     <span class="mf">7819.712885</span>      <span class="mf">781.971288</span>          <span class="mf">0.299073</span>
+<span class="nb">max</span>    <span class="mf">10881.111792</span>     <span class="mf">1088.111179</span>          <span class="mf">0.315281</span>
+
+       <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">NumberFunction</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">Wt</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">N</span>  \
+<span class="n">count</span>                  <span class="mf">200.000000</span>            <span class="mf">200.000000</span>     <span class="mf">200.000000</span>
+<span class="n">mean</span>                  <span class="mf">1890.470249</span>            <span class="mf">476.599536</span>       <span class="mf">6.187685</span>
+<span class="n">std</span>                   <span class="mf">1077.127429</span>            <span class="mf">309.329539</span>       <span class="mf">4.118276</span>
+<span class="nb">min</span>                      <span class="mf">0.000000</span>              <span class="mf">0.000000</span>       <span class="mf">0.000000</span>
+<span class="mi">25</span><span class="o">%</span>                    <span class="mf">979.352980</span>            <span class="mf">253.599301</span>       <span class="mf">3.051965</span>
+<span class="mi">50</span><span class="o">%</span>                   <span class="mf">1855.994293</span>            <span class="mf">389.486311</span>       <span class="mf">5.112196</span>
+<span class="mi">75</span><span class="o">%</span>                   <span class="mf">2861.250716</span>            <span class="mf">781.971288</span>      <span class="mf">10.372698</span>
+<span class="nb">max</span>                   <span class="mf">3726.740206</span>           <span class="mf">1088.111179</span>      <span class="mf">13.852686</span>
+
+       <span class="n">Maize</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">Wt</span>         <span class="n">year</span>
+<span class="n">count</span>      <span class="mf">200.000000</span>   <span class="mf">200.000000</span>
+<span class="n">mean</span>      <span class="mf">1167.632796</span>  <span class="mf">1995.500000</span>
+<span class="n">std</span>        <span class="mf">656.486381</span>     <span class="mf">2.879489</span>
+<span class="nb">min</span>         <span class="mf">53.721510</span>  <span class="mf">1991.000000</span>
+<span class="mi">25</span><span class="o">%</span>        <span class="mf">774.862931</span>  <span class="mf">1993.000000</span>
+<span class="mi">50</span><span class="o">%</span>       <span class="mf">1104.093752</span>  <span class="mf">1995.500000</span>
+<span class="mi">75</span><span class="o">%</span>       <span class="mf">1705.820275</span>  <span class="mf">1998.000000</span>
+<span class="nb">max</span>       <span class="mf">2457.083319</span>  <span class="mf">2000.000000</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="moving-average-plots">
+<h1>Moving average plots<a class="headerlink" href="#moving-average-plots" title="Link to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">plot_mva</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="n">time_col</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">,</span>
+   <span class="n">errorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">grouping</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Amount&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">),</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="multi-year-moving-average-for-each-experiment-line-plot">
+<h2>Multi-year moving average for each experiment (line plot).<a class="headerlink" href="#multi-year-moving-average-for-each-experiment-line-plot" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/mva_hue_nitrogen_grp_n_p.png"><img alt="Nitrogen group N-P MVA plot" src="_images/mva_hue_nitrogen_grp_n_p.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+</section>
+<section id="categorical-plots">
+<h1>Categorical Plots<a class="headerlink" href="#categorical-plots" title="Link to this heading"></a></h1>
+<section id="box-plots">
+<h2>Box plots<a class="headerlink" href="#box-plots" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">cat_plot</span><span class="p">(</span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;box&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="maize-yield-variability-by-population-density-mva-plot">
+<h2>Maize yield variability by population density (mva plot).<a class="headerlink" href="#maize-yield-variability-by-population-density-mva-plot" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cat_plot_no_hue.png"><img alt="cat plot no hue" src="_images/cat_plot_no_hue.png" style="width: 100%;" />
+</a>
+</figure>
+<p>Add Nitrogen fertilizer as hue for contrast across the nitrogen treatments</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">cat_plot</span><span class="p">(</span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">,</span>
+           <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span> <span class="s1">&#39;Nitrogen&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>plt.savefig(dir_p/’hue_nitrogen.png’, dpi=600)</p>
+</section>
+<section id="maize-yield-variability-by-population-density-and-nitrogen-fertilizer-box-plot">
+<h2>Maize yield variability by population density and nitrogen fertilizer (box plot).<a class="headerlink" href="#maize-yield-variability-by-population-density-and-nitrogen-fertilizer-box-plot" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/hue_nitrogen.png"><img alt="Nitrogen and population effect" src="_images/hue_nitrogen.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="bar-plots">
+<h2>Bar Plots<a class="headerlink" href="#bar-plots" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">cat_plot</span><span class="p">(</span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span>
+  <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span> <span class="s1">&#39;Nitrogen&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="maize-yield-variability-by-population-density-bar-plot">
+<h2>Maize yield variability by population density (bar plot).<a class="headerlink" href="#maize-yield-variability-by-population-density-bar-plot" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/bar_plots_with_hue.png"><img alt="bar plot population and nitrogen  effect" src="_images/bar_plots_with_hue.png" style="width: 70%;" />
+</a>
+</figure>
+<p>Changing statistical estimators.
+The example below shows how to switch estimators, and after the change to sum, the y-axis is now inflated</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">cat_plot</span><span class="p">(</span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="maize-yield-variability-by-population-density-bar-plot-estimator-sum">
+<h2>Maize yield variability by population density (bar plot, estimator =sum).<a class="headerlink" href="#maize-yield-variability-by-population-density-bar-plot-estimator-sum" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="bar plot population estimator sum" src="_images/bar_plots_with_estimator.png" />
+</figure>
+<p>If you want to plot in a different unit or apply on-the-fly calculations, all plotting
+methods allow simple mathematical expressions to be passed, as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">cat_plot</span><span class="p">(</span><span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;Yield_in_Mg = Yield/1000&quot;</span><span class="p">,</span>
+           <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Yield_in_Mg&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">errorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="maize-yield-variability-by-population-density-in-mg-bar-plot-estimator-sum">
+<h2>Maize yield variability by population density in Mg (bar plot, estimator =sum).<a class="headerlink" href="#maize-yield-variability-by-population-density-in-mg-bar-plot-estimator-sum" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="bar plot expression of kg to mg estimator sum" src="_images/exp.png" />
+</figure>
+</section>
+</section>
+<section id="tidy-up-the-plots-for-reporting">
+<h1>Tidy up the plots for reporting<a class="headerlink" href="#tidy-up-the-plots-for-reporting" title="Link to this heading"></a></h1>
+<p>The heavy lifting is done; now polish the figure—adjust labels, titles, and size.
+All plotting methods on ApsimModel and ExperimentManager return a seaborn.axisgrid.FacetGrid, so you can keep customizing afterward. Because Seaborn sits on Matplotlib,
+any Matplotlib styling you pass (or apply later) still works.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cat_plot</span><span class="p">(</span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;Report&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Population density (m$^{-2}$)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;Maize yield (kg ha$^{-1}$)&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_titles</span><span class="p">(</span><span class="s2">&quot;Yield vs population density&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="maize-yield-labeled-plot-bar-plot">
+<h2>Maize yield labeled plot (bar plot).<a class="headerlink" href="#maize-yield-labeled-plot-bar-plot" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="bar plot expression of kg to mg estimator sum" src="_images/styled.png" />
+</figure>
+</section>
+</section>
+<section id="passing-a-custom-dataset">
+<h1>Passing a custom dataset<a class="headerlink" href="#passing-a-custom-dataset" title="Link to this heading"></a></h1>
+<p>Because apsimNGpy plotting wraps Seaborn, you don’t need extra imports for most advanced visuals
+or after some advanced calculation on your dataset.</p>
+<p>When you want to pre-compute values or reshape data yourself, use the table argument: it accepts None, a table name (str) from the model’s database, or a pandas.DataFrame.</p>
+<p>table=None :  uses self.results from the model.</p>
+<p>table=”Report” :  (str): loads that table from the DB.</p>
+<p>table=df (DataFrame) :  uses your custom, in-memory data.</p>
+<p>The example below shows how to convert a numeric nitrogen Amount to an ordered categorical (for cleaner legends/ordering) and pass it straight into any plotter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+ <span class="c1"># Example: start from model results (or load a table)</span>
+ <span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># or: df = model.get_simulated_output(&quot;Report&quot;)</span>
+
+ <span class="c1"># Convert nitrogen rate to an ordered categorical for consistent ordering/legend</span>
+ <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">]</span>
+ <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;0–50&quot;</span><span class="p">,</span> <span class="s2">&quot;51–100&quot;</span><span class="p">,</span> <span class="s2">&quot;101–150&quot;</span><span class="p">,</span> <span class="s2">&quot;151–200&quot;</span><span class="p">]</span>
+ <span class="c1"># 1) Coerce to numeric</span>
+ <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+ <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nitrogen&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nitrogen&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+
+ <span class="c1"># 2) Handle NaNs (drop or label them)</span>
+ <span class="c1"># Option A: drop rows with invalid Amount</span>
+ <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Nitrogen&quot;</span><span class="p">])</span>
+ <span class="c1"># Option B: keep them and fill a placeholder after cut</span>
+
+ <span class="c1"># 3) Define consistent bins &amp; labels</span>
+ <span class="n">bins</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>           <span class="c1"># strictly increasing</span>
+ <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;0–50&quot;</span><span class="p">,</span> <span class="s2">&quot;51–100&quot;</span><span class="p">,</span> <span class="s2">&quot;101–150&quot;</span><span class="p">,</span> <span class="s2">&quot;151–200&quot;</span><span class="p">]</span>  <span class="c1"># len=4 = len(bins)-1</span>
+
+ <span class="c1"># 4) Cut (older pandas? remove ordered= and set later)</span>
+ <span class="n">df</span><span class="p">[</span><span class="s2">&quot;N_rate_class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
+     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nitrogen&quot;</span><span class="p">],</span>
+     <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
+     <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+     <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+     <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="p">)</span>
+
+ <span class="c1"># Optionally, sort by the new category</span>
+ <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;N_rate_class&quot;</span><span class="p">)</span>
+
+ <span class="c1"># Use the custom DataFrame directly via `table=...`</span>
+ <span class="c1"># Example 1: line series</span>
+ <span class="n">model</span><span class="o">.</span><span class="n">series_plot</span><span class="p">(</span>
+     <span class="n">table</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+     <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
+     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Yield&quot;</span><span class="p">,</span>
+     <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;N_rate_class&quot;</span><span class="p">,</span> <span class="n">errorbar</span><span class="o">=</span><span class="kc">None</span>
+
+ <span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;series_ordered.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="maize-yield-ordered-plot-line-plot">
+<h2>Maize yield ordered plot (Line plot)<a class="headerlink" href="#maize-yield-ordered-plot-line-plot" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="series data after ordering" src="_images/series_ordered.png" />
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 2: categorical plot (e.g., box/violin via catplot)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">cat_plot</span><span class="p">(</span>
+    <span class="n">table</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;N_rate_class&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Yield&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="s2">&quot;binned_cat_plot.png&quot;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="binned-maize-yield-bar-plot">
+<h2>Binned Maize yield (bar plot).<a class="headerlink" href="#binned-maize-yield-bar-plot" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="binned plot" src="_images/binned_cat_plot.png" />
+</figure>
+</section>
+</section>
+<section id="meta-info">
+<h1>Meta info<a class="headerlink" href="#meta-info" title="Link to this heading"></a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Notebook generated by;
+APSIM version: `APSIM 2025.8.7844.0`
+apsimNGpy version 0.39.10.17
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference:</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#master"><span class="std std-ref">Go back to the home page</span></a></p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cheat.html" class="btn btn-neutral float-left" title="apsimNGpy cheatsheet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="apsimNGpy: API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

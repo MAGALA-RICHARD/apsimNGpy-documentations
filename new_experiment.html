@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Overview &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/new_experiment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note" id="experiment-api">
+<p class="admonition-title">Note</p>
+<p>⚠️ Note: The Experiment module, introduced in apsimNGpy v0.3.9.7, addresses recent structural changes in APSIM file structure changes. While the older <code class="docutils literal notranslate"><span class="pre">create_experiment</span></code> method in ApsimModel is retained for backward compatibility,
+users working with newer APSIM models should use the <a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager" title="apsimNGpy.core.experimentmanager.ExperimentManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentManager</span></code></a> class for building factorial designs. It offers full support for modern model experiment editing</p>
+</div>
+<p>The <a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager" title="apsimNGpy.core.experimentmanager.ExperimentManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentManager</span></code></a>: API in <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> provides a high-level interface to build factorial experiments
+programmatically using APSIM. It is ideal for users who want to automate the creation of simulation treatments
+by varying input parameters or management scripts — all without manually editing <code class="docutils literal notranslate"><span class="pre">.apsimx</span></code> files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is especially useful for agronomists and researchers running large design-of-experiment (DoE) simulations.</p>
+</div>
+<section id="quick-overview">
+<h1>Quick Overview<a class="headerlink" href="#quick-overview" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager" title="apsimNGpy.core.experimentmanager.ExperimentManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentManager</span></code></a>: class wraps an existing APSIM model and allows you to:</p>
+<ul class="simple">
+<li><p>Clone and isolate a base simulation</p></li>
+<li><p>Add multiple input factors (e.g., fertilizer rate, sowing density)</p></li>
+<li><p>Generate permutations or combinations of those factors</p></li>
+<li><p>Export the updated <code class="docutils literal notranslate"><span class="pre">.apsimx</span></code> file with fully configured experiments</p></li>
+</ul>
+</section>
+<section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>First, create an <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> object by loading a base model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.experimentmanager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentManager</span>
+
+<span class="n">exp</span> <span class="o">=</span> <span class="n">ExperimentManager</span><span class="p">(</span><span class="s2">&quot;Maize&quot;</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="s2">&quot;Maize_experiment.apsimx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then initialize the experiment block:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span><span class="o">.</span><span class="n">init_experiment</span><span class="p">(</span><span class="n">permutation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment" title="apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">init_experiment()</span></code></a>:</p>
+</div>
+</section>
+<section id="adding-input-factors">
+<h1>Adding Input Factors<a class="headerlink" href="#adding-input-factors" title="Link to this heading"></a></h1>
+<p>Each factor describes a script path and a set of values to assign in the experiment. You can add one or more
+factors like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span><span class="o">.</span><span class="n">add_factor</span><span class="p">(</span><span class="s2">&quot;[Manager Script].Script.Amount = 0 to 200 step 50&quot;</span><span class="p">)</span>
+<span class="n">exp</span><span class="o">.</span><span class="n">add_factor</span><span class="p">(</span><span class="s2">&quot;[Sowing Rule].Script.RowSpacing = 100, 300, 600&quot;</span><span class="p">,</span> <span class="n">factor_name</span><span class="o">=</span><span class="s2">&quot;RowSpacing&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>API description: <a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_factor" title="apsimNGpy.core.experimentmanager.ExperimentManager.add_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_factor()</span></code></a></p>
+</div>
+</section>
+<section id="finalizing-the-experiment">
+<h1>Finalizing the Experiment<a class="headerlink" href="#finalizing-the-experiment" title="Link to this heading"></a></h1>
+<p>Once all factors are defined, finalize the setup and save the modified model. Please note this is entirely optional,
+<a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_factor" title="apsimNGpy.core.experimentmanager.ExperimentManager.add_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_factor()</span></code></a> is a stand alone method, once you have finished adding factors, you can call the <code class="docutils literal notranslate"><span class="pre">run</span></code> to retrieve the results, without calling finalize. finalize is wa built as safe guard for immutability</p>
+<p>&#64;deprecated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This writes a new <code class="docutils literal notranslate"><span class="pre">.apsimx</span></code> file that contains a complete factorial experiment,
+ready to run in APSIM or via automation tools.</p>
+</section>
+<section id="api-summary">
+<h1>API Summary<a class="headerlink" href="#api-summary" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager" title="apsimNGpy.core.experimentmanager.ExperimentManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentManager</span></code></a>: Main entry point to create and manipulate factorial designs.</p></li>
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment" title="apsimNGpy.core.experimentmanager.ExperimentManager.init_experiment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">init_experiment()</span></code></a>: Prepares the experiment node structure in the model.</p></li>
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.add_factor" title="apsimNGpy.core.experimentmanager.ExperimentManager.add_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_factor()</span></code></a>: Adds a new varying parameter or script-defined rule.</p></li>
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager.finalize" title="apsimNGpy.core.experimentmanager.ExperimentManager.finalize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">finalize()</span></code></a>: Validates and commits the experiment structure to the model.</p></li>
+</ul>
+</section>
+<section id="further-reading">
+<h1>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h1>
+<p>For advanced usage (e.g., linked script validation, mixed designs), refer to the API reference section.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="comp_cultivar.html#comp-cultivar"><span class="std std-ref">Comparing cultivars yield</span></a></p></li>
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">apsimNGpy: API Reference</span></a></p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

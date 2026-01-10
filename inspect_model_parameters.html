@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inspect Model Parameters &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Editing model parameters" href="edit.html" />
+    <link rel="prev" title="Model Preview in GUI" href="preview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Inspect Model Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/inspect_model_parameters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inspect-model-parameters">
+<span id="inspect-params"></span><h1>Inspect Model Parameters<a class="headerlink" href="#inspect-model-parameters" title="Link to this heading"></a></h1>
+<p>Once we have reviewed the structure of our APSIM model—including the model paths and component names—we are in a good position to explore model internals more deeply.
+This tutorial introduces the  <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters" title="apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model_parameters()</span></code></a> method, which provides a unified way to extract parameters from a variety of APSIM model components.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters" title="apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model_parameters()</span></code></a> method simplifies parameter inspection
+by consolidating functionality that was previously spread across multiple methods such as:</p>
+<ul class="simple">
+<li><p>examine_management_info</p></li>
+<li><p>read_cultivar_params</p></li>
+<li><p>Various model-specific inspectors</p></li>
+</ul>
+</div>
+<div class="admonition-inspect-model-parameters-function-signature admonition">
+<p class="admonition-title">inspect_model_parameters function <code class="docutils literal notranslate"><span class="pre">signature</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inspect_model_parameters</span><span class="p">(</span>
+    <span class="n">model_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">simulations</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
+    <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">set</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<dl>
+<dt>model_type<span class="classifier">(<code class="docutils literal notranslate"><span class="pre">str</span></code>) see more <a class="reference internal" href="model%20inspection.html#model-list"><span class="std std-ref">details here</span></a></span></dt><dd><p>The type or class of the model to inspect.</p>
+</dd>
+<dt>Examples:</dt><dd><p>Shorthand:      <code class="docutils literal notranslate"><span class="pre">'Clock'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Weather'</span></code>
+Fully qualified: <code class="docutils literal notranslate"><span class="pre">'Models.Clock'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Models.Climate.Weather'</span></code></p>
+</dd>
+<dt>simulations (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>):</dt><dd><p>One or more simulation names from your APSIM file to query. defaults to all</p>
+</dd>
+<dt>model_name: (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</dt><dd><p>The instance name of the model within the simulation.
+Example: If model_type = <code class="docutils literal notranslate"><span class="pre">Solute</span></code>,  this could be <code class="docutils literal notranslate"><span class="pre">'NO3'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NH4'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'Urea'</span></code>. if the model was renamed, the new name is the model_name</p>
+</dd>
+</dl>
+<p>parameters (<code class="docutils literal notranslate"><span class="pre">str,</span> <span class="pre">set,</span> <span class="pre">list,</span> <span class="pre">tuple</span></code>, optional):
+Specific parameter(s) to retrieve. Defaults to <code class="docutils literal notranslate"><span class="pre">'all'</span></code>, which returns all available attributes.
+Common examples for layered models like Solute: <code class="docutils literal notranslate"><span class="pre">Depth,</span> <span class="pre">InitialValues,</span> <span class="pre">SoluteBD,</span> <span class="pre">Thickness</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>: Reserved for future use (currently unused).</p>
+<p>Returns</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model Type</p></th>
+<th class="head"><p>Return Format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Weather</p></td>
+<td><p>File <code class="docutils literal notranslate"><span class="pre">path(s)</span></code> as string(s)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clock</p></td>
+<td><p>Dictionary with <code class="docutils literal notranslate"><span class="pre">Start</span></code> and <code class="docutils literal notranslate"><span class="pre">End</span></code> datetimes</p></td>
+</tr>
+<tr class="row-even"><td><p>Manager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Dictionary</span></code> of script parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>Soil models</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> with layered data</p></td>
+</tr>
+<tr class="row-even"><td><p>Report</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Dictionary</span></code> with VariableNames and EventNames</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cultivar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Dictionary</span></code> of parameter strings</p></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s take a look at how it works.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+<span class="n">model_instance</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Inspect full soil <code class="docutils literal notranslate"><span class="pre">Organic</span></code> profile:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Organic&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+ <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Organic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
+0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
+1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
+2  12.0    0.60    300-600   0.02  ...  163.972144     0.050         12.0      300.0
+3  12.0    0.30    600-900   0.02  ...   99.454133     0.025         12.0      300.0
+4  12.0    0.18   900-1200   0.01  ...   60.321981     0.015         12.0      300.0
+5  12.0    0.12  1200-1500   0.01  ...   36.587131     0.010         12.0      300.0
+6  12.0    0.12  1500-1800   0.01  ...   22.191217     0.010         12.0      300.0
+[7 rows x 9 columns]
+</pre></div>
+</div>
+<p>Inspect soil <code class="docutils literal notranslate"><span class="pre">Physical</span></code> profile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Physical&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+ <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Physical&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
+0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
+1  0.198689  1.071456  0.496723  ...   74.508522     150.0                300.0
+2  0.280000  1.093939  0.488438  ...  146.531282     300.0                600.0
+3  0.280000  1.158613  0.480297  ...  144.089091     300.0                900.0
+4  0.280000  1.173012  0.471584  ...  141.475079     300.0               1200.0
+5  0.280000  1.162873  0.457071  ...  137.121171     300.0               1500.0
+6  0.280000  1.187495  0.452332  ...  135.699528     300.0               1800.0
+[7 rows x 17 columns]
+</pre></div>
+</div>
+<p>Inspect soil <code class="docutils literal notranslate"><span class="pre">Chemical</span></code> profile:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Chemical&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+ <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Chemical&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       Depth   PH  Thickness
+0      0-150  8.0      150.0
+1    150-300  8.0      150.0
+2    300-600  8.0      300.0
+3    600-900  8.0      300.0
+4   900-1200  8.0      300.0
+5  1200-1500  8.0      300.0
+6  1500-1800  8.0      300.0
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">one</span></code> or <code class="docutils literal notranslate"><span class="pre">more</span></code> specific parameters. This can be achievement by key word argument <code class="docutils literal notranslate"><span class="pre">parameters</span></code>.
+This argument accepts both strings and <code class="docutils literal notranslate"><span class="pre">lists</span></code> or <code class="docutils literal notranslate"><span class="pre">tuple</span></code>. Please see the examples below.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Organic&#39;</span><span class="p">,</span>
+   <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+   <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Organic&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;Carbon&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>#output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Carbon
+0    1.20
+1    0.96
+2    0.60
+3    0.30
+4    0.18
+5    0.12
+6    0.12
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>only few selected parameters <code class="docutils literal notranslate"><span class="pre">'Carbon'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CNR'</span></code></p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Organic&#39;</span><span class="p">,</span>
+ <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+  <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Organic&#39;</span><span class="p">,</span>
+  <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Carbon&#39;</span><span class="p">,</span> <span class="s1">&#39;CNR&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="n">Carbon</span>   <span class="n">CNR</span>
+<span class="mi">0</span>    <span class="mf">1.20</span>  <span class="mf">12.0</span>
+<span class="mi">1</span>    <span class="mf">0.96</span>  <span class="mf">12.0</span>
+<span class="mi">2</span>    <span class="mf">0.60</span>  <span class="mf">12.0</span>
+<span class="mi">3</span>    <span class="mf">0.30</span>  <span class="mf">12.0</span>
+<span class="mi">4</span>    <span class="mf">0.18</span>  <span class="mf">12.0</span>
+<span class="mi">5</span>    <span class="mf">0.12</span>  <span class="mf">12.0</span>
+<span class="mi">6</span>    <span class="mf">0.12</span>  <span class="mf">12.0</span>
+</pre></div>
+</div>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">Report</span></code> model attributes.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<dl class="simple">
+<dt>Report attributes are returned in two categories;</dt><dd><ol class="arabic simple">
+<li><p>‘EventNames’: used for triggering recording or reporting events.</p></li>
+<li><p>‘VariableNames’: actual variable  paths.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>       <span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Report&#39;</span><span class="p">,</span>
+        <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+         <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Report&#39;</span><span class="p">)</span>
+
+<span class="c1"># output</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;EventNames&#39;: [&#39;[Maize].Harvesting&#39;],
+&#39;VariableNames&#39;: [&#39;[Clock].Today&#39;,
+&#39;[Maize].Phenology.CurrentStageName&#39;,
+&#39;[Maize].AboveGround.Wt&#39;,
+&#39;[Maize].AboveGround.N&#39;,
+&#39;[Maize].Grain.Total.Wt*10 as Yield&#39;,
+&#39;[Maize].Grain.Wt&#39;,
+&#39;[Maize].Grain.Size&#39;,
+&#39;[Maize].Grain.NumberFunction&#39;,
+&#39;[Maize].Grain.Total.Wt&#39;,
+&#39;[Maize].Grain.N&#39;,
+&#39;[Maize].Total.Wt&#39;]}
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Report&#39;</span><span class="p">,</span>
+ <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+ <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Report&#39;</span><span class="p">,</span>
+ <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;EventNames&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;EventNames&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;[Maize].Harvesting&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>Inspect  <code class="docutils literal notranslate"><span class="pre">Weather</span></code> path</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The returned weather file is a <code class="docutils literal notranslate"><span class="pre">path</span></code> for weather data</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Weather&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+  <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Weather&#39;</span><span class="p">)</span>
+
+<span class="c1"># output</span>
+<span class="s1">&#39;</span><span class="si">%r</span><span class="s1">oot%/Examples/WeatherFiles/AU_Dalby.met&#39;</span>
+</pre></div>
+</div>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">Manager</span></code> script parameters.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>These scripts are from the Manager Module. You need to know the exact name of the script hence you may want to inspect the whole Manager Models in the simulations file.
+Please use <code class="docutils literal notranslate"><span class="pre">inspect_model(model_type='Manager',</span> <span class="pre">fullpath=False)</span></code> to make a selection:</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Manager&#39;</span><span class="p">,</span>
+<span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Sow using a variable rule&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;Crop&#39;: &#39;Maize&#39;,
+&#39;StartDate&#39;: &#39;1-nov&#39;,
+&#39;EndDate&#39;: &#39;10-jan&#39;,
+&#39;MinESW&#39;: &#39;100.0&#39;,
+&#39;MinRain&#39;: &#39;25.0&#39;,
+&#39;RainDays&#39;: &#39;7&#39;,
+&#39;CultivarName&#39;: &#39;Dekalb_XL82&#39;,
+&#39;SowingDepth&#39;: &#39;30.0&#39;,
+&#39;RowSpacing&#39;: &#39;750.0&#39;,
+&#39;Population&#39;: &#39;10&#39;}
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Script Manager parameters can vary significantly between different scripts. To understand what parameters are available in a given context, it’s best to inspect them using the method above.
+In the following example, we demonstrate how to inspect the value of a specific parameter—Population</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Manager&#39;</span><span class="p">,</span>
+<span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Sow using a variable rule&#39;</span><span class="p">,</span>
+<span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># Output</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;10&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">Cultivar</span></code> parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Cultivar&#39;</span><span class="p">,</span>
+<span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;B_110&#39;</span><span class="p">)</span> <span class="c1"># lists all path specifications for B_110 parameters abd their values</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;[Phenology].Juvenile.Target.FixedValue&#39;: &#39;210&#39;,
+&#39;[Phenology].Photosensitive.Target.XYPairs.X&#39;: &#39;0, 12.5, 24&#39;,
+&#39;[Phenology].Photosensitive.Target.XYPairs.Y&#39;: &#39;0, 0, 0&#39;,
+&#39;[Phenology].FlagLeafToFlowering.Target.FixedValue&#39;: &#39;1&#39;,
+&#39;[Phenology].FloweringToGrainFilling.Target.FixedValue&#39;: &#39;170&#39;,
+&#39;[Phenology].GrainFilling.Target.FixedValue&#39;: &#39;730&#39;,
+&#39;[Phenology].Maturing.Target.FixedValue&#39;: &#39;1&#39;,
+&#39;[Phenology].MaturityToHarvestRipe.Target.FixedValue&#39;: &#39;100&#39;,
+&#39;[Rachis].DMDemands.Structural.DMDemandFunction.MaximumOrganWt.FixedValue&#39;: &#39;36&#39;}
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Cultivar&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+ <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;B_110&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;[Phenology].Juvenile.Target.FixedValue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;[Phenology].Juvenile.Target.FixedValue&#39;: &#39;210&#39;}
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please note that cultivar parameters are represented with an equal operator before the values,
+here they are returned as key value pairs with parameters as the keys</p>
+</div>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">SurfaceOrganicMatter</span></code> module. the surface organic matter parameters are not layered as <code class="docutils literal notranslate"><span class="pre">Organic,</span> <span class="pre">Physical</span> <span class="pre">and</span> <span class="pre">Water</span> <span class="pre">or</span> <span class="pre">Chemical</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Models.Surface.SurfaceOrganicMatter&#39;</span><span class="p">,</span>
+<span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;SurfaceOrganicMatter&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;NH4&#39;: 0.0,
+ &#39;InitialResidueMass&#39;: 500.0,
+ &#39;StandingWt&#39;: 0.0,
+ &#39;Cover&#39;: 0.0,
+ &#39;LabileP&#39;: 0.0,
+ &#39;LyingWt&#39;: 0.0,
+ &#39;InitialCNR&#39;: 100.0,
+ &#39;P&#39;: 0.0,
+ &#39;InitialCPR&#39;: 0.0,
+ &#39;SurfOM&#39;: &lt;System.Collections.Generic.List[SurfOrganicMatterType] object at 0x000001DABDBB58C0&gt;,
+ &#39;C&#39;: 0.0,
+ &#39;N&#39;: 0.0,
+ &#39;NO3&#39;: 0.0}
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Models.Surface.SurfaceOrganicMatter&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+ <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;SurfaceOrganicMatter&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;InitialCNR&#39;</span><span class="p">,</span> <span class="s1">&#39;InitialResidueMass&#39;</span><span class="p">})</span>
+
+<span class="c1"># output</span>
+<span class="p">{</span><span class="s1">&#39;InitialCNR&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;InitialResidueMass&#39;</span><span class="p">:</span> <span class="mf">500.0</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The code below inspects the soil water balance node</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Models.WaterModel.WaterBalance&#39;</span><span class="p">,</span> <span class="s1">&#39;SoilWater&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;Water&#39;: None,
+  &#39;SWCON&#39;: [4.0, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3],
+  &#39;CNCov&#39;: 0.8,
+  &#39;KLAT&#39;: None,
+  &#39;SummerDate&#39;: &#39;1-Nov&#39;,
+  &#39;PotentialInfiltration&#39;: 0.0,
+  &#39;WinterCona&#39;: 5.0,
+  &#39;DiffusSlope&#39;: 16.0,
+  &#39;DiffusConst&#39;: 40.0,
+  &#39;SummerU&#39;: 5.0,
+  &#39;PSIDul&#39;: -100.0,
+  &#39;PrecipitationInterception&#39;: 0.0,
+  &#39;Depth&#39;: [&#39;0-150&#39;,
+   &#39;150-300&#39;,
+   &#39;300-600&#39;,
+   &#39;600-900&#39;,
+   &#39;900-1200&#39;,
+   &#39;1200-1500&#39;,
+   &#39;1500-1800&#39;],
+  &#39;PoreInteractionIndex&#39;: None,
+  &#39;CN2Bare&#39;: 73.0,
+  &#39;CatchmentArea&#39;: nan,
+  &#39;WinterDate&#39;: &#39;1-Apr&#39;,
+  &#39;SWmm&#39;: None,
+  &#39;WinterU&#39;: 5.0,
+  &#39;Salb&#39;: 0.12,
+  &#39;SummerCona&#39;: 5.0,
+  &#39;DischargeWidth&#39;: nan,
+  &#39;dictionary&#39;: {&#39;Salib&#39;: &#39;Fraction of incoming solar radiation&#39;,
+   &#39;WinterU&#39;: &#39;Cumulative soil water evaporation to reach end of stage 1 soil water evaporation in winter&#39;,
+   &#39;SummerU&#39;: &#39;Cumulative soil water evaporation to reach end of stage 1 soil water evaporation in winter&#39;,
+   &#39;PSIDul&#39;: &#39;Matric Pontential at DUL (cm)&#39;,
+   &#39;CNCov&#39;: &#39;Cover for maximum curve number reduction&#39;,
+   &#39;DiffusSlope&#39;: &#39;effect of soil water storage above the lower limit on on soil water diffusivity (mm)&#39;,
+   &#39;DischargeWidth&#39;: &#39;&#39;,
+   &#39;SummerCona&#39;: &#39;Drying coefficient for stage 2 soil water evaporation in summer&#39;,
+   &#39;DiffusConst&#39;: &#39;Constant in soil water diffusivity calculations&#39;,
+   &#39;CN2Bare&#39;: &#39;Run off curve number ofr bare soil with average moisture&#39;,
+   &#39;CatchmentArea&#39;: &#39;Catchment area flow calculations (m2)&#39;,
+   &#39;WinterDate&#39;: &#39;Start date to switch to winter parameters&#39;,
+   &#39;WinterCona&#39;: &#39;Drying coefficient for stage 2 soil water evaporation in winter&#39;,
+   &#39;SummerDate&#39;: &#39;Start date to switch to summer parameters&#39;}}
+</pre></div>
+</div>
+<p>Description of parameter short names is given by the dictionary key as shown above in the output</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If there are more than one simulation, using <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters" title="apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model_parameters()</span></code></a> without specifying the simulation name will return a nested dictionary.</p>
+<p>Inspect simulation <code class="docutils literal notranslate"><span class="pre">Clock</span></code>. Only two attributes are inspected <code class="docutils literal notranslate"><span class="pre">Start</span></code> and <code class="docutils literal notranslate"><span class="pre">End</span></code> dates, and they are are returned as python datetime objects</p>
+</div>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+  <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Clock&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;End&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="s1">&#39;Start&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+<span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># Output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>datetime.datetime(2000, 12, 31, 0, 0)
+</pre></div>
+</div>
+<p>Extract <code class="docutils literal notranslate"><span class="pre">Start</span></code> year only. let’s see with <code class="docutils literal notranslate"><span class="pre">start</span></code> year as an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+<span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
+
+<span class="c1"># output</span>
+<span class="mi">1990</span>
+</pre></div>
+</div>
+<p>Extract  <code class="docutils literal notranslate"><span class="pre">End</span></code> year only:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+<span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;End&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
+<span class="mi">2000</span>
+</pre></div>
+</div>
+<p>For this model_type, argument values to parameters can be <code class="docutils literal notranslate"><span class="pre">start_date,</span> <span class="pre">end,</span> <span class="pre">End,</span> <span class="pre">Start,</span> <span class="pre">end_date,</span> <span class="pre">start</span></code>. All will return the same thing, respectively.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+<span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Clock&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;end_date&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>datetime.datetime(2000, 12, 31, 0, 0)
+</pre></div>
+</div>
+<p># Inspect <code class="docutils literal notranslate"><span class="pre">Solute</span></code> models with <code class="docutils literal notranslate"><span class="pre">Urea</span></code> as an example. Others Solutes include <code class="docutils literal notranslate"><span class="pre">NO3</span></code>, <code class="docutils literal notranslate"><span class="pre">NH4</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Solute&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;Urea&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>output</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>       <span class="n">Depth</span>  <span class="n">InitialValues</span>  <span class="n">SoluteBD</span>  <span class="n">Thickness</span>
+<span class="mi">0</span>      <span class="mi">0</span><span class="o">-</span><span class="mi">150</span>            <span class="mf">0.0</span>  <span class="mf">1.010565</span>      <span class="mf">150.0</span>
+<span class="mi">1</span>    <span class="mi">150</span><span class="o">-</span><span class="mi">300</span>            <span class="mf">0.0</span>  <span class="mf">1.071456</span>      <span class="mf">150.0</span>
+<span class="mi">2</span>    <span class="mi">300</span><span class="o">-</span><span class="mi">600</span>            <span class="mf">0.0</span>  <span class="mf">1.093939</span>      <span class="mf">300.0</span>
+<span class="mi">3</span>    <span class="mi">600</span><span class="o">-</span><span class="mi">900</span>            <span class="mf">0.0</span>  <span class="mf">1.158613</span>      <span class="mf">300.0</span>
+<span class="mi">4</span>   <span class="mi">900</span><span class="o">-</span><span class="mi">1200</span>            <span class="mf">0.0</span>  <span class="mf">1.173012</span>      <span class="mf">300.0</span>
+<span class="mi">5</span>  <span class="mi">1200</span><span class="o">-</span><span class="mi">1500</span>            <span class="mf">0.0</span>  <span class="mf">1.162873</span>      <span class="mf">300.0</span>
+<span class="mi">6</span>  <span class="mi">1500</span><span class="o">-</span><span class="mi">1800</span>            <span class="mf">0.0</span>  <span class="mf">1.187495</span>      <span class="mf">300.0</span>
+</pre></div>
+</div>
+<p>Inspect NH4 <a href="#id1"><span class="problematic" id="id2">``</span></a>InitialValues``For layered properties,</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>All are returned as pandas even if one parameter is specified.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_instance</span><span class="o">.</span><span class="n">inspect_model_parameters</span><span class="p">(</span><span class="s1">&#39;Solute&#39;</span><span class="p">,</span> <span class="n">simulations</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">,</span>
+ <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;NH4&#39;</span><span class="p">,</span>
+ <span class="n">parameters</span><span class="o">=</span><span class="s1">&#39;InitialValues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    InitialValues
+0            0.1
+1            0.1
+2            0.1
+3            0.1
+4            0.1
+5            0.1
+6            0.1
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The primary limitation of inspect_model_parameters is its verbosity—it often requires passing <code class="docutils literal notranslate"><span class="pre">model_type,</span> <span class="pre">model_name</span></code> and <code class="docutils literal notranslate"><span class="pre">simulations</span></code> or navigating deeply nested structures.</p>
+<p>The <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path" title="apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model_parameters_by_path()</span></code></a> method addresses this verbosity problem by allowing users to simply specify the path to the model component and (optionally) the parameters to inspect. This makes the API more concise and user-friendly.</p>
+<p>As with <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters" title="apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model_parameters()</span></code></a>, the parameters argument is optional—if not provided, the method will attempt to extract all available parameters from the model at the given path.</p>
+</div>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">SurfaceOrganicMatter</span></code> module parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Simulation.Field.SurfaceOrganicMatter&#39;</span><span class="p">)</span>
+<span class="c1"># output</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;InitialCPR&#39;: 0.0,
+  &#39;InitialCNR&#39;: 100.0,
+  &#39;NH4&#39;: 0.0,
+  &#39;NO3&#39;: 0.0,
+  &#39;Cover&#39;: 0.0,
+  &#39;LabileP&#39;: 0.0,
+  &#39;N&#39;: 0.0,
+  &#39;SurfOM&#39;: &lt;System.Collections.Generic.List[SurfOrganicMatterType] object at 0x1ae5c10c0&gt;,
+  &#39;InitialResidueMass&#39;: 500.0,
+  &#39;LyingWt&#39;: 0.0,
+  &#39;StandingWt&#39;: 0.0,
+  &#39;C&#39;: 0.0,
+  &#39;P&#39;: 0.0}
+</pre></div>
+</div>
+<p>Inspect surface organic matter module parameters by selecting a few parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Simulation.Field.SurfaceOrganicMatter&#39;</span><span class="p">,</span>
+ <span class="n">parameters</span> <span class="o">=</span> <span class="s1">&#39;InitialCNR&#39;</span><span class="p">)</span>
+<span class="c1"># output</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;InitialCNR&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">Sow</span> <span class="pre">using</span> <span class="pre">a</span> <span class="pre">variable</span> <span class="pre">rule</span></code> manager module parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;Crop&#39;: &#39;Maize&#39;,
+&#39;StartDate&#39;: &#39;1-nov&#39;,
+&#39;EndDate&#39;: &#39;10-jan&#39;,
+&#39;MinESW&#39;: &#39;100.0&#39;,
+&#39;MinRain&#39;: &#39;25.0&#39;,
+&#39;RainDays&#39;: &#39;7&#39;,
+&#39;CultivarName&#39;: &#39;Dekalb_XL82&#39;,
+&#39;SowingDepth&#39;: &#39;30.0&#39;,
+&#39;RowSpacing&#39;: &#39;750.0&#39;,
+&#39;Population&#39;: &#39;10&#39;}
+</pre></div>
+</div>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">Sow</span> <span class="pre">using</span> <span class="pre">a</span> <span class="pre">variable</span> <span class="pre">rule</span></code> manager module parameters by selecting a few parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model_parameters_by_path</span><span class="p">(</span><span class="s1">&#39;.Simulations.Simulation.Field.Sow using a variable rule&#39;</span><span class="p">,</span>
+   <span class="n">parameters</span><span class="o">=</span> <span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># output</span>
+<span class="p">{</span><span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;10&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>API: <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path" title="apsimNGpy.core.apsim.ApsimModel.inspect_model_parameters_by_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model_parameters_by_path()</span></code></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Getting model path can be done in three ways:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Use: <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.inspect_file" title="apsimNGpy.core.apsim.ApsimModel.inspect_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_file()</span></code></a> method to print a tree of the model structure to the console</p></li>
+<li><p>Use: <code class="xref py py-meth docutils literal notranslate"><span class="pre">inspect_model()</span></code> to return the path to all the models in the specified class</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">node</span> <span class="pre">path</span></code> method in the graphical user interface</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="admonition-gui-simulation-preview admonition">
+<p class="admonition-title">GUI Simulation Preview.</p>
+<p>If that is not enough, you can preview the current simulation in the APSIM graphical user interface (GUI) using the <a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.preview_simulation" title="apsimNGpy.core.apsim.ApsimModel.preview_simulation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preview_simulation()</span></code></a> method as follows;.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">preview_simulation</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When executed, a window similar to the image below will open on your computer. The APSIM GUI that appears is the one currently defined as the bin path in your apsimNGpy configuration.</p>
+<p>If you edit the file opened in the GUI, the changes are not automatically reflected in your ApsimModel instance. This is because the GUI opens a cloned copy of the input file.
+To apply your edits to the model instance, you’ll need to reload the file .</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference:</span></a></p></li>
+<li><p><a class="reference internal" href="edit.html#editor"><span class="std std-ref">Editing Models:</span></a></p></li>
+<li><p><a class="reference internal" href="model%20inspection.html#plain-inspect"><span class="std std-ref">Plain Model Inspection:</span></a></p></li>
+<li><p><a class="reference internal" href="api.html#apsimNGpy.core.apsim.ApsimModel.preview_simulation" title="apsimNGpy.core.apsim.ApsimModel.preview_simulation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preview_simulation()</span></code></a></p></li>
+<li><p><a class="reference internal" href="model%20inspection.html#model-list"><span class="std std-ref">Models namespace</span></a></p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="preview.html" class="btn btn-neutral float-left" title="Model Preview in GUI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="edit.html" class="btn btn-neutral float-right" title="Editing model parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

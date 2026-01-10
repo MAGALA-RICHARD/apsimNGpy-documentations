@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instantiating apsimNGpy Model Objects" href="instantiating.html" />
+    <link rel="prev" title="What is New in apsimNGpy 1.0.0" href="what_is_new.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-apsimngpy">Installing apsimNGpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-install-from-pypi-stable-releases">Method 1: Install from PyPI (stable releases)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-clone-the-development-repository">Method 2: Clone the development repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-3-install-directly-from-github-recommended">Method 3: Install directly from GitHub (recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editable-installation-for-developers">Editable installation (for developers)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-the-apsim-binary-path">Verifying the APSIM Binary Path</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-command-line">Using the command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-search">Automatic search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-python">Using Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-apsimngpy-locates-apsim-binaries">How apsimNGpy Locates APSIM Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-or-updating-the-apsim-binary-path">Setting or Updating the APSIM Binary Path</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#option-1-manual-configuration-file">Option 1: Manual configuration file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-2-environment-variable-temporary">Option 2: Environment variable (temporary)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-3-using-the-apsimngpy-config-api-recommended">Option 3: Using the apsimNGpy config API (recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-4-command-line-update">Option 4: Command-line update</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-successful-configuration">Verifying Successful Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#containerization-and-portability">Containerization and Portability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comp_cultivar.html">Comparing cultivars yield</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> is under active development. Stable releases are available, but
+new features and bug fixes are introduced frequently. You can install the
+package using one of the methods below.</p>
+<section id="installing-apsimngpy">
+<h2>Installing apsimNGpy<a class="headerlink" href="#installing-apsimngpy" title="Link to this heading"></a></h2>
+<section id="method-1-install-from-pypi-stable-releases">
+<h3>Method 1: Install from PyPI (stable releases)<a class="headerlink" href="#method-1-install-from-pypi-stable-releases" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install apsimNGpy</span>
+</pre></div>
+</div>
+</section>
+<section id="method-2-clone-the-development-repository">
+<h3>Method 2: Clone the development repository<a class="headerlink" href="#method-2-clone-the-development-repository" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/MAGALA-RICHARD/apsimNGpy.git</span>
+<span class="go">cd apsimNGpy</span>
+<span class="go">pip install .</span>
+</pre></div>
+</div>
+</section>
+<section id="method-3-install-directly-from-github-recommended">
+<h3>Method 3: Install directly from GitHub (recommended)<a class="headerlink" href="#method-3-install-directly-from-github-recommended" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install git+https://github.com/MAGALA-RICHARD/apsimNGpy.git</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Installing directly from GitHub is <strong>strongly recommended</strong>, as the repository
+is actively maintained and receives continuous bug fixes as soon as issues
+are reported by users.</p>
+</div>
+</section>
+<section id="editable-installation-for-developers">
+<h3>Editable installation (for developers)<a class="headerlink" href="#editable-installation-for-developers" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/MAGALA-RICHARD/apsimNGpy.git</span>
+<span class="go">cd apsimNGpy</span>
+<span class="go">pip install -e .</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before using <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code>, <strong>APSIM Next Generation must be installed</strong>.</p>
+<ul class="simple">
+<li><p>Windows: <a class="reference external" href="https://www.apsim.info/download-apsim/downloads/">https://www.apsim.info/download-apsim/downloads/</a></p></li>
+<li><p>macOS / Linux: <a class="reference external" href="https://apsimnextgeneration.netlify.app/install/">https://apsimnextgeneration.netlify.app/install/</a></p></li>
+<li><p>APSIM documentation: <a class="reference external" href="https://docs.apsim.info/">https://docs.apsim.info/</a></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> assumes users have a basic understanding of APSIM as a
+process-based crop model. The goal of this package is to provide a
+programmatic and reproducible interface.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use the <strong>pinned APSIM release</strong> shown on the apsimNGpy home page
+(<a class="reference internal" href="index.html#apsim-pin-version"><span class="std std-ref">Download it here</span></a>) to avoid forward-compatibility issues.</p>
+</div>
+</section>
+<section id="verifying-the-apsim-binary-path">
+<h2>Verifying the APSIM Binary Path<a class="headerlink" href="#verifying-the-apsim-binary-path" title="Link to this heading"></a></h2>
+<section id="using-the-command-line">
+<h3>Using the command line<a class="headerlink" href="#using-the-command-line" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">apsim_bin_path -s</span>
+</pre></div>
+</div>
+</section>
+<section id="automatic-search">
+<h3>Automatic search<a class="headerlink" href="#automatic-search" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">apsim_bin_path --auto_search</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Shortcut:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">apsim_bin_path -a</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="using-python">
+<h3>Using Python<a class="headerlink" href="#using-python" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get_apsim_bin_path</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>API reference: <a class="reference internal" href="api.html#apsimNGpy.core.config.get_apsim_bin_path" title="apsimNGpy.core.config.get_apsim_bin_path"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_apsim_bin_path()</span></code></a></p>
+</div>
+</section>
+</section>
+<section id="how-apsimngpy-locates-apsim-binaries">
+<h2>How apsimNGpy Locates APSIM Binaries<a class="headerlink" href="#how-apsimngpy-locates-apsim-binaries" title="Link to this heading"></a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> locates APSIM binaries using the following priority order:</p>
+<ol class="arabic simple">
+<li><p>User-supplied binary path</p></li>
+<li><p>Environment variables</p></li>
+<li><p>System PATH</p></li>
+<li><p>Known installation directories</p></li>
+</ol>
+<p>If no valid path is found, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised.</p>
+</div>
+</section>
+<section id="setting-or-updating-the-apsim-binary-path">
+<h2>Setting or Updating the APSIM Binary Path<a class="headerlink" href="#setting-or-updating-the-apsim-binary-path" title="Link to this heading"></a></h2>
+<section id="option-1-manual-configuration-file">
+<h3>Option 1: Manual configuration file<a class="headerlink" href="#option-1-manual-configuration-file" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Locate <code class="docutils literal notranslate"><span class="pre">APSIMNGpy_meta_data</span></code> in your home directory.</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">apsimNGpy_config.ini</span></code>.</p></li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">apsim_location</span></code> entry.</p></li>
+</ol>
+</section>
+<section id="option-2-environment-variable-temporary">
+<h3>Option 2: Environment variable (temporary)<a class="headerlink" href="#option-2-environment-variable-temporary" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;APSIM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;path/to/your/apsim/binary/folder/bin&quot;</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>This approach must be executed <strong>before</strong> importing <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code>.</p>
+</div>
+</section>
+<section id="option-3-using-the-apsimngpy-config-api-recommended">
+<h3>Option 3: Using the apsimNGpy config API (recommended)<a class="headerlink" href="#option-3-using-the-apsimngpy-config-api-recommended" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_apsim_bin_path</span>
+<span class="n">set_apsim_bin_path</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;path/to/your/apsim/binary/folder/bin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>API reference: <a class="reference internal" href="api.html#apsimNGpy.core.config.set_apsim_bin_path" title="apsimNGpy.core.config.set_apsim_bin_path"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_apsim_bin_path()</span></code></a></p>
+</div>
+</section>
+<section id="option-4-command-line-update">
+<h3>Option 4: Command-line update<a class="headerlink" href="#option-4-command-line-update" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">apsim_bin_path -u &quot;path/to/your/apsim/binary/folder/bin&quot;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">apsim_bin_path --update &quot;path/to/your/apsim/binary/folder/bin&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verifying-successful-configuration">
+<h2>Verifying Successful Configuration<a class="headerlink" href="#verifying-successful-configuration" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If this import fails, verify the APSIM binary path and Python.NET setup.</p>
+</div>
+<div class="admonition-final-note admonition">
+<p class="admonition-title">Final Note</p>
+<p>The APSIM binary path only needs to be set once and can be reused across
+projects. <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> also supports switching between multiple APSIM
+versions when required.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference</span></a></p></li>
+<li><p><a class="reference internal" href="index.html#apsim-pin-version"><span class="std std-ref">Download Stable APSIM Version</span></a></p></li>
+</ul>
+</div>
+</section>
+<section id="containerization-and-portability">
+<h2>Containerization and Portability<a class="headerlink" href="#containerization-and-portability" title="Link to this heading"></a></h2>
+<p><strong>apsimNGpy</strong> simplifies containerization and project portability. Entire
+projects can be transferred to another machine <strong>without reinstalling APSIM</strong>,
+provided the APSIM binaries are correctly referenced.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="what_is_new.html" class="btn btn-neutral float-left" title="What is New in apsimNGpy 1.0.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="instantiating.html" class="btn btn-neutral float-right" title="Instantiating apsimNGpy Model Objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

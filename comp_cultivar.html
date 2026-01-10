@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparing cultivars yield &mdash; apsimNGpy 0.39.10.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d8b7f34"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=df1a032d"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sensitivity Analysis in apsimNGpy Part 1" href="sens.html" />
+    <link rel="prev" title="Support apsimNGpy development" href="how_to_cite.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            apsimNGpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WHAT IS NEW</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_new.html">What is New in <strong>apsimNGpy 1.0.0</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting%20started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instantiating.html">Instantiating <code class="docutils literal notranslate"><span class="pre">apsimNGpy</span></code> Model Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Running and Retrieving Results</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VERSION CONTROL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="version_control.html">Version Control and APSIM Compatibility in apsimNGpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html">Managing apsimNGpy project environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#step-1-create-env-in-your-project-root">Step 1 — Create .env in your project root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_env.html#set-3-use-it-in-your-app">Set 3.Use it in your app:</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EDITING &amp; INSPECTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html">Inspect Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model%20inspection.html#whole-model-inspection">Whole Model inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preview.html">Model Preview in GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspect_model_parameters.html">Inspect Model Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Editing model parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#more-examples-about-edit-model-by-path">More examples about <code class="docutils literal notranslate"><span class="pre">edit_model_by_path</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html#editing-nested-simulation-models">Editing nested simulation models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html">Quick and Simple Way to Run Factorial Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#quick-overview">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#adding-input-factors">Adding Input Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#finalizing-the-experiment">Finalizing the Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#api-summary">API Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_experiments.html#further-reading">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Data Replacement.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DISTRIBUTED COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html">Distributed Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#instantiating-and-running-the-simulations">Instantiating and Running the Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#customization">Customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#running-all-jobs">Running all jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult_core.html#working-in-notebooks-jupyter-colab">Working in notebooks (Jupyter/Colab)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OPTIMIZATION &amp; TRADE-OFF ANALYSIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Automatic Parameter calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moo.html">Multi-Objective Optimization with apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT DEVELOPMENT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">Support apsimNGpy development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html#how-to-cite-apsimngpy">How to Cite apsimNGpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TUTORIALS</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comparing cultivars yield</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#variability-across-the-simulation-years">Variability across the simulation years</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensitivity Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sens.html">Sensitivity Analysis in apsimNGpy Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Sensitivity analysis workflow Part 2 (SALib driven workflow)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html#sample-matrix-and-evaluation">Sample matrix and evaluation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CHEATSHEET</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">apsimNGpy cheatsheet</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMULATED DATA PLOTTING &amp; VISUALIZATION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting and Visualizing Simulated Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#moving-average-plots">Moving average plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#categorical-plots">Categorical Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#tidy-up-the-plots-for-reporting">Tidy up the plots for reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#passing-a-custom-dataset">Passing a custom dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#meta-info">Meta info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">apsimNGpy: API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">apsimNGpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Comparing cultivars yield</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/comp_cultivar.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="comparing-cultivars-yield">
+<span id="comp-cultivar"></span><h1>Comparing cultivars yield<a class="headerlink" href="#comparing-cultivars-yield" title="Link to this heading"></a></h1>
+<p>In this tutorial we are going to compare the cultivar yield across different cultivars using apsimNGpy</p>
+<p>Firstly, we are going to start by creating a none permutation experiment</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">apsimNGpy.core.apsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApsimModel</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ApsimModel</span><span class="p">(</span><span class="s1">&#39;Maize&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">create_experiment</span><span class="p">(</span><span class="n">permutation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_factor</span><span class="p">(</span><span class="n">specification</span><span class="o">=</span><span class="s2">&quot;[Sow using a variable rule].Script.CultivarName =  Dekalb_XL82, Melkassa, Pioneer_34K77, Laila, B_110, A_90&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cultivars <code class="docutils literal notranslate"><span class="pre">Dekalb_XL82,</span> <span class="pre">Melkassa,</span> <span class="pre">Pioneer_34K77,</span> <span class="pre">Laila,</span> <span class="pre">B_110,</span> <span class="pre">A_90</span></code> were selected randomly for demonstration purposes only. We also assumes that they are planted in the same field, therefore, same weather and soil factors.
+To see all the available cultivars and select from a list use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">inspect_model</span><span class="p">(</span><span class="s1">&#39;Cultivar&#39;</span><span class="p">,</span> <span class="n">fullpath</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>getting info about the simulated output</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p># output</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
+<span class="n">RangeIndex</span><span class="p">:</span> <span class="mi">60</span> <span class="n">entries</span><span class="p">,</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">59</span>
+<span class="n">Data</span> <span class="n">columns</span> <span class="p">(</span><span class="n">total</span> <span class="mi">18</span> <span class="n">columns</span><span class="p">):</span>
+ <span class="c1">#   Column                            Non-Null Count  Dtype</span>
+<span class="o">---</span>  <span class="o">------</span>                            <span class="o">--------------</span>  <span class="o">-----</span>
+ <span class="mi">0</span>   <span class="n">SimulationName</span>                    <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+ <span class="mi">1</span>   <span class="n">SimulationID</span>                      <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">int64</span>
+ <span class="mi">2</span>   <span class="n">CheckpointID</span>                      <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">int64</span>
+ <span class="mi">3</span>   <span class="n">CheckpointName</span>                    <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+ <span class="mi">4</span>   <span class="n">Clock</span><span class="o">.</span><span class="n">Today</span>                       <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+ <span class="mi">5</span>   <span class="n">CultivarName</span>                      <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+ <span class="mi">6</span>   <span class="n">Experiment</span>                        <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+ <span class="mi">7</span>   <span class="n">Maize</span><span class="o">.</span><span class="n">AboveGround</span><span class="o">.</span><span class="n">N</span>               <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">8</span>   <span class="n">Maize</span><span class="o">.</span><span class="n">AboveGround</span><span class="o">.</span><span class="n">Wt</span>              <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">9</span>   <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">N</span>                     <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">10</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">NumberFunction</span>        <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">11</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Size</span>                  <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">12</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">Wt</span>              <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">13</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Grain</span><span class="o">.</span><span class="n">Wt</span>                    <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">14</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Phenology</span><span class="o">.</span><span class="n">CurrentStageName</span>  <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+ <span class="mi">15</span>  <span class="n">Maize</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">Wt</span>                    <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">16</span>  <span class="n">Yield</span>                             <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">float64</span>
+ <span class="mi">17</span>  <span class="n">Zone</span>                              <span class="mi">60</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+<span class="n">dtypes</span><span class="p">:</span> <span class="n">float64</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">int64</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">object</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">memory</span> <span class="n">usage</span><span class="p">:</span> <span class="mf">8.6</span><span class="o">+</span> <span class="n">KB</span>
+<span class="c1"># most of the columns in the dataset are float</span>
+</pre></div>
+</div>
+<p>other alternative:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Since our major factor is CultivarName, we will next examine the corresponding mean yield for each cultivar</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean_yields</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;CultivarName&#39;</span><span class="p">)[</span><span class="s1">&#39;Yield&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_yields</span><span class="p">)</span>
+
+<span class="c1"># output</span>
+<span class="n">CultivarName</span>
+<span class="n">Laila</span>            <span class="mf">6610.2287</span>
+<span class="n">Pioneer_34K77</span>    <span class="mf">6608.3364</span>
+<span class="n">B_110</span>            <span class="mf">6535.0578</span>
+<span class="n">A_90</span>             <span class="mf">6286.9042</span>
+<span class="n">Dekalb_XL82</span>      <span class="mf">5611.6749</span>
+
+
+<span class="n">Melkassa</span>         <span class="mf">4831.0817</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Yield</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>Clearly Melkassa has the lowest yield, and laila performed better than all other cultivars. Let’s take a step further and visualize their mean, median, minimum or maximum values using a boxplot</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">model</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;CultivarName&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">rotate_xticks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/Cultivar_Maize.png" src="_images/Cultivar_Maize.png" />
+<p>Obviously, there is no doubt <code class="docutils literal notranslate"><span class="pre">Melikassa</span></code> performs poorly in this area in terms of maize yield quarterly percentiles and median are very different fom the rest of the cultivars.
+Meanwhile <code class="docutils literal notranslate"><span class="pre">Laila</span></code> and <a href="#id1"><span class="problematic" id="id2">``</span></a>B_110` are similar, but different from that of <code class="docutils literal notranslate"><span class="pre">Dekalb_XL82</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">series_plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Yield&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Cultivar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="variability-across-the-simulation-years">
+<h2>Variability across the simulation years<a class="headerlink" href="#variability-across-the-simulation-years" title="Link to this heading"></a></h2>
+<img alt="_images/Cultivar_Maize_Yield_Lineplot.png" src="_images/Cultivar_Maize_Yield_Lineplot.png" />
+<p>All cultivar had the same annual yield trend but there is a year when a_90 had more maize yield than all the others</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>API Reference: <a class="reference internal" href="api.html#apsimNGpy.core.experimentmanager.ExperimentManager" title="apsimNGpy.core.experimentmanager.ExperimentManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentManager</span></code></a></p></li>
+<li><p><a class="reference internal" href="factorial_experiments.html#quick-factorial-experiments"><span class="std std-ref">Quick and Simple Way to Run Factorial Experiments</span></a></p></li>
+<li><p><a class="reference internal" href="plotting.html#plots"><span class="std std-ref">More Plotting examples</span></a></p></li>
+<li><p><a class="reference internal" href="api.html#api-ref"><span class="std std-ref">API Reference</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="how_to_cite.html" class="btn btn-neutral float-left" title="Support apsimNGpy development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sens.html" class="btn btn-neutral float-right" title="Sensitivity Analysis in apsimNGpy Part 1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Magala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
