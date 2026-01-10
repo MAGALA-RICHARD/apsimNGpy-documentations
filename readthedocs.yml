@@ -5,6 +5,13 @@ on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: write
 
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.12"
+
+sphinx:
+  configuration: doc/conf.py
 jobs:
   docs:
     runs-on: ubuntu-latest
