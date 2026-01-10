@@ -1,6 +1,6 @@
 .. what_is_new
 
-What’s New in **apsimNGpy 1.0.0**
+What is New in **apsimNGpy 1.0.0**
 ========================================
 **apsimNGpy 1.0.0** represents a major milestone in the development of the framework, transitioning from an experimental research tool to a stable, production-ready release. This version consolidates years of development and introduces several key improvements in performance, usability, reproducibility, and analytical capability.
 
