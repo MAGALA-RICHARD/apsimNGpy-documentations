@@ -14,19 +14,13 @@ What is New in **apsimNGpy 1.0.0**
 * **Improved failure reporting** and retry mechanisms with configurable policies (e.g., `tenacity`-based retries), reducing silent errors in large batch jobs.
 * **Improve job submissions** allowing edits to be submitted simulataneusly.
 
-3. Enhanced Spatial Optimization Integration
-====================================================
-* Fully integrated framework coupling **APSIM**, the **Agricultural Conservation Planning Framework (ACPF)**, and **NSGA-II** for spatial optimization.
-* Enables explicit trade-off analysis between production and environmental objectives at field and watershed scales.
-* Supports new normalization and summary statistics logic for multi-objective evaluation.
-
-4. Expanded Sensitivity & Uncertainty Analysis
+3. Expanded Sensitivity & Uncertainty Analysis
 ===================================================
 * Updated **Sobol sampling** with configurable skip values for improved space-filling design.
 * Clean handling of **calc_second_order** options with consistent propagation between sampling and analysis layers.
 * Support for additional SALib methods with stable default parameterizations.
 
-5. Improved Database & Output Management
+4. Improved Database & Output Management
 ===============================================
 * **Schema-hash table naming** to avoid SQLite collisions in parallel executions.
 * Stable persistence layer with:
@@ -35,13 +29,13 @@ What is New in **apsimNGpy 1.0.0**
   * large result handling with chunked writes and WAL support
 * Cleaner error handling for results writes under heavy parallel loads.
 
-6. Workflow & Developer Quality-of-Life
+5. Workflow & Developer Quality-of-Life
 ===========================================
 * Modular, environment-aware `.bat` and `uv` workflows for consistent environment management across Windows and cross-platform environments.
 * Cleaned and **modularized dependency structure**, enabling smaller core installs and optional GIS/plotting/optimization profiles.
 * Support for locked Python versions via `uv python list` and `.python-version` files.
 
-7. Fixes & Stability Enhancements
+6. Fixes & Stability Enhancements
 ==================================
 * Resolution of common parallel SQLite locking issues under heavy batch throughput.
 * Deterministic hashing for table identifiers even in multiprocessing contexts.
