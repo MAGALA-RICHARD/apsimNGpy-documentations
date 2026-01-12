@@ -155,6 +155,18 @@ Results can be loaded to memory by :meth:`~apsimNgpy.core.mult_cores.MultiCoreMa
             # same as
             data = task_manager.results  # defaults is axis =0
 
+Results can also be transferred to an sql database or to csv as follows:
+
+.. code-block:: python
+
+   from sqlite2 import connect
+   db  = connect(':memory:")
+   or
+   db = 'test.db"
+   task_manager.save_tosql(db_or_con=db, table_name='agg_table', if_exist='replace', chunk_size=1000)
+   # to scv
+   task_manager.save_to_csv('test.csv')
+
 
 Customization
 ===================
@@ -171,8 +183,6 @@ Alternatively, skip the decorator and call your own writer/aggregator inside the
             from apsimNGpy.parallel.process import custom_parallel
             import pandas as pd
             from sqlalchemy import create_engine
-
-
             DATABAse = str(Path('test_custom.db').resolve())
 
 
