@@ -35,12 +35,84 @@ To explicitly set unique filenames for each simulation:
 .. code-block:: python
 
        create_jobs = (ApsimModel('Maize', out_path = Path(f"_{i}.apsimx").resolve()).path
-       for i in range(100))
 
 
 .. tip::
 
-    The key idea: every file must have a unique identifier to avoid race conditions during parallel execution.
+     The key idea: every file must have a unique identifier to avoid race conditions during parallel execution.
+
+In newer apsimNGpy versions, each job must specify the APSIM ``.apsimx`` model to execute and may
+include additional metadata.
+
+Supported job definitions include:
+
+**1. Plain job definitions (no metadata, no edits)**
+This assumes that each model file is unique and has already been
+edited externally.
+
+.. code-block:: python
+
+   jobs = {
+       'model_0.apsimx',
+       'model_1.apsimx',
+       'model_2.apsimx',
+       'model_3.apsimx',
+       'model_4.apsimx',
+       'model_5.apsimx',
+       'model_6.apsimx',
+       'model_7.apsimx'
+   }
+
+**2. Job definitions with metadata**
+This format allows attaching identifiers or other metadata to each
+job. Models are assumed to be unique and pre-edited.
+
+.. code-block:: python
+
+   [
+       {'model': 'model_0.apsimx', 'ID': 0},
+       {'model': 'model_1.apsimx', 'ID': 1},
+       {'model': 'model_2.apsimx', 'ID': 2},
+       {'model': 'model_3.apsimx', 'ID': 3},
+       {'model': 'model_4.apsimx', 'ID': 4},
+       {'model': 'model_5.apsimx', 'ID': 5},
+       {'model': 'model_6.apsimx', 'ID': 6},
+       {'model': 'model_7.apsimx', 'ID': 7}
+   ]
+
+**3. Job definitions with internal model edits**
+In this format, each job specifies an ``inputs`` list with dicts representing each node to be edited internally by the runner. These
+edits must follow the rules of
+:meth:`~apsimNGpy.core.apsim.ApsimModel.edit_model_by_path`. The input dictionary is treated as metadata and is attached to the results' tables. When both inputs and additional metadata are provided, they are merged into a single metadata mapping prior to attachment, with former entries overriding earlier metadata keys and thereby avoiding duplicate keys in the results' tables.
+
+.. code-block:: python
+
+  jobs=  [
+       {
+           'model': 'model_0.apsimx',
+           'ID': 0,
+           'inputs': [{
+               'path': '.Simulations.Simulation.Field.Fertilise at sowing',
+               'Amount': 0
+           }]
+       },
+       {
+           'model': 'model_1.apsimx',
+           'ID': 1,
+           'inputs': [{
+               'path': '.Simulations.Simulation.Field.Fertilise at sowing',
+               'Amount': 50
+           }]
+       },
+       {
+           'model': 'model_2.apsimx',
+           'ID': 2,
+           'inputs': [{
+               'path': '.Simulations.Simulation.Field.Fertilise at sowing',
+               'Amount': 100
+           }]
+       }
+   ]
 
 Instantiating and Running the Simulations
 =========================================
@@ -48,24 +120,12 @@ Instantiating and Running the Simulations
 .. code-block:: python
 
         if __name__ == '__main__': # a guard is required
+            # create jobs
+            create_jobs = (ApsimModel('Maize', out_path = Path(f"_{i}.apsimx").resolve()).path
             # initialize
             task_manager = MultiCoreManager(db_path=Path('test.db').resolve(), agg_func=None)
             # Run all the jobs
             task_manager.run_all_jobs(create_jobs, n_cores=16, threads=False, clear_db=True)
-
-# this is the progress info
-
-.. code-block:: python
-
-            Processing all jobs. Please wait!: :  |██████████| 100.0%| [100/100]| Complete | 1.07s/iteration | Elapsed time: 00:01:46.850
-
-# get the results
-
-.. code-block:: python
-
-            df = task_manager.get_simulated_output(axis=0)
-            # same as
-            data = task_manager.results  # defaults is axis =0
 
 If ``agg_func`` is specified, it can be one of: mean, median, sum, min, or max. Each results table will then be summarized using the selected aggregation function.
 
@@ -74,6 +134,27 @@ If ``agg_func`` is specified, it can be one of: mean, median, sum, min, or max. 
 ``threads (bool)``: If True, use threads; if False, use processes. For ``CPU-bound`` tasks like this one, processes are preferred as they prevent resource contention and blocking inherent to threads.
 
 ``n_cores (int)``: Specifies the number of worker cores to use for the task. The workload will be divided among these workers. If the number of cores is large but the number of tasks is small, some scheduling overhead will occur, and workers may remain idle while waiting for available tasks.
+
+Tracking completed jobs
+------------------------
+MultiCoreManager API displays the number of completed jobs and percentage of the total submitted,
+time per simulation(sim) failed jobs (f) elapsed time and seconds per sim
+
+.. code-block:: python
+
+            Processing![0f] :  |██████████| 100.0%| [100/100]| Complete | 1.07s/sim | Elapsed time: 00:01:46.850
+
+
+Retrieving results
+-------------------
+Results can be loaded to memory by :meth:`~apsimNgpy.core.mult_cores.MultiCoreManager.get_simulated_output` or :attr:`~apsimNgpy.core.mult_cores.MultiCoreManager.results`
+
+.. code-block:: python
+
+            df = task_manager.get_simulated_output(axis=0)
+            # same as
+            data = task_manager.results  # defaults is axis =0
+
 
 Customization
 ===================
