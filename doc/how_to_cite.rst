@@ -11,8 +11,6 @@ The version and sub-version numbers can be retrieved via apsimNGpy.__version__, 
 Magala, R., Schulte, L.A., 2026. apsimNGpy: A comprehensive Python framework for interactive,
 reproducible, and scalable simulations of the APSIM Next Generation model. SoftwareX 33, 102496. https://doi.org/10.1016/j.softx.2025.102496
 
-
-
 **BibTeX format:**
 
 .. code-block:: bibtex
