@@ -25,3 +25,13 @@ URL: https://github.com/MAGALA-RICHARD/apsimNGpy.git
     }
 
 
+@article{Magala2026apsimNGpy,
+  author  = {Magala, Richard and Schulte, Lisa A.},
+  title   = {apsimNGpy: A comprehensive Python framework for interactive, reproducible, and scalable simulations of the APSIM Next Generation model},
+  journal = {SoftwareX},
+  year    = {2026},
+  volume  = {33},
+  pages   = {102496},
+  doi     = {10.1016/j.softx.2025.102496},
+  url     = {https://doi.org/10.1016/j.softx.2025.102496}
+}
