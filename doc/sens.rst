@@ -307,7 +307,7 @@ Before I log off, you can check out the documentation of following methods, whic
     However, APSIM currently relies on external R-based sensitivity analysis packages, which may require users to have R installed.
     Outside of Windows environments, this often necessitates some form of containerization, adding complexity to the workflow.
 
-    To address these limitations, Part II of the apsimNGpy sensitivity workflow introduces a fully cross-platform solution by
+    To address these limitations, Part II of the apsimNGpy sensitivity workflow introduces a fully supported cross-platform solution by
     integrating the SALib library directly with apsimNGpy. This approach eliminates the dependency on R, simplifies deployment
     across operating systems, and provides greater flexibility.
 
