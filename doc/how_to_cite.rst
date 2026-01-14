@@ -8,8 +8,10 @@ The version and sub-version numbers can be retrieved via apsimNGpy.__version__, 
 
 **Citation:**
 
-Magala, R. (2025). *apsimNGpy: A Python package for running APSIM Next Generation in Python environment*. Version 0.39.3.6, Released on 2025-06-13.
-URL: https://github.com/MAGALA-RICHARD/apsimNGpy.git
+Magala, R., Schulte, L.A., 2026. apsimNGpy: A comprehensive Python framework for interactive,
+reproducible, and scalable simulations of the APSIM Next Generation model. SoftwareX 33, 102496. https://doi.org/10.1016/j.softx.2025.102496
+
+
 
 **BibTeX format:**
 
