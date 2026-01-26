@@ -34,6 +34,16 @@ apsimNGpy: The Next-Generation Agro-ecosystem Simulation Library
    :alt: APSIM Next Generation version
    :name: apsim_pin_version
 
+.. warning::
+
+   **This documentation has moved from GitHub Pages to Read the Docs.**
+
+   New features are now documented on Read the Docs, with support for browsing multiple
+   documentation versions.
+
+   **The current live documentation can be accessed here:**
+   https://apsimngpy.readthedocs.io/en/latest/index.html
+
 
 Introduction
 ============
